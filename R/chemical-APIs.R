@@ -4,6 +4,7 @@
 #' @param API_key The user-specific API Key
 #' @return A data.frame containing chemical information for the chemical with
 #'   DTXSID matching the input parameter.
+#' @export
 
 
 get_chem_info <- function(DTXSID = NULL, API_key = NULL){
