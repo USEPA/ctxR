@@ -1,24 +1,39 @@
-#' Retrieve chemical details from DTXSID
+#' Retrieve chemical details from DTXSID of DTXCID
 #'
-#' @param DTXSID The chemical identifer DTXSID
+#' @param DTXSID The chemical identifier DTXSID
+#' @param DTXCID The chemical identifier DTXCID
 #' @param API_key The user-specific API key
 #'
 #' @return A data.frame containing chemical information for the chemical with
 #'   DTXSID matching the input parameter.
 #' @export
 #'
-get_chemical_details_dtxsid <- function(DTXSID = NULL, API_key = NULL){
-  if (is.null(DTXSID))
-    stop('Please input a DTXSID!')
+get_chemical_details <- function(DTXSID = NULL,
+                                        DTXCID = NULL,
+                                        API_key = NULL){
+  if (is.null(DTXSID) & is.null(DTXCID))
+    stop('Please input a DTXSID or DTXCID!')
+  else if (!is.null(DTXSID) & !is.null(DTXCID))
+    stop('Please input either a DTXSID or DTXCID, but not both!')
   else if (is.null(API_key))
     stop('Please input an API_key')
 
-  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/detail/search/by-dtxsid/', DTXSID),
-                        httr::add_headers(.headers = c(
-                          'Content-Type' =  'application/json',
-                          'x-api-key' = API_key)
-                        )
-  )
+  if (!is.null(DTXSID)){
+    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/detail/search/by-dtxsid/', DTXSID),
+                          httr::add_headers(.headers = c(
+                            'Content-Type' =  'application/json',
+                            'x-api-key' = API_key)
+                          )
+    )
+  } else {
+    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/detail/search/by-dtxcid/', DTXCID),
+                          httr::add_headers(.headers = c(
+                            'Content-Type' =  'application/json',
+                            'x-api-key' = API_key)
+                          )
+    )
+  }
+
 
   if(response$status_code == 200){
     data_list <- jsonlite::fromJSON(httr::content(response, as = 'text')) #Parse to list
