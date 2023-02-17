@@ -9,6 +9,7 @@ Description: More about what it does (maybe more than one line) Use four
     spaces when indenting paragraphs within the Description.
 License: GPL (>= 3)
 Imports: 
+    data.table,
     httr,
     jsonlite
 Encoding: UTF-8
