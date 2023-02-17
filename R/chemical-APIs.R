@@ -21,7 +21,7 @@ get_chem_info <- function(DTXSID = NULL, API_key = NULL){
                         )
 
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
     print(response$status_code)
   }
