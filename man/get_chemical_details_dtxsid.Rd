@@ -4,7 +4,7 @@
 \alias{get_chemical_details_dtxsid}
 \title{Retrieve chemical details from DTXSID}
 \usage{
-get_chemical_details_dtxsid(DTXSID, API_key)
+get_chemical_details_dtxsid(DTXSID = NULL, API_key = NULL)
 }
 \arguments{
 \item{DTXSID}{The chemical identifer DTXSID}

@@ -7,7 +7,7 @@
 #'   DTXSID matching the input parameter.
 #' @export
 #'
-get_chemical_details_dtxsid <- function(DTXSID, API_key){
+get_chemical_details_dtxsid <- function(DTXSID = NULL, API_key = NULL){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
   else if (is.null(API_key))
