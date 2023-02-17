@@ -1,11 +1,16 @@
-Package: ccdR
 Type: Package
+Package: ccdR
 Title: What the Package Does (Title Case)
 Version: 0.1.0
-Author: Who wrote it
+Author: person( "Kruse", "Paul", email = "kruse.paul@epa.gov", role =
+    c("aut", "cre"), comment = c(ORCID = "0000-0001-5516-9717") )
 Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: More about what it does (maybe more than one line) Use four
+    spaces when indenting paragraphs within the Description.
 License: What license is it under?
+Imports: 
+    httr,
+    jsonlite
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.2.3
