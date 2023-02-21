@@ -58,7 +58,8 @@ get_chemical_details <- function(DTXSID = NULL,
 #'
 #' @param DTXSID The chemical identifier DTXSID
 #' @param type This specifies whether to only grab predicted or experimental
-#'   results. If not specified, it will grab all details.
+#'   results. If not specified, it will grab all details. The allowable input
+#'   values are "predicted" or "experimental".
 #' @param API_key The user-specific API Key
 #' @return A data.frame containing chemical information for the chemical with
 #'   DTXSID matching the input parameter.
