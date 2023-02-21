@@ -406,7 +406,52 @@ get_chemical_mol <- function(DTXSID = NULL,
 }
 
 
+#' Get image file by DTXSID or DTXCID
+#'
+#' @param DTXSID Chemical identifier DTXSID
+#' @param DTXCID Chemical identifier DTXCID
+#' @param API_key The user-specific API key
+#'
+#' @return A Large array of three dimensions representing an image. For
+#'   displaying this, one may use \code{png::writePNG()} among many such
+#'   functions.
+#' @export
 
+
+get_chemical_image <- function(DTXSID = NULL,
+                             DTXCID = NULL,
+                             API_key = NULL){
+  if (is.null(DTXSID) & is.null(DTXCID))
+    stop('Please input a DTXSID or DTXCID!')
+  else if (!is.null(DTXSID) & !is.null(DTXCID))
+    stop('Please input either a DTXSID or DTXCID, but not both!')
+  else if (is.null(API_key))
+    stop('Please input an API_key!')
+
+  if (!is.null(DTXSID)){
+    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/file/image/search/by-dtxsid/', DTXSID),
+                          httr::add_headers(.headers = c(
+                            'Content-Type' =  'application/json',
+                            'x-api-key' = API_key)
+                          )
+    )
+  } else {
+    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/file/image/search/by-dtxcid/', DTXCID),
+                          httr::add_headers(.headers = c(
+                            'Content-Type' =  'application/json',
+                            'x-api-key' = API_key)
+                          )
+    )
+  }
+
+  if(response$status_code == 200){
+    return(httr::content(response))
+  } else {
+    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+  }
+  return()
+
+}
 
 
 
