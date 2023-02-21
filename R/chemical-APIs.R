@@ -142,3 +142,33 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
   return()
 
 }
+
+#' Get all public chemical lists
+#'
+#' @param API_key The user-specific api key
+#'
+#' @return A data.frame containing information on all public chemical lists
+#'   available from the CCTE chemical api.
+#' @export
+
+
+get_all_public_chemical_lists <- function(API_key = NULL){
+  if (is.null(API_key)){
+    stop('Please input an API_key!')
+  }
+
+  response <- httr::GET(url = 'https://api-ccte.epa.gov/chemical/list/',
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+  } else {
+    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+  }
+  return()
+
+}
