@@ -143,6 +143,44 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
 
 }
 
+
+#' Get chemical list by name
+#'
+#' @param list_name The name of the list of chemicals
+#' @param API_key The user-specific API key
+#'
+#' @return A data.frame containing information about the chemical list. Note,
+#'   this is not the chemical list itself. To access the chemicals in the list,
+#'   use \code{\link{get_chemicals_in_list}}.
+#' @seealso \code{\link{get_chemicals_in_list}}
+#' @export
+
+
+get_public_chemical_list_by_name <- function(list_name = NULL,
+                                             API_key = NULL){
+  if (is.null(list_name))
+    stop('Please input list_name!')
+  else if (is.null(API_key))
+    stop('Please input an API_key!')
+
+
+
+  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/list/search/by-name/', list_name),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 200){
+    return(data.frame(jsonlite::fromJSON(httr::content(response, as = 'text'))))
+  } else {
+    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+  }
+  return()
+
+}
+
 #' Get chemical lists containing given chemical
 #'
 #' @param DTXSID The chemical identifier DTXSID
