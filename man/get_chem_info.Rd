@@ -4,10 +4,17 @@
 \alias{get_chem_info}
 \title{Retrieve chemical information}
 \usage{
-get_chem_info(DTXSID = NULL, API_key = NULL)
+get_chem_info(
+  DTXSID = NULL,
+  type = c("", "predicted", "experimental"),
+  API_key = NULL
+)
 }
 \arguments{
 \item{DTXSID}{The chemical identifier DTXSID}
+
+\item{type}{This specifies whether to only grab predicted or experimental
+results. If not specified, it will grab all details.}
 
 \item{API_key}{The user-specific API Key}
 }
