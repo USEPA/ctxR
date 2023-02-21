@@ -317,26 +317,39 @@ get_all_public_chemical_lists <- function(API_key = NULL){
 
 #' Get mrv file by DTXSID
 #'
-#' @param DTXSID The chemical identifer DTXSID
+#' @param DTXSID The chemical identifier DTXSID
+#' @param DTXCID The chemical identifier DTXCID
 #' @param API_key The user-specific API key
 #'
 #' @return XML file format for representing a mrv file.
 #' @export
 
 
-get_chemical_mrv_by_dtxsid <- function(DTXSID = NULL,
-                                       API_key = NULL){
-  if (is.null(DTXSID))
-    stop('Please input list_name!')
+get_chemical_mrv <- function(DTXSID = NULL,
+                             DTXCID = NULL,
+                             API_key = NULL){
+  if (is.null(DTXSID) & is.null(DTXCID))
+    stop('Please input a DTXSID or DTXCID!')
+  else if (!is.null(DTXSID) & !is.null(DTXCID))
+    stop('Please input either a DTXSID or DTXCID, but not both!')
   else if (is.null(API_key))
     stop('Please input an API_key!')
 
-  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/file/mrv/search/by-dtxsid/', DTXSID),
+  if (!is.null(DTXSID)){
+    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/file/mrv/search/by-dtxsid/', DTXSID),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
                         )
   )
+  } else {
+    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/file/mrv/search/by-dtxcid/', DTXCID),
+                          httr::add_headers(.headers = c(
+                            'Content-Type' =  'application/json',
+                            'x-api-key' = API_key)
+                          )
+    )
+  }
 
   if(response$status_code == 200){
     return(httr::content(response))
@@ -347,3 +360,7 @@ get_chemical_mrv_by_dtxsid <- function(DTXSID = NULL,
   return()
 
 }
+
+
+
+
