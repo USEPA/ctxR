@@ -14,7 +14,8 @@ get_chem_info(
 \item{DTXSID}{The chemical identifier DTXSID}
 
 \item{type}{This specifies whether to only grab predicted or experimental
-results. If not specified, it will grab all details.}
+results. If not specified, it will grab all details. The allowable input
+values are "predicted" or "experimental".}
 
 \item{API_key}{The user-specific API Key}
 }
