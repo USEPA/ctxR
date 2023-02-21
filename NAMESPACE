@@ -2,3 +2,4 @@
 
 export(get_chem_info)
 export(get_chemical_details)
+export(get_fate_by_dtxsid)
