@@ -144,6 +144,53 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
 }
 
 
+#' Get msready by mass
+#'
+#' @param start The starting value for mass range
+#' @param end The ending value for mass range
+#' @param API_key The user-specific API key
+#'
+#' @return A list of DTXSIDs with msready mass falling within the given range.
+#' @export
+
+
+get_msready_by_mass <- function(start = NULL,
+                                end = NULL,
+                                API_key = NULL){
+  if(is.null(start) || is.null(end) || !is.numeric(start) || !is.numeric(end)){
+    stop('Please input a numeric value for both start and end!')
+  } else if (is.null(API_key)){
+    stop('Please input an API_key!')
+  }
+
+  if (start < 0 || end < 0){
+    stop('Both start and end must be non-negative!')
+  }
+
+  if (start > end){
+    warning('Swapping values for start and end!')
+    temp <- end
+    end <- start
+    start <- temp
+  }
+
+  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/msready/search/by-mass/', start, '/', end),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+  } else {
+    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+  }
+  return()
+
+}
+
+
 #' Get chemical lists by type
 #'
 #' @param type The type of list. This is a case sensitive parameter and returns
