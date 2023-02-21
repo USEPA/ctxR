@@ -14,8 +14,8 @@ get_bioactivity_details(DTXSID = NULL, AEID = NULL, API_key = NULL)
 \item{API_key}{The user-specific API key}
 }
 \value{
-A data.frame containing chemical information for the chemical with
-  DTXSID matching the input parameter.
+A data.frame containing bioactivity information for the chemical with
+  DTXSID or AEID matching the input parameter.
 }
 \description{
 Retrieve bioactivity data from DTXSID or AEID
