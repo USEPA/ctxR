@@ -144,6 +144,42 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
 }
 
 
+#' Get chemical lists by type
+#'
+#' @param type The type of list. This is a case sensitive parameter and returns
+#'   lists only for values of "federal", "international", "state", and "other".
+#' @param API_key The user-specified API key.
+#'
+#' @return A data.frame containing information about lists that meet the search
+#'   criteria.
+#' @export
+
+
+get_chemical_lists_by_type <- function(type = NULL,
+                                      API_key = NULL){
+  if (is.null(type))
+    stop('Please input list_name!')
+  else if (is.null(API_key))
+    stop('Please input an API_key!')
+
+  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/list/search/by-type/', type),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+  } else {
+    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+  }
+  return()
+
+
+}
+
+
 #' Get chemical list by name
 #'
 #' @param list_name The name of the list of chemicals
