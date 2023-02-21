@@ -57,24 +57,49 @@ get_chemical_details <- function(DTXSID = NULL,
 #' Retrieve chemical information
 #'
 #' @param DTXSID The chemical identifier DTXSID
+#' @param type This specifies whether to only grab predicted or experimental
+#'   results. If not specified, it will grab all details.
 #' @param API_key The user-specific API Key
 #' @return A data.frame containing chemical information for the chemical with
 #'   DTXSID matching the input parameter.
 #' @export
 
 
-get_chem_info <- function(DTXSID = NULL, API_key = NULL){
+get_chem_info <- function(DTXSID = NULL,
+                          type = c("", "predicted", "experimental"),
+                          API_key = NULL){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
   else if (is.null(API_key))
     stop('Please input an API_key')
 
-  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/property/search/by-dtxsid/', DTXSID),
-                        httr::add_headers(.headers = c(
-                          'Content-Type' =  'application/json',
-                          'x-api-key' = API_key)
+  type <- match.arg(type)
+
+  if (type == '') {
+    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/property/search/by-dtxsid/', DTXSID),
+                          httr::add_headers(.headers = c(
+                            'Content-Type' =  'application/json',
+                            'x-api-key' = API_key)
                           )
-                        )
+    )
+  } else {
+    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/property/search/by-dtxsid/', DTXSID,'?type=', type),
+                          httr::add_headers(.headers = c(
+                            'Content-Type' =  'application/json',
+                            'x-api-key' = API_key)
+                          )
+    )
+  }
+
+
+ # response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/property/search/by-dtxsid/', DTXSID),
+#                        httr::add_headers(.headers = c(
+#                          'Content-Type' =  'application/json',
+#                          'x-api-key' = API_key)
+#                          )
+#                        )
+
+
 
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
@@ -82,4 +107,37 @@ get_chem_info <- function(DTXSID = NULL, API_key = NULL){
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
  return()
+}
+
+#' Get fate by DTXSID
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#'
+#' @return @return A data.frame containing chemical information for the chemical with
+#'   DTXSID matching the input parameter.
+#' @export
+
+
+get_fate_by_dtxsid <- function(DTXSID = NULL,
+                               API_key = NULL){
+  if (is.null(DTXSID))
+    stop('Please input a DTXSID!')
+  else if (is.null(API_key))
+    stop('Please input an API_key')
+
+  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/fate/search/by-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+  } else {
+    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+  }
+  return()
+
 }
