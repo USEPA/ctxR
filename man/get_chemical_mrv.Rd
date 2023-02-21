@@ -2,7 +2,7 @@
 % Please edit documentation in R/chemical-APIs.R
 \name{get_chemical_mrv}
 \alias{get_chemical_mrv}
-\title{Get mrv file by DTXSID}
+\title{Get mrv file by DTXSID or DTXCID}
 \usage{
 get_chemical_mrv(DTXSID = NULL, DTXCID = NULL, API_key = NULL)
 }
@@ -17,5 +17,5 @@ get_chemical_mrv(DTXSID = NULL, DTXCID = NULL, API_key = NULL)
 XML file format for representing a mrv file.
 }
 \description{
-Get mrv file by DTXSID
+Get mrv file by DTXSID or DTXCID
 }
