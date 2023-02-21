@@ -3,4 +3,5 @@
 export(get_all_public_chemical_lists)
 export(get_chem_info)
 export(get_chemical_details)
+export(get_chemicals_in_list)
 export(get_fate_by_dtxsid)
