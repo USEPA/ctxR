@@ -37,14 +37,6 @@ get_bioactivity_details <- function(DTXSID = NULL,
 
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
-    data_list <- jsonlite::fromJSON(httr::content(response, as = 'text')) #Parse to list
-    missing_names <- which(sapply(data_list, is.null)) #Determine missing values
-    df <- t(data.frame(unlist(data_list), row.names = names(data_list)[-missing_names])) #Convert present values to data.frame with one row
-    rownames(df) <- NULL #Delete row name
-    missing_cols <- t(data.frame(rep(NA_real_, length(missing_names)), row.names = names(data_list)[missing_names])) #Generate column of missing values
-    df2 <- cbind(df, missing_cols) #Combine both sets of columns
-    dt <- data.table::setcolorder(data.table::data.table(df2), match(names(data_list), dimnames(df2)[[2]])) #Reorder columns
-    return(dt)
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
