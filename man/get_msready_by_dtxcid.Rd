@@ -2,7 +2,7 @@
 % Please edit documentation in R/chemical-APIs.R
 \name{get_msready_by_dtxcid}
 \alias{get_msready_by_dtxcid}
-\title{Get msready by formula}
+\title{Get msready by DTXCID}
 \usage{
 get_msready_by_dtxcid(DTXCID = NULL, API_key = NULL)
 }
@@ -16,5 +16,5 @@ A character list of DTXSIDs with DTXCIDs matching the
   search criteria
 }
 \description{
-Get msready by formula
+Get msready by DTXCID
 }

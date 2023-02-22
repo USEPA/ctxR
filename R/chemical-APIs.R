@@ -230,7 +230,7 @@ get_msready_by_formula <- function(formula = NULL,
 }
 
 
-#' Get msready by formula
+#' Get msready by DTXCID
 #'
 #' @param DTXCID The chemical identifier DTXCID
 #' @param API_key The user-specific API key
