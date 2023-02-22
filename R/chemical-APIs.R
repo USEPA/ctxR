@@ -191,6 +191,45 @@ get_msready_by_mass <- function(start = NULL,
 }
 
 
+
+#' Get msready by formula
+#'
+#' @param formula A string denoting the input chemical formula
+#' @param API_key The user-specific API key
+#'
+#' @return A character list of DTXSIDs with chemical formulas matching the
+#'   search criteria
+#' @export
+
+
+get_msready_by_formula <- function(formula = NULL,
+                                   API_key = NULL){
+  if(is.null(formula)){
+    stop("Please input a non-null value for formula!")
+  } else if (!is.character(formula)){
+    stop("Please input a character string for the formula parameter!")
+  } else if (is.null(API_key)){
+    stop('Please input an API_key!')
+  }
+
+  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/msready/search/by-formula/', formula),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+  } else {
+    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+  }
+  return()
+
+
+}
+
+
 #' Get chemical lists by type
 #'
 #' @param type The type of list. This is a case sensitive parameter and returns
