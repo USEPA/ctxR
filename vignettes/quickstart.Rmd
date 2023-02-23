@@ -1,0 +1,78 @@
+---
+title: "Getting started with ccdR"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{quickstart}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r, include=FALSE}
+library(httptest)
+httptest::start_vignette('quickstart')
+```
+
+
+```{r setup}
+devtools::load_all()
+#library(ccdR)
+```
+
+# ccdR quickstart guide
+
+The [CompTox Chemicals Dashboard](https://comptox.epa.gov/dashboard/) (CCD) provides a centralized location for data on chemicals. Such data includes phys-chem properties, hazard details, and bioactivity, among others. For users interested in looking up a few chemicals and using the associated data, the website provides a great resource. Moreover, for those interested in batch searching a list of chemicals, the CCD also supplies this functionality, offering a variety of output formats from which one can choose.
+
+However, the batch search functionality of the CCD does not necessarily fit well into a programmatic approach to handling chemical data. For this, accessing the information available on the CCD through an API is a better solution. And recently, such an API became publicly available; the [CCTE APIs](https://api-ccte.epa.gov/docs/index.html) provide access to this information.
+
+Users who are not familiar or experienced with using APIs may not find it appealing learning and writing code to access the APIs, so ccdR provides a more friendly alternative to this. 
+
+## API key
+
+Before getting started, a user must have an API key ready to use in order to access the CCTE APIs. This can be obtained from the admins of the CCTE APIs. In this vignette, the key will be stored as `my_key`.
+
+## Chemical APIs
+
+The CCTE APIs are split into three sections, the first of which is [Chemical APIs](https://api-ccte.epa.gov/docs/chemical.html#/). In the next several code chunks, we demonstrate how to use functions from ccdR to access different types of chemical information.
+
+The first function we explore is `get_chemical_details()`, which takes in either the DTXSID or DTXCID of a chemical and the user-specific API key. We obtain the relevant chemical details for Bisphenol A, which has DTXSID "DTXSID7020182".
+
+```{r}
+bisphenol_a <- get_chemical_details(DTXSID = 'DTXSID7020182',
+                                    API_key = my_key)
+bisphenol_a
+```
+The output of this function is a data.table. We could have also input the DTXCID rather than the DTXSID and returned the same data.
+
+The function `get_chem_info()` is similar. This returns phys-chem properties, which can be filtered to 'experimental' or 'predicted' if desired.
+
+```{r}
+bpa_info <- get_chem_info(DTXSID = "DTXSID7020182",
+                          API_key = my_key)
+bpa_info_experimental <- get_chem_info(DTXSID = "DTXSID7020182",
+                                       type = 'experimental',
+                                       API_key = my_key)
+bpa_info_predicted <- get_chem_info(DTXSID = "DTXSID7020182",
+                                    type = 'predicted',
+                                    API_key = my_key)
+bpa_info
+bpa_info_experimental
+bpa_info_predicted
+```
+
+To gather chemical fate details, we supply the same information as we did for *bpa_info* to the function `get_fate_by_dtxsid()`.
+
+
+
+
+
+```{r, include=FALSE}
+httptest::end_vignette()
+```
+
