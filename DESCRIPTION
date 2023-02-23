@@ -11,7 +11,8 @@ License: GPL (>= 3)
 Imports: 
     data.table,
     httr,
-    jsonlite
+    jsonlite,
+    urltools
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.3
