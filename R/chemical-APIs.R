@@ -144,6 +144,47 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
 }
 
 
+#' Chemical starts with
+#'
+#' @param word A character string of a chemical name or portion of a chemical
+#'   name
+#' @param API_key The user-specific API key
+#'
+#' @return A data.frame of chemicals and related values matching the query
+#'   parameters
+#' @export
+
+
+chemical_starts_with <- function(word = NULL,
+                           API_key = NULL){
+  if (is.null(word) || !is.character(word)){
+    stop('Please input a character value for word!')
+  } else if (is.null(API_key)){
+    stop('Please input an API_key!')
+  }
+
+  word <- prepare_word(word)
+
+  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/search/start-with/', word),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+  } else {
+    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+  }
+  return()
+
+
+
+}
+
+
+
 #' Chemical equal
 #'
 #' @param word A character string of a chemical name or portion of a chemical
