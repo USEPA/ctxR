@@ -143,6 +143,57 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
 
 }
 
+#' Chemical contains
+#'
+#' @param word A character string of a chemical name or portion of a chemical
+#'   name
+#' @param API_key The user-specific API key
+#'
+#' @return A list of DTXSIDs of chemicals matching the query parameters
+#' @export
+
+
+chemical_contains <- function(word = NULL,
+                              API_key = NULL){
+  if (is.null(word) || !is.character(word)){
+    stop('Please input a character value for word!')
+  } else if (is.null(API_key)){
+    stop('Please input an API_key!')
+  }
+
+  word <- prepare_word(word)
+
+  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/search/contain/', word),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+  } else {
+    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+  }
+  return()
+
+
+
+}
+
+#' Prepare url helper function
+#'
+#' @param word A character string
+#' @return A character string that is ready for use in http request
+
+
+prepare_word <- function(word){
+  temp_word <- urltools::url_encode(word)
+  temp_word <- gsub("%3f", "?", temp_word)
+  temp_word <- gsub("\\?\\?", "?%3f=", temp_word)
+  return(temp_word)
+}
+
 
 #' Get msready by mass
 #'
