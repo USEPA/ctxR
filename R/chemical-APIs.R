@@ -274,9 +274,26 @@ chemical_contains <- function(word = NULL,
 
 
 prepare_word <- function(word){
-  temp_word <- urltools::url_encode(word)
-  temp_word <- gsub("%3f", "?", temp_word)
-  temp_word <- gsub("\\?\\?", "?%3f=", temp_word)
+  # Handle question marks
+  split_words <- stringr::str_split(string = word,
+                                    pattern = '\\?',
+                                    n = 2)[[1]]
+  if (length(split_words) == 1){
+    temp_word <- urltools::url_encode(split_words[[1]])
+  } else {
+    if (nchar(split_words[[2]]) == 0){
+      temp_word <- urltools::url_encode(split_words[[1]])
+    } else {
+      temp_word <- paste0(urltools::url_encode(split_words[[1]]),
+                          '?',
+                          urltools::url_encode(split_words[[2]]),
+                          '=')
+    }
+  }
+
+  # Handle other non-alpha-numeric characters
+  temp_word <- gsub("%26", "&", temp_word)
+  temp_word <- gsub("%23", "#", temp_word)
   return(temp_word)
 }
 
