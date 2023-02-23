@@ -1,17 +1,17 @@
 Type: Package
 Package: ccdR
-Title: What the Package Does (Title Case)
+Title: Access the CCTE APIs
 Version: 0.1.0
 Author: person( "Kruse", "Paul", email = "kruse.paul@epa.gov", role =
     c("aut", "cre"), comment = c(ORCID = "0000-0001-5516-9717") )
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line) Use four
-    spaces when indenting paragraphs within the Description.
+Maintainer: The package maintainer <kruse.paul@epa.gov>
+Description: A package for accessing chemical, hazard, and bioactivity data from the CCTE APIs. The data accessible from the APIs using this package is also available on the CompTox Chemical Dashboard and is provided to the user in a iformat conducive to data analysis.
 License: GPL (>= 3)
 Imports: 
     data.table,
     httr,
     jsonlite,
+    stringr,
     urltools
 Encoding: UTF-8
 LazyData: true
