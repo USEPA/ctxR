@@ -193,7 +193,8 @@ chemical_equal <- function(word = NULL,
 #'   name
 #' @param API_key The user-specific API key
 #'
-#' @return A list of DTXSIDs of chemicals matching the query parameters
+#' @return A data.frame of chemicals and related values matching the query
+#'   parameters
 #' @export
 
 

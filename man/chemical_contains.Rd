@@ -13,7 +13,8 @@ name}
 \item{API_key}{The user-specific API key}
 }
 \value{
-A list of DTXSIDs of chemicals matching the query parameters
+A data.frame of chemicals and related values matching the query
+  parameters
 }
 \description{
 Chemical contains
