@@ -68,6 +68,15 @@ bpa_info_predicted
 
 To gather chemical fate details, we supply the same information as we did for *bpa_info* to the function `get_fate_by_dtxsid()`.
 
+The next set of functions operate by searching for chemicals that match an input character string; those that start with, those that contain, and those that equal the input string. Each takes in a string and the API key and each returns a data.frame with 11 columns, giving various details of the matched chemicals.
+
+We demonstrate this on the function `chemical_equal()`, though the behavior of the functions `chemical_contains()` and `chemical_starts_with()` are analogous.
+
+```{r}
+bpa_equals <- chemical_equal(word = 'Bisphenol a',
+                             API_key = my_key)
+bpa_equals
+```
 
 
 
