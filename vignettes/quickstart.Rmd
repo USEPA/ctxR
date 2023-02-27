@@ -77,7 +77,99 @@ bpa_equals <- chemical_equal(word = 'Bisphenol a',
                              API_key = my_key)
 bpa_equals
 ```
+Next we demonstrate the family of ms ready functions. These return lists of DTXSIDs of chemicals that match the search criteria. For the example, we use Methane, with chemical formula CH4, mono-isotopic mass of 16.0313g, and DTXCID of DTXSID8025545.
 
+```{r}
+methane_formula <- get_msready_by_formula(formula = 'CH4', 
+                                          API_key = my_key)
+length(methane_formula)
+methane_mass <- get_msready_by_mass(start = 16.0313,
+                                    end = 16.0314,
+                                    API_key = my_key)
+length(methane_mass)
+methane_dtxsid <- get_msready_by_dtxcid(DTXCID = 'DTXCID705545',
+                                        API_key = my_key)
+length(methane_dtxsid)
+print(identical(methane_dtxsid, methane_formula))
+print(identical(methane_dtxsid, methane_mass))
+```
+Observe that the lists of chemical DTXSIDs returned from the three functions are identical. One should note that when using the function `get_msready_by_mass`, the start and end range are sensitive to very small changes, so extra attention needs to be given to the input of this function.
+
+The next set of functions allow the user to access publicly available lists of chemicals. We first display the list of chemical lists and the search by the type of chemical lists available.
+
+```{r}
+public_lists <- get_all_public_chemical_lists(API_key = my_key)
+public_lists
+federal_public_lists <- get_chemical_lists_by_type(type = 'federal',
+                                                   API_key = my_key)
+federal_public_lists
+```
+We can then access information about a specific list, for instance 'BIOSOLIDS2021'.
+
+```{r}
+biosolids_2021_info <- get_public_chemical_list_by_name(list_name = 'BIOSOLIDS2021',
+                                                        API_key = my_key)
+biosolids_2021_info
+biosolids_2021_chemicals <- get_chemicals_in_list(list_name = 'BIOSOLIDS2021',
+                                                  API_key = my_key)
+biosolids_2021_chemicals
+```
+Finally, is one is interested in finding all lists that contain a particular chemical, one may do so by using the DTXSID of the chemical in question.
+
+```{r}
+bpa_lists <- get_lists_containing_chemical(DTXSID = 'DTXSID7020182',
+                                           API_key = my_key)
+bpa_lists
+```
+Additional formats of chemical data are also available for interested users. These include Marvin files (.mrv), mol files (.mol), and image files.
+
+We demonstrate this below.
+
+```{r}
+bpa_mrv <- get_chemical_mrv(DTXSID = 'DTXSID7020182',
+                            API_key = my_key)
+if (requireNamespace("XML", quietly = TRUE)){
+  XML::xmlTreeParse(bpa_mrv)
+}
+
+
+bpa_mol <- get_chemical_mol(DTXSID = 'DTXSID7020182',
+                            API_key = my_key)
+cat(bpa_mol)
+
+bpa_image_matrix <- get_chemical_image(DTXSID = 'DTXSID7020182',
+                                       API_key = my_key)
+if (requireNamespace("countcolors", quietly = TRUE)){
+  countcolors::plotArrayAsImage(bpa_image_matrix)
+}
+```
+
+## Hazard APIs
+
+Next, we explore the hazard APIs. This set of APIs allows the user to access human or ecological toxicity data for a given chemical. One can specify the chemical in question through the DTXSID.
+
+```{r}
+bpa_hazard <- get_hazard_by_dtxsid(DTXSID = 'DTXSID7020182',
+                                   API_key = my_key)
+bpa_hazard
+bpa_human_hazard <- get_human_hazard_by_dtxsid(DTXSID = 'DTXSID7020182',
+                                               API_key = my_key)
+bpa_human_hazard
+bpa_eco_hazard <- get_ecotox_hazard_by_dtxsid(DTXSID = 'DTXSID7020182',
+                                              API_key = my_key)
+bpa_eco_hazard
+```
+
+
+## Bioactivity APIs
+
+The last set of APIs allow the user to access bioactivity information for a given chemical DTXSID or AEID.
+
+```{r}
+bpa_bioactivity <- get_bioactivity_details(DTXSID = 'DTXSID7020182',
+                                           API_key = my_key)
+bpa_bioactivity
+```
 
 
 
