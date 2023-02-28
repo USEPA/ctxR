@@ -4,19 +4,22 @@
 \alias{get_chemical_image}
 \title{Get image file by DTXSID or DTXCID}
 \usage{
-get_chemical_image(DTXSID = NULL, DTXCID = NULL, API_key = NULL)
+get_chemical_image(DTXSID = NULL, DTXCID = NULL, format = "", API_key = NULL)
 }
 \arguments{
 \item{DTXSID}{Chemical identifier DTXSID}
 
 \item{DTXCID}{Chemical identifier DTXCID}
 
+\item{format}{The image type, either "png" or "svg". If left blank, will
+default to "png".}
+
 \item{API_key}{The user-specific API key}
 }
 \value{
 A Large array of three dimensions representing an image. For
-  displaying this, one may use \code{png::writePNG()} among many such
-  functions.
+  displaying this, one may use \code{png::writePNG()} or
+  \code{countcolors::plotArrayAsImage()} among many such functions.
 }
 \description{
 Get image file by DTXSID or DTXCID
