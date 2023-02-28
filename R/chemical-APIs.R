@@ -689,16 +689,19 @@ get_chemical_mol <- function(DTXSID = NULL,
 #'
 #' @param DTXSID Chemical identifier DTXSID
 #' @param DTXCID Chemical identifier DTXCID
+#' @param format The image type, either "png" or "svg". If left blank, will
+#'   default to "png".
 #' @param API_key The user-specific API key
 #'
 #' @return A Large array of three dimensions representing an image. For
-#'   displaying this, one may use \code{png::writePNG()} among many such
-#'   functions.
+#'   displaying this, one may use \code{png::writePNG()} or
+#'   \code{countcolors::plotArrayAsImage()} among many such functions.
 #' @export
 
 
 get_chemical_image <- function(DTXSID = NULL,
                              DTXCID = NULL,
+                             format = "",
                              API_key = NULL){
   if (is.null(DTXSID) & is.null(DTXCID))
     stop('Please input a DTXSID or DTXCID!')
@@ -706,16 +709,23 @@ get_chemical_image <- function(DTXSID = NULL,
     stop('Please input either a DTXSID or DTXCID, but not both!')
   else if (is.null(API_key))
     stop('Please input an API_key!')
+  if (format == 'png'){
+    image_type = "?format=png"
+  } else if (format == 'svg'){
+    image_type = "?format=svg"
+  } else {
+    image_type = ""
+  }
 
   if (!is.null(DTXSID)){
-    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/file/image/search/by-dtxsid/', DTXSID),
+    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/file/image/search/by-dtxsid/', DTXSID, image_type),
                           httr::add_headers(.headers = c(
                             'Content-Type' =  'application/json',
                             'x-api-key' = API_key)
                           )
     )
   } else {
-    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/file/image/search/by-dtxcid/', DTXCID),
+    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/file/image/search/by-dtxcid/', DTXCID, image_type),
                           httr::add_headers(.headers = c(
                             'Content-Type' =  'application/json',
                             'x-api-key' = API_key)
