@@ -79,6 +79,9 @@ bpa_equals
 ```
 Next we demonstrate the family of ms ready functions. These return lists of DTXSIDs of chemicals that match the search criteria. For the example, we use Methane, with chemical formula CH4, mono-isotopic mass of 16.0313g, and DTXCID of DTXSID8025545.
 
+
+SPLIT THIS INTO SEPARATE CHUNKS AND SHOW THE FORMULAS FOR THE FIRST 10 DTXSIDs.
+
 ```{r}
 methane_formula <- get_msready_by_formula(formula = 'CH4', 
                                           API_key = my_key)
@@ -87,11 +90,11 @@ methane_mass <- get_msready_by_mass(start = 16.0313,
                                     end = 16.0314,
                                     API_key = my_key)
 length(methane_mass)
-methane_dtxsid <- get_msready_by_dtxcid(DTXCID = 'DTXCID705545',
+methane_dtxcid <- get_msready_by_dtxcid(DTXCID = 'DTXCID705545',
                                         API_key = my_key)
 length(methane_dtxsid)
-print(identical(methane_dtxsid, methane_formula))
-print(identical(methane_dtxsid, methane_mass))
+print(identical(methane_dtxcid, methane_formula))
+print(identical(methane_dtxcid, methane_mass))
 ```
 Observe that the lists of chemical DTXSIDs returned from the three functions are identical. One should note that when using the function `get_msready_by_mass`, the start and end range are sensitive to very small changes, so extra attention needs to be given to the input of this function.
 
@@ -124,6 +127,9 @@ bpa_lists
 Additional formats of chemical data are also available for interested users. These include Marvin files (.mrv), mol files (.mol), and image files.
 
 We demonstrate this below.
+
+
+SPLIT INTO THREE DIFFERENT CHUNKS.
 
 ```{r}
 bpa_mrv <- get_chemical_mrv(DTXSID = 'DTXSID7020182',
