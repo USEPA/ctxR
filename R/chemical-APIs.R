@@ -4,10 +4,11 @@
 #' @param DTXCID The chemical identifier DTXCID
 #' @param API_key The user-specific API key
 #'
-#' @return A data.frame containing chemical information for the chemical with
+#' @return A data.table containing chemical information for the chemical with
 #'   DTXSID matching the input parameter.
 #' @export
-#'
+
+
 get_chemical_details <- function(DTXSID = NULL,
                                         DTXCID = NULL,
                                         API_key = NULL){
@@ -36,13 +37,10 @@ get_chemical_details <- function(DTXSID = NULL,
 
 
   if(response$status_code == 200){
+    empty_table <- create_data.table_chemical_details()
     data_list <- jsonlite::fromJSON(httr::content(response, as = 'text')) #Parse to list
-    missing_names <- which(sapply(data_list, is.null)) #Determine missing values
-    df <- t(data.frame(unlist(data_list), row.names = names(data_list)[-missing_names])) #Convert present values to data.frame with one row
-    rownames(df) <- NULL #Delete row name
-    missing_cols <- t(data.frame(rep(NA_real_, length(missing_names)), row.names = names(data_list)[missing_names])) #Generate column of missing values
-    df2 <- cbind(df, missing_cols) #Combine both sets of columns
-    dt <- data.table::setcolorder(data.table::data.table(df2), match(names(data_list), dimnames(df2)[[2]])) #Reorder columns
+    dt <- suppressWarnings(data.table::rbindlist(list(empty_table, data_list),
+                                                 use.names = TRUE, fill = TRUE))
     return(dt)
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
@@ -50,7 +48,56 @@ get_chemical_details <- function(DTXSID = NULL,
   return()
 }
 
+#' Create chemical details data.table helper function
+#'
+#' @return An empty data.table with columns matching the expected format of the
+#'   get_chemical_details API call.
 
+
+create_data.table_chemical_details <- function(){
+  data <- data.table::data.table(id = integer(),
+                                 dtxsid = character(),
+                                 dtxcid = character(),
+                                 casrn = character(),
+                                 compoundId = integer(),
+                                 genericSubstanceId = integer(),
+                                 preferredName = character(),
+                                 activeAssays = integer(),
+                                 cpdataCount = integer(),
+                                 molFormula = character(),
+                                 monoisotopicMass = numeric(),
+                                 percentAssays = numeric(),
+                                 pubchemCount = integer(),
+                                 pubmedCount = integer(),
+                                 sourcesCount = integer(),
+                                 qcLevel = integer(),
+                                 qcLevelDesc = character(),
+                                 stereo = character(),
+                                 isotope = integer(),
+                                 multicomponent = integer(),
+                                 totalAssays = integer(),
+                                 toxcastSelect = character(),
+                                 pubchemCid = integer(),
+                                 relatedSubstanceCount = integer(),
+                                 relatedStructureCount = integer(),
+                                 hasStructureImage = integer(),
+                                 iupacName = character(),
+                                 smiles = character(),
+                                 inchiString = character(),
+                                 averageMass = numeric(),
+                                 inchikey = character(),
+                                 qcNotes = character(),
+                                 qsarReadySmiles = character(),
+                                 msReadySmiles = character(),
+                                 irisLink = character(),
+                                 pprtvLink = character(),
+                                 wikipediaArticle = character(),
+                                 descriptorStringTsv = character(),
+                                 isMarkush = integer(),
+                                 dateLoaded = character(),
+                                 hchemHashKey = character())
+  return(data)
+}
 
 
 
