@@ -39,8 +39,12 @@ get_chemical_details <- function(DTXSID = NULL,
   if(response$status_code == 200){
     empty_table <- create_data.table_chemical_details()
     data_list <- jsonlite::fromJSON(httr::content(response, as = 'text')) #Parse to list
-    dt <- suppressWarnings(data.table::rbindlist(list(empty_table, data_list),
-                                                 use.names = TRUE, fill = TRUE))
+    missing_names <- which(sapply(data_list, is.null))
+    df <- t(data.frame(unlist(data_list), row.names = names(data_list)[-missing_names]))
+    #return(data_list)
+    dt <- suppressWarnings(data.table::rbindlist(list(empty_table,
+                                                      data.table::data.table(df)),
+                                                 fill = TRUE))
     return(dt)
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
@@ -65,10 +69,10 @@ create_data.table_chemical_details <- function(){
                                  activeAssays = integer(),
                                  cpdataCount = integer(),
                                  molFormula = character(),
-                                 monoisotopicMass = numeric(),
-                                 percentAssays = numeric(),
+                                 monoisotopicMass = double(),
+                                 percentAssays = double(),
                                  pubchemCount = integer(),
-                                 pubmedCount = integer(),
+                                 pubmedCount = double(),
                                  sourcesCount = integer(),
                                  qcLevel = integer(),
                                  qcLevelDesc = character(),
@@ -84,7 +88,7 @@ create_data.table_chemical_details <- function(){
                                  iupacName = character(),
                                  smiles = character(),
                                  inchiString = character(),
-                                 averageMass = numeric(),
+                                 averageMass = double(),
                                  inchikey = character(),
                                  qcNotes = character(),
                                  qsarReadySmiles = character(),
