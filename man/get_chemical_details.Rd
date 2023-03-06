@@ -14,7 +14,7 @@ get_chemical_details(DTXSID = NULL, DTXCID = NULL, API_key = NULL)
 \item{API_key}{The user-specific API key}
 }
 \value{
-A data.frame containing chemical information for the chemical with
+A data.table containing chemical information for the chemical with
   DTXSID matching the input parameter.
 }
 \description{
