@@ -36,7 +36,7 @@ Users who are not familiar or experienced with using APIs may not find it appeal
 
 Before getting started, a user must have an API key ready to use in order to access the CCTE APIs. This can be obtained from the admins of the CCTE APIs. In this vignette, the key will be stored as `my_key`.
 
-To run this vignette locally, execute the following code prior to knitting the vignette.
+To run this vignette locally, execute the following code prior to knitting the vignette (in fact, prior to downloading the package). 
 
 ```{r, eval=FALSE}
 Sys.setenv('CCTE_API_KEY' = '<YOUR API KEY>')
