@@ -20,6 +20,9 @@ if (!library(devtools, logical.return = TRUE)){
   library(devtools)
 }
 
+# Set API key to build vignette properly. If not run in this order, the Vignette will not build correctly!!!
+Sys.setenv('CCTE_API_KEY' = '<YOUR API KEY>')
 
-devtools::install_git(url = 'https://ccte-bitbucket.epa.gov/scm/~pkruse/ccdr.git')
+devtools::install_git(url = 'https://ccte-bitbucket.epa.gov/scm/~pkruse/ccdr.git',
+                      build_vignettes = TRUE)
 ```
