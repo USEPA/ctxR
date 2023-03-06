@@ -17,6 +17,7 @@ LazyData: true
 RoxygenNote: 7.2.3
 Suggests: 
     countcolors,
+    devtools,
     knitr,
     rmarkdown,
     XML
