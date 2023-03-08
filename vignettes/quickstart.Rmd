@@ -20,7 +20,6 @@ if (!library(ccdR, logical.return = TRUE)){
   devtools::load_all()
 }
 on_cran <- !identical(Sys.getenv('NOT_CRAN'), TRUE)
-#library(ccdR)
 ```
 
 # ccdR quickstart guide
@@ -53,6 +52,8 @@ my_key <- Sys.getenv('CCTE_API_key')
 
 The CCTE APIs are split into three sections, the first of which is [Chemical APIs](https://api-ccte.epa.gov/docs/chemical.html#/). In the next several code chunks, we demonstrate how to use functions from ccdR to access different types of chemical information.
 
+### Chemical details resource
+
 The first function we explore is `get_chemical_details()`, which takes in either the DTXSID or DTXCID of a chemical and the user-specific API key. We obtain the relevant chemical details for Bisphenol A (BPA), which has DTXSID "DTXSID7020182".
 
 ```{r, bpa-chem-details, eval = on_cran}
@@ -61,6 +62,8 @@ bpa_details <- get_chemical_details(DTXSID = 'DTXSID7020182',
 head(bpa_details)
 ```
 The output of this function is a data.table. We could have also input the DTXCID rather than the DTXSID and returned the same data.
+
+### Chemical Property Resource
 
 The function `get_chem_info()` is similar. This returns phys-chem properties, which can be filtered to 'experimental' or 'predicted' if desired.
 
@@ -74,7 +77,7 @@ bpa_info <- get_chem_info(DTXSID = "DTXSID7020182",
 head(bpa_info)
 ```
 
-Next we filter by experimental results.
+Next, we filter by experimental results.
 
 ```{r, bpa-experimental, eval = on_cran}
 bpa_info_experimental <- get_chem_info(DTXSID = "DTXSID7020182",
@@ -84,7 +87,7 @@ bpa_info_experimental <- get_chem_info(DTXSID = "DTXSID7020182",
 head(bpa_info_experimental)
 ```
 
-Finally we filter by predicted results.
+Finally, we filter by predicted results.
 
 ```{r, bpa-predicted, eval = on_cran}
 bpa_info_predicted <- get_chem_info(DTXSID = "DTXSID7020182",
@@ -94,7 +97,18 @@ bpa_info_predicted <- get_chem_info(DTXSID = "DTXSID7020182",
 head(bpa_info_predicted)
 ```
 
+### Chemical Fate Resource
+
 To gather chemical fate details, we supply the same information as we did for *bpa_info* to the function `get_fate_by_dtxsid()`.
+
+```{r}
+bpa_fate <- get_fate_by_dtxsid(DTXSID = 'DTXSID7020182',
+                               API_key = my_key)
+head(bpa_fate)
+```
+
+
+### Chemical Search Resource
 
 The next set of functions operate by searching for chemicals that match an input character string; those that start with, those that contain, and those that equal the input string. Each takes in a string and the API key and each returns a data.frame with 11 columns, giving various details of the matched chemicals.
 
@@ -144,6 +158,30 @@ print(identical(methane_dtxcid, methane_mass))
 
 Observe that the lists of chemical DTXSIDs returned from the three functions are identical. One should note that when using the function `get_msready_by_mass`, the start and end range are sensitive to very small changes, so extra attention needs to be given to the input of this function.
 
+#### Batch searching and combining functions
+
+Before moving to the next set of functions, a demonstration of using more than one of the API functions may be helpful. With the previous set of functions, each returned a list of DTXSIDs. However, what these chemicals are is unclear without either memorizing vast sets of DTXSIDs or accessing information using this identifier. The latter is more tractable, so we demonstrate how to combine functions to achieve identification of the returned chemicals.
+
+Here we combine the data.tables from the `get_chemical_details()` calls for a list of ten DTXSIDs.
+
+```{r}
+methane_df_list <- lapply(methane_mass[1:10], function(t) {
+  get_chemical_details(DTXSID = t, API_key = my_key)
+})
+methane_df <- data.table::rbindlist(methane_df_list)
+methane_df
+```
+If instead we just want the information from a single column, we can specify that as follows.
+
+```{r}
+methane_formula_list <- sapply(methane_mass[1:10], function(t) {
+  get_chemical_details(DTXSID = t, API_key = my_key)$molFormula
+})
+methane_formula_list
+```
+
+### Chemical List Resource
+
 The next set of functions allow the user to access publicly available lists of chemicals. We first display the list of chemical lists and the search by the type of chemical lists available.
 
 ```{r, all-public-lists, eval = on_cran}
@@ -183,6 +221,8 @@ bpa_lists <- get_lists_containing_chemical(DTXSID = 'DTXSID7020182',
 bpa_lists
 ```
 
+### Chemical File Resource
+
 Additional formats of chemical data are also available for interested users. These include Marvin files (.mrv), mol files (.mol), and image files.
 
 We demonstrate this below.
@@ -219,6 +259,8 @@ if (requireNamespace("countcolors", quietly = TRUE)){
 
 Next, we explore the hazard APIs. This set of APIs allows the user to access human or ecological toxicity data for a given chemical. One can specify the chemical in question through the DTXSID.
 
+### Hazard Resource
+
 We first grab all such hazard data.
 
 ```{r, hazard, eval = on_cran}
@@ -247,6 +289,10 @@ head(bpa_eco_hazard)
 ## Bioactivity APIs
 
 The last set of APIs allow the user to access bioactivity information for a given chemical DTXSID or AEID.
+
+### Bioactivity Resource
+
+We first demonstrate obtaining bioactivity data based on an input DTXSID.
 
 ```{r, bioactivity-dtxsid, eval = on_cran}
 bpa_bioactivity <- get_bioactivity_details(DTXSID = 'DTXSID7020182',
