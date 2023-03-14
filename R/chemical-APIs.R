@@ -423,7 +423,7 @@ get_msready_by_mass <- function(start = NULL,
   }
 
   if (start > end){
-    warning('Swapping values for start and end!')
+    warning('Swapping values for start and end!', immediate. = TRUE)
     temp <- end
     end <- start
     start <- temp
