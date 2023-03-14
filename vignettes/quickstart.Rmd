@@ -52,7 +52,7 @@ my_key <- Sys.getenv('CCTE_API_key')
 
 The CCTE APIs are split into three sections, the first of which is [Chemical APIs](https://api-ccte.epa.gov/docs/chemical.html#/). In the next several code chunks, we demonstrate how to use functions from ccdR to access different types of chemical information.
 
-### Chemical details resource
+### Chemical Details Resource
 
 The first function we explore is `get_chemical_details()`, which takes in either the DTXSID or DTXCID of a chemical and the user-specific API key. We obtain the relevant chemical details for Bisphenol A (BPA), which has DTXSID "DTXSID7020182".
 
