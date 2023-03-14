@@ -103,6 +103,56 @@ create_data.table_chemical_details <- function(){
   return(data)
 }
 
+#' Get chemicals by property and its value range
+#'
+#' @param start A numeric value, the beginning of the range
+#' @param end A numeric value, the end of the range
+#' @param property A string, the property in question
+#' @param API_key The user-specific API key
+#'
+#' @return A data.frame containing chemical information for chemicals matching
+#'   the search criteria.
+#' @export
+
+
+get_chemical_by_property_range <- function(start = NULL,
+                                           end = NULL,
+                                           property = NULL,
+                                           API_key = NULL){
+  if (is.null(API_key))
+    stop('Please input an API_key')
+
+  if (is.null(start) || is.null(end) || !is.numeric(start) || !is.numeric(end)){
+    stop('Please input a numeric value for both start and end!')
+  }
+
+  if (start > end){
+    warning('Swapping values for start and end!', immediate. = TRUE)
+    temp <- end
+    end <- start
+    start <- temp
+  }
+
+  if (is.null(property)){
+    stop('Please input a value for property!')
+  }
+
+  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/property/search/by-range/',
+                                         prepare_word(property),'/', start, '/', end),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                          )
+                        )
+
+
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    } else {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+    return()
+}
 
 
 #' Retrieve chemical information
