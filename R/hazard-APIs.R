@@ -30,7 +30,6 @@ get_hazard_by_dtxsid <- function(DTXSID = NULL,
 
 }
 
-
 #' Get human hazard data by DTXSID
 #'
 #' @param DTXSID The chemical identifier DTXSID
