@@ -57,8 +57,22 @@ get_chemical_details_batch <- function(DTXSID = NULL,
 }
 
 
+#' Retrieve chemical information in batch search
+#'
+#' @param DTXSID A vector of chemical identifier DTXSIDs
+#' @param type A vector of type used in get_chem_info(). This specifies whether
+#'   to only grab predicted or experimental results. If not specified, it will
+#'   grab all details. The allowable input values are "", predicted", or
+#'   "experimental".
+#' @param API_keyThe user-specific API key.
+#'
+#' @return A named list of data.frames containing chemical information for the
+#'   chemicals with DTXSID matching the input parameter.
+#' @export
+
+
 get_chem_info_batch <- function(DTXSID = NULL,
-                                type = NULL,
+                                type = '',
                                 API_key = NULL){
   if (!is.null(DTXSID)){
     DTXSID <- unique(DTXSID)
