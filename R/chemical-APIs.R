@@ -168,14 +168,23 @@ get_chemical_by_property_range <- function(start = NULL,
 
 
 get_chem_info <- function(DTXSID = NULL,
-                          type = c("", "predicted", "experimental"),
+                          type = "",
                           API_key = NULL){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
   else if (is.null(API_key))
     stop('Please input an API_key')
 
-  type <- match.arg(type)
+  types <- c("", "predicted", "experimental")
+  type <- which(types %in% type)
+  if (length(type) == 0){
+    stop('Please input a correct choice for type!')
+  } else if (length(type) > 1){
+    warning('Setting type to ""!')
+    type <- ''
+  } else {
+    type <- types[type]
+  }
 
   if (type == '') {
     response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/property/search/by-dtxsid/', DTXSID),
