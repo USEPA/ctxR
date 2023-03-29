@@ -4,11 +4,7 @@
 \alias{get_chem_info}
 \title{Retrieve chemical information}
 \usage{
-get_chem_info(
-  DTXSID = NULL,
-  type = c("", "predicted", "experimental"),
-  API_key = NULL
-)
+get_chem_info(DTXSID = NULL, type = "", API_key = NULL)
 }
 \arguments{
 \item{DTXSID}{The chemical identifier DTXSID}
