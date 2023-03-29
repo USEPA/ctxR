@@ -10,6 +10,7 @@ Imports:
     data.table,
     httr,
     jsonlite,
+    purrr,
     stringr,
     urltools
 Encoding: UTF-8
