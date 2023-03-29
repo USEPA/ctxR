@@ -14,7 +14,7 @@ to only grab predicted or experimental results. If not specified, it will
 grab all details. The allowable input values are "", predicted", or
 "experimental".}
 
-\item{API_keyThe}{user-specific API key.}
+\item{API_key}{The user-specific API key.}
 }
 \value{
 A named list of data.frames containing chemical information for the
