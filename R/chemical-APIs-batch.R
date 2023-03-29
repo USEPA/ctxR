@@ -24,8 +24,8 @@ get_chemical_details_batch <- function(DTXSID = NULL,
         },
         error = function(cond){
           message(t)
-          message(cond)
-          return()
+          message(cond$message)
+          return(NA)
         }
       )
       return(attempt)
@@ -44,8 +44,8 @@ get_chemical_details_batch <- function(DTXSID = NULL,
         },
         error = function(cond){
           message(t)
-          message(cond)
-          return()
+          message(cond$message)
+          return(NA)
         }
       )
       return(attempt)
@@ -54,4 +54,46 @@ get_chemical_details_batch <- function(DTXSID = NULL,
     names(results) <- DTXCID
   }
   return(results)
+}
+
+
+get_chem_info_batch <- function(DTXSID = NULL,
+                                type = NULL,
+                                API_key = NULL){
+  if (!is.null(DTXSID)){
+    DTXSID <- unique(DTXSID)
+    if (length(type) > 1){
+      if(length(type) < length(DTXSID)){
+        stop('Length of type must equal length of DTXSID!')
+        type <- c(type, rep('', (length(DTXSID) - length(type))))
+      } else if (length(type) > length(DTXSID)){
+        warning('Truncating type to match length of DTXSID!',
+                immediate. = TRUE)
+        type <- type[1:(length(DTXSID))]
+      }
+    }
+
+    results <- purrr::map2(.x = DTXSID, .y = type, function(d, t){
+      attempt <- tryCatch(
+        {
+          get_chem_info(DTXSID = d,
+                        type = t,
+                        API_key = API_key)
+        },
+        error = function(cond){
+          message('There was an error!')
+          message(paste('DTXSID:', d))
+          message(paste('type:', t))
+          message(cond$message)
+          return(NA)
+        }
+      )
+      return(attempt)
+    }
+    )
+    names(results) <- DTXSID
+    return(results)
+  } else {
+    stop('Please input a value for DTXSID!')
+  }
 }
