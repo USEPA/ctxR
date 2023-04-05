@@ -32,9 +32,7 @@ get_chemical_details_batch <- function(DTXSID = NULL,
     }
     )
     names(results) <- DTXSID
-    }
-
-  if (!is.null(DTXCID)){
+    } else if (!is.null(DTXCID)){
     DTXCID <- unique(DTXCID)
     print('Using DTCSID!')
     results <- lapply(DTXCID, function(t){
@@ -52,6 +50,8 @@ get_chemical_details_batch <- function(DTXSID = NULL,
     }
     )
     names(results) <- DTXCID
+    } else {
+    stop('Please input a list of DTXSIDs or DTXCIDs!')
   }
   return(results)
 }
@@ -78,7 +78,7 @@ get_chem_info_batch <- function(DTXSID = NULL,
     DTXSID <- unique(DTXSID)
     if (length(type) > 1){
       if(length(type) < length(DTXSID)){
-        stop('Length of type must equal length of DTXSID!')
+        warning('Length of type must equal length of DTXSID!')
         type <- c(type, rep('', (length(DTXSID) - length(type))))
       } else if (length(type) > length(DTXSID)){
         warning('Truncating type to match length of DTXSID!',
@@ -109,5 +109,41 @@ get_chem_info_batch <- function(DTXSID = NULL,
     return(results)
   } else {
     stop('Please input a value for DTXSID!')
+  }
+}
+
+#' Retrieve chemical fate data in batch search
+#'
+#' @param DTXSID A vector of chemicals identifier DTXSIDs
+#' @param API_key The user-specific API key
+#'
+#' @return A named list of data.frames containing chemical fate information for
+#'   the chemicals with DTXSID matching the input parameter.
+#' @export
+
+
+get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
+                                     API_key = NULL){
+  if (!is.null(DTXSID)){
+    DTXSID <- unique(DTXSID)
+    print('Using DTXSID!')
+    results <- lapply(DTXSID, function(t){
+      attempt <- tryCatch(
+        {
+          get_fate_by_dtxsid(DTXSID = t, API_key = API_key)
+        },
+        error = function(cond){
+          message(t)
+          message(cond$message)
+          return(NA)
+        }
+      )
+      return(attempt)
+    }
+    )
+    names(results) <- DTXSID
+    return(results)
+  } else {
+    stop('Please input a list of DTXSIDs!')
   }
 }
