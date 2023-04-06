@@ -182,3 +182,39 @@ chemical_starts_with_batch <- function(word_list = NULL,
     stop('Please input a list of chemical names!')
   }
 }
+
+#' Chemical equal batch search
+#'
+#' @param word_list A list of character strings of chemical names or portion of
+#'   chemical names
+#' @param API_key User-specific API key
+#'
+#' @return A named list of data.frames of chemicals and related values matching
+#'   the query parameters
+#' @export
+
+
+chemical_equal_batch <- function(word_list = NULL,
+                                 API_key = NULL){
+  if (!is.null(word_list)){
+    word_list <- unique(word_list)
+    results <- lapply(word_list, function(t){
+      attempt <- tryCatch(
+        {
+          chemical_equal(word = t, API_key = API_key)
+        },
+        error = function(cond){
+          message(t)
+          message(cond$message)
+          return(NA)
+        }
+      )
+      return(attempt)
+    }
+    )
+    names(results) <- word_list
+    return(results)
+  } else {
+    stop('Please input a list of chemical names!')
+  }
+}
