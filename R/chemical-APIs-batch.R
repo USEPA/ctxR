@@ -160,7 +160,7 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
 
 chemical_starts_with_batch <- function(word_list = NULL,
                                        API_key = NULL){
-  if (is.null(word_list)){
+  if (!is.null(word_list)){
     word_list <- unique(word_list)
     results <- lapply(word_list, function(t){
       attempt <- tryCatch(
