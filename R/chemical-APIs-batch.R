@@ -320,7 +320,7 @@ get_ms_ready_by_formula_batch <- function(formula_list = NULL,
     results <- lapply(word_list, function(t){
       attempt <- tryCatch(
         {
-          get_msready_by_formula(word = t, API_key = API_key)
+          get_msready_by_formula(formula = t, API_key = API_key)
         },
         error = function(cond){
           message(t)
