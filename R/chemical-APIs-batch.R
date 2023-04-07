@@ -337,3 +337,38 @@ get_ms_ready_by_formula_batch <- function(formula_list = NULL,
     stop('Please input a list of chemical formulas!')
   }
 }
+
+#' Get msready by DTXCID batch search
+#'
+#' @param DXTCID A list of chemical identifer DTXCIDs
+#' @param API_key A user-specific API key
+#'
+#' @return A named list of character lists of DTXSIDs with DTXCIDs matching the
+#'   search criteria
+#' @export
+
+
+get_msready_by_dtxcid_batch <- function(DXTCID = NULL,
+                                        API_key = NULL){
+  if(!is.null(DTXCID)){
+    DTXCID <- unique(DTXCID)
+    results <- lapply(DTXCID, function(t){
+      attempt <- tryCatch(
+        {
+          get_msready_by_dtxcid(DTXCID = t, API_key = API_key)
+        },
+        error = function(cond){
+          message(t)
+          message(cond$message)
+          return(NA)
+        }
+      )
+      return(attempt)
+    }
+    )
+    names(results) <- DTXCID
+    return(results)
+  } else {
+    stop('Please input a list of DTXCIDs!')
+  }
+}
