@@ -254,3 +254,51 @@ chemical_contains_batch <- function(wordlist = NULL,
     stop('Please input a list of chemical names!')
   }
 }
+
+#' Get ms ready by mass batch search
+#'
+#' @param start_list A numeric list of starting values for mass range
+#' @param end_list A numeric list of ending values for mass range
+#' @param API_key The user-specific API key
+#'
+#' @return A named list of character lists with DTXSIDs with msready masses
+#'   falling within the given ranges.
+#' @export
+#'
+#'
+get_ms_ready_by_mass_batch <- function(start_list = NULL,
+                                       end_list = NULL,
+                                       API_key = NULL){
+  if(is.null(start_list) || is.null(end_list)){
+    stop('Please input a list for both start_list and end_list!')
+  } else if (length(start_list) != length(end_list)) {
+    stop('Mismatch in length of list!')
+  } else if (!all(sapply(c(start_list, end_list), is.numeric))) {
+    stop('Only numeric values allowed in each list!')
+  }
+
+  # Sort min/max from lists to avoid errors
+  start_list <- pmin(start_list, end_list)
+  end_list <- pmax(start_list, end_list)
+
+  results <- purrr::map2(.x = start_list, .y = end_list, function(d, t){
+    attempt <- tryCatch(
+      {
+        get_msready_by_mass(start = d,
+                            end = t,
+                            API_key = API_key)
+      },
+      error = function(cond){
+        message('There was an error!')
+        message(paste('Start:', d))
+        message(paste('End:', t))
+        message(cond$message)
+        return(NA)
+      }
+    )
+    return(attempt)
+  }
+  )
+  names(results) <- paste0('(Start, End) = (', start_list, ', ', end_list, ')')
+  return(results)
+}
