@@ -313,7 +313,7 @@ get_ms_ready_by_mass_batch <- function(start_list = NULL,
 #' @export
 
 
-get_ms_ready_by_formula_batch <- function(formula_list = NULL,
+get_msready_by_formula_batch <- function(formula_list = NULL,
                                           API_key = NULL){
   if (!is.null(formula_list)){
     word_list <- unique(word_list)
