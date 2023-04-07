@@ -278,10 +278,10 @@ get_ms_ready_by_mass_batch <- function(start_list = NULL,
   }
 
   # Sort min/max from lists to avoid errors
-  start_list <- pmin(start_list, end_list)
-  end_list <- pmax(start_list, end_list)
+  start_list_ <- pmin(start_list, end_list)
+  end_list_ <- pmax(start_list, end_list)
 
-  results <- purrr::map2(.x = start_list, .y = end_list, function(d, t){
+  results <- purrr::map2(.x = start_list_, .y = end_list_, function(d, t){
     attempt <- tryCatch(
       {
         get_msready_by_mass(start = d,
@@ -299,6 +299,6 @@ get_ms_ready_by_mass_batch <- function(start_list = NULL,
     return(attempt)
   }
   )
-  names(results) <- paste0('(Start, End) = (', start_list, ', ', end_list, ')')
+  names(results) <- paste0('(Start, End) = (', start_list_, ', ', end_list_, ')')
   return(results)
 }
