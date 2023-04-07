@@ -266,7 +266,7 @@ chemical_contains_batch <- function(wordlist = NULL,
 #' @export
 #'
 #'
-get_ms_ready_by_mass_batch <- function(start_list = NULL,
+get_msready_by_mass_batch <- function(start_list = NULL,
                                        end_list = NULL,
                                        API_key = NULL){
   if(is.null(start_list) || is.null(end_list)){
