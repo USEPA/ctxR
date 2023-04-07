@@ -302,3 +302,38 @@ get_ms_ready_by_mass_batch <- function(start_list = NULL,
   names(results) <- paste0('(Start, End) = (', start_list_, ', ', end_list_, ')')
   return(results)
 }
+
+#' Get msready by formula batch search
+#'
+#' @param formula_list A list of strings denoting the input chemicals formulas
+#' @param API_key The user-specific API key
+#'
+#' @return A named list of character lists of DTXSIDs with chemical formulas
+#'   matching the search criteria
+#' @export
+
+
+get_ms_ready_by_formula_batch <- function(formula_list = NULL,
+                                          API_key = NULL){
+  if (!is.null(formula_list)){
+    word_list <- unique(word_list)
+    results <- lapply(word_list, function(t){
+      attempt <- tryCatch(
+        {
+          get_msready_by_formula(word = t, API_key = API_key)
+        },
+        error = function(cond){
+          message(t)
+          message(cond$message)
+          return(NA)
+        }
+      )
+      return(attempt)
+    }
+    )
+    names(results) <- word_list
+    return(results)
+  } else {
+    stop('Please input a list of chemical formulas!')
+  }
+}
