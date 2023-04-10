@@ -372,3 +372,39 @@ get_msready_by_dtxcid_batch <- function(DXTCID = NULL,
     stop('Please input a list of DTXCIDs!')
   }
 }
+
+#' Get chemical lists by type batch search
+#'
+#' @param type_list A list of list types. This is a case sensitive parameter and returns
+#'   lists only for values of "federal", "international", "state", and "other".
+#' @param API_key The user-specified API key.
+#'
+#' @return A named list of data.frames containing information about lists that meet the search
+#'   criteria.
+#' @export
+
+
+get_chemical_lists_by_type_batch <- function(type_list = NULL,
+                                             API_key = NULL){
+  if (!is.null(type_list)){
+    type_list <- unique(type_list)
+    results <- lapply(type_list, function(t){
+      attempt <- tryCatch(
+        {
+          get_chemical_lists_by_type(type = t, API_key = API_key)
+        },
+        error = function(cond){
+          message(t)
+          message(cond$message)
+          return(NA)
+        }
+      )
+      return(attempt)
+    }
+    )
+    names(results) <- type_list
+    return(results)
+  } else {
+    stop('Please input a list of list types!')
+  }
+}
