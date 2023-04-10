@@ -574,3 +574,60 @@ get_chemical_mrv_batch <- function(DTXSID = NULL,
     stop('Please input a list of DTXSIDs or DTXCIDs!')
   }
 }
+
+#' Get mol file by DTXSID or DTXCID batch
+#'
+#' @param DTXSID A list of the chemical identifier DTXSIDs.
+#' @param DTXCID A list of the chemical identifier DTXCIDs.
+#' @param API_key The user-specific API key.
+#'
+#' @return A named list of character strings giving a mol file representations
+#'   of the given input chemicals.
+#' @export
+
+
+get_chemical_mol_batch <- function(DTXSID = NULL,
+                                   DTXCID = NULL,
+                                   API_key = NULL){
+  if (!is.null(DTXSID)){
+    DTXSID <- unique(DTXSID)
+    print('Using DTXSID!')
+    results <- lapply(DTXSID, function(t){
+      attempt <- tryCatch(
+        {
+          get_chemical_mol(DTXSID = t, API_key = API_key)
+        },
+        error = function(cond){
+          message(t)
+          message(cond$message)
+          return(NA)
+        }
+      )
+      return(attempt)
+    }
+    )
+    names(results) <- DTXSID
+    return(results)
+  } else if (!is.null(DTXCID)){
+    DTXCID <- unique(DTXCID)
+    print('Using DTXCID!')
+    results <- lapply(DTXCID, function(t){
+      attempt <- tryCatch(
+        {
+          get_chemical_mol(DTXCID = t, API_key = API_key)
+        },
+        error = function(cond){
+          message(t)
+          message(cond$message)
+          return(NA)
+        }
+      )
+      return(attempt)
+    }
+    )
+    names(results) <- DTXCID
+    return(results)
+  } else {
+    stop('Please input a list of DTXSIDs or DTXCIDs!')
+  }
+}
