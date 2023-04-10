@@ -677,7 +677,7 @@ get_chemical_image_batch <- function(DTXSID = NULL,
     results <- purrr:map2(.x = DTXCID, .y = format, function(d, f){
       attempt <- tryCatch(
         {
-          get_chemical_mol(DTXCID = d,
+          get_chemical_image(DTXCID = d,
                            format = f,
                            API_key = API_key)
         },
