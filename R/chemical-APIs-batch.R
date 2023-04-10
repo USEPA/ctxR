@@ -631,3 +631,68 @@ get_chemical_mol_batch <- function(DTXSID = NULL,
     stop('Please input a list of DTXSIDs or DTXCIDs!')
   }
 }
+
+#' Get image file by DTXSID or DTXCID batch
+#'
+#' @param DTXSID A list of chemical identifier DTXSIDs.
+#' @param DTXCID A list of chemical identifier DTXCIDs.
+#' @param format The image type, either "png" or "svg". If left blank, will
+#'   default to "png".
+#' @param API_key The user-specific API key.
+#'
+#' @return A named list of Large arrays of three dimensions representing an image. For
+#'   displaying an image, one may use \code{png::writePNG()} or
+#'   \code{countcolors::plotArrayAsImage()} among many such functions.
+#' @export
+
+
+get_chemical_image_batch <- function(DTXSID = NULL,
+                                     DTXCID = NULL,
+                                     format = "",
+                                     API_key = NULL){
+  if (!is.null(DTXSID)){
+    DTXSID <- unique(DTXSID)
+    print('Using DTXSID!')
+    results <- purrr::map2(.x = DTXSID, .y = format, function(d, f){
+      attempt <- tryCatch(
+        {
+          get_chemical_image(DTXSID = d,
+                             format = f,
+                             API_key = API_key)
+        },
+        error = function(cond){
+          message(t)
+          message(cond$message)
+          return(NA)
+        }
+      )
+      return(attempt)
+    }
+    )
+    names(results) <- DTXSID
+    return(results)
+  } else if (!is.null(DTXCID)){
+    DTXCID <- unique(DTXCID)
+    print('Using DTXCID!')
+    results <- purrr:map2(.x = DTXCID, .y = format, function(d, f){
+      attempt <- tryCatch(
+        {
+          get_chemical_mol(DTXCID = d,
+                           format = f,
+                           API_key = API_key)
+        },
+        error = function(cond){
+          message(t)
+          message(cond$message)
+          return(NA)
+        }
+      )
+      return(attempt)
+    }
+    )
+    names(results) <- DTXCID
+    return(results)
+  } else {
+    stop('Please input a list of DTXSIDs or DTXCIDs!')
+  }
+}
