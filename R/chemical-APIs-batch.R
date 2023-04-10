@@ -408,3 +408,41 @@ get_chemical_lists_by_type_batch <- function(type_list = NULL,
     stop('Please input a list of list types!')
   }
 }
+
+#' Get chemical list by name batch
+#'
+#' @param name_list A list of chemical list names.
+#' @param API_key The user-specific API key.
+#'
+#' @return A named list of data.frames containing information about the chemical lists. Note,
+#'   these are not the chemical lists themselves. To access the chemicals in a given list,
+#'   use \code{\link{get_chemicals_in_list}}.
+#' @seealso \code{\link{get_chemicals_in_list}}
+#' @export
+#'
+#'
+get_public_chemical_list_by_name_batch <- function(name_list = NULL,
+                                                   API_key = NULL){
+  if (!is.null(name_list)){
+    name_list <- unique(name_list)
+    results <- lapply(name_list, function(t){
+      attempt <- tryCatch(
+        {
+          get_public_chemical_list_by_name(list_name = t,
+                                           API_key = API_key)
+        },
+        error = function(cond){
+          message(t)
+          message(cond$message)
+          return(NA)
+        }
+      )
+      return(attempt)
+    }
+    )
+    names(results) <- name_list
+    return(results)
+  } else {
+    stop('Please input a list of list names!')
+  }
+}
