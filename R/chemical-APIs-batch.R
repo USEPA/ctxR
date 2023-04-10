@@ -674,7 +674,7 @@ get_chemical_image_batch <- function(DTXSID = NULL,
   } else if (!is.null(DTXCID)){
     DTXCID <- unique(DTXCID)
     print('Using DTXCID!')
-    results <- purrr:map2(.x = DTXCID, .y = format, function(d, f){
+    results <- purrr::map2(.x = DTXCID, .y = format, function(d, f){
       attempt <- tryCatch(
         {
           get_chemical_image(DTXCID = d,
