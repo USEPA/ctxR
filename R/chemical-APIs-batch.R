@@ -661,7 +661,7 @@ get_chemical_image_batch <- function(DTXSID = NULL,
                              API_key = API_key)
         },
         error = function(cond){
-          message(t)
+          message(d)
           message(cond$message)
           return(NA)
         }
@@ -682,7 +682,7 @@ get_chemical_image_batch <- function(DTXSID = NULL,
                            API_key = API_key)
         },
         error = function(cond){
-          message(t)
+          message(d)
           message(cond$message)
           return(NA)
         }
