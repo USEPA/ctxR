@@ -481,3 +481,39 @@ get_lists_containing_chemical_batch <- function(chemical_list = NULL,
     stop('Please input a list of DTXSIDs!')
   }
 }
+
+#' Get chemicals in a given chemical list batch
+#'
+#' @param list_names A list of names of chemical lists.
+#' @param API_key The user-specific API key.
+#'
+#' @return A named list of data.frames each containing chemicals in the
+#'   corresponding chemical lists.
+#' @export
+
+
+get_chemicals_in_list_batch <- function(list_names = NULL,
+                                        API_key = NULL){
+  if (!is.null(list_names)){
+    list_names <- unique(list_names)
+    results <- lapply(list_names, function(t){
+      attempt <- tryCatch(
+        {
+          get_chemicals_in_list(list_name = t,
+                                API_key = API_key)
+        },
+        error = function(cond){
+          message(t)
+          message(cond$message)
+          return(NA)
+        }
+      )
+      return(attempt)
+    }
+    )
+    names(results) <- list_names
+    return(results)
+  } else {
+    stop('Please input a list of names of chemical lists!')
+  }
+}
