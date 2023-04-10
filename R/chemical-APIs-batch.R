@@ -34,7 +34,7 @@ get_chemical_details_batch <- function(DTXSID = NULL,
     names(results) <- DTXSID
     } else if (!is.null(DTXCID)){
     DTXCID <- unique(DTXCID)
-    print('Using DTCSID!')
+    print('Using DTXCID!')
     results <- lapply(DTXCID, function(t){
       attempt <- tryCatch(
         {
