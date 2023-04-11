@@ -10,6 +10,9 @@
 
 get_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                                        API_key = NULL){
+  if (is.null(API_key) || !is.character(API_key)){
+    stop('Please input a character string containing a valid API key!')
+  }
   if (!is.null(DTXSID)){
     DTXSID <- unique(DTXSID)
     results <- lapply(DTXSID, function(t){
@@ -45,6 +48,9 @@ get_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
 
 get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                                              API_key = NULL){
+  if (is.null(API_key) || !is.character(API_key)){
+    stop('Please input a character string containing a valid API key!')
+  }
   if (!is.null(DTXSID)){
     DTXSID <- unique(DTXSID)
     results <- lapply(DTXSID, function(t){
@@ -80,6 +86,9 @@ get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
 
 get_ecotox_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                                               API_key = NULL){
+  if (is.null(API_key) || !is.character(API_key)){
+    stop('Please input a character string containing a valid API key!')
+  }
   if (!is.null(DTXSID)){
     DTXSID <- unique(DTXSID)
     results <- lapply(DTXSID, function(t){
