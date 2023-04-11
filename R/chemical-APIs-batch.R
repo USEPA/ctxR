@@ -14,6 +14,9 @@
 get_chemical_details_batch <- function(DTXSID = NULL,
                                        DTXCID = NULL,
                                        API_key = NULL){
+  if (is.null(API_key) || !is.character(API_key)){
+    stop('Please input a character string containing a valid API key!')
+  }
   if (!is.null(DTXSID)){
     DTXSID <- unique(DTXSID)
     print('Using DTXSID!')
@@ -74,6 +77,9 @@ get_chemical_details_batch <- function(DTXSID = NULL,
 get_chem_info_batch <- function(DTXSID = NULL,
                                 type = '',
                                 API_key = NULL){
+  if (is.null(API_key) || !is.character(API_key)){
+    stop('Please input a character string containing a valid API key!')
+  }
   if (!is.null(DTXSID)){
     DTXSID <- unique(DTXSID)
     if (length(type) > 1){
@@ -124,6 +130,9 @@ get_chem_info_batch <- function(DTXSID = NULL,
 
 get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
                                      API_key = NULL){
+  if (is.null(API_key) || !is.character(API_key)){
+    stop('Please input a character string containing a valid API key!')
+  }
   if (!is.null(DTXSID)){
     DTXSID <- unique(DTXSID)
     results <- lapply(DTXSID, function(t){
@@ -160,6 +169,9 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
 
 chemical_starts_with_batch <- function(word_list = NULL,
                                        API_key = NULL){
+  if (is.null(API_key) || !is.character(API_key)){
+    stop('Please input a character string containing a valid API key!')
+  }
   if (!is.null(word_list)){
     word_list <- unique(word_list)
     results <- lapply(word_list, function(t){
@@ -196,6 +208,9 @@ chemical_starts_with_batch <- function(word_list = NULL,
 
 chemical_equal_batch <- function(word_list = NULL,
                                  API_key = NULL){
+  if (is.null(API_key) || !is.character(API_key)){
+    stop('Please input a character string containing a valid API key!')
+  }
   if (!is.null(word_list)){
     word_list <- unique(word_list)
     results <- lapply(word_list, function(t){
@@ -232,6 +247,9 @@ chemical_equal_batch <- function(word_list = NULL,
 
 chemical_contains_batch <- function(wordlist = NULL,
                                     API_key = NULL){
+  if (is.null(API_key) || !is.character(API_key)){
+    stop('Please input a character string containing a valid API key!')
+  }
   if (!is.null(word_list)){
     word_list <- unique(word_list)
     results <- lapply(word_list, function(t){
@@ -269,6 +287,9 @@ chemical_contains_batch <- function(wordlist = NULL,
 get_msready_by_mass_batch <- function(start_list = NULL,
                                        end_list = NULL,
                                        API_key = NULL){
+  if (is.null(API_key) || !is.character(API_key)){
+    stop('Please input a character string containing a valid API key!')
+  }
   if(is.null(start_list) || is.null(end_list)){
     stop('Please input a list for both start_list and end_list!')
   } else if (length(start_list) != length(end_list)) {
@@ -315,6 +336,9 @@ get_msready_by_mass_batch <- function(start_list = NULL,
 
 get_msready_by_formula_batch <- function(formula_list = NULL,
                                           API_key = NULL){
+  if (is.null(API_key) || !is.character(API_key)){
+    stop('Please input a character string containing a valid API key!')
+  }
   if (!is.null(formula_list)){
     word_list <- unique(word_list)
     results <- lapply(word_list, function(t){
@@ -350,6 +374,9 @@ get_msready_by_formula_batch <- function(formula_list = NULL,
 
 get_msready_by_dtxcid_batch <- function(DXTCID = NULL,
                                         API_key = NULL){
+  if (is.null(API_key) || !is.character(API_key)){
+    stop('Please input a character string containing a valid API key!')
+  }
   if(!is.null(DTXCID)){
     DTXCID <- unique(DTXCID)
     results <- lapply(DTXCID, function(t){
@@ -386,6 +413,9 @@ get_msready_by_dtxcid_batch <- function(DXTCID = NULL,
 
 get_chemical_lists_by_type_batch <- function(type_list = NULL,
                                              API_key = NULL){
+  if (is.null(API_key) || !is.character(API_key)){
+    stop('Please input a character string containing a valid API key!')
+  }
   if (!is.null(type_list)){
     type_list <- unique(type_list)
     results <- lapply(type_list, function(t){
@@ -423,6 +453,9 @@ get_chemical_lists_by_type_batch <- function(type_list = NULL,
 #'
 get_public_chemical_list_by_name_batch <- function(name_list = NULL,
                                                    API_key = NULL){
+  if (is.null(API_key) || !is.character(API_key)){
+    stop('Please input a character string containing a valid API key!')
+  }
   if (!is.null(name_list)){
     name_list <- unique(name_list)
     results <- lapply(name_list, function(t){
@@ -458,6 +491,9 @@ get_public_chemical_list_by_name_batch <- function(name_list = NULL,
 
 get_lists_containing_chemical_batch <- function(chemical_list = NULL,
                                                 API_key = NULL){
+  if (is.null(API_key) || !is.character(API_key)){
+    stop('Please input a character string containing a valid API key!')
+  }
   if (!is.null(chemical_list)){
     chemical_list <- unique(chemical_list)
     results <- lapply(chemical_list, function(t){
@@ -494,6 +530,9 @@ get_lists_containing_chemical_batch <- function(chemical_list = NULL,
 
 get_chemicals_in_list_batch <- function(list_names = NULL,
                                         API_key = NULL){
+  if (is.null(API_key) || !is.character(API_key)){
+    stop('Please input a character string containing a valid API key!')
+  }
   if (!is.null(list_names)){
     list_names <- unique(list_names)
     results <- lapply(list_names, function(t){
@@ -532,6 +571,9 @@ get_chemicals_in_list_batch <- function(list_names = NULL,
 get_chemical_mrv_batch <- function(DTXSID = NULL,
                                    DTXCID = NULL,
                                    API_key = NULL){
+  if (is.null(API_key) || !is.character(API_key)){
+    stop('Please input a character string containing a valid API key!')
+  }
   if (!is.null(DTXSID)){
     DTXSID <- unique(DTXSID)
     print('Using DTXSID!')
@@ -589,6 +631,9 @@ get_chemical_mrv_batch <- function(DTXSID = NULL,
 get_chemical_mol_batch <- function(DTXSID = NULL,
                                    DTXCID = NULL,
                                    API_key = NULL){
+  if (is.null(API_key) || !is.character(API_key)){
+    stop('Please input a character string containing a valid API key!')
+  }
   if (!is.null(DTXSID)){
     DTXSID <- unique(DTXSID)
     print('Using DTXSID!')
@@ -650,6 +695,9 @@ get_chemical_image_batch <- function(DTXSID = NULL,
                                      DTXCID = NULL,
                                      format = "",
                                      API_key = NULL){
+  if (is.null(API_key) || !is.character(API_key)){
+    stop('Please input a character string containing a valid API key!')
+  }
   if (!is.null(DTXSID)){
     DTXSID <- unique(DTXSID)
     print('Using DTXSID!')

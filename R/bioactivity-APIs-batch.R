@@ -12,6 +12,9 @@
 get_bioactivity_details_batch <- function(DTXSID = NULL,
                                           AEID = NULL,
                                           API_key = NULL){
+  if (is.null(API_key) || !is.character(API_key)){
+    stop('Please input a character string containing a valid API key!')
+  }
   if (!is.null(DTXSID)){
     DTXSID <- unique(DTXSID)
     print('Using DTXSID!')
