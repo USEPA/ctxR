@@ -42,7 +42,7 @@ get_bioactivity_details_batch <- function(DTXSID = NULL,
                                   API_key = API_key)
         },
         error = function(cond){
-          message(d)
+          message(a)
           message(cond$message)
           return(NA)
         }
