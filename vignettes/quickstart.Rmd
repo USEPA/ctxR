@@ -97,12 +97,6 @@ bpa_info_predicted <- get_chem_info(DTXSID = "DTXSID7020182",
 head(bpa_info_predicted)
 ```
 
-```{r, echo=FALSE, results='hide'}
-# Build pause to prevent overloading the APIs
-Sys.sleep(5)
-```
-
-
 ### Chemical Fate Resource
 
 To gather chemical fate details, we supply the same information as we did for *bpa_info* to the function `get_fate_by_dtxsid()`.
@@ -136,12 +130,6 @@ length(methane_formula)
 methane_formula[1:10]
 ```
 
-```{r, echo=FALSE, results='hide'}
-# Build pause to prevent overloading the APIs
-Sys.sleep(5)
-```
-
-
 Next, we search by mass and again display the first ten responses.
 
 ```{r, msready-mass, eval = on_cran}
@@ -170,11 +158,6 @@ print(identical(methane_dtxcid, methane_mass))
 
 Observe that the lists of chemical DTXSIDs returned from the three functions are identical. One should note that when using the function `get_msready_by_mass`, the start and end range are sensitive to very small changes, so extra attention needs to be given to the input of this function.
 
-```{r, echo=FALSE, results='hide'}
-# Build pause to prevent overloading the APIs
-Sys.sleep(5)
-```
-
 #### Batch searching and combining functions
 
 Before moving to the next set of functions, a demonstration of using more than one of the API functions may be helpful. With the previous set of functions, each returned a list of DTXSIDs. However, what these chemicals are is unclear without either memorizing vast sets of DTXSIDs or accessing information using this identifier. The latter is more tractable, so we demonstrate how to combine functions to achieve identification of the returned chemicals.
@@ -196,11 +179,6 @@ methane_formula_list <- sapply(methane_mass[1:10], function(t) {
 })
 methane_formula_list
 ```
-```{r, echo=FALSE, results='hide'}
-# Build pause to prevent overloading the APIs
-Sys.sleep(5)
-```
-
 ### Chemical List Resource
 
 The next set of functions allow the user to access publicly available lists of chemicals. We first display the list of chemical lists and the search by the type of chemical lists available.
@@ -241,12 +219,6 @@ bpa_lists <- get_lists_containing_chemical(DTXSID = 'DTXSID7020182',
                                            API_key = my_key)
 bpa_lists
 ```
-
-```{r, echo=FALSE, results='hide'}
-# Build pause to prevent overloading the APIs
-Sys.sleep(5)
-```
-
 ### Chemical File Resource
 
 Additional formats of chemical data are also available for interested users. These include Marvin files (.mrv), mol files (.mol), and image files.
@@ -281,11 +253,6 @@ if (requireNamespace("countcolors", quietly = TRUE)){
 }
 ```
 
-```{r, echo=FALSE, results='hide'}
-# Build pause to prevent overloading the APIs
-Sys.sleep(5)
-```
-
 ## Hazard APIs
 
 Next, we explore the hazard APIs. This set of APIs allows the user to access human or ecological toxicity data for a given chemical. One can specify the chemical in question through the DTXSID.
@@ -314,11 +281,6 @@ And finally we focus on ecotox hazard data.
 bpa_eco_hazard <- get_ecotox_hazard_by_dtxsid(DTXSID = 'DTXSID7020182',
                                               API_key = my_key)
 head(bpa_eco_hazard)
-```
-
-```{r, echo=FALSE, results='hide'}
-# Build pause to prevent overloading the APIs
-Sys.sleep(5)
 ```
 
 ## Bioactivity APIs
