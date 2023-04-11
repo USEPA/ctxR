@@ -5,7 +5,7 @@
 #' @param API_key The user-specific API key
 #'
 #' @return A data.frame containing bioactivity information for the chemical with
-#'   DTXSID or AEID matching the input parameter.
+#'   DTXSID or assay with AEID matching the input parameter.
 #' @export
 #'
 get_bioactivity_details <- function(DTXSID = NULL,
