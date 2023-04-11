@@ -68,3 +68,38 @@ get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
     stop('Please input a list of DTXSIDs!')
   }
 }
+
+#' Get ecotox hazard data by DTXSID batch
+#'
+#' @param DTXSID A list of chemical identifier DTXSIDs.
+#' @param API_key The user-specific API key.
+#'
+#' @return A named lit of data.frames containing chemical ecotox hazard data.
+#' @export
+
+
+get_ecotox_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
+                                              API_key = NULL){
+  if (!is.null(DTXSID)){
+    DTXSID <- unique(DTXSID)
+    results <- lapply(DTXSID, function(t){
+      attempt <- tryCatch(
+        {
+          get_ecotox_hazard_by_dtxsid(DTXSID = t,
+                                     API_key = API_key)
+        },
+        error = function(cond){
+          message(t)
+          message(cond$message)
+          return(NA)
+        }
+      )
+      return(attempt)
+    }
+    )
+    names(results) <- DTXSID
+    return(results)
+  } else {
+    stop('Please input a list of DTXSIDs!')
+  }
+}
