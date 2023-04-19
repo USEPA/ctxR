@@ -4,12 +4,14 @@
 \alias{get_hazard_by_dtxsid_batch}
 \title{Get hazard data by DTXSID batch}
 \usage{
-get_hazard_by_dtxsid_batch(DTXSID = NULL, API_key = NULL)
+get_hazard_by_dtxsid_batch(DTXSID = NULL, API_key = NULL, rate_limit = 0L)
 }
 \arguments{
 \item{DTXSID}{A list of chemical identifier DTXSIDs}
 
 \item{API_key}{The user-specific API key}
+
+\item{rate_limit}{Number of seconds to wait between each request}
 }
 \value{
 A named list of data.frames containing chemical (human and eco)

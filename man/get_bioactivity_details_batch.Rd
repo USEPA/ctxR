@@ -4,7 +4,12 @@
 \alias{get_bioactivity_details_batch}
 \title{Retrieve bioactivity data from DTXSID or AEID batch}
 \usage{
-get_bioactivity_details_batch(DTXSID = NULL, AEID = NULL, API_key = NULL)
+get_bioactivity_details_batch(
+  DTXSID = NULL,
+  AEID = NULL,
+  API_key = NULL,
+  rate_limit = 0L
+)
 }
 \arguments{
 \item{DTXSID}{A list of chemical identifier DTXSIDs.}
@@ -12,6 +17,8 @@ get_bioactivity_details_batch(DTXSID = NULL, AEID = NULL, API_key = NULL)
 \item{AEID}{A list of assay endpoint identifiers AEIDs.}
 
 \item{API_key}{The user-specific API key.}
+
+\item{rate_limit}{Number of seconds to wait between each request}
 }
 \value{
 A named list of data.frames containing bioactivity information for the chemicals with

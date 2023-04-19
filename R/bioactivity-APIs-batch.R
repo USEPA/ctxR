@@ -3,6 +3,7 @@
 #' @param DTXSID A list of chemical identifier DTXSIDs.
 #' @param AEID A list of assay endpoint identifiers AEIDs.
 #' @param API_key The user-specific API key.
+#' @param rate_limit Number of seconds to wait between each request
 #'
 #' @return A named list of data.frames containing bioactivity information for the chemicals with
 #'   DTXSID or assays with AEID matching the input parameter.
@@ -11,14 +12,19 @@
 
 get_bioactivity_details_batch <- function(DTXSID = NULL,
                                           AEID = NULL,
-                                          API_key = NULL){
+                                          API_key = NULL,
+                                          rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
     stop('Please input a character string containing a valid API key!')
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
     DTXSID <- unique(DTXSID)
     print('Using DTXSID!')
     results <- lapply(DTXSID, function(d){
+      Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           get_bioactivity_details(DTXSID = d,
@@ -39,6 +45,7 @@ get_bioactivity_details_batch <- function(DTXSID = NULL,
     AEID <- unique(AEID)
     print('Using AEID!')
     results <- lapply(AEID, function(a){
+      Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           get_bioactivity_details(AEID = a,
