@@ -5,6 +5,7 @@
 #' @param DTXSID The chemical identifier DTXSID
 #' @param DTXCID The chemical identifier DTXCID
 #' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request
 #'
 #' @return A named list of data.tables containing chemical information for the
 #'   chemicals with DTXSID or DTXCID matching the input parameter.
@@ -13,9 +14,13 @@
 
 get_chemical_details_batch <- function(DTXSID = NULL,
                                        DTXCID = NULL,
-                                       API_key = NULL){
+                                       API_key = NULL,
+                                       rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
     stop('Please input a character string containing a valid API key!')
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
     if (!is.character(DTXSID)){
@@ -24,6 +29,7 @@ get_chemical_details_batch <- function(DTXSID = NULL,
     DTXSID <- unique(DTXSID)
     print('Using DTXSID!')
     results <- lapply(DTXSID, function(t){
+      Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           get_chemical_details(DTXSID = t, API_key = API_key)
@@ -45,6 +51,7 @@ get_chemical_details_batch <- function(DTXSID = NULL,
     DTXCID <- unique(DTXCID)
     print('Using DTXCID!')
     results <- lapply(DTXCID, function(t){
+      Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           get_chemical_details(DTXCID = t, API_key = API_key)
@@ -74,6 +81,7 @@ get_chemical_details_batch <- function(DTXSID = NULL,
 #'   grab all details. The allowable input values are "", predicted", or
 #'   "experimental".
 #' @param API_key The user-specific API key.
+#' @param rate_limit Number of seconds to wait between each request
 #'
 #' @return A named list of data.frames containing chemical information for the
 #'   chemicals with DTXSID matching the input parameter.
@@ -82,9 +90,13 @@ get_chemical_details_batch <- function(DTXSID = NULL,
 
 get_chem_info_batch <- function(DTXSID = NULL,
                                 type = '',
-                                API_key = NULL){
+                                API_key = NULL,
+                                rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
     stop('Please input a character string containing a valid API key!')
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
     if (!is.character(DTXSID)){
@@ -103,6 +115,7 @@ get_chem_info_batch <- function(DTXSID = NULL,
     }
 
     results <- purrr::map2(.x = DTXSID, .y = type, function(d, t){
+      Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           get_chem_info(DTXSID = d,
@@ -131,6 +144,7 @@ get_chem_info_batch <- function(DTXSID = NULL,
 #'
 #' @param DTXSID A vector of chemicals identifier DTXSIDs
 #' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request
 #'
 #' @return A named list of data.frames containing chemical fate information for
 #'   the chemicals with DTXSID matching the input parameter.
@@ -138,9 +152,13 @@ get_chem_info_batch <- function(DTXSID = NULL,
 
 
 get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
-                                     API_key = NULL){
+                                     API_key = NULL,
+                                     rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
     stop('Please input a character string containing a valid API key!')
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
     if (!is.character(DTXSID)){
@@ -148,6 +166,7 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
     }
     DTXSID <- unique(DTXSID)
     results <- lapply(DTXSID, function(t){
+      Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           get_fate_by_dtxsid(DTXSID = t, API_key = API_key)
@@ -173,6 +192,7 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
 #' @param word_list A list of character strings of chemical names or portion of
 #'   chemical names
 #' @param API_key User-specific API key
+#' @param rate_limit Number of seconds to wait between each request
 #'
 #' @return A named list of data.frames of chemicals and related values matching
 #'   the query parameters
@@ -180,9 +200,13 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
 
 
 chemical_starts_with_batch <- function(word_list = NULL,
-                                       API_key = NULL){
+                                       API_key = NULL,
+                                       rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
     stop('Please input a character string containing a valid API key!')
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    rate_limit <- 0L
   }
   if (!is.null(word_list)){
     if (!is.character(word_list)){
@@ -190,6 +214,7 @@ chemical_starts_with_batch <- function(word_list = NULL,
     }
     word_list <- unique(word_list)
     results <- lapply(word_list, function(t){
+      Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           chemical_starts_with(word = t, API_key = API_key)
@@ -215,6 +240,7 @@ chemical_starts_with_batch <- function(word_list = NULL,
 #' @param word_list A list of character strings of chemical names or portion of
 #'   chemical names
 #' @param API_key User-specific API key
+#' @param rate_limit Number of seconds to wait between each request
 #'
 #' @return A named list of data.frames of chemicals and related values matching
 #'   the query parameters
@@ -222,9 +248,13 @@ chemical_starts_with_batch <- function(word_list = NULL,
 
 
 chemical_equal_batch <- function(word_list = NULL,
-                                 API_key = NULL){
+                                 API_key = NULL,
+                                 rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
     stop('Please input a character string containing a valid API key!')
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    rate_limit <- 0L
   }
   if (!is.null(word_list)){
     if (!is.character(word_list)){
@@ -232,6 +262,7 @@ chemical_equal_batch <- function(word_list = NULL,
     }
     word_list <- unique(word_list)
     results <- lapply(word_list, function(t){
+      Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           chemical_equal(word = t, API_key = API_key)
@@ -257,6 +288,7 @@ chemical_equal_batch <- function(word_list = NULL,
 #' @param wordlist A list of character strings of chemical names or portion of
 #'   chemical names
 #' @param API_key User-specific API key
+#' @param rate_limit Number of seconds to wait between each request
 #'
 #' @return A named list of data.frames of chemicals and related values matching
 #'   the query parameters
@@ -264,9 +296,13 @@ chemical_equal_batch <- function(word_list = NULL,
 
 
 chemical_contains_batch <- function(wordlist = NULL,
-                                    API_key = NULL){
+                                    API_key = NULL,
+                                    rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
     stop('Please input a character string containing a valid API key!')
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    rate_limit <- 0L
   }
   if (!is.null(word_list)){
     if (!is.character(wordlist)){
@@ -274,6 +310,7 @@ chemical_contains_batch <- function(wordlist = NULL,
     }
     word_list <- unique(word_list)
     results <- lapply(word_list, function(t){
+      Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           chemical_equal(word = t, API_key = API_key)
@@ -299,6 +336,7 @@ chemical_contains_batch <- function(wordlist = NULL,
 #' @param start_list A numeric list of starting values for mass range
 #' @param end_list A numeric list of ending values for mass range
 #' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request
 #'
 #' @return A named list of character lists with DTXSIDs with msready masses
 #'   falling within the given ranges.
@@ -306,8 +344,9 @@ chemical_contains_batch <- function(wordlist = NULL,
 #'
 #'
 get_msready_by_mass_batch <- function(start_list = NULL,
-                                       end_list = NULL,
-                                       API_key = NULL){
+                                      end_list = NULL,
+                                      API_key = NULL,
+                                      rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
     stop('Please input a character string containing a valid API key!')
   }
@@ -319,11 +358,16 @@ get_msready_by_mass_batch <- function(start_list = NULL,
     stop('Only numeric values allowed in each list!')
   }
 
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    rate_limit <- 0L
+  }
+
   # Sort min/max from lists to avoid errors
   start_list_ <- pmin(start_list, end_list)
   end_list_ <- pmax(start_list, end_list)
 
   results <- purrr::map2(.x = start_list_, .y = end_list_, function(d, t){
+    Sys.sleep(rate_limit)
     attempt <- tryCatch(
       {
         get_msready_by_mass(start = d,
@@ -349,6 +393,7 @@ get_msready_by_mass_batch <- function(start_list = NULL,
 #'
 #' @param formula_list A list of strings denoting the input chemicals formulas
 #' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request
 #'
 #' @return A named list of character lists of DTXSIDs with chemical formulas
 #'   matching the search criteria
@@ -356,9 +401,13 @@ get_msready_by_mass_batch <- function(start_list = NULL,
 
 
 get_msready_by_formula_batch <- function(formula_list = NULL,
-                                          API_key = NULL){
+                                          API_key = NULL,
+                                         rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
     stop('Please input a character string containing a valid API key!')
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    rate_limit <- 0L
   }
   if (!is.null(formula_list)){
     if (!is.character(formula_list)){
@@ -366,6 +415,7 @@ get_msready_by_formula_batch <- function(formula_list = NULL,
     }
     word_list <- unique(word_list)
     results <- lapply(word_list, function(t){
+      Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           get_msready_by_formula(formula = t, API_key = API_key)
@@ -390,6 +440,7 @@ get_msready_by_formula_batch <- function(formula_list = NULL,
 #'
 #' @param DXTCID A list of chemical identifer DTXCIDs
 #' @param API_key A user-specific API key
+#' @param rate_limit Number of seconds to wait between each request
 #'
 #' @return A named list of character lists of DTXSIDs with DTXCIDs matching the
 #'   search criteria
@@ -397,9 +448,13 @@ get_msready_by_formula_batch <- function(formula_list = NULL,
 
 
 get_msready_by_dtxcid_batch <- function(DXTCID = NULL,
-                                        API_key = NULL){
+                                        API_key = NULL,
+                                        rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
     stop('Please input a character string containing a valid API key!')
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    rate_limit <- 0L
   }
   if(!is.null(DTXCID)){
     if (!is.character(DTXCID)){
@@ -407,6 +462,7 @@ get_msready_by_dtxcid_batch <- function(DXTCID = NULL,
     }
     DTXCID <- unique(DTXCID)
     results <- lapply(DTXCID, function(t){
+      Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           get_msready_by_dtxcid(DTXCID = t, API_key = API_key)
@@ -432,6 +488,7 @@ get_msready_by_dtxcid_batch <- function(DXTCID = NULL,
 #' @param type_list A list of list types. This is a case sensitive parameter and returns
 #'   lists only for values of "federal", "international", "state", and "other".
 #' @param API_key The user-specified API key.
+#' @param rate_limit Number of seconds to wait between each request
 #'
 #' @return A named list of data.frames containing information about lists that meet the search
 #'   criteria.
@@ -439,9 +496,13 @@ get_msready_by_dtxcid_batch <- function(DXTCID = NULL,
 
 
 get_chemical_lists_by_type_batch <- function(type_list = NULL,
-                                             API_key = NULL){
+                                             API_key = NULL,
+                                             rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
     stop('Please input a character string containing a valid API key!')
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    rate_limit <- 0L
   }
   if (!is.null(type_list)){
     if (!is.character(type_list)){
@@ -449,6 +510,7 @@ get_chemical_lists_by_type_batch <- function(type_list = NULL,
     }
     type_list <- unique(type_list)
     results <- lapply(type_list, function(t){
+      Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           get_chemical_lists_by_type(type = t, API_key = API_key)
@@ -473,6 +535,7 @@ get_chemical_lists_by_type_batch <- function(type_list = NULL,
 #'
 #' @param name_list A list of chemical list names.
 #' @param API_key The user-specific API key.
+#' @param rate_limit Number of seconds to wait between each request
 #'
 #' @return A named list of data.frames containing information about the chemical lists. Note,
 #'   these are not the chemical lists themselves. To access the chemicals in a given list,
@@ -482,9 +545,13 @@ get_chemical_lists_by_type_batch <- function(type_list = NULL,
 #'
 #'
 get_public_chemical_list_by_name_batch <- function(name_list = NULL,
-                                                   API_key = NULL){
+                                                   API_key = NULL,
+                                                   rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
     stop('Please input a character string containing a valid API key!')
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    rate_limit <- 0L
   }
   if (!is.null(name_list)){
     if (!is.character(name_list)){
@@ -492,6 +559,7 @@ get_public_chemical_list_by_name_batch <- function(name_list = NULL,
     }
     name_list <- unique(name_list)
     results <- lapply(name_list, function(t){
+      Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           get_public_chemical_list_by_name(list_name = t,
@@ -517,15 +585,20 @@ get_public_chemical_list_by_name_batch <- function(name_list = NULL,
 #'
 #' @param chemical_list A list of the chemical identifier DTXSIDs.
 #' @param API_key The user-specific API key.
+#' @param rate_limit Number of seconds to wait between each request
 #'
 #' @return A named list of chemical lists that contain the given chemicals.
 #' @export
 
 
 get_lists_containing_chemical_batch <- function(chemical_list = NULL,
-                                                API_key = NULL){
+                                                API_key = NULL,
+                                                rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
     stop('Please input a character string containing a valid API key!')
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    rate_limit <- 0L
   }
   if (!is.null(chemical_list)){
     if (!is.character(chemical_list)){
@@ -533,6 +606,7 @@ get_lists_containing_chemical_batch <- function(chemical_list = NULL,
     }
     chemical_list <- unique(chemical_list)
     results <- lapply(chemical_list, function(t){
+      Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           get_lists_containing_chemical(DTXSID = t,
@@ -558,6 +632,7 @@ get_lists_containing_chemical_batch <- function(chemical_list = NULL,
 #'
 #' @param list_names A list of names of chemical lists.
 #' @param API_key The user-specific API key.
+#' @param rate_limit Number of seconds to wait between each request
 #'
 #' @return A named list of data.frames each containing chemicals in the
 #'   corresponding chemical lists.
@@ -565,9 +640,13 @@ get_lists_containing_chemical_batch <- function(chemical_list = NULL,
 
 
 get_chemicals_in_list_batch <- function(list_names = NULL,
-                                        API_key = NULL){
+                                        API_key = NULL,
+                                        rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
     stop('Please input a character string containing a valid API key!')
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    rate_limit <- 0L
   }
   if (!is.null(list_names)){
     if (!is.character(list_names)){
@@ -575,6 +654,7 @@ get_chemicals_in_list_batch <- function(list_names = NULL,
     }
     list_names <- unique(list_names)
     results <- lapply(list_names, function(t){
+      Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           get_chemicals_in_list(list_name = t,
@@ -601,6 +681,7 @@ get_chemicals_in_list_batch <- function(list_names = NULL,
 #' @param DTXSID A list of the chemical identifier DTXSIDs.
 #' @param DTXCID A list of the chemical identifier DTXCIDs.
 #' @param API_key The user-specific API key.
+#' @param rate_limit Number of seconds to wait between each request
 #'
 #' @return A named list of XML file format for representing a mrv file for each
 #'   chemicals.
@@ -609,9 +690,13 @@ get_chemicals_in_list_batch <- function(list_names = NULL,
 
 get_chemical_mrv_batch <- function(DTXSID = NULL,
                                    DTXCID = NULL,
-                                   API_key = NULL){
+                                   API_key = NULL,
+                                   rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
     stop('Please input a character string containing a valid API key!')
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
     if (!is.character(DTXSID)){
@@ -620,6 +705,7 @@ get_chemical_mrv_batch <- function(DTXSID = NULL,
     DTXSID <- unique(DTXSID)
     print('Using DTXSID!')
     results <- lapply(DTXSID, function(t){
+      Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           get_chemical_mrv(DTXSID = t, API_key = API_key)
@@ -642,6 +728,7 @@ get_chemical_mrv_batch <- function(DTXSID = NULL,
     DTXCID <- unique(DTXCID)
     print('Using DTXCID!')
     results <- lapply(DTXCID, function(t){
+      Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           get_chemical_mrv(DTXCID = t, API_key = API_key)
@@ -667,6 +754,7 @@ get_chemical_mrv_batch <- function(DTXSID = NULL,
 #' @param DTXSID A list of the chemical identifier DTXSIDs.
 #' @param DTXCID A list of the chemical identifier DTXCIDs.
 #' @param API_key The user-specific API key.
+#' @param rate_limit Number of seconds to wait between each request
 #'
 #' @return A named list of character strings giving a mol file representations
 #'   of the given input chemicals.
@@ -675,9 +763,13 @@ get_chemical_mrv_batch <- function(DTXSID = NULL,
 
 get_chemical_mol_batch <- function(DTXSID = NULL,
                                    DTXCID = NULL,
-                                   API_key = NULL){
+                                   API_key = NULL,
+                                   rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
     stop('Please input a character string containing a valid API key!')
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
     if (!is.character(DTXSID)){
@@ -686,6 +778,7 @@ get_chemical_mol_batch <- function(DTXSID = NULL,
     DTXSID <- unique(DTXSID)
     print('Using DTXSID!')
     results <- lapply(DTXSID, function(t){
+      Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           get_chemical_mol(DTXSID = t, API_key = API_key)
@@ -708,6 +801,7 @@ get_chemical_mol_batch <- function(DTXSID = NULL,
     DTXCID <- unique(DTXCID)
     print('Using DTXCID!')
     results <- lapply(DTXCID, function(t){
+      Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           get_chemical_mol(DTXCID = t, API_key = API_key)
@@ -735,6 +829,7 @@ get_chemical_mol_batch <- function(DTXSID = NULL,
 #' @param format The image type, either "png" or "svg". If left blank, will
 #'   default to "png".
 #' @param API_key The user-specific API key.
+#' @param rate_limit Number of seconds to wait between each request
 #'
 #' @return A named list of Large arrays of three dimensions representing an image. For
 #'   displaying an image, one may use \code{png::writePNG()} or
@@ -745,9 +840,13 @@ get_chemical_mol_batch <- function(DTXSID = NULL,
 get_chemical_image_batch <- function(DTXSID = NULL,
                                      DTXCID = NULL,
                                      format = "",
-                                     API_key = NULL){
+                                     API_key = NULL,
+                                     rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
     stop('Please input a character string containing a valid API key!')
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
     if (!is.character(DTXSID)){
@@ -756,6 +855,7 @@ get_chemical_image_batch <- function(DTXSID = NULL,
     DTXSID <- unique(DTXSID)
     print('Using DTXSID!')
     results <- purrr::map2(.x = DTXSID, .y = format, function(d, f){
+      Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           get_chemical_image(DTXSID = d,
@@ -780,6 +880,7 @@ get_chemical_image_batch <- function(DTXSID = NULL,
     DTXCID <- unique(DTXCID)
     print('Using DTXCID!')
     results <- purrr::map2(.x = DTXCID, .y = format, function(d, f){
+      Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           get_chemical_image(DTXCID = d,

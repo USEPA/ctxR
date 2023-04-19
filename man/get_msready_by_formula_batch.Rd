@@ -4,12 +4,18 @@
 \alias{get_msready_by_formula_batch}
 \title{Get msready by formula batch search}
 \usage{
-get_msready_by_formula_batch(formula_list = NULL, API_key = NULL)
+get_msready_by_formula_batch(
+  formula_list = NULL,
+  API_key = NULL,
+  rate_limit = 0L
+)
 }
 \arguments{
 \item{formula_list}{A list of strings denoting the input chemicals formulas}
 
 \item{API_key}{The user-specific API key}
+
+\item{rate_limit}{Number of seconds to wait between each request}
 }
 \value{
 A named list of character lists of DTXSIDs with chemical formulas

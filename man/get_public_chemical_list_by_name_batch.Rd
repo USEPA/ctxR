@@ -4,12 +4,18 @@
 \alias{get_public_chemical_list_by_name_batch}
 \title{Get chemical list by name batch}
 \usage{
-get_public_chemical_list_by_name_batch(name_list = NULL, API_key = NULL)
+get_public_chemical_list_by_name_batch(
+  name_list = NULL,
+  API_key = NULL,
+  rate_limit = 0L
+)
 }
 \arguments{
 \item{name_list}{A list of chemical list names.}
 
 \item{API_key}{The user-specific API key.}
+
+\item{rate_limit}{Number of seconds to wait between each request}
 }
 \value{
 A named list of data.frames containing information about the chemical lists. Note,

@@ -4,7 +4,7 @@
 \alias{get_chem_info_batch}
 \title{Retrieve chemical information in batch search}
 \usage{
-get_chem_info_batch(DTXSID = NULL, type = "", API_key = NULL)
+get_chem_info_batch(DTXSID = NULL, type = "", API_key = NULL, rate_limit = 0L)
 }
 \arguments{
 \item{DTXSID}{A vector of chemical identifier DTXSIDs}
@@ -15,6 +15,8 @@ grab all details. The allowable input values are "", predicted", or
 "experimental".}
 
 \item{API_key}{The user-specific API key.}
+
+\item{rate_limit}{Number of seconds to wait between each request}
 }
 \value{
 A named list of data.frames containing chemical information for the

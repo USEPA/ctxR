@@ -4,12 +4,18 @@
 \alias{get_lists_containing_chemical_batch}
 \title{Get chemical lists containing given chemical batch}
 \usage{
-get_lists_containing_chemical_batch(chemical_list = NULL, API_key = NULL)
+get_lists_containing_chemical_batch(
+  chemical_list = NULL,
+  API_key = NULL,
+  rate_limit = 0L
+)
 }
 \arguments{
 \item{chemical_list}{A list of the chemical identifier DTXSIDs.}
 
 \item{API_key}{The user-specific API key.}
+
+\item{rate_limit}{Number of seconds to wait between each request}
 }
 \value{
 A named list of chemical lists that contain the given chemicals.

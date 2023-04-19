@@ -4,7 +4,12 @@
 \alias{get_chemical_mol_batch}
 \title{Get mol file by DTXSID or DTXCID batch}
 \usage{
-get_chemical_mol_batch(DTXSID = NULL, DTXCID = NULL, API_key = NULL)
+get_chemical_mol_batch(
+  DTXSID = NULL,
+  DTXCID = NULL,
+  API_key = NULL,
+  rate_limit = 0L
+)
 }
 \arguments{
 \item{DTXSID}{A list of the chemical identifier DTXSIDs.}
@@ -12,6 +17,8 @@ get_chemical_mol_batch(DTXSID = NULL, DTXCID = NULL, API_key = NULL)
 \item{DTXCID}{A list of the chemical identifier DTXCIDs.}
 
 \item{API_key}{The user-specific API key.}
+
+\item{rate_limit}{Number of seconds to wait between each request}
 }
 \value{
 A named list of character strings giving a mol file representations

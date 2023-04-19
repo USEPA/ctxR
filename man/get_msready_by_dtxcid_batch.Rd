@@ -4,12 +4,14 @@
 \alias{get_msready_by_dtxcid_batch}
 \title{Get msready by DTXCID batch search}
 \usage{
-get_msready_by_dtxcid_batch(DXTCID = NULL, API_key = NULL)
+get_msready_by_dtxcid_batch(DXTCID = NULL, API_key = NULL, rate_limit = 0L)
 }
 \arguments{
 \item{DXTCID}{A list of chemical identifer DTXCIDs}
 
 \item{API_key}{A user-specific API key}
+
+\item{rate_limit}{Number of seconds to wait between each request}
 }
 \value{
 A named list of character lists of DTXSIDs with DTXCIDs matching the
