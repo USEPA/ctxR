@@ -93,3 +93,100 @@ get_ecotox_hazard_by_dtxsid <- function(DTXSID = NULL,
   return()
 
 }
+
+
+#' Get skin and eye hazard
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#'
+#' @return A data.frame containing skin and eye hazard data.
+#' @export
+
+
+get_skin_eye_hazard <- function(DTXSID = NULL,
+                                API_key = NULL){
+  if (is.null(DTXSID))
+    stop('Please input a DTXSID!')
+  else if (is.null(API_key))
+    stop('Please input an API_key')
+
+  response <- httr::GET(url = paste0('https://api-ccte-stg.epa.gov/hazard/skin-eye/search/by-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+  } else {
+    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+  }
+  return()
+
+}
+
+#' Get cancer hazard
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#'
+#' @return A data.frame of cancer hazard data related to the input DTXSID.
+#' @export
+
+
+get_cancer_hazard <- function(DTXSID = NULL,
+                              API_key = NULL){
+  if (is.null(DTXSID))
+    stop('Please input a DTXSID!')
+  else if (is.null(API_key))
+    stop('Please input an API_key')
+
+  response <- httr::GET(url = paste0('https://api-ccte-stg.epa.gov/hazard/cancer-summary/search/by-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+  } else {
+    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+  }
+  return()
+
+}
+
+#' Get genetox summary
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#'
+#' @return A data.frame of genetox summary data related to the input DTXSID.
+#' @export
+
+
+get_genetox_summary <- function(DTXSID = NULL,
+                                API_key = NULL){
+  if (is.null(DTXSID))
+    stop('Please input a DTXSID!')
+  else if (is.null(API_key))
+    stop('Please input an API_key')
+
+  response <- httr::GET(url = paste0('https://api-ccte-stg.epa.gov/hazard/genetox/summary/search/by-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+  } else {
+    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+  }
+  return()
+
+}
