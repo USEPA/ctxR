@@ -902,3 +902,51 @@ get_chemical_image_batch <- function(DTXSID = NULL,
     stop('Please input a list of DTXSIDs or DTXCIDs!')
   }
 }
+
+
+#' Get chemical synonym batch
+#'
+#' @param DTXSID A list of chemical identifier DTXSIDs
+#' @param API_key The user-specific API key.
+#' @param rate_limit The number of seconds to wait between requests.
+#'
+#' @return A named list of lists containing synonym information for each input
+#'   DTXSID.
+#' @export
+
+
+get_chemical_synonym_batch <- function(DTXSID = NULL,
+                                       API_key = NULL,
+                                       rate_limit = 0L){
+  if (is.null(API_key) || !is.character(API_key)){
+    stop('Please input a character string containing a valid API key!')
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID)){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+    results <- lapply(DTXSID, function(t){
+      Sys.sleep(rate_limit)
+      attempt <- tryCatch(
+        {
+          get_chemical_synonym(DTXSID = t, API_key = API_key)
+        },
+        error = function(cond){
+          message(t)
+          message(cond$message)
+          return(NA)
+        }
+      )
+      return(attempt)
+    }
+    )
+    names(results) <- DTXSID
+    return(results)
+  } else {
+    stop('Please input a list of DTXSIDs!')
+  }
+}
