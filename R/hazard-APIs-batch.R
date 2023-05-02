@@ -158,7 +158,7 @@ get_skin_eye_hazard_batch <- function(DTXSID = NULL,
       Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
-          get_skin_eye_hazard_by_dtxsid(DTXSID = t,
+          get_skin_eye_hazard(DTXSID = t,
                                         API_key = API_key)
         },
         error = function(cond){
@@ -204,7 +204,7 @@ get_cancer_hazard_batch <- function(DTXSID = NULL,
       Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
-          get_cancer_hazard_by_dtxsid(DTXSID = t,
+          get_cancer_hazard(DTXSID = t,
                                       API_key = API_key)
         },
         error = function(cond){
