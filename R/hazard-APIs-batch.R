@@ -159,7 +159,7 @@ get_skin_eye_hazard_batch <- function(DTXSID = NULL,
       attempt <- tryCatch(
         {
           get_skin_eye_hazard(DTXSID = t,
-                                        API_key = API_key)
+                              API_key = API_key)
         },
         error = function(cond){
           message(t)
@@ -205,7 +205,7 @@ get_cancer_hazard_batch <- function(DTXSID = NULL,
       attempt <- tryCatch(
         {
           get_cancer_hazard(DTXSID = t,
-                                      API_key = API_key)
+                            API_key = API_key)
         },
         error = function(cond){
           message(t)
