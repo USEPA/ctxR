@@ -252,9 +252,18 @@ if (requireNamespace("countcolors", quietly = TRUE)){
 }
 ```
 
+If one wants to gather the synonyms of a given chemical, this is also avilable through the chemical APIs as demonstrated below.
+
+```{r, synonym, eval = on_cran}
+bpa_synonym <- get_chemical_synonym(DTXSID = 'DTXSID7020182',
+                                    API_key = my_key)
+head(bpa_synonym)
+```
+
+
 ## Hazard APIs
 
-Next, we explore the hazard APIs. This set of APIs allows the user to access human or ecological toxicity data for a given chemical. One can specify the chemical in question through the DTXSID.
+Next, we explore the hazard APIs. TWe first demonstrate how to access human or ecological toxicity data for a given chemical. One can specify the chemical in question through the DTXSID.
 
 ### Hazard Resource
 
@@ -281,6 +290,45 @@ bpa_eco_hazard <- get_ecotox_hazard_by_dtxsid(DTXSID = 'DTXSID7020182',
                                               API_key = my_key)
 head(bpa_eco_hazard)
 ```
+### Skin and eye resource
+
+Next, we demonstrate the skin and eye resource endpoint.
+
+```{r, skin-eye, eval = on_cran}
+bpa_skin_and_eye <- get_skin_eye_hazard(DTXSID = 'DTXSID7020182',
+                                        API_key = my_key)
+bpa_skin_and_eye
+```
+
+### Cancer summary
+
+We then demonstrate the cancer summary endpoint.
+
+```{r, cancer, eval = on_cran}
+bpa_cancer <- get_cancer_hazard(DTXSID = 'DTXSID7020182',
+                                API_key = my_key)
+bpa_cancer
+```
+
+### Genetox resource
+
+Finally we explore the genetox resource. This allos us to grab either summary or detail level genetox data. We first demonstrate the summary endpoint.
+
+```{r, genetox-summary, eval = on_cran}
+bpa_genetox_summary <- get_genetox_summary(DTXSID = 'DTXSID7020182',
+                                           API_key = my_key)
+bpa_genetox_summary
+```
+
+Next we demonstrate the details endpoint.
+
+```{r, genetox-details, eval = on_cran}
+bpa_genetox_details <- get_genetox_details(DTXSID = 'DTXSID7020182',
+                                           API_key = my_key)
+bpa_genetox_details
+```
+
+
 
 ## Bioactivity APIs
 
