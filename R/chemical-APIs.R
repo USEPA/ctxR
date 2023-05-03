@@ -660,6 +660,7 @@ get_chemical_lists_by_type <- function(type = NULL,
     index <- which(projection_entries %in% Projection)
     if (length(index) == 0){
       Projection <- ''
+      index <- -1
     }
   }
 
@@ -686,6 +687,9 @@ get_chemical_lists_by_type <- function(type = NULL,
 #' Get chemical list by name
 #'
 #' @param list_name The name of the list of chemicals
+#' @param Projection Optional parameter controlling return type. It takes values
+#'   chemicallistall' and 'chemicallistname' with the former as the default
+#'   value.
 #' @param API_key The user-specific API key
 #'
 #' @return A data.frame containing information about the chemical list. Note,
@@ -696,15 +700,32 @@ get_chemical_lists_by_type <- function(type = NULL,
 
 
 get_public_chemical_list_by_name <- function(list_name = NULL,
+                                             Projection = '',
                                              API_key = NULL){
   if (is.null(list_name))
     stop('Please input list_name!')
   else if (is.null(API_key))
     stop('Please input an API_key!')
 
+  projection_entries <- c('chemicallistall',
+                          'chemicallistname')
+  index <- -1
+  if (!is.character(Projection)){
+    Projection <- ''
+  } else {
+    Projection <- tolower(Projection)
+    index <- which(projection_entries %in% Projection)
+    if (length(index) == 0){
+      Projection <- ''
+      index <- -1
+    }
+  }
+
+  projection_url <- ifelse(index < 1, '', paste0('?projection=', projection_entries[index]))
 
 
-  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/list/search/by-name/', list_name),
+
+  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/list/search/by-name/', list_name, projection_url),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -789,6 +810,9 @@ get_chemicals_in_list <- function(list_name = NULL,
 
 #' Get all public chemical lists
 #'
+#' @param Projection Optional parameter controlling return type. It takes values
+#'   chemicallistall' and 'chemicallistname' with the former as the default
+#'   value.
 #' @param API_key The user-specific api key
 #'
 #' @return A data.frame containing information on all public chemical lists
@@ -796,12 +820,30 @@ get_chemicals_in_list <- function(list_name = NULL,
 #' @export
 
 
-get_all_public_chemical_lists <- function(API_key = NULL){
+get_all_public_chemical_lists <- function(Projection = '',
+                                          API_key = NULL){
   if (is.null(API_key)){
     stop('Please input an API_key!')
   }
 
-  response <- httr::GET(url = 'https://api-ccte.epa.gov/chemical/list/',
+  projection_entries <- c('chemicallistall',
+                          'chemicallistname')
+  index <- -1
+  if (!is.character(Projection)){
+    Projection <- ''
+  } else {
+    Projection <- tolower(Projection)
+    index <- which(projection_entries %in% Projection)
+    if (length(index) == 0){
+      Projection <- ''
+      index <- -1
+    }
+  }
+
+  projection_url <- ifelse(index < 1, '', paste0('?projection=', projection_entries[index]))
+
+
+  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/list/', projection_url),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
