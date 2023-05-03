@@ -725,7 +725,7 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
 
 
 
-  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/list/search/by-name/', list_name, projection_url),
+  response <- httr::GET(url = paste0('https://api-ccte-stg.epa.gov/chemical/list/search/by-name/', list_name, projection_url),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -843,7 +843,7 @@ get_all_public_chemical_lists <- function(Projection = '',
   projection_url <- ifelse(index < 1, '', paste0('?projection=', projection_entries[index]))
 
 
-  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/list/', projection_url),
+  response <- httr::GET(url = paste0('https://api-ccte-stg.epa.gov/chemical/list/', projection_url),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
