@@ -21,6 +21,9 @@ get_bioactivity_details_batch <- function(DTXSID = NULL,
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
     DTXSID <- unique(DTXSID)
     print('Using DTXSID!')
     results <- lapply(DTXSID, function(d){
