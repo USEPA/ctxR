@@ -4,10 +4,18 @@
 \alias{get_public_chemical_list_by_name}
 \title{Get chemical list by name}
 \usage{
-get_public_chemical_list_by_name(list_name = NULL, API_key = NULL)
+get_public_chemical_list_by_name(
+  list_name = NULL,
+  Projection = "",
+  API_key = NULL
+)
 }
 \arguments{
 \item{list_name}{The name of the list of chemicals}
+
+\item{Projection}{Optional parameter controlling return type. It takes values
+chemicallistall' and 'chemicallistname' with the former as the default
+value.}
 
 \item{API_key}{The user-specific API key}
 }
