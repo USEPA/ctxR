@@ -4,7 +4,10 @@
 \alias{create_data.table_chemical_details}
 \title{Create chemical details data.table helper function}
 \usage{
-create_data.table_chemical_details()
+create_data.table_chemical_details(index = -1)
+}
+\arguments{
+\item{index}{Determine which format should be used.}
 }
 \value{
 An empty data.table with columns matching the expected format of the
