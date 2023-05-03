@@ -4,12 +4,22 @@
 \alias{get_chemical_details}
 \title{Retrieve chemical details from DTXSID of DTXCID}
 \usage{
-get_chemical_details(DTXSID = NULL, DTXCID = NULL, API_key = NULL)
+get_chemical_details(
+  DTXSID = NULL,
+  DTXCID = NULL,
+  Projection = "",
+  API_key = NULL
+)
 }
 \arguments{
 \item{DTXSID}{The chemical identifier DTXSID}
 
 \item{DTXCID}{The chemical identifier DTXCID}
+
+\item{Projection}{The format and chemical detail data returned. Allowed
+values are 'chemicaldetailall', 'chemicaldetailstandard',
+'chemicalidentifier', 'chemicalstructure'. If left empty or there is a
+mismatch, the default format will be 'chemicaldetailall'.}
 
 \item{API_key}{The user-specific API key}
 }
