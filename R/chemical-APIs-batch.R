@@ -23,7 +23,7 @@ get_chemical_details_batch <- function(DTXSID = NULL,
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
-    if (!is.character(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
       stop('Please input a character list for DTXSID!')
     }
     DTXSID <- unique(DTXSID)
@@ -45,7 +45,7 @@ get_chemical_details_batch <- function(DTXSID = NULL,
     )
     names(results) <- DTXSID
     } else if (!is.null(DTXCID)){
-      if (!is.character(DTXCID)){
+      if (!is.character(DTXCID) & !all(sapply(DTXCID, is.character))){
         stop('Please input a character list for DTXCID!')
       }
     DTXCID <- unique(DTXCID)
@@ -99,7 +99,7 @@ get_chem_info_batch <- function(DTXSID = NULL,
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
-    if (!is.character(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
       stop('Please input a character list for DTXSID!')
     }
     DTXSID <- unique(DTXSID)
@@ -161,7 +161,7 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
-    if (!is.character(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
       stop('Please input a character list for DTXSID!')
     }
     DTXSID <- unique(DTXSID)
@@ -209,7 +209,7 @@ chemical_starts_with_batch <- function(word_list = NULL,
     rate_limit <- 0L
   }
   if (!is.null(word_list)){
-    if (!is.character(word_list)){
+    if (!is.character(word_list) & !all(sapply(word_list, is.character))){
       stop('Please input a character list for word_list!')
     }
     word_list <- unique(word_list)
@@ -257,7 +257,7 @@ chemical_equal_batch <- function(word_list = NULL,
     rate_limit <- 0L
   }
   if (!is.null(word_list)){
-    if (!is.character(word_list)){
+    if (!is.character(word_list) & !all(sapply(word_list, is.character))){
       stop('Please input a character list for word_list!')
     }
     word_list <- unique(word_list)
@@ -305,7 +305,7 @@ chemical_contains_batch <- function(wordlist = NULL,
     rate_limit <- 0L
   }
   if (!is.null(word_list)){
-    if (!is.character(wordlist)){
+    if (!is.character(wordlist) & !all(sapply(wordlist, is.character))){
       stop('Please input a character list for word_list!')
     }
     word_list <- unique(word_list)
@@ -410,7 +410,7 @@ get_msready_by_formula_batch <- function(formula_list = NULL,
     rate_limit <- 0L
   }
   if (!is.null(formula_list)){
-    if (!is.character(formula_list)){
+    if (!is.character(formula_list) & !all(sapply(formula_list, is.character))){
       stop('Please input a character list for formula_list!')
     }
     word_list <- unique(word_list)
@@ -457,7 +457,7 @@ get_msready_by_dtxcid_batch <- function(DXTCID = NULL,
     rate_limit <- 0L
   }
   if(!is.null(DTXCID)){
-    if (!is.character(DTXCID)){
+    if (!is.character(DTXCID) & !all(sapply(DTXCID, is.character))){
       stop('Please input a character list for DTXCID!')
     }
     DTXCID <- unique(DTXCID)
@@ -505,7 +505,7 @@ get_chemical_lists_by_type_batch <- function(type_list = NULL,
     rate_limit <- 0L
   }
   if (!is.null(type_list)){
-    if (!is.character(type_list)){
+    if (!is.character(type_list) & !all(sapply(type_list, is.character))){
       stop('Please input a character list for type_list!')
     }
     type_list <- unique(type_list)
@@ -554,7 +554,7 @@ get_public_chemical_list_by_name_batch <- function(name_list = NULL,
     rate_limit <- 0L
   }
   if (!is.null(name_list)){
-    if (!is.character(name_list)){
+    if (!is.character(name_list) & !all(sapply(name_list, is.character))){
       stop('Please input a character list for name_list!')
     }
     name_list <- unique(name_list)
@@ -601,7 +601,7 @@ get_lists_containing_chemical_batch <- function(chemical_list = NULL,
     rate_limit <- 0L
   }
   if (!is.null(chemical_list)){
-    if (!is.character(chemical_list)){
+    if (!is.character(chemical_list) & !all(sapply(chemical_list, is.character))){
       stop('Please input a character list for chemical_list!')
     }
     chemical_list <- unique(chemical_list)
@@ -649,7 +649,7 @@ get_chemicals_in_list_batch <- function(list_names = NULL,
     rate_limit <- 0L
   }
   if (!is.null(list_names)){
-    if (!is.character(list_names)){
+    if (!is.character(list_names) & !all(sapply(list_names, is.character))){
       stop('Please input a character list for list_names!')
     }
     list_names <- unique(list_names)
@@ -699,7 +699,7 @@ get_chemical_mrv_batch <- function(DTXSID = NULL,
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
-    if (!is.character(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
       stop('Please input a character list for DTXSID!')
     }
     DTXSID <- unique(DTXSID)
@@ -722,7 +722,7 @@ get_chemical_mrv_batch <- function(DTXSID = NULL,
     names(results) <- DTXSID
     return(results)
   } else if (!is.null(DTXCID)){
-    if (!is.character(DTXCID)){
+    if (!is.character(DTXCID) & !all(sapply(DTXCID, is.character))){
       stop('Please input a character list for DTXCID!')
     }
     DTXCID <- unique(DTXCID)
@@ -772,7 +772,7 @@ get_chemical_mol_batch <- function(DTXSID = NULL,
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
-    if (!is.character(DTXSID)){
+    if (!is.character(DTXSID)& !all(sapply(DTXSID, is.character))){
       stop('Please input a character list for DTXSID!')
     }
     DTXSID <- unique(DTXSID)
@@ -795,7 +795,7 @@ get_chemical_mol_batch <- function(DTXSID = NULL,
     names(results) <- DTXSID
     return(results)
   } else if (!is.null(DTXCID)){
-    if (!is.character(DTXCID)){
+    if (!is.character(DTXCID) & !all(sapply(DTXCID, is.character))){
       stop('Please input a character list for DTXCID!')
     }
     DTXCID <- unique(DTXCID)
@@ -849,7 +849,7 @@ get_chemical_image_batch <- function(DTXSID = NULL,
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
-    if (!is.character(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
       stop('Please input a character list for DTXSID!')
     }
     DTXSID <- unique(DTXSID)
@@ -874,7 +874,7 @@ get_chemical_image_batch <- function(DTXSID = NULL,
     names(results) <- DTXSID
     return(results)
   } else if (!is.null(DTXCID)){
-    if (!is.character(DTXCID)){
+    if (!is.character(DTXCID) & !all(sapply(DTXCID, is.character))){
       stop('Please input a character list for DTXCID!')
     }
     DTXCID <- unique(DTXCID)
@@ -925,7 +925,7 @@ get_chemical_synonym_batch <- function(DTXSID = NULL,
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
-    if (!is.character(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
       stop('Please input a character list for DTXSID!')
     }
     DTXSID <- unique(DTXSID)
