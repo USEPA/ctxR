@@ -2,6 +2,10 @@
 #'
 #' @param DTXSID The chemical identifier DTXSID
 #' @param DTXCID The chemical identifier DTXCID
+#' @param Projection The format and chemical detail data returned. Allowed
+#'   values are 'chemicaldetailall', 'chemicaldetailstandard',
+#'   'chemicalidentifier', 'chemicalstructure'. If left empty or there is a
+#'   mismatch, the default format will be 'chemicaldetailall'.
 #' @param API_key The user-specific API key
 #'
 #' @return A data.table containing chemical information for the chemical with
@@ -10,8 +14,9 @@
 
 
 get_chemical_details <- function(DTXSID = NULL,
-                                        DTXCID = NULL,
-                                        API_key = NULL){
+                                 DTXCID = NULL,
+                                 Projection = '',
+                                 API_key = NULL){
   if (is.null(DTXSID) & is.null(DTXCID))
     stop('Please input a DTXSID or DTXCID!')
   else if (!is.null(DTXSID) & !is.null(DTXCID))
@@ -19,15 +24,37 @@ get_chemical_details <- function(DTXSID = NULL,
   else if (is.null(API_key))
     stop('Please input an API_key')
 
+  projection_entries <- c('chemicaldetailall',
+                          'chemicaldetailstandard',
+                          'chemicalidentifier',
+                          'chemicalstructure')
+  index <- -1
+  if (!is.character(Projection)){
+    warning('Setting `Projection` to empty string')
+    Projection <- ''
+  } else {
+    Projection <- tolower(Projection)
+    print(Projection)
+    index <- which(projection_entries %in% Projection)
+    print(index)
+    if (length(index) == 0){
+      warning('Setting `Projection` to empty string')
+      Projection <- ''
+      index <- -1
+    }
+  }
+
+  projection_url <- ifelse(index == -1, '', paste0('?projection=', Projection))
+
   if (!is.null(DTXSID)){
-    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/detail/search/by-dtxsid/', DTXSID),
+    response <- httr::GET(url = paste0('https://api-ccte-stg.epa.gov/chemical/detail/search/by-dtxsid/', DTXSID, projection_url),
                           httr::add_headers(.headers = c(
                             'Content-Type' =  'application/json',
                             'x-api-key' = API_key)
                           )
     )
   } else {
-    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/detail/search/by-dtxcid/', DTXCID),
+    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/detail/search/by-dtxcid/', DTXCID, projection_url),
                           httr::add_headers(.headers = c(
                             'Content-Type' =  'application/json',
                             'x-api-key' = API_key)
@@ -37,10 +64,14 @@ get_chemical_details <- function(DTXSID = NULL,
 
 
   if(response$status_code == 200){
-    empty_table <- create_data.table_chemical_details()
+    empty_table <- create_data.table_chemical_details(index = index)
     data_list <- jsonlite::fromJSON(httr::content(response, as = 'text')) #Parse to list
     missing_names <- which(sapply(data_list, is.null))
+    if (length(missing_names) > 0){
     df <- t(data.frame(unlist(data_list), row.names = names(data_list)[-missing_names]))
+    } else {
+      df <- t(data.frame(unlist(data_list), row.names = names(data_list)))
+    }
     #return(data_list)
     dt <- suppressWarnings(data.table::rbindlist(list(empty_table,
                                                       data.table::data.table(df)),
@@ -54,11 +85,74 @@ get_chemical_details <- function(DTXSID = NULL,
 
 #' Create chemical details data.table helper function
 #'
+#' @param index Determine which format should be used.
+#'
 #' @return An empty data.table with columns matching the expected format of the
 #'   get_chemical_details API call.
 
 
-create_data.table_chemical_details <- function(){
+create_data.table_chemical_details <- function(index = -1){
+  if (index %in% 2:4 ){
+    if (index == 2){
+      data <- data.table::data.table(id = character(),
+                                     cpdataCount = integer(),
+                                     inchikey = character(),
+                                     wikipediaArticle = character(),
+                                     monoisotopicMass = numeric(),
+                                     percentAssays = numeric(),
+                                     pubchemCount = integer(),
+                                     pubmedCount = numeric(),
+                                     sourcesCount = integer(),
+                                     qcLevel = integer(),
+                                     qcLevelDesc = character(),
+                                     isotope = integer(),
+                                     multicomponent = integer(),
+                                     totalAssays = integer(),
+                                     pubchemCid = integer(),
+                                     relatedSubstanceCount = integer(),
+                                     relatedStructureCount = integer(),
+                                     casrn = character(),
+                                     compoundId = integer(),
+                                     genericSubstanceId = integer(),
+                                     preferredName = character(),
+                                     activeAssays = integer(),
+                                     molFormula = character(),
+                                     hasStructureImage = integer(),
+                                     iupacName = character(),
+                                     smiles = character(),
+                                     inchiString = character(),
+                                     qcNotes = character(),
+                                     qsarReadySmiles = character(),
+                                     msReadySmiles = character(),
+                                     irisLink = character(),
+                                     pprtvLink = character(),
+                                     descriptorStringTsv = character(),
+                                     isMarkush = integer(),
+                                     dtxsid = character(),
+                                     dtxcid = character(),
+                                     toxcastSelect = character())
+    } else if (index == 3){
+      data <- data.table::data.table(inchikey = character(),
+                                     casrn = character(),
+                                     preferredName = character(),
+                                     iupacName = character(),
+                                     dtxsid = character(),
+                                     dtxcid = character())
+    } else if (index == 4){
+      data <- data.table::data.table(id = character(),
+                                     inchikey = character(),
+                                     casrn = character(),
+                                     preferredName = character(),
+                                     hasStructureImage = integer(),
+                                     smiles = character(),
+                                     inchiString = character(),
+                                     qsarReadySmiles = character(),
+                                     msReadySmiles = character(),
+                                     dtxsid = character(),
+                                     dtxcid = character())
+    }
+    return(data)
+  }
   data <- data.table::data.table(id = integer(),
                                  dtxsid = character(),
                                  dtxcid = character(),
@@ -537,6 +631,9 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
 #'
 #' @param type The type of list. This is a case sensitive parameter and returns
 #'   lists only for values of "federal", "international", "state", and "other".
+#' @param Projection Optional parameter controlling return type. It takes values
+#'   'chemicallistall' and 'chemicallistname' with the former as the default
+#'   value.
 #' @param API_key The user-specified API key.
 #'
 #' @return A data.frame containing information about lists that meet the search
@@ -545,13 +642,30 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
 
 
 get_chemical_lists_by_type <- function(type = NULL,
-                                      API_key = NULL){
+                                       Projection = '',
+                                       API_key = NULL){
   if (is.null(type))
     stop('Please input list_name!')
   else if (is.null(API_key))
     stop('Please input an API_key!')
 
-  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/list/search/by-type/', type),
+
+  projection_entries <- c('chemicallistall',
+                          'chemicallistname')
+  index <- -1
+  if (!is.character(Projection)){
+    Projection <- ''
+  } else {
+    Projection <- tolower(Projection)
+    index <- which(projection_entries %in% Projection)
+    if (length(index) == 0){
+      Projection <- ''
+    }
+  }
+
+  projection_url <- ifelse(index < 1, '', paste0('?projection=', projection_entries[index]))
+
+  response <- httr::GET(url = paste0('https://api-ccte-stg.epa.gov/chemical/list/search/by-type/', type, projection_url),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
