@@ -4,11 +4,15 @@
 \alias{get_chemical_lists_by_type}
 \title{Get chemical lists by type}
 \usage{
-get_chemical_lists_by_type(type = NULL, API_key = NULL)
+get_chemical_lists_by_type(type = NULL, Projection = "", API_key = NULL)
 }
 \arguments{
 \item{type}{The type of list. This is a case sensitive parameter and returns
 lists only for values of "federal", "international", "state", and "other".}
+
+\item{Projection}{Optional parameter controlling return type. It takes values
+'chemicallistall' and 'chemicallistname' with the former as the default
+value.}
 
 \item{API_key}{The user-specified API key.}
 }
