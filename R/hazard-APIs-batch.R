@@ -19,6 +19,9 @@ get_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
     DTXSID <- unique(DTXSID)
     results <- lapply(DTXSID, function(t){
       Sys.sleep(rate_limit)
@@ -63,6 +66,9 @@ get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
     DTXSID <- unique(DTXSID)
     results <- lapply(DTXSID, function(t){
       Sys.sleep(rate_limit)
@@ -107,6 +113,9 @@ get_ecotox_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
     DTXSID <- unique(DTXSID)
     results <- lapply(DTXSID, function(t){
       Sys.sleep(rate_limit)
@@ -153,6 +162,9 @@ get_skin_eye_hazard_batch <- function(DTXSID = NULL,
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
     DTXSID <- unique(DTXSID)
     results <- lapply(DTXSID, function(t){
       Sys.sleep(rate_limit)
@@ -199,6 +211,9 @@ get_cancer_hazard_batch <- function(DTXSID = NULL,
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
     DTXSID <- unique(DTXSID)
     results <- lapply(DTXSID, function(t){
       Sys.sleep(rate_limit)
@@ -245,6 +260,9 @@ get_genetox_summary_batch <- function(DTXSID = NULL,
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
     DTXSID <- unique(DTXSID)
     results <- lapply(DTXSID, function(t){
       Sys.sleep(rate_limit)
@@ -291,6 +309,9 @@ get_genetox_details_batch <- function(DTXSID = NULL,
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
     DTXSID <- unique(DTXSID)
     results <- lapply(DTXSID, function(t){
       Sys.sleep(rate_limit)
