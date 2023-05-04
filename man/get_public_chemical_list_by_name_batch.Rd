@@ -6,6 +6,7 @@
 \usage{
 get_public_chemical_list_by_name_batch(
   name_list = NULL,
+  Projection = "",
   API_key = NULL,
   rate_limit = 0L
 )
@@ -13,14 +14,18 @@ get_public_chemical_list_by_name_batch(
 \arguments{
 \item{name_list}{A list of chemical list names.}
 
+\item{Projection}{Optional parameter controlling return type. It takes values
+'chemicallistall' and 'chemicallistname' with the former as the default
+value.}
+
 \item{API_key}{The user-specific API key.}
 
 \item{rate_limit}{Number of seconds to wait between each request}
 }
 \value{
-A named list of data.frames containing information about the chemical lists. Note,
-  these are not the chemical lists themselves. To access the chemicals in a given list,
-  use \code{\link{get_chemicals_in_list}}.
+A named list of data.frames containing information about the chemical
+  lists. Note, these are not the chemical lists themselves. To access the
+  chemicals in a given list, use \code{\link{get_chemicals_in_list}}.
 }
 \description{
 Get chemical list by name batch

@@ -7,6 +7,7 @@
 get_chemical_details_batch(
   DTXSID = NULL,
   DTXCID = NULL,
+  Projection = "",
   API_key = NULL,
   rate_limit = 0L
 )
@@ -15,6 +16,11 @@ get_chemical_details_batch(
 \item{DTXSID}{The chemical identifier DTXSID}
 
 \item{DTXCID}{The chemical identifier DTXCID}
+
+\item{Projection}{The format and chemical detail data returned. Allowed
+values are 'chemicaldetailall', 'chemicaldetailstandard',
+chemicalidentifier', 'chemicalstructure'. If left empty or there is a
+mismatch, the default format will be 'chemicaldetailall'.}
 
 \item{API_key}{The user-specific API key}
 
