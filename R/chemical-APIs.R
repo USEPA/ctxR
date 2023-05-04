@@ -650,7 +650,8 @@ get_chemical_lists_by_type <- function(type = NULL,
 
 
   projection_entries <- c('chemicallistall',
-                          'chemicallistname')
+                          'chemicallistname',
+                          '')
   index <- -1
   if (!is.character(Projection)){
     Projection <- ''
@@ -658,12 +659,13 @@ get_chemical_lists_by_type <- function(type = NULL,
     Projection <- tolower(Projection)
     index <- which(projection_entries %in% Projection)
     if (length(index) == 0){
+      warning('Setting `Projection` to empty string!')
       Projection <- ''
       index <- -1
     }
   }
 
-  projection_url <- ifelse(index < 1, '', paste0('?projection=', projection_entries[index]))
+  projection_url <- ifelse(index %in% c(-1,3), '', paste0('?projection=', projection_entries[index]))
 
   response <- httr::GET(url = paste0('https://api-ccte-stg.epa.gov/chemical/list/search/by-type/', type, projection_url),
                         httr::add_headers(.headers = c(
@@ -707,7 +709,8 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
     stop('Please input an API_key!')
 
   projection_entries <- c('chemicallistall',
-                          'chemicallistname')
+                          'chemicallistname',
+                          '')
   index <- -1
   if (!is.character(Projection)){
     Projection <- ''
@@ -715,12 +718,13 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
     Projection <- tolower(Projection)
     index <- which(projection_entries %in% Projection)
     if (length(index) == 0){
+      warning('Setting `Projection` to empty string!')
       Projection <- ''
       index <- -1
     }
   }
 
-  projection_url <- ifelse(index < 1, '', paste0('?projection=', projection_entries[index]))
+  projection_url <- ifelse(index %in% c(-1, 3), '', paste0('?projection=', projection_entries[index]))
 
 
 
@@ -826,7 +830,8 @@ get_all_public_chemical_lists <- function(Projection = '',
   }
 
   projection_entries <- c('chemicallistall',
-                          'chemicallistname')
+                          'chemicallistname',
+                          '')
   index <- -1
   if (!is.character(Projection)){
     Projection <- ''
@@ -834,12 +839,13 @@ get_all_public_chemical_lists <- function(Projection = '',
     Projection <- tolower(Projection)
     index <- which(projection_entries %in% Projection)
     if (length(index) == 0){
+      warning('Setting `Projection` to empty string!')
       Projection <- ''
       index <- -1
     }
   }
 
-  projection_url <- ifelse(index < 1, '', paste0('?projection=', projection_entries[index]))
+  projection_url <- ifelse(index %in% c(-1, 3), '', paste0('?projection=', projection_entries[index]))
 
 
   response <- httr::GET(url = paste0('https://api-ccte-stg.epa.gov/chemical/list/', projection_url),
