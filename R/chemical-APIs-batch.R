@@ -4,6 +4,10 @@
 #'
 #' @param DTXSID The chemical identifier DTXSID
 #' @param DTXCID The chemical identifier DTXCID
+#' @param Projection The format and chemical detail data returned. Allowed
+#'   values are 'chemicaldetailall', 'chemicaldetailstandard',
+#'   chemicalidentifier', 'chemicalstructure'. If left empty or there is a
+#'   mismatch, the default format will be 'chemicaldetailall'.
 #' @param API_key The user-specific API key
 #' @param rate_limit Number of seconds to wait between each request
 #'
@@ -14,6 +18,7 @@
 
 get_chemical_details_batch <- function(DTXSID = NULL,
                                        DTXCID = NULL,
+                                       Projection = '',
                                        API_key = NULL,
                                        rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
@@ -32,7 +37,9 @@ get_chemical_details_batch <- function(DTXSID = NULL,
       Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
-          get_chemical_details(DTXSID = t, API_key = API_key)
+          get_chemical_details(DTXSID = t,
+                               Projection = Projection,
+                               API_key = API_key)
         },
         error = function(cond){
           message(t)
@@ -54,7 +61,9 @@ get_chemical_details_batch <- function(DTXSID = NULL,
       Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
-          get_chemical_details(DTXCID = t, API_key = API_key)
+          get_chemical_details(DTXCID = t,
+                               Projection = Projection,
+                               API_key = API_key)
         },
         error = function(cond){
           message(t)
@@ -485,17 +494,22 @@ get_msready_by_dtxcid_batch <- function(DXTCID = NULL,
 
 #' Get chemical lists by type batch search
 #'
-#' @param type_list A list of list types. This is a case sensitive parameter and returns
-#'   lists only for values of "federal", "international", "state", and "other".
+#' @param type_list A list of list types. This is a case sensitive parameter and
+#'   returns lists only for values of "federal", "international", "state", and
+#'   "other".
+#' @param Projection Optional parameter controlling return type. It takes values
+#'   'chemicallistall' and 'chemicallistname' with the former as the default
+#'   value.
 #' @param API_key The user-specified API key.
 #' @param rate_limit Number of seconds to wait between each request
 #'
-#' @return A named list of data.frames containing information about lists that meet the search
-#'   criteria.
+#' @return A named list of data.frames containing information about lists that
+#'   meet the search criteria.
 #' @export
 
 
 get_chemical_lists_by_type_batch <- function(type_list = NULL,
+                                             Projection = '',
                                              API_key = NULL,
                                              rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
@@ -513,7 +527,9 @@ get_chemical_lists_by_type_batch <- function(type_list = NULL,
       Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
-          get_chemical_lists_by_type(type = t, API_key = API_key)
+          get_chemical_lists_by_type(type = t,
+                                     Projection = Projection,
+                                     API_key = API_key)
         },
         error = function(cond){
           message(t)
@@ -534,17 +550,21 @@ get_chemical_lists_by_type_batch <- function(type_list = NULL,
 #' Get chemical list by name batch
 #'
 #' @param name_list A list of chemical list names.
+#' @param Projection Optional parameter controlling return type. It takes values
+#'   'chemicallistall' and 'chemicallistname' with the former as the default
+#'   value.
 #' @param API_key The user-specific API key.
 #' @param rate_limit Number of seconds to wait between each request
 #'
-#' @return A named list of data.frames containing information about the chemical lists. Note,
-#'   these are not the chemical lists themselves. To access the chemicals in a given list,
-#'   use \code{\link{get_chemicals_in_list}}.
+#' @return A named list of data.frames containing information about the chemical
+#'   lists. Note, these are not the chemical lists themselves. To access the
+#'   chemicals in a given list, use \code{\link{get_chemicals_in_list}}.
 #' @seealso \code{\link{get_chemicals_in_list}}
 #' @export
 #'
 #'
 get_public_chemical_list_by_name_batch <- function(name_list = NULL,
+                                                   Projection = '',
                                                    API_key = NULL,
                                                    rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
@@ -563,6 +583,7 @@ get_public_chemical_list_by_name_batch <- function(name_list = NULL,
       attempt <- tryCatch(
         {
           get_public_chemical_list_by_name(list_name = t,
+                                           Projection = Projection,
                                            API_key = API_key)
         },
         error = function(cond){
