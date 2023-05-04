@@ -27,16 +27,15 @@ get_chemical_details <- function(DTXSID = NULL,
   projection_entries <- c('chemicaldetailall',
                           'chemicaldetailstandard',
                           'chemicalidentifier',
-                          'chemicalstructure')
+                          'chemicalstructure',
+                          '')
   index <- -1
   if (!is.character(Projection)){
     warning('Setting `Projection` to empty string')
     Projection <- ''
   } else {
     Projection <- tolower(Projection)
-    print(Projection)
     index <- which(projection_entries %in% Projection)
-    print(index)
     if (length(index) == 0){
       warning('Setting `Projection` to empty string')
       Projection <- ''
@@ -44,7 +43,7 @@ get_chemical_details <- function(DTXSID = NULL,
     }
   }
 
-  projection_url <- ifelse(index == -1, '', paste0('?projection=', Projection))
+  projection_url <- ifelse(index %in% c(-1, 5), '', paste0('?projection=', Projection))
 
   if (!is.null(DTXSID)){
     response <- httr::GET(url = paste0('https://api-ccte-stg.epa.gov/chemical/detail/search/by-dtxsid/', DTXSID, projection_url),
