@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 if (!library(ccdR, logical.return = TRUE)){
   devtools::load_all()
 }
-on_cran <- !identical(Sys.getenv('NOT_CRAN'), TRUE)
+on_cran <- !identical(Sys.getenv('NOT_CRAN'), 'true')
 ```
 
 # ccdR quickstart guide
@@ -164,7 +164,7 @@ Before moving to the next set of functions, a demonstration of using more than o
 
 Here we combine the data.tables from the `get_chemical_details()` calls for a list of ten DTXSIDs.
 
-```{r}
+```{r, chemical-details-batch, eval = on_cran}
 methane_df_list <- get_chemical_details_batch(DTXSID = methane_mass[1:10],
                                               API_key = my_key)
 methane_df <- data.table::rbindlist(methane_df_list)
@@ -172,7 +172,7 @@ methane_df
 ```
 If instead we just want the information from a single column, we can specify that as follows.
 
-```{r}
+```{r, mol-formula-batch, eval = on_cran}
 methane_formula_list <- sapply(methane_df_list, function(t) {
   t$molFormula
 })
