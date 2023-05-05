@@ -7,7 +7,7 @@
 get_chemical_details(
   DTXSID = NULL,
   DTXCID = NULL,
-  Projection = "",
+  Projection = "chemicaldetailstandard",
   API_key = NULL
 )
 }
