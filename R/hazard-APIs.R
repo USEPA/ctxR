@@ -111,7 +111,7 @@ get_skin_eye_hazard <- function(DTXSID = NULL,
   else if (is.null(API_key))
     stop('Please input an API_key')
 
-  response <- httr::GET(url = paste0('https://api-ccte-stg.epa.gov/hazard/skin-eye/search/by-dtxsid/', DTXSID),
+  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/hazard/skin-eye/search/by-dtxsid/', DTXSID),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -143,7 +143,7 @@ get_cancer_hazard <- function(DTXSID = NULL,
   else if (is.null(API_key))
     stop('Please input an API_key')
 
-  response <- httr::GET(url = paste0('https://api-ccte-stg.epa.gov/hazard/cancer-summary/search/by-dtxsid/', DTXSID),
+  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/hazard/cancer-summary/search/by-dtxsid/', DTXSID),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -175,7 +175,7 @@ get_genetox_summary <- function(DTXSID = NULL,
   else if (is.null(API_key))
     stop('Please input an API_key')
 
-  response <- httr::GET(url = paste0('https://api-ccte-stg.epa.gov/hazard/genetox/summary/search/by-dtxsid/', DTXSID),
+  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/hazard/genetox/summary/search/by-dtxsid/', DTXSID),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -207,7 +207,7 @@ get_genetox_details <- function(DTXSID = NULL,
   else if (is.null(API_key))
     stop('Please input an API_key')
 
-  response <- httr::GET(url = paste0('https://api-ccte-stg.epa.gov/hazard/genetox/details/search/by-dtxsid/', DTXSID),
+  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/hazard/genetox/details/search/by-dtxsid/', DTXSID),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)

@@ -46,7 +46,7 @@ get_chemical_details <- function(DTXSID = NULL,
   projection_url <- ifelse(index %in% c(-1, 5), '', paste0('?projection=', Projection))
 
   if (!is.null(DTXSID)){
-    response <- httr::GET(url = paste0('https://api-ccte-stg.epa.gov/chemical/detail/search/by-dtxsid/', DTXSID, projection_url),
+    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/detail/search/by-dtxsid/', DTXSID, projection_url),
                           httr::add_headers(.headers = c(
                             'Content-Type' =  'application/json',
                             'x-api-key' = API_key)
@@ -667,7 +667,7 @@ get_chemical_lists_by_type <- function(type = NULL,
 
   projection_url <- ifelse(index %in% c(-1,3), '', paste0('?projection=', projection_entries[index]))
 
-  response <- httr::GET(url = paste0('https://api-ccte-stg.epa.gov/chemical/list/search/by-type/', type, projection_url),
+  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/list/search/by-type/', type, projection_url),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -728,7 +728,7 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
 
 
 
-  response <- httr::GET(url = paste0('https://api-ccte-stg.epa.gov/chemical/list/search/by-name/', list_name, projection_url),
+  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/list/search/by-name/', list_name, projection_url),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -848,7 +848,7 @@ get_all_public_chemical_lists <- function(Projection = '',
   projection_url <- ifelse(index %in% c(-1, 3), '', paste0('?projection=', projection_entries[index]))
 
 
-  response <- httr::GET(url = paste0('https://api-ccte-stg.epa.gov/chemical/list/', projection_url),
+  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/list/', projection_url),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -1029,7 +1029,7 @@ get_chemical_synonym <- function(DTXSID = NULL,
   else if (is.null(API_key))
     stop('Please input an API_key')
 
-  response <- httr::GET(url = paste0('https://api-ccte-stg.epa.gov/chemical/synonym/search/by-dtxsid/', DTXSID),
+  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/synonym/search/by-dtxsid/', DTXSID),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
