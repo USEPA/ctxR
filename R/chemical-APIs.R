@@ -5,7 +5,7 @@
 #' @param Projection The format and chemical detail data returned. Allowed
 #'   values are 'chemicaldetailall', 'chemicaldetailstandard',
 #'   'chemicalidentifier', 'chemicalstructure'. If left empty or there is a
-#'   mismatch, the default format will be 'chemicaldetailall'.
+#'   mismatch, the default format will be 'chemicaldetailstandard'.
 #' @param API_key The user-specific API key
 #'
 #' @return A data.table containing chemical information for the chemical with

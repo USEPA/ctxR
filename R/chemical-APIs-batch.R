@@ -7,7 +7,7 @@
 #' @param Projection The format and chemical detail data returned. Allowed
 #'   values are 'chemicaldetailall', 'chemicaldetailstandard',
 #'   chemicalidentifier', 'chemicalstructure'. If left empty or there is a
-#'   mismatch, the default format will be 'chemicaldetailall'.
+#'   mismatch, the default format will be 'chemicaldetailstandard'.
 #' @param API_key The user-specific API key
 #' @param rate_limit Number of seconds to wait between each request
 #'
@@ -18,7 +18,7 @@
 
 get_chemical_details_batch <- function(DTXSID = NULL,
                                        DTXCID = NULL,
-                                       Projection = '',
+                                       Projection = 'chemicaldetailstandard',
                                        API_key = NULL,
                                        rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
