@@ -15,7 +15,7 @@
 
 get_chemical_details <- function(DTXSID = NULL,
                                  DTXCID = NULL,
-                                 Projection = '',
+                                 Projection = 'chemicaldetailstandard',
                                  API_key = NULL){
   if (is.null(DTXSID) & is.null(DTXCID))
     stop('Please input a DTXSID or DTXCID!')
@@ -28,22 +28,22 @@ get_chemical_details <- function(DTXSID = NULL,
                           'chemicaldetailstandard',
                           'chemicalidentifier',
                           'chemicalstructure',
-                          '')
-  index <- -1
+                          'ntatoolkit')
+  index <- 2
   if (!is.character(Projection)){
-    warning('Setting `Projection` to empty string')
-    Projection <- ''
+    warning('Setting `Projection` to `chemicaldetailstandard`')
+    Projection <- 'chemicaldetailstandard'
   } else {
     Projection <- tolower(Projection)
     index <- which(projection_entries %in% Projection)
     if (length(index) == 0){
-      warning('Setting `Projection` to empty string')
-      Projection <- ''
-      index <- -1
+      warning('Setting `Projection` to `chemicaldetailstandard`')
+      Projection <- 'chemicaldetailstandard'
+      index <- 2
     }
   }
 
-  projection_url <- ifelse(index %in% c(-1, 5), '', paste0('?projection=', Projection))
+  projection_url <- paste0('?projection=', Projection)
 
   if (!is.null(DTXSID)){
     response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/detail/search/by-dtxsid/', DTXSID, projection_url),
@@ -91,7 +91,7 @@ get_chemical_details <- function(DTXSID = NULL,
 
 
 create_data.table_chemical_details <- function(index = -1){
-  if (index %in% 2:4 ){
+  if (index %in% 2:5 ){
     if (index == 2){
       data <- data.table::data.table(id = character(),
                                      cpdataCount = integer(),
@@ -149,6 +149,24 @@ create_data.table_chemical_details <- function(index = -1){
                                      msReadySmiles = character(),
                                      dtxsid = character(),
                                      dtxcid = character())
+    } else {
+      data <- data.table::data.table(preferredName = character(),
+                                     inchikey = character(),
+                                     msReadySmiles = character(),
+                                     dtxsid = character(),
+                                     dtxcid = character(),
+                                     casrn = character(),
+                                     sourcesCount = integer(),
+                                     totalAssays = integer(),
+                                     smiles = character(),
+                                     activeAssays = integer(),
+                                     cpdataCount = integer(),
+                                     molFormula = character(),
+                                     monoisotopicMass = numeric(),
+                                     percentAssays = numeric(),
+                                     expocatMedianPrediction = character(),
+                                     expocat = character,
+                                     nhanes = character())
     }
     return(data)
   }
