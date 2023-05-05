@@ -10,7 +10,8 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  eval=!identical(Sys.getenv('NOT_CRAN'), 'true')
 )
 ```
 
@@ -19,7 +20,6 @@ knitr::opts_chunk$set(
 if (!library(ccdR, logical.return = TRUE)){
   devtools::load_all()
 }
-on_cran <- !identical(Sys.getenv('NOT_CRAN'), 'true')
 ```
 
 # ccdR quickstart guide
@@ -43,7 +43,7 @@ Sys.setenv('CCTE_API_KEY' = '<YOUR API KEY>')
 
 Next, we store the api key in the variable `my_key`.
 
-```{r, api-key, eval = on_cran}
+```{r, api-key}
 my_key <- Sys.getenv('CCTE_API_key')
 ```
 
@@ -56,7 +56,7 @@ The CCTE APIs are split into three sections, the first of which is [Chemical API
 
 The first function we explore is `get_chemical_details()`, which takes in either the DTXSID or DTXCID of a chemical and the user-specific API key. We obtain the relevant chemical details for Bisphenol A (BPA), which has DTXSID "DTXSID7020182".
 
-```{r, bpa-chem-details, eval = on_cran}
+```{r, bpa-chem-details}
 bpa_details <- get_chemical_details(DTXSID = 'DTXSID7020182',
                                     API_key = my_key)
 head(bpa_details)
@@ -70,7 +70,7 @@ The function `get_chem_info()` is similar. This returns phys-chem properties, wh
 
 First, we grab all results. 
 
-```{r, bpa-chem-info, eval = on_cran}
+```{r, bpa-chem-info}
 bpa_info <- get_chem_info(DTXSID = "DTXSID7020182",
                           API_key = my_key)
 
@@ -79,7 +79,7 @@ head(bpa_info)
 
 Next, we filter by experimental results.
 
-```{r, bpa-experimental, eval = on_cran}
+```{r, bpa-experimental}
 bpa_info_experimental <- get_chem_info(DTXSID = "DTXSID7020182",
                                        type = 'experimental',
                                        API_key = my_key)
@@ -89,7 +89,7 @@ head(bpa_info_experimental)
 
 Finally, we filter by predicted results.
 
-```{r, bpa-predicted, eval = on_cran}
+```{r, bpa-predicted}
 bpa_info_predicted <- get_chem_info(DTXSID = "DTXSID7020182",
                                     type = 'predicted',
                                     API_key = my_key)
@@ -114,7 +114,7 @@ The next set of functions operate by searching for chemicals that match an input
 
 We demonstrate this on the function `chemical_equal()`, though the behavior of the functions `chemical_contains()` and `chemical_starts_with()` are analogous.
 
-```{r, bpa-equal, eval = on_cran}
+```{r, bpa-equal}
 bpa_equals <- chemical_equal(word = 'Bisphenol a',
                              API_key = my_key)
 head(bpa_equals)
@@ -123,7 +123,7 @@ Next we demonstrate the family of ms ready functions. These return lists of DTXS
 
 First, we use the formula for methane and display the first ten responses.
 
-```{r, msready-formula, eval = on_cran}
+```{r, msready-formula}
 methane_formula <- get_msready_by_formula(formula = 'CH4', 
                                           API_key = my_key)
 length(methane_formula)
@@ -132,7 +132,7 @@ methane_formula[1:10]
 
 Next, we search by mass and again display the first ten responses.
 
-```{r, msready-mass, eval = on_cran}
+```{r, msready-mass}
 methane_mass <- get_msready_by_mass(start = 16.0313,
                                     end = 16.0314,
                                     API_key = my_key)
@@ -142,7 +142,7 @@ methane_mass[1:10]
 
 We follow up with searching by DTXCID and display the first 10 responses.
 
-```{r, msready-dtxcid, eval = on_cran}
+```{r, msready-dtxcid}
 methane_dtxcid <- get_msready_by_dtxcid(DTXCID = 'DTXCID705545',
                                         API_key = my_key)
 length(methane_dtxcid)
@@ -151,7 +151,7 @@ methane_dtxcid[1:10]
 
 Now, we show that the returned lists of DTXSIDs are in fact identical from all three calls to the API.
 
-```{r, eval = on_cran}
+```{r, methane-check}
 print(identical(methane_dtxcid, methane_formula))
 print(identical(methane_dtxcid, methane_mass))
 ```
@@ -164,7 +164,7 @@ Before moving to the next set of functions, a demonstration of using more than o
 
 Here we combine the data.tables from the `get_chemical_details()` calls for a list of ten DTXSIDs.
 
-```{r, chemical-details-batch, eval = on_cran}
+```{r, methane-chemical-details-batch}
 methane_df_list <- get_chemical_details_batch(DTXSID = methane_mass[1:10],
                                               API_key = my_key)
 methane_df <- data.table::rbindlist(methane_df_list)
@@ -172,7 +172,7 @@ methane_df
 ```
 If instead we just want the information from a single column, we can specify that as follows.
 
-```{r, mol-formula-batch, eval = on_cran}
+```{r, mol-formula-batch}
 methane_formula_list <- sapply(methane_df_list, function(t) {
   t$molFormula
 })
@@ -182,14 +182,14 @@ methane_formula_list
 
 The next set of functions allow the user to access publicly available lists of chemicals. We first display the list of chemical lists and the search by the type of chemical lists available.
 
-```{r, all-public-lists, eval = on_cran}
+```{r, all-public-lists}
 public_lists <- get_all_public_chemical_lists(API_key = my_key)
 head(public_lists)
 ```
 
 Next, we display a filtered set of lists focusing on federal lists.
 
-```{r, federal-public-lists, eval = on_cran}
+```{r, federal-public-lists}
 federal_public_lists <- get_chemical_lists_by_type(type = 'federal',
                                                    API_key = my_key)
 head(federal_public_lists)
@@ -197,7 +197,7 @@ head(federal_public_lists)
 
 We can then access information about a specific list, for instance 'BIOSOLIDS2021'.
 
-```{r, biosolids2021, eval = on_cran}
+```{r, biosolids2021}
 biosolids_2021_info <- get_public_chemical_list_by_name(list_name = 'BIOSOLIDS2021',
                                                         API_key = my_key)
 biosolids_2021_info
@@ -205,7 +205,7 @@ biosolids_2021_info
 
 And we can access the chemicals contained in the list as follows.
 
-```{r, biosolids2021-chemicals, eval = on_cran}
+```{r, biosolids2021-chemicals}
 biosolids_2021_chemicals <- get_chemicals_in_list(list_name = 'BIOSOLIDS2021',
                                                   API_key = my_key)
 head(biosolids_2021_chemicals)
@@ -213,7 +213,7 @@ head(biosolids_2021_chemicals)
 
 Finally, is one is interested in finding all lists that contain a particular chemical, one may do so by using the DTXSID of the chemical in question.
 
-```{r, bpa-lists, eval = on_cran}
+```{r, bpa-lists}
 bpa_lists <- get_lists_containing_chemical(DTXSID = 'DTXSID7020182',
                                            API_key = my_key)
 bpa_lists
@@ -226,7 +226,7 @@ We demonstrate this below.
 
 We first grab the marvin file (.mrv) for BPA.
 
-```{r, bpa-mrv, eval = on_cran}
+```{r, bpa-mrv}
 bpa_mrv <- get_chemical_mrv(DTXSID = 'DTXSID7020182',
                             API_key = my_key)
 if (requireNamespace("XML", quietly = TRUE)){
@@ -236,7 +236,7 @@ if (requireNamespace("XML", quietly = TRUE)){
 
 Next, we grab the mol file (.mol) for BPA.
 
-```{r, bpa-mol, eval = on_cran}
+```{r, bpa-mol}
 bpa_mol <- get_chemical_mol(DTXSID = 'DTXSID7020182',
                             API_key = my_key)
 cat(bpa_mol)
@@ -244,7 +244,7 @@ cat(bpa_mol)
 
 Finally, we grab an image file for BPA. Note that the image can be a .png or .svg format, and will default to png if none is specified.
 
-```{r, bpa-image, eval = on_cran}
+```{r, bpa-image}
 bpa_image_matrix <- get_chemical_image(DTXSID = 'DTXSID7020182',
                                        API_key = my_key)
 if (requireNamespace("countcolors", quietly = TRUE)){
@@ -254,7 +254,7 @@ if (requireNamespace("countcolors", quietly = TRUE)){
 
 If one wants to gather the synonyms of a given chemical, this is also avilable through the chemical APIs as demonstrated below.
 
-```{r, synonym, eval = on_cran}
+```{r, synonym}
 bpa_synonym <- get_chemical_synonym(DTXSID = 'DTXSID7020182',
                                     API_key = my_key)
 head(bpa_synonym)
@@ -269,7 +269,7 @@ Next, we explore the hazard APIs. TWe first demonstrate how to access human or e
 
 We first grab all such hazard data.
 
-```{r, hazard, eval = on_cran}
+```{r, hazard}
 bpa_hazard <- get_hazard_by_dtxsid(DTXSID = 'DTXSID7020182',
                                    API_key = my_key)
 head(bpa_hazard)
@@ -277,7 +277,7 @@ head(bpa_hazard)
 
 Then we focus on human hazard data.
 
-```{r, human-hazard, eval = on_cran}
+```{r, human-hazard}
 bpa_human_hazard <- get_human_hazard_by_dtxsid(DTXSID = 'DTXSID7020182',
                                                API_key = my_key)
 head(bpa_human_hazard)
@@ -285,7 +285,7 @@ head(bpa_human_hazard)
 
 And finally we focus on ecotox hazard data.
 
-```{r, ecotox-hazard, eval = on_cran}
+```{r, ecotox-hazard}
 bpa_eco_hazard <- get_ecotox_hazard_by_dtxsid(DTXSID = 'DTXSID7020182',
                                               API_key = my_key)
 head(bpa_eco_hazard)
@@ -294,7 +294,7 @@ head(bpa_eco_hazard)
 
 Next, we demonstrate the skin and eye resource endpoint.
 
-```{r, skin-eye, eval = on_cran}
+```{r, skin-eye}
 bpa_skin_and_eye <- get_skin_eye_hazard(DTXSID = 'DTXSID7020182',
                                         API_key = my_key)
 bpa_skin_and_eye
@@ -304,7 +304,7 @@ bpa_skin_and_eye
 
 We then demonstrate the cancer summary endpoint.
 
-```{r, cancer, eval = on_cran}
+```{r, cancer}
 bpa_cancer <- get_cancer_hazard(DTXSID = 'DTXSID7020182',
                                 API_key = my_key)
 bpa_cancer
@@ -314,7 +314,7 @@ bpa_cancer
 
 Finally we explore the genetox resource. This allos us to grab either summary or detail level genetox data. We first demonstrate the summary endpoint.
 
-```{r, genetox-summary, eval = on_cran}
+```{r, genetox-summary}
 bpa_genetox_summary <- get_genetox_summary(DTXSID = 'DTXSID7020182',
                                            API_key = my_key)
 bpa_genetox_summary
@@ -322,7 +322,7 @@ bpa_genetox_summary
 
 Next we demonstrate the details endpoint.
 
-```{r, genetox-details, eval = on_cran}
+```{r, genetox-details}
 bpa_genetox_details <- get_genetox_details(DTXSID = 'DTXSID7020182',
                                            API_key = my_key)
 bpa_genetox_details
@@ -338,7 +338,7 @@ The last set of APIs allow the user to access bioactivity information for a give
 
 We first demonstrate obtaining bioactivity data based on an input DTXSID.
 
-```{r, bioactivity-dtxsid, eval = on_cran}
+```{r, bioactivity-dtxsid}
 bpa_bioactivity <- get_bioactivity_details(DTXSID = 'DTXSID7020182',
                                            API_key = my_key)
 head(bpa_bioactivity)
@@ -346,7 +346,7 @@ head(bpa_bioactivity)
 
 If instead we want to search by assay id, we can do so using the same function.
 
-```{r, bioactivity-aeid, eval = on_cran}
+```{r, bioactivity-aeid}
 assay_id_search <- get_bioactivity_details(AEID = 42,
                                            API_key = my_key)
 head(assay_id_search)
