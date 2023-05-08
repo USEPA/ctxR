@@ -41,12 +41,13 @@ test_that('Catch both DTXSID and DTXCID', {
 
 })
 
-test_that('Numeric range input errors', {
+test_that('Numeric range input errors and warnings', {
   expect_error(get_chemical_by_property_range(API_key = 'test_key'), 'Please input a numeric value for both start and end!')
   expect_error(get_chemical_by_property_range(start = 4, API_key = 'test_key'), 'Please input a numeric value for both start and end!')
   expect_error(get_chemical_by_property_range(end = 4, API_key = 'test_key'), 'Please input a numeric value for both start and end!')
   expect_error(get_chemical_by_property_range(start = 4, end = 'k', API_key = 'test_key'), 'Please input a numeric value for both start and end!')
   expect_error(get_chemical_by_property_range(start = TRUE, end = 4, API_key = 'test_key'), 'Please input a numeric value for both start and end!')
+  expect_error(get_chemical_by_property_range(start = 3, end = 4, API_key = Sys.getenv('CCTE_API_KEY')), 'Please input a value for property!')
   expect_error(get_msready_by_mass(API_key = 'test_key'), 'Please input a numeric value for both start and end!')
   expect_error(get_msready_by_mass(start = 4, API_key = 'test_key'), 'Please input a numeric value for both start and end!')
   expect_error(get_msready_by_mass(end = 4, API_key = 'test_key'), 'Please input a numeric value for both start and end!')
@@ -54,6 +55,46 @@ test_that('Numeric range input errors', {
   expect_error(get_msready_by_mass(start = TRUE, end = 4, API_key = 'test_key'), 'Please input a numeric value for both start and end!')
   expect_error(get_msready_by_mass(start = -1, end = 4, API_key = 'test_key'), 'Both start and end must be non-negative!')
   expect_error(get_msready_by_mass(start = 4, end = -1, API_key = 'test_key'), 'Both start and end must be non-negative!')
+  #expect_warning(get_chemical_by_property_range(start = 4, end = 3, property = 'density', API_key = Sys.getenv('CCTE_API_KEY')), 'Swapping values for start and end!')
+
+})
+
+test_that('projection/type errors/warnings', {
+  expect_warning(get_chemical_details(DTXSID = 'DTXSID7020182', Projection = 't', API_key = 'test_key'), 'Setting `Projection` to `chemicaldetailstandard`')
+  expect_warning(get_chemical_details(DTXSID = 'DTXSID7020182', Projection =  2, API_key = 'test_key'), 'Setting `Projection` to `chemicaldetailstandard`')
+  expect_warning(get_chem_info(DTXSID = 'DTXSID', type = c('', 'predicted'), API_key = 'test_key'), 'Setting type to ""!')
+  expect_error(get_chem_info(DTXSID = 'DTXSID', type = 'l', API_key = 'test_key'), 'Please input a correct choice for type!')
+
+
+
+
+
+
+
+
+
+
+})
+
+test_that('Word search errors', {
+  expect_error(chemical_starts_with(), 'Please input a character value for word!')
+  expect_error(chemical_starts_with(word = 1), 'Please input a character value for word!')
+
+
+
+
+
+})
+
+test_that('Return data type', {
+  expect_type(get_chemical_details(DTXSID = 'DTXSID7020182', API_key = Sys.getenv('CCTE_API_KEY')), 'list')
+  expect_type(get_chemical_details(DTXSID = '', API_key = Sys.getenv('CCTE_API_KEY')), 'NULL')
+  expect_type(get_chem_info(DTXSID = 'DTXSID7020182', API_key = Sys.getenv('CCTE_API_KEY')), 'list')
+  expect_type(get_chem_info(DTXSID = '', API_key = Sys.getenv('CCTE_API_KEY')), 'NULL')
+  expect_type(get_fate_by_dtxsid(DTXSID = 'DTXSID7020182', API_key = Sys.getenv('CCTE_API_KEY')), 'list')
+  expect_type(get_fate_by_dtxsid(DTXSID = '', API_key = Sys.getenv('CCTE_API_KEY')), 'NULL')
+  expect_type(chemical_starts_with(word = 'DTXSID7020182', API_key = Sys.getenv('CCTE_API_KEY')), 'list')
+  expect_type(chemical_starts_with(word = '', API_key = Sys.getenv('CCTE_API_KEY')), 'NULL')
 
 
 
