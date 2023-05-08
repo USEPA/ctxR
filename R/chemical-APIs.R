@@ -774,7 +774,7 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
 get_lists_containing_chemical <- function(DTXSID = NULL,
                                           API_key = NULL){
   if (is.null(DTXSID))
-    stop('Please input list_name!')
+    stop('Please input a non-null value for DTXSID!')
   else if (is.null(API_key))
     stop('Please input an API_key!')
 
