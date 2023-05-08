@@ -20,3 +20,41 @@ test_that("catch missing API", {
   expect_error(get_chemical_image(DTXSID = 'DTXSID7020182'), 'Please input an API_key')
   expect_error(get_chemical_synonym(DTXSID = 'DTXSID7020182'), 'Please input an API_key')
 })
+
+test_that("catch missing DTXSID/DTXCID", {
+  expect_error(get_chemical_details(), 'Please input a DTXSID or DTXCID!')
+  expect_error(get_chem_info(), 'Please input a DTXSID!')
+  expect_error(get_fate_by_dtxsid(), 'Please input a DTXSID!')
+  expect_error(get_msready_by_dtxcid(), 'Please input a non-null value for DTXCID!')
+  expect_error(get_lists_containing_chemical(), 'Please input a non-null value for DTXSID!')
+  expect_error(get_chemical_mrv(), 'Please input a DTXSID or DTXCID!')
+  expect_error(get_chemical_mol(), 'Please input a DTXSID or DTXCID!')
+  expect_error(get_chemical_image(), 'Please input a DTXSID or DTXCID!')
+  expect_error(get_chemical_synonym(), 'Please input a DTXSID!')
+})
+
+test_that('Catch both DTXSID and DTXCID', {
+  expect_error(get_chemical_details(DTXSID = 'DTXSID7020182', DTXCID = 'DTXCID30182'), 'Please input either a DTXSID or DTXCID, but not both!')
+  expect_error(get_chemical_mrv(DTXSID = 'DTXSID7020182', DTXCID = 'DTXCID30182'), 'Please input either a DTXSID or DTXCID, but not both!')
+  expect_error(get_chemical_mol(DTXSID = 'DTXSID7020182', DTXCID = 'DTXCID30182'), 'Please input either a DTXSID or DTXCID, but not both!')
+  expect_error(get_chemical_image(DTXSID = 'DTXSID7020182', DTXCID = 'DTXCID30182'), 'Please input either a DTXSID or DTXCID, but not both!')
+
+})
+
+test_that('Numeric range input errors', {
+  expect_error(get_chemical_by_property_range(API_key = 'test_key'), 'Please input a numeric value for both start and end!')
+  expect_error(get_chemical_by_property_range(start = 4, API_key = 'test_key'), 'Please input a numeric value for both start and end!')
+  expect_error(get_chemical_by_property_range(end = 4, API_key = 'test_key'), 'Please input a numeric value for both start and end!')
+  expect_error(get_chemical_by_property_range(start = 4, end = 'k', API_key = 'test_key'), 'Please input a numeric value for both start and end!')
+  expect_error(get_chemical_by_property_range(start = TRUE, end = 4, API_key = 'test_key'), 'Please input a numeric value for both start and end!')
+  expect_error(get_msready_by_mass(API_key = 'test_key'), 'Please input a numeric value for both start and end!')
+  expect_error(get_msready_by_mass(start = 4, API_key = 'test_key'), 'Please input a numeric value for both start and end!')
+  expect_error(get_msready_by_mass(end = 4, API_key = 'test_key'), 'Please input a numeric value for both start and end!')
+  expect_error(get_msready_by_mass(start = 4, end = 'k', API_key = 'test_key'), 'Please input a numeric value for both start and end!')
+  expect_error(get_msready_by_mass(start = TRUE, end = 4, API_key = 'test_key'), 'Please input a numeric value for both start and end!')
+  expect_error(get_msready_by_mass(start = -1, end = 4, API_key = 'test_key'), 'Both start and end must be non-negative!')
+  expect_error(get_msready_by_mass(start = 4, end = -1, API_key = 'test_key'), 'Both start and end must be non-negative!')
+
+
+
+})
