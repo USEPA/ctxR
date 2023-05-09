@@ -959,7 +959,7 @@ get_chemical_mol <- function(DTXSID = NULL,
                           )
     )
   } else {
-    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/file/mol/search/by-dtxcid', DTXCID),
+    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/file/mol/search/by-dtxcid/', DTXCID),
                           httr::add_headers(.headers = c(
                             'Content-Type' =  'application/json',
                             'x-api-key' = API_key)
@@ -1049,6 +1049,7 @@ get_chemical_synonym <- function(DTXSID = NULL,
     stop('Please input a DTXSID!')
   else if (is.null(API_key))
     stop('Please input an API_key')
+
 
   response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/synonym/search/by-dtxsid/', DTXSID),
                         httr::add_headers(.headers = c(
