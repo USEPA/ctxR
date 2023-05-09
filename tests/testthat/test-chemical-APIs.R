@@ -64,8 +64,17 @@ test_that('projection/type errors/warnings', {
   expect_warning(get_chemical_details(DTXSID = 'DTXSID7020182', Projection =  2, API_key = 'test_key'), 'Setting `Projection` to `chemicaldetailstandard`')
   expect_warning(get_chem_info(DTXSID = 'DTXSID', type = c('', 'predicted'), API_key = 'test_key'), 'Setting type to ""!')
   expect_error(get_chem_info(DTXSID = 'DTXSID', type = 'l', API_key = 'test_key'), 'Please input a correct choice for type!')
-
-
+  expect_error(get_chemical_lists_by_type(), 'Please input a value for parameter type')
+  expect_error(get_chemical_lists_by_type(type = 1), 'Please input a value for parameter type')
+  expect_warning(get_chemical_lists_by_type(type = 'federal', Projection = 1, API_key = Sys.getenv('CCTE_API_KEY')), 'Setting `Projection` to empty string!')
+  expect_warning(get_chemical_lists_by_type(type = 'federal', Projection = '1', API_key = Sys.getenv('CCTE_API_KEY')), 'Setting `Projection` to empty string!')
+  expect_warning(get_chemical_lists_by_type(type = 'federal', Projection = c('', 'chemicallistall'), API_key = Sys.getenv('CCTE_API_KEY')), 'Setting `Projection` to empty string!')
+  expect_warning(get_public_chemical_list_by_name(list_name = 'federal', Projection = 1, API_key = Sys.getenv('CCTE_API_KEY')), 'Setting `Projection` to empty string!')
+  expect_warning(get_public_chemical_list_by_name(list_name = 'federal', Projection = '1', API_key = Sys.getenv('CCTE_API_KEY')), 'Setting `Projection` to empty string!')
+  expect_warning(get_public_chemical_list_by_name(list_name = 'federal', Projection = c('', 'chemicallistall'), API_key = Sys.getenv('CCTE_API_KEY')), 'Setting `Projection` to empty string!')
+  expect_warning(get_all_public_chemical_lists(Projection = 1, API_key = Sys.getenv('CCTE_API_KEY')), 'Setting `Projection` to empty string!')
+  expect_warning(get_all_public_chemical_lists(Projection = '1', API_key = Sys.getenv('CCTE_API_KEY')), 'Setting `Projection` to empty string!')
+  expect_warning(get_all_public_chemical_lists(Projection = c('', 'chemicallistall'), API_key = Sys.getenv('CCTE_API_KEY')), 'Setting `Projection` to empty string!')
 
 
 
@@ -79,11 +88,14 @@ test_that('projection/type errors/warnings', {
 test_that('Word search errors', {
   expect_error(chemical_starts_with(), 'Please input a character value for word!')
   expect_error(chemical_starts_with(word = 1), 'Please input a character value for word!')
-
-
-
-
-
+  expect_error(chemical_equal(), 'Please input a character value for word!')
+  expect_error(chemical_equal(word = 1), 'Please input a character value for word!')
+  expect_error(chemical_contains(), 'Please input a character value for word!')
+  expect_error(chemical_contains(word = 1), 'Please input a character value for word!')
+  expect_error(get_msready_by_formula(), 'Please input a non-null value for formula!')
+  expect_error(get_msready_by_formula(formula = 1), 'Please input a character string for the formula parameter!')
+  expect_error(get_chemicals_in_list(), 'Please input a character value for list_name!')
+  expect_error(get_chemicals_in_list(list_name = 1), 'Please input a character value for list_name!')
 })
 
 test_that('Return data type', {
