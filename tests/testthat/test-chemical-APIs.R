@@ -75,14 +75,6 @@ test_that('projection/type errors/warnings', {
   expect_warning(get_all_public_chemical_lists(Projection = 1, API_key = Sys.getenv('CCTE_API_KEY')), 'Setting `Projection` to empty string!')
   expect_warning(get_all_public_chemical_lists(Projection = '1', API_key = Sys.getenv('CCTE_API_KEY')), 'Setting `Projection` to empty string!')
   expect_warning(get_all_public_chemical_lists(Projection = c('', 'chemicallistall'), API_key = Sys.getenv('CCTE_API_KEY')), 'Setting `Projection` to empty string!')
-
-
-
-
-
-
-
-
 })
 
 test_that('Word search errors', {
@@ -101,13 +93,30 @@ test_that('Word search errors', {
 test_that('Return data type', {
   expect_type(get_chemical_details(DTXSID = 'DTXSID7020182', API_key = Sys.getenv('CCTE_API_KEY')), 'list')
   expect_type(get_chemical_details(DTXSID = '', API_key = Sys.getenv('CCTE_API_KEY')), 'NULL')
+  #expect_type(get_chemical_by_property_range(start = 99.8, end = 100.2, property = 'boiling point', API_key = Sys.getenv('CCTE_API_KEY')), 'list')
+  #expect_type(get_chemical_by_property_range(start = 99.8, end = 100.2, property = 'nonsense', API_key = Sys.getenv('CCTE_API_KEY')), 'NULL')
   expect_type(get_chem_info(DTXSID = 'DTXSID7020182', API_key = Sys.getenv('CCTE_API_KEY')), 'list')
   expect_type(get_chem_info(DTXSID = '', API_key = Sys.getenv('CCTE_API_KEY')), 'NULL')
   expect_type(get_fate_by_dtxsid(DTXSID = 'DTXSID7020182', API_key = Sys.getenv('CCTE_API_KEY')), 'list')
   expect_type(get_fate_by_dtxsid(DTXSID = '', API_key = Sys.getenv('CCTE_API_KEY')), 'NULL')
   expect_type(chemical_starts_with(word = 'DTXSID7020182', API_key = Sys.getenv('CCTE_API_KEY')), 'list')
   expect_type(chemical_starts_with(word = '', API_key = Sys.getenv('CCTE_API_KEY')), 'NULL')
-
+  expect_type(chemical_equal(word = 'Bisphenol A', API_key = Sys.getenv('CCTE_API_KEY')), 'list')
+  expect_type(chemical_equal(word = 'gvfds', API_key = Sys.getenv('CCTE_API_KEY')), 'NULL')
+  expect_type(chemical_contains(word = 'Bisphenol A', API_key = Sys.getenv('CCTE_API_KEY')), 'list')
+  expect_type(chemical_contains(word = 'gvfdsr7', API_key = Sys.getenv('CCTE_API_KEY')), 'NULL')
+  expect_type(get_msready_by_mass(start = 16.0313, end = 16.0314, API_key = Sys.getenv('CCTE_API_KEY')), 'character')
+  expect_type(get_msready_by_mass(start = 16.0314, end = 16.0314, API_key = Sys.getenv('CCTE_API_KEY')), 'list')
+  expect_type(get_msready_by_formula(formula = 'CH4', API_key = Sys.getenv('CCTE_API_KEY')), 'character')
+  expect_type(get_msready_by_formula(formula = '8x', API_key = Sys.getenv('CCTE_API_KEY')), 'list')
+  expect_type(get_msready_by_dtxcid(DTXCID = 'DTXCID30182', API_key = Sys.getenv('CCTE_API_KEY')), 'character')
+  expect_type(get_msready_by_dtxcid(DTXCID = '', API_key = Sys.getenv('CCTE_API_KEY')), 'NULL')
+  expect_type(get_chemical_lists_by_type(type = 'federal', API_key = Sys.getenv('CCTE_API_KEY')), 'list')
+  expect_type(get_chemical_lists_by_type(type = '', API_key = Sys.getenv('CCTE_API_KEY')), 'NULL')
+  expect_type(get_public_chemical_list_by_name(list_name = 'BIOSOLIDS2021', API_key = Sys.getenv('CCTE_API_KEY')), 'list')
+  expect_type(get_public_chemical_list_by_name(list_name = '', API_key = Sys.getenv('CCTE_API_KEY')), 'NULL')
+  expect_type(get_lists_containing_chemical(DTXSID = 'DTXSID7020182', API_key = Sys.getenv('CCTE_API_KEY')), 'character')
+  expect_type(get_lists_containing_chemical(DTXSID = '', API_key = Sys.getenv('CCTE_API_KEY')), 'NULL')
 
 
 })
