@@ -661,8 +661,8 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
 get_chemical_lists_by_type <- function(type = NULL,
                                        Projection = '',
                                        API_key = NULL){
-  if (is.null(type))
-    stop('Please input list_name!')
+  if (is.null(type) | !is.character(type))
+    stop('Please input a value for parameter type from the list `federal`, `international`, `state`, and `other`!')
   else if (is.null(API_key))
     stop('Please input an API_key!')
 
@@ -672,11 +672,12 @@ get_chemical_lists_by_type <- function(type = NULL,
                           '')
   index <- -1
   if (!is.character(Projection)){
+    warning('Setting `Projection` to empty string!')
     Projection <- ''
   } else {
     Projection <- tolower(Projection)
     index <- which(projection_entries %in% Projection)
-    if (length(index) == 0){
+    if (length(index) != 1){
       warning('Setting `Projection` to empty string!')
       Projection <- ''
       index <- -1
@@ -731,11 +732,12 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
                           '')
   index <- -1
   if (!is.character(Projection)){
+    warning('Setting `Projection` to empty string!')
     Projection <- ''
   } else {
     Projection <- tolower(Projection)
     index <- which(projection_entries %in% Projection)
-    if (length(index) == 0){
+    if (length(index) != 1){
       warning('Setting `Projection` to empty string!')
       Projection <- ''
       index <- -1
@@ -805,8 +807,8 @@ get_lists_containing_chemical <- function(DTXSID = NULL,
 
 get_chemicals_in_list <- function(list_name = NULL,
                                   API_key = NULL){
-  if (is.null(list_name))
-    stop('Please input list_name!')
+  if (is.null(list_name) | !is.character(list_name))
+    stop('Please input a character value for list_name!')
   else if (is.null(API_key))
     stop('Please input an API_key!')
 
@@ -852,11 +854,12 @@ get_all_public_chemical_lists <- function(Projection = '',
                           '')
   index <- -1
   if (!is.character(Projection)){
+    warning('Setting `Projection` to empty string!')
     Projection <- ''
   } else {
     Projection <- tolower(Projection)
     index <- which(projection_entries %in% Projection)
-    if (length(index) == 0){
+    if (length(index) != 1){
       warning('Setting `Projection` to empty string!')
       Projection <- ''
       index <- -1
