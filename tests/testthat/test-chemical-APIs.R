@@ -56,6 +56,7 @@ test_that('Numeric range input errors and warnings', {
   expect_error(get_msready_by_mass(start = TRUE, end = 4, API_key = 'test_key'), 'Please input a numeric value for both start and end!')
   expect_error(get_msready_by_mass(start = -1, end = 4, API_key = 'test_key'), 'Both start and end must be non-negative!')
   expect_error(get_msready_by_mass(start = 4, end = -1, API_key = 'test_key'), 'Both start and end must be non-negative!')
+  expect_warning(get_msready_by_mass(start = 4, end = 1, API_key = 'test_key'), 'Swapping values for start and end!')
   #expect_warning(get_chemical_by_property_range(start = 4, end = 3, property = 'density', API_key = Sys.getenv('CCTE_API_KEY')), 'Swapping values for start and end!')
 
 })
@@ -140,4 +141,17 @@ test_that('Return data type', {
 
 
 
+})
+
+test_that('check helper functions', {
+  expect_equal(prepare_word('test'), 'test')
+  expect_equal(prepare_word('test?'), 'test')
+  expect_equal(prepare_word('test?test'), 'test?test=')
+  expect_equal(prepare_word('test?test?'), 'test?test%3f=')
+  expect_type(create_data.table_chemical_details(), 'list')
+  expect_type(create_data.table_chemical_details(index = 3), 'list')
+  expect_type(create_data.table_chemical_details(index = 4), 'list')
+  expect_type(create_data.table_chemical_details(index = 5), 'list')
+  expect_type(create_data.table_chemical_details(index = 6), 'list')
+  expect_type(create_data.table_chemical_details(index = 'f'), 'list')
 })
