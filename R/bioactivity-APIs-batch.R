@@ -18,6 +18,7 @@ get_bioactivity_details_batch <- function(DTXSID = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
