@@ -165,7 +165,7 @@ create_data.table_chemical_details <- function(index = -1){
                                      monoisotopicMass = numeric(),
                                      percentAssays = numeric(),
                                      expocatMedianPrediction = character(),
-                                     expocat = character,
+                                     expocat = character(),
                                      nhanes = character())
     }
     return(data)
