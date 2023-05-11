@@ -4,7 +4,12 @@
 \alias{get_bioactivity_details}
 \title{Retrieve bioactivity data from DTXSID or AEID}
 \usage{
-get_bioactivity_details(DTXSID = NULL, AEID = NULL, API_key = NULL)
+get_bioactivity_details(
+  DTXSID = NULL,
+  AEID = NULL,
+  API_key = NULL,
+  Server = bioactivity_api_server
+)
 }
 \arguments{
 \item{DTXSID}{The chemical identifier DTXSID}
@@ -12,6 +17,8 @@ get_bioactivity_details(DTXSID = NULL, AEID = NULL, API_key = NULL)
 \item{AEID}{The chemical identifier AEID}
 
 \item{API_key}{The user-specific API key}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
 A data.frame containing bioactivity information for the chemical with
