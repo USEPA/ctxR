@@ -4,12 +4,14 @@
 \alias{get_skin_eye_hazard}
 \title{Get skin and eye hazard}
 \usage{
-get_skin_eye_hazard(DTXSID = NULL, API_key = NULL)
+get_skin_eye_hazard(DTXSID = NULL, API_key = NULL, Server = hazard_api_server)
 }
 \arguments{
 \item{DTXSID}{The chemical identifier DTXSID}
 
 \item{API_key}{The user-specific API key}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
 A data.frame containing skin and eye hazard data.

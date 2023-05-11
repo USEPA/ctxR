@@ -4,12 +4,14 @@
 \alias{get_cancer_hazard}
 \title{Get cancer hazard}
 \usage{
-get_cancer_hazard(DTXSID = NULL, API_key = NULL)
+get_cancer_hazard(DTXSID = NULL, API_key = NULL, Server = hazard_api_server)
 }
 \arguments{
 \item{DTXSID}{The chemical identifier DTXSID}
 
 \item{API_key}{The user-specific API key}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
 A data.frame of cancer hazard data related to the input DTXSID.

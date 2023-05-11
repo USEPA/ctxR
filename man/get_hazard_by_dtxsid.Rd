@@ -4,12 +4,14 @@
 \alias{get_hazard_by_dtxsid}
 \title{Get hazard data by DTXSID}
 \usage{
-get_hazard_by_dtxsid(DTXSID = NULL, API_key = NULL)
+get_hazard_by_dtxsid(DTXSID = NULL, API_key = NULL, Server = hazard_api_server)
 }
 \arguments{
 \item{DTXSID}{The chemical identifier DTXSID}
 
 \item{API_key}{The user-specific API key}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
 A data.frame containing chemical (human and eco) hazard data

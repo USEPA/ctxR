@@ -4,12 +4,14 @@
 \alias{get_genetox_details}
 \title{Get genetox details}
 \usage{
-get_genetox_details(DTXSID = NULL, API_key = NULL)
+get_genetox_details(DTXSID = NULL, API_key = NULL, Server = hazard_api_server)
 }
 \arguments{
 \item{DTXSID}{The chemical identifier DTXSID}
 
 \item{API_key}{The user-specific API key}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
 A data.frame of genetox detail data related to the input DTXSID.
