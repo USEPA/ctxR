@@ -10,5 +10,7 @@ test_that("DTXSID/AEID errors", {
 test_that('Return data type', {
   expect_type(get_bioactivity_details(DTXSID = 'DTXSID7020182', API_key = Sys.getenv('CCTE_API_KEY')), 'list')
   expect_type(get_bioactivity_details(DTXSID = '', API_key = Sys.getenv('CCTE_API_KEY')), 'NULL')
+  #expect_type(get_bioactivity_details(DTXSID = 'DTXSID7020182', API_key = ''), 'NULL')
   expect_type(get_bioactivity_details(AEID = 42, API_key = Sys.getenv('CCTE_API_KEY')), 'list')
+  #expect_type(get_bioactivity_details(AEID = 42, API_key = ''), 'NULL')
 })
