@@ -7,6 +7,7 @@
 #'   'chemicalidentifier', 'chemicalstructure'. If left empty or there is a
 #'   mismatch, the default format will be 'chemicaldetailstandard'.
 #' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
 #'
 #' @return A data.table containing chemical information for the chemical with
 #'   DTXSID matching the input parameter.
@@ -16,7 +17,8 @@
 get_chemical_details <- function(DTXSID = NULL,
                                  DTXCID = NULL,
                                  Projection = 'chemicaldetailstandard',
-                                 API_key = NULL){
+                                 API_key = NULL,
+                                 Server = chemical_api_server){
   if (is.null(DTXSID) & is.null(DTXCID))
     stop('Please input a DTXSID or DTXCID!')
   else if (!is.null(DTXSID) & !is.null(DTXCID))
@@ -46,14 +48,14 @@ get_chemical_details <- function(DTXSID = NULL,
   projection_url <- paste0('?projection=', Projection)
 
   if (!is.null(DTXSID)){
-    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/detail/search/by-dtxsid/', DTXSID, projection_url),
+    response <- httr::GET(url = paste0(Server, '/detail/search/by-dtxsid/', DTXSID, projection_url),
                           httr::add_headers(.headers = c(
                             'Content-Type' =  'application/json',
                             'x-api-key' = API_key)
                           )
     )
   } else {
-    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/detail/search/by-dtxcid/', DTXCID, projection_url),
+    response <- httr::GET(url = paste0(Server, '/detail/search/by-dtxcid/', DTXCID, projection_url),
                           httr::add_headers(.headers = c(
                             'Content-Type' =  'application/json',
                             'x-api-key' = API_key)
@@ -220,6 +222,7 @@ create_data.table_chemical_details <- function(index = -1){
 #' @param end A numeric value, the end of the range
 #' @param property A string, the property in question
 #' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
 #'
 #' @return A data.frame containing chemical information for chemicals matching
 #'   the search criteria.
@@ -229,7 +232,8 @@ create_data.table_chemical_details <- function(index = -1){
 get_chemical_by_property_range <- function(start = NULL,
                                            end = NULL,
                                            property = NULL,
-                                           API_key = NULL){
+                                           API_key = NULL,
+                                           Server = chemical_api_server){
   if (is.null(API_key))
     stop('Please input an API_key')
 
@@ -248,7 +252,7 @@ get_chemical_by_property_range <- function(start = NULL,
     stop('Please input a value for property!')
   }
 
-  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/property/search/by-range/',
+  response <- httr::GET(url = paste0(Server, '/property/search/by-range/',
                                          prepare_word(property),'/', start, '/', end),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
@@ -273,6 +277,8 @@ get_chemical_by_property_range <- function(start = NULL,
 #'   results. If not specified, it will grab all details. The allowable input
 #'   values are "predicted" or "experimental".
 #' @param API_key The user-specific API Key
+#' @param Server The root address for the API endpoint
+#'
 #' @return A data.frame containing chemical information for the chemical with
 #'   DTXSID matching the input parameter.
 #' @export
@@ -280,7 +286,8 @@ get_chemical_by_property_range <- function(start = NULL,
 
 get_chem_info <- function(DTXSID = NULL,
                           type = "",
-                          API_key = NULL){
+                          API_key = NULL,
+                          Server = chemical_api_server){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
   else if (is.null(API_key))
@@ -298,14 +305,14 @@ get_chem_info <- function(DTXSID = NULL,
   }
 
   if (type == '') {
-    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/property/search/by-dtxsid/', DTXSID),
+    response <- httr::GET(url = paste0(Server, '/property/search/by-dtxsid/', DTXSID),
                           httr::add_headers(.headers = c(
                             'Content-Type' =  'application/json',
                             'x-api-key' = API_key)
                           )
     )
   } else {
-    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/property/search/by-dtxsid/', DTXSID,'?type=', type),
+    response <- httr::GET(url = paste0(Server, '/property/search/by-dtxsid/', DTXSID,'?type=', type),
                           httr::add_headers(.headers = c(
                             'Content-Type' =  'application/json',
                             'x-api-key' = API_key)
@@ -335,6 +342,7 @@ get_chem_info <- function(DTXSID = NULL,
 #'
 #' @param DTXSID The chemical identifier DTXSID
 #' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
 #'
 #' @return @return A data.frame containing chemical information for the chemical with
 #'   DTXSID matching the input parameter.
@@ -342,13 +350,14 @@ get_chem_info <- function(DTXSID = NULL,
 
 
 get_fate_by_dtxsid <- function(DTXSID = NULL,
-                               API_key = NULL){
+                               API_key = NULL,
+                               Server = chemical_api_server){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
   else if (is.null(API_key))
     stop('Please input an API_key')
 
-  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/fate/search/by-dtxsid/', DTXSID),
+  response <- httr::GET(url = paste0(Server, '/fate/search/by-dtxsid/', DTXSID),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -370,6 +379,7 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
 #' @param word A character string of a chemical name or portion of a chemical
 #'   name
 #' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
 #'
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
@@ -377,7 +387,8 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
 
 
 chemical_starts_with <- function(word = NULL,
-                           API_key = NULL){
+                           API_key = NULL,
+                           Server = chemical_api_server){
   if (is.null(word) || !is.character(word)){
     stop('Please input a character value for word!')
   } else if (is.null(API_key)){
@@ -386,7 +397,7 @@ chemical_starts_with <- function(word = NULL,
 
   word <- prepare_word(word)
 
-  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/search/start-with/', word),
+  response <- httr::GET(url = paste0(Server, '/search/start-with/', word),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -411,6 +422,7 @@ chemical_starts_with <- function(word = NULL,
 #' @param word A character string of a chemical name or portion of a chemical
 #'   name
 #' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
 #'
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
@@ -418,7 +430,8 @@ chemical_starts_with <- function(word = NULL,
 
 
 chemical_equal <- function(word = NULL,
-                           API_key = NULL){
+                           API_key = NULL,
+                           Server = chemical_api_server){
   if (is.null(word) || !is.character(word)){
     stop('Please input a character value for word!')
   } else if (is.null(API_key)){
@@ -427,7 +440,7 @@ chemical_equal <- function(word = NULL,
 
   word <- prepare_word(word)
 
-  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/search/equal/', word),
+  response <- httr::GET(url = paste0(Server, '/search/equal/', word),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -454,6 +467,7 @@ chemical_equal <- function(word = NULL,
 #' @param word A character string of a chemical name or portion of a chemical
 #'   name
 #' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
 #'
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
@@ -461,7 +475,8 @@ chemical_equal <- function(word = NULL,
 
 
 chemical_contains <- function(word = NULL,
-                              API_key = NULL){
+                              API_key = NULL,
+                              Server = chemical_api_server){
   if (is.null(word) || !is.character(word)){
     stop('Please input a character value for word!')
   } else if (is.null(API_key)){
@@ -470,7 +485,7 @@ chemical_contains <- function(word = NULL,
 
   word <- prepare_word(word)
 
-  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/search/contain/', word),
+  response <- httr::GET(url = paste0(Server, '/search/contain/', word),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -524,6 +539,7 @@ prepare_word <- function(word){
 #' @param start The starting value for mass range
 #' @param end The ending value for mass range
 #' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
 #'
 #' @return A list of DTXSIDs with msready mass falling within the given range.
 #' @export
@@ -531,7 +547,8 @@ prepare_word <- function(word){
 
 get_msready_by_mass <- function(start = NULL,
                                 end = NULL,
-                                API_key = NULL){
+                                API_key = NULL,
+                                Server = chemical_api_server){
   if(is.null(start) || is.null(end) || !is.numeric(start) || !is.numeric(end)){
     stop('Please input a numeric value for both start and end!')
   } else if (is.null(API_key)){
@@ -549,7 +566,7 @@ get_msready_by_mass <- function(start = NULL,
     start <- temp
   }
 
-  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/msready/search/by-mass/', start, '/', end),
+  response <- httr::GET(url = paste0(Server, '/msready/search/by-mass/', start, '/', end),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -571,6 +588,7 @@ get_msready_by_mass <- function(start = NULL,
 #'
 #' @param formula A string denoting the input chemical formula
 #' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
 #'
 #' @return A character list of DTXSIDs with chemical formulas matching the
 #'   search criteria
@@ -578,7 +596,8 @@ get_msready_by_mass <- function(start = NULL,
 
 
 get_msready_by_formula <- function(formula = NULL,
-                                   API_key = NULL){
+                                   API_key = NULL,
+                                   Server = chemical_api_server){
   if(is.null(formula)){
     stop("Please input a non-null value for formula!")
   } else if (!is.character(formula)){
@@ -587,7 +606,7 @@ get_msready_by_formula <- function(formula = NULL,
     stop('Please input an API_key!')
   }
 
-  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/msready/search/by-formula/', formula),
+  response <- httr::GET(url = paste0(Server, '/msready/search/by-formula/', formula),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -609,6 +628,7 @@ get_msready_by_formula <- function(formula = NULL,
 #'
 #' @param DTXCID The chemical identifier DTXCID
 #' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
 #'
 #' @return A character list of DTXSIDs with DTXCIDs matching the
 #'   search criteria
@@ -616,7 +636,8 @@ get_msready_by_formula <- function(formula = NULL,
 
 
 get_msready_by_dtxcid <- function(DTXCID = NULL,
-                                   API_key = NULL){
+                                   API_key = NULL,
+                                  Server = chemical_api_server){
   if(is.null(DTXCID)){
     stop("Please input a non-null value for DTXCID!")
   } else if (!is.character(DTXCID)){
@@ -625,7 +646,7 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
     stop('Please input an API_key!')
   }
 
-  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/msready/search/by-dtxcid/', DTXCID),
+  response <- httr::GET(url = paste0(Server, '/msready/search/by-dtxcid/', DTXCID),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -652,6 +673,7 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
 #'   'chemicallistall' and 'chemicallistname' with the former as the default
 #'   value.
 #' @param API_key The user-specified API key.
+#' @param Server The root address for the API endpoint
 #'
 #' @return A data.frame containing information about lists that meet the search
 #'   criteria.
@@ -660,7 +682,8 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
 
 get_chemical_lists_by_type <- function(type = NULL,
                                        Projection = '',
-                                       API_key = NULL){
+                                       API_key = NULL,
+                                       Server = chemical_api_server){
   if (is.null(type) | !is.character(type))
     stop('Please input a value for parameter type from the list `federal`, `international`, `state`, and `other`!')
   else if (is.null(API_key))
@@ -686,7 +709,7 @@ get_chemical_lists_by_type <- function(type = NULL,
 
   projection_url <- ifelse(index %in% c(-1,3), '', paste0('?projection=', projection_entries[index]))
 
-  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/list/search/by-type/', type, projection_url),
+  response <- httr::GET(url = paste0(Server, '/list/search/by-type/', type, projection_url),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -711,6 +734,7 @@ get_chemical_lists_by_type <- function(type = NULL,
 #'   chemicallistall' and 'chemicallistname' with the former as the default
 #'   value.
 #' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
 #'
 #' @return A data.frame containing information about the chemical list. Note,
 #'   this is not the chemical list itself. To access the chemicals in the list,
@@ -721,7 +745,8 @@ get_chemical_lists_by_type <- function(type = NULL,
 
 get_public_chemical_list_by_name <- function(list_name = NULL,
                                              Projection = '',
-                                             API_key = NULL){
+                                             API_key = NULL,
+                                             Server = chemical_api_server){
   if (is.null(list_name))
     stop('Please input list_name!')
   else if (is.null(API_key))
@@ -748,7 +773,7 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
 
 
 
-  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/list/search/by-name/', list_name, projection_url),
+  response <- httr::GET(url = paste0(Server, '/list/search/by-name/', list_name, projection_url),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -768,19 +793,21 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
 #'
 #' @param DTXSID The chemical identifier DTXSID
 #' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
 #'
 #' @return A list of names of chemical lists that contain the given chemical
 #' @export
 
 
 get_lists_containing_chemical <- function(DTXSID = NULL,
-                                          API_key = NULL){
+                                          API_key = NULL,
+                                          Server = chemical_api_server){
   if (is.null(DTXSID))
     stop('Please input a non-null value for DTXSID!')
   else if (is.null(API_key))
     stop('Please input an API_key!')
 
-  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/list/search/by-dtxsid/', DTXSID),
+  response <- httr::GET(url = paste0(Server, '/list/search/by-dtxsid/', DTXSID),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -800,13 +827,15 @@ get_lists_containing_chemical <- function(DTXSID = NULL,
 #'
 #' @param list_name The name of the list of chemicals
 #' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
 #'
 #' @return A data.frame of the chemical list
 #' @export
 
 
 get_chemicals_in_list <- function(list_name = NULL,
-                                  API_key = NULL){
+                                  API_key = NULL,
+                                  Server = chemical_api_server){
   if (is.null(list_name) | !is.character(list_name))
     stop('Please input a character value for list_name!')
   else if (is.null(API_key))
@@ -814,7 +843,7 @@ get_chemicals_in_list <- function(list_name = NULL,
 
 
 
-  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/list/chemicals/search/by-listname/', list_name),
+  response <- httr::GET(url = paste0(Server, '/list/chemicals/search/by-listname/', list_name),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -837,6 +866,7 @@ get_chemicals_in_list <- function(list_name = NULL,
 #'   chemicallistall' and 'chemicallistname' with the former as the default
 #'   value.
 #' @param API_key The user-specific api key
+#' @param Server The root address for the API endpoint
 #'
 #' @return A data.frame containing information on all public chemical lists
 #'   available from the CCTE chemical api.
@@ -844,7 +874,8 @@ get_chemicals_in_list <- function(list_name = NULL,
 
 
 get_all_public_chemical_lists <- function(Projection = '',
-                                          API_key = NULL){
+                                          API_key = NULL,
+                                          Server = chemical_api_server){
   if (is.null(API_key)){
     stop('Please input an API_key!')
   }
@@ -869,7 +900,7 @@ get_all_public_chemical_lists <- function(Projection = '',
   projection_url <- ifelse(index %in% c(-1, 3), '', paste0('?projection=', projection_entries[index]))
 
 
-  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/list/', projection_url),
+  response <- httr::GET(url = paste0(Server, '/list/', projection_url),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -891,6 +922,7 @@ get_all_public_chemical_lists <- function(Projection = '',
 #' @param DTXSID The chemical identifier DTXSID
 #' @param DTXCID The chemical identifier DTXCID
 #' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
 #'
 #' @return XML file format for representing a mrv file.
 #' @export
@@ -898,7 +930,8 @@ get_all_public_chemical_lists <- function(Projection = '',
 
 get_chemical_mrv <- function(DTXSID = NULL,
                              DTXCID = NULL,
-                             API_key = NULL){
+                             API_key = NULL,
+                             Server = chemical_api_server){
   if (is.null(DTXSID) & is.null(DTXCID))
     stop('Please input a DTXSID or DTXCID!')
   else if (!is.null(DTXSID) & !is.null(DTXCID))
@@ -907,14 +940,14 @@ get_chemical_mrv <- function(DTXSID = NULL,
     stop('Please input an API_key!')
 
   if (!is.null(DTXSID)){
-    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/file/mrv/search/by-dtxsid/', DTXSID),
+    response <- httr::GET(url = paste0(Server, '/file/mrv/search/by-dtxsid/', DTXSID),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
                         )
   )
   } else {
-    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/file/mrv/search/by-dtxcid/', DTXCID),
+    response <- httr::GET(url = paste0(Server, '/file/mrv/search/by-dtxcid/', DTXCID),
                           httr::add_headers(.headers = c(
                             'Content-Type' =  'application/json',
                             'x-api-key' = API_key)
@@ -936,6 +969,7 @@ get_chemical_mrv <- function(DTXSID = NULL,
 #' @param DTXSID Chemical identifier DTXSID
 #' @param DTXCID Chemical identifier DTXCID
 #' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
 #'
 #' @return A character string giving a mol file representation
 #' @export
@@ -943,7 +977,8 @@ get_chemical_mrv <- function(DTXSID = NULL,
 
 get_chemical_mol <- function(DTXSID = NULL,
                              DTXCID = NULL,
-                             API_key = NULL){
+                             API_key = NULL,
+                             Server = chemical_api_server){
   if (is.null(DTXSID) & is.null(DTXCID))
     stop('Please input a DTXSID or DTXCID!')
   else if (!is.null(DTXSID) & !is.null(DTXCID))
@@ -952,14 +987,14 @@ get_chemical_mol <- function(DTXSID = NULL,
     stop('Please input an API_key!')
 
   if (!is.null(DTXSID)){
-    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/file/mol/search/by-dtxsid/', DTXSID),
+    response <- httr::GET(url = paste0(Server, '/file/mol/search/by-dtxsid/', DTXSID),
                           httr::add_headers(.headers = c(
                             'Content-Type' =  'application/json',
                             'x-api-key' = API_key)
                           )
     )
   } else {
-    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/file/mol/search/by-dtxcid/', DTXCID),
+    response <- httr::GET(url = paste0(Server, '/file/mol/search/by-dtxcid/', DTXCID),
                           httr::add_headers(.headers = c(
                             'Content-Type' =  'application/json',
                             'x-api-key' = API_key)
@@ -984,6 +1019,7 @@ get_chemical_mol <- function(DTXSID = NULL,
 #' @param format The image type, either "png" or "svg". If left blank, will
 #'   default to "png".
 #' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
 #'
 #' @return A Large array of three dimensions representing an image. For
 #'   displaying this, one may use \code{png::writePNG()} or
@@ -994,7 +1030,8 @@ get_chemical_mol <- function(DTXSID = NULL,
 get_chemical_image <- function(DTXSID = NULL,
                              DTXCID = NULL,
                              format = "",
-                             API_key = NULL){
+                             API_key = NULL,
+                             Server = chemical_api_server){
   if (is.null(DTXSID) & is.null(DTXCID))
     stop('Please input a DTXSID or DTXCID!')
   else if (!is.null(DTXSID) & !is.null(DTXCID))
@@ -1010,14 +1047,14 @@ get_chemical_image <- function(DTXSID = NULL,
   }
 
   if (!is.null(DTXSID)){
-    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/file/image/search/by-dtxsid/', DTXSID, image_type),
+    response <- httr::GET(url = paste0(Server, '/file/image/search/by-dtxsid/', DTXSID, image_type),
                           httr::add_headers(.headers = c(
                             'Content-Type' =  'application/json',
                             'x-api-key' = API_key)
                           )
     )
   } else {
-    response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/file/image/search/by-dtxcid/', DTXCID, image_type),
+    response <- httr::GET(url = paste0(Server, '/file/image/search/by-dtxcid/', DTXCID, image_type),
                           httr::add_headers(.headers = c(
                             'Content-Type' =  'application/json',
                             'x-api-key' = API_key)
@@ -1038,20 +1075,22 @@ get_chemical_image <- function(DTXSID = NULL,
 #'
 #' @param DTXSID The chemical identifier DTXSID
 #' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
 #'
 #' @return A named list of synonym information for the input DTXSID
 #' @export
 
 
 get_chemical_synonym <- function(DTXSID = NULL,
-                                 API_key = NULL){
+                                 API_key = NULL,
+                                 Server = chemical_api_server){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
   else if (is.null(API_key))
     stop('Please input an API_key')
 
 
-  response <- httr::GET(url = paste0('https://api-ccte.epa.gov/chemical/synonym/search/by-dtxsid/', DTXSID),
+  response <- httr::GET(url = paste0(Server, '/synonym/search/by-dtxsid/', DTXSID),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
