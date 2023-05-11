@@ -4,7 +4,11 @@
 \alias{get_all_public_chemical_lists}
 \title{Get all public chemical lists}
 \usage{
-get_all_public_chemical_lists(Projection = "", API_key = NULL)
+get_all_public_chemical_lists(
+  Projection = "",
+  API_key = NULL,
+  Server = chemical_api_server
+)
 }
 \arguments{
 \item{Projection}{Optional parameter controlling return type. It takes values
@@ -12,6 +16,8 @@ chemicallistall' and 'chemicallistname' with the former as the default
 value.}
 
 \item{API_key}{The user-specific api key}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
 A data.frame containing information on all public chemical lists

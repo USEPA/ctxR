@@ -4,7 +4,12 @@
 \alias{get_chemical_mol}
 \title{Get mol file by DTXSID or DTXCID}
 \usage{
-get_chemical_mol(DTXSID = NULL, DTXCID = NULL, API_key = NULL)
+get_chemical_mol(
+  DTXSID = NULL,
+  DTXCID = NULL,
+  API_key = NULL,
+  Server = chemical_api_server
+)
 }
 \arguments{
 \item{DTXSID}{Chemical identifier DTXSID}
@@ -12,6 +17,8 @@ get_chemical_mol(DTXSID = NULL, DTXCID = NULL, API_key = NULL)
 \item{DTXCID}{Chemical identifier DTXCID}
 
 \item{API_key}{The user-specific API key}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
 A character string giving a mol file representation

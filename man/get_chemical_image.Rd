@@ -4,7 +4,13 @@
 \alias{get_chemical_image}
 \title{Get image file by DTXSID or DTXCID}
 \usage{
-get_chemical_image(DTXSID = NULL, DTXCID = NULL, format = "", API_key = NULL)
+get_chemical_image(
+  DTXSID = NULL,
+  DTXCID = NULL,
+  format = "",
+  API_key = NULL,
+  Server = chemical_api_server
+)
 }
 \arguments{
 \item{DTXSID}{Chemical identifier DTXSID}
@@ -15,6 +21,8 @@ get_chemical_image(DTXSID = NULL, DTXCID = NULL, format = "", API_key = NULL)
 default to "png".}
 
 \item{API_key}{The user-specific API key}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
 A Large array of three dimensions representing an image. For

@@ -4,12 +4,14 @@
 \alias{get_fate_by_dtxsid}
 \title{Get fate by DTXSID}
 \usage{
-get_fate_by_dtxsid(DTXSID = NULL, API_key = NULL)
+get_fate_by_dtxsid(DTXSID = NULL, API_key = NULL, Server = chemical_api_server)
 }
 \arguments{
 \item{DTXSID}{The chemical identifier DTXSID}
 
 \item{API_key}{The user-specific API key}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
 @return A data.frame containing chemical information for the chemical with

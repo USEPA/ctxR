@@ -4,13 +4,15 @@
 \alias{chemical_starts_with}
 \title{Chemical starts with}
 \usage{
-chemical_starts_with(word = NULL, API_key = NULL)
+chemical_starts_with(word = NULL, API_key = NULL, Server = chemical_api_server)
 }
 \arguments{
 \item{word}{A character string of a chemical name or portion of a chemical
 name}
 
 \item{API_key}{The user-specific API key}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
 A data.frame of chemicals and related values matching the query

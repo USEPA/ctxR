@@ -4,7 +4,12 @@
 \alias{get_msready_by_mass}
 \title{Get msready by mass}
 \usage{
-get_msready_by_mass(start = NULL, end = NULL, API_key = NULL)
+get_msready_by_mass(
+  start = NULL,
+  end = NULL,
+  API_key = NULL,
+  Server = chemical_api_server
+)
 }
 \arguments{
 \item{start}{The starting value for mass range}
@@ -12,6 +17,8 @@ get_msready_by_mass(start = NULL, end = NULL, API_key = NULL)
 \item{end}{The ending value for mass range}
 
 \item{API_key}{The user-specific API key}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
 A list of DTXSIDs with msready mass falling within the given range.

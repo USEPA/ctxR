@@ -4,12 +4,18 @@
 \alias{get_msready_by_dtxcid}
 \title{Get msready by DTXCID}
 \usage{
-get_msready_by_dtxcid(DTXCID = NULL, API_key = NULL)
+get_msready_by_dtxcid(
+  DTXCID = NULL,
+  API_key = NULL,
+  Server = chemical_api_server
+)
 }
 \arguments{
 \item{DTXCID}{The chemical identifier DTXCID}
 
 \item{API_key}{The user-specific API key}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
 A character list of DTXSIDs with DTXCIDs matching the

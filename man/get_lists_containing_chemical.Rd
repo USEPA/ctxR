@@ -4,12 +4,18 @@
 \alias{get_lists_containing_chemical}
 \title{Get chemical lists containing given chemical}
 \usage{
-get_lists_containing_chemical(DTXSID = NULL, API_key = NULL)
+get_lists_containing_chemical(
+  DTXSID = NULL,
+  API_key = NULL,
+  Server = chemical_api_server
+)
 }
 \arguments{
 \item{DTXSID}{The chemical identifier DTXSID}
 
 \item{API_key}{The user-specific API key}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
 A list of names of chemical lists that contain the given chemical

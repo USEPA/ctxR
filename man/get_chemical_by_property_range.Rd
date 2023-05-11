@@ -8,7 +8,8 @@ get_chemical_by_property_range(
   start = NULL,
   end = NULL,
   property = NULL,
-  API_key = NULL
+  API_key = NULL,
+  Server = chemical_api_server
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ get_chemical_by_property_range(
 \item{property}{A string, the property in question}
 
 \item{API_key}{The user-specific API key}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
 A data.frame containing chemical information for chemicals matching

@@ -4,12 +4,18 @@
 \alias{get_msready_by_formula}
 \title{Get msready by formula}
 \usage{
-get_msready_by_formula(formula = NULL, API_key = NULL)
+get_msready_by_formula(
+  formula = NULL,
+  API_key = NULL,
+  Server = chemical_api_server
+)
 }
 \arguments{
 \item{formula}{A string denoting the input chemical formula}
 
 \item{API_key}{The user-specific API key}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
 A character list of DTXSIDs with chemical formulas matching the

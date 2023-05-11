@@ -7,7 +7,8 @@
 get_public_chemical_list_by_name(
   list_name = NULL,
   Projection = "",
-  API_key = NULL
+  API_key = NULL,
+  Server = chemical_api_server
 )
 }
 \arguments{
@@ -18,6 +19,8 @@ chemicallistall' and 'chemicallistname' with the former as the default
 value.}
 
 \item{API_key}{The user-specific API key}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
 A data.frame containing information about the chemical list. Note,

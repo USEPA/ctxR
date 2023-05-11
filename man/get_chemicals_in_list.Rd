@@ -4,12 +4,18 @@
 \alias{get_chemicals_in_list}
 \title{Get chemicals in a given chemical list}
 \usage{
-get_chemicals_in_list(list_name = NULL, API_key = NULL)
+get_chemicals_in_list(
+  list_name = NULL,
+  API_key = NULL,
+  Server = chemical_api_server
+)
 }
 \arguments{
 \item{list_name}{The name of the list of chemicals}
 
 \item{API_key}{The user-specific API key}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
 A data.frame of the chemical list

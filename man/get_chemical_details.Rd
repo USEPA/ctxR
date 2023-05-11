@@ -8,7 +8,8 @@ get_chemical_details(
   DTXSID = NULL,
   DTXCID = NULL,
   Projection = "chemicaldetailstandard",
-  API_key = NULL
+  API_key = NULL,
+  Server = chemical_api_server
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ values are 'chemicaldetailall', 'chemicaldetailstandard',
 mismatch, the default format will be 'chemicaldetailstandard'.}
 
 \item{API_key}{The user-specific API key}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
 A data.table containing chemical information for the chemical with

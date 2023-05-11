@@ -4,7 +4,12 @@
 \alias{get_chemical_lists_by_type}
 \title{Get chemical lists by type}
 \usage{
-get_chemical_lists_by_type(type = NULL, Projection = "", API_key = NULL)
+get_chemical_lists_by_type(
+  type = NULL,
+  Projection = "",
+  API_key = NULL,
+  Server = chemical_api_server
+)
 }
 \arguments{
 \item{type}{The type of list. This is a case sensitive parameter and returns
@@ -15,6 +20,8 @@ lists only for values of "federal", "international", "state", and "other".}
 value.}
 
 \item{API_key}{The user-specified API key.}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
 A data.frame containing information about lists that meet the search

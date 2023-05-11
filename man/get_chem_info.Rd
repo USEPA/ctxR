@@ -4,7 +4,12 @@
 \alias{get_chem_info}
 \title{Retrieve chemical information}
 \usage{
-get_chem_info(DTXSID = NULL, type = "", API_key = NULL)
+get_chem_info(
+  DTXSID = NULL,
+  type = "",
+  API_key = NULL,
+  Server = chemical_api_server
+)
 }
 \arguments{
 \item{DTXSID}{The chemical identifier DTXSID}
@@ -14,6 +19,8 @@ results. If not specified, it will grab all details. The allowable input
 values are "predicted" or "experimental".}
 
 \item{API_key}{The user-specific API Key}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
 A data.frame containing chemical information for the chemical with

@@ -4,7 +4,12 @@
 \alias{get_chemical_mrv}
 \title{Get mrv file by DTXSID or DTXCID}
 \usage{
-get_chemical_mrv(DTXSID = NULL, DTXCID = NULL, API_key = NULL)
+get_chemical_mrv(
+  DTXSID = NULL,
+  DTXCID = NULL,
+  API_key = NULL,
+  Server = chemical_api_server
+)
 }
 \arguments{
 \item{DTXSID}{The chemical identifier DTXSID}
@@ -12,6 +17,8 @@ get_chemical_mrv(DTXSID = NULL, DTXCID = NULL, API_key = NULL)
 \item{DTXCID}{The chemical identifier DTXCID}
 
 \item{API_key}{The user-specific API key}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
 XML file format for representing a mrv file.
