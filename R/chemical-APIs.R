@@ -393,7 +393,7 @@ chemical_starts_with <- function(word = NULL,
                         )
   )
 
-  if(response$status_code == 200){
+  if(response$status_code %in% c(200, 400)){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
