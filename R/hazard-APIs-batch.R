@@ -16,6 +16,7 @@ get_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
@@ -63,6 +64,7 @@ get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
@@ -110,6 +112,7 @@ get_ecotox_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
@@ -159,6 +162,7 @@ get_skin_eye_hazard_batch <- function(DTXSID = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
@@ -208,6 +212,7 @@ get_cancer_hazard_batch <- function(DTXSID = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
@@ -257,6 +262,7 @@ get_genetox_summary_batch <- function(DTXSID = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
@@ -306,6 +312,7 @@ get_genetox_details_batch <- function(DTXSID = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
