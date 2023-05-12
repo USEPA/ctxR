@@ -32,7 +32,7 @@ get_bioactivity_details_batch <- function(DTXSID = NULL,
       attempt <- tryCatch(
         {
           get_bioactivity_details(DTXSID = d,
-                             API_key = API_key)
+                                  API_key = API_key)
         },
         error = function(cond){
           message(d)
