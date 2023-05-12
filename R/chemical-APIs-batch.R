@@ -51,10 +51,10 @@ get_chemical_details_batch <- function(DTXSID = NULL,
     }
     )
     names(results) <- DTXSID
-    } else if (!is.null(DTXCID)){
-      if (!is.character(DTXCID) & !all(sapply(DTXCID, is.character))){
-        stop('Please input a character list for DTXCID!')
-      }
+  } else if (!is.null(DTXCID)){
+    if (!is.character(DTXCID) & !all(sapply(DTXCID, is.character))){
+      stop('Please input a character list for DTXCID!')
+    }
     DTXCID <- unique(DTXCID)
     print('Using DTXCID!')
     results <- lapply(DTXCID, function(t){
@@ -75,7 +75,7 @@ get_chemical_details_batch <- function(DTXSID = NULL,
     }
     )
     names(results) <- DTXCID
-    } else {
+  } else {
     stop('Please input a list of DTXSIDs or DTXCIDs!')
   }
   return(results)
@@ -410,7 +410,7 @@ get_msready_by_mass_batch <- function(start_list = NULL,
 
 
 get_msready_by_formula_batch <- function(formula_list = NULL,
-                                          API_key = NULL,
+                                         API_key = NULL,
                                          rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
     stop('Please input a character string containing a valid API key!')
@@ -905,8 +905,8 @@ get_chemical_image_batch <- function(DTXSID = NULL,
       attempt <- tryCatch(
         {
           get_chemical_image(DTXCID = d,
-                           format = f,
-                           API_key = API_key)
+                             format = f,
+                             API_key = API_key)
         },
         error = function(cond){
           message(d)
