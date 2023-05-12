@@ -159,7 +159,7 @@ test_that('Return data type', {
   expect_type(get_chemical_synonym(DTXSID = 'DTXSID7020182', API_key = Sys.getenv('CCTE_API_KEY')), 'list')
   expect_type(get_chemical_synonym(DTXSID = '', API_key = Sys.getenv('CCTE_API_KEY')), 'NULL')
   #expect_type(get_chemical_synonym(DTXSID = 'DTXSID7020182', API_key = ''), 'NULL')
-  })
+})
 
 test_that('check helper functions', {
   expect_equal(prepare_word('test'), 'test')
