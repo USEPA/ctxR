@@ -25,6 +25,7 @@ get_chemical_details_batch <- function(DTXSID = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
@@ -105,6 +106,7 @@ get_chem_info_batch <- function(DTXSID = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
@@ -167,6 +169,7 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
@@ -215,6 +218,7 @@ chemical_starts_with_batch <- function(word_list = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(word_list)){
@@ -263,6 +267,7 @@ chemical_equal_batch <- function(word_list = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(word_list)){
@@ -311,6 +316,7 @@ chemical_contains_batch <- function(wordlist = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(word_list)){
@@ -368,6 +374,7 @@ get_msready_by_mass_batch <- function(start_list = NULL,
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
 
@@ -416,6 +423,7 @@ get_msready_by_formula_batch <- function(formula_list = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(formula_list)){
@@ -463,6 +471,7 @@ get_msready_by_dtxcid_batch <- function(DTXCID = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if(!is.null(DTXCID)){
@@ -516,6 +525,7 @@ get_chemical_lists_by_type_batch <- function(type_list = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(type_list)){
@@ -571,6 +581,7 @@ get_public_chemical_list_by_name_batch <- function(name_list = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(name_list)){
@@ -619,6 +630,7 @@ get_lists_containing_chemical_batch <- function(chemical_list = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(chemical_list)){
@@ -667,6 +679,7 @@ get_chemicals_in_list_batch <- function(list_names = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(list_names)){
@@ -717,6 +730,7 @@ get_chemical_mrv_batch <- function(DTXSID = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
@@ -790,6 +804,7 @@ get_chemical_mol_batch <- function(DTXSID = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
@@ -867,6 +882,7 @@ get_chemical_image_batch <- function(DTXSID = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
@@ -943,6 +959,7 @@ get_chemical_synonym_batch <- function(DTXSID = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
   if (!is.null(DTXSID)){
