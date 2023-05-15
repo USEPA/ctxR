@@ -4,10 +4,10 @@
 \alias{chemical_contains_batch}
 \title{Chemical contains batch search}
 \usage{
-chemical_contains_batch(wordlist = NULL, API_key = NULL, rate_limit = 0L)
+chemical_contains_batch(word_list = NULL, API_key = NULL, rate_limit = 0L)
 }
 \arguments{
-\item{wordlist}{A list of character strings of chemical names or portion of
+\item{word_list}{A list of character strings of chemical names or portion of
 chemical names}
 
 \item{API_key}{User-specific API key}

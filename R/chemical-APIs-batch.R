@@ -299,7 +299,7 @@ chemical_equal_batch <- function(word_list = NULL,
 
 #' Chemical contains batch search
 #'
-#' @param wordlist A list of character strings of chemical names or portion of
+#' @param word_list A list of character strings of chemical names or portion of
 #'   chemical names
 #' @param API_key User-specific API key
 #' @param rate_limit Number of seconds to wait between each request
@@ -309,7 +309,7 @@ chemical_equal_batch <- function(word_list = NULL,
 #' @export
 
 
-chemical_contains_batch <- function(wordlist = NULL,
+chemical_contains_batch <- function(word_list = NULL,
                                     API_key = NULL,
                                     rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
@@ -320,7 +320,7 @@ chemical_contains_batch <- function(wordlist = NULL,
     rate_limit <- 0L
   }
   if (!is.null(word_list)){
-    if (!is.character(wordlist) & !all(sapply(wordlist, is.character))){
+    if (!is.character(word_list) & !all(sapply(word_list, is.character))){
       stop('Please input a character list for word_list!')
     }
     word_list <- unique(word_list)
