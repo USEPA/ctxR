@@ -145,7 +145,7 @@ get_chem_info_batch <- function(DTXSID = NULL,
     names(results) <- DTXSID
     return(results)
   } else {
-    stop('Please input a value for DTXSID!')
+    stop('Please input a list of DTXSIDs!')
   }
 }
 
@@ -456,7 +456,7 @@ get_msready_by_formula_batch <- function(formula_list = NULL,
 #' @export
 
 
-get_msready_by_dtxcid_batch <- function(DXTCID = NULL,
+get_msready_by_dtxcid_batch <- function(DTXCID = NULL,
                                         API_key = NULL,
                                         rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
