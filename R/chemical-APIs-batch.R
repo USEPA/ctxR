@@ -447,7 +447,7 @@ get_msready_by_formula_batch <- function(formula_list = NULL,
 
 #' Get msready by DTXCID batch search
 #'
-#' @param DXTCID A list of chemical identifer DTXCIDs
+#' @param DTXCID A list of chemical identifier DTXCIDs
 #' @param API_key A user-specific API key
 #' @param rate_limit Number of seconds to wait between each request
 #'
