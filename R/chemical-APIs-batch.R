@@ -430,8 +430,8 @@ get_msready_by_formula_batch <- function(formula_list = NULL,
     if (!is.character(formula_list) & !all(sapply(formula_list, is.character))){
       stop('Please input a character list for formula_list!')
     }
-    word_list <- unique(word_list)
-    results <- lapply(word_list, function(t){
+    formula_list <- unique(formula_list)
+    results <- lapply(formula_list, function(t){
       Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
@@ -446,7 +446,7 @@ get_msready_by_formula_batch <- function(formula_list = NULL,
       return(attempt)
     }
     )
-    names(results) <- word_list
+    names(results) <- formula_list
     return(results)
   } else {
     stop('Please input a list of chemical formulas!')
