@@ -39,9 +39,16 @@ get_chemical_details <- function(DTXSID = NULL,
     Projection <- tolower(Projection)
     index <- which(projection_entries %in% Projection)
     if (length(index) == 0){
+      stop('Please input a correct value for `Projection`!')
+    } else if (length(index) > 1){
       warning('Setting `Projection` to `chemicaldetailstandard`')
       Projection <- 'chemicaldetailstandard'
       index <- 2
+    } else {
+      if (length(Projection) > 1){
+        message(paste0('Using `Projection` = ', projection_entries[index], '!'))
+      }
+      Projection <- projection_entries[index]
     }
   }
 
