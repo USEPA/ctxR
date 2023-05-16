@@ -82,6 +82,84 @@ get_chemical_details_batch <- function(DTXSID = NULL,
   return(results)
 }
 
+#' Retrieve chemicals by property and value range in batch search
+#'
+#' @param start_list Numeric values, the beginning of the range
+#' @param end_list Numeric values, the end of the range
+#' @param property_list Strings, the properties being queried
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request
+#'
+#' @return A named list of data.frames containing chemical information for the
+#'   chemicals matching the search criteria.
+#' @export
+
+
+get_chemical_by_property_range_batch <- function(start_list = NULL,
+                                                 end_list = NULL,
+                                                 property_list = NULL,
+                                                 API_key = NULL,
+                                                 rate_limit = 0L){
+  if (is.null(API_key) || !is.character(API_key)){
+    stop('Please input a character string containing a valid API key!')
+  }
+
+  if (is.null(start_list) || is.null(end_list)){
+    stop('Please input a list for both `start_list` and `end_list`!')
+  } else if ((length(start_list)) != (length(end_list))){
+    stop('Mismatch in length of `start_list` and `end_list`!')
+  } else if (!all(sapply(c(start_list, end_list), is.numeric))){
+    stop('Only numeric values allowed in each list!')
+  }
+
+  if (is.null(property_list)){
+    stop('Please input a list for `property_list`!')
+  } else if ((length(property_list) != (length(start_list)))){
+    if (length(property_list) == 1){
+      message('Setting `property_list` to repeat to match length of `start_list/end_list`!')
+      property_list_ <- rep(unlist(property_list), length(start_list))
+    } else {
+      stop('Mismatch in length of `property_list` and `start_list/end_list`!')
+    }
+  } else {
+    property_list_ <- property_list
+  }
+
+  if (!is.character(property_list_) | !all(sapply(property_list_, is.character))){
+    stop('Please input a character list for `property_list`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+
+  start_list_ <- pmin(start_list, end_list)
+  end_list_ <- pmax(start_list, end_list)
+
+  results <- purrr::pmap(.l = list(start_list_, end_list_, property_list_), function(s, e, p){
+    Sys.sleep(rate_limit)
+    attempt <- tryCatch({
+      get_chemical_by_property_range(start = s,
+                                     end = e,
+                                     property = p,
+                                     API_key = API_key)
+    },
+    error = function(cond){
+      message('There was an error!')
+      message(paste('Start:', s))
+      message(paste('End:', e))
+      message(paste('Property:', p))
+      message(cond$message)
+      return(NA)
+      }
+    )
+    return(attempt)
+  }
+  )
+  names(results) <- paste0('(Start, End, Property) = (', start_list_, ', ', end_list_, ', ', property_list_, ')')
+  return(results)
+}
 
 #' Retrieve chemical information in batch search
 #'
@@ -116,10 +194,10 @@ get_chem_info_batch <- function(DTXSID = NULL,
     DTXSID <- unique(DTXSID)
     if (length(type) > 1){
       if(length(type) < length(DTXSID)){
-        warning('Length of type must equal length of DTXSID!')
+        warning('Length of `type` must equal length of `DTXSID`!')
         type <- c(type, rep('', (length(DTXSID) - length(type))))
       } else if (length(type) > length(DTXSID)){
-        warning('Truncating type to match length of DTXSID!',
+        warning('Truncating `type` to match length of `DTXSID`!',
                 immediate. = TRUE)
         type <- type[1:(length(DTXSID))]
       }
@@ -366,11 +444,11 @@ get_msready_by_mass_batch <- function(start_list = NULL,
     stop('Please input a character string containing a valid API key!')
   }
   if(is.null(start_list) || is.null(end_list)){
-    stop('Please input a list for both start_list and end_list!')
+    stop('Please input a list for both `start_list` and `end_list`!')
   } else if (length(start_list) != length(end_list)) {
-    stop('Mismatch in length of list!')
+    stop('Mismatch in length of `start_list` and `end_list`!')
   } else if (!all(sapply(c(start_list, end_list), is.numeric))) {
-    stop('Only numeric values allowed in each list!')
+    stop('Only numeric values allowed in `start_list` and `end_list`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
