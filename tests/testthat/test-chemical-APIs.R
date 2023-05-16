@@ -62,8 +62,10 @@ test_that('Numeric range input errors and warnings', {
 })
 
 test_that('projection/type errors/warnings', {
-  expect_warning(get_chemical_details(DTXSID = 'DTXSID7020182', Projection = 't', API_key = 'test_key'), 'Setting `Projection` to `chemicaldetailstandard`')
+  expect_error(get_chemical_details(DTXSID = 'DTXSID7020182', Projection = 't', API_key = 'test_key'), 'Please input a correct value for `Projection`!')
   expect_warning(get_chemical_details(DTXSID = 'DTXSID7020182', Projection =  2, API_key = 'test_key'), 'Setting `Projection` to `chemicaldetailstandard`')
+  expect_warning(get_chemical_details(DTXSID = 'DTXSID7020182', Projection =  c('ntatoolkit', 'chemicaldetailstandard'), API_key = 'test_key'), 'Setting `Projection` to `chemicaldetailstandard`')
+  expect_message(get_chemical_details(DTXSID = 'DTXSID7020182', Projection =  c('ntatoolkit', 'chemicaldetaistandard'), API_key = Sys.getenv('CCTE_API_KEY')), 'Using `Projection` = ntatoolkit!')
   expect_warning(get_chem_info(DTXSID = 'DTXSID', type = c('', 'predicted'), API_key = 'test_key'), 'Setting type to ""!')
   expect_error(get_chem_info(DTXSID = 'DTXSID', type = 'l', API_key = 'test_key'), 'Please input a correct choice for type!')
   expect_error(get_chemical_lists_by_type(), 'Please input a value for parameter type')
