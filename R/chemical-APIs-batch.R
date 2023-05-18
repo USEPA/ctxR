@@ -134,8 +134,8 @@ get_chemical_by_property_range_batch <- function(start_list = NULL,
     rate_limit <- 0L
   }
 
-  start_list_ <- pmin(start_list, end_list)
-  end_list_ <- pmax(start_list, end_list)
+  start_list_ <- pmin(start_list, end_list, na.rm = TRUE)
+  end_list_ <- pmax(start_list, end_list, na.rm = TRUE)
 
   results <- purrr::pmap(.l = list(start_list_, end_list_, property_list_), function(s, e, p){
     Sys.sleep(rate_limit)
@@ -457,8 +457,8 @@ get_msready_by_mass_batch <- function(start_list = NULL,
   }
 
   # Sort min/max from lists to avoid errors
-  start_list_ <- pmin(start_list, end_list)
-  end_list_ <- pmax(start_list, end_list)
+  start_list_ <- pmin(start_list, end_list, na.rm = TRUE)
+  end_list_ <- pmax(start_list, end_list, na.rm = TRUE)
 
   results <- purrr::map2(.x = start_list_, .y = end_list_, function(d, t){
     Sys.sleep(rate_limit)
