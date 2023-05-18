@@ -162,7 +162,7 @@ test_that('Return data types', {
   expect_type(get_chemical_details_batch(DTXCID = 'DTXCID30182', Projection = '', API_key = Sys.getenv('CCTE_API_KEY')), 'list')
   expect_type(get_chemical_details_batch(DTXSID = '', API_key = Sys.getenv('CCTE_API_KEY')), 'list')
   expect_type(get_chemical_details_batch(DTXSID = 'DTXSID7020182', API_key = ''), 'list')
-  expect_type(get_chemical_by_property_range_batch(start_list = c(NA_real_), end_list = (1), property_list = c('density'), API_key = Sys.getenv('CCTE_API_KEY')), 'list')
+  expect_type(get_chemical_by_property_range_batch(start_list = c(NA_real_), end_list = (NA_real_), property_list = c('density'), API_key = Sys.getenv('CCTE_API_KEY')), 'list')
   #expect_type(get_chemical_by_property_range_batch(start_list = c(1), end_list = c(2), property_list = c('Boiling point'), API_key = Sys.getenv('CCTE_API_KEY')), 'list')
   #expect_type(get_chemical_by_property_range_batch(start_list = c(1), end_list = c(2), property_list = c(''), API_key = Sys.getenv('CCTE_API_KEY')), 'list')
   #expect_type(get_chemical_by_property_range_batch(start_list = c(1), end_list = c(2), property_list = c('Boiling point'), API_key = ''), 'list')
