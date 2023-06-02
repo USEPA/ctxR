@@ -23,8 +23,13 @@ get_chemical_details <- function(DTXSID = NULL,
     stop('Please input a DTXSID or DTXCID!')
   else if (!is.null(DTXSID) & !is.null(DTXCID))
     stop('Please input either a DTXSID or DTXCID, but not both!')
-  else if (is.null(API_key))
-    stop('Please input an API_key')
+  else if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
 
   projection_entries <- c('chemicaldetailall',
                           'chemicaldetailstandard',
@@ -241,8 +246,13 @@ get_chemical_by_property_range <- function(start = NULL,
                                            property = NULL,
                                            API_key = NULL,
                                            Server = chemical_api_server){
-  if (is.null(API_key))
-    stop('Please input an API_key')
+  if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
 
   if (is.null(start) || is.null(end) || !is.numeric(start) || !is.numeric(end)){
     stop('Please input a numeric value for both start and end!')
@@ -297,8 +307,13 @@ get_chem_info <- function(DTXSID = NULL,
                           Server = chemical_api_server){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key))
-    stop('Please input an API_key')
+  else if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
 
   types <- c("", "predicted", "experimental")
   type <- which(types %in% type)
@@ -361,8 +376,13 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
                                Server = chemical_api_server){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key))
-    stop('Please input an API_key')
+  else if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
 
   response <- httr::GET(url = paste0(Server, '/fate/search/by-dtxsid/', DTXSID),
                         httr::add_headers(.headers = c(
@@ -399,7 +419,11 @@ chemical_starts_with <- function(word = NULL,
   if (is.null(word) || !is.character(word)){
     stop('Please input a character value for word!')
   } else if (is.null(API_key)){
-    stop('Please input an API_key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
   }
 
   word <- prepare_word(word)
@@ -442,7 +466,11 @@ chemical_equal <- function(word = NULL,
   if (is.null(word) || !is.character(word)){
     stop('Please input a character value for word!')
   } else if (is.null(API_key)){
-    stop('Please input an API_key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
   }
 
   word <- prepare_word(word)
@@ -487,7 +515,11 @@ chemical_contains <- function(word = NULL,
   if (is.null(word) || !is.character(word)){
     stop('Please input a character value for word!')
   } else if (is.null(API_key)){
-    stop('Please input an API_key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
   }
 
   word <- prepare_word(word)
@@ -559,7 +591,11 @@ get_msready_by_mass <- function(start = NULL,
   if(is.null(start) || is.null(end) || !is.numeric(start) || !is.numeric(end)){
     stop('Please input a numeric value for both start and end!')
   } else if (is.null(API_key)){
-    stop('Please input an API_key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
   }
 
   if (start < 0 || end < 0){
@@ -610,7 +646,11 @@ get_msready_by_formula <- function(formula = NULL,
   } else if (!is.character(formula)){
     stop("Please input a character string for the formula parameter!")
   } else if (is.null(API_key)){
-    stop('Please input an API_key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
   }
 
   response <- httr::GET(url = paste0(Server, '/msready/search/by-formula/', formula),
@@ -650,7 +690,11 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
   } else if (!is.character(DTXCID)){
     stop("Please input a character string for the DTXCID parameter!")
   } else if (is.null(API_key)){
-    stop('Please input an API_key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
   }
 
   response <- httr::GET(url = paste0(Server, '/msready/search/by-dtxcid/', DTXCID),
@@ -693,8 +737,13 @@ get_chemical_lists_by_type <- function(type = NULL,
                                        Server = chemical_api_server){
   if (is.null(type) | !is.character(type))
     stop('Please input a value for parameter type from the list `federal`, `international`, `state`, and `other`!')
-  else if (is.null(API_key))
-    stop('Please input an API_key!')
+  else if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
 
 
   projection_entries <- c('chemicallistall',
@@ -756,8 +805,13 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
                                              Server = chemical_api_server){
   if (is.null(list_name))
     stop('Please input list_name!')
-  else if (is.null(API_key))
-    stop('Please input an API_key!')
+  else if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
 
   projection_entries <- c('chemicallistall',
                           'chemicallistname',
@@ -811,8 +865,13 @@ get_lists_containing_chemical <- function(DTXSID = NULL,
                                           Server = chemical_api_server){
   if (is.null(DTXSID))
     stop('Please input a non-null value for DTXSID!')
-  else if (is.null(API_key))
-    stop('Please input an API_key!')
+  else if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
 
   response <- httr::GET(url = paste0(Server, '/list/search/by-dtxsid/', DTXSID),
                         httr::add_headers(.headers = c(
@@ -845,8 +904,13 @@ get_chemicals_in_list <- function(list_name = NULL,
                                   Server = chemical_api_server){
   if (is.null(list_name) | !is.character(list_name))
     stop('Please input a character value for list_name!')
-  else if (is.null(API_key))
-    stop('Please input an API_key!')
+  else if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
 
 
 
@@ -884,7 +948,11 @@ get_all_public_chemical_lists <- function(Projection = '',
                                           API_key = NULL,
                                           Server = chemical_api_server){
   if (is.null(API_key)){
-    stop('Please input an API_key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
   }
 
   projection_entries <- c('chemicallistall',
@@ -943,8 +1011,13 @@ get_chemical_mrv <- function(DTXSID = NULL,
     stop('Please input a DTXSID or DTXCID!')
   else if (!is.null(DTXSID) & !is.null(DTXCID))
     stop('Please input either a DTXSID or DTXCID, but not both!')
-  else if (is.null(API_key))
-    stop('Please input an API_key!')
+  else if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
 
   if (!is.null(DTXSID)){
     response <- httr::GET(url = paste0(Server, '/file/mrv/search/by-dtxsid/', DTXSID),
@@ -990,8 +1063,13 @@ get_chemical_mol <- function(DTXSID = NULL,
     stop('Please input a DTXSID or DTXCID!')
   else if (!is.null(DTXSID) & !is.null(DTXCID))
     stop('Please input either a DTXSID or DTXCID, but not both!')
-  else if (is.null(API_key))
-    stop('Please input an API_key!')
+  else if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
 
   if (!is.null(DTXSID)){
     response <- httr::GET(url = paste0(Server, '/file/mol/search/by-dtxsid/', DTXSID),
@@ -1043,8 +1121,13 @@ get_chemical_image <- function(DTXSID = NULL,
     stop('Please input a DTXSID or DTXCID!')
   else if (!is.null(DTXSID) & !is.null(DTXCID))
     stop('Please input either a DTXSID or DTXCID, but not both!')
-  else if (is.null(API_key))
-    stop('Please input an API_key!')
+  else if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
   if (format == 'png'){
     image_type = "?format=png"
   } else if (format == 'svg'){
@@ -1093,8 +1176,13 @@ get_chemical_synonym <- function(DTXSID = NULL,
                                  Server = chemical_api_server){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key))
-    stop('Please input an API_key')
+  else if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
 
 
   response <- httr::GET(url = paste0(Server, '/synonym/search/by-dtxsid/', DTXSID),

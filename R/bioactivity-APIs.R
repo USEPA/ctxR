@@ -17,8 +17,13 @@ get_bioactivity_details <- function(DTXSID = NULL,
     stop('Please input a DTXSID or AEID!')
   else if (!is.null(DTXSID) & !is.null(AEID))
     stop('Please input either a DTXSID or AEID, but not both!')
-  else if (is.null(API_key))
-    stop('Please input an API_key!')
+  else if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
 
   if (!is.null(DTXSID)){
     response <- httr::GET(url = paste0(Server, '/search/by-dtxsid/', DTXSID),
