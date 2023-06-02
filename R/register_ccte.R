@@ -161,7 +161,7 @@ print.ccte_credentials <- function(x, ...) {
 
 
 ccte_key <- function() {
-  key < Sys.getenv('CCDR_CCTE_API_KEY')
+  key <- Sys.getenv('CCDR_CCTE_API_KEY')
 
   if (key == '') {
     return(NA_character_)
