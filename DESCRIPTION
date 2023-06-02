@@ -7,6 +7,7 @@ Authors@R: person( "Kruse", "Paul", email = "kruse.paul@epa.gov", role =
 Description: A package for accessing chemical, hazard, and bioactivity data from the CCTE APIs. The data accessible from the APIs using this package is also available on the CompTox Chemical Dashboard and is provided to the user in a iformat conducive to data analysis.
 License: GPL (>= 3)
 Imports: 
+    cli,
     data.table,
     httr,
     jsonlite,
