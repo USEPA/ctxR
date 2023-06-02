@@ -1,0 +1,80 @@
+#' ccdr Options
+#'
+#' ccdr stores options as a named list in R's global options, i.e.
+#' `getOption('ccdr')`. It currently stores two such options, one for CCTE
+#' credentialing and one to supress private API information in the URLs printed
+#' to the screen when web queries are placed. For both of those, see
+#' [register_ccte()].
+#'
+#' @param ... a named listing of options to set
+#' @param option a specific option to query, e.g. `display_api_key`
+#' @return NULL
+#' @name ccdr_options
+#' @seealso [register_ccte()]
+#' @examples
+#'
+#' getOption('ccdr')
+#' has_ccdr_options()
+#' has_ccdr_option('display_api_key')
+#'
+#'
+#'
+
+
+
+
+
+
+#' @rdname ccdr_options
+#' @export
+
+
+set_ccdr_option <- function(...) {
+
+  # if there is no ccdr option create the list with the arguments and return
+  if (!has_ccdr_options()) {
+    options('ccdr' = list(...))
+    return(invisible())
+  }
+
+  # otherwise, go through arguments sequentially and add/update
+  # them in the list ccdr options
+  ccdr <- getOption('ccdr')
+  arg_list <- lapply(as.list(match.call())[-1], eval, envir = parent.frame())
+  for (k in seq_along(arg_list)) {
+    if (names(arg_list)[k] %in% names(ccdr)) {
+      ccdr[names(arg_list)[k]] <- arg_list[k]
+    } else {
+      ccdr <- c(ccdr, arg_list[k])
+    }
+  }
+
+  # set new ccdr
+  options('ccdr' = ccdr)
+
+  # return
+  invisible()
+}
+
+
+
+#' @rdname ccdr_options
+#' @export
+
+
+has_ccdr_options <- function() {
+  !is.null(getOption('ccdr'))
+}
+
+#' @rdname ccdr_options
+#' @export
+
+
+has_ccdr_option <- function(option) {
+
+  if (has_ccdr_options()){
+    option %in% names(getOption('ccdr'))
+  } else {
+    FALSE
+  }
+}
