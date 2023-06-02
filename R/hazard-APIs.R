@@ -13,8 +13,14 @@ get_hazard_by_dtxsid <- function(DTXSID = NULL,
                                Server = hazard_api_server){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key))
-    stop('Please input an API_key!')
+  else if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
+
 
   response <- httr::GET(url = paste0(Server, '/search/by-dtxsid/', DTXSID),
                         httr::add_headers(.headers = c(
@@ -47,8 +53,13 @@ get_human_hazard_by_dtxsid <- function(DTXSID = NULL,
                                  Server = hazard_api_server){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key))
-    stop('Please input an API_key!')
+  else if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
 
   response <- httr::GET(url = paste0(Server, '/human/search/by-dtxsid/', DTXSID),
                         httr::add_headers(.headers = c(
@@ -81,8 +92,13 @@ get_ecotox_hazard_by_dtxsid <- function(DTXSID = NULL,
                                  Server = hazard_api_server){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key))
-    stop('Please input an API_key!')
+  else if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
 
   response <- httr::GET(url = paste0(Server, '/eco/search/by-dtxsid/', DTXSID),
                         httr::add_headers(.headers = c(
@@ -116,8 +132,13 @@ get_skin_eye_hazard <- function(DTXSID = NULL,
                                 Server = hazard_api_server){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key))
-    stop('Please input an API_key!')
+  else if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
 
   response <- httr::GET(url = paste0(Server, '/skin-eye/search/by-dtxsid/', DTXSID),
                         httr::add_headers(.headers = c(
@@ -150,8 +171,14 @@ get_cancer_hazard <- function(DTXSID = NULL,
                               Server = hazard_api_server){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key))
-    stop('Please input an API_key!')
+  else if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
+
 
   response <- httr::GET(url = paste0(Server, '/cancer-summary/search/by-dtxsid/', DTXSID),
                         httr::add_headers(.headers = c(
@@ -184,8 +211,14 @@ get_genetox_summary <- function(DTXSID = NULL,
                                 Server = hazard_api_server){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key))
-    stop('Please input an API_key!')
+  else if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
+
 
   response <- httr::GET(url = paste0(Server, '/genetox/summary/search/by-dtxsid/', DTXSID),
                         httr::add_headers(.headers = c(
@@ -218,8 +251,14 @@ get_genetox_details <- function(DTXSID = NULL,
                                 Server = hazard_api_server){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key))
-    stop('Please input an API_key!')
+  else if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
+
 
   response <- httr::GET(url = paste0(Server, '/genetox/details/search/by-dtxsid/', DTXSID),
                         httr::add_headers(.headers = c(
