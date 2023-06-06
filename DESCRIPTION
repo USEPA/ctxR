@@ -13,6 +13,7 @@ Imports:
     httr,
     jsonlite,
     purrr,
+    rlang,
     stringr,
     urltools
 Encoding: UTF-8
