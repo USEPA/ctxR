@@ -11,7 +11,7 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  eval = (nchar(Sys.getenv('_R_CHECK_CRAN_INCOMING_')) == 0)
+  eval = (nchar(Sys.getenv('CCTE_API_KEY')) > 0)
 )
 ```
 
