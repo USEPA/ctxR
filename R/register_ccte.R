@@ -151,7 +151,7 @@ register_ccdr <- function(key, write = FALSE) {
 
 
 print.ccte_credentials <- function(x, ...) {
-  cat('Key -',     if (!has.ccte_key()) '' else {if(showing_key()) ccte_key() else 'xxx' }, '\n')
+  cat('Key -',     if (!has_ccte_key()) '' else {if(showing_key()) ccte_key() else 'xxx' }, '\n')
 }
 
 
