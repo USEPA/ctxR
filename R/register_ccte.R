@@ -115,7 +115,7 @@ register_ccdr <- function(key, write = FALSE) {
     } else {
 
       key_line_index <- which(stringr::str_detect(environ_lines, 'CCDR_CCTE_API_KEY='))
-      old_key <- str_extract(environ_lines[key_line_index], '(?<=CCDR_CCTE_API_KEY=)\\w+')
+      old_key <- stringr::str_extract(environ_lines[key_line_index], '(?<=CCDR_CCTE_API_KEY=)\\w+')
       cli::cli_alert_info('Replacing old key ({old_key}) with new key in {environ_file}')
       environ_lines[key_line_index] <- glue::glue('CCDR_CCTE_API_KEY={key}')
       writeLines(environ_lines, environ_file)
@@ -150,7 +150,7 @@ register_ccdr <- function(key, write = FALSE) {
 #' @export
 
 
-print.ccte_credentials <- function(x, ...) {
+print.ccte_credentials <- function(...) {
   cat('Key -',     if (!has_ccte_key()) '' else {if(showing_key()) ccte_key() else 'xxx' }, '\n')
 }
 
