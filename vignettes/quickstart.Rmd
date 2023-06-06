@@ -2,7 +2,7 @@
 title: "Getting started with ccdR"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{quickstart}
+  %\VignetteIndexEntry{"Getting started with ccdR"}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -11,7 +11,7 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  eval=!identical(Sys.getenv('NOT_CRAN'), 'true')
+  eval = (nchar(Sys.getenv('_R_CHECK_CRAN_INCOMING_')) == 0)
 )
 ```
 
@@ -46,6 +46,35 @@ Next, we store the api key in the variable `my_key`.
 ```{r, api-key}
 my_key <- Sys.getenv('CCTE_API_key')
 ```
+
+For general use of the package, one may use the function `register_ccdr()` to store the API key in the current session or more permanently for access across sessions. The following example demonstrates this.
+
+```{r, register-ccte, eval=FALSE}
+# This stores the key in the current session
+register_ccdr(key = '<YOUR API KEY>')
+
+# This stores the key across multiple sessions and only needs to be run once. If the key changes, rerun this with the new key.
+register_ccdr(key = '<YOUR API KEY>', write = TRUE)
+```
+
+The API key is stored and the default display setting is turned off for protection. To change this, use the following functions as demonstrated.
+
+```{r, display-hide-key}
+# To show the API key
+ccdr_show_api_key()
+getOption('ccdr')$display_api_key
+
+# To hide the API key
+ccdr_hide_api_key()
+getOption('ccdr')$display_api_key
+```
+
+Finally, to access the key, use the `ccte_key()` function.
+
+```{r, ccte-key, eval = FALSE}
+ccte_key()
+```
+
 
 
 ## Chemical APIs
@@ -101,7 +130,7 @@ head(bpa_info_predicted)
 
 To gather chemical fate details, we supply the same information as we did for *bpa_info* to the function `get_fate_by_dtxsid()`.
 
-```{r}
+```{r, fate}
 bpa_fate <- get_fate_by_dtxsid(DTXSID = 'DTXSID7020182',
                                API_key = my_key)
 head(bpa_fate)
