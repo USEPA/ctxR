@@ -19,7 +19,7 @@ ccdr_hide_api_key()
 
 register_ccdr(key, write = FALSE)
 
-\method{print}{ccte_credentials}(x, ...)
+\method{print}{ccte_credentials}(...)
 
 ccte_key()
 
