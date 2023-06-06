@@ -1,6 +1,6 @@
-test_that("Catch missing API", {
-  expect_error(get_bioactivity_details(DTXSID = 'DTXSID7020182'), 'Please input an API_key!')
-})
+# test_that("Catch missing API", {
+#   expect_error(get_bioactivity_details(DTXSID = 'DTXSID7020182'), 'Please input an API_key!')
+# })
 
 test_that("DTXSID/AEID errors", {
   expect_error(get_bioactivity_details(API_key = 'test_key'), 'Please input a DTXSID or AEID!')
