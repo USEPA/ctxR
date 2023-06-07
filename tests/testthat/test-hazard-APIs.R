@@ -1,12 +1,13 @@
-# test_that("catch missing API", {
-#   expect_error(get_hazard_by_dtxsid(DTXSID = 'DTXSID7020182'), 'Please input an API_key!')
-#   expect_error(get_human_hazard_by_dtxsid(DTXSID = 'DTXSID7020182'), 'Please input an API_key!')
-#   expect_error(get_ecotox_hazard_by_dtxsid(DTXSID = 'DTXSID7020182'), 'Please input an API_key!')
-#   expect_error(get_skin_eye_hazard(DTXSID = 'DTXSID7020182'), 'Please input an API_key!')
-#   expect_error(get_cancer_hazard(DTXSID = 'DTXSID7020182'), 'Please input an API_key!')
-#   expect_error(get_genetox_summary(DTXSID = 'DTXSID7020182'), 'Please input an API_key!')
-#   expect_error(get_genetox_details(DTXSID = 'DTXSID7020182'), 'Please input an API_key!')
-# })
+ test_that("catch missing API", {
+   # Run register_ccdr(key = 'YOUR KEY', write = TRUE) prior to running tests
+   expect_message(get_hazard_by_dtxsid(DTXSID = 'DTXSID7020182'), 'Using stored API key!')
+   expect_message(get_human_hazard_by_dtxsid(DTXSID = 'DTXSID7020182'), 'Using stored API key!')
+   expect_message(get_ecotox_hazard_by_dtxsid(DTXSID = 'DTXSID7020182'), 'Using stored API key!')
+   expect_message(get_skin_eye_hazard(DTXSID = 'DTXSID7020182'), 'Using stored API key!')
+   expect_message(get_cancer_hazard(DTXSID = 'DTXSID7020182'), 'Using stored API key!')
+   expect_message(get_genetox_summary(DTXSID = 'DTXSID7020182'), 'Using stored API key!')
+   expect_message(get_genetox_details(DTXSID = 'DTXSID7020182'), 'Using stored API key!')
+ })
 
 test_that("catch missing DTXSID", {
   expect_error(get_hazard_by_dtxsid(API_key = 'test_key'), 'Please input a DTXSID!')

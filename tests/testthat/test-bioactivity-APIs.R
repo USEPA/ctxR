@@ -1,6 +1,7 @@
-# test_that("Catch missing API", {
-#   expect_error(get_bioactivity_details(DTXSID = 'DTXSID7020182'), 'Please input an API_key!')
-# })
+test_that("Catch missing API", {
+  # Run register_ccdr(key = 'YOUR KEY', write = TRUE) prior to running tests
+  expect_message(get_bioactivity_details(DTXSID = 'DTXSID7020182'), 'Using stored API key!')
+})
 
 test_that("DTXSID/AEID errors", {
   expect_error(get_bioactivity_details(API_key = 'test_key'), 'Please input a DTXSID or AEID!')
