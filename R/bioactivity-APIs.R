@@ -20,6 +20,7 @@ get_bioactivity_details <- function(DTXSID = NULL,
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
+      message('Using stored API key!')
     } else {
       stop('Please input an API_key!')
     }

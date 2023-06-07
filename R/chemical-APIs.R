@@ -26,6 +26,7 @@ get_chemical_details <- function(DTXSID = NULL,
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
+      message('Using stored API key!')
     } else {
       stop('Please input an API_key!')
     }
@@ -249,6 +250,7 @@ get_chemical_by_property_range <- function(start = NULL,
   if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
+      message('Using stored API key!')
     } else {
       stop('Please input an API_key!')
     }
@@ -310,6 +312,7 @@ get_chem_info <- function(DTXSID = NULL,
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
+      message('Using stored API key!')
     } else {
       stop('Please input an API_key!')
     }
@@ -379,6 +382,7 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
+      message('Using stored API key!')
     } else {
       stop('Please input an API_key!')
     }
@@ -421,6 +425,7 @@ chemical_starts_with <- function(word = NULL,
   } else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
+      message('Using stored API key!')
     } else {
       stop('Please input an API_key!')
     }
@@ -468,6 +473,7 @@ chemical_equal <- function(word = NULL,
   } else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
+      message('Using stored API key!')
     } else {
       stop('Please input an API_key!')
     }
@@ -517,6 +523,7 @@ chemical_contains <- function(word = NULL,
   } else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
+      message('Using stored API key!')
     } else {
       stop('Please input an API_key!')
     }
@@ -593,6 +600,7 @@ get_msready_by_mass <- function(start = NULL,
   } else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
+      message('Using stored API key!')
     } else {
       stop('Please input an API_key!')
     }
@@ -648,6 +656,7 @@ get_msready_by_formula <- function(formula = NULL,
   } else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
+      message('Using stored API key!')
     } else {
       stop('Please input an API_key!')
     }
@@ -692,6 +701,7 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
   } else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
+      message('Using stored API key!')
     } else {
       stop('Please input an API_key!')
     }
@@ -740,6 +750,7 @@ get_chemical_lists_by_type <- function(type = NULL,
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
+      message('Using stored API key!')
     } else {
       stop('Please input an API_key!')
     }
@@ -808,6 +819,7 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
+      message('Using stored API key!')
     } else {
       stop('Please input an API_key!')
     }
@@ -868,6 +880,7 @@ get_lists_containing_chemical <- function(DTXSID = NULL,
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
+      message('Using stored API key!')
     } else {
       stop('Please input an API_key!')
     }
@@ -907,6 +920,7 @@ get_chemicals_in_list <- function(list_name = NULL,
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
+      message('Using stored API key!')
     } else {
       stop('Please input an API_key!')
     }
@@ -950,6 +964,7 @@ get_all_public_chemical_lists <- function(Projection = '',
   if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
+      message('Using stored API key!')
     } else {
       stop('Please input an API_key!')
     }
@@ -1014,6 +1029,7 @@ get_chemical_mrv <- function(DTXSID = NULL,
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
+      message('Using stored API key!')
     } else {
       stop('Please input an API_key!')
     }
@@ -1066,6 +1082,7 @@ get_chemical_mol <- function(DTXSID = NULL,
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
+      message('Using stored API key!')
     } else {
       stop('Please input an API_key!')
     }
@@ -1124,6 +1141,7 @@ get_chemical_image <- function(DTXSID = NULL,
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
+      message('Using stored API key!')
     } else {
       stop('Please input an API_key!')
     }
@@ -1179,6 +1197,7 @@ get_chemical_synonym <- function(DTXSID = NULL,
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
+      message('Using stored API key!')
     } else {
       stop('Please input an API_key!')
     }
