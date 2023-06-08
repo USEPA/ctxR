@@ -1,7 +1,8 @@
-# test_that("catch missing API", {
-#   expect_error(get_bioactivity_details_batch(), 'Please input a character string containing a valid API key!')
-#   expect_error(get_bioactivity_details_batch(API_key = 1), 'Please input a character string containing a valid API key!')
-# })
+test_that("catch missing API", {
+  # Run register_ccdr(key = 'YOUR KEY', write = TRUE) prior to running tests
+  expect_message(get_bioactivity_details_batch(DTXSID = c('DTXSID7020182')), 'Using stored API key!')
+  expect_message(get_bioactivity_details_batch(DTXSID = c('DTXSID7020182'), API_key = 1), 'Using stored API key!')
+})
 
 test_that('DTXSID/AEID errors', {
   expect_error(get_bioactivity_details_batch(DTXSID = 1, API_key = 'test_key'), 'Please input a character list for DTXSID!')
