@@ -13,7 +13,12 @@ get_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                                        API_key = NULL,
                                        rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
@@ -61,7 +66,12 @@ get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                                              API_key = NULL,
                                              rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
@@ -109,7 +119,12 @@ get_ecotox_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                                               API_key = NULL,
                                               rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
@@ -159,7 +174,12 @@ get_skin_eye_hazard_batch <- function(DTXSID = NULL,
                                       API_key = NULL,
                                       rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
@@ -209,7 +229,12 @@ get_cancer_hazard_batch <- function(DTXSID = NULL,
                                     API_key = NULL,
                                     rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
@@ -259,7 +284,12 @@ get_genetox_summary_batch <- function(DTXSID = NULL,
                                       API_key = NULL,
                                       rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
@@ -309,7 +339,12 @@ get_genetox_details_batch <- function(DTXSID = NULL,
                                       API_key = NULL,
                                       rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')

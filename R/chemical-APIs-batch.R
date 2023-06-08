@@ -22,7 +22,12 @@ get_chemical_details_batch <- function(DTXSID = NULL,
                                        API_key = NULL,
                                        rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
@@ -101,7 +106,12 @@ get_chemical_by_property_range_batch <- function(start_list = NULL,
                                                  API_key = NULL,
                                                  rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
 
   if (is.null(start_list) || is.null(end_list)){
@@ -181,7 +191,12 @@ get_chem_info_batch <- function(DTXSID = NULL,
                                 API_key = NULL,
                                 rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
@@ -244,7 +259,12 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
                                      API_key = NULL,
                                      rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
@@ -293,7 +313,12 @@ chemical_starts_with_batch <- function(word_list = NULL,
                                        API_key = NULL,
                                        rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
@@ -342,7 +367,12 @@ chemical_equal_batch <- function(word_list = NULL,
                                  API_key = NULL,
                                  rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
@@ -391,7 +421,12 @@ chemical_contains_batch <- function(word_list = NULL,
                                     API_key = NULL,
                                     rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
@@ -441,7 +476,12 @@ get_msready_by_mass_batch <- function(start_list = NULL,
                                       API_key = NULL,
                                       rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if(is.null(start_list) || is.null(end_list)){
     stop('Please input a list for both `start_list` and `end_list`!')
@@ -498,7 +538,12 @@ get_msready_by_formula_batch <- function(formula_list = NULL,
                                          API_key = NULL,
                                          rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
@@ -546,7 +591,12 @@ get_msready_by_dtxcid_batch <- function(DTXCID = NULL,
                                         API_key = NULL,
                                         rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
@@ -600,7 +650,12 @@ get_chemical_lists_by_type_batch <- function(type_list = NULL,
                                              API_key = NULL,
                                              rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
@@ -656,7 +711,12 @@ get_public_chemical_list_by_name_batch <- function(name_list = NULL,
                                                    API_key = NULL,
                                                    rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
@@ -705,7 +765,12 @@ get_lists_containing_chemical_batch <- function(chemical_list = NULL,
                                                 API_key = NULL,
                                                 rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
@@ -754,7 +819,12 @@ get_chemicals_in_list_batch <- function(list_names = NULL,
                                         API_key = NULL,
                                         rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
@@ -805,7 +875,12 @@ get_chemical_mrv_batch <- function(DTXSID = NULL,
                                    API_key = NULL,
                                    rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
@@ -879,7 +954,12 @@ get_chemical_mol_batch <- function(DTXSID = NULL,
                                    API_key = NULL,
                                    rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
@@ -957,7 +1037,12 @@ get_chemical_image_batch <- function(DTXSID = NULL,
                                      API_key = NULL,
                                      rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
@@ -1034,7 +1119,12 @@ get_chemical_synonym_batch <- function(DTXSID = NULL,
                                        API_key = NULL,
                                        rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
-    stop('Please input a character string containing a valid API key!')
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
