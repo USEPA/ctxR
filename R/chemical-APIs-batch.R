@@ -87,6 +87,106 @@ get_chemical_details_batch <- function(DTXSID = NULL,
   return(results)
 }
 
+get_chemical_details_batch_2 <- function(DTXSID = NULL,
+                                         Projection = 'chemicaldetailstandard',
+                                         API_key = NULL,
+                                         rate_limit = 0L,
+                                         Server = chemical_api_server){
+  if (is.null(API_key) || !is.character(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+    num_dtxsid <- length(DTXSID)
+    indices <- generate_ranges(num_dtxsid)
+
+    for (i in seq_along(indices)){
+      dtxsid_list <- generate_dtxsid_string(DTXSID[indices[[i]]])
+      print(dtxsid_list)
+
+      response <- httr::POST(url = paste0(Server, '/detail/search/by-dtxsid/'),
+                             httr::add_headers(.headers = c(
+                               'Accept' = 'application/json',
+                               'Content-Type' = 'application/json',
+                               'x-api-key' = API_key
+                             )),
+                             body = list(d =  dtxsid_list))
+      # response <- httr::GET(url = paste0(Server, '/detail/search/by-dtxsid/'),
+      #                                   httr::add_headers(.headers = c(
+      #                                     'Content-Type' =  'application/json',
+      #                                     'x-api-key' = API_key)),
+      #                                     query = list(d = paste0('[', DTXSID[indices[[i]]], ']'))
+      #                                   )
+    }
+
+    return(response)
+
+    # results <- lapply(DTXSID, function(t){
+    #   Sys.sleep(rate_limit)
+    #   attempt <- tryCatch(
+    #     {
+    #       get_chemical_details(DTXSID = t,
+    #                            Projection = Projection,
+    #                            API_key = API_key)
+    #     },
+    #     error = function(cond){
+    #       message(t)
+    #       message(cond$message)
+    #       return(NA)
+    #     }
+    #   )
+    #   return(attempt)
+    # }
+    # )
+    # names(results) <- DTXSID
+  }
+  return(results)
+}
+
+generate_ranges <- function(end){
+  if (!is.numeric(end) || end < 1) return(list())
+
+  int_seq <- c(1:(as.integer(end)))
+
+  indices = list(ceiling(length(int_seq)/200))
+
+  if (length(int_seq) > 200){
+    for (i in 1:(ceiling(length(int_seq)/200) - 1)){
+      start <- 200*(i-1) + 1
+      end <- 200*i
+      indices[[i]] <- c(start:end)
+      #print(200*(i-1) + 1)
+      #print(200*i)
+      #print(c((200*(i-1) + 1):(200*i)))
+    }
+    j <- length(indices)
+    indices[[j+1]] <- c((200*j + 1):length(int_seq))
+    return(indices)
+  }
+  indices[[1]] <- int_seq
+  return(indices)
+
+}
+
+generate_dtxsid_string <- function(items){
+  dtxsid_string <- paste0('[', paste0('"', items, '"', collapse = ', '), ']')
+  return(dtxsid_string)
+}
+
+
+
 #' Retrieve chemicals by property and value range in batch search
 #'
 #' @param start_list Numeric values, the beginning of the range
