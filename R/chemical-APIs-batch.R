@@ -108,30 +108,80 @@ get_chemical_details_batch_2 <- function(DTXSID = NULL,
     if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
       stop('Please input a character list for DTXSID!')
     }
+
+    projection_entries <- c('chemicaldetailall',
+                            'chemicaldetailstandard',
+                            'chemicalidentifier',
+                            'chemicalstructure',
+                            'ntatoolkit')
+    index <- 2
+    if (!is.character(Projection)){
+      warning('Setting `Projection` to `chemicaldetailstandard`')
+      Projection <- 'chemicaldetailstandard'
+    } else {
+      Projection <- tolower(Projection)
+      index <- which(projection_entries %in% Projection)
+      if (length(index) == 0){
+        stop('Please input a correct value for `Projection`!')
+      } else if (length(index) > 1){
+        warning('Setting `Projection` to `chemicaldetailstandard`')
+        Projection <- 'chemicaldetailstandard'
+        index <- 2
+      } else {
+        if (length(Projection) > 1){
+          message(paste0('Using `Projection` = ', projection_entries[index], '!'))
+        }
+        Projection <- projection_entries[index]
+      }
+    }
+
+    projection_url <- paste0('?projection=', Projection)
+
+
     DTXSID <- unique(DTXSID)
     num_dtxsid <- length(DTXSID)
     indices <- generate_ranges(num_dtxsid)
+    print(indices)
+
+    dt <- create_data.table_chemical_details(index = index)
 
     for (i in seq_along(indices)){
-      dtxsid_list <- generate_dtxsid_string(DTXSID[indices[[i]]])
-      print(dtxsid_list)
+      #dtxsid_list <- list(DTXSID[indices[[i]]])
+        #generate_dtxsid_string(DTXSID[indices[[i]]])
+      #print(dtxsid_list[1])
+      print(paste('The current index is i =', i))
+      print(DTXSID[indices[[i]]])
+      print(jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = T, pretty = T))
 
-      response <- httr::POST(url = paste0(Server, '/detail/search/by-dtxsid/'),
+      response <- httr::POST(url = paste0(Server, '/detail/search/by-dtxsid/', projection_url),
                              httr::add_headers(.headers = c(
                                'Accept' = 'application/json',
                                'Content-Type' = 'application/json',
                                'x-api-key' = API_key
                              )),
-                             body = list(d =  dtxsid_list))
+                             body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
       # response <- httr::GET(url = paste0(Server, '/detail/search/by-dtxsid/'),
       #                                   httr::add_headers(.headers = c(
       #                                     'Content-Type' =  'application/json',
       #                                     'x-api-key' = API_key)),
       #                                     query = list(d = paste0('[', DTXSID[indices[[i]]], ']'))
       #                                   )
+
+
+    print(paste('The response code is', response$status_code, 'for index i =', i))
+
+    if (response$status_code == 200){
+      print(str(jsonlite::fromJSON(httr::content(response, as = 'text'))))
+      dt <- suppressWarnings(data.table::rbindlist(list(dt,
+                                                        data.table::data.table(jsonlite::fromJSON(httr::content(response,
+                                                                                                                as = 'text')))),
+                                                   fill = TRUE))
+      #return(data.frame(jsonlite::fromJSON(httr::content(response, as = 'text'))))
+    }
+  Sys.sleep(rate_limit)
     }
 
-    return(response)
+    #return(response)
 
     # results <- lapply(DTXSID, function(t){
     #   Sys.sleep(rate_limit)
@@ -152,7 +202,7 @@ get_chemical_details_batch_2 <- function(DTXSID = NULL,
     # )
     # names(results) <- DTXSID
   }
-  return(results)
+  return(dt)
 }
 
 generate_ranges <- function(end){
@@ -344,6 +394,87 @@ get_chem_info_batch <- function(DTXSID = NULL,
   }
 }
 
+get_chem_info_batch_2 <- function(DTXSID = NULL,
+                                  type = '',
+                                  API_key = NULL,
+                                  rate_limit = 0L,
+                                  Server = chemical_api_server){
+  if (is.null(API_key) || !is.character(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+
+    num_dtxsid <- length(DTXSID)
+    indices <- generate_ranges(num_dtxsid)
+
+    dt <- data.table::data.table(name = character(),
+                                 value = numeric(),
+                                 id = integer(),
+                                 source = character(),
+                                 description = character(),
+                                 propType = character(),
+                                 unit = character(),
+                                 propertyId = character(),
+                                 dtxsid = character(),
+                                 dtxcid = character())
+
+    for (i in seq_along(indices)){
+
+      print(paste('The current index is i =', i, 'out of', length(indices)))
+
+      response <- httr::POST(url = paste0(Server, '/property/search/by-dtxsid/'),
+                             httr::add_headers(.headers = c(
+                               'Accept' = 'application/json',
+                               'Content-Type' = 'application/json',
+                               'x-api-key' = API_key
+                             )),
+                             body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
+
+      print(paste('The response code is', response$status_code, 'for index i =', i))
+
+
+      if (response$status_code == 200){
+        dt <- suppressWarnings(data.table::rbindlist(list(dt,
+                                                          data.table::data.table(jsonlite::fromJSON(httr::content(response,
+                                                                                                                  as = 'text')))),
+                                                     fill = TRUE))
+      }
+      Sys.sleep(rate_limit)
+    }
+  }
+
+  if (!is.character(type)){
+    return(dt)
+  } else if (length(type) != 1){
+    warning("Setting type to ''!")
+    return(dt)
+  } else {
+    type_index <- c('predicted', 'experimental')[which(c('predicted', 'experimental') %in% tolower(type))]
+    if (length(type_index) == 0){
+      warning("Setting type to ''!")
+      return(dt)
+    }
+    index_subset <- which(dt$propType %in% type_index)
+    return(dt[index_subset, ])
+  }
+
+  return(dt)
+}
+
+
 #' Retrieve chemical fate data in batch search
 #'
 #' @param DTXSID A vector of chemicals identifier DTXSIDs
@@ -392,6 +523,72 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
     )
     names(results) <- DTXSID
     return(results)
+  } else {
+    stop('Please input a list of DTXSIDs!')
+  }
+}
+
+
+get_fate_by_dtxsid_batch_2 <- function(DTXSID = NULL,
+                                       API_key = NULL,
+                                       rate_limit = 0L,
+                                       Server = chemical_api_server){
+  if (is.null(API_key) || !is.character(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+    num_dtxsid <- length(DTXSID)
+    indices <- generate_ranges(num_dtxsid)
+
+    dt <- data.table::data.table(id = integer(),
+                                 description = character(),
+                                 minValue = numeric(),
+                                 maxValue = numeric(),
+                                 valueType = character(),
+                                 unit = character(),
+                                 dtxsid = character(),
+                                 dtxcid = character(),
+                                 endpointName = character(),
+                                 resultValue = numeric(),
+                                 modelSource = character())
+
+    for (i in seq_along(indices)){
+
+      print(paste('The current index is i =', i, 'out of', length(indices)))
+
+      response <- httr::POST(url = paste0(Server, '/fate/search/by-dtxsid/'),
+                             httr::add_headers(.headers = c(
+                               'Accept' = 'application/json',
+                               'Content-Type' = 'application/json',
+                               'x-api-key' = API_key
+                             )),
+                             body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
+
+      print(paste('The response code is', response$status_code, 'for index i =', i))
+
+
+      if (response$status_code == 200){
+        dt <- suppressWarnings(data.table::rbindlist(list(dt,
+                                                          data.table::data.table(jsonlite::fromJSON(httr::content(response,
+                                                                                                                  as = 'text')))),
+                                                     fill = TRUE))
+      }
+      Sys.sleep(rate_limit)
+    }
+    return(dt)
   } else {
     stop('Please input a list of DTXSIDs!')
   }
