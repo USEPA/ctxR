@@ -418,6 +418,73 @@ get_skin_eye_hazard_batch <- function(DTXSID = NULL,
   }
 }
 
+get_skin_eye_hazard_batch_2 <- function(DTXSID = NULL,
+                                      API_key = NULL,
+                                      rate_limit = 0L,
+                                      Server = hazard_api_server){
+  if (is.null(API_key) || !is.character(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+    num_dtxsid <- length(DTXSID)
+    indices <- generate_ranges(num_dtxsid)
+
+    dt <- data.table::data.table(id = integer(),
+                                 source = character(),
+                                 year = integer(),
+                                 endpoint = character(),
+                                 dtxsid = character(),
+                                 studyType = character(),
+                                 strain = character(),
+                                 classification = character(),
+                                 guideline = character(),
+                                 reliability = character(),
+                                 resultText = character(),
+                                 score = character(),
+                                 species = character())
+
+    for (i in seq_along(indices)){
+
+      print(paste('The current index is i =', i, 'out of', length(indices)))
+
+      response <- httr::POST(url = paste0(Server, '/skin-eye/search/by-dtxsid/'),
+                             httr::add_headers(.headers = c(
+                               'Accept' = 'application/json',
+                               'Content-Type' = 'application/json',
+                               'x-api-key' = API_key
+                             )),
+                             body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
+
+      print(paste('The response code is', response$status_code, 'for index i =', i))
+
+
+      if (response$status_code == 200){
+        dt <- suppressWarnings(data.table::rbindlist(list(dt,
+                                                          data.table::data.table(jsonlite::fromJSON(httr::content(response,
+                                                                                                                  as = 'text')))),
+                                                     fill = TRUE))
+      }
+      Sys.sleep(rate_limit)
+    }
+
+    return(dt)
+  } else {
+    stop('Please input a list of DTXSIDs!')
+  }
+}
 
 #' Get cancer hazard batch
 #'
@@ -468,6 +535,69 @@ get_cancer_hazard_batch <- function(DTXSID = NULL,
     )
     names(results) <- DTXSID
     return(results)
+  } else {
+    stop('Please input a list of DTXSIDs!')
+  }
+}
+
+
+get_cancer_hazard_batch_2 <- function(DTXSID = NULL,
+                                    API_key = NULL,
+                                    rate_limit = 0L,
+                                    Server = hazard_api_server){
+  if (is.null(API_key) || !is.character(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+    num_dtxsid <- length(DTXSID)
+    indices <- generate_ranges(num_dtxsid)
+
+    dt <- data.table::data.table(id = integer(),
+                                 source = character(),
+                                 url = integer(),
+                                 cancerCall = character(),
+                                 dtxsid = character(),
+                                 exposureRoute = character())
+
+    for (i in seq_along(indices)){
+
+      print(paste('The current index is i =', i, 'out of', length(indices)))
+
+      response <- httr::POST(url = paste0(Server, '/cancer-summary/search/by-dtxsid/'),
+                             httr::add_headers(.headers = c(
+                               'Accept' = 'application/json',
+                               'Content-Type' = 'application/json',
+                               'x-api-key' = API_key
+                             )),
+                             body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
+
+      print(paste('The response code is', response$status_code, 'for index i =', i))
+
+
+      if (response$status_code == 200){
+        dt <- suppressWarnings(data.table::rbindlist(list(dt,
+                                                          data.table::data.table(jsonlite::fromJSON(httr::content(response,
+                                                                                                                  as = 'text')))),
+                                                     fill = TRUE))
+      }
+      Sys.sleep(rate_limit)
+    }
+
+
+    return(dt)
   } else {
     stop('Please input a list of DTXSIDs!')
   }
@@ -529,6 +659,71 @@ get_genetox_summary_batch <- function(DTXSID = NULL,
 }
 
 
+get_genetox_summary_batch_2 <- function(DTXSID = NULL,
+                                      API_key = NULL,
+                                      rate_limit = 0L,
+                                      Server = hazard_api_server){
+  if (is.null(API_key) || !is.character(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+    num_dtxsid <- length(DTXSID)
+    indices <- generate_ranges(num_dtxsid)
+
+    dt <- data.table::data.table(id = integer(),
+                                 dtxsid = character(),
+                                 reportsPositive = integer(),
+                                 reportsNegative = integer(),
+                                 reportsOther = integer(),
+                                 ames = character(),
+                                 micronucleus = character())
+
+    for (i in seq_along(indices)){
+
+      print(paste('The current index is i =', i, 'out of', length(indices)))
+
+      response <- httr::POST(url = paste0(Server, '/genetox/summary/search/by-dtxsid/'),
+                             httr::add_headers(.headers = c(
+                               'Accept' = 'application/json',
+                               'Content-Type' = 'application/json',
+                               'x-api-key' = API_key
+                             )),
+                             body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
+
+      print(paste('The response code is', response$status_code, 'for index i =', i))
+
+
+      if (response$status_code == 200){
+        dt <- suppressWarnings(data.table::rbindlist(list(dt,
+                                                          data.table::data.table(jsonlite::fromJSON(httr::content(response,
+                                                                                                                  as = 'text')))),
+                                                     fill = TRUE))
+      }
+      Sys.sleep(rate_limit)
+    }
+
+
+    return(dt)
+  } else {
+    stop('Please input a list of DTXSIDs!')
+  }
+}
+
+
+
 #' Get genetox details batch
 #'
 #' @param DTXSID The chemical identifier DTXSIDs
@@ -578,6 +773,74 @@ get_genetox_details_batch <- function(DTXSID = NULL,
     )
     names(results) <- DTXSID
     return(results)
+  } else {
+    stop('Please input a list of DTXSIDs!')
+  }
+}
+
+
+get_genetox_details_batch_2 <- function(DTXSID = NULL,
+                                      API_key = NULL,
+                                      rate_limit = 0L,
+                                      Server = hazard_api_server){
+  if (is.null(API_key) || !is.character(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+    num_dtxsid <- length(DTXSID)
+    indices <- generate_ranges(num_dtxsid)
+
+    dt <- data.table::data.table(id = integer(),
+                                 source = character(),
+                                 year = integer(),
+                                 dtxsid = character(),
+                                 strain = character(),
+                                 species = character(),
+                                 assayCategory = character(),
+                                 assayType = character(),
+                                 metabolicActivation = character(),
+                                 assayResult = character())
+
+    for (i in seq_along(indices)){
+
+      print(paste('The current index is i =', i, 'out of', length(indices)))
+
+      response <- httr::POST(url = paste0(Server, '/genetox/details/search/by-dtxsid/'),
+                             httr::add_headers(.headers = c(
+                               'Accept' = 'application/json',
+                               'Content-Type' = 'application/json',
+                               'x-api-key' = API_key
+                             )),
+                             body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
+
+      print(paste('The response code is', response$status_code, 'for index i =', i))
+
+
+      if (response$status_code == 200){
+        dt <- suppressWarnings(data.table::rbindlist(list(dt,
+                                                          data.table::data.table(jsonlite::fromJSON(httr::content(response,
+                                                                                                                  as = 'text')))),
+                                                     fill = TRUE))
+      }
+      Sys.sleep(rate_limit)
+    }
+
+
+
+    return(dt)
   } else {
     stop('Please input a list of DTXSIDs!')
   }
