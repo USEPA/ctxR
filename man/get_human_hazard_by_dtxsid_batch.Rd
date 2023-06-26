@@ -7,7 +7,8 @@
 get_human_hazard_by_dtxsid_batch(
   DTXSID = NULL,
   API_key = NULL,
-  rate_limit = 0L
+  rate_limit = 0L,
+  Server = hazard_api_server
 )
 }
 \arguments{
@@ -16,9 +17,11 @@ get_human_hazard_by_dtxsid_batch(
 \item{API_key}{The user-specific API key.}
 
 \item{rate_limit}{Number of seconds to wait between each request}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
-A named lit of data.frames containing chemical human hazard data.
+A data.table containing chemical human hazard data.
 }
 \description{
 Get human hazard data by DTXSID batch
