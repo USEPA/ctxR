@@ -4,14 +4,21 @@
 \alias{get_skin_eye_hazard_batch}
 \title{Get skin and eye hazard batch}
 \usage{
-get_skin_eye_hazard_batch(DTXSID = NULL, API_key = NULL, rate_limit = 0L)
+get_skin_eye_hazard_batch(
+  DTXSID = NULL,
+  API_key = NULL,
+  rate_limit = 0L,
+  Server = hazard_api_server
+)
 }
 \arguments{
-\item{DTXSID}{The chemical identifer DTXSIDs}
+\item{DTXSID}{The chemical identifier DTXSIDs}
 
 \item{API_key}{The user-specific API key.}
 
 \item{rate_limit}{Number of seconds to wait between each request}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
 A named list of data.frames containing skin and eye hazard data for
