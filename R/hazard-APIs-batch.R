@@ -260,11 +260,10 @@ get_human_hazard_by_dtxsid_batch_2 <- function(DTXSID = NULL,
 #' @param API_key The user-specific API key.
 #' @param rate_limit Number of seconds to wait between each request
 #'
-#' @return A named lit of data.frames containing chemical ecotox hazard data.
-#' @export
+#' @return A named list of data.frames containing chemical ecotox hazard data.
 
 
-get_ecotox_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
+get_ecotox_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
                                               API_key = NULL,
                                               rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
@@ -307,7 +306,17 @@ get_ecotox_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
   }
 }
 
-get_ecotox_hazard_by_dtxsid_batch_2 <- function(DTXSID = NULL,
+#' Get ecotox hazard data by DTXSID batch
+#'
+#' @param DTXSID A list of chemical identifier DTXSIDs.
+#' @param API_key The user-specific API key.
+#' @param rate_limit Number of seconds to wait between each request
+#' @param Server The root address for the API endpoint
+#'
+#' @return A data.table containing chemical ecotox hazard data.
+#' @export
+
+get_ecotox_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                                          API_key = NULL,
                                          rate_limit = 0L,
                                          Server = hazard_api_server){
