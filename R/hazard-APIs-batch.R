@@ -151,10 +151,9 @@ create_hazard_data.table <- function(){
 #' @param rate_limit Number of seconds to wait between each request
 #'
 #' @return A named lit of data.frames containing chemical human hazard data.
-#' @export
 
 
-get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
+get_human_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
                                              API_key = NULL,
                                              rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
@@ -197,7 +196,17 @@ get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
   }
 }
 
-get_human_hazard_by_dtxsid_batch_2 <- function(DTXSID = NULL,
+#' Get human hazard data by DTXSID batch
+#'
+#' @param DTXSID A list of chemical identifier DTXSIDs.
+#' @param API_key The user-specific API key.
+#' @param rate_limit Number of seconds to wait between each request
+#' @param Server The root address for the API endpoint
+#'
+#' @return A data.table containing chemical human hazard data.
+#' @export
+
+get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                                          API_key = NULL,
                                          rate_limit = 0L,
                                          Server = hazard_api_server){
