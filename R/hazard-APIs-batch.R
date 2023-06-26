@@ -494,10 +494,9 @@ get_skin_eye_hazard_batch_2 <- function(DTXSID = NULL,
 #'
 #' @return A named list of data.frames, each containing cancer hazard and
 #'   related data for each input DTXSID.
-#' @export
 
 
-get_cancer_hazard_batch <- function(DTXSID = NULL,
+get_cancer_hazard_batch_old <- function(DTXSID = NULL,
                                     API_key = NULL,
                                     rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
@@ -540,8 +539,19 @@ get_cancer_hazard_batch <- function(DTXSID = NULL,
   }
 }
 
+#' Get cancer hazard batch
+#'
+#' @param DTXSID The chemical identifier DTXSIDs
+#' @param API_key The user-specific API key.
+#' @param rate_limit Number of seconds to wait between requests
+#' @param Server The root address for the API endpoint
+#'
+#' @return A data.table containing cancer hazard and
+#'   related data for each input DTXSID.
+#' @export
 
-get_cancer_hazard_batch_2 <- function(DTXSID = NULL,
+
+get_cancer_hazard_batch <- function(DTXSID = NULL,
                                     API_key = NULL,
                                     rate_limit = 0L,
                                     Server = hazard_api_server){
