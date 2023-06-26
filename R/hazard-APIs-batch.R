@@ -612,10 +612,9 @@ get_cancer_hazard_batch_2 <- function(DTXSID = NULL,
 #'
 #' @return A named list of data.frames of genetox summary data for each input
 #'   DTXSID.
-#' @export
 
 
-get_genetox_summary_batch <- function(DTXSID = NULL,
+get_genetox_summary_batch_old <- function(DTXSID = NULL,
                                       API_key = NULL,
                                       rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
@@ -659,7 +658,19 @@ get_genetox_summary_batch <- function(DTXSID = NULL,
 }
 
 
-get_genetox_summary_batch_2 <- function(DTXSID = NULL,
+#' Get genetox summary batch
+#'
+#' @param DTXSID The chemical identifier DTXSIDs
+#' @param API_key The user-specific API key.
+#' @param rate_limit Number of seconds to wait between requests
+#' @param Server The root address for the API endpoint
+#'
+#' @return A data.table of genetox summary data for each input
+#'   DTXSID.
+#' @export
+
+
+get_genetox_summary_batch <- function(DTXSID = NULL,
                                       API_key = NULL,
                                       rate_limit = 0L,
                                       Server = hazard_api_server){
@@ -786,7 +797,7 @@ get_genetox_details_batch_old <- function(DTXSID = NULL,
 #' @param rate_limit Number of seconds to wait between requests
 #' @param Server The root address for the API endpoint
 #'
-#' @return A named list of data.frames of genetox detail data for each input
+#' @return A data.table of genetox detail data for each input
 #'   DTXSID.
 #' @export
 
