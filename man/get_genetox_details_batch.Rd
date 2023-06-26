@@ -21,7 +21,7 @@ get_genetox_details_batch(
 \item{Server}{The root address for the API endpoint}
 }
 \value{
-A named list of data.frames of genetox detail data for each input
+A data.table of genetox detail data for each input
   DTXSID.
 }
 \description{
