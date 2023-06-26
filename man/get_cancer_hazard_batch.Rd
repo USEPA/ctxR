@@ -4,7 +4,12 @@
 \alias{get_cancer_hazard_batch}
 \title{Get cancer hazard batch}
 \usage{
-get_cancer_hazard_batch(DTXSID = NULL, API_key = NULL, rate_limit = 0L)
+get_cancer_hazard_batch(
+  DTXSID = NULL,
+  API_key = NULL,
+  rate_limit = 0L,
+  Server = hazard_api_server
+)
 }
 \arguments{
 \item{DTXSID}{The chemical identifier DTXSIDs}
@@ -12,9 +17,11 @@ get_cancer_hazard_batch(DTXSID = NULL, API_key = NULL, rate_limit = 0L)
 \item{API_key}{The user-specific API key.}
 
 \item{rate_limit}{Number of seconds to wait between requests}
+
+\item{Server}{The root address for the API endpoint}
 }
 \value{
-A named list of data.frames, each containing cancer hazard and
+A data.table containing cancer hazard and
   related data for each input DTXSID.
 }
 \description{
