@@ -18,7 +18,7 @@ get_human_hazard_by_dtxsid_batch_old(
 \item{rate_limit}{Number of seconds to wait between each request}
 }
 \value{
-A named lit of data.frames containing chemical human hazard data.
+A named list of data.frames containing chemical human hazard data.
 }
 \description{
 Get human hazard data by DTXSID batch
