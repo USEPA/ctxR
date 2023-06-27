@@ -158,9 +158,9 @@ get_chemical_details_batch_2 <- function(DTXSID = NULL,
       #dtxsid_list <- list(DTXSID[indices[[i]]])
         #generate_dtxsid_string(DTXSID[indices[[i]]])
       #print(dtxsid_list[1])
-      print(paste('The current index is i =', i))
-      print(DTXSID[indices[[i]]])
-      print(jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = T, pretty = T))
+      # print(paste('The current index is i =', i))
+      # print(DTXSID[indices[[i]]])
+      # print(jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = T, pretty = T))
 
       response <- httr::POST(url = paste0(Server, '/detail/search/by-dtxsid/', projection_url),
                              httr::add_headers(.headers = c(
@@ -177,7 +177,7 @@ get_chemical_details_batch_2 <- function(DTXSID = NULL,
       #                                   )
 
 
-    print(paste('The response code is', response$status_code, 'for index i =', i))
+    # print(paste('The response code is', response$status_code, 'for index i =', i))
 
     if (response$status_code == 200){
       print(str(jsonlite::fromJSON(httr::content(response, as = 'text'))))
@@ -457,7 +457,7 @@ get_chem_info_batch <- function(DTXSID = NULL,
 
     for (i in seq_along(indices)){
 
-      print(paste('The current index is i =', i, 'out of', length(indices)))
+      # print(paste('The current index is i =', i, 'out of', length(indices)))
 
       response <- httr::POST(url = paste0(Server, '/property/search/by-dtxsid/'),
                              httr::add_headers(.headers = c(
@@ -467,7 +467,7 @@ get_chem_info_batch <- function(DTXSID = NULL,
                              )),
                              body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
 
-      print(paste('The response code is', response$status_code, 'for index i =', i))
+      # print(paste('The response code is', response$status_code, 'for index i =', i))
 
 
       if (response$status_code == 200){
@@ -478,7 +478,7 @@ get_chem_info_batch <- function(DTXSID = NULL,
       }
       Sys.sleep(rate_limit)
     }
-  }
+
 
   if (!is.character(type)){
     return(dt)
@@ -495,7 +495,10 @@ get_chem_info_batch <- function(DTXSID = NULL,
     return(dt[index_subset, ])
   }
 
-  return(dt)
+  # return(dt)
+  } else {
+    stop('Please input a character list for DTXSID!')
+  }
 }
 
 
@@ -600,7 +603,7 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
 
     for (i in seq_along(indices)){
 
-      print(paste('The current index is i =', i, 'out of', length(indices)))
+      # print(paste('The current index is i =', i, 'out of', length(indices)))
 
       response <- httr::POST(url = paste0(Server, '/fate/search/by-dtxsid/'),
                              httr::add_headers(.headers = c(
@@ -610,7 +613,7 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
                              )),
                              body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
 
-      print(paste('The response code is', response$status_code, 'for index i =', i))
+      # print(paste('The response code is', response$status_code, 'for index i =', i))
 
 
       if (response$status_code == 200){
