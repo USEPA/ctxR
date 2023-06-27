@@ -27,8 +27,9 @@ mismatch, the default format will be 'chemicaldetailstandard'.}
 \item{rate_limit}{Number of seconds to wait between each request}
 }
 \value{
-A named list of data.tables containing chemical information for the
-  chemicals with DTXSID or DTXCID matching the input parameter.
+A data.table (DTXSID) or a named list of data.tables (DTXCID)
+  containing chemical information for the chemicals with DTXSID or DTXCID
+  matching the input parameter.
 }
 \description{
 Retrieve chemical details from DTXSID of DTXCID in batch search

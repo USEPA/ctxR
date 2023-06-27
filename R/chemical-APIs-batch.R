@@ -11,8 +11,9 @@
 #' @param API_key The user-specific API key
 #' @param rate_limit Number of seconds to wait between each request
 #'
-#' @return A named list of data.tables containing chemical information for the
-#'   chemicals with DTXSID or DTXCID matching the input parameter.
+#' @return A data.table (DTXSID) or a named list of data.tables (DTXCID)
+#'   containing chemical information for the chemicals with DTXSID or DTXCID
+#'   matching the input parameter.
 #' @export
 
 
@@ -21,6 +22,14 @@ get_chemical_details_batch <- function(DTXSID = NULL,
                                        Projection = 'chemicaldetailstandard',
                                        API_key = NULL,
                                        rate_limit = 0L){
+  if (!is.null(DTXSID)){
+    t <- get_chemical_details_batch_2(DTXSID = DTXSID,
+                                      Projection = Projection,
+                                      API_key = API_key,
+                                      rate_limit = rate_limit)
+    return(t)
+  }
+
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
