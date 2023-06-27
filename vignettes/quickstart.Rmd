@@ -148,6 +148,9 @@ bpa_equals <- chemical_equal(word = 'Bisphenol a',
                              API_key = my_key)
 head(bpa_equals)
 ```
+
+Note that input strings may include URLencoded chemical names, DTXSIDs, DTXCIDs, InChIKeys, and CASRNs. For `chemical_starts_with()`, the InChIKey string needs to include the first 13 characters.
+
 Next we demonstrate the family of ms ready functions. These return lists of DTXSIDs of chemicals that match the search criteria. For the example, we use Methane, with chemical formula CH4, mono-isotopic mass of 16.0313g, and DTXCID of DTXSID8025545.
 
 First, we use the formula for methane and display the first ten responses.
