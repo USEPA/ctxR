@@ -342,10 +342,9 @@ get_chemical_by_property_range_batch <- function(start_list = NULL,
 #'
 #' @return A named list of data.frames containing chemical information for the
 #'   chemicals with DTXSID matching the input parameter.
-#' @export
 
 
-get_chem_info_batch <- function(DTXSID = NULL,
+get_chem_info_batch_old <- function(DTXSID = NULL,
                                 type = '',
                                 API_key = NULL,
                                 rate_limit = 0L){
@@ -403,7 +402,23 @@ get_chem_info_batch <- function(DTXSID = NULL,
   }
 }
 
-get_chem_info_batch_2 <- function(DTXSID = NULL,
+#' Retrieve chemical information in batch search
+#'
+#' @param DTXSID A vector of chemical identifier DTXSIDs
+#' @param type A vector of type used in get_chem_info(). This specifies whether
+#'   to only grab predicted or experimental results. If not specified, it will
+#'   grab all details. The allowable input values are "", predicted", or
+#'   "experimental".
+#' @param API_key The user-specific API key.
+#' @param rate_limit Number of seconds to wait between each request
+#' @param Server The root address for the API endpoint
+#'
+#' @return A data.table containing chemical information for the chemicals with
+#'   DTXSID matching the input parameter.
+#' @export
+
+
+get_chem_info_batch <- function(DTXSID = NULL,
                                   type = '',
                                   API_key = NULL,
                                   rate_limit = 0L,
