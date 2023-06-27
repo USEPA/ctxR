@@ -180,7 +180,7 @@ get_chemical_details_batch_2 <- function(DTXSID = NULL,
     # print(paste('The response code is', response$status_code, 'for index i =', i))
 
     if (response$status_code == 200){
-      print(str(jsonlite::fromJSON(httr::content(response, as = 'text'))))
+      #print(str(jsonlite::fromJSON(httr::content(response, as = 'text'))))
       dt <- suppressWarnings(data.table::rbindlist(list(dt,
                                                         data.table::data.table(jsonlite::fromJSON(httr::content(response,
                                                                                                                 as = 'text')))),
