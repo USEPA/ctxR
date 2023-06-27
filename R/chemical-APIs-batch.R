@@ -507,10 +507,9 @@ get_chem_info_batch <- function(DTXSID = NULL,
 #'
 #' @return A named list of data.frames containing chemical fate information for
 #'   the chemicals with DTXSID matching the input parameter.
-#' @export
 
 
-get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
+get_fate_by_dtxsid_batch_old <- function(DTXSID = NULL,
                                      API_key = NULL,
                                      rate_limit = 0L){
   if (is.null(API_key) || !is.character(API_key)){
@@ -552,8 +551,18 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
   }
 }
 
+#' Retrieve chemical fate data in batch search
+#'
+#' @param DTXSID A vector of chemicals identifier DTXSIDs
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request
+#' @param Server The root address for the API endpoint
+#'
+#' @return A data.table containing chemical fate information for the chemicals
+#'   with DTXSID matching the input parameter.
+#' @export
 
-get_fate_by_dtxsid_batch_2 <- function(DTXSID = NULL,
+get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
                                        API_key = NULL,
                                        rate_limit = 0L,
                                        Server = chemical_api_server){
