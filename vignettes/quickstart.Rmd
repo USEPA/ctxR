@@ -197,17 +197,15 @@ Before moving to the next set of functions, a demonstration of using more than o
 Here we combine the data.tables from the `get_chemical_details()` calls for a list of ten DTXSIDs.
 
 ```{r, methane-chemical-details-batch}
-methane_df_list <- get_chemical_details_batch(DTXSID = methane_mass[1:10],
+methane_df <- get_chemical_details_batch(DTXSID = methane_mass[1:10],
                                               API_key = my_key)
-methane_df <- data.table::rbindlist(methane_df_list)
+#methane_df <- data.table::rbindlist(methane_df_list)
 methane_df
 ```
 If instead we just want the information from a single column, we can specify that as follows.
 
 ```{r, mol-formula-batch}
-methane_formula_list <- sapply(methane_df_list, function(t) {
-  t$molFormula
-})
+methane_formula_list <- methane_df$molFormula
 methane_formula_list
 ```
 ### Chemical List Resource
@@ -337,14 +335,14 @@ bpa_skin_and_eye
 We then demonstrate the cancer summary endpoint.
 
 ```{r, cancer}
-bpa_cancer <- get_cancer_hazard(DTXSID = 'DTXSID7020182',
+phenolphthalein_cancer <- get_cancer_hazard(DTXSID = 'DTXSID0021125',
                                 API_key = my_key)
-bpa_cancer
+phenolphthalein_cancer
 ```
 
 ### Genetox resource
 
-Finally we explore the genetox resource. This allos us to grab either summary or detail level genetox data. We first demonstrate the summary endpoint.
+Finally we explore the genetox resource. This allows us to grab either summary or detail level genetox data. We first demonstrate the summary endpoint.
 
 ```{r, genetox-summary}
 bpa_genetox_summary <- get_genetox_summary(DTXSID = 'DTXSID7020182',
