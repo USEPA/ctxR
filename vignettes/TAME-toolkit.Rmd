@@ -18,19 +18,93 @@ knitr::opts_chunk$set(
 #library(ccdR)
 ```
 
+```{r, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
+# This code chunk is included during the development of this rmd and must be removed when deployed!!!
+if (!library(ccdR, logical.return = TRUE)){
+  devtools::load_all()
+}
+```
+
+
 # Introduction
 
-Accessing chemical data and wrangling it is a vital step in many types of workflows related to chemical, biological, and environmental modelling. While there are many resources available from which one can pull data, the [CompTox Chemicals Dashboard](https://comptox.epa.gov/dashboard/)(CCD) built and maintained by the United States Environmental Protection Agency is particularly well-designed and maintained. The CCD contains information on over 1.2 million chemicals as of 9/11/2023, ranging from ... One can see an example of this in the search for the chemical Bisphenol A. ![Bisphenol A landing page](./Pictures/CCD BPA page.png){width=120%}
+Accessing chemical data and wrangling it is a vital step in many types of workflows related to chemical, biological, and environmental modelling. While there are many resources available from which one can pull data, the [CompTox Chemicals Dashboard](https://comptox.epa.gov/dashboard/)(CCD) built and maintained by the United States Environmental Protection Agency is particularly well-designed and maintained. The CCD contains information on over 1.2 million chemicals as of 9/11/2023, ranging from ... One can see an example of this in the search for the chemical Bisphenol A. 
+
+![Bisphenol A landing page](./Pictures/CCD BPA page.png){width=120%}
 
 As one may observe, on the left side of the image there are several tabs that contain information such as physico-chemical properties, Environmental Fate and Transport data, and hazard data among others. The data contained in these tabs is freely accessible but not necessarily in the best format for data wrangling.
 
-One can use the batch search functionality of the CCD to pull together desired data for a specific user supplied list of chemicals. ![CCD Batch Search](./Pictures/CCD Batch Search.png){width=120%} One can download the selected information in various formats, such as a excel, csv, or different types of MOL files. While this is suitable for many projects, it does not necessarily work well when a programmatic approach to a modelling problem is desired. The steps involving inputting chemical identifier information, exporting into a file, loading and wrangling the file is both time consuming and a potential source of human error that may be hard to identify later on. 
+One can use the batch search functionality of the CCD to pull together desired data for a specific user supplied list of chemicals.
+
+![CCD Batch Search](./Pictures/CCD Batch Search.png){width=120%}
+
+One can download the selected information in various formats, such as a excel, csv, or different types of MOL files. While this is suitable for many projects, it does not necessarily work well when a programmatic approach to a modelling problem is desired. The steps involving inputting chemical identifier information, exporting into a file, loading and wrangling the data from file is both time consuming and a potential source of human error that may be hard to identify after the fact. 
 
 ## CCTE APIs
 
 Recently, the [Center for Computational Toxicology and Exposure](https://www.epa.gov/aboutepa/about-center-computational-toxicology-and-exposure-ccte)(CCTE) developed APIs that allow users to access the information curated and maintained within the CCD. The [CCTE APIs](https://api-ccte.epa.gov/docs/) are publicly available at no cost to the user. The first step for interacting with the information available through the APIs is acquiring an API key, by contacting the API support team at [ccte_api@epa.gov](ccte_api@epa.gov).
 
-The APIs are organized into three sections of endpoints, `Chemical`, `Hazard`, and `Bioactivity`.
+The APIs are organized into three sections of endpoints, `Chemical`, `Hazard`, and `Bioactivity`.Pictured below is what the `Chemical` section looks like and can be found at [CCTE API Chemical Endpoints](https://api-ccte.epa.gov/docs/chemical.html).
+
+![CCTE API Chemical Endpoints](./Pictures/CCTE Chemical API endpoints.png){width=120%}
+
+Notice that Authentication is the first tab on the left and below it are several endpoints organized by what purpose they serve. Authentication is required to use the APIs and the API key authenticates the user. The endpoints are organized into categories of functional use, for instance providing basic information on a chemical in the `Chemical Details Resource`, more comprehensive physico-chemical properties in `Chemical Property Resource`, chemical fate and transport data in `Chemical Fate Resource`, and so on. Also notice that next to each endpoint is a box that indicates what the associated http request is to access the information. These are either a Post or a Get request. Clicking on the `Get data by DTXSID`, we observe that there are certain required pieces of information to construct the request and optional parameters to focus the request.
+
+![CCTE Get Details by DTXSID](./Pictures/Get Data by DTXSID TOP.png){width=120%}
+
+The user is required to supply a string for the DTXSID and an optional `projection` parameter, which controls the scope of the information returned. The default return format is displayed below and includes a variety of fields with data types represented.
+
+![CCTE Get Details by DTXSID data types](./Pictures/Get Data by DTXSID BOTTOM.png){width=120%}
+We show what returned data from searching Bisphenol A looks like using this endpoint with the `chemicaldetailstandard` projection selected.
+
+![Bisphenol A output](./Pictures/BPA chemicaldetailstandard.png){width=120%}
+
+
+
+Formatting an http request is not necessarily intuitive nor worth the time for someone not already familiar with the process, so these endpoints may provide a resource that for many would require a significant investment in time and energy to learn how to use. However, there is a solution to this in the form of the R package ccdR.
+
+This R package was developed to streamline the process of accessing the information available through the CCTE APIs without requiring prior knowledge of how to use APIs. As an example, we demonstrate the ease with which one may retrieve the information given by this endpoint for Bisphenol A using the ccdR approach and contrast it with the approach using the CCD or CCTE Chemical Endpoint website.
+
+First, we load in ccdR and other libraries we will need for this module.
+
+### Installing required R packages
+
+```{r, eval = FALSE}
+if (!requireNamespace('ccdR'))
+  install.packages('ccdR');
+```
+
+### Loading R packages required for this session
+
+```{r, eval = FALSE}
+library(ccdR)
+```
+
+First, we store the API key required to access the APIs. To do this for the current session, run the first command. If you want to store your key across multiple sessions, run the second command.
+
+```{r, eval=FALSE}
+# This stores the key in the current session
+register_ccdr(key = '<YOUR API KEY>')
+
+# This stores the key across multiple sessions and only needs to be run once. 
+# If the key changes, rerun this with the new key.
+register_ccdr(key = '<YOUR API KEY>', write = TRUE)
+```
+
+To check that your key has successfully been stored for the session, run the following command.
+
+```{r}
+ccte_key()
+```
+Now, we demonstrate how to retrieve the information for BPA given by the `Chemical Detail Resource` endpoint under the `chemicaldetailstandard` projection. Note, this projection is the default projection for the function `get_chemical_details()`.
+
+```{r}
+BPA_chemical_detail <- get_chemical_details(DTXSID = 'DTXSID7020182')
+BPA_chemical_detail
+class(BPA_chemical_detail)
+names(BPA_chemical_detail)
+```
+
 
 
 
