@@ -28,7 +28,7 @@ if (!library(ccdR, logical.return = TRUE)){
 
 # Introduction
 
-Accessing chemical data and wrangling it is a vital step in many types of workflows related to chemical, biological, and environmental modelling. While there are many resources available from which one can pull data, the [CompTox Chemicals Dashboard](https://comptox.epa.gov/dashboard/)(CCD) built and maintained by the United States Environmental Protection Agency is particularly well-designed and maintained. The CCD contains information on over 1.2 million chemicals as of 9/11/2023, ranging from ... One can see an example of this in the search for the chemical Bisphenol A. 
+Accessing chemical data and wrangling it is a vital step in many types of workflows related to chemical, biological, and environmental modelling. While there are many resources available from which one can pull data, the [CompTox Chemicals Dashboard](https://comptox.epa.gov/dashboard/)(CCD) built and maintained by the United States Environmental Protection Agency is particularly well-designed and maintained. Originally introduced in [The CompTox Chemistry Dashboard: a community data resource for environmental chemistry](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0247-6), the CCD contains information on over 1.2 million chemicals as of September, 2023. Information contained for chemicals featured in the CCD include but are not limited to phys-chem properties, documentation and curation information of the featured data, hazard and fate/transport data. One can see an example of this in the search for the chemical Bisphenol A. 
 
 ![Bisphenol A landing page](./Pictures/CCD BPA page.png){width=120%}
 
@@ -121,6 +121,32 @@ names(BPA_chemical_detail)
 
 
 # Physico-chemical properties
+
+We study two different data sets contained in the CCD and observe how they relate and how they differ. The two data sets that we will first explore are the water contaminant priority list, ccl3, and NATA air pollutants. These can be found in the CCD at [CCL3](https://comptox.epa.gov/dashboard/chemical-lists/CCL3) with additional information at [CCL3 information](https://www.epa.gov/ccl/contaminant-candidate-list-3-ccl-3) and [NATADB](https://comptox.epa.gov/dashboard/chemical-lists/NATADB). !!!ADD IN DESCRIPTION AND BACKGROUND INFORMATION FOR THESE DATA SETS!!!
+
+We explore details about these before diving into analyzing the data contained in each list.
+
+```{r}
+ccl3_information <- get_public_chemical_list_by_name('CCL3')
+ccl3_information
+
+natadb_information <- get_public_chemical_list_by_name('NATADB')
+natadb_information
+```
+
+Now we pull the actual chemicals contained in the lists using the APIs.
+
+```{r}
+ccl3 <- get_chemicals_in_list('CCL3')
+ccl3 <- data.table::as.data.table(ccl3)
+
+natadb <- get_chemicals_in_list('NATADB')
+natadb <- data.table::as.data.table(natadb)
+
+ccl3
+natadb
+```
+
 
 
 We do a few comparisons of phys-chem properties on chemicals from a few different lists from the CCD. In particular, we examine the vapor pressure of chemicals found in the [ASPECT](https://comptox.epa.gov/dashboard/chemical-lists/ASPECT) list and the [USGS](https://comptox.epa.gov/dashboard/chemical-lists/USGSWATER) list, which roughly focus on chemicals found in air and water, respectively.
