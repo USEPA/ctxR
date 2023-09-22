@@ -122,13 +122,13 @@ names(BPA_chemical_detail)
 
 # Physico-chemical properties
 
-We study two different data sets contained in the CCD and observe how they relate and how they differ. The two data sets that we will first explore are the water contaminant priority list, ccl3, and NATA air pollutants. These can be found in the CCD at [CCL3](https://comptox.epa.gov/dashboard/chemical-lists/CCL3) with additional information at [CCL3 information](https://www.epa.gov/ccl/contaminant-candidate-list-3-ccl-3) and [NATADB](https://comptox.epa.gov/dashboard/chemical-lists/NATADB). !!!ADD IN DESCRIPTION AND BACKGROUND INFORMATION FOR THESE DATA SETS!!!
+We study two different data sets contained in the CCD and observe how they relate and how they differ. The two data sets that we will first explore are the water contaminant priority list, ccl4, and NATA air pollutants. These can be found in the CCD at [CCL4](https://comptox.epa.gov/dashboard/chemical-lists/CCL4) with additional information at [CCL4 information](https://www.epa.gov/ccl/contaminant-candidate-list-4-ccl-4-0) and [NATADB](https://comptox.epa.gov/dashboard/chemical-lists/NATADB). !!!ADD IN DESCRIPTION AND BACKGROUND INFORMATION FOR THESE DATA SETS!!!
 
 We explore details about these before diving into analyzing the data contained in each list.
 
 ```{r}
-ccl3_information <- get_public_chemical_list_by_name('CCL3')
-ccl3_information
+ccl4_information <- get_public_chemical_list_by_name('CCL4')
+ccl4_information
 
 natadb_information <- get_public_chemical_list_by_name('NATADB')
 natadb_information
@@ -137,14 +137,86 @@ natadb_information
 Now we pull the actual chemicals contained in the lists using the APIs.
 
 ```{r}
-ccl3 <- get_chemicals_in_list('CCL3')
-ccl3 <- data.table::as.data.table(ccl3)
+ccl4 <- get_chemicals_in_list('ccl4')
+ccl4 <- data.table::as.data.table(ccl4)
 
 natadb <- get_chemicals_in_list('NATADB')
 natadb <- data.table::as.data.table(natadb)
 
-ccl3
-natadb
+head(ccl4)
+head(natadb)
+```
+We now collect the phys-chem properties of the chemicals in each list. We will use the batch forms of the function `get_chem_info()`, to which we supply a list of DTXSIDs.
+
+```{r}
+ccl4$dtxsid
+natadb$dtxsid
+
+ccl4_phys_chem <- get_chem_info_batch(ccl4$dtxsid)
+natadb_phys_chem <- get_chem_info_batch(natadb$dtxsid)
+```
+Observe that this returns a single data.table for each query, and the data.table contains the phys-chem properties available from the CCD for each chemical in the query. We examine the set of phys-chem properties for the first chemical in ccl4.First we look at all the phys-chem properties individually, then group them by each property (`boiling-point`, `melting-point`, etc...) and then additional group those by property type (`experimental` vs `predicted`). In the grouping, we look at the columns `value`, `unit`, `propertyID` and `propType`. We also demonstrate how take the mean of the values for each grouping.
+
+```{r}
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], ]
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(propType, value, unit), by = .(propertyId)]
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(value, unit), by = .(propertyId, propType)]
+
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(sapply(.SD, mean)), by = .(propertyId, unit), .SDcols = c("value")]
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(sapply(.SD, mean)), by = .(propertyId, unit, propType), .SDcols = c("value")][order(propertyId)]
+```
+Now, we examine the vapor pressures for all the chemicals in each list. We then graph these, grouped by `propType` and pooled together in separate plots. For this we will use boxplots.
+
+```{r}
+library(ggplot2)
+
+ccl4_vapor_all <- ccl4_phys_chem[propertyId %in% 'vapor-pressure', sapply(.SD, mean), .SDcols = c('value'), by = .(dtxsid)]
+ccl4_vapor_grouped <- ccl4_phys_chem[propertyId %in% 'vapor-pressure', sapply(.SD, mean), .SDcols = c('value'), by = .(dtxsid, propType)]
+
+natadb_vapor_all <- natadb_phys_chem[propertyId %in% 'vapor-pressure', sapply(.SD, mean), .SDcols = c('value'), by = .(dtxsid)]
+natadb_vapor_grouped <- natadb_phys_chem[propertyId %in% 'vapor-pressure', sapply(.SD, mean), .SDcols = c('value'), by = .(dtxsid, propType)]
+
+
+summary(ccl4_vapor_all)
+summary(ccl4_vapor_grouped)
+summary(natadb_vapor_all)
+summary(natadb_vapor_grouped)
+```
+With such a large range covering several orders of magnitude, we log transform the data. Since these value are positive, we do not have to worry about illegal transformations.
+
+```{r}
+ccl4_vapor_all[, log_transform := log(V1)]
+ccl4_vapor_grouped[, log_transform := log(V1)]
+
+natadb_vapor_all[, log_transform := log(V1)]
+natadb_vapor_grouped[, log_transform := log(V1)]
+```
+
+
+```{r}
+
+ggplot(ccl4_vapor_all, aes(log_transform)) +
+  geom_boxplot()
+ggplot(ccl4_vapor_grouped, aes(propType, log_transform)) +
+  geom_boxplot()
+
+ggplot(natadb_vapor_all, aes(log_transform)) +
+  geom_boxplot()
+ggplot(natadb_vapor_grouped, aes(propType, log_transform)) +
+  geom_boxplot()
+```
+
+Finally, we compare both sets simultaneously. We add in a column to each data.table denoting to which set the rows correspond and then `rbind` the rows together.
+
+```{r}
+ccl4_vapor_grouped[, set := 'CCL4']
+natadb_vapor_grouped[, set := 'NATADB']
+
+all_vapor_grouped <- rbind(ccl4_vapor_grouped, natadb_vapor_grouped)
+
+vapor_box <- ggplot(all_vapor_grouped, aes(propType, log_transform)) + 
+  geom_boxplot(aes(color = set))
+vapor_box
 ```
 
 
