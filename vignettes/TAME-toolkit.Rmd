@@ -214,9 +214,83 @@ natadb_vapor_grouped[, set := 'NATADB']
 
 all_vapor_grouped <- rbind(ccl4_vapor_grouped, natadb_vapor_grouped)
 
-vapor_box <- ggplot(all_vapor_grouped, aes(propType, log_transform)) + 
-  geom_boxplot(aes(color = set))
+vapor_box <- ggplot(all_vapor_grouped, aes(set, log_transform)) + 
+  geom_boxplot(aes(color = propType))
 vapor_box
+```
+
+We also explore Henry's Law constant and boiling point.
+
+```{r}
+ccl4_hlc_all <- ccl4_phys_chem[propertyId %in% 'henrys-law', sapply(.SD, mean), .SDcols = c('value'), by = .(dtxsid)]
+ccl4_hlc_grouped <- ccl4_phys_chem[propertyId %in% 'henrys-law', sapply(.SD, mean), .SDcols = c('value'), by = .(dtxsid, propType)]
+
+natadb_hlc_all <- natadb_phys_chem[propertyId %in% 'henrys-law', sapply(.SD, mean), .SDcols = c('value'), by = .(dtxsid)]
+natadb_hlc_grouped <- natadb_phys_chem[propertyId %in% 'henrys-law', sapply(.SD, mean), .SDcols = c('value'), by = .(dtxsid, propType)]
+
+
+summary(ccl4_hlc_all)
+summary(ccl4_hlc_grouped)
+summary(natadb_hlc_all)
+summary(natadb_hlc_grouped)
+```
+With such a large range covering several orders of magnitude, we log transform the data. Since these value are positive, we do not have to worry about illegal transformations.
+
+```{r}
+ccl4_hlc_all[, log_transform := log(V1)]
+ccl4_hlc_grouped[, log_transform := log(V1)]
+
+natadb_hlc_all[, log_transform := log(V1)]
+natadb_hlc_grouped[, log_transform := log(V1)]
+```
+
+We compare both sets simultaneously. We add in a column to each data.table denoting to which set the rows correspond and then `rbind` the rows together.
+
+```{r}
+ccl4_hlc_grouped[, set := 'CCL4']
+natadb_hlc_grouped[, set := 'NATADB']
+
+all_hlc_grouped <- rbind(ccl4_hlc_grouped, natadb_hlc_grouped)
+
+hlc_box <- ggplot(all_hlc_grouped, aes(set, log_transform)) + 
+  geom_boxplot(aes(color = propType))
+hlc_box
+```
+
+```{r}
+ccl4_boiling_all <- ccl4_phys_chem[propertyId %in% 'boiling-point', sapply(.SD, mean), .SDcols = c('value'), by = .(dtxsid)]
+ccl4_boiling_grouped <- ccl4_phys_chem[propertyId %in% 'boiling-point', sapply(.SD, mean), .SDcols = c('value'), by = .(dtxsid, propType)]
+
+natadb_boiling_all <- natadb_phys_chem[propertyId %in% 'boiling-point', sapply(.SD, mean), .SDcols = c('value'), by = .(dtxsid)]
+natadb_boiling_grouped <- natadb_phys_chem[propertyId %in% 'boiling-point', sapply(.SD, mean), .SDcols = c('value'), by = .(dtxsid, propType)]
+
+
+summary(ccl4_boiling_all)
+summary(ccl4_boiling_grouped)
+summary(natadb_boiling_all)
+summary(natadb_boiling_grouped)
+```
+With such a large range covering several orders of magnitude, we log transform the data. Since these value are positive, we do not have to worry about illegal transformations.
+
+```{r}
+ccl4_boiling_all[, log_transform := log(V1)]
+ccl4_boiling_grouped[, log_transform := log(V1)]
+
+natadb_boiling_all[, log_transform := log(V1)]
+natadb_boiling_grouped[, log_transform := log(V1)]
+```
+
+We compare both sets simultaneously. We add in a column to each data.table denoting to which set the rows correspond and then `rbind` the rows together.
+
+```{r}
+ccl4_boiling_grouped[, set := 'CCL4']
+natadb_boiling_grouped[, set := 'NATADB']
+
+all_boiling_grouped <- rbind(ccl4_boiling_grouped, natadb_boiling_grouped)
+
+boiling_box <- ggplot(all_boiling_grouped, aes(set, V1)) + 
+  geom_boxplot(aes(color = propType))
+boiling_box
 ```
 
 
