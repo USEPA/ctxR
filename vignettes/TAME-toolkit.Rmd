@@ -292,7 +292,94 @@ boiling_box <- ggplot(all_boiling_grouped, aes(set, V1)) +
   geom_boxplot(aes(color = propType))
 boiling_box
 ```
+Now, having examined some of the distributions of the phys chem properties of the two lists, aggregated between predicted and experimental, we move towards learning more about these chemicals beyond phys chem properties. Specifically, we will examine their genotoxicity.
 
+To access the genetox endpoint, we will use the function `get_genetox_summary`. Since we have a list of chemicals, rather than searching individually for each chemical, we use the batch search version of the function, names `get_genetox_summary_batch`. We will examine this and then access the details.
+
+```{r}
+ccl4_genotox <- get_genetox_summary_batch(DTXSID = ccl4$dtxsid)
+natadb_genetox <- get_genetox_summary_batch(DTXSID = natadb$dtxsid)
+ccl4_genotox
+natadb_genetox
+```
+Observe that we have information on 71 chemicals from the `ccl4` data and 153 from the `natadb` data. We note the chemicals not included in the results and then dig into the returned results.
+
+```{r}
+ccl4[!(dtxsid %in% ccl4_genotox$dtxsid), ]
+natadb[!(dtxsid %in% natadb_genetox$dtxsid), ]
+```
+
+Now, we access the genetox details of the chemicals in each data set.
+
+```{r}
+ccl4_genetox_details <- get_genetox_details_batch(DTXSID = ccl4$dtxsid)
+natadb_genetox_details <- get_genetox_details_batch(DTXSID = natadb$dtxsid)
+ccl4_genetox_details
+natadb_genetox_details
+```
+
+We examine the information returned for the first chemical in each set of results, which is DTXSID0020153. Notice that the information is identical in each case as this information is chemical specific and not data set specific.
+
+```{r}
+ccl4_genetox_details[dtxsid %in% 'DTXSID0020153', ]
+natadb_genetox_details[dtxsid %in% 'DTXSID0020153', ]
+
+```
+
+We analyze these results more closely, counting the number of assay results and grouping by species, assayCategory, and assayType. We also examine the different numbers of assyCategory and assayTypes used.
+
+```{r}
+ccl4_genetox_details[, .N, by = .(species, assayCategory, assayType, assayResult)]
+ccl4_genetox_details[, .N, by = .(assayCategory)]
+ccl4_genetox_details[, .N, by = .(assayCategory, assayType)]
+natadb_genetox_details[, .N, by = .(species, assayCategory, assayType, assayResult)]
+natadb_genetox_details[, .N, by = .(assayCategory)]
+natadb_genetox_details[, .N, by = .(assayType)]
+```
+
+We now determine which chemicals from each data set are known to have genotoxic effects. For this, we look to see which chemicals produce a positive response in the assayResult column.
+
+```{r}
+ccl4_genetox_details[, .(is_positive = any(assayResult == 'positive')), by = .(dtxsid)][is_positive == TRUE, dtxsid]
+natadb_genetox_details[, .(is_positive = any(assayResult == 'positive')), by = .(dtxsid)][is_positive == TRUE, dtxsid]
+```
+
+Finally, we examine the hazard data associated with the chemicals in each data set. For each chemical, there will be potentially hundreds of rows of hazard data, so the returned results will be much larger than in most other API endpoints.
+
+```{r}
+ccl4_hazard <- get_hazard_by_dtxsid_batch(DTXSID = ccl4$dtxsid)
+natadb_hazard <- get_hazard_by_dtxsid_batch(DTXSID = natadb$dtxsid)
+```
+We do some preliminary exploration of the data.
+
+```{r}
+ccl4_hazard[, .N, by = .(criticalEffect)]
+ccl4_hazard[, .N, by = .(supercategory)]
+ccl4_hazard[, .N, by = .(toxvalType)]
+
+natadb_hazard[, .N, by = .(criticalEffect)]
+natadb_hazard[, .N, by = .(supercategory)]
+natadb_hazard[, .N, by = .(toxvalType)]
+```
+With over 20,000 results for `Point of Departure`, we dig into this further.
+
+```{r}
+ccl4_hazard[ supercategory %in% 'Point of Departure', .N, by = .(toxvalType)][order(-N),]
+natadb_hazard[ supercategory %in% 'Point of Departure', .N, by = .(toxvalType)][order(-N),]
+```
+
+We choose `NOEL`, `NOEC`, `LOEL`, and `LOEC` to explore further. At this point, we will determine the units reported for each of these endpoints, make a conversion to the value if necessary, and then determine the chemical with the lowest dose required to elicit an response. We group by media and determine which media is feasible to study further.
+
+```{r}
+ccl4_hazard[toxvalType %in% c('NOEL', 'NOEC', 'LOEL', 'LOEC'), .(.N, by_media = length(unique(toxvalUnits))), by = .(media, toxvalType)][order(by_media, -N),]
+natadb_hazard[toxvalType %in% c('NOEL', 'NOEC', 'LOEL', 'LOEC'), .(.N, by_media = length(unique(toxvalUnits))), by = .(media, toxvalType)][order(by_media, -N),]
+```
+It looks like using media of `soil` and `water` have a single unit and several chemicals represented for `NOEL` and `LOEL` for both data sets of chemicals.
+
+```{r}
+ccl4_hazard[media %in% 'soil' & toxvalType %in% c('LOEL', 'NOEL'), .(dtxsid = unique(dtxsid), toxvalNumeric = which.min(toxvalNumeric)), by = .(toxvalType, toxvalUnits)]
+natadb_hazard[media %in% 'soil' & toxvalType %in% c('LOEL', 'NOEL'), .(dtxsid = unique(dtxsid), toxvalNumeric = which.min(toxvalNumeric)), by = .(toxvalType, toxvalUnits)]
+```
 
 
 We do a few comparisons of phys-chem properties on chemicals from a few different lists from the CCD. In particular, we examine the vapor pressure of chemicals found in the [ASPECT](https://comptox.epa.gov/dashboard/chemical-lists/ASPECT) list and the [USGS](https://comptox.epa.gov/dashboard/chemical-lists/USGSWATER) list, which roughly focus on chemicals found in air and water, respectively.
