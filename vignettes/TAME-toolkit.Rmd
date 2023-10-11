@@ -371,15 +371,21 @@ natadb_hazard[ supercategory %in% 'Point of Departure', .N, by = .(toxvalType)][
 We choose `NOEL`, `NOEC`, `LOEL`, and `LOEC` to explore further. At this point, we will determine the units reported for each of these endpoints, make a conversion to the value if necessary, and then determine the chemical with the lowest dose required to elicit an response. We group by media and determine which media is feasible to study further.
 
 ```{r}
-ccl4_hazard[toxvalType %in% c('NOEL', 'NOEC', 'LOEL', 'LOEC'), .(.N, by_media = length(unique(toxvalUnits))), by = .(media, toxvalType)][order(by_media, -N),]
-natadb_hazard[toxvalType %in% c('NOEL', 'NOEC', 'LOEL', 'LOEC'), .(.N, by_media = length(unique(toxvalUnits))), by = .(media, toxvalType)][order(by_media, -N),]
+ccl4_hazard[toxvalType %in% c('NOEL', 'NOEC', 'LOEL', 'LOEC'), .(.N, by_media = length(unique(toxvalUnits))), by = .(media, toxvalType)][order(by_media, -N),][order(by_media, -N),]
+natadb_hazard[toxvalType %in% c('NOEL', 'NOEC', 'LOEL', 'LOEC'), .(.N, by_media = length(unique(toxvalUnits))), by = .(media, toxvalType)][order(by_media, -N),][order(by_media, -N),]
 ```
 It looks like using media of `soil` and `water` have a single unit and several chemicals represented for `NOEL` and `LOEL` for both data sets of chemicals.
 
 ```{r}
-ccl4_hazard[media %in% 'soil' & toxvalType %in% c('LOEL', 'NOEL'), .(dtxsid = unique(dtxsid), toxvalNumeric = which.min(toxvalNumeric)), by = .(toxvalType, toxvalUnits)]
-natadb_hazard[media %in% 'soil' & toxvalType %in% c('LOEL', 'NOEL'), .(dtxsid = unique(dtxsid), toxvalNumeric = which.min(toxvalNumeric)), by = .(toxvalType, toxvalUnits)]
+ccl4_hazard[media %in% 'soil' & toxvalType %in% c('LOEL', 'NOEL'), .(toxvalNumeric = min(toxvalNumeric)), by = .(toxvalType, toxvalUnits, dtxsid)][order(toxvalType, -toxvalNumeric)]
+natadb_hazard[media %in% 'soil' & toxvalType %in% c('LOEL', 'NOEL'), .(toxvalNumeric = min(toxvalNumeric)), by = .(toxvalType, toxvalUnits, dtxsid)][order(toxvalType, -toxvalNumeric)]
 ```
+
+```{r}
+ccl4_hazard[media %in% 'water' & toxvalType %in% c('LOEL', 'NOEL'), .(toxvalNumeric = min(toxvalNumeric)), by = .(toxvalType, toxvalUnits, dtxsid)][order(toxvalType, -toxvalNumeric)]
+natadb_hazard[media %in% 'water' & toxvalType %in% c('LOEL', 'NOEL'), .(toxvalNumeric = min(toxvalNumeric)), by = .(toxvalType, toxvalUnits, dtxsid)][order(toxvalType, -toxvalNumeric)]
+```
+
 
 
 We do a few comparisons of phys-chem properties on chemicals from a few different lists from the CCD. In particular, we examine the vapor pressure of chemicals found in the [ASPECT](https://comptox.epa.gov/dashboard/chemical-lists/ASPECT) list and the [USGS](https://comptox.epa.gov/dashboard/chemical-lists/USGSWATER) list, which roughly focus on chemicals found in air and water, respectively.
