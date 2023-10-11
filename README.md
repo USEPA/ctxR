@@ -24,5 +24,6 @@ if (!library(devtools, logical.return = TRUE)){
 Sys.setenv('CCTE_API_KEY' = '<YOUR API KEY>')
 
 devtools::install_git(url = 'https://bitbucket.epa.gov/scm/ccdr1/ccdr.git',
-                      build_vignettes = TRUE)
+                      build_vignettes = TRUE,
+                      git = 'external')
 ```
