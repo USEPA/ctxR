@@ -386,6 +386,26 @@ ccl4_hazard[media %in% 'water' & toxvalType %in% c('LOEL', 'NOEL'), .(toxvalNume
 natadb_hazard[media %in% 'water' & toxvalType %in% c('LOEL', 'NOEL'), .(toxvalNumeric = min(toxvalNumeric)), by = .(toxvalType, toxvalUnits, dtxsid)][order(toxvalType, -toxvalNumeric)]
 ```
 
+Now, let us restrict our attention to human hazard and to the exposure routes given by inhalation and oral. We record the counts here.
+
+```{r}
+ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% c('inhalation', 'oral'), length(unique(toxvalUnits)), by = .(exposureRoute, riskAssessmentClass)][order(exposureRoute)]
+natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% c('inhalation', 'oral'), length(unique(toxvalUnits)), by = .(exposureRoute, riskAssessmentClass)][order(exposureRoute)]
+```
+We explore the riskAssessmentClass of 'developmental' further.
+
+```{r}
+ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% c('inhalation', 'oral') & riskAssessmentClass %in% 'developmental', length(unique(toxvalUnits)), by = .(exposureRoute, toxvalType)][order(exposureRoute)]
+natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% c('inhalation', 'oral') & riskAssessmentClass %in% 'developmental', length(unique(toxvalUnits)), by = .(exposureRoute, toxvalType)][order(exposureRoute)]
+```
+
+We will examine the NOEL and LOEL values for chemicals with oral exposure, human hazard, and risk assessment class 'developmental'.
+
+```{r}
+ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' & riskAssessmentClass %in% 'developmental' & toxvalType %in% c('NOEL', 'LOEL'), ]
+
+natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' & riskAssessmentClass %in% 'developmental' & toxvalType %in% c('NOEL', 'LOEL'), ]
+```
 
 
 We do a few comparisons of phys-chem properties on chemicals from a few different lists from the CCD. In particular, we examine the vapor pressure of chemicals found in the [ASPECT](https://comptox.epa.gov/dashboard/chemical-lists/ASPECT) list and the [USGS](https://comptox.epa.gov/dashboard/chemical-lists/USGSWATER) list, which roughly focus on chemicals found in air and water, respectively.
