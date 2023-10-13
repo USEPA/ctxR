@@ -399,13 +399,66 @@ ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% c('inhalation', 
 natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% c('inhalation', 'oral') & riskAssessmentClass %in% 'developmental', length(unique(toxvalUnits)), by = .(exposureRoute, toxvalType)][order(exposureRoute)]
 ```
 
-We will examine the NOEL and LOEL values for chemicals with oral exposure, human hazard, and risk assessment class 'developmental'.
+We will examine the NOEL and LOEL values for chemicals with oral exposure, human hazard, and risk assessment class 'developmental'. We also examine the units to determine whether any unit conversions are necessary to compare numeric values.
 
 ```{r}
 ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' & riskAssessmentClass %in% 'developmental' & toxvalType %in% c('NOEL', 'LOEL'), ]
-
+ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' & riskAssessmentClass %in% 'developmental' & toxvalType %in% c('NOEL', 'LOEL'), unique(toxvalUnits)]
 natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' & riskAssessmentClass %in% 'developmental' & toxvalType %in% c('NOEL', 'LOEL'), ]
+natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' & riskAssessmentClass %in% 'developmental' & toxvalType %in% c('NOEL', 'LOEL'), unique(toxvalUnits)]
 ```
+
+Observe that for ccl4, the units are given by 'mg/kg-day' and 'ppm', while the units for natadb are given by 'mg/kg-day', 'ppm', and 'ml/kg'. It is the case that 'mg/kg-day' and 'ppm' are comparable ratios. We ignore the 'ml/kg' units for now and group by dtxsid to find the lowest or highest value.
+
+```{r}
+ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' & riskAssessmentClass %in% 'developmental' & toxvalType %in% c('NOEL', 'LOEL'), .(numeric_value = min(toxvalNumeric), units = toxvalUnits[[which.min(toxvalNumeric)]]), by = .(dtxsid, toxvalType)]
+natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' & riskAssessmentClass %in% 'developmental' & toxvalType %in% c('NOEL', 'LOEL'), .(numeric_value = min(toxvalNumeric), units = toxvalUnits[[which.min(toxvalNumeric)]]), by = .(dtxsid, toxvalType)]
+```
+
+Now, we also explore the values of 'RfD', 'RfC', and 'cancer slope factor' of the toxvalType rows. We first determine the set of units for each, make appropriate conversions if necessary, and then make comparisons.
+
+```{r}
+ccl4_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('cancer slope factor', 'RfD', 'RfC'), .N, by = .(toxvalType, toxvalUnits)][order(toxvalType, -N)]
+natadb_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('cancer slope factor', 'RfD', 'RfC'), .N, by = .(toxvalType, toxvalUnits)][order(toxvalType, -N)]
+```
+For ccl4, there are three inequivalent sets of units that need conversions. We convert to 'mg/m3', which means scaling values given in 'g/m3' by 1E3 and values given in 'ug/m3' by 1E-3. The Rfd units and cancer slope factor units require no conversions.
+
+For natadb, we need to convert RfC values from ppm to mg/m3, with a conversion factor that relies on the molecular weight of the chemical in question. We will remove these from consideration for now. The units for RfD and cancer slope factor require no conversions.
+
+```{r}
+# Separate out into relevant data subsets
+ccl4_csf <- ccl4_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('cancer slope factor'), ]
+ccl4_rfc <- ccl4_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('RfC'), ]
+ccl4_rfd <- ccl4_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('RfD'), ]
+
+# Handle unit conversions 
+ccl4_rfc[toxvalUnits == 'mg/m3', conversion := 1]
+ccl4_rfc[toxvalUnits == 'g/m3', conversion := 1E3]
+ccl4_rfc[toxvalUnits == 'ug/m3', conversion := 1E-3]
+ccl4_rfc[toxvalUnits %in% c('mg/m3', 'g/m3', 'ug/m3'), units := 'mg/m3']
+ccl4_rfd[toxvalUnits %in% c('mg/kg-day', 'mg/kg'), conversion := 1]
+ccl4_rfd[toxvalUnits %in% c('mg/kg-day', 'mg/kg'), units := 'mg/m3']
+
+# Run data aggregations
+ccl4_csf[,.(numeric_value = max(toxvalNumeric), units = toxvalUnits[which.max(toxvalNumeric)]), by = .(dtxsid)][order(-numeric_value),]
+ccl4_rfc[,.(numeric_value = min(toxvalNumeric*conversion), units = units[which.min(toxvalNumeric*conversion)]), by = .(dtxsid)][order(numeric_value),]
+ccl4_rfd[,.(numeric_value = min(toxvalNumeric*conversion), units = units[which.min(toxvalNumeric*conversion)]), by = .(dtxsid)][order(numeric_value),]
+
+# Separate out into relevant data subsets
+natadb_csf <- natadb_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('cancer slope factor'), ]
+natadb_rfc <- natadb_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('RfC'), ]
+natadb_rfd <- natadb_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('RfD'), ]
+
+# Handle units conversions
+natadb_rfc <- natadb_rfc[toxvalUnits != 'ppm',]
+natadb_rfd[, units := 'mg/kg-day']
+
+# Run data aggregations
+natadb_csf[, .(numeric_value = max(toxvalNumeric), units = toxvalUnits[which.max(toxvalNumeric)]), by = .(dtxsid)][order(-numeric_value),]
+natadb_rfc[, .(numeric_value = min(toxvalNumeric), units = toxvalUnits[which.min(toxvalNumeric)]), by = .(dtxsid)][order(numeric_value),]
+natadb_rfd[, .(numeric_value = min(toxvalNumeric), units = units[which.min(toxvalNumeric)]), by = .(dtxsid)][order(numeric_value),]
+```
+
 
 
 We do a few comparisons of phys-chem properties on chemicals from a few different lists from the CCD. In particular, we examine the vapor pressure of chemicals found in the [ASPECT](https://comptox.epa.gov/dashboard/chemical-lists/ASPECT) list and the [USGS](https://comptox.epa.gov/dashboard/chemical-lists/USGSWATER) list, which roughly focus on chemicals found in air and water, respectively.
