@@ -155,16 +155,35 @@ natadb$dtxsid
 ccl4_phys_chem <- get_chem_info_batch(ccl4$dtxsid)
 natadb_phys_chem <- get_chem_info_batch(natadb$dtxsid)
 ```
-Observe that this returns a single data.table for each query, and the data.table contains the phys-chem properties available from the CCD for each chemical in the query. We examine the set of phys-chem properties for the first chemical in ccl4.First we look at all the phys-chem properties individually, then group them by each property (`boiling-point`, `melting-point`, etc...) and then additional group those by property type (`experimental` vs `predicted`). In the grouping, we look at the columns `value`, `unit`, `propertyID` and `propType`. We also demonstrate how take the mean of the values for each grouping.
+Observe that this returns a single data.table for each query, and the data.table contains the phys-chem properties available from the CCD for each chemical in the query. We examine the set of phys-chem properties for the first chemical in ccl4. 
+
+*Question?* What are the propertyId and propType values present in the data? What are the mean values for a specific value of the propertyID when grouped by propType and when ungrouped? Try using 'boiling-point' and 'melting-point' for propertyId.
+
+```{r}
+ccl4_phys_chem[, unique(propertyId)]
+ccl4_phys_chem[, unique(propType)]
+
+ccl4_phys_chem[propertyId == 'boiling-point', .(Mean = mean(value))]
+ccl4_phys_chem[propertyId == 'boiling-point', .(Mean = mean(value)), by = .(propType)]
+
+ccl4_phys_chem[propertyId == 'melting-point', .(Mean = mean(value))]
+ccl4_phys_chem[propertyId == 'melting-point', .(Mean = mean(value)), by = .(propType)]
+```
+
+
+First we look at all the phys-chem properties individually, then group them by each property (`boiling-point`, `melting-point`, etc...) and then additional group those by property type (`experimental` vs `predicted`). In the grouping, we look at the columns `value`, `unit`, `propertyID` and `propType`. We also demonstrate how take the mean of the values for each grouping.
 
 ```{r}
 ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], ]
 ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(propType, value, unit), by = .(propertyId)]
 ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(value, unit), by = .(propertyId, propType)]
 
-ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(sapply(.SD, mean)), by = .(propertyId, unit), .SDcols = c("value")]
-ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(sapply(.SD, mean)), by = .(propertyId, unit, propType), .SDcols = c("value")][order(propertyId)]
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(Mean_value = sapply(.SD, mean)), by = .(propertyId, unit), .SDcols = c("value")]
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(Mean_value = sapply(.SD, mean)), by = .(propertyId, unit, propType), .SDcols = c("value")][order(propertyId)]
 ```
+
+*Question?* Are there differences between the predicted and experimental results for a variety of propertyIds? For instance, examine 'vapor-pressure', 'henrys-law', and 'boiling-point' and plot these using boxplots. Compare the values by grouping by both data set and propType.
+
 Now, we examine the vapor pressures for all the chemicals in each list. We then graph these, grouped by `propType` and pooled together in separate plots. For this we will use boxplots.
 
 ```{r}
@@ -326,7 +345,20 @@ natadb_genetox_details[dtxsid %in% 'DTXSID0020153', ]
 
 ```
 
-We analyze these results more closely, counting the number of assay results and grouping by species, assayCategory, and assayType. We also examine the different numbers of assyCategory and assayTypes used.
+*Question?* What are the unique assays in each data set? What are the different values in `assayCategory` and how many unique assays for each `assayCategory` are there?
+
+To determine this, we first determine the unique values of the `assayCategory` and then group by these values and determine the number of unique assya in each `assayCategory` value.
+
+```{r}
+ccl4_genetox_details[, unique(assayCategory)]
+natadb_genetox_details[, unique(assayCategory)]
+
+ccl4_genetox_details[, .(Assays = length(unique(assayType))), by = .(assayCategory)]
+natadb_genetox_details[, .(Assays = length(unique(assayType))), by = .(assayCategory)]
+```
+
+
+We can analyze these results more closely, counting the number of assay results and grouping by species, assayCategory, and assayType. We also examine the different numbers of assyCategory and assayTypes used.
 
 ```{r}
 ccl4_genetox_details[, .N, by = .(species, assayCategory, assayType, assayResult)]
@@ -337,12 +369,34 @@ natadb_genetox_details[, .N, by = .(assayCategory)]
 natadb_genetox_details[, .N, by = .(assayType)]
 ```
 
+*Question?* How many chemicals in each data set have a 'positive', 'negative', and 'equivocal' value for the `assayResult` column?
+
+To determine this, we group by assayResult and determine the number of unique dtxsids associated.
+
+```{r}
+ccl4_genetox_details[, .(DTXSIDs = length(unique(dtxsid))), by = .(assayResult)]
+natadb_genetox_details[, .(DTXSIDs = length(unique(dtxsid))), by = .(assayResult)]
+```
+
+
 We now determine which chemicals from each data set are known to have genotoxic effects. For this, we look to see which chemicals produce a positive response in the assayResult column.
 
 ```{r}
 ccl4_genetox_details[, .(is_positive = any(assayResult == 'positive')), by = .(dtxsid)][is_positive == TRUE, dtxsid]
 natadb_genetox_details[, .(is_positive = any(assayResult == 'positive')), by = .(dtxsid)][is_positive == TRUE, dtxsid]
 ```
+
+*Question?* How many assays were positive/equivocal/negative for the chemical with DTXSID equal to DTXSID0020153? Which were positive and how many of each were there?
+
+To determine this, we group by `assayResult` and calculate .N for each group. We also isolate which were positive and output a data.table with the number of each type.
+
+```{r}
+ccl4_genetox_details[dtxsid == 'DTXSID0020153', .(Number = .N), by = .(assayResult)]
+ccl4_genetox_details[dtxsid == 'DTXSID0020153' & assayResult == 'positive', .(Number_of_assays = .N), by = .(assayType)]
+```
+
+
+
 
 Finally, we examine the hazard data associated with the chemicals in each data set. For each chemical, there will be potentially hundreds of rows of hazard data, so the returned results will be much larger than in most other API endpoints.
 
