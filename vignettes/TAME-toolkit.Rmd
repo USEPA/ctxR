@@ -96,7 +96,7 @@ register_ccdr(key = '<YOUR API KEY>', write = TRUE)
 
 To check that your key has successfully been stored for the session, run the following command.
 
-```{r}
+```{r, eval=FALSE}
 ccte_key()
 ```
 Now, we demonstrate how to retrieve the information for BPA given by the `Chemical Detail Resource` endpoint under the `chemicaldetailstandard` projection. Note, this projection is the default projection for the function `get_chemical_details()`.
@@ -314,7 +314,7 @@ summary(natadb_boiling_grouped)
 
 Since some of the boiling point values have negative values, we cannot log transform these values. IF we try, as you will see below, there will be warnings of NaNs produced.
 
-```{r, eval = FALSE}
+```{r, eval}
 ccl4_boiling_all[, log_transform := log(mean_boiling_point)]
 ccl4_boiling_grouped[, log_transform := log(mean_boiling_point)]
 
@@ -338,6 +338,7 @@ boiling <- ggplot(all_boiling_grouped, aes(mean_boiling_point)) +
   geom_boxplot(aes(color = set))
 boiling
 ```
+
 A visual inspection of this set of graphs is not as clear as in the previous cases. Note that the predicted values for each data set tend to be higher than the experimental. The mean of CCL$, by predicted and experimental appears to be greater than the corresponding means for NATADB, as does the overall mean, but the interquartile ranges of these different groupings yield slightly different results. This gives us a sense that the picture for boiling point is not as clear cut between experimental and predicted for these two data sets as the previous phys-chem properties we investigated.
 
 # Hazard data: Genotoxicity
@@ -421,15 +422,32 @@ natadb_genetox_details[, .(Assays = length(unique(assayType))), by = .(assayCate
 ```
 
 
-We can analyze these results more closely, counting the number of assay results and grouping by species, assayCategory, and assayType. We also examine the different numbers of assyCategory and assayTypes used.
+We can analyze these results more closely, counting the number of assay results and grouping by species, assayCategory, and assayType. We also examine the different numbers of assayCategory and assayTypes used.
 
 ```{r}
 ccl4_genetox_details[, .N, by = .(species, assayCategory, assayType, assayResult)]
 ccl4_genetox_details[, .N, by = .(assayCategory)]
-ccl4_genetox_details[, .N, by = .(assayCategory, assayType)]
+```
+
+We look at the assayTypes and numbers of each for the three different assayCategory values.
+
+```{r}
+ccl4_genetox_details[assayCategory == 'in vitro', .N, by = .(assayType)]
+ccl4_genetox_details[assayCategory == 'ND', .N, by = .(assayType)]
+ccl4_genetox_details[assayCategory == 'in vivo', .N, by = .(assayType)]
+```
+
+Now we repeat this for `NATADB`.
+
+```{r}
 natadb_genetox_details[, .N, by = .(species, assayCategory, assayType, assayResult)]
 natadb_genetox_details[, .N, by = .(assayCategory)]
-natadb_genetox_details[, .N, by = .(assayType)]
+```
+
+```{r}
+natadb_genetox_details[assayCategory == 'in vitro', .N, by = .(assayType)]
+natadb_genetox_details[assayCategory == 'ND', .N, by = .(assayType)]
+natadb_genetox_details[assayCategory == 'in vivo', .N, by = .(assayType)]
 ```
 
 *Question?* How many chemicals in each data set have a 'positive', 'negative', and 'equivocal' value for the `assayResult` column?
@@ -458,7 +476,7 @@ ccl4_genetox_details[dtxsid == 'DTXSID0020153', .(Number = .N), by = .(assayResu
 ccl4_genetox_details[dtxsid == 'DTXSID0020153' & assayResult == 'positive', .(Number_of_assays = .N), by = .(assayType)]
 ```
 
-
+# Hazard resource
 
 
 Finally, we examine the hazard data associated with the chemicals in each data set. For each chemical, there will be potentially hundreds of rows of hazard data, so the returned results will be much larger than in most other API endpoints.
@@ -470,15 +488,21 @@ natadb_hazard <- get_hazard_by_dtxsid_batch(DTXSID = natadb$dtxsid)
 We do some preliminary exploration of the data.
 
 ```{r}
-ccl4_hazard[, .N, by = .(criticalEffect)]
-ccl4_hazard[, .N, by = .(supercategory)]
-ccl4_hazard[, .N, by = .(toxvalType)]
+length(ccl4_hazard[, unique(criticalEffect)])
+length(ccl4_hazard[, unique(supercategory)])
+length(ccl4_hazard[, unique(toxvalType)])
 
-natadb_hazard[, .N, by = .(criticalEffect)]
+ccl4_hazard[, .N, by = .(supercategory)]
+#ccl4_hazard[, .N, by = .(toxvalType)]
+
+length(natadb_hazard[, unique(criticalEffect)])
+length(natadb_hazard[, unique(supercategory)])
+length(natadb_hazard[, unique(toxvalType)])
+
 natadb_hazard[, .N, by = .(supercategory)]
-natadb_hazard[, .N, by = .(toxvalType)]
+#natadb_hazard[, .N, by = .(toxvalType)]
 ```
-With over 20,000 results for `Point of Departure`, we dig into this further.
+With over 17,000 results for `Point of Departure` for each data set, we dig into this further.
 
 ```{r}
 ccl4_hazard[ supercategory %in% 'Point of Departure', .N, by = .(toxvalType)][order(-N),]
