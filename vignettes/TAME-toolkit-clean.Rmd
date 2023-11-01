@@ -1,0 +1,793 @@
+---
+title: "TAME-toolkit-clean"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{TAME-toolkit-clean}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+#library(ccdR)
+knit_print.data.table = function(x, ...) {
+  y <- data.table::copy(x)
+  y <- y[, lapply(.SD, function(t){
+    if (is.character(t)){
+      t <- strtrim(t, 50)
+    }
+    return(t)
+  })]
+  print(y, trunc.cols = TRUE)
+}
+
+registerS3method(
+  "knit_print", "data.table", knit_print.data.table,
+  envir = asNamespace("knitr")
+)
+```
+
+
+```{r, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
+# This code chunk is included during the development of this rmd and must be removed when deployed!!!
+if (!library(ccdR, logical.return = TRUE)){
+  devtools::load_all()
+}
+```
+
+# Introduction to Training Module
+
+This training module provides an overview of the publicly available databases at US EPA that provide physico-chemical, hazard, and bio-activity data, avenues through which to access the information stored in these databases, and how to use this data. We will first introduce these resources and how one may access them. Then we will focus on one specific method for retrieving data. Through some basic data visualization and analysis, we will explore this data and gain insights both in how to wrangle the data and combine different methods of accessing the data to build automated pipelines for use in more complex settings.
+
+# Training Module's questions
+
+This training module was specifically developed to answer the following questions:
+
+1. What are the propertyId and propType values present in the data? What are the mean values for a specific value of the propertyID when grouped by propType and when ungrouped?
+
+2. Are there differences between the mean predicted and experimental results for a variety of propertyIds?
+
+3. What are the unique assays in each data set? What are the different assay categories and how many unique assays for each assay category are there?
+
+4. How many chemicals in each data set have a 'positive', 'negative', and 'equivocal' value for the `assayResult` column?
+
+5. How many assays were positive/equivocal/negative for the chemical with DTXSID equal to DTXSID0020153? Which were positive and how many of each were there?
+
+6. What are the unique risk assessment classes for hazard values for the oral route and for the inhalation route? For each route, which risk assessment class is most represented by the data sets?
+
+7. What are the unique types of toxicity values for the oral route and for the inhalation route? What are the unique endpoint types for the oral route and for the inhalation route?
+
+# Script Preparations
+
+# Cleaning the global environment
+
+```{r, eval=FALSE}
+rm(list=ls())
+```
+
+
+# Installing required R packages
+
+```{r, eval=FALSE}
+if (!requireNamespace('ccdR'))
+  install.packages('ccdR')
+
+if (!requireNamespace('ggplot2'))
+  install.packages('ggplot2')
+```
+
+# Loading R packages
+
+```{r}
+# Used to access the CCTE APIs
+#library(ccdR)
+
+# Used to visualize data in a variety of plot designs
+library(ggplot2)
+```
+
+
+# Introduction to CompTox Chemicals Dashboard
+
+Accessing chemical data and wrangling it is a vital step in many types of workflows related to chemical, biological, and environmental modelling. While there are many resources available from which one can pull data, the [CompTox Chemicals Dashboard](https://comptox.epa.gov/dashboard/)(CCD) built and maintained by the United States Environmental Protection Agency is particularly well-designed and maintained. Originally introduced in [The CompTox Chemistry Dashboard: a community data resource for environmental chemistry](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0247-6), the CCD contains information on over 1.2 million chemicals as of September, 2023. Information contained for chemicals featured in the CCD include but are not limited to phys-chem properties, documentation and curation information of the featured data, hazard and fate/transport data. One can see an example of this in the search for the chemical Bisphenol A. 
+
+![Bisphenol A landing page](./Pictures/CCD BPA page.png){width=120%}
+
+As one may observe, on the left side of the image there are several tabs that contain information such as physico-chemical properties, Environmental Fate and Transport data, and hazard data among others. The data contained in these tabs is freely accessible but not necessarily in the best format for data wrangling.
+
+One can use the batch search functionality of the CCD to pull together desired data for a specific user supplied list of chemicals.
+
+![CCD Batch Search](./Pictures/CCD Batch Search.png){width=120%}
+
+One can download the selected information in various formats, such as a excel, csv, or different types of MOL files. While this is suitable for many projects, it does not necessarily work well when a programmatic approach to a modelling problem is desired. The steps involving inputting chemical identifier information, exporting into a file, loading and wrangling the data from file is both time consuming and a potential source of human error that may be hard to identify after the fact. 
+
+## CCTE APIs
+
+Recently, the [Center for Computational Toxicology and Exposure](https://www.epa.gov/aboutepa/about-center-computational-toxicology-and-exposure-ccte)(CCTE) developed APIs that allow users to access the information curated and maintained within the CCD. The [CCTE APIs](https://api-ccte.epa.gov/docs/) are publicly available at no cost to the user. The first step for interacting with the information available through the APIs is acquiring an API key, by contacting the API support team at [ccte_api@epa.gov](mailto:ccte_api@epa.gov).
+
+The APIs are organized into three sections of endpoints, `Chemical`, `Hazard`, and `Bioactivity`.Pictured below is what the `Chemical` section looks like and can be found at [CCTE API Chemical Endpoints](https://api-ccte.epa.gov/docs/chemical.html).
+
+![CCTE API Chemical Endpoints](./Pictures/CCTE Chemical API endpoints.png){width=120%}
+
+Notice that Authentication is the first tab on the left and below it are several endpoints organized by what purpose they serve. Authentication is required to use the APIs and the API key authenticates the user. The endpoints are organized into categories of functional use, for instance providing basic information on a chemical in the `Chemical Details Resource`, more comprehensive physico-chemical properties in `Chemical Property Resource`, chemical fate and transport data in `Chemical Fate Resource`, and so on. Also notice that next to each endpoint is a box that indicates what the associated http request is to access the information. These are either a Post or a Get request. Clicking on the `Get data by DTXSID`, we observe that there are certain required pieces of information to construct the request and optional parameters to focus the request.
+
+![CCTE Get Details by DTXSID](./Pictures/Get Data by DTXSID TOP.png){width=120%}
+
+The user is required to supply a string for the DTXSID and an optional `projection` parameter, which controls the scope of the information returned. The default return format is displayed below and includes a variety of fields with data types represented.
+
+![CCTE Get Details by DTXSID data types](./Pictures/Get Data by DTXSID BOTTOM.png){width=120%}
+We show what returned data from searching Bisphenol A looks like using this endpoint with the `chemicaldetailstandard` projection selected.
+
+![Bisphenol A output](./Pictures/BPA chemicaldetailstandard.png){width=120%}
+
+
+
+Formatting an http request is not necessarily intuitive nor worth the time for someone not already familiar with the process, so these endpoints may provide a resource that for many would require a significant investment in time and energy to learn how to use. However, there is a solution to this in the form of the R package ccdR.
+
+This R package was developed to streamline the process of accessing the information available through the CCTE APIs without requiring prior knowledge of how to use APIs. As an example, we demonstrate the ease with which one may retrieve the information given by this endpoint for Bisphenol A using the ccdR approach and contrast it with the approach using the CCD or CCTE Chemical Endpoint website.
+
+First, we load in ccdR and other libraries we will need for this module.
+
+### Installing required R packages
+
+```{r, eval = FALSE}
+if (!requireNamespace('ccdR'))
+  install.packages('ccdR');
+```
+
+### Loading R packages required for this session
+
+```{r, eval = FALSE}
+library(ccdR)
+```
+
+First, we store the API key required to access the APIs. To do this for the current session, run the first command. If you want to store your key across multiple sessions, run the second command.
+
+```{r, eval=FALSE}
+# This stores the key in the current session
+register_ccdr(key = '<YOUR API KEY>')
+
+# This stores the key across multiple sessions and only needs to be run once. 
+# If the key changes, rerun this with the new key.
+register_ccdr(key = '<YOUR API KEY>', write = TRUE)
+```
+
+To check that your key has successfully been stored for the session, run the following command.
+
+```{r, eval=FALSE}
+ccte_key()
+```
+Now, we demonstrate how to retrieve the information for BPA given by the `Chemical Detail Resource` endpoint under the `chemicaldetailstandard` projection. Note, this projection is the default projection for the function `get_chemical_details()`.
+
+```{r}
+BPA_chemical_detail <- get_chemical_details(DTXSID = 'DTXSID7020182')
+dim(BPA_chemical_detail)
+class(BPA_chemical_detail)
+names(BPA_chemical_detail)
+```
+
+
+# Physico-chemical properties
+
+We study two different data sets contained in the CCD and observe how they relate and how they differ. The two data sets that we will explore are a water contaminant priority list and an air toxics list.  
+
+The fourth Drinking Water Contaminant Candidate List (CCL4) is a set of chemicals not subject to any proposed or promulgated national primary drinking water regulations, but are known or anticipated to occur in public water systems. This list was announced on November 17, 2016 and includes 97 chemicals or chemical groups and 12 microbial contaminants. The National-Scale Air Toxics Assessments (NATA) is an ongoing comprehensive evaluation of air toxics in the United States. It uses general information about sources to develop estimates of risks which are more likely to overestimate impacts and underestimate them and is meant for use as a tool for State/Local/Tribal agencies to prioritize pollutants, emission sources and locations of interest for further study in order to gain a better understanding of risks.
+
+These can be found in the CCD at [CCL4](https://comptox.epa.gov/dashboard/chemical-lists/CCL4) with additional information at [CCL4 information](https://www.epa.gov/ccl/contaminant-candidate-list-4-ccl-4-0) and [NATADB](https://comptox.epa.gov/dashboard/chemical-lists/NATADB) with additional information at [NATA information](https://www.epa.gov/national-air-toxics-assessment).
+
+
+We explore details about these two lists of chemicals before diving into analyzing the data contained in each list.
+
+```{r}
+options(width = 100)
+ccl4_information <- get_public_chemical_list_by_name('CCL4')
+print(ccl4_information, trunc.cols = TRUE)
+
+natadb_information <- get_public_chemical_list_by_name('NATADB')
+print(natadb_information, trunc.cols = TRUE)
+```
+
+Now we pull the actual chemicals contained in the lists using the APIs.
+
+```{r}
+ccl4 <- get_chemicals_in_list('ccl4')
+ccl4 <- data.table::as.data.table(ccl4)
+
+natadb <- get_chemicals_in_list('NATADB')
+natadb <- data.table::as.data.table(natadb)
+```
+
+We examine the dimensions of the data, the column names, and display a single row for illustrative purposes.
+
+```{r}
+dim(ccl4)
+dim(natadb)
+
+colnames(ccl4)
+head(ccl4, 1)
+```
+
+Once we have the chemicals in each list, we access their physico-chemical properties. We will use the batch search forms of the function `get_chem_info()`, to which we supply a list of DTXSIDs.
+
+```{r}
+ccl4$dtxsid
+natadb$dtxsid
+
+ccl4_phys_chem <- get_chem_info_batch(ccl4$dtxsid)
+natadb_phys_chem <- get_chem_info_batch(natadb$dtxsid)
+```
+
+Observe that this returns a single data.table for each query, and the data.table contains the phys-chem properties available from the CompTox Chemicals Dashboard for each chemical in the query. We examine the set of phys-chem properties for the first chemical in CCL4. 
+
+Before any deeper analysis, lets take a look at the dimensions of the data and the column names.
+
+```{r}
+dim(ccl4_phys_chem)
+colnames(ccl4_phys_chem)
+```
+
+
+*Question?* What are the propertyId and propType values present in the data? What are the mean values for a specific value of the propertyID when grouped by propType and when ungrouped? Try using 'boiling-point' and 'melting-point' for propertyId.
+
+```{r}
+ccl4_phys_chem[, unique(propertyId)]
+ccl4_phys_chem[, unique(propType)]
+```
+
+```{r}
+ccl4_phys_chem[propertyId == 'boiling-point', .(Mean = mean(value))]
+ccl4_phys_chem[propertyId == 'boiling-point', .(Mean = mean(value)), by = .(propType)]
+
+ccl4_phys_chem[propertyId == 'melting-point', .(Mean = mean(value))]
+ccl4_phys_chem[propertyId == 'melting-point', .(Mean = mean(value)), by = .(propType)]
+```
+
+First we look at all the phys-chem properties individually, then group them by each property (`boiling-point`, `melting-point`, etc...), and then additionally group those by property type (`experimental` vs `predicted`). In the grouping, we look at the columns `value`, `unit`, `propertyID` and `propType`. We also demonstrate how take the mean of the values for each grouping.
+
+```{r}
+head(ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], ])
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(propType, value, unit), by = .(propertyId)]
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(value, unit), by = .(propertyId, propType)]
+
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(Mean_value = sapply(.SD, mean)), by = .(propertyId, unit), .SDcols = c("value")]
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(Mean_value = sapply(.SD, mean)), by = .(propertyId, unit, propType), .SDcols = c("value")][order(propertyId)]
+```
+
+*Question?* Are there differences between the mean predicted and experimental results for a variety of propertyIds? For instance, examine 'vapor-pressure', 'henrys-law', and 'boiling-point' and plot the means by chemical for these using boxplots. Compare the values by grouping by both data set and propType.
+
+We first examine the vapor pressures for all the chemicals in each list. We then graph these, grouped by `propType` and pooled together in separate plots. For this we will use boxplots.
+
+
+Group first by DTXSID.
+
+```{r}
+ccl4_vapor_all <- ccl4_phys_chem[propertyId %in% 'vapor-pressure', .(mean_vapor_pressure = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid)]
+natadb_vapor_all <- natadb_phys_chem[propertyId %in% 'vapor-pressure', .(mean_vapor_pressure = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid)]
+```
+
+Then group by DTXSID and then by property type.
+
+```{r}
+ccl4_vapor_grouped <- ccl4_phys_chem[propertyId %in% 'vapor-pressure', .(mean_vapor_pressure = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid, propType)]
+natadb_vapor_grouped <- natadb_phys_chem[propertyId %in% 'vapor-pressure', .(mean_vapor_pressure = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid, propType)]
+```
+
+Then examine the summary statistics of the data.
+
+```{r}
+summary(ccl4_vapor_all)
+summary(ccl4_vapor_grouped)
+summary(natadb_vapor_all)
+summary(natadb_vapor_grouped)
+```
+
+With such a large range of values covering several orders of magnitude, we log transform the data. Since these value are positive, we do not have to worry about illegal transformations.
+
+```{r}
+ccl4_vapor_all[, log_transform_mean_vapor_pressure := log(mean_vapor_pressure)]
+ccl4_vapor_grouped[, log_transform_mean_vapor_pressure := log(mean_vapor_pressure)]
+
+natadb_vapor_all[, log_transform_mean_vapor_pressure := log(mean_vapor_pressure)]
+natadb_vapor_grouped[, log_transform_mean_vapor_pressure := log(mean_vapor_pressure)]
+```
+
+Now we plot the log transformed data.
+
+First plot the CCL4 data.
+```{r}
+ggplot(ccl4_vapor_all, aes(log_transform_mean_vapor_pressure)) +
+  geom_boxplot()
+ggplot(ccl4_vapor_grouped, aes(propType, log_transform_mean_vapor_pressure)) +
+  geom_boxplot()
+```
+
+Then plot the NATA data.
+
+```{r}
+ggplot(natadb_vapor_all, aes(log_transform_mean_vapor_pressure)) +
+  geom_boxplot()
+ggplot(natadb_vapor_grouped, aes(propType, log_transform_mean_vapor_pressure)) +
+  geom_boxplot()
+```
+
+Finally, we compare both sets simultaneously. We add in a column to each data.table denoting to which data set the rows correspond and then `rbind` the rows from both data sets together.
+
+```{r}
+ccl4_vapor_grouped[, set := 'CCL4']
+natadb_vapor_grouped[, set := 'NATADB']
+
+all_vapor_grouped <- rbind(ccl4_vapor_grouped, natadb_vapor_grouped)
+```
+
+Now we plot the combined data. First we color the boxplots based on the property type, with mean log transformed vapor pressure plotted for each data set and property type.
+
+```{r}
+vapor_box <- ggplot(all_vapor_grouped, aes(set, log_transform_mean_vapor_pressure)) + 
+  geom_boxplot(aes(color = propType))
+vapor_box
+```
+
+Next we color the boxplots based on the data set.
+
+```{r}
+vapor <- ggplot(all_vapor_grouped, aes(log_transform_mean_vapor_pressure)) +
+  geom_boxplot((aes(color = set)))
+vapor
+```
+
+In the plots above, when we graph the data separated both by data set and property type as well as just by data set, we observe the general trend that the NATADB chemicals have a higher mean vapor pressure than the CCL4 chemicals.
+
+Next, we also explore Henry's Law constant and boiling point.
+
+Group by DTXSID.
+
+```{r}
+ccl4_hlc_all <- ccl4_phys_chem[propertyId %in% 'henrys-law', .(mean_hlc = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid)]
+natadb_hlc_all <- natadb_phys_chem[propertyId %in% 'henrys-law', .(mean_hlc = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid)]
+```
+
+Group by DTXSID and property type.
+
+```{r}
+ccl4_hlc_grouped <- ccl4_phys_chem[propertyId %in% 'henrys-law', .(mean_hlc = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid, propType)]
+natadb_hlc_grouped <- natadb_phys_chem[propertyId %in% 'henrys-law', .(mean_hlc = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid, propType)]
+```
+
+Examine summary statistics.
+
+```{r}
+summary(ccl4_hlc_all)
+summary(ccl4_hlc_grouped)
+summary(natadb_hlc_all)
+summary(natadb_hlc_grouped)
+```
+
+Again, we log transform the data as it is positive and covers several orders of magnitude.
+
+```{r}
+ccl4_hlc_all[, log_transform_mean_hlc := log(mean_hlc)]
+ccl4_hlc_grouped[, log_transform_mean_hlc := log(mean_hlc)]
+
+natadb_hlc_all[, log_transform_mean_hlc := log(mean_hlc)]
+natadb_hlc_grouped[, log_transform_mean_hlc := log(mean_hlc)]
+```
+
+We compare both sets simultaneously. We add in a column to each data.table denoting to which set the rows correspond and then `rbind` the rows together.
+
+
+Label and combine data.
+
+```{r}
+ccl4_hlc_grouped[, set := 'CCL4']
+natadb_hlc_grouped[, set := 'NATADB']
+
+all_hlc_grouped <- rbind(ccl4_hlc_grouped, natadb_hlc_grouped)
+```
+
+Plot data.
+
+```{r}
+hlc_box <- ggplot(all_hlc_grouped, aes(set, log_transform_mean_hlc)) + 
+  geom_boxplot(aes(color = propType))
+hlc_box
+
+hlc <- ggplot(all_hlc_grouped, aes(log_transform_mean_hlc)) +
+  geom_boxplot(aes(color = set))
+hlc
+```
+
+Again, we observe that in both grouping by propType and aggregating all results together by data set, that the chemicals in NATADB have a generally higher mean Henry's Law Constant value than those in CCL4.
+
+Finally, we consider boiling point.
+
+Group by DTXSID.
+
+```{r}
+ccl4_boiling_all <- ccl4_phys_chem[propertyId %in% 'boiling-point', .(mean_boiling_point = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid)]
+natadb_boiling_all <- natadb_phys_chem[propertyId %in% 'boiling-point', .(mean_boiling_point = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid)]
+```
+
+Group by DTXSID and property type.
+
+```{r}
+ccl4_boiling_grouped <- ccl4_phys_chem[propertyId %in% 'boiling-point', .(mean_boiling_point = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid, propType)]
+natadb_boiling_grouped <- natadb_phys_chem[propertyId %in% 'boiling-point', .(mean_boiling_point = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid, propType)]
+```
+
+Calculate summary statistics.
+
+```{r}
+summary(ccl4_boiling_all)
+summary(ccl4_boiling_grouped)
+summary(natadb_boiling_all)
+summary(natadb_boiling_grouped)
+```
+
+Since some of the boiling point values have negative values, we cannot log transform these values. If we try, as you will see below, there will be warnings of NaNs produced.
+
+```{r, eval}
+ccl4_boiling_all[, log_transform := log(mean_boiling_point)]
+ccl4_boiling_grouped[, log_transform := log(mean_boiling_point)]
+
+natadb_boiling_all[, log_transform := log(mean_boiling_point)]
+natadb_boiling_grouped[, log_transform := log(mean_boiling_point)]
+```
+
+We compare both sets simultaneously. We add in a column to each data.table denoting to which set the rows correspond and then `rbind` the rows together. We use the values as is rather than transforming them.
+
+Label and combine data.
+
+```{r}
+ccl4_boiling_grouped[, set := 'CCL4']
+natadb_boiling_grouped[, set := 'NATADB']
+
+all_boiling_grouped <- rbind(ccl4_boiling_grouped, natadb_boiling_grouped)
+```
+
+Plot the data.
+
+```{r}
+boiling_box <- ggplot(all_boiling_grouped, aes(set, mean_boiling_point)) + 
+  geom_boxplot(aes(color = propType))
+boiling_box
+
+boiling <- ggplot(all_boiling_grouped, aes(mean_boiling_point)) +
+  geom_boxplot(aes(color = set))
+boiling
+```
+
+A visual inspection of this set of graphs is not as clear as in the previous cases. Note that the predicted values for each data set tend to be higher than the experimental. The mean of CCL4, by predicted and experimental appears to be greater than the corresponding means for NATADB, as does the overall mean, but the interquartile ranges of these different groupings yield slightly different results. This gives us a sense that the picture for boiling point is not as clear cut between experimental and predicted for these two data sets as the previous phys-chem properties we investigated.
+
+# Hazard data: Genotoxicity
+
+Now, having examined some of the distributions of the phys chem properties of the two lists, aggregated between predicted and experimental, we move towards learning more about these chemicals beyond phys-chem properties. Specifically, we will examine their genotoxicity.
+
+Using the standard CompTox Chemicals Dashboard approach to access genotoxicity, one would again navigate to the individual chemical page 
+
+![CompTox Chemicals Dashboard Genotoxicity](./Pictures/BPA Hazard data - Genotoxicity.png){width=120%}
+
+
+Once one navigates to the genotoxicity tab highlighted in the previous page, the following is displayed.
+
+![CompTox Chemicals Dashboard BPA Genotoxicity](./Pictures/CCD BPA genotoxicity.png){width=120%}
+
+This page includes two sets of information, the first of which provides a summary of available genotoxicity data while the second provides the individual reports and samples of such data.
+
+We again use the CCTE APIs to streamline the process of retrieving this information in a programmatic fashion. To this end, we will use the genotoxicity endpoints found within the hazard endpoints of the CCTE APIs. Pictured below is the particular set of genotoxicity resources available in the hazard endpoints of the CCTE APIs.
+
+![CCTE APIs Hazard endpoint gentoxocity resources](./Pictures/Hazard - genotoxicity resource.png){width=120%}
+
+There are both summary and detail resources, reflecting the information one can find on the CompTox Chemicals Dashboard Genotoxicity page for a given chemical.
+
+To access the genetox endpoint, we will use the function `get_genetox_summary`. Since we have a list of chemicals, rather than searching individually for each chemical, we use the batch search version of the function, named `get_genetox_summary_batch`. We will examine this and then access the details.
+
+Grab the data using the APIs.
+```{r}
+ccl4_genotox <- get_genetox_summary_batch(DTXSID = ccl4$dtxsid)
+natadb_genetox <- get_genetox_summary_batch(DTXSID = natadb$dtxsid)
+```
+
+Examine the dimensions.
+
+```{r}
+dim(ccl4_genotox)
+dim(natadb_genetox)
+```
+
+Examine the column names and data from the first six chemicals with genetox data from CCL4.
+
+```{r}
+colnames(ccl4_genotox)
+head(ccl4_genotox)
+```
+
+The information returned is of the first variety highlighted in the figure `CompTox Chemicals Dashboard Genotoxicity`, that is, summary data on the available genotoxicity data for each chemical.
+
+Observe that we have information on 71 chemicals from the CCL4 data and 153 from the NATA data. We note the chemicals not included in the results and then dig into the returned results.
+
+```{r}
+ccl4[!(dtxsid %in% ccl4_genotox$dtxsid), .(dtxsid, casrn, preferredName, molFormula)]
+natadb[!(dtxsid %in% natadb_genetox$dtxsid), .(dtxsid, casrn, preferredName, molFormula)]
+```
+
+Now, we access the genotoxicity details of the chemicals in each data set using the function `get_genetox_details_batch`. We explore the dimensions of the returned queries, the column names, and the first few lines of the data.
+
+Grab the data from the CCTE APIs.
+
+```{r}
+ccl4_genetox_details <- get_genetox_details_batch(DTXSID = ccl4$dtxsid)
+natadb_genetox_details <- get_genetox_details_batch(DTXSID = natadb$dtxsid)
+```
+
+Examine the dimensions.
+
+```{r}
+dim(ccl4_genetox_details)
+dim(natadb_genetox_details)
+```
+
+Look at the column names and the first six rows of the data from the CCL4 chemicals.
+
+```{r}
+colnames(ccl4_genetox_details)
+head(ccl4_genetox_details)
+```
+
+We examine the information returned for the first chemical in each set of results, which is DTXSID0020153. Notice that the information is identical in each case as this information is chemical specific and not data set specific.
+
+Look at the dimensions first.
+
+```{r}
+dim(ccl4_genetox_details[dtxsid %in% 'DTXSID0020153', ])
+dim(natadb_genetox_details[dtxsid %in% 'DTXSID0020153', ])
+```
+
+Now examine the first few rows.
+
+```{r}
+head(ccl4_genetox_details[dtxsid %in% 'DTXSID0020153', ])
+```
+
+Observe that the data is the same for each data set when restricting to the same chemical. This is because the information we are retrieving is specific to the chemical and not dependent on which chemical lists the chemical may belong.
+
+```{r}
+identical(ccl4_genetox_details[dtxsid %in% 'DTXSID0020153', ], natadb_genetox_details[dtxsid %in% 'DTXSID0020153', ])
+```
+
+*Question?* What are the unique assays in each data set? What are the different assay categories and how many unique assays for each assay category are there?
+
+To determine this, we first determine the unique values of the `assayCategory` and then group by these values and determine the number of unique assays in each `assayCategory` value.
+
+Determine the unique assay categories.
+
+```{r}
+ccl4_genetox_details[, unique(assayCategory)]
+natadb_genetox_details[, unique(assayCategory)]
+```
+
+Determine the number of assays per unique assay category.
+
+```{r}
+ccl4_genetox_details[, .(Assays = length(unique(assayType))), by = .(assayCategory)]
+natadb_genetox_details[, .(Assays = length(unique(assayType))), by = .(assayCategory)]
+```
+
+
+We can analyze these results more closely, counting the number of assay results and grouping by assayCategory, and assayType. We also examine the different numbers of assayCategory and assayTypes used.
+
+```{r}
+ccl4_genetox_details[, .N, by = .(assayCategory, assayType, assayResult)]
+ccl4_genetox_details[, .N, by = .(assayCategory)]
+```
+
+We look at the assayTypes and numbers of each for the three different assayCategory values.
+
+```{r}
+ccl4_genetox_details[assayCategory == 'in vitro', .N, by = .(assayType)]
+ccl4_genetox_details[assayCategory == 'ND', .N, by = .(assayType)]
+ccl4_genetox_details[assayCategory == 'in vivo', .N, by = .(assayType)]
+```
+
+Now we repeat this for `NATADB`.
+
+```{r}
+natadb_genetox_details[, .N, by = .(assayCategory, assayType, assayResult)]
+natadb_genetox_details[, .N, by = .(assayCategory)]
+```
+
+Examine the number of assay types by each assay category.
+
+```{r, R.options=list(width=150) }
+natadb_genetox_details[assayCategory == 'in vitro', .N, by = .(assayType)]
+natadb_genetox_details[assayCategory == 'ND', .N, by = .(assayType)]
+natadb_genetox_details[assayCategory == 'in vivo', .N, by = .(assayType)]
+```
+
+*Question?* How many chemicals in each data set have a 'positive', 'negative', and 'equivocal' value for the `assayResult` column?
+
+To determine this, we group by assayResult and determine the number of unique dtxsids associated.
+
+```{r}
+ccl4_genetox_details[, .(DTXSIDs = length(unique(dtxsid))), by = .(assayResult)]
+natadb_genetox_details[, .(DTXSIDs = length(unique(dtxsid))), by = .(assayResult)]
+```
+
+
+We now determine which chemicals from each data set are known to have genotoxic effects. For this, we look to see which chemicals produce at least one positive response in the assayResult column.
+
+```{r}
+ccl4_genetox_details[, .(is_positive = any(assayResult == 'positive')), by = .(dtxsid)][is_positive == TRUE, dtxsid]
+natadb_genetox_details[, .(is_positive = any(assayResult == 'positive')), by = .(dtxsid)][is_positive == TRUE, dtxsid]
+```
+
+*Question?* How many assays were positive/equivocal/negative for the chemical with DTXSID equal to DTXSID0020153? Which were positive and how many of each were there?
+
+To determine this, we group by `assayResult` and calculate .N for each group. We also isolate which were positive and output a data.table with the number of each type.
+
+```{r}
+ccl4_genetox_details[dtxsid == 'DTXSID0020153', .(Number = .N), by = .(assayResult)]
+ccl4_genetox_details[dtxsid == 'DTXSID0020153' & assayResult == 'positive', .(Number_of_assays = .N), by = .(assayType)]
+```
+
+# Hazard resource
+
+
+Finally, we examine the hazard data associated with the chemicals in each data set. For each chemical, there will be potentially hundreds of rows of hazard data, so the returned results will be much larger than in most other API endpoints.
+
+```{r}
+ccl4_hazard <- get_hazard_by_dtxsid_batch(DTXSID = ccl4$dtxsid)
+natadb_hazard <- get_hazard_by_dtxsid_batch(DTXSID = natadb$dtxsid)
+```
+
+We do some preliminary exploration of the data. First we determine the dimensions of the data sets.
+
+```{r}
+dim(ccl4_hazard)
+dim(natadb_hazard)
+```
+Next we recrod the column names and display the first six results in the CCL4 hazard data.
+
+```{r}
+colnames(ccl4_hazard)
+head(ccl4_hazard)
+```
+
+We determine the number of unique values in the criticalEffect, supercategory, and toxvaltype columns for each data set.
+
+```{r}
+length(ccl4_hazard[, unique(criticalEffect)])
+length(natadb_hazard[, unique(criticalEffect)])
+```
+
+```{r}
+length(ccl4_hazard[, unique(supercategory)])
+length(natadb_hazard[, unique(supercategory)])
+```
+
+```{r}
+length(ccl4_hazard[, unique(toxvalType)])
+length(natadb_hazard[, unique(toxvalType)])
+```
+
+Now we look at the number of entries per supercategory.
+
+```{r}
+ccl4_hazard[, .N, by = .(supercategory)]
+natadb_hazard[, .N, by = .(supercategory)]
+
+```
+With over 17,000 results for `Point of Departure` for each data set, we dig into this further.
+
+```{r}
+ccl4_hazard[ supercategory %in% 'Point of Departure', .N, by = .(toxvalType)][order(-N),]
+natadb_hazard[ supercategory %in% 'Point of Departure', .N, by = .(toxvalType)][order(-N),]
+```
+
+We explore `NOEL` and `LOEL` further. Let us look at the the case when media is either `soil` or `water`. For this, we will recover the minimum value of LOEL and NOEL for each chemical in each data set.
+
+First, we look at soil.
+
+```{r}
+ccl4_hazard[media %in% 'soil' & toxvalType %in% c('LOEL', 'NOEL'), .(toxvalNumeric = min(toxvalNumeric)), by = .(toxvalType, toxvalUnits, dtxsid)][order(toxvalType, -toxvalNumeric)]
+natadb_hazard[media %in% 'soil' & toxvalType %in% c('LOEL', 'NOEL'), .(toxvalNumeric = min(toxvalNumeric)), by = .(toxvalType, toxvalUnits, dtxsid)][order(toxvalType, -toxvalNumeric)]
+```
+
+Next we look at water.
+
+```{r}
+ccl4_hazard[media %in% 'water' & toxvalType %in% c('LOEL', 'NOEL'), .(toxvalNumeric = min(toxvalNumeric)), by = .(toxvalType, toxvalUnits, dtxsid)][order(toxvalType, -toxvalNumeric)]
+natadb_hazard[media %in% 'water' & toxvalType %in% c('LOEL', 'NOEL'), .(toxvalNumeric = min(toxvalNumeric)), by = .(toxvalType, toxvalUnits, dtxsid)][order(toxvalType, -toxvalNumeric)]
+```
+
+Now, let us restrict our attention to human hazard and to the exposure routes given by inhalation and oral. 
+
+*Question* What are the unique risk assessment classes for hazard values for the oral route and for the inhalation route? For each route, which risk assessment class is most represented by the data sets?
+
+To answer this, filter the data into the corresponding exposure routes, group by exposure route and risk assessment class, and count the number of instances for each grouping. To determine the most represented class, one can order the results.
+
+```{r}
+ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% c('inhalation', 'oral'), .(Hits = .N), by = .(exposureRoute, riskAssessmentClass)][order(exposureRoute, -Hits)]
+natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% c('inhalation', 'oral'), .(Hits = .N), by = .(exposureRoute, riskAssessmentClass)][order(exposureRoute, -Hits)]
+```
+
+We now drill down a little further before moving into a different path for data exploration.
+
+*Question* What are the unique types of toxicity values for the oral route and for the inhalation route? What are the unique endpoint types for the oral route and for the inhalation route?
+
+```{r}
+ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% c('inhalation'), unique(toxvalType)]
+ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% c('oral'), unique(toxvalType)]
+natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% c('inhalation'), unique(toxvalType)]
+natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% c('oral'), unique(toxvalType)]
+```
+
+
+
+We will turn to the risk assessment class of `developmental` for further data exploration. We will examine the NOEL and LOEL values for chemicals with oral exposure, human hazard, and risk assessment class 'developmental'. We also examine the units to determine whether any unit conversions are necessary to compare numeric values.
+
+```{r}
+ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' & riskAssessmentClass %in% 'developmental' & toxvalType %in% c('NOEL', 'LOEL'), ]
+ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' & riskAssessmentClass %in% 'developmental' & toxvalType %in% c('NOEL', 'LOEL'), unique(toxvalUnits)]
+natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' & riskAssessmentClass %in% 'developmental' & toxvalType %in% c('NOEL', 'LOEL'), ]
+natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' & riskAssessmentClass %in% 'developmental' & toxvalType %in% c('NOEL', 'LOEL'), unique(toxvalUnits)]
+```
+
+Observe that for CCL4, the units are given by 'mg/kg-day' and 'ppm', while the units for NATADB are given by 'mg/kg-day', 'ppm', and 'ml/kg'. It is the case that 'mg/kg-day' and 'ppm' are comparable ratios. We ignore the 'ml/kg' units for now and group by DTXSID to find the lowest or highest value.
+
+```{r}
+ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' & riskAssessmentClass %in% 'developmental' & toxvalType %in% c('NOEL', 'LOEL'), .(numeric_value = min(toxvalNumeric), units = toxvalUnits[[which.min(toxvalNumeric)]]), by = .(dtxsid, toxvalType)]
+natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' & riskAssessmentClass %in% 'developmental' & toxvalType %in% c('NOEL', 'LOEL'), .(numeric_value = min(toxvalNumeric), units = toxvalUnits[[which.min(toxvalNumeric)]]), by = .(dtxsid, toxvalType)]
+```
+
+Now, we also explore the values of 'RfD', 'RfC', and 'cancer slope factor' of the toxvalType rows. We first determine the set of units for each, make appropriate conversions if necessary, and then make comparisons.
+
+```{r}
+ccl4_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('cancer slope factor', 'RfD', 'RfC'), .N, by = .(toxvalType, toxvalUnits)][order(toxvalType, -N)]
+natadb_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('cancer slope factor', 'RfD', 'RfC'), .N, by = .(toxvalType, toxvalUnits)][order(toxvalType, -N)]
+```
+For CCL4, there are three inequivalent sets of units that need conversions. We convert to 'mg/m3', which means scaling values given in 'g/m3' by 1E3 and values given in 'ug/m3' by 1E-3. The Rfd units and cancer slope factor units require no conversions.
+
+For NATADB, we need to convert RfC values from ppm to mg/m3, with a conversion factor that relies on the molecular weight of the chemical in question. We will remove these from consideration for now. The units for RfD and cancer slope factor require no conversions.
+
+```{r}
+# Separate out into relevant data subsets
+ccl4_csf <- ccl4_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('cancer slope factor'), ]
+ccl4_rfc <- ccl4_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('RfC'), ]
+ccl4_rfd <- ccl4_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('RfD'), ]
+
+# Handle unit conversions 
+ccl4_rfc[toxvalUnits == 'mg/m3', conversion := 1]
+ccl4_rfc[toxvalUnits == 'g/m3', conversion := 1E3]
+ccl4_rfc[toxvalUnits == 'ug/m3', conversion := 1E-3]
+ccl4_rfc[toxvalUnits %in% c('mg/m3', 'g/m3', 'ug/m3'), units := 'mg/m3']
+ccl4_rfd[toxvalUnits %in% c('mg/kg-day', 'mg/kg'), conversion := 1]
+ccl4_rfd[toxvalUnits %in% c('mg/kg-day', 'mg/kg'), units := 'mg/m3']
+
+# Run data aggregations
+ccl4_csf[,.(numeric_value = max(toxvalNumeric), units = toxvalUnits[which.max(toxvalNumeric)]), by = .(dtxsid)][order(-numeric_value),]
+ccl4_rfc[,.(numeric_value = min(toxvalNumeric*conversion), units = units[which.min(toxvalNumeric*conversion)]), by = .(dtxsid)][order(numeric_value),]
+ccl4_rfd[,.(numeric_value = min(toxvalNumeric*conversion), units = units[which.min(toxvalNumeric*conversion)]), by = .(dtxsid)][order(numeric_value),]
+
+# Separate out into relevant data subsets
+natadb_csf <- natadb_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('cancer slope factor'), ]
+natadb_rfc <- natadb_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('RfC'), ]
+natadb_rfd <- natadb_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('RfD'), ]
+
+# Handle units conversions
+natadb_rfc <- natadb_rfc[toxvalUnits != 'ppm',]
+natadb_rfd[, units := 'mg/kg-day']
+
+# Run data aggregations
+natadb_csf[, .(numeric_value = max(toxvalNumeric), units = toxvalUnits[which.max(toxvalNumeric)]), by = .(dtxsid)][order(-numeric_value),]
+natadb_rfc[, .(numeric_value = min(toxvalNumeric), units = toxvalUnits[which.min(toxvalNumeric)]), by = .(dtxsid)][order(numeric_value),]
+natadb_rfd[, .(numeric_value = min(toxvalNumeric), units = units[which.min(toxvalNumeric)]), by = .(dtxsid)][order(numeric_value),]
+```
+
+
+
