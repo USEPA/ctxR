@@ -15,6 +15,10 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
+# This will be hidden in the final version
+# Redefining the knit_print method to truncate character values to 25 characters
+# in each column and to truncate the columns in the print call to prevent 
+# wrapping tables with several columns.
 #library(ccdR)
 knit_print.data.table = function(x, ...) {
   y <- data.table::copy(x)
@@ -242,21 +246,28 @@ ccl4_phys_chem[, unique(propType)]
 
 ```{r}
 ccl4_phys_chem[propertyId == 'boiling-point', .(Mean = mean(value))]
-ccl4_phys_chem[propertyId == 'boiling-point', .(Mean = mean(value)), by = .(propType)]
+ccl4_phys_chem[propertyId == 'boiling-point', .(Mean = mean(value)),
+               by = .(propType)]
 
 ccl4_phys_chem[propertyId == 'melting-point', .(Mean = mean(value))]
-ccl4_phys_chem[propertyId == 'melting-point', .(Mean = mean(value)), by = .(propType)]
+ccl4_phys_chem[propertyId == 'melting-point', .(Mean = mean(value)),
+               by = .(propType)]
 ```
 
 First we look at all the phys-chem properties individually, then group them by each property (`boiling-point`, `melting-point`, etc...), and then additionally group those by property type (`experimental` vs `predicted`). In the grouping, we look at the columns `value`, `unit`, `propertyID` and `propType`. We also demonstrate how take the mean of the values for each grouping.
 
 ```{r}
 head(ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], ])
-ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(propType, value, unit), by = .(propertyId)]
-ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(value, unit), by = .(propertyId, propType)]
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(propType, value, unit),
+               by = .(propertyId)]
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(value, unit), 
+               by = .(propertyId, propType)]
 
-ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(Mean_value = sapply(.SD, mean)), by = .(propertyId, unit), .SDcols = c("value")]
-ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(Mean_value = sapply(.SD, mean)), by = .(propertyId, unit, propType), .SDcols = c("value")][order(propertyId)]
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(Mean_value = sapply(.SD, mean)),
+               by = .(propertyId, unit), .SDcols = c("value")]
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(Mean_value = sapply(.SD, mean)), 
+               by = .(propertyId, unit, propType), 
+               .SDcols = c("value")][order(propertyId)]
 ```
 
 *Question?* Are there differences between the mean predicted and experimental results for a variety of properties? For instance, examine 'vapor-pressure', 'henrys-law', and 'boiling-point' and plot the means by chemical for these using boxplots. Compare the values by grouping by both data set and propType.
@@ -267,15 +278,26 @@ We first examine the vapor pressures for all the chemicals in each list. We then
 Group first by DTXSID.
 
 ```{r}
-ccl4_vapor_all <- ccl4_phys_chem[propertyId %in% 'vapor-pressure', .(mean_vapor_pressure = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid)]
-natadb_vapor_all <- natadb_phys_chem[propertyId %in% 'vapor-pressure', .(mean_vapor_pressure = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid)]
+ccl4_vapor_all <- ccl4_phys_chem[propertyId %in% 'vapor-pressure', 
+                                 .(mean_vapor_pressure = sapply(.SD, mean)), 
+                                 .SDcols = c('value'), by = .(dtxsid)]
+natadb_vapor_all <- natadb_phys_chem[propertyId %in% 'vapor-pressure', 
+                                     .(mean_vapor_pressure = sapply(.SD, mean)),
+                                     .SDcols = c('value'), by = .(dtxsid)]
 ```
 
 Then group by DTXSID and then by property type.
 
 ```{r}
-ccl4_vapor_grouped <- ccl4_phys_chem[propertyId %in% 'vapor-pressure', .(mean_vapor_pressure = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid, propType)]
-natadb_vapor_grouped <- natadb_phys_chem[propertyId %in% 'vapor-pressure', .(mean_vapor_pressure = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid, propType)]
+ccl4_vapor_grouped <- ccl4_phys_chem[propertyId %in% 'vapor-pressure', 
+                                     .(mean_vapor_pressure = sapply(.SD, mean)),
+                                     .SDcols = c('value'), 
+                                     by = .(dtxsid, propType)]
+natadb_vapor_grouped <- natadb_phys_chem[propertyId %in% 'vapor-pressure', 
+                                         .(mean_vapor_pressure = 
+                                             sapply(.SD, mean)), 
+                                         .SDcols = c('value'), 
+                                         by = .(dtxsid, propType)]
 ```
 
 Then examine the summary statistics of the data.
@@ -291,10 +313,13 @@ With such a large range of values covering several orders of magnitude, we log t
 
 ```{r}
 ccl4_vapor_all[, log_transform_mean_vapor_pressure := log(mean_vapor_pressure)]
-ccl4_vapor_grouped[, log_transform_mean_vapor_pressure := log(mean_vapor_pressure)]
+ccl4_vapor_grouped[, log_transform_mean_vapor_pressure := 
+                     log(mean_vapor_pressure)]
 
-natadb_vapor_all[, log_transform_mean_vapor_pressure := log(mean_vapor_pressure)]
-natadb_vapor_grouped[, log_transform_mean_vapor_pressure := log(mean_vapor_pressure)]
+natadb_vapor_all[, log_transform_mean_vapor_pressure := 
+                   log(mean_vapor_pressure)]
+natadb_vapor_grouped[, log_transform_mean_vapor_pressure := 
+                       log(mean_vapor_pressure)]
 ```
 
 Now we plot the log transformed data.
@@ -328,7 +353,8 @@ all_vapor_grouped <- rbind(ccl4_vapor_grouped, natadb_vapor_grouped)
 Now we plot the combined data. First we color the boxplots based on the property type, with mean log transformed vapor pressure plotted for each data set and property type.
 
 ```{r}
-vapor_box <- ggplot(all_vapor_grouped, aes(set, log_transform_mean_vapor_pressure)) + 
+vapor_box <- ggplot(all_vapor_grouped, 
+                    aes(set, log_transform_mean_vapor_pressure)) + 
   geom_boxplot(aes(color = propType))
 vapor_box
 ```
@@ -348,15 +374,25 @@ Next, we also explore Henry's Law constant and boiling point.
 Group by DTXSID.
 
 ```{r}
-ccl4_hlc_all <- ccl4_phys_chem[propertyId %in% 'henrys-law', .(mean_hlc = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid)]
-natadb_hlc_all <- natadb_phys_chem[propertyId %in% 'henrys-law', .(mean_hlc = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid)]
+ccl4_hlc_all <- ccl4_phys_chem[propertyId %in% 'henrys-law', 
+                               .(mean_hlc = sapply(.SD, mean)), 
+                               .SDcols = c('value'), by = .(dtxsid)]
+natadb_hlc_all <- natadb_phys_chem[propertyId %in% 'henrys-law', 
+                                   .(mean_hlc = sapply(.SD, mean)), 
+                                   .SDcols = c('value'), by = .(dtxsid)]
 ```
 
 Group by DTXSID and property type.
 
 ```{r}
-ccl4_hlc_grouped <- ccl4_phys_chem[propertyId %in% 'henrys-law', .(mean_hlc = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid, propType)]
-natadb_hlc_grouped <- natadb_phys_chem[propertyId %in% 'henrys-law', .(mean_hlc = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid, propType)]
+ccl4_hlc_grouped <- ccl4_phys_chem[propertyId %in% 'henrys-law', 
+                                   .(mean_hlc = sapply(.SD, mean)), 
+                                   .SDcols = c('value'), 
+                                   by = .(dtxsid, propType)]
+natadb_hlc_grouped <- natadb_phys_chem[propertyId %in% 'henrys-law', 
+                                       .(mean_hlc = sapply(.SD, mean)), 
+                                       .SDcols = c('value'), 
+                                       by = .(dtxsid, propType)]
 ```
 
 Examine summary statistics.
@@ -409,15 +445,28 @@ Finally, we consider boiling point.
 Group by DTXSID.
 
 ```{r}
-ccl4_boiling_all <- ccl4_phys_chem[propertyId %in% 'boiling-point', .(mean_boiling_point = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid)]
-natadb_boiling_all <- natadb_phys_chem[propertyId %in% 'boiling-point', .(mean_boiling_point = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid)]
+ccl4_boiling_all <- ccl4_phys_chem[propertyId %in% 'boiling-point', 
+                                   .(mean_boiling_point = sapply(.SD, mean)), 
+                                   .SDcols = c('value'), by = .(dtxsid)]
+natadb_boiling_all <- natadb_phys_chem[propertyId %in% 'boiling-point', 
+                                       .(mean_boiling_point = 
+                                           sapply(.SD, mean)), 
+                                       .SDcols = c('value'), by = .(dtxsid)]
 ```
 
 Group by DTXSID and property type.
 
 ```{r}
-ccl4_boiling_grouped <- ccl4_phys_chem[propertyId %in% 'boiling-point', .(mean_boiling_point = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid, propType)]
-natadb_boiling_grouped <- natadb_phys_chem[propertyId %in% 'boiling-point', .(mean_boiling_point = sapply(.SD, mean)), .SDcols = c('value'), by = .(dtxsid, propType)]
+ccl4_boiling_grouped <- ccl4_phys_chem[propertyId %in% 'boiling-point', 
+                                       .(mean_boiling_point = 
+                                           sapply(.SD, mean)), 
+                                       .SDcols = c('value'), 
+                                       by = .(dtxsid, propType)]
+natadb_boiling_grouped <- natadb_phys_chem[propertyId %in% 'boiling-point', 
+                                           .(mean_boiling_point = 
+                                               sapply(.SD, mean)), 
+                                           .SDcols = c('value'), 
+                                           by = .(dtxsid, propType)]
 ```
 
 Calculate summary statistics.
@@ -512,8 +561,10 @@ The information returned is of the first variety highlighted in the figure `Comp
 Observe that we have information on 71 chemicals from the CCL4 data and 153 from the NATA data. We note the chemicals not included in the results and then dig into the returned results.
 
 ```{r}
-ccl4[!(dtxsid %in% ccl4_genotox$dtxsid), .(dtxsid, casrn, preferredName, molFormula)]
-natadb[!(dtxsid %in% natadb_genetox$dtxsid), .(dtxsid, casrn, preferredName, molFormula)]
+ccl4[!(dtxsid %in% ccl4_genotox$dtxsid), 
+     .(dtxsid, casrn, preferredName, molFormula)]
+natadb[!(dtxsid %in% natadb_genetox$dtxsid), 
+       .(dtxsid, casrn, preferredName, molFormula)]
 ```
 
 Now, we access the genotoxicity details of the chemicals in each data set using the function `get_genetox_details_batch`. We explore the dimensions of the returned queries, the column names, and the first few lines of the data.
@@ -557,7 +608,8 @@ head(ccl4_genetox_details[dtxsid %in% 'DTXSID0020153', ])
 Observe that the data is the same for each data set when restricting to the same chemical. This is because the information we are retrieving is specific to the chemical and not dependent on which chemical lists the chemical may belong.
 
 ```{r}
-identical(ccl4_genetox_details[dtxsid %in% 'DTXSID0020153', ], natadb_genetox_details[dtxsid %in% 'DTXSID0020153', ])
+identical(ccl4_genetox_details[dtxsid %in% 'DTXSID0020153', ], 
+          natadb_genetox_details[dtxsid %in% 'DTXSID0020153', ])
 ```
 
 *Question?* What are the unique assays in each data set? What are the different assay categories and how many unique assays for each assay category are there?
@@ -574,8 +626,10 @@ natadb_genetox_details[, unique(assayCategory)]
 Determine the number of assays per unique assay category.
 
 ```{r}
-ccl4_genetox_details[, .(Assays = length(unique(assayType))), by = .(assayCategory)]
-natadb_genetox_details[, .(Assays = length(unique(assayType))), by = .(assayCategory)]
+ccl4_genetox_details[, .(Assays = length(unique(assayType))), 
+                     by = .(assayCategory)]
+natadb_genetox_details[, .(Assays = length(unique(assayType))),
+                       by = .(assayCategory)]
 ```
 
 
@@ -615,15 +669,18 @@ To determine this, we group by assayResult and determine the number of unique dt
 
 ```{r}
 ccl4_genetox_details[, .(DTXSIDs = length(unique(dtxsid))), by = .(assayResult)]
-natadb_genetox_details[, .(DTXSIDs = length(unique(dtxsid))), by = .(assayResult)]
+natadb_genetox_details[, .(DTXSIDs = length(unique(dtxsid))), 
+                       by = .(assayResult)]
 ```
 
 
-We now determine which chemicals from each data set are known to have genotoxic effects. For this, we look to see which chemicals produce at least one positive response in the assayResult column.
+We now determine the chemicals from each data set that are known to have genotoxic effects. For this, we look to see which chemicals produce at least one positive response in the assayResult column.
 
 ```{r}
-ccl4_genetox_details[, .(is_positive = any(assayResult == 'positive')), by = .(dtxsid)][is_positive == TRUE, dtxsid]
-natadb_genetox_details[, .(is_positive = any(assayResult == 'positive')), by = .(dtxsid)][is_positive == TRUE, dtxsid]
+ccl4_genetox_details[, .(is_positive = any(assayResult == 'positive')), 
+                     by = .(dtxsid)][is_positive == TRUE, dtxsid]
+natadb_genetox_details[, .(is_positive = any(assayResult == 'positive')),
+                       by = .(dtxsid)][is_positive == TRUE, dtxsid]
 ```
 
 *Question?* How many assays were positive/equivocal/negative for the chemical with DTXSID equal to DTXSID0020153? Which were positive and how many of each were there?
@@ -631,8 +688,10 @@ natadb_genetox_details[, .(is_positive = any(assayResult == 'positive')), by = .
 To determine this, we group by `assayResult` and calculate .N for each group. We also isolate which were positive and output a data.table with the number of each type.
 
 ```{r}
-ccl4_genetox_details[dtxsid == 'DTXSID0020153', .(Number = .N), by = .(assayResult)]
-ccl4_genetox_details[dtxsid == 'DTXSID0020153' & assayResult == 'positive', .(Number_of_assays = .N), by = .(assayType)]
+ccl4_genetox_details[dtxsid == 'DTXSID0020153', .(Number = .N), 
+                     by = .(assayResult)]
+ccl4_genetox_details[dtxsid == 'DTXSID0020153' & assayResult == 'positive', 
+                     .(Number_of_assays = .N), by = .(assayType)]
 ```
 
 # Hazard resource
@@ -651,7 +710,7 @@ We do some preliminary exploration of the data. First we determine the dimension
 dim(ccl4_hazard)
 dim(natadb_hazard)
 ```
-Next we recrod the column names and display the first six results in the CCL4 hazard data.
+Next we record the column names and display the first six results in the CCL4 hazard data.
 
 ```{r}
 colnames(ccl4_hazard)
@@ -660,133 +719,227 @@ head(ccl4_hazard)
 
 We determine the number of unique values in the criticalEffect, supercategory, and toxvaltype columns for each data set.
 
+The number of unique values for `criticalEffect`.
+
 ```{r}
 length(ccl4_hazard[, unique(criticalEffect)])
 length(natadb_hazard[, unique(criticalEffect)])
 ```
+The number of unique values of `supercategory`.
 
 ```{r}
 length(ccl4_hazard[, unique(supercategory)])
 length(natadb_hazard[, unique(supercategory)])
 ```
+The number of unique values for `toxvalType`.
 
 ```{r}
 length(ccl4_hazard[, unique(toxvalType)])
 length(natadb_hazard[, unique(toxvalType)])
 ```
 
-Now we look at the number of entries per supercategory.
+Now we look at the number of entries per `supercategory`.
 
 ```{r}
 ccl4_hazard[, .N, by = .(supercategory)]
 natadb_hazard[, .N, by = .(supercategory)]
 
 ```
-With over 17,000 results for `Point of Departure` for each data set, we dig into this further.
+With over 17,000 results for the `supercategory` value "Point of Departure" for each data set, we dig into this further.
 
+We determine the number of rows grouped by `toxvalType` that have the "Point of Departure" `supercategory` value, and display this descending.
 ```{r}
-ccl4_hazard[ supercategory %in% 'Point of Departure', .N, by = .(toxvalType)][order(-N),]
-natadb_hazard[ supercategory %in% 'Point of Departure', .N, by = .(toxvalType)][order(-N),]
+ccl4_hazard[ supercategory %in% 'Point of Departure', .N, 
+             by = .(toxvalType)][order(-N),]
+natadb_hazard[ supercategory %in% 'Point of Departure', .N, 
+               by = .(toxvalType)][order(-N),]
 ```
 
-We explore `NOEL` and `LOEL` further. Let us look at the the case when media is either `soil` or `water`. For this, we will recover the minimum value of LOEL and NOEL for each chemical in each data set.
+We explore `NOEL` and `LOEL` further. Let us look at the the case when `media` value is either "soil" or "water". For this, we will recover the minimum value of LOEL and NOEL for each chemical in each data set.
 
-First, we look at soil.
+First, we look at soil. We order by `toxvalType` and by the minimum `toxvalNumeric` value in each group, descending.
 
 ```{r}
-ccl4_hazard[media %in% 'soil' & toxvalType %in% c('LOEL', 'NOEL'), .(toxvalNumeric = min(toxvalNumeric)), by = .(toxvalType, toxvalUnits, dtxsid)][order(toxvalType, -toxvalNumeric)]
-natadb_hazard[media %in% 'soil' & toxvalType %in% c('LOEL', 'NOEL'), .(toxvalNumeric = min(toxvalNumeric)), by = .(toxvalType, toxvalUnits, dtxsid)][order(toxvalType, -toxvalNumeric)]
+ccl4_hazard[media %in% 'soil' & toxvalType %in% c('LOEL', 'NOEL'), 
+            .(toxvalNumeric = min(toxvalNumeric)), 
+            by = .(toxvalType, toxvalUnits, dtxsid)][order(toxvalType,
+                                                           -toxvalNumeric)]
+natadb_hazard[media %in% 'soil' & toxvalType %in% c('LOEL', 'NOEL'), 
+              .(toxvalNumeric = min(toxvalNumeric)), 
+              by = .(toxvalType, toxvalUnits, dtxsid)][order(toxvalType,
+                                                             -toxvalNumeric)]
 ```
 
-Next we look at water.
+Next we look at water, repeating the same grouping and ordering as in the previous case.
 
 ```{r}
-ccl4_hazard[media %in% 'water' & toxvalType %in% c('LOEL', 'NOEL'), .(toxvalNumeric = min(toxvalNumeric)), by = .(toxvalType, toxvalUnits, dtxsid)][order(toxvalType, -toxvalNumeric)]
-natadb_hazard[media %in% 'water' & toxvalType %in% c('LOEL', 'NOEL'), .(toxvalNumeric = min(toxvalNumeric)), by = .(toxvalType, toxvalUnits, dtxsid)][order(toxvalType, -toxvalNumeric)]
+ccl4_hazard[media %in% 'water' & toxvalType %in% c('LOEL', 'NOEL'), 
+            .(toxvalNumeric = min(toxvalNumeric)), 
+            by = .(toxvalType, toxvalUnits, dtxsid)][order(toxvalType,
+                                                           -toxvalNumeric)]
+natadb_hazard[media %in% 'water' & toxvalType %in% c('LOEL', 'NOEL'), 
+              .(toxvalNumeric = min(toxvalNumeric)), 
+              by = .(toxvalType, toxvalUnits, dtxsid)][order(toxvalType,
+                                                             -toxvalNumeric)]
 ```
 
 Now, let us restrict our attention to human hazard and to the exposure routes given by inhalation and oral. 
 
 *Question* What are the unique risk assessment classes for hazard values for the oral route and for the inhalation route? For each route, which risk assessment class is most represented by the data sets?
 
-To answer this, filter the data into the corresponding exposure routes, group by exposure route and risk assessment class, and count the number of instances for each grouping. To determine the most represented class, one can order the results.
+To answer this, filter the data into the corresponding exposure routes, then group by exposure route and risk assessment class, and finally count the number of instances for each grouping. To determine the most represented class, one can order the results descending.
 
 ```{r}
-ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% c('inhalation', 'oral'), .(Hits = .N), by = .(exposureRoute, riskAssessmentClass)][order(exposureRoute, -Hits)]
-natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% c('inhalation', 'oral'), .(Hits = .N), by = .(exposureRoute, riskAssessmentClass)][order(exposureRoute, -Hits)]
+ccl4_hazard[humanEcoNt %in% 'human health' & 
+              exposureRoute %in% c('inhalation', 'oral'), .(Hits = .N), 
+            by = .(exposureRoute, riskAssessmentClass)][order(exposureRoute, 
+                                                              -Hits)]
+natadb_hazard[humanEcoNt %in% 'human health' & 
+                exposureRoute %in% c('inhalation', 'oral'), .(Hits = .N), 
+              by = .(exposureRoute, riskAssessmentClass)][order(exposureRoute,
+                                                                -Hits)]
 ```
 
 We now drill down a little further before moving into a different path for data exploration.
 
 *Question* What are the unique types of toxicity values for the oral route and for the inhalation route? What are the unique endpoint types for the oral route and for the inhalation route?
 
+To answer this, we filter the rows to the "human health" `humanEcoNT` value and "inhalation" or "oral" `exposureRoute` value. Then we return the unique values that `toxvalType` takes.
+
 ```{r}
-ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% c('inhalation'), unique(toxvalType)]
-ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% c('oral'), unique(toxvalType)]
-natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% c('inhalation'), unique(toxvalType)]
-natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% c('oral'), unique(toxvalType)]
+ccl4_hazard[humanEcoNt %in% 'human health' &
+              exposureRoute %in% c('inhalation'), unique(toxvalType)]
+ccl4_hazard[humanEcoNt %in% 'human health' &
+              exposureRoute %in% c('oral'), unique(toxvalType)]
+natadb_hazard[humanEcoNt %in% 'human health' & 
+                exposureRoute %in% c('inhalation'), unique(toxvalType)]
+natadb_hazard[humanEcoNt %in% 'human health' & 
+                exposureRoute %in% c('oral'), unique(toxvalType)]
 ```
 
-
-
-We will turn to the risk assessment class of `developmental` for further data exploration. We will examine the NOEL and LOEL values for chemicals with oral exposure, human hazard, and risk assessment class 'developmental'. We also examine the units to determine whether any unit conversions are necessary to compare numeric values.
+For the next data exploration, We will turn to the risk assessment class of `developmental`. We will examine the NOEL and LOEL values for chemicals with oral exposure, human hazard, and risk assessment class 'developmental'. We also examine the units to determine whether any unit conversions are necessary to compare numeric values.
 
 ```{r}
-ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' & riskAssessmentClass %in% 'developmental' & toxvalType %in% c('NOEL', 'LOEL'), ]
-ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' & riskAssessmentClass %in% 'developmental' & toxvalType %in% c('NOEL', 'LOEL'), unique(toxvalUnits)]
-natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' & riskAssessmentClass %in% 'developmental' & toxvalType %in% c('NOEL', 'LOEL'), ]
-natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' & riskAssessmentClass %in% 'developmental' & toxvalType %in% c('NOEL', 'LOEL'), unique(toxvalUnits)]
+ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' &
+              riskAssessmentClass %in% 'developmental' & 
+              toxvalType %in% c('NOEL', 'LOEL'), ]
+ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' &
+              riskAssessmentClass %in% 'developmental' &
+              toxvalType %in% c('NOEL', 'LOEL'), unique(toxvalUnits)]
+natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' &
+                riskAssessmentClass %in% 'developmental' &
+                toxvalType %in% c('NOEL', 'LOEL'), ]
+natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' &
+                riskAssessmentClass %in% 'developmental' & 
+                toxvalType %in% c('NOEL', 'LOEL'), unique(toxvalUnits)]
 ```
 
 Observe that for CCL4, the units are given by 'mg/kg-day' and 'ppm', while the units for NATADB are given by 'mg/kg-day', 'ppm', and 'ml/kg'. It is the case that 'mg/kg-day' and 'ppm' are comparable ratios. We ignore the 'ml/kg' units for now and group by DTXSID to find the lowest or highest value.
 
 ```{r}
-ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' & riskAssessmentClass %in% 'developmental' & toxvalType %in% c('NOEL', 'LOEL'), .(numeric_value = min(toxvalNumeric), units = toxvalUnits[[which.min(toxvalNumeric)]]), by = .(dtxsid, toxvalType)]
-natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' & riskAssessmentClass %in% 'developmental' & toxvalType %in% c('NOEL', 'LOEL'), .(numeric_value = min(toxvalNumeric), units = toxvalUnits[[which.min(toxvalNumeric)]]), by = .(dtxsid, toxvalType)]
+ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' &
+            riskAssessmentClass %in% 'developmental' & 
+            toxvalType %in% c('NOEL', 'LOEL'),
+            .(numeric_value = min(toxvalNumeric), 
+            units = toxvalUnits[[which.min(toxvalNumeric)]]), 
+            by = .(dtxsid, toxvalType)]
+natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' &
+              riskAssessmentClass %in% 'developmental' & 
+              toxvalType %in% c('NOEL', 'LOEL'), 
+              .(numeric_value = min(toxvalNumeric), 
+              units = toxvalUnits[[which.min(toxvalNumeric)]]), 
+              by = .(dtxsid, toxvalType)]
 ```
 
-Now, we also explore the values of 'RfD', 'RfC', and 'cancer slope factor' of the toxvalType rows. We first determine the set of units for each, make appropriate conversions if necessary, and then make comparisons.
+Now, we also explore the values of 'RfD', 'RfC', and 'cancer slope factor' of the `toxvalType` rows. We first determine the set of units for each, make appropriate conversions if necessary, and then make comparisons.
 
 ```{r}
-ccl4_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('cancer slope factor', 'RfD', 'RfC'), .N, by = .(toxvalType, toxvalUnits)][order(toxvalType, -N)]
-natadb_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('cancer slope factor', 'RfD', 'RfC'), .N, by = .(toxvalType, toxvalUnits)][order(toxvalType, -N)]
+ccl4_hazard[humanEcoNt %in% 'human health' & toxvalType %in% 
+            c('cancer slope factor', 'RfD', 'RfC'), .N, 
+            by = .(toxvalType, toxvalUnits)][order(toxvalType, -N)]
+natadb_hazard[humanEcoNt %in% 'human health' & toxvalType %in%
+              c('cancer slope factor', 'RfD', 'RfC'), .N, 
+              by = .(toxvalType, toxvalUnits)][order(toxvalType, -N)]
 ```
 For CCL4, there are three inequivalent sets of units that need conversions. We convert to 'mg/m3', which means scaling values given in 'g/m3' by 1E3 and values given in 'ug/m3' by 1E-3. The Rfd units and cancer slope factor units require no conversions.
 
 For NATADB, we need to convert RfC values from ppm to mg/m3, with a conversion factor that relies on the molecular weight of the chemical in question. We will remove these from consideration for now. The units for RfD and cancer slope factor require no conversions.
 
+First, we filter and separate out the relevant data subsets.
+
 ```{r}
 # Separate out into relevant data subsets
-ccl4_csf <- ccl4_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('cancer slope factor'), ]
-ccl4_rfc <- ccl4_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('RfC'), ]
-ccl4_rfd <- ccl4_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('RfD'), ]
+ccl4_csf <- ccl4_hazard[humanEcoNt %in% 'human health' & 
+                          toxvalType %in% c('cancer slope factor'), ]
+ccl4_rfc <- ccl4_hazard[humanEcoNt %in% 'human health' & 
+                          toxvalType %in% c('RfC'), ]
+ccl4_rfd <- ccl4_hazard[humanEcoNt %in% 'human health' & 
+                          toxvalType %in% c('RfD'), ]
+```
 
-# Handle unit conversions 
+Then we start to handle the unit conversions.
+
+```{r}
+# Set mass by volume units to mg/m3, so scale g/m3 by 1E3 and ug/m3 by 1E-3
 ccl4_rfc[toxvalUnits == 'mg/m3', conversion := 1]
 ccl4_rfc[toxvalUnits == 'g/m3', conversion := 1E3]
 ccl4_rfc[toxvalUnits == 'ug/m3', conversion := 1E-3]
 ccl4_rfc[toxvalUnits %in% c('mg/m3', 'g/m3', 'ug/m3'), units := 'mg/m3']
+# Set mass by mass units to mg/kg
 ccl4_rfd[toxvalUnits %in% c('mg/kg-day', 'mg/kg'), conversion := 1]
-ccl4_rfd[toxvalUnits %in% c('mg/kg-day', 'mg/kg'), units := 'mg/m3']
+ccl4_rfd[toxvalUnits %in% c('mg/kg-day', 'mg/kg'), units := 'mg/kg']
+```
 
-# Run data aggregations
-ccl4_csf[,.(numeric_value = max(toxvalNumeric), units = toxvalUnits[which.max(toxvalNumeric)]), by = .(dtxsid)][order(-numeric_value),]
-ccl4_rfc[,.(numeric_value = min(toxvalNumeric*conversion), units = units[which.min(toxvalNumeric*conversion)]), by = .(dtxsid)][order(numeric_value),]
-ccl4_rfd[,.(numeric_value = min(toxvalNumeric*conversion), units = units[which.min(toxvalNumeric*conversion)]), by = .(dtxsid)][order(numeric_value),]
+Then aggregate the data.
 
+```{r}
+# Run data aggregations grouping by dtxsid and taking either the max or the min
+# depending on the toxvalType we are considering.
+ccl4_csf[,.(numeric_value = max(toxvalNumeric), 
+            units = toxvalUnits[which.max(toxvalNumeric)]), 
+         by = .(dtxsid)][order(-numeric_value),]
+ccl4_rfc[,.(numeric_value = min(toxvalNumeric*conversion), 
+            units = units[which.min(toxvalNumeric*conversion)]), 
+         by = .(dtxsid)][order(numeric_value),]
+ccl4_rfd[,.(numeric_value = min(toxvalNumeric*conversion), 
+            units = units[which.min(toxvalNumeric*conversion)]), 
+         by = .(dtxsid)][order(numeric_value),]
+```
+
+Repeat the process for NATADB, first separating out the relevant subsets of the data.
+
+```{r}
 # Separate out into relevant data subsets
-natadb_csf <- natadb_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('cancer slope factor'), ]
-natadb_rfc <- natadb_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('RfC'), ]
-natadb_rfd <- natadb_hazard[humanEcoNt %in% 'human health' & toxvalType %in% c('RfD'), ]
+natadb_csf <- natadb_hazard[humanEcoNt %in% 'human health' & 
+                              toxvalType %in% c('cancer slope factor'), ]
+natadb_rfc <- natadb_hazard[humanEcoNt %in% 'human health' &
+                              toxvalType %in% c('RfC'), ]
+natadb_rfd <- natadb_hazard[humanEcoNt %in% 'human health' & 
+                              toxvalType %in% c('RfD'), ]
+```
 
-# Handle units conversions
+Now handle the unit conversions.
+
+```{r}
+# Set mass by mass units to mg/kg. Note that ppm is already in mg/kg
 natadb_rfc <- natadb_rfc[toxvalUnits != 'ppm',]
 natadb_rfd[, units := 'mg/kg-day']
+```
 
-# Run data aggregations
-natadb_csf[, .(numeric_value = max(toxvalNumeric), units = toxvalUnits[which.max(toxvalNumeric)]), by = .(dtxsid)][order(-numeric_value),]
-natadb_rfc[, .(numeric_value = min(toxvalNumeric), units = toxvalUnits[which.min(toxvalNumeric)]), by = .(dtxsid)][order(numeric_value),]
-natadb_rfd[, .(numeric_value = min(toxvalNumeric), units = units[which.min(toxvalNumeric)]), by = .(dtxsid)][order(numeric_value),]
+Finally, aggregate the data.
+
+```{r}
+# Run data aggregations grouping by dtxsid and taking either the max or the min
+# depending on the toxvalType we are considering.
+natadb_csf[, .(numeric_value = max(toxvalNumeric), 
+               units = toxvalUnits[which.max(toxvalNumeric)]), 
+           by = .(dtxsid)][order(-numeric_value),]
+natadb_rfc[, .(numeric_value = min(toxvalNumeric), 
+               units = toxvalUnits[which.min(toxvalNumeric)]), 
+           by = .(dtxsid)][order(numeric_value),]
+natadb_rfd[, .(numeric_value = min(toxvalNumeric), 
+               units = units[which.min(toxvalNumeric)]), 
+           by = .(dtxsid)][order(numeric_value),]
 ```
 
 
