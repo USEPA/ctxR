@@ -238,14 +238,18 @@ Before any deeper analysis, lets take a look at the dimensions of the data and t
 dim(ccl4_phys_chem)
 colnames(ccl4_phys_chem)
 ```
+Next, we display the unique values for the columns `propertyID` and `propType`.
 
 
-*Question?* After automatically pulling the fourth Drinking Water Contaminant Candidate List and the National-Scale Air Toxics Assessments list from the CompTox Dashboard, list the properties and property types present in the data. What are the mean values for a specific property when grouped by property type and when ungrouped? Try using 'boiling-point' and 'melting-point' for property.
+
+
 
 ```{r}
 ccl4_phys_chem[, unique(propertyId)]
 ccl4_phys_chem[, unique(propType)]
 ```
+
+Let's explore this further by examining the mean of the 'boiling-point' and 'melting-point' data.
 
 ```{r}
 ccl4_phys_chem[propertyId == 'boiling-point', .(Mean = mean(value))]
@@ -257,7 +261,14 @@ ccl4_phys_chem[propertyId == 'melting-point', .(Mean = mean(value)),
                by = .(propType)]
 ```
 
-First we look at all the physico-chemical properties individually, then group them by each property (`boiling-point`, `melting-point`, etc...), and then additionally group those by property type (`experimental` vs `predicted`). In the grouping, we look at the columns `value`, `unit`, `propertyID` and `propType`. We also demonstrate how take the mean of the values for each grouping.
+These results tell us about some of the reported physico-chemical properties of the data sets.
+
+*With this, we can answer **Environmental Health Question 1**:* After automatically pulling the fourth Drinking Water Contaminant Candidate List from the CompTox Dashboard, list the properties and property types present in the data. What are the mean values for a specific property when grouped by property type and when ungrouped?
+
+**Answer:** The mean 'boiling-point' is 251.1072 degrees Celsius for CCL4, with mean values of 250.5943 and 251.4001 for experimental and predicted, respectively. The mean 'melting-point' is 33.93924 degrees Celsius for CCL4, with mean values of 23.18876 and 47.98422 for experimental and predicted, respectively.
+
+
+To explore **all** the values of the physico-chemical properties and calculate their means, we can do the following procedure. First we look at all the physico-chemical properties individually, then group them by each property (`boiling-point`, `melting-point`, etc...), and then additionally group those by property type (`experimental` vs `predicted`). In the grouping, we look at the columns `value`, `unit`, `propertyID` and `propType`. We also demonstrate how take the mean of the values for each grouping.
 
 ```{r}
 head(ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], ])
@@ -275,9 +286,9 @@ ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(Mean_value = sapply(.SD, mean)),
 
 ## Analyzing and visualizing physico-chemical properties from two environmental contaminant lists
 
-We consider the following question in an effort to understand better the CCL4 and NATADB lists.
+We consider the following exploring the differences in mean predicted and experimental values for a variety of physico-chemical properties in an effort to understand better the CCL4 and NATADB lists. In particular, we examine 'vapor-pressure', 'henrys-law', and 'boiling-point' and plot the means by chemical for these using boxplots. We then compare the values by grouping by both data set and propType.
 
-*Question?* The physico-chemical property data are reported with both experimental and predicted values present for many chemicals. Are there differences between the mean predicted and experimental results for a variety of physico-chemical properties? For instance, examine 'vapor-pressure', 'henrys-law', and 'boiling-point' and plot the means by chemical for these using boxplots. Compare the values by grouping by both data set and propType.
+
 
 We first examine the vapor pressures for all the chemicals in each list. We then graph these, grouped by `propType` and pooled together in separate plots. For this we will use boxplots.
 
@@ -520,6 +531,13 @@ boiling
 
 A visual inspection of this set of graphs is not as clear as in the previous cases. Note that the predicted values for each data set tend to be higher than the experimental. The mean of CCL4, by predicted and experimental appears to be greater than the corresponding means for NATADB, as does the overall mean, but the interquartile ranges of these different groupings yield slightly different results. This gives us a sense that the picture for boiling point is not as clear cut between experimental and predicted for these two data sets as the previous physico-chemical properties we investigated.
 
+*Through inspecting the last several plots, we can answer **Environmental Health Question 2**:* The physico-chemical property data are reported with both experimental and predicted values present for many chemicals. Are there differences between the mean predicted and experimental results for a variety of physico-chemical properties? 
+
+**Answer**: There are indeed differences between the mean values of various physico-chemical properties when grouped by predicted or experimental. In the case of `vapor-pressure`, the means of predicted values tend to be a little lower than experimental, though they are much closer in the case of NATADB than CCL4. The trend of lower predicted means compared to experimental means is more clearly demonstrated for `henrys-law` values in both data sets. In the case of `boiling-point`, the predicted values are greater than the experimental values, though this is much more pronounced in CCL4 while the set of means for NATADB are again fairly close.
+
+
+
+
 # Hazard data: Genotoxicity
 
 Now, having examined some of the distributions of the phys chem properties of the two lists, aggregated between predicted and experimental, we move towards learning more about these chemicals beyond physico-chemical properties. Specifically, we will examine their genotoxicity.
@@ -619,9 +637,8 @@ identical(ccl4_genetox_details[dtxsid %in% 'DTXSID0020153', ],
           natadb_genetox_details[dtxsid %in% 'DTXSID0020153', ])
 ```
 
-*Question?* After pulling the genotoxicity data for the different environmental contaminant data sets, list the assays associated with the chemicals in each data set. What are the unique assays in each data set? What are the different assay categories and how many unique assays for each assay category are there?
 
-To determine this, we first determine the unique values of the `assayCategory` and then group by these values and determine the number of unique assays in each `assayCategory` value.
+We now explore the assays present for chemicals in each data set. We first determine the unique values of the `assayCategory` and then group by these values and determine the number of unique assays in each `assayCategory` value.
 
 Determine the unique assay categories.
 
@@ -629,12 +646,24 @@ Determine the unique assay categories.
 ccl4_genetox_details[, unique(assayCategory)]
 natadb_genetox_details[, unique(assayCategory)]
 ```
+Determine the unique assays for each data set and list them.
+
+```{r}
+ccl4_genetox_details[, unique(assayType)]
+
+natadb_genetox_details[, unique(assayType)]
+```
+
+
+
+
 
 Determine the number of assays per unique assay category.
 
 ```{r}
 ccl4_genetox_details[, .(Assays = length(unique(assayType))), 
                      by = .(assayCategory)]
+
 natadb_genetox_details[, .(Assays = length(unique(assayType))),
                        by = .(assayCategory)]
 ```
@@ -669,6 +698,13 @@ natadb_genetox_details[assayCategory == 'in vitro', .N, by = .(assayType)]
 natadb_genetox_details[assayCategory == 'ND', .N, by = .(assayType)]
 natadb_genetox_details[assayCategory == 'in vivo', .N, by = .(assayType)]
 ```
+
+*From these initial explorations of the data, we can answer **Environmental Health Question 3**:* After pulling the genotoxicity data for the different environmental contaminant data sets, list the assays associated with the chemicals in each data set. How many unique assays are there in each data set? What are the different assay categories and how many unique assays for each assay category are there?
+
+**Answer**: There are 90 unique assays for CCl4 and 114 unique assays for NATADB. The different assay categories are 'in vitro', 'ND', and 'in vivo', with 65 unique 'in vitro' assays for CCl4 and 83 for NATADB, 3 unique 'ND' assays for CCL4 and 3 for NATADB, and 22 unique 'in vivo' assays for CCL4 and 28 for NATADB.
+
+
+
 
 *Question?* The genotoxicity data contains information on which assays have been conducted for different chemicals and the results of those assays. How many chemicals in each data set have a ‘positive’, ‘negative’, and ‘equivocal’ value for the assay result?
 
