@@ -1,5 +1,5 @@
 ---
-title: "Automating Access to Chemical Data through the Computational Toxicology Dashboard"
+title: "Automating Access to Chemical Data through the CompTox Dashboard"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{TAME-toolkit-clean}
@@ -47,25 +47,25 @@ if (!library(ccdR, logical.return = TRUE)){
 
 # Introduction to Training Module
 
-This training module provides an overview of the publicly available databases at US EPA that provide physico-chemical, hazard, and bio-activity data, avenues through which to access the information stored in these databases, and how to use this data. We will first introduce these resources and how one may access them. Then we will focus on one specific method for retrieving data. Through some basic data visualization and analysis, we will explore this data and gain insights both in how to wrangle the data and combine different methods of accessing the data to build automated pipelines for use in more complex settings.
+This training module provides an overview of the publicly available databases at US EPA that provide physico-chemical, hazard, and bioactivity data, avenues through which to access the information stored in these databases, and how to use this data. We will first introduce these resources and how one may access them. Then we will focus on one specific method for retrieving data. Through some basic data visualization and analysis, we will explore this data and gain insights both in how to wrangle the data and combine different methods of accessing the data to build automated pipelines for use in more complex settings.
 
-# Training Module's questions
+# Training Module's Environmental Health Questions
 
 This training module was specifically developed to answer the following questions:
 
-1. What are the properties and property types present in the data? What are the mean values for a specific property when grouped by property type and when ungrouped?
+1. After automatically pulling the fourth Drinking Water Contaminant Candidate List and the National-Scale Air Toxics Assessments list from the CompTox Dashboard, list the properties and property types present in the data. What are the mean values for a specific property when grouped by property type and when ungrouped?
 
-2. Are there differences between the mean predicted and experimental results for a variety of propertyies?
+2. The physico-chemical property data are reported with both experimental and predicted values present for many chemicals. Are there differences between the mean predicted and experimental results for a variety of physico-chemical properties?
 
-3. What are the unique assays in each data set? What are the different assay categories and how many unique assays for each assay category are there?
+3. After pulling the genotoxicity data for the different environmental contaminant data sets, list the assays associated with the chemicals in each data set. What are the unique assays in each data set? What are the different assay categories and how many unique assays for each assay category are there?
 
-4. How many chemicals in each data set have a 'positive', 'negative', and 'equivocal' value for the assay result?
+4. The genotoxicity data contains information on which assays have been conducted for different chemicals and the results of those assays. How many chemicals in each data set have a 'positive', 'negative', and 'equivocal' value for the assay result?
 
-5. How many assays were positive/equivocal/negative for the chemical with DTXSID equal to DTXSID0020153? Which were positive and how many of each were there?
+5. Based on the genotoxicity data reported for the chemical with DTXSID identifier DTXSID0020153, how many assays resulted in a positive/equivocal/negative value? Which of the assays were positive and how many of each were there?
 
-6. What are the unique risk assessment classes for hazard values for the oral route and for the inhalation route? For each route, which risk assessment class is most represented by the data sets?
+6. After pulling the hazard data for the different data sets, list the different exposure routes for which there is data. What are the unique risk assessment classes for hazard values for the oral route and for the inhalation exposure route? For each such exposure route, which risk assessment class is most represented by the data sets?
 
-7. What are the unique types of toxicity values for the oral route and for the inhalation route? What are the unique endpoint types for the oral route and for the inhalation route?
+7. There are several types of toxicity values for each exposure route. What are the unique types of toxicity values for the oral route and for the inhalation route? What are the unique endpoint types for the oral route and for the inhalation route?
 
 # Script Preparations
 
@@ -99,7 +99,7 @@ library(ggplot2)
 
 # Introduction to CompTox Chemicals Dashboard
 
-Accessing chemical data and wrangling it is a vital step in many types of workflows related to chemical, biological, and environmental modelling. While there are many resources available from which one can pull data, the [CompTox Chemicals Dashboard](https://comptox.epa.gov/dashboard/)(CCD) built and maintained by the United States Environmental Protection Agency is particularly well-designed and maintained. Originally introduced in [The CompTox Chemistry Dashboard: a community data resource for environmental chemistry](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0247-6), the CCD contains information on over 1.2 million chemicals as of September, 2023. Information contained for chemicals featured in the CCD include but are not limited to phys-chem properties, documentation and curation information of the featured data, hazard and fate/transport data. One can see an example of this in the search for the chemical Bisphenol A. 
+Accessing chemical data and wrangling it is a vital step in many types of workflows related to chemical, biological, and environmental modeling. While there are many resources available from which one can pull data, the [CompTox Chemicals Dashboard](https://comptox.epa.gov/dashboard/)(CCD) built and maintained by the United States Environmental Protection Agency is particularly well-designed and maintained. Originally introduced in [The CompTox Chemistry Dashboard: a community data resource for environmental chemistry](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0247-6), the CCD contains information on over 1.2 million chemicals as of September, 2023. Information contained for chemicals featured in the CCD include but are not limited to physico-chemical properties, documentation and curation information of the featured data, hazard and fate/transport data. One can see an example of this in the search for the chemical Bisphenol A. 
 
 ![Bisphenol A landing page](./Pictures/CCD BPA page.png){width=120%}
 
@@ -109,11 +109,11 @@ One can use the batch search functionality of the CCD to pull together desired d
 
 ![CCD Batch Search](./Pictures/CCD Batch Search.png){width=120%}
 
-One can download the selected information in various formats, such as a excel, csv, or different types of MOL files. While this is suitable for many projects, it does not necessarily work well when a programmatic approach to a modelling problem is desired. The steps involving inputting chemical identifier information, exporting into a file, loading and wrangling the data from file is both time consuming and a potential source of human error that may be hard to identify after the fact. 
+One can download the selected information in various formats, such as a excel (.xlsx), comma-separated values (.csv), or different types of chemical table files (.e.g, MOL). While this is suitable for many projects, it does not necessarily work well when a programmatic approach to a modeling problem is desired. The steps involving inputting chemical identifier information, exporting into a file, loading and wrangling the data from file is both time consuming and a potential source of human error that may be hard to identify after the fact. 
 
-## CCTE APIs
+## Recent Updates on CCTE's (Application Prgramming Interface (API) for Improved Data Access
 
-Recently, the [Center for Computational Toxicology and Exposure](https://www.epa.gov/aboutepa/about-center-computational-toxicology-and-exposure-ccte)(CCTE) developed APIs that allow users to access the information curated and maintained within the CCD. The [CCTE APIs](https://api-ccte.epa.gov/docs/) are publicly available at no cost to the user. The first step for interacting with the information available through the APIs is acquiring an API key, by contacting the API support team at [ccte_api@epa.gov](mailto:ccte_api@epa.gov).
+Recently, the [Center for Computational Toxicology and Exposure](https://www.epa.gov/aboutepa/about-center-computational-toxicology-and-exposure-ccte)(CCTE) developed an Application Programming Interface (API) that allow users to access the information curated and maintained within the CCD. The [CCTE APIs](https://api-ccte.epa.gov/docs/) are publicly available at no cost to the user. The first step for interacting with the information available through the APIs is acquiring an API key, by contacting the API support team at [ccte_api@epa.gov](mailto:ccte_api@epa.gov).
 
 The APIs are organized into three sections of endpoints, `Chemical`, `Hazard`, and `Bioactivity`.Pictured below is what the `Chemical` section looks like and can be found at [CCTE API Chemical Endpoints](https://api-ccte.epa.gov/docs/chemical.html).
 
@@ -177,7 +177,7 @@ names(BPA_chemical_detail)
 ```
 
 
-# Physico-chemical properties
+# Comparing Physico-chemical properties between Two Important Environmental Contaminant Lists
 
 We study two different data sets contained in the CCD and observe how they relate and how they differ. The two data sets that we will explore are a water contaminant priority list and an air toxics list.  
 
@@ -217,6 +217,9 @@ colnames(ccl4)
 head(ccl4, 1)
 ```
 
+
+## Accessing the physico-chemical data
+
 Once we have the chemicals in each list, we access their physico-chemical properties. We will use the batch search forms of the function `get_chem_info()`, to which we supply a list of DTXSIDs.
 
 ```{r}
@@ -227,7 +230,7 @@ ccl4_phys_chem <- get_chem_info_batch(ccl4$dtxsid)
 natadb_phys_chem <- get_chem_info_batch(natadb$dtxsid)
 ```
 
-Observe that this returns a single data.table for each query, and the data.table contains the phys-chem properties available from the CompTox Chemicals Dashboard for each chemical in the query. We examine the set of phys-chem properties for the first chemical in CCL4. 
+Observe that this returns a single data.table for each query, and the data.table contains the physico-chemical properties available from the CompTox Chemicals Dashboard for each chemical in the query. We examine the set of physico-chemical properties for the first chemical in CCL4. 
 
 Before any deeper analysis, lets take a look at the dimensions of the data and the column names.
 
@@ -237,7 +240,7 @@ colnames(ccl4_phys_chem)
 ```
 
 
-*Question?* What are the properties and property types present in the data? What are the mean values for a specific property when grouped by property type and when ungrouped? Try using 'boiling-point' and 'melting-point' for property.
+*Question?* After automatically pulling the fourth Drinking Water Contaminant Candidate List and the National-Scale Air Toxics Assessments list from the CompTox Dashboard, list the properties and property types present in the data. What are the mean values for a specific property when grouped by property type and when ungrouped? Try using 'boiling-point' and 'melting-point' for property.
 
 ```{r}
 ccl4_phys_chem[, unique(propertyId)]
@@ -254,7 +257,7 @@ ccl4_phys_chem[propertyId == 'melting-point', .(Mean = mean(value)),
                by = .(propType)]
 ```
 
-First we look at all the phys-chem properties individually, then group them by each property (`boiling-point`, `melting-point`, etc...), and then additionally group those by property type (`experimental` vs `predicted`). In the grouping, we look at the columns `value`, `unit`, `propertyID` and `propType`. We also demonstrate how take the mean of the values for each grouping.
+First we look at all the physico-chemical properties individually, then group them by each property (`boiling-point`, `melting-point`, etc...), and then additionally group those by property type (`experimental` vs `predicted`). In the grouping, we look at the columns `value`, `unit`, `propertyID` and `propType`. We also demonstrate how take the mean of the values for each grouping.
 
 ```{r}
 head(ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], ])
@@ -270,7 +273,11 @@ ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(Mean_value = sapply(.SD, mean)),
                .SDcols = c("value")][order(propertyId)]
 ```
 
-*Question?* Are there differences between the mean predicted and experimental results for a variety of properties? For instance, examine 'vapor-pressure', 'henrys-law', and 'boiling-point' and plot the means by chemical for these using boxplots. Compare the values by grouping by both data set and propType.
+## Analyzing and visualizing physico-chemical properties from two environmental contaminant lists
+
+We consider the following question in an effort to understand better the CCL4 and NATADB lists.
+
+*Question?* The physico-chemical property data are reported with both experimental and predicted values present for many chemicals. Are there differences between the mean predicted and experimental results for a variety of physico-chemical properties? For instance, examine 'vapor-pressure', 'henrys-law', and 'boiling-point' and plot the means by chemical for these using boxplots. Compare the values by grouping by both data set and propType.
 
 We first examine the vapor pressures for all the chemicals in each list. We then graph these, grouped by `propType` and pooled together in separate plots. For this we will use boxplots.
 
@@ -511,11 +518,11 @@ boiling <- ggplot(all_boiling_grouped, aes(mean_boiling_point)) +
 boiling
 ```
 
-A visual inspection of this set of graphs is not as clear as in the previous cases. Note that the predicted values for each data set tend to be higher than the experimental. The mean of CCL4, by predicted and experimental appears to be greater than the corresponding means for NATADB, as does the overall mean, but the interquartile ranges of these different groupings yield slightly different results. This gives us a sense that the picture for boiling point is not as clear cut between experimental and predicted for these two data sets as the previous phys-chem properties we investigated.
+A visual inspection of this set of graphs is not as clear as in the previous cases. Note that the predicted values for each data set tend to be higher than the experimental. The mean of CCL4, by predicted and experimental appears to be greater than the corresponding means for NATADB, as does the overall mean, but the interquartile ranges of these different groupings yield slightly different results. This gives us a sense that the picture for boiling point is not as clear cut between experimental and predicted for these two data sets as the previous physico-chemical properties we investigated.
 
 # Hazard data: Genotoxicity
 
-Now, having examined some of the distributions of the phys chem properties of the two lists, aggregated between predicted and experimental, we move towards learning more about these chemicals beyond phys-chem properties. Specifically, we will examine their genotoxicity.
+Now, having examined some of the distributions of the phys chem properties of the two lists, aggregated between predicted and experimental, we move towards learning more about these chemicals beyond physico-chemical properties. Specifically, we will examine their genotoxicity.
 
 Using the standard CompTox Chemicals Dashboard approach to access genotoxicity, one would again navigate to the individual chemical page 
 
@@ -612,7 +619,7 @@ identical(ccl4_genetox_details[dtxsid %in% 'DTXSID0020153', ],
           natadb_genetox_details[dtxsid %in% 'DTXSID0020153', ])
 ```
 
-*Question?* What are the unique assays in each data set? What are the different assay categories and how many unique assays for each assay category are there?
+*Question?* After pulling the genotoxicity data for the different environmental contaminant data sets, list the assays associated with the chemicals in each data set. What are the unique assays in each data set? What are the different assay categories and how many unique assays for each assay category are there?
 
 To determine this, we first determine the unique values of the `assayCategory` and then group by these values and determine the number of unique assays in each `assayCategory` value.
 
@@ -663,7 +670,7 @@ natadb_genetox_details[assayCategory == 'ND', .N, by = .(assayType)]
 natadb_genetox_details[assayCategory == 'in vivo', .N, by = .(assayType)]
 ```
 
-*Question?* How many chemicals in each data set have a 'positive', 'negative', and 'equivocal' value for the assay result?
+*Question?* The genotoxicity data contains information on which assays have been conducted for different chemicals and the results of those assays. How many chemicals in each data set have a ‘positive’, ‘negative’, and ‘equivocal’ value for the assay result?
 
 To determine this, we group by assayResult and determine the number of unique dtxsids associated.
 
@@ -683,7 +690,7 @@ natadb_genetox_details[, .(is_positive = any(assayResult == 'positive')),
                        by = .(dtxsid)][is_positive == TRUE, dtxsid]
 ```
 
-*Question?* How many assays were positive/equivocal/negative for the chemical with DTXSID equal to DTXSID0020153? Which were positive and how many of each were there?
+*Question?* Based on the genotoxicity data reported for the chemical with DTXSID identifier DTXSID0020153, how many assays resulted in a positive/equivocal/negative value? Which of the assays were positive and how many of each were there?
 
 To determine this, we group by `assayResult` and calculate .N for each group. We also isolate which were positive and output a data.table with the number of each type.
 
@@ -785,7 +792,7 @@ natadb_hazard[media %in% 'water' & toxvalType %in% c('LOEL', 'NOEL'),
 
 Now, let us restrict our attention to human hazard and to the exposure routes given by inhalation and oral. 
 
-*Question* What are the unique risk assessment classes for hazard values for the oral route and for the inhalation route? For each route, which risk assessment class is most represented by the data sets?
+*Question* After pulling the hazard data for the different data sets, list the different exposure routes for which there is data. What are the unique risk assessment classes for hazard values for the oral route and for the inhalation exposure route? For each such exposure route, which risk assessment class is most represented by the data sets?
 
 To answer this, filter the data into the corresponding exposure routes, then group by exposure route and risk assessment class, and finally count the number of instances for each grouping. To determine the most represented class, one can order the results descending.
 
@@ -802,7 +809,7 @@ natadb_hazard[humanEcoNt %in% 'human health' &
 
 We now drill down a little further before moving into a different path for data exploration.
 
-*Question* What are the unique types of toxicity values for the oral route and for the inhalation route? What are the unique endpoint types for the oral route and for the inhalation route?
+*Question* There are several types of toxicity values for each exposure route. What are the unique types of toxicity values for the oral route and for the inhalation route? What are the unique endpoint types for the oral route and for the inhalation route?
 
 To answer this, we filter the rows to the "human health" `humanEcoNT` value and "inhalation" or "oral" `exposureRoute` value. Then we return the unique values that `toxvalType` takes.
 
