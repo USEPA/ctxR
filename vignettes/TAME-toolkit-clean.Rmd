@@ -828,9 +828,18 @@ natadb_hazard[media %in% 'water' & toxvalType %in% c('LOEL', 'NOEL'),
                                                              -toxvalNumeric)]
 ```
 
-Now, let us restrict our attention to human hazard and to the exposure routes given by inhalation and oral. 
+Now, let us restrict our attention to human hazard and focus on the exposure routes given by inhalation and oral. 
 
-*Question* After pulling the hazard data for the different data sets, list the different exposure routes for which there is data. What are the unique risk assessment classes for hazard values for the oral route and for the inhalation exposure route? For each such exposure route, which risk assessment class is most represented by the data sets?
+First, let us determine the exposure routes in general.
+
+```{r}
+ccl4_hazard[humanEcoNt %in% 'human health', unique(exposureRoute)]
+natadb_hazard[humanEcoNt %in% 'human health', unique(exposureRoute)]
+```
+
+Then, let's focus on the inhalation and oral exposure routes for human hazard.
+
+
 
 To answer this, filter the data into the corresponding exposure routes, then group by exposure route and risk assessment class, and finally count the number of instances for each grouping. To determine the most represented class, one can order the results descending.
 
@@ -844,6 +853,12 @@ natadb_hazard[humanEcoNt %in% 'human health' &
               by = .(exposureRoute, riskAssessmentClass)][order(exposureRoute,
                                                                 -Hits)]
 ```
+
+*With these results we may answer **Environmental Health Question 6**:* After pulling the hazard data for the different data sets, list the different exposure routes for which there is data. What are the unique risk assessment classes for hazard values for the oral route and for the inhalation exposure route? For each such exposure route, which risk assessment class is most represented by the data sets?
+
+**Answer**: We listed the general exposure routes above for the hazard data associated to the chemicals in each data set. Restricting our attention to human hazard data, the `acute` risk assessment class is most represented by the inhalation exposure route and `chronic` for the oral exposure route for both the CCL4 and NATADB data sets. 
+
+
 
 We now drill down a little further before moving into a different path for data exploration.
 
