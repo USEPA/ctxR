@@ -704,18 +704,16 @@ natadb_genetox_details[assayCategory == 'in vivo', .N, by = .(assayType)]
 **Answer**: There are 90 unique assays for CCl4 and 114 unique assays for NATADB. The different assay categories are 'in vitro', 'ND', and 'in vivo', with 65 unique 'in vitro' assays for CCl4 and 83 for NATADB, 3 unique 'ND' assays for CCL4 and 3 for NATADB, and 22 unique 'in vivo' assays for CCL4 and 28 for NATADB.
 
 
-
-
-*Question?* The genotoxicity data contains information on which assays have been conducted for different chemicals and the results of those assays. How many chemicals in each data set have a ‘positive’, ‘negative’, and ‘equivocal’ value for the assay result?
-
-To determine this, we group by assayResult and determine the number of unique dtxsids associated.
+Next, we dig into the results of the assays. One may be interested in looking at the number of chemicals for which an assay resulted in a positive or negative result for instance. We group by assayResult and determine the number of unique dtxsids associated with each value.
 
 ```{r}
 ccl4_genetox_details[, .(DTXSIDs = length(unique(dtxsid))), by = .(assayResult)]
 natadb_genetox_details[, .(DTXSIDs = length(unique(dtxsid))), 
                        by = .(assayResult)]
 ```
+*With this data we may now answer **Environmental Health Question 4**:* The genotoxicity data contains information on which assays have been conducted for different chemicals and the results of those assays. How many chemicals in each data set have a ‘positive’, ‘negative’, and ‘equivocal’ value for the assay result?
 
+**Answer**: For CCL4, there are 64 unique chemicals that have a negative assay result, 53 that have a positive result, and 15 that have an equivocal result. For NATADB, there are 141 unique chemicals that have a negative assay result, 130 that have a positive result, and 48 that have an equivocal result. Observe that since there are 72 unique DTXSIDs with assay reults in CCL4 and 153 in NATADB, there are several chemicals that have multiple assay results.
 
 We now determine the chemicals from each data set that are known to have genotoxic effects. For this, we look to see which chemicals produce at least one positive response in the assayResult column.
 
@@ -726,16 +724,20 @@ natadb_genetox_details[, .(is_positive = any(assayResult == 'positive')),
                        by = .(dtxsid)][is_positive == TRUE, dtxsid]
 ```
 
-*Question?* Based on the genotoxicity data reported for the chemical with DTXSID identifier DTXSID0020153, how many assays resulted in a positive/equivocal/negative value? Which of the assays were positive and how many of each were there?
-
-To determine this, we group by `assayResult` and calculate .N for each group. We also isolate which were positive and output a data.table with the number of each type.
+With so much genotoxicity data, let us explore this data for one chemical more deeply to get a sense of the assays and results present for it. We will explore the chemical with DTXSID0020153. We will look at the assays, the number of each type of result, and which correspond to 'positive' results. To determine this, we group by `assayResult` and calculate .N for each group. We also isolate which were positive and output a data.table with the number of each type.
 
 ```{r}
 ccl4_genetox_details[dtxsid == 'DTXSID0020153', .(Number = .N), 
                      by = .(assayResult)]
 ccl4_genetox_details[dtxsid == 'DTXSID0020153' & assayResult == 'positive', 
-                     .(Number_of_assays = .N), by = .(assayType)]
+                     .(Number_of_assays = .N), by = .(assayType)][order(-Number_of_assays),]
 ```
+
+*With these data.tables, we may answer **Environmental Health Question 5**:* Based on the genotoxicity data reported for the chemical with DTXSID identifier DTXSID0020153, how many assays resulted in a positive/equivocal/negative value? Which of the assays were positive and how many of each were there for the most reported assays?
+
+**Answer**: There were five assays that produced a negative result, 22 that produced a positive result, and one that produced an equivocal result. Of the 22 positive assays, 'bacterial reverse mutation assay' and 'Ames' were the most numerous, with three each.
+
+
 
 # Hazard resource
 
@@ -983,6 +985,23 @@ natadb_rfc[, .(numeric_value = min(toxvalNumeric),
 natadb_rfd[, .(numeric_value = min(toxvalNumeric), 
                units = units[which.min(toxvalNumeric)]), 
            by = .(dtxsid)][order(numeric_value),]
+```
+
+```{r}
+# This chunk will be hidden in the final product. It serves to undo defining the
+# custom print function to prevent unexpected behavior after this module during
+# the final knitting process
+
+knit_print.data.table = knitr::normal_print
+  
+registerS3method(
+  "knit_print", "data.table", knit_print.data.table,
+  envir = asNamespace("knitr")
+)
+
+# A demonstration that this indeed returns the print process back to normal for
+# data.table objects
+head(ccl4, 1)
 ```
 
 
