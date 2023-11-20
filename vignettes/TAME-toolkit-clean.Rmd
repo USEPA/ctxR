@@ -14,8 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-# This will be hidden in the final version
+```{r setup, echo = FALSE}
 # Redefining the knit_print method to truncate character values to 25 characters
 # in each column and to truncate the columns in the print call to prevent 
 # wrapping tables with several columns.
@@ -47,7 +46,9 @@ if (!library(ccdR, logical.return = TRUE)){
 
 # Introduction to Training Module
 
-This training module provides an overview of the publicly available databases at US EPA that provide physico-chemical, hazard, and bioactivity data, avenues through which to access the information stored in these databases, and how to use this data. We will first introduce these resources and how one may access them. Then we will focus on one specific method for retrieving data. Through some basic data visualization and analysis, we will explore this data and gain insights both in how to wrangle the data and combine different methods of accessing the data to build automated pipelines for use in more complex settings.
+Environmental health research related to chemical exposures often requires accessing and wrangling chemical-specific data. The CompTox Chemicals Dashboard (CCD), developed by the United States Environmental Protection Agency, is a publicly-accessible database that integrates chemical data from multiple domains. Chemical data available on the CCD include physicochemical, environmental fate and transport, exposure, toxicokinetics, functional use, in vivo toxicity, in vitro bioassay, and mass spectra data. The CCD was first described in Williams et al. (2017), and has been continuously expanded since. The CCD is heavily used by researchers who do cheminformatics work of various kinds -- computational toxicology, computational exposure science, analytical chemistry, chemical safety assessment, etc. The CCD is used by cheminformaticians not only at EPA, but across governmental agencies both within the U.S. and worldwide; in private industry; in non-governmental organizations; in academia; and others. It has become an indispensable tool for many researchers.
+
+This training module provides an overview of the physico-chemical, hazard, and bioactivity data available through the CCD; different ways to access these data; and some examples of how these data may be used. We will first introduce the CCD and how to access it. Then we will focus on an automated, programmatic method for retrieving data from the CCD. Through some basic data visualization and analysis, we will explore some data retrieved from the CCD, and gain insights both in how to wrangle the data and combine different methods of accessing the data to build automated pipelines for use in more complex settings.
 
 # Training Module's Environmental Health Questions
 
@@ -101,27 +102,75 @@ library(ggplot2)
 
 # Introduction to CompTox Chemicals Dashboard
 
-Accessing chemical data and wrangling it is a vital step in many types of workflows related to chemical, biological, and environmental modeling. While there are many resources available from which one can pull data, the [CompTox Chemicals Dashboard](https://comptox.epa.gov/dashboard/)(CCD) built and maintained by the United States Environmental Protection Agency is particularly well-designed and maintained. Originally introduced in [The CompTox Chemistry Dashboard: a community data resource for environmental chemistry](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0247-6), the CCD contains information on over 1.2 million chemicals as of September, 2023. Information contained for chemicals featured in the CCD include but are not limited to physico-chemical properties, documentation and curation information of the featured data, hazard and fate/transport data. One can see an example of this in the search for the chemical Bisphenol A. 
+Accessing chemical data and wrangling it is a vital step in many types of workflows related to chemical, biological, and environmental modeling. While there are many resources available from which one can pull data, the [CompTox Chemicals Dashboard](https://comptox.epa.gov/dashboard/)(CCD) built and maintained by the United States Environmental Protection Agency is particularly well-designed and maintained. Originally introduced in [The CompTox Chemistry Dashboard: a community data resource for environmental chemistry](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0247-6), the CCD contains information on over 1.2 million chemicals as of September, 2023. 
+
+The CCD includes chemical information from many different domains, including physicochemical, environmental fate and transport, exposure, usage, in vivo toxicity, and in vitro bioassay data ( Williams et al., 2017).
+
+The CCD can be searched either one chemical at a time, or in batch mode.
+
+## Searching one chemical at a time (single-substance search)
+
+In single-substance search, the user types a full or partial chemical identifier (name, CASRN, InChiKey, or DSSTox ID) into a search box on the CCD homepage. Autocomplete provides a list of possible matches; the user selects one by clicking on it, and is then taken to the CCD page for that substance. Figure 1 shows an example: the CCD page for the chemical Bisphenol A. 
 
 ![Bisphenol A landing page](./Pictures/CCD BPA page.png){width=120%}
 
-As one may observe, on the left side of the image there are several tabs that contain information such as physico-chemical properties, Environmental Fate and Transport data, and hazard data among others. The data contained in these tabs is freely accessible but not necessarily in the best format for data wrangling.
+The different domains of data available for this chemical are shown by the tabs on the left side of the page: for example, "Physchem Prop." (physico-chemical properties), "Env. Fate/Transport" (environmental fate and transport data), and "Hazard Data" (*in vivo* hazard and toxicity data), among others. 
 
-One can use the batch search functionality of the CCD to pull together desired data for a specific user supplied list of chemicals.
+## Batch search
+
+In batch search, the user enters a list of search inputs, separated by newlines, into a batch-search box on https://comptox.epa.gov/dashboard/batch-search . The user selects the type(s) of inputs by selecting one or more checkboxes – these may include chemical identifiers, monoisotopic masses, or molecular formulas. Then, the user selects “Display All Chemicals” to display the list of substances matching the batch-search inputs, or “Choose Export Options” to choose options for exporting the batch-search results as a spreadsheet. The exported spreadsheet may include data from most of the domains available on an individual substance’s CCD page.
+
+> CLR note: Paul, could you include a screenshot of the menu of checkboxes that appears once you've searched a list of chemicals? That shows the different domains of data that are available for download.
 
 ![CCD Batch Search](./Pictures/CCD Batch Search.png){width=120%}
 
-One can download the selected information in various formats, such as a excel (.xlsx), comma-separated values (.csv), or different types of chemical table files (.e.g, MOL). While this is suitable for many projects, it does not necessarily work well when a programmatic approach to a modeling problem is desired. The steps involving inputting chemical identifier information, exporting into a file, loading and wrangling the data from file is both time consuming and a potential source of human error that may be hard to identify after the fact. 
+The user can download the selected information in various formats, such as Excel (.xlsx), comma-separated values (.csv), or different types of chemical table files (.e.g, MOL). 
 
-## Recent Updates on CCTE's (Application Prgramming Interface (API) for Improved Data Access
+The web interface for batch search only allows input of 10,000 identifiers at a time. If a user needs to retrieve information for more than 10,000 chemicals, they will need to separate their identifiers into multiple batches and search each one separately.
 
-Recently, the [Center for Computational Toxicology and Exposure](https://www.epa.gov/aboutepa/about-center-computational-toxicology-and-exposure-ccte)(CCTE) developed an Application Programming Interface (API) that allow users to access the information curated and maintained within the CCD. The [CCTE APIs](https://api-ccte.epa.gov/docs/) are publicly available at no cost to the user. The first step for interacting with the information available through the APIs is acquiring an API key, by contacting the API support team at [ccte_api@epa.gov](mailto:ccte_api@epa.gov).
+## Challenges of web-based Dashboard search
 
-The APIs are organized into three sections of endpoints, `Chemical`, `Hazard`, and `Bioactivity`.Pictured below is what the `Chemical` section looks like and can be found at [CCTE API Chemical Endpoints](https://api-ccte.epa.gov/docs/chemical.html).
+Practicing researchers typically end up with a Dashboard workflow that looks something like this:
+
+1.	Start with a dataset that includes your chemical identifiers of interest. These may include chemical names, Chemical Abstract Service Registry Numbers (CASRNs), Distributed Searchable Structure-Toxicity Database (DSSTox) identifiers, or InChIKeys.
+2.	Export the chemical identifiers to a spreadsheet. Often, this is done by importing the data into an environment such as R or Python, in order to do some data wrangling (e.g., to select only the unique substance identfiers; to clean up improperly-formatted CASRNs; etc.). Then, the identifiers are saved in a spreadsheet (an Excel, .csv, or .txt file), one chemical identifier per row.
+3.	Copy and paste the chemical identifiers from the spreadsheet into the CCD Batch Search box. If there are more than 10,000 total chemical identifiers, divide them into batches of 10,000 or less, and search each batch separately.
+4.	Choose your desired export options on the CCD Batch Search page.
+5.	Download the exported spreadsheet of CCD data. By default, the downloaded spreadsheet will be given a file name that includes the timestamp of the download.
+6.	Repeat steps 3-5 for each batch of 10,000 identifiers produced in step 2. 
+7.	Import the downloaded spreadsheet(s) of CCD data into the analysis tool you are using (e.g. R or Python).
+8.	Merge the table(s) of downloaded CCD data with your original dataset of interest.
+9.	Proceed with research-related data analysis using the chemical data downloaded from the CCD (e.g., statistical modeling, visualization, etc.)
+
+Because each of these workflow steps requires manual interaction with the search and download process, the risk of human error inevitably creeps in. Here are a few real-world possibilities (the authors can neither confirm nor deny that they have personally committed any of these errors):
+
+-	Researchers could copy/paste the wrong identifiers into the CCD batch search, especially if they have more than 10,000 identifiers and have to divide them into batches.
+-	Chemical identifiers could be corrupted during the process of exporting to a spreadsheet. For example, if a researcher opens and resaves a CSV file using Microsoft Excel, any information that appears to be in date-like format will be automatically converted to a date (unless the researcher has the most recently-updated version of Excel and has selected the option in Settings that will stop Excel from auto-detecting dates). This behavior has long been identified as a problem in genomics, where gene names can appear date-like to Excel (Abeysooriya et al. 2021). It also affects cheminformatics, where chemical identifiers can appear date-like to Excel. For example, the valid CASRN “1990-07-4” would automatically be converted to “07/04/1990” (if Excel is set to use MM/DD/YYYY date formats). CCD batch search cannot recognize "07/04/1990" as a valid chemical identifier and will be unable to return any chemical data.
+-	Researchers could accidentally rename a downloaded CCD data file to overwrite a previous download (for example, when searching multiple batches of identfiers). 
+-	Researchers could mistakenly import the wrong CCD download file back into their analysis environment (for example, when searching multiple batches of identfiers). 
+
+Moreover, the manual stages of this kind of workflow are also non-transparent and not easily reproducible. 
+
+# CCTE's Application Programming Interfaces (APIs) for Automated Batch Search of the CCD
+
+Recently, the [Center for Computational Toxicology and Exposure](https://www.epa.gov/aboutepa/about-center-computational-toxicology-and-exposure-ccte)(CCTE) developed a set of Application Programming Interfaces (APIs) that allows programmatic access to the CCD, bypassing the manual steps of the web-based batch search workflow. The [CCTE APIs](https://api-ccte.epa.gov/docs/) are publicly available at no cost to the user. 
+
+In order to use the CCTE APIs, you must have an API key. The API key uniquely identifies you to the CCD servers and verifies that you have permission to access the database. Getting an API key is free, but requires contacting the API support team at [ccte_api@epa.gov](mailto:ccte_api@epa.gov).
+
+The APIs are organized into three sets of "endpoints" (chemical data domains): `Chemical`, `Hazard`, and `Bioactivity`.Pictured below is what the `Chemical` section looks like and can be found at [CCTE API Chemical Endpoints](https://api-ccte.epa.gov/docs/chemical.html).
 
 ![CCTE API Chemical Endpoints](./Pictures/CCTE Chemical API endpoints.png){width=120%}
 
-Notice that Authentication is the first tab on the left and below it are several endpoints organized by what purpose they serve. Authentication is required to use the APIs and the API key authenticates the user. The endpoints are organized into categories of functional use, for instance providing basic information on a chemical in the `Chemical Details Resource`, more comprehensive physico-chemical properties in `Chemical Property Resource`, chemical fate and transport data in `Chemical Fate Resource`, and so on. Also notice that next to each endpoint is a box that indicates what the associated http request is to access the information. These are either a Post or a Get request. Clicking on the `Get data by DTXSID`, we observe that there are certain required pieces of information to construct the request and optional parameters to focus the request.
+The APIs can be explored through the pictured web interface at https://api-ccte.epa.gov/docs/chemical.html . 
+"Authentication" is the first tab on the left. Authentication is required to use the APIs. To authenticate yourself, input your unique API key.
+
+> CLR: Paul, could you include a screenshot of the page where you input your API key, just to show what it looks like?
+
+below, there are several different tabs, one for each endpoint in the "Chemical" domain. The endpoints are organized by the type of information provided. For instance, the `Chemical Details Resource` endpoint provides basic chemical information; the `Chemical Property Resource` endpoint providesmore comprehensive physico-chemical property information; the `Chemical Fate Resource` endpoint provides chemical fate and transport information; and so on. 
+
+The colored boxes next to each endpoint indicate the type of the associated `http` method: either a GET request ("GET", blue) or a a POST request ("POS", green). If you aren't familiar with `http` methods, GET is used to request data from a specific web resource; POST is used to send data to a server to create or update a web resource. POST requests are used to perform multiple (batch) searches in a single API call; GET requests are used for non-batch searches. (You do not need to understand the details of POST and GET requests in order to use the API.)
+
+Clicking on the `Get data by DTXSID`, we observe that there are certain required pieces of information to construct the request and optional parameters to focus the request.
 
 ![CCTE Get Details by DTXSID](./Pictures/Get Data by DTXSID TOP.png){width=120%}
 
