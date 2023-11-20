@@ -53,19 +53,21 @@ This training module provides an overview of the publicly available databases at
 
 This training module was specifically developed to answer the following questions:
 
-1. After automatically pulling the fourth Drinking Water Contaminant Candidate List and the National-Scale Air Toxics Assessments list from the CompTox Dashboard, list the properties and property types present in the data. What are the mean values for a specific property when grouped by property type and when ungrouped?
+1. After automatically pulling the fourth Drinking Water Contaminant Candidate List from the CompTox Dashboard, list the properties and property types present in the data. What are the mean values for a specific property when grouped by property type and when ungrouped?
 
 2. The physico-chemical property data are reported with both experimental and predicted values present for many chemicals. Are there differences between the mean predicted and experimental results for a variety of physico-chemical properties?
 
-3. After pulling the genotoxicity data for the different environmental contaminant data sets, list the assays associated with the chemicals in each data set. What are the unique assays in each data set? What are the different assay categories and how many unique assays for each assay category are there?
+3. After pulling the genotoxicity data for the different environmental contaminant data sets, list the assays associated with the chemicals in each data set. How many unique assays are there in each data set? What are the different assay categories and how many unique assays for each assay category are there?
 
-4. The genotoxicity data contains information on which assays have been conducted for different chemicals and the results of those assays. How many chemicals in each data set have a 'positive', 'negative', and 'equivocal' value for the assay result?
+4. The genotoxicity data contains information on which assays have been conducted for different chemicals and the results of those assays. How many chemicals in each data set have a ‘positive’, ‘negative’, and ‘equivocal’ value for the assay result?
 
-5. Based on the genotoxicity data reported for the chemical with DTXSID identifier DTXSID0020153, how many assays resulted in a positive/equivocal/negative value? Which of the assays were positive and how many of each were there?
+5. Based on the genotoxicity data reported for the chemical with DTXSID identifier DTXSID0020153, how many assays resulted in a positive/equivocal/negative value? Which of the assays were positive and how many of each were there for the most reported assays?
 
 6. After pulling the hazard data for the different data sets, list the different exposure routes for which there is data. What are the unique risk assessment classes for hazard values for the oral route and for the inhalation exposure route? For each such exposure route, which risk assessment class is most represented by the data sets?
 
-7. There are several types of toxicity values for each exposure route. What are the unique types of toxicity values for the oral route and for the inhalation route? What are the unique endpoint types for the oral route and for the inhalation route?
+7. There are several types of toxicity values for each exposure route. List the unique toxicity values for the oral and inhalation routes. What are the unique types of toxicity values for the oral route and for the inhalation route? How many of these are common to both the oral and inhalation routes for each data set?
+
+8. When examining different toxicity values, the data may be reported in multiple units. To assess the relative hazard from this data, it is important to take into account the different units and adjust accordingly. List the units reported for the cancer slope factor, reference dose, and reference concentration values associated with the oral and inhalation exposure routes for human hazard. Which chemicals in each data set has the highest cancer slope factor, lowest reference dose, and lowest reference concentration values?
 
 # Script Preparations
 
@@ -860,22 +862,36 @@ natadb_hazard[humanEcoNt %in% 'human health' &
 
 
 
-We now drill down a little further before moving into a different path for data exploration.
+We now drill down a little further before moving into a different path for data exploration. We explore the different types of toxicity values present in each data set for the inhalation and oral exposure routes, and then see which of these are common to both exposure routes for each data set.
 
-*Question* There are several types of toxicity values for each exposure route. What are the unique types of toxicity values for the oral route and for the inhalation route? What are the unique endpoint types for the oral route and for the inhalation route?
+
 
 To answer this, we filter the rows to the "human health" `humanEcoNT` value and "inhalation" or "oral" `exposureRoute` value. Then we return the unique values that `toxvalType` takes.
+
+First we look at CCL4.
 
 ```{r}
 ccl4_hazard[humanEcoNt %in% 'human health' &
               exposureRoute %in% c('inhalation'), unique(toxvalType)]
 ccl4_hazard[humanEcoNt %in% 'human health' &
               exposureRoute %in% c('oral'), unique(toxvalType)]
+intersect(ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'inhalation', unique(toxvalType)], ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral', unique(toxvalType)])
+```
+
+Then we look at NATADB.
+
+```{r}
 natadb_hazard[humanEcoNt %in% 'human health' & 
                 exposureRoute %in% c('inhalation'), unique(toxvalType)]
 natadb_hazard[humanEcoNt %in% 'human health' & 
                 exposureRoute %in% c('oral'), unique(toxvalType)]
+intersect(natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'inhalation', unique(toxvalType)], natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral', unique(toxvalType)])
 ```
+
+*With the results above, we may answer **Environmental Health Question 7**:* There are several types of toxicity values for each exposure route. List the unique toxicity values for the oral and inhalation routes. What are the unique types of toxicity values for the oral route and for the inhalation route? How many of these are common to both the oral and inhalation routes for each data set?
+
+**Answer**: There are 24 toxicity value types shared between the oral and inhalation exposure routes for CCL4 and 29 for NATADB. The lists above indicate the variety of toxicity values present in the hazard data for the two different exposure routes we have considered.
+
 
 For the next data exploration, We will turn to the risk assessment class of `developmental`. We will examine the NOEL and LOEL values for chemicals with oral exposure, human hazard, and risk assessment class 'developmental'. We also examine the units to determine whether any unit conversions are necessary to compare numeric values.
 
@@ -1001,6 +1017,19 @@ natadb_rfd[, .(numeric_value = min(toxvalNumeric),
                units = units[which.min(toxvalNumeric)]), 
            by = .(dtxsid)][order(numeric_value),]
 ```
+
+*With these results, we may answer **Environmental Health Question 8**: When examining different toxicity values, the data may be reported in multiple units. To assess the relative hazard from this data, it is important to take into account the different units and adjust accordingly. List the units reported for the cancer slope factor, reference dose, and reference concentration values associated with the oral and inhalation exposure routes for human hazard. Which chemicals in each data set has the highest cancer slope factor, lowest reference dose, and lowest reference concentration values?
+
+**Answer**: The units for these three toxicity value types for CCL4 are given by 'mg/m3', 'g/m3', 'ug/m3' for RfC, 'mg/kg-day', 'mg/kg' for RfD, and '(mg/kg-day)-1' for Cancer Slope Factor. For NATADB, the units for RfC are given by 'mg/m3' and 'ppm', for RfD by 'mg/kg-day', 'mg/kg', and for Cancer Slope Factor by '(mg/kg-day)-1'.  For CCL4, the chemical DTXSID2021028 has the highest CsF at 150 (mg/kg-day)-1, the chemical DTXSID1031040 has the lowest RfC value at 6.0e-9 mg/m3, and the chemical DTXSID7021029 has the lowest RfD value at 4e-6 mg/kg. For NATADB, the chemical DTXSID2020137 has the highest CsF at 500 (mg/kg-day)-1, the chemical DTXSID1020516 has the lowest RfC value at 2.0e-6 mg/m3, and the chemical DTXSID7021029 had the lowest RfD at 4e-6 mg/kg-day.
+
+# Concluding remarks
+
+In conclusion, we explored how one can access publicly available data from the CompTox Chemicals Dashboard programmatically using the CCTE APIs via the ccdR R package. In the examples above, we investigated different types of data associated to chemicals, visualized and aggregated the data, and employed different data wrangling techniques using data.tables to answer the environmental health questions. With these tools, one can build workflows that take in a list of chemicals and gather and process data associated to those chemicals through the CCTE APIs. Consider how you might use this functionality for building models in your own work.
+
+
+
+
+
 
 ```{r}
 # This chunk will be hidden in the final product. It serves to undo defining the
