@@ -166,9 +166,11 @@ The APIs are organized into three sets of "endpoints" (chemical data domains): `
 The APIs can be explored through the pictured web interface at https://api-ccte.epa.gov/docs/chemical.html . 
 "Authentication" is the first tab on the left. Authentication is required to use the APIs. To authenticate yourself, input your unique API key.
 
+![CCTE API Key Authentication](./Pictures/CCTE API Key authentication.png){width=120%}
+
 > CLR: Paul, could you include a screenshot of the page where you input your API key, just to show what it looks like?
 
-below, there are several different tabs, one for each endpoint in the "Chemical" domain. The endpoints are organized by the type of information provided. For instance, the `Chemical Details Resource` endpoint provides basic chemical information; the `Chemical Property Resource` endpoint providesmore comprehensive physico-chemical property information; the `Chemical Fate Resource` endpoint provides chemical fate and transport information; and so on. 
+Below, there are several different tabs, one for each endpoint in the "Chemical" domain. The endpoints are organized by the type of information provided. For instance, the `Chemical Details Resource` endpoint provides basic chemical information; the `Chemical Property Resource` endpoint providesmore comprehensive physico-chemical property information; the `Chemical Fate Resource` endpoint provides chemical fate and transport information; and so on. 
 
 The colored boxes next to each endpoint indicate the type of the associated `http` method: either a GET request ("GET", blue) or a a POST request ("POS", green). If you aren't familiar with `http` methods, GET is used to request data from a specific web resource; POST is used to send data to a server to create or update a web resource. POST requests are used to perform multiple (batch) searches in a single API call; GET requests are used for non-batch searches. (You do not need to understand the details of POST and GET requests in order to use the API.)
 
