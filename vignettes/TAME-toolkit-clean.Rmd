@@ -126,6 +126,8 @@ In batch search, the user enters a list of search inputs, separated by newlines,
 
 The user can download the selected information in various formats, such as Excel (.xlsx), comma-separated values (.csv), or different types of chemical table files (.e.g, MOL). 
 
+![CCD Batch Search Customize Export Results](./Pictures/CCD Batch Search customize export results.png){width=120%}
+
 The web interface for batch search only allows input of 10,000 identifiers at a time. If a user needs to retrieve information for more than 10,000 chemicals, they will need to separate their identifiers into multiple batches and search each one separately.
 
 ## Challenges of web-based Dashboard search
