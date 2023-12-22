@@ -320,7 +320,7 @@ These results tell us about some of the reported physico-chemical properties of 
 **Answer:** The mean 'boiling-point' is 251.1072 degrees Celsius for CCL4, with mean values of 250.5943 and 251.4001 for experimental and predicted, respectively. The mean 'melting-point' is 33.93924 degrees Celsius for CCL4, with mean values of 23.18876 and 47.98422 for experimental and predicted, respectively.
 
 
-To explore **all** the values of the physico-chemical properties and calculate their means, we can do the following procedure. First we look at all the physico-chemical properties individually, then group them by each property (`boiling-point`, `melting-point`, etc...), and then additionally group those by property type (`experimental` vs `predicted`). In the grouping, we look at the columns `value`, `unit`, `propertyID` and `propType`. We also demonstrate how take the mean of the values for each grouping.
+To explore **all** the values of the physico-chemical properties and calculate their means, we can do the following procedure. First we look at all the physico-chemical properties individually, then group them by each property ('boiling-point', 'melting-point', etc...), and then additionally group those by property type ('experimental' vs 'predicted'). In the grouping, we look at the columns `value`, `unit`, `propertyID` and `propType`. We also demonstrate how take the mean of the values for each grouping.
 
 ```{r}
 head(ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], ])
@@ -338,7 +338,7 @@ ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(Mean_value = sapply(.SD, mean)),
 
 ## Analyzing and visualizing physico-chemical properties from two environmental contaminant lists
 
-We consider the following exploring the differences in mean predicted and experimental values for a variety of physico-chemical properties in an effort to understand better the CCL4 and NATADB lists. In particular, we examine 'vapor-pressure', 'henrys-law', and 'boiling-point' and plot the means by chemical for these using boxplots. We then compare the values by grouping by both data set and propType.
+We consider exploring the differences in mean predicted and experimental values for a variety of physico-chemical properties in an effort to understand better the CCL4 and NATADB lists. In particular, we examine 'vapor-pressure', 'henrys-law', and 'boiling-point' and plot the means by chemical for these using boxplots. We then compare the values by grouping by both data set and `propType` value.
 
 
 
@@ -508,7 +508,7 @@ hlc <- ggplot(all_hlc_grouped, aes(log_transform_mean_hlc)) +
 hlc
 ```
 
-Again, we observe that in both grouping by propType and aggregating all results together by data set, that the chemicals in NATADB have a generally higher mean Henry's Law Constant value than those in CCL4.
+Again, we observe that in both grouping by `propType` and aggregating all results together by data set, that the chemicals in NATADB have a generally higher mean Henry's Law Constant value than those in CCL4.
 
 Finally, we consider boiling point.
 
@@ -585,27 +585,27 @@ A visual inspection of this set of graphs is not as clear as in the previous cas
 
 *Through inspecting the last several plots, we can answer **Environmental Health Question 2**:* The physico-chemical property data are reported with both experimental and predicted values present for many chemicals. Are there differences between the mean predicted and experimental results for a variety of physico-chemical properties? 
 
-**Answer**: There are indeed differences between the mean values of various physico-chemical properties when grouped by predicted or experimental. In the case of `vapor-pressure`, the means of predicted values tend to be a little lower than experimental, though they are much closer in the case of NATADB than CCL4. The trend of lower predicted means compared to experimental means is more clearly demonstrated for `henrys-law` values in both data sets. In the case of `boiling-point`, the predicted values are greater than the experimental values, though this is much more pronounced in CCL4 while the set of means for NATADB are again fairly close.
+**Answer**: There are indeed differences between the mean values of various physico-chemical properties when grouped by predicted or experimental. In the case of 'vapor-pressure', the means of predicted values tend to be a little lower than experimental, though they are much closer in the case of NATADB than CCL4. The trend of lower predicted means compared to experimental means is more clearly demonstrated for 'henrys-law' values in both data sets. In the case of 'boiling-point', the predicted values are greater than the experimental values, though this is much more pronounced in CCL4 while the set of means for NATADB are again fairly close.
 
 
 
 
 # Hazard data: Genotoxicity
 
-Now, having examined some of the distributions of the phys chem properties of the two lists, aggregated between predicted and experimental, we move towards learning more about these chemicals beyond physico-chemical properties. Specifically, we will examine their genotoxicity.
+Now, having examined some of the distributions of the physico-chemical properties of the two lists, aggregated between predicted and experimental, we move towards learning more about these chemicals beyond physico-chemical properties. Specifically, we will examine their genotoxicity.
 
 Using the standard CompTox Chemicals Dashboard approach to access genotoxicity, one would again navigate to the individual chemical page 
 
 ![Fig 9: CompTox Chemicals Dashboard Genotoxicity](./Pictures/BPA Hazard data - Genotoxicity.png){width=120%}
 
 
-Once one navigates to the genotoxicity tab highlighted in the previous page, the following is displayed.
+Once one navigates to the genotoxicity tab highlighted in the previous page, the following is displayed as seen in Figure 10.
 
 ![Fig 10: CompTox Chemicals Dashboard BPA Genotoxicity](./Pictures/CCD BPA genotoxicity.png){width=120%}
 
 This page includes two sets of information, the first of which provides a summary of available genotoxicity data while the second provides the individual reports and samples of such data.
 
-We again use the CCTE APIs to streamline the process of retrieving this information in a programmatic fashion. To this end, we will use the genotoxicity endpoints found within the hazard endpoints of the CCTE APIs. Pictured below is the particular set of genotoxicity resources available in the hazard endpoints of the CCTE APIs.
+We again use the CCTE APIs to streamline the process of retrieving this information in a programmatic fashion. To this end, we will use the genotoxicity endpoints found within the hazard endpoints of the CCTE APIs. Pictured below in Figure 11 is the particular set of genotoxicity resources available in the hazard endpoints of the CCTE APIs.
 
 ![Fig 11: CCTE APIs Hazard endpoint gentoxocity resources](./Pictures/Hazard - genotoxicity resource.png){width=120%}
 
@@ -633,7 +633,7 @@ colnames(ccl4_genotox)
 head(ccl4_genotox)
 ```
 
-The information returned is of the first variety highlighted in the figure `CompTox Chemicals Dashboard Genotoxicity`, that is, summary data on the available genotoxicity data for each chemical.
+The information returned is of the first variety highlighted in the Figure 9, that is, summary data on the available genotoxicity data for each chemical.
 
 Observe that we have information on 71 chemicals from the CCL4 data and 153 from the NATA data. We note the chemicals not included in the results and then dig into the returned results.
 
@@ -682,7 +682,7 @@ Now examine the first few rows.
 head(ccl4_genetox_details[dtxsid %in% 'DTXSID0020153', ])
 ```
 
-Observe that the data is the same for each data set when restricting to the same chemical. This is because the information we are retrieving is specific to the chemical and not dependent on which chemical lists the chemical may belong.
+Observe that the data is the same for each data set when restricting to the same chemical. This is because the information we are retrieving is specific to the chemical and not dependent on the chemical lists to which the chemical may belong.
 
 ```{r}
 identical(ccl4_genetox_details[dtxsid %in% 'DTXSID0020153', ], 
@@ -690,7 +690,7 @@ identical(ccl4_genetox_details[dtxsid %in% 'DTXSID0020153', ],
 ```
 
 
-We now explore the assays present for chemicals in each data set. We first determine the unique values of the `assayCategory` and then group by these values and determine the number of unique assays in each `assayCategory` value.
+We now explore the assays present for chemicals in each data set. We first determine the unique values of the `assayCategory` column and then group by these values and determine the number of unique assays for each `assayCategory` value.
 
 Determine the unique assay categories.
 
@@ -710,7 +710,7 @@ natadb_genetox_details[, unique(assayType)]
 
 
 
-Determine the number of assays per unique assay category.
+Determine the number of assays per unique `assayCategory`.
 
 ```{r}
 ccl4_genetox_details[, .(Assays = length(unique(assayType))), 
@@ -721,14 +721,14 @@ natadb_genetox_details[, .(Assays = length(unique(assayType))),
 ```
 
 
-We can analyze these results more closely, counting the number of assay results and grouping by assayCategory, and assayType. We also examine the different numbers of assayCategory and assayTypes used.
+We can analyze these results more closely, counting the number of assay results and grouping by `assayCategory`, and `assayType`. We also examine the different numbers of `assayCategory` and `assayTypes` used.
 
 ```{r}
 ccl4_genetox_details[, .N, by = .(assayCategory, assayType, assayResult)]
 ccl4_genetox_details[, .N, by = .(assayCategory)]
 ```
 
-We look at the assayTypes and numbers of each for the three different assayCategory values.
+We look at the `assayTypes` and numbers of each for the three different `assayCategory` values.
 
 ```{r}
 ccl4_genetox_details[assayCategory == 'in vitro', .N, by = .(assayType)]
@@ -736,14 +736,14 @@ ccl4_genetox_details[assayCategory == 'ND', .N, by = .(assayType)]
 ccl4_genetox_details[assayCategory == 'in vivo', .N, by = .(assayType)]
 ```
 
-Now we repeat this for `NATADB`.
+Now we repeat this for NATADB.
 
 ```{r}
 natadb_genetox_details[, .N, by = .(assayCategory, assayType, assayResult)]
 natadb_genetox_details[, .N, by = .(assayCategory)]
 ```
 
-Examine the number of assay types by each assay category.
+Examine the number of rows for each `assayType` value by each `assaycategory` value.
 
 ```{r, R.options=list(width=150) }
 natadb_genetox_details[assayCategory == 'in vitro', .N, by = .(assayType)]
@@ -756,7 +756,7 @@ natadb_genetox_details[assayCategory == 'in vivo', .N, by = .(assayType)]
 **Answer**: There are 90 unique assays for CCl4 and 114 unique assays for NATADB. The different assay categories are 'in vitro', 'ND', and 'in vivo', with 65 unique 'in vitro' assays for CCl4 and 83 for NATADB, 3 unique 'ND' assays for CCL4 and 3 for NATADB, and 22 unique 'in vivo' assays for CCL4 and 28 for NATADB.
 
 
-Next, we dig into the results of the assays. One may be interested in looking at the number of chemicals for which an assay resulted in a positive or negative result for instance. We group by assayResult and determine the number of unique dtxsids associated with each value.
+Next, we dig into the results of the assays. One may be interested in looking at the number of chemicals for which an assay resulted in a positive or negative result for instance. We group by `assayResult` and determine the number of unique `dtxsids` associated with each value.
 
 ```{r}
 ccl4_genetox_details[, .(DTXSIDs = length(unique(dtxsid))), by = .(assayResult)]
@@ -765,9 +765,9 @@ natadb_genetox_details[, .(DTXSIDs = length(unique(dtxsid))),
 ```
 *With this data we may now answer **Environmental Health Question 4**:* The genotoxicity data contains information on which assays have been conducted for different chemicals and the results of those assays. How many chemicals in each data set have a ‘positive’, ‘negative’, and ‘equivocal’ value for the assay result?
 
-**Answer**: For CCL4, there are 64 unique chemicals that have a negative assay result, 53 that have a positive result, and 15 that have an equivocal result. For NATADB, there are 141 unique chemicals that have a negative assay result, 130 that have a positive result, and 48 that have an equivocal result. Observe that since there are 72 unique DTXSIDs with assay reults in CCL4 and 153 in NATADB, there are several chemicals that have multiple assay results.
+**Answer**: For CCL4, there are 64 unique chemicals that have a negative assay result, 53 that have a positive result, and 15 that have an equivocal result. For NATADB, there are 141 unique chemicals that have a negative assay result, 130 that have a positive result, and 48 that have an equivocal result. Observe that since there are 72 unique `dtxsid` value with assay rseults in CCL4 and 153 in NATADB, there are several chemicals that have multiple assay results.
 
-We now determine the chemicals from each data set that are known to have genotoxic effects. For this, we look to see which chemicals produce at least one positive response in the assayResult column.
+We now determine the chemicals from each data set that are known to have genotoxic effects. For this, we look to see which chemicals produce at least one positive response in the `assayResult` column.
 
 ```{r}
 ccl4_genetox_details[, .(is_positive = any(assayResult == 'positive')), 
@@ -814,7 +814,7 @@ colnames(ccl4_hazard)
 head(ccl4_hazard)
 ```
 
-We determine the number of unique values in the criticalEffect, supercategory, and toxvaltype columns for each data set.
+We determine the number of unique values in the `criticalEffect`, `supercategory`, and `toxvalType` columns for each data set.
 
 The number of unique values for `criticalEffect`.
 
@@ -852,7 +852,7 @@ natadb_hazard[ supercategory %in% 'Point of Departure', .N,
                by = .(toxvalType)][order(-N),]
 ```
 
-We explore `NOEL` and `LOEL` further. Let us look at the the case when `media` value is either "soil" or "water". For this, we will recover the minimum value of LOEL and NOEL for each chemical in each data set.
+We explore 'NOEL' and 'LOEL' further. Let us look at the the case when `media` value is either 'soil' or 'water'. For this, we will recover the minimum value of 'LOEL' and 'NOEL' for each chemical in each data set.
 
 First, we look at soil. We order by `toxvalType` and by the minimum `toxvalNumeric` value in each group, descending.
 
@@ -893,7 +893,7 @@ Then, let's focus on the inhalation and oral exposure routes for human hazard.
 
 
 
-To answer this, filter the data into the corresponding exposure routes, then group by exposure route and risk assessment class, and finally count the number of instances for each grouping. To determine the most represented class, one can order the results descending.
+To answer this, filter the data into the corresponding exposure routes, then group by `exposureRoute` and `riskAssessmentClass`, and finally count the number of instances for each grouping. To determine the most represented class, one can order the results descending.
 
 ```{r}
 ccl4_hazard[humanEcoNt %in% 'human health' & 
@@ -908,7 +908,7 @@ natadb_hazard[humanEcoNt %in% 'human health' &
 
 *With these results we may answer **Environmental Health Question 6**:* After pulling the hazard data for the different data sets, list the different exposure routes for which there is data. What are the unique risk assessment classes for hazard values for the oral route and for the inhalation exposure route? For each such exposure route, which risk assessment class is most represented by the data sets?
 
-**Answer**: We listed the general exposure routes above for the hazard data associated to the chemicals in each data set. Restricting our attention to human hazard data, the `acute` risk assessment class is most represented by the inhalation exposure route and `chronic` for the oral exposure route for both the CCL4 and NATADB data sets. 
+**Answer**: We listed the general exposure routes above for the hazard data associated to the chemicals in each data set. Restricting our attention to human hazard data, the 'acute' `riskAssessmentClass` is most represented by the inhalation exposure route and 'chronic' for the oral exposure route for both the CCL4 and NATADB data sets. 
 
 
 
@@ -943,7 +943,7 @@ intersect(natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'inh
 **Answer**: There are 24 toxicity value types shared between the oral and inhalation exposure routes for CCL4 and 29 for NATADB. The lists above indicate the variety of toxicity values present in the hazard data for the two different exposure routes we have considered.
 
 
-For the next data exploration, We will turn to the risk assessment class of `developmental`. We will examine the NOEL and LOEL values for chemicals with oral exposure, human hazard, and risk assessment class 'developmental'. We also examine the units to determine whether any unit conversions are necessary to compare numeric values.
+For the next data exploration, We will turn to the `riskAssessmentClass` value of 'developmental'. We will examine the 'NOEL' and 'LOEL' values for chemicals with oral exposure, human hazard, and a `riskAssessmentClass` value of 'developmental'. We also examine the units to determine whether any unit conversions are necessary to compare numeric values.
 
 ```{r}
 ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' &
