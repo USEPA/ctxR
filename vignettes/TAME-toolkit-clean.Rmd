@@ -102,7 +102,7 @@ library(ggplot2)
 
 # Introduction to CompTox Chemicals Dashboard
 
-Accessing chemical data and wrangling it is a vital step in many types of workflows related to chemical, biological, and environmental modeling. While there are many resources available from which one can pull data, the [CompTox Chemicals Dashboard](https://comptox.epa.gov/dashboard/)(CCD) built and maintained by the United States Environmental Protection Agency is particularly well-designed and maintained. Originally introduced in [The CompTox Chemistry Dashboard: a community data resource for environmental chemistry](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0247-6), the CCD contains information on over 1.2 million chemicals as of September, 2023. 
+Accessing chemical data and wrangling it is a vital step in many types of workflows related to chemical, biological, and environmental modeling. While there are many resources available from which one can pull data, the [CompTox Chemicals Dashboard](https://comptox.epa.gov/dashboard/) built and maintained by the United States Environmental Protection Agency is particularly well-designed and maintained. Originally introduced in [The CompTox Chemistry Dashboard: a community data resource for environmental chemistry](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0247-6), the CCD contains information on over 1.2 million chemicals as of December, 2023. 
 
 The CCD includes chemical information from many different domains, including physicochemical, environmental fate and transport, exposure, usage, in vivo toxicity, and in vitro bioassay data ( Williams et al., 2017).
 
@@ -112,7 +112,7 @@ The CCD can be searched either one chemical at a time, or in batch mode.
 
 In single-substance search, the user types a full or partial chemical identifier (name, CASRN, InChiKey, or DSSTox ID) into a search box on the CCD homepage. Autocomplete provides a list of possible matches; the user selects one by clicking on it, and is then taken to the CCD page for that substance. Figure 1 shows an example: the CCD page for the chemical Bisphenol A. 
 
-![Bisphenol A landing page](./Pictures/CCD BPA page.png){width=120%}
+![Fig 1: Bisphenol A landing page](./Pictures/CCD BPA page.png){width=120%}
 
 The different domains of data available for this chemical are shown by the tabs on the left side of the page: for example, "Physchem Prop." (physico-chemical properties), "Env. Fate/Transport" (environmental fate and transport data), and "Hazard Data" (*in vivo* hazard and toxicity data), among others. 
 
@@ -120,13 +120,12 @@ The different domains of data available for this chemical are shown by the tabs 
 
 In batch search, the user enters a list of search inputs, separated by newlines, into a batch-search box on https://comptox.epa.gov/dashboard/batch-search . The user selects the type(s) of inputs by selecting one or more checkboxes – these may include chemical identifiers, monoisotopic masses, or molecular formulas. Then, the user selects “Display All Chemicals” to display the list of substances matching the batch-search inputs, or “Choose Export Options” to choose options for exporting the batch-search results as a spreadsheet. The exported spreadsheet may include data from most of the domains available on an individual substance’s CCD page.
 
-> CLR note: Paul, could you include a screenshot of the menu of checkboxes that appears once you've searched a list of chemicals? That shows the different domains of data that are available for download.
 
-![CCD Batch Search](./Pictures/CCD Batch Search.png){width=120%}
+![Fig 2: CCD Batch Search](./Pictures/CCD Batch Search.png){width=120%}
 
 The user can download the selected information in various formats, such as Excel (.xlsx), comma-separated values (.csv), or different types of chemical table files (.e.g, MOL). 
 
-![CCD Batch Search Customize Export Results](./Pictures/CCD Batch Search customize export results.png){width=120%}
+![Fig 3: CCD Batch Search Customize Export Results](./Pictures/CCD Batch Search customize export results.png){width=120%}
 
 The web interface for batch search only allows input of 10,000 identifiers at a time. If a user needs to retrieve information for more than 10,000 chemicals, they will need to separate their identifiers into multiple batches and search each one separately.
 
@@ -155,35 +154,33 @@ Moreover, the manual stages of this kind of workflow are also non-transparent an
 
 # CCTE's Application Programming Interfaces (APIs) for Automated Batch Search of the CCD
 
-Recently, the [Center for Computational Toxicology and Exposure](https://www.epa.gov/aboutepa/about-center-computational-toxicology-and-exposure-ccte)(CCTE) developed a set of Application Programming Interfaces (APIs) that allows programmatic access to the CCD, bypassing the manual steps of the web-based batch search workflow. The [CCTE APIs](https://api-ccte.epa.gov/docs/) are publicly available at no cost to the user. 
+Recently, the [Center for Computational Toxicology and Exposure](https://www.epa.gov/aboutepa/about-center-computational-toxicology-and-exposure-ccte) (CCTE) developed a set of Application Programming Interfaces (APIs) that allows programmatic access to the CCD, bypassing the manual steps of the web-based batch search workflow. The [CCTE APIs](https://api-ccte.epa.gov/docs/) are publicly available at no cost to the user. 
 
 In order to use the CCTE APIs, you must have an API key. The API key uniquely identifies you to the CCD servers and verifies that you have permission to access the database. Getting an API key is free, but requires contacting the API support team at [ccte_api@epa.gov](mailto:ccte_api@epa.gov).
 
-The APIs are organized into three sets of "endpoints" (chemical data domains): `Chemical`, `Hazard`, and `Bioactivity`.Pictured below is what the `Chemical` section looks like and can be found at [CCTE API Chemical Endpoints](https://api-ccte.epa.gov/docs/chemical.html).
+The APIs are organized into three sets of "endpoints" (chemical data domains): `Chemical`, `Hazard`, and `Bioactivity`. Pictured below in Figure 4 is what the `Chemical` section looks like and can be found at [CCTE API Chemical Endpoints](https://api-ccte.epa.gov/docs/chemical.html).
 
-![CCTE API Chemical Endpoints](./Pictures/CCTE Chemical API endpoints.png){width=120%}
+![Fig 4: CCTE API Chemical Endpoints](./Pictures/CCTE Chemical API endpoints.png){width=120%}
 
 The APIs can be explored through the pictured web interface at https://api-ccte.epa.gov/docs/chemical.html . 
-"Authentication" is the first tab on the left. Authentication is required to use the APIs. To authenticate yourself, input your unique API key.
+`Authentication` is the first tab on the left. Authentication is required to use the APIs. To authenticate yourself, input your unique API key as demonstrated in Figure 5.
 
-![CCTE API Key Authentication](./Pictures/CCTE API Key authentication.png){width=120%}
+![Fig 5: CCTE API Key Authentication](./Pictures/CCTE API Key authentication.png){width=120%}
 
-> CLR: Paul, could you include a screenshot of the page where you input your API key, just to show what it looks like?
-
-Below, there are several different tabs, one for each endpoint in the "Chemical" domain. The endpoints are organized by the type of information provided. For instance, the `Chemical Details Resource` endpoint provides basic chemical information; the `Chemical Property Resource` endpoint providesmore comprehensive physico-chemical property information; the `Chemical Fate Resource` endpoint provides chemical fate and transport information; and so on. 
+Below the `Authentication` tab, there are several different tabs, one for each endpoint in the `Chemical` domain. The endpoints are organized by the type of information provided. For instance, the `Chemical Details Resource` endpoint provides basic chemical information; the `Chemical Property Resource` endpoint provides more comprehensive physico-chemical property information; the `Chemical Fate Resource` endpoint provides chemical fate and transport information; and so on. 
 
 The colored boxes next to each endpoint indicate the type of the associated `http` method: either a GET request ("GET", blue) or a a POST request ("POS", green). If you aren't familiar with `http` methods, GET is used to request data from a specific web resource; POST is used to send data to a server to create or update a web resource. POST requests are used to perform multiple (batch) searches in a single API call; GET requests are used for non-batch searches. (You do not need to understand the details of POST and GET requests in order to use the API.)
 
-Clicking on the `Get data by DTXSID`, we observe that there are certain required pieces of information to construct the request and optional parameters to focus the request.
+Clicking on the `Get data by DTXSID` endpoint, we observe that there are certain required pieces of information to construct the request and optional parameters to focus the request.
 
-![CCTE Get Details by DTXSID](./Pictures/Get Data by DTXSID TOP.png){width=120%}
+![Fig 6: CCTE Get Details by DTXSID](./Pictures/Get Data by DTXSID TOP.png){width=120%}
 
-The user is required to supply a string for the DTXSID and an optional `projection` parameter, which controls the scope of the information returned. The default return format is displayed below and includes a variety of fields with data types represented.
+The user is required to supply a string for the `dtxsid` and an optional `projection` parameter, which controls the scope of the information returned. The default return format is displayed below and includes a variety of fields with data types represented.
 
-![CCTE Get Details by DTXSID data types](./Pictures/Get Data by DTXSID BOTTOM.png){width=120%}
-We show what returned data from searching Bisphenol A looks like using this endpoint with the `chemicaldetailstandard` projection selected.
+![Fig 7: CCTE Get Details by DTXSID data types](./Pictures/Get Data by DTXSID BOTTOM.png){width=120%}
+We show what returned data from searching Bisphenol A looks like using this endpoint with the "chemicaldetailstandard" `projection` selected.
 
-![Bisphenol A output](./Pictures/BPA chemicaldetailstandard.png){width=120%}
+![Fig 8: Bisphenol A output](./Pictures/BPA chemicaldetailstandard.png){width=120%}
 
 
 
@@ -206,7 +203,7 @@ if (!requireNamespace('ccdR'))
 library(ccdR)
 ```
 
-First, we store the API key required to access the APIs. To do this for the current session, run the first command. If you want to store your key across multiple sessions, run the second command.
+Now we store the API key required to access the APIs. To do this for the current session, run the first command. If you want to store your key across multiple sessions, run the second command.
 
 ```{r, eval=FALSE}
 # This stores the key in the current session
@@ -222,7 +219,7 @@ To check that your key has successfully been stored for the session, run the fol
 ```{r, eval=FALSE}
 ccte_key()
 ```
-Now, we demonstrate how to retrieve the information for BPA given by the `Chemical Detail Resource` endpoint under the `chemicaldetailstandard` projection. Note, this projection is the default projection for the function `get_chemical_details()`.
+Now, we demonstrate how to retrieve the information for BPA given by the `Chemical Detail Resource` endpoint under the "chemicaldetailstandard" `projection`. Note, this `projection` value is the default value for the function `get_chemical_details()`.
 
 ```{r}
 BPA_chemical_detail <- get_chemical_details(DTXSID = 'DTXSID7020182')
@@ -238,7 +235,7 @@ We study two different data sets contained in the CCD and observe how they relat
 
 The fourth Drinking Water Contaminant Candidate List (CCL4) is a set of chemicals not subject to any proposed or promulgated national primary drinking water regulations, but are known or anticipated to occur in public water systems. This list was announced on November 17, 2016 and includes 97 chemicals or chemical groups and 12 microbial contaminants. The National-Scale Air Toxics Assessments (NATA) is an ongoing comprehensive evaluation of air toxics in the United States. It uses general information about sources to develop estimates of risks which are more likely to overestimate impacts and underestimate them and is meant for use as a tool for State/Local/Tribal agencies to prioritize pollutants, emission sources and locations of interest for further study in order to gain a better understanding of risks.
 
-These can be found in the CCD at [CCL4](https://comptox.epa.gov/dashboard/chemical-lists/CCL4) with additional information at [CCL4 information](https://www.epa.gov/ccl/contaminant-candidate-list-4-ccl-4-0) and [NATADB](https://comptox.epa.gov/dashboard/chemical-lists/NATADB) with additional information at [NATA information](https://www.epa.gov/national-air-toxics-assessment).
+These lists can be found in the CCD at [CCL4](https://comptox.epa.gov/dashboard/chemical-lists/CCL4) with additional information at [CCL4 information](https://www.epa.gov/ccl/contaminant-candidate-list-4-ccl-4-0) and [NATADB](https://comptox.epa.gov/dashboard/chemical-lists/NATADB) with additional information at [NATA information](https://www.epa.gov/national-air-toxics-assessment).
 
 
 We explore details about these two lists of chemicals before diving into analyzing the data contained in each list.
@@ -599,18 +596,18 @@ Now, having examined some of the distributions of the phys chem properties of th
 
 Using the standard CompTox Chemicals Dashboard approach to access genotoxicity, one would again navigate to the individual chemical page 
 
-![CompTox Chemicals Dashboard Genotoxicity](./Pictures/BPA Hazard data - Genotoxicity.png){width=120%}
+![Fig 9: CompTox Chemicals Dashboard Genotoxicity](./Pictures/BPA Hazard data - Genotoxicity.png){width=120%}
 
 
 Once one navigates to the genotoxicity tab highlighted in the previous page, the following is displayed.
 
-![CompTox Chemicals Dashboard BPA Genotoxicity](./Pictures/CCD BPA genotoxicity.png){width=120%}
+![Fig 10: CompTox Chemicals Dashboard BPA Genotoxicity](./Pictures/CCD BPA genotoxicity.png){width=120%}
 
 This page includes two sets of information, the first of which provides a summary of available genotoxicity data while the second provides the individual reports and samples of such data.
 
 We again use the CCTE APIs to streamline the process of retrieving this information in a programmatic fashion. To this end, we will use the genotoxicity endpoints found within the hazard endpoints of the CCTE APIs. Pictured below is the particular set of genotoxicity resources available in the hazard endpoints of the CCTE APIs.
 
-![CCTE APIs Hazard endpoint gentoxocity resources](./Pictures/Hazard - genotoxicity resource.png){width=120%}
+![Fig 11: CCTE APIs Hazard endpoint gentoxocity resources](./Pictures/Hazard - genotoxicity resource.png){width=120%}
 
 There are both summary and detail resources, reflecting the information one can find on the CompTox Chemicals Dashboard Genotoxicity page for a given chemical.
 
