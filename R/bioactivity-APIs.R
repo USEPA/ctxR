@@ -1,22 +1,28 @@
-#' Retrieve bioactivity data from DTXSID or AEID
+#' Retrieve bioactivity data from DTXSID, AEID, SPID, or m4id
 #'
 #' @param DTXSID The chemical identifier DTXSID
-#' @param AEID The chemical identifier AEID
+#' @param AEID The assay endpoint identifier AEID
+#' @param SPID The ChemSpider chemical input
+#' @param m4id The chemical identifier m4id
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
 #'
-#' @return A data.frame containing bioactivity information for the chemical with
-#'   DTXSID or assay with AEID matching the input parameter.
+#' @return A data.frame containing bioactivity information for the chemical or assay endpoint with
+#'   identifier matching the input parameter.
 #' @export
 #'
 get_bioactivity_details <- function(DTXSID = NULL,
                                  AEID = NULL,
+                                 SPID = NULL,
+                                 m4id = NULL,
                                  API_key = NULL,
                                  Server = bioactivity_api_server){
-  if (is.null(DTXSID) & is.null(AEID))# if (all(sapply(list(DTXSID, AEID, SPID, m4ID), is.null)))
-    stop('Please input a DTXSID or AEID!') # " or SPID or m4ID"
-  else if (!is.null(DTXSID) & !is.null(AEID)) # else if (length(which(!sapply(list(DTXSID, AEID, SPID, m4ID), is.null))) > 1)
-    stop('Please input either a DTXSID or AEID, but not both!') #  or SPID or m4ID, but not multiple!
+  #if (is.null(DTXSID) & is.null(AEID))#
+  if (all(sapply(list(DTXSID, AEID, SPID, m4id), is.null)))
+    stop('Please input a DTXSID, AEID, SPID, or m4id!')
+  #else if (!is.null(DTXSID) & !is.null(AEID))
+  else if (length(which(!sapply(list(DTXSID, AEID, SPID, m4id), is.null))) > 1)
+    stop('Please input a value for only one of DTXSID, AEID, SPID, or m4id, but not multiple!')
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
@@ -26,24 +32,36 @@ get_bioactivity_details <- function(DTXSID = NULL,
     }
   }
 
-  # data_index <- which(!sapply(list(DTXSID, AEID, SPID, m4ID), is.null))
-  # data_endpoint <- paste0('by-', c('dtxsid', 'aeid', 'spid', 'm4id')[data_index])
+  data_index <- which(!sapply(list(DTXSID, AEID, SPID, m4id), is.null))
+  data_endpoint <- paste0('by-', c('dtxsid', 'aeid', 'spid', 'm4id')[data_index])
+  data_input <- unlist(list(DTXSID, AEID, SPID, m4id)[data_index])
 
-  if (!is.null(DTXSID)){
-    response <- httr::GET(url = paste0(Server, '/search/by-dtxsid/', DTXSID),
-                          httr::add_headers(.headers = c(
-                            'Content-Type' =  'application/json',
-                            'x-api-key' = API_key)
+  print(data_index)
+  print(data_endpoint)
+  print(data_input)
+
+  response <- httr::GET(url = paste0(Server, '/search/', data_endpoint, '/', data_input),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' = 'application/json',
+                          'x-api-key' = API_key)
                           )
-    )
-  } else {
-    response <- httr::GET(url = paste0(Server, '/search/by-aeid/', AEID),
-                          httr::add_headers(.headers = c(
-                            'Content-Type' =  'application/json',
-                            'x-api-key' = API_key)
-                          )
-    )
-  }
+                        )
+
+  # if (!is.null(DTXSID)){
+  #   response <- httr::GET(url = paste0(Server, '/search/by-dtxsid/', DTXSID),
+  #                         httr::add_headers(.headers = c(
+  #                           'Content-Type' =  'application/json',
+  #                           'x-api-key' = API_key)
+  #                         )
+  #   )
+  # } else {
+  #   response <- httr::GET(url = paste0(Server, '/search/by-aeid/', AEID),
+  #                         httr::add_headers(.headers = c(
+  #                           'Content-Type' =  'application/json',
+  #                           'x-api-key' = API_key)
+  #                         )
+  #   )
+  # }
 
 
   if(response$status_code == 200){
@@ -54,11 +72,21 @@ get_bioactivity_details <- function(DTXSID = NULL,
   return()
 }
 
+#' Retrieve bioactivity summary for AEID
+#'
+#' @param AEID The assay endpoint indentifier AEID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#'
+#' @return A data.frame containing summary information corresponding to the
+#'   input AEID
+#' @export
+#'
 get_bioactivity_summary <- function(AEID = NULL,
                                     API_key = NULL,
                                     Server = bioactivity_api_server){
-  print("This is broken currently!")
-  return()
+  #print("This is broken currently!")
+  #return()
   if (is.null(AEID))
     stop('Please input an AEID!')
   else if (is.null(API_key)){
@@ -83,5 +111,81 @@ get_bioactivity_summary <- function(AEID = NULL,
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
   return()
+
+}
+
+#' Retrieve all assays
+#'
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#'
+#' @return A data.frame containing all the assays and associated information
+#' @export
+#'
+get_all_assays <- function(API_key = NULL,
+                           Server = bioactivity_api_server){
+
+  if (is.null(API_key)){
+    if (has_ccte_key()){
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
+
+  response <-  httr::GET(url = paste0(Server, '/assay/'),
+                         httr::add_headers(.headers = c(
+                           'Content-Type' =  'application/json',
+                           'x-api-key' = API_key)
+                         )
+  )
+
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+  } else {
+    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+  }
+  return()
+}
+
+#' Retrieve annotations for AEID
+#'
+#' @param AEID The assay endpoint identifier AEID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#'
+#' @return A data.frame containing the annotated assays corresponding to the
+#'   input AEID parameter
+#' @export
+#'
+get_annotation_by_aeid <- function(AEID = NULL,
+                                   API_key = NULL,
+                                   Server = bioactivity_api_server){
+  if (is.null(AEID))
+    stop('Please input an AEID!')
+  else if (is.null(API_key)){
+    if (has_ccte_key()){
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
+
+  response <- httr::GET(url = paste0(Server, '/assay/search/by-aeid/', AEID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+  } else {
+    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+  }
+  return()
+
 
 }
