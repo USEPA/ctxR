@@ -154,28 +154,48 @@ Moreover, the manual stages of this kind of workflow are also non-transparent an
 
 # CCTE's Application Programming Interfaces (APIs) for Automated Batch Search of the CCD
 
-Recently, the [Center for Computational Toxicology and Exposure](https://www.epa.gov/aboutepa/about-center-computational-toxicology-and-exposure-ccte) (CCTE) developed a set of Application Programming Interfaces (APIs) that allows programmatic access to the CCD, bypassing the manual steps of the web-based batch search workflow. The [CCTE APIs](https://api-ccte.epa.gov/docs/) are publicly available at no cost to the user. 
 
-In order to use the CCTE APIs, you must have an API key. The API key uniquely identifies you to the CCD servers and verifies that you have permission to access the database. Getting an API key is free, but requires contacting the API support team at [ccte_api@epa.gov](mailto:ccte_api@epa.gov).
+Recently, the [Center for Computational Toxicology and Exposure](https://www.epa.gov/aboutepa/about-center-computational-toxicology-and-exposure-ccte)(CCTE) developed a set of Application Programming Interfaces (APIs) that allows programmatic access to the CCD, bypassing the manual steps of the web-based batch search workflow. APIs effectively automate the process of accessing and downloading data from the web pages that make up the CCD. 
+
+
+The [CCTE APIs](https://api-ccte.epa.gov/docs/) are publicly available at no cost to the user. However, in order to use the CCTE APIs, you must have an API key. The API key uniquely identifies you to the CCD servers and verifies that you have permission to access the database. Getting an API key is free, but requires contacting the API support team at [ccte_api@epa.gov](mailto:ccte_api@epa.gov).
 
 The APIs are organized into three sets of "endpoints" (chemical data domains): `Chemical`, `Hazard`, and `Bioactivity`. Pictured below in Figure 4 is what the `Chemical` section looks like and can be found at [CCTE API Chemical Endpoints](https://api-ccte.epa.gov/docs/chemical.html).
 
 ![Fig 4: CCTE API Chemical Endpoints](./Pictures/CCTE Chemical API endpoints.png){width=120%}
 
-The APIs can be explored through the pictured web interface at https://api-ccte.epa.gov/docs/chemical.html . 
-`Authentication` is the first tab on the left. Authentication is required to use the APIs. To authenticate yourself, input your unique API key as demonstrated in Figure 5.
+
+The APIs can be explored through the pictured web interface at https://api-ccte.epa.gov/docs/chemical.html .
+
+## CCD API Authentication
+
+"Authentication" is the first tab on the left. Authentication is required to use the APIs. To authenticate yourself in the API web interface, input your unique API key.
+
 
 ![Fig 5: CCTE API Key Authentication](./Pictures/CCTE API Key authentication.png){width=120%}
 
-Below the `Authentication` tab, there are several different tabs, one for each endpoint in the `Chemical` domain. The endpoints are organized by the type of information provided. For instance, the `Chemical Details Resource` endpoint provides basic chemical information; the `Chemical Property Resource` endpoint provides more comprehensive physico-chemical property information; the `Chemical Fate Resource` endpoint provides chemical fate and transport information; and so on. 
 
-The colored boxes next to each endpoint indicate the type of the associated `http` method: either a GET request ("GET", blue) or a a POST request ("POS", green). If you aren't familiar with `http` methods, GET is used to request data from a specific web resource; POST is used to send data to a server to create or update a web resource. POST requests are used to perform multiple (batch) searches in a single API call; GET requests are used for non-batch searches. (You do not need to understand the details of POST and GET requests in order to use the API.)
+## CCD API Endpoints
 
-Clicking on the `Get data by DTXSID` endpoint, we observe that there are certain required pieces of information to construct the request and optional parameters to focus the request.
 
-![Fig 6: CCTE Get Details by DTXSID](./Pictures/Get Data by DTXSID TOP.png){width=120%}
+On the left of the API web interface, there are several different tabs, one for each endpoint in the "Chemical" domain. The endpoints are organized by the type of information provided. For instance, the `Chemical Details Resource` endpoint provides basic chemical information; the `Chemical Property Resource` endpoint provides more comprehensive physico-chemical property information; the `Chemical Fate Resource` endpoint provides chemical fate and transport information; and so on. 
 
-The user is required to supply a string for the `dtxsid` and an optional `projection` parameter, which controls the scope of the information returned. The default return format is displayed below and includes a variety of fields with data types represented.
+
+## Constructing CCD API Requests
+
+As mentioned above, APIs effectively automate the process of accessing and downloading data from the web pages that make up the CCD. APIs do this by automatically constructing requests using the Hypertext Transfer Protocol (HTTP) that enables communication between clients (e.g. your computer) and servers (e.g. the CCD).
+
+In the CCD API web interface, the colored boxes next to each endpoint indicate the type of the associated HTTP method: either a GET request ("GET", blue) or a a POST request ("POS", green). GET is used to request data from a specific web resource (e.g. a specific URL); POST is used to send data to a server to create or update a web resource. For the CCD APIs, POST requests are used to perform multiple (batch) searches in a single API call; GET requests are used for non-batch searches. (You do not need to understand the details of POST and GET requests in order to use the API.)
+
+Click on the second item under "Chemical Details Resource", the tab labeled `Get data by DTXSID`. The following page appears.
+
+![CCTE Get Details by DTXSID](./Pictures/Get Data by DTXSID TOP.png){width=120%}
+This page has two subheadings: "Path Parameters" and "Query-String Parameters". "Path Parameters" contains user-specified parameters that are required in order to tell the API what URL (web address) to access. In this case, the required parameter is a string for the DTXSID identifying the chemical to be searched.
+
+"Query-String Parameters" contain user-specific parameters (usually optional) that tell the API what specific type(s) of information to download from the specified URL. In this case, the optional parameter is a `projection` parameter, a string that can take one of five values (`chemicaldetailall`, `chemicaldetailstandard`, `chemicalidentifier`, `chemicalstructure`, `ntatoolkit`). Depending on the value of this string, the API can return different sets of information about the chemical. If the `projection` parameter is left blank, then a default set of chemical information is returned.
+
+The default return format is displayed below and includes a variety of fields with data types represented.
+
 
 ![Fig 7: CCTE Get Details by DTXSID data types](./Pictures/Get Data by DTXSID BOTTOM.png){width=120%}
 We show what returned data from searching Bisphenol A looks like using this endpoint with the "chemicaldetailstandard" `projection` selected.
@@ -184,9 +204,9 @@ We show what returned data from searching Bisphenol A looks like using this endp
 
 
 
-Formatting an http request is not necessarily intuitive nor worth the time for someone not already familiar with the process, so these endpoints may provide a resource that for many would require a significant investment in time and energy to learn how to use. However, there is a solution to this in the form of the R package ccdR.
+Formatting an http request is not necessarily intuitive nor worth the time for someone not already familiar with the process, so these endpoints may provide a resource that for many would require a significant investment in time and energy to learn how to use. However, there is a solution to this in the form of the R package `ccdR`.
 
-This R package was developed to streamline the process of accessing the information available through the CCTE APIs without requiring prior knowledge of how to use APIs. As an example, we demonstrate the ease with which one may retrieve the information given by this endpoint for Bisphenol A using the ccdR approach and contrast it with the approach using the CCD or CCTE Chemical Endpoint website.
+`ccdR` was developed to streamline the process of accessing the information available through the CCTE APIs without requiring prior knowledge of how to use APIs. As an example, we demonstrate the ease with which one may retrieve the information given by this endpoint for Bisphenol A using the ccdR approach and contrast it with the approach using the CCD or CCTE Chemical Endpoint website.
 
 First, we load in ccdR and other libraries we will need for this module.
 
