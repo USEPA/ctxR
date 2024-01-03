@@ -2,11 +2,13 @@
 % Please edit documentation in R/bioactivity-APIs.R
 \name{get_bioactivity_details}
 \alias{get_bioactivity_details}
-\title{Retrieve bioactivity data from DTXSID or AEID}
+\title{Retrieve bioactivity data from DTXSID, AEID, SPID, or m4id}
 \usage{
 get_bioactivity_details(
   DTXSID = NULL,
   AEID = NULL,
+  SPID = NULL,
+  m4id = NULL,
   API_key = NULL,
   Server = bioactivity_api_server
 )
@@ -14,16 +16,20 @@ get_bioactivity_details(
 \arguments{
 \item{DTXSID}{The chemical identifier DTXSID}
 
-\item{AEID}{The chemical identifier AEID}
+\item{AEID}{The assay endpoint identifier AEID}
+
+\item{SPID}{The ChemSpider chemical input}
+
+\item{m4id}{The chemical identifier m4id}
 
 \item{API_key}{The user-specific API key}
 
 \item{Server}{The root address for the API endpoint}
 }
 \value{
-A data.frame containing bioactivity information for the chemical with
-  DTXSID or assay with AEID matching the input parameter.
+A data.frame containing bioactivity information for the chemical or assay endpoint with
+  identifier matching the input parameter.
 }
 \description{
-Retrieve bioactivity data from DTXSID or AEID
+Retrieve bioactivity data from DTXSID, AEID, SPID, or m4id
 }
