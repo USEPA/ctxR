@@ -102,9 +102,9 @@ library(ggplot2)
 
 # Introduction to CompTox Chemicals Dashboard
 
-Accessing chemical data and wrangling it is a vital step in many types of workflows related to chemical, biological, and environmental modeling. While there are many resources available from which one can pull data, the [CompTox Chemicals Dashboard](https://comptox.epa.gov/dashboard/) built and maintained by the United States Environmental Protection Agency is particularly well-designed and maintained. Originally introduced in [The CompTox Chemistry Dashboard: a community data resource for environmental chemistry](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0247-6), the CCD contains information on over 1.2 million chemicals as of December, 2023. 
+Accessing chemical data and wrangling it is a vital step in many types of workflows related to chemical, biological, and environmental modeling. While there are many resources available from which one can pull data, the [CompTox Chemicals Dashboard](https://comptox.epa.gov/dashboard/) built and maintained by the United States Environmental Protection Agency is particularly well-designed and suitable for these purposes. Originally introduced in [The CompTox Chemistry Dashboard: a community data resource for environmental chemistry](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0247-6), the CCD contains information on over 1.2 million chemicals as of December 2023. 
 
-The CCD includes chemical information from many different domains, including physicochemical, environmental fate and transport, exposure, usage, in vivo toxicity, and in vitro bioassay data ( Williams et al., 2017).
+The CCD includes chemical information from many different domains, including physicochemical, environmental fate and transport, exposure, usage, in vivo toxicity, and in vitro bioassay data (Williams et al., 2017).
 
 The CCD can be searched either one chemical at a time, or in batch mode.
 
@@ -155,7 +155,7 @@ Moreover, the manual stages of this kind of workflow are also non-transparent an
 # CCTE's Application Programming Interfaces (APIs) for Automated Batch Search of the CCD
 
 
-Recently, the [Center for Computational Toxicology and Exposure](https://www.epa.gov/aboutepa/about-center-computational-toxicology-and-exposure-ccte)(CCTE) developed a set of Application Programming Interfaces (APIs) that allows programmatic access to the CCD, bypassing the manual steps of the web-based batch search workflow. APIs effectively automate the process of accessing and downloading data from the web pages that make up the CCD. 
+Recently, the [Center for Computational Toxicology and Exposure](https://www.epa.gov/aboutepa/about-center-computational-toxicology-and-exposure-ccte) (CCTE) developed a set of Application Programming Interfaces (APIs) that allows programmatic access to the CCD, bypassing the manual steps of the web-based batch search workflow. APIs effectively automate the process of accessing and downloading data from the web pages that make up the CCD. 
 
 
 The [CCTE APIs](https://api-ccte.epa.gov/docs/) are publicly available at no cost to the user. However, in order to use the CCTE APIs, you must have an API key. The API key uniquely identifies you to the CCD servers and verifies that you have permission to access the database. Getting an API key is free, but requires contacting the API support team at [ccte_api@epa.gov](mailto:ccte_api@epa.gov).
@@ -187,9 +187,10 @@ As mentioned above, APIs effectively automate the process of accessing and downl
 
 In the CCD API web interface, the colored boxes next to each endpoint indicate the type of the associated HTTP method: either a GET request ("GET", blue) or a a POST request ("POS", green). GET is used to request data from a specific web resource (e.g. a specific URL); POST is used to send data to a server to create or update a web resource. For the CCD APIs, POST requests are used to perform multiple (batch) searches in a single API call; GET requests are used for non-batch searches. (You do not need to understand the details of POST and GET requests in order to use the API.)
 
-Click on the second item under "Chemical Details Resource", the tab labeled `Get data by DTXSID`. The following page appears.
+Click on the second item under `Chemical Details Resource`, the tab labeled `Get data by DTXSID`. The following page appears.
 
 ![CCTE Get Details by DTXSID](./Pictures/Get Data by DTXSID TOP.png){width=120%}
+
 This page has two subheadings: "Path Parameters" and "Query-String Parameters". "Path Parameters" contains user-specified parameters that are required in order to tell the API what URL (web address) to access. In this case, the required parameter is a string for the DTXSID identifying the chemical to be searched.
 
 "Query-String Parameters" contain user-specific parameters (usually optional) that tell the API what specific type(s) of information to download from the specified URL. In this case, the optional parameter is a `projection` parameter, a string that can take one of five values (`chemicaldetailall`, `chemicaldetailstandard`, `chemicalidentifier`, `chemicalstructure`, `ntatoolkit`). Depending on the value of this string, the API can return different sets of information about the chemical. If the `projection` parameter is left blank, then a default set of chemical information is returned.
@@ -198,7 +199,8 @@ The default return format is displayed below and includes a variety of fields wi
 
 
 ![Fig 7: CCTE Get Details by DTXSID data types](./Pictures/Get Data by DTXSID BOTTOM.png){width=120%}
-We show what returned data from searching Bisphenol A looks like using this endpoint with the "chemicaldetailstandard" `projection` selected.
+
+We show what returned data from searching Bisphenol A looks like using this endpoint with the `chemicaldetailstandard` value for `projection` selected.
 
 ![Fig 8: Bisphenol A output](./Pictures/BPA chemicaldetailstandard.png){width=120%}
 
@@ -239,7 +241,7 @@ To check that your key has successfully been stored for the session, run the fol
 ```{r, eval=FALSE}
 ccte_key()
 ```
-Now, we demonstrate how to retrieve the information for BPA given by the `Chemical Detail Resource` endpoint under the "chemicaldetailstandard" `projection`. Note, this `projection` value is the default value for the function `get_chemical_details()`.
+Now, we demonstrate how to retrieve the information for BPA given by the `Chemical Detail Resource` endpoint under the `chemicaldetailstandard` value for `projection`. Note, this `projection` value is the default value for the function `get_chemical_details()`.
 
 ```{r}
 BPA_chemical_detail <- get_chemical_details(DTXSID = 'DTXSID7020182')
@@ -253,7 +255,7 @@ names(BPA_chemical_detail)
 
 We study two different data sets contained in the CCD and observe how they relate and how they differ. The two data sets that we will explore are a water contaminant priority list and an air toxics list.  
 
-The fourth Drinking Water Contaminant Candidate List (CCL4) is a set of chemicals not subject to any proposed or promulgated national primary drinking water regulations, but are known or anticipated to occur in public water systems. This list was announced on November 17, 2016 and includes 97 chemicals or chemical groups and 12 microbial contaminants. The National-Scale Air Toxics Assessments (NATA) is an ongoing comprehensive evaluation of air toxics in the United States. It uses general information about sources to develop estimates of risks which are more likely to overestimate impacts and underestimate them and is meant for use as a tool for State/Local/Tribal agencies to prioritize pollutants, emission sources and locations of interest for further study in order to gain a better understanding of risks.
+The fourth Drinking Water Contaminant Candidate List (CCL4) is a set of chemicals not subject to any proposed or promulgated national primary drinking water regulations, but are known or anticipated to occur in public water systems. This list was announced on November 17, 2016 and includes 97 chemicals or chemical groups and 12 microbial contaminants. The National-Scale Air Toxics Assessments (NATA) is an ongoing comprehensive evaluation of air toxics in the United States. It uses general information about sources to develop estimates of risks that are more likely to overestimate impacts than underestimate them and is meant for use as a tool for State/Local/Tribal agencies to prioritize pollutants, emission sources and locations of interest for further study in order to gain a better understanding of risks.
 
 These lists can be found in the CCD at [CCL4](https://comptox.epa.gov/dashboard/chemical-lists/CCL4) with additional information at [CCL4 information](https://www.epa.gov/ccl/contaminant-candidate-list-4-ccl-4-0) and [NATADB](https://comptox.epa.gov/dashboard/chemical-lists/NATADB) with additional information at [NATA information](https://www.epa.gov/national-air-toxics-assessment).
 
@@ -459,7 +461,7 @@ vapor
 
 In the plots above, when we graph the data separated both by data set and property type as well as just by data set, we observe the general trend that the NATADB chemicals have a higher mean vapor pressure than the CCL4 chemicals.
 
-Next, we also explore Henry's Law constant and boiling point.
+We also explore Henry's Law constant and boiling point in a similar fashion.
 
 Group by DTXSID.
 
@@ -653,7 +655,7 @@ colnames(ccl4_genotox)
 head(ccl4_genotox)
 ```
 
-The information returned is of the first variety highlighted in the Figure 9, that is, summary data on the available genotoxicity data for each chemical.
+The information returned is of the first variety highlighted in the Figure 10, that is, summary data on the available genotoxicity data for each chemical.
 
 Observe that we have information on 71 chemicals from the CCL4 data and 153 from the NATA data. We note the chemicals not included in the results and then dig into the returned results.
 
@@ -785,7 +787,7 @@ natadb_genetox_details[, .(DTXSIDs = length(unique(dtxsid))),
 ```
 *With this data we may now answer **Environmental Health Question 4**:* The genotoxicity data contains information on which assays have been conducted for different chemicals and the results of those assays. How many chemicals in each data set have a ‘positive’, ‘negative’, and ‘equivocal’ value for the assay result?
 
-**Answer**: For CCL4, there are 64 unique chemicals that have a negative assay result, 53 that have a positive result, and 15 that have an equivocal result. For NATADB, there are 141 unique chemicals that have a negative assay result, 130 that have a positive result, and 48 that have an equivocal result. Observe that since there are 72 unique `dtxsid` value with assay rseults in CCL4 and 153 in NATADB, there are several chemicals that have multiple assay results.
+**Answer**: For CCL4, there are 64 unique chemicals that have a negative assay result, 53 that have a positive result, and 15 that have an equivocal result. For NATADB, there are 141 unique chemicals that have a negative assay result, 130 that have a positive result, and 48 that have an equivocal result. Observe that since there are 72 unique `dtxsid` values with assay results in CCL4 and 153 in NATADB, there are several chemicals that have multiple assay results.
 
 We now determine the chemicals from each data set that are known to have genotoxic effects. For this, we look to see which chemicals produce at least one positive response in the `assayResult` column.
 
@@ -1088,7 +1090,7 @@ natadb_rfd[, .(numeric_value = min(toxvalNumeric),
            by = .(dtxsid)][order(numeric_value),]
 ```
 
-*With these results, we may answer **Environmental Health Question 8**: When examining different toxicity values, the data may be reported in multiple units. To assess the relative hazard from this data, it is important to take into account the different units and adjust accordingly. List the units reported for the cancer slope factor, reference dose, and reference concentration values associated with the oral and inhalation exposure routes for human hazard. Which chemicals in each data set has the highest cancer slope factor, lowest reference dose, and lowest reference concentration values?
+*With these results, we may answer **Environmental Health Question 8**:* When examining different toxicity values, the data may be reported in multiple units. To assess the relative hazard from this data, it is important to take into account the different units and adjust accordingly. List the units reported for the cancer slope factor, reference dose, and reference concentration values associated with the oral and inhalation exposure routes for human hazard. Which chemicals in each data set has the highest cancer slope factor, lowest reference dose, and lowest reference concentration values?
 
 **Answer**: The units for these three toxicity value types for CCL4 are given by 'mg/m3', 'g/m3', 'ug/m3' for RfC, 'mg/kg-day', 'mg/kg' for RfD, and '(mg/kg-day)-1' for Cancer Slope Factor. For NATADB, the units for RfC are given by 'mg/m3' and 'ppm', for RfD by 'mg/kg-day', 'mg/kg', and for Cancer Slope Factor by '(mg/kg-day)-1'.  For CCL4, the chemical DTXSID2021028 has the highest CsF at 150 (mg/kg-day)-1, the chemical DTXSID1031040 has the lowest RfC value at 6.0e-9 mg/m3, and the chemical DTXSID7021029 has the lowest RfD value at 4e-6 mg/kg. For NATADB, the chemical DTXSID2020137 has the highest CsF at 500 (mg/kg-day)-1, the chemical DTXSID1020516 has the lowest RfC value at 2.0e-6 mg/m3, and the chemical DTXSID7021029 had the lowest RfD at 4e-6 mg/kg-day.
 
@@ -1101,7 +1103,7 @@ In conclusion, we explored how one can access publicly available data from the C
 
 
 
-```{r}
+```{r breakdown, echo = FALSE, results = 'hide'}
 # This chunk will be hidden in the final product. It serves to undo defining the
 # custom print function to prevent unexpected behavior after this module during
 # the final knitting process
