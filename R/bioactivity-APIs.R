@@ -40,7 +40,7 @@ get_bioactivity_details <- function(DTXSID = NULL,
   print(data_endpoint)
   print(data_input)
 
-  response <- httr::GET(url = paste0(Server, '/search/', data_endpoint, '/', data_input),
+  response <- httr::GET(url = paste0(Server, '/search/', data_endpoint, '/', ifelse(data_index == 3, prepare_word(data_input), data_input)),
                         httr::add_headers(.headers = c(
                           'Content-Type' = 'application/json',
                           'x-api-key' = API_key)
