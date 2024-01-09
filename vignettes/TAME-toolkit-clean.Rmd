@@ -44,13 +44,20 @@ if (!library(ccdR, logical.return = TRUE)){
 }
 ```
 
-# Introduction to Training Module
+This training module was developed by Dr. Paul Kruse and Dr. Caroline Ring with contributions from Dr. Julia E. Rager.
+
+Fall 2023
+
+*Disclaimer: The views expressed in this document are those of the authours and do not necessarily reflect the views or policies of the U.S. EPA.
+
+
+## Introduction to Training Module
 
 Environmental health research related to chemical exposures often requires accessing and wrangling chemical-specific data. The CompTox Chemicals Dashboard (CCD), developed by the United States Environmental Protection Agency, is a publicly-accessible database that integrates chemical data from multiple domains. Chemical data available on the CCD include physicochemical, environmental fate and transport, exposure, toxicokinetics, functional use, in vivo toxicity, in vitro bioassay, and mass spectra data. The CCD was first described in Williams et al. (2017), and has been continuously expanded since. The CCD is heavily used by researchers who do cheminformatics work of various kinds -- computational toxicology, computational exposure science, analytical chemistry, chemical safety assessment, etc. The CCD is used by cheminformaticians not only at EPA, but across governmental agencies both within the U.S. and worldwide; in private industry; in non-governmental organizations; in academia; and others. It has become an indispensable tool for many researchers.
 
 This training module provides an overview of the physico-chemical, hazard, and bioactivity data available through the CCD; different ways to access these data; and some examples of how these data may be used. We will first introduce the CCD and how to access it. Then we will focus on an automated, programmatic method for retrieving data from the CCD. Through some basic data visualization and analysis, we will explore some data retrieved from the CCD, and gain insights both in how to wrangle the data and combine different methods of accessing the data to build automated pipelines for use in more complex settings.
 
-# Training Module's Environmental Health Questions
+## Training Module's Environmental Health Questions
 
 This training module was specifically developed to answer the following questions:
 
@@ -70,16 +77,16 @@ This training module was specifically developed to answer the following question
 
 8. When examining different toxicity values, the data may be reported in multiple units. To assess the relative hazard from this data, it is important to take into account the different units and adjust accordingly. List the units reported for the cancer slope factor, reference dose, and reference concentration values associated with the oral and inhalation exposure routes for human hazard. Which chemicals in each data set has the highest cancer slope factor, lowest reference dose, and lowest reference concentration values?
 
-# Script Preparations
+## Script Preparations
 
-# Cleaning the global environment
+## Cleaning the global environment
 
 ```{r, eval=FALSE}
 rm(list=ls())
 ```
 
 
-# Installing required R packages
+## Installing required R packages
 
 ```{r, eval=FALSE}
 if (!requireNamespace('ccdR'))
@@ -89,7 +96,7 @@ if (!requireNamespace('ggplot2'))
   install.packages('ggplot2')
 ```
 
-# Loading R packages
+## Loading R packages
 
 ```{r}
 # Used to access the CCTE APIs
@@ -100,7 +107,7 @@ library(ggplot2)
 ```
 
 
-# Introduction to CompTox Chemicals Dashboard
+## Introduction to CompTox Chemicals Dashboard
 
 Accessing chemical data and wrangling it is a vital step in many types of workflows related to chemical, biological, and environmental modeling. While there are many resources available from which one can pull data, the [CompTox Chemicals Dashboard](https://comptox.epa.gov/dashboard/) built and maintained by the United States Environmental Protection Agency is particularly well-designed and suitable for these purposes. Originally introduced in [The CompTox Chemistry Dashboard: a community data resource for environmental chemistry](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0247-6), the CCD contains information on over 1.2 million chemicals as of December 2023. 
 
@@ -108,7 +115,7 @@ The CCD includes chemical information from many different domains, including phy
 
 The CCD can be searched either one chemical at a time, or in batch mode.
 
-## Searching one chemical at a time (single-substance search)
+### Searching one chemical at a time (single-substance search)
 
 In single-substance search, the user types a full or partial chemical identifier (name, CASRN, InChiKey, or DSSTox ID) into a search box on the CCD homepage. Autocomplete provides a list of possible matches; the user selects one by clicking on it, and is then taken to the CCD page for that substance. Figure 1 shows an example: the CCD page for the chemical Bisphenol A. 
 
@@ -116,7 +123,7 @@ In single-substance search, the user types a full or partial chemical identifier
 
 The different domains of data available for this chemical are shown by the tabs on the left side of the page: for example, "Physchem Prop." (physico-chemical properties), "Env. Fate/Transport" (environmental fate and transport data), and "Hazard Data" (*in vivo* hazard and toxicity data), among others. 
 
-## Batch search
+### Batch search
 
 In batch search, the user enters a list of search inputs, separated by newlines, into a batch-search box on https://comptox.epa.gov/dashboard/batch-search . The user selects the type(s) of inputs by selecting one or more checkboxes – these may include chemical identifiers, monoisotopic masses, or molecular formulas. Then, the user selects “Display All Chemicals” to display the list of substances matching the batch-search inputs, or “Choose Export Options” to choose options for exporting the batch-search results as a spreadsheet. The exported spreadsheet may include data from most of the domains available on an individual substance’s CCD page.
 
@@ -129,7 +136,7 @@ The user can download the selected information in various formats, such as Excel
 
 The web interface for batch search only allows input of 10,000 identifiers at a time. If a user needs to retrieve information for more than 10,000 chemicals, they will need to separate their identifiers into multiple batches and search each one separately.
 
-## Challenges of web-based Dashboard search
+### Challenges of web-based Dashboard search
 
 Practicing researchers typically end up with a Dashboard workflow that looks something like this:
 
@@ -152,7 +159,7 @@ Because each of these workflow steps requires manual interaction with the search
 
 Moreover, the manual stages of this kind of workflow are also non-transparent and not easily reproducible. 
 
-# CCTE's Application Programming Interfaces (APIs) for Automated Batch Search of the CCD
+## CCTE's Application Programming Interfaces (APIs) for Automated Batch Search of the CCD
 
 
 Recently, the [Center for Computational Toxicology and Exposure](https://www.epa.gov/aboutepa/about-center-computational-toxicology-and-exposure-ccte) (CCTE) developed a set of Application Programming Interfaces (APIs) that allows programmatic access to the CCD, bypassing the manual steps of the web-based batch search workflow. APIs effectively automate the process of accessing and downloading data from the web pages that make up the CCD. 
@@ -167,7 +174,7 @@ The APIs are organized into three sets of "endpoints" (chemical data domains): `
 
 The APIs can be explored through the pictured web interface at https://api-ccte.epa.gov/docs/chemical.html .
 
-## CCD API Authentication
+### CCD API Authentication
 
 "Authentication" is the first tab on the left. Authentication is required to use the APIs. To authenticate yourself in the API web interface, input your unique API key.
 
@@ -175,13 +182,13 @@ The APIs can be explored through the pictured web interface at https://api-ccte.
 ![Fig 5: CCTE API Key Authentication](./Pictures/CCTE API Key authentication.png){width=120%}
 
 
-## CCD API Endpoints
+### CCD API Endpoints
 
 
 On the left of the API web interface, there are several different tabs, one for each endpoint in the "Chemical" domain. The endpoints are organized by the type of information provided. For instance, the `Chemical Details Resource` endpoint provides basic chemical information; the `Chemical Property Resource` endpoint provides more comprehensive physico-chemical property information; the `Chemical Fate Resource` endpoint provides chemical fate and transport information; and so on. 
 
 
-## Constructing CCD API Requests
+### Constructing CCD API Requests
 
 As mentioned above, APIs effectively automate the process of accessing and downloading data from the web pages that make up the CCD. APIs do this by automatically constructing requests using the Hypertext Transfer Protocol (HTTP) that enables communication between clients (e.g. your computer) and servers (e.g. the CCD).
 
@@ -212,14 +219,14 @@ Formatting an http request is not necessarily intuitive nor worth the time for s
 
 First, we load in ccdR and other libraries we will need for this module.
 
-### Installing required R packages
+#### Installing required R packages
 
 ```{r, eval = FALSE}
 if (!requireNamespace('ccdR'))
   install.packages('ccdR');
 ```
 
-### Loading R packages required for this session
+#### Loading R packages required for this session
 
 ```{r, eval = FALSE}
 library(ccdR)
@@ -251,7 +258,7 @@ names(BPA_chemical_detail)
 ```
 
 
-# Comparing Physico-chemical properties between Two Important Environmental Contaminant Lists
+## Comparing Physico-chemical properties between Two Important Environmental Contaminant Lists
 
 We study two different data sets contained in the CCD and observe how they relate and how they differ. The two data sets that we will explore are a water contaminant priority list and an air toxics list.  
 
@@ -292,7 +299,7 @@ head(ccl4, 1)
 ```
 
 
-## Accessing the physico-chemical data
+### Accessing the physico-chemical data
 
 Once we have the chemicals in each list, we access their physico-chemical properties. We will use the batch search forms of the function `get_chem_info()`, to which we supply a list of DTXSIDs.
 
@@ -358,7 +365,7 @@ ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(Mean_value = sapply(.SD, mean)),
                .SDcols = c("value")][order(propertyId)]
 ```
 
-## Analyzing and visualizing physico-chemical properties from two environmental contaminant lists
+### Analyzing and visualizing physico-chemical properties from two environmental contaminant lists
 
 We consider exploring the differences in mean predicted and experimental values for a variety of physico-chemical properties in an effort to understand better the CCL4 and NATADB lists. In particular, we examine 'vapor-pressure', 'henrys-law', and 'boiling-point' and plot the means by chemical for these using boxplots. We then compare the values by grouping by both data set and `propType` value.
 
@@ -813,7 +820,7 @@ ccl4_genetox_details[dtxsid == 'DTXSID0020153' & assayResult == 'positive',
 
 
 
-# Hazard resource
+## Hazard resource
 
 
 Finally, we examine the hazard data associated with the chemicals in each data set. For each chemical, there will be potentially hundreds of rows of hazard data, so the returned results will be much larger than in most other API endpoints.
@@ -1094,7 +1101,7 @@ natadb_rfd[, .(numeric_value = min(toxvalNumeric),
 
 **Answer**: The units for these three toxicity value types for CCL4 are given by 'mg/m3', 'g/m3', 'ug/m3' for RfC, 'mg/kg-day', 'mg/kg' for RfD, and '(mg/kg-day)-1' for Cancer Slope Factor. For NATADB, the units for RfC are given by 'mg/m3' and 'ppm', for RfD by 'mg/kg-day', 'mg/kg', and for Cancer Slope Factor by '(mg/kg-day)-1'.  For CCL4, the chemical DTXSID2021028 has the highest CsF at 150 (mg/kg-day)-1, the chemical DTXSID1031040 has the lowest RfC value at 6.0e-9 mg/m3, and the chemical DTXSID7021029 has the lowest RfD value at 4e-6 mg/kg. For NATADB, the chemical DTXSID2020137 has the highest CsF at 500 (mg/kg-day)-1, the chemical DTXSID1020516 has the lowest RfC value at 2.0e-6 mg/m3, and the chemical DTXSID7021029 had the lowest RfD at 4e-6 mg/kg-day.
 
-# Concluding remarks
+## Concluding remarks
 
 In conclusion, we explored how one can access publicly available data from the CompTox Chemicals Dashboard programmatically using the CCTE APIs via the ccdR R package. In the examples above, we investigated different types of data associated to chemicals, visualized and aggregated the data, and employed different data wrangling techniques using data.tables to answer the environmental health questions. With these tools, one can build workflows that take in a list of chemicals and gather and process data associated to those chemicals through the CCTE APIs. Consider how you might use this functionality for building models in your own work.
 
