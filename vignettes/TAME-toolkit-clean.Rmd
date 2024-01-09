@@ -1105,7 +1105,9 @@ natadb_rfd[, .(numeric_value = min(toxvalNumeric),
 
 In conclusion, we explored how one can access publicly available data from the CompTox Chemicals Dashboard programmatically using the CCTE APIs via the ccdR R package. In the examples above, we investigated different types of data associated to chemicals, visualized and aggregated the data, and employed different data wrangling techniques using data.tables to answer the environmental health questions. With these tools, one can build workflows that take in a list of chemicals and gather and process data associated to those chemicals through the CCTE APIs. Consider how you might use this functionality for building models in your own work.
 
+## Test Your Knowledge
 
+Try running the same analysis of physical-chemical properties, genotoxicity data, and hazard data on a different pair of data sets available from the CCD. For instance, try pulling the data set 'BIOSOLIDS2021' and work through the same steps we completed in this module to investigate the chemicals in this list to gain a better understanding of the associated data.
 
 
 
