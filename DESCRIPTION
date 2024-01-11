@@ -2,8 +2,10 @@ Type: Package
 Package: ccdR
 Title: Access the CCTE APIs
 Version: 0.1.0
-Authors@R: person( "Kruse", "Paul", email = "kruse.paul@epa.gov", role =
-    c("aut", "cre"), comment = c(ORCID = "0000-0001-5516-9717") )
+Authors@R: c(person( "Kruse", "Paul", email = "kruse.paul@epa.gov", role =
+    c("aut", "cre"), comment = c(ORCID = "0000-0001-5516-9717") ),
+    person("Ring", "Caroline", email = "ring.caroline@epa.gov", 
+    role = c("aut", "cre"), comment = "0000-0002-0463-1251"))
 Description: A package for accessing chemical, hazard, and bioactivity data from the CCTE APIs. The data accessible from the APIs using this package is also available on the CompTox Chemical Dashboard and is provided to the user in a iformat conducive to data analysis.
 License: GPL (>= 3)
 Imports: 
@@ -26,6 +28,7 @@ Suggests:
     rmarkdown,
     testthat (>= 3.0.0),
     XML
+URL: https://bitbucket.epa.gov/projects/CCDR1/repos/ccdr/browse
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 Depends: 
