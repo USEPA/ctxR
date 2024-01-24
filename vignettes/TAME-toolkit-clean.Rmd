@@ -55,7 +55,7 @@ Fall 2023
 
 Environmental health research related to chemical exposures often requires accessing and wrangling chemical-specific data. The CompTox Chemicals Dashboard (CCD), developed by the United States Environmental Protection Agency, is a publicly-accessible database that integrates chemical data from multiple domains. Chemical data available on the CCD include physicochemical, environmental fate and transport, exposure, toxicokinetics, functional use, in vivo toxicity, in vitro bioassay, and mass spectra data. The CCD was first described in Williams et al. (2017), and has been continuously expanded since. The CCD is heavily used by researchers who do cheminformatics work of various kinds -- computational toxicology, computational exposure science, analytical chemistry, chemical safety assessment, etc. The CCD is used by cheminformaticians not only at EPA, but across governmental agencies both within the U.S. and worldwide; in private industry; in non-governmental organizations; in academia; and others. It has become an indispensable tool for many researchers.
 
-This training module provides an overview of the physico-chemical, hazard, and bioactivity data available through the CCD; different ways to access these data; and some examples of how these data may be used. We will first introduce the CCD and how to access it. Then we will focus on an automated, programmatic method for retrieving data from the CCD using the ccdR R package. Through some basic data visualization and analysis using the R programming language, we will explore some data retrieved from the CCD, and gain insights both in how to wrangle the data and combine different methods of accessing the data to build automated pipelines for use in more complex settings.
+This training module provides an overview of the physico-chemical, hazard, and bioactivity data available through the CCD; different ways to access these data; and some examples of how these data may be used. We will first introduce the CCD and how to access it. Then we will focus on an automated, programmatic method for retrieving data from the CCD using the `ccdR` R package. Through some basic data visualization and analysis using the R programming language, we will explore some data retrieved from the CCD, and gain insights both in how to wrangle the data and combine different methods of accessing the data to build automated pipelines for use in more complex settings.
 
 ## Training Module's Environmental Health Questions
 
@@ -75,7 +75,7 @@ This training module was specifically developed to answer the following question
 
 7. There are several types of toxicity values for each exposure route. List the unique toxicity values for the oral and inhalation routes. What are the unique types of toxicity values for the oral route and for the inhalation route? How many of these are common to both the oral and inhalation routes for each data set?
 
-8. When examining different toxicity values, the data may be reported in multiple units. To assess the relative hazard from this data, it is important to take into account the different units and adjust accordingly. List the units reported for the cancer slope factor, reference dose, and reference concentration values associated with the oral and inhalation exposure routes for human hazard. Which chemicals in each data set has the highest cancer slope factor, lowest reference dose, and lowest reference concentration values?
+8. When examining different toxicity values, the data may be reported in multiple units. To assess the relative hazard from this data, it is important to take into account the different units and adjust accordingly. List the units reported for the cancer slope factor, reference dose, and reference concentration values associated with the oral and inhalation exposure routes for human hazard. Which chemicals in each data set have the highest cancer slope factor, lowest reference dose, and lowest reference concentration values?
 
 ## Script Preparations
 
@@ -113,7 +113,7 @@ Accessing chemical data and wrangling it is a vital step in many types of workfl
 
 The CCD includes chemical information from many different domains, including physicochemical, environmental fate and transport, exposure, usage, in vivo toxicity, and in vitro bioassay data (Williams et al., 2017).
 
-The CCD can be searched either one chemical at a time, or in batch mode.
+The CCD can be searched either one chemical at a time, or using a batch search.
 
 ### Searching one chemical at a time (single-substance search)
 
@@ -192,9 +192,9 @@ On the left of the API web interface, there are several different tabs, one for 
 
 As mentioned above, APIs effectively automate the process of accessing and downloading data from the web pages that make up the CCD. APIs do this by automatically constructing requests using the Hypertext Transfer Protocol (HTTP) that enables communication between clients (e.g. your computer) and servers (e.g. the CCD).
 
-In the CCD API web interface, the colored boxes next to each endpoint indicate the type of the associated HTTP method: either a GET request ("GET", blue) or a a POST request ("POS", green). GET is used to request data from a specific web resource (e.g. a specific URL); POST is used to send data to a server to create or update a web resource. For the CCD APIs, POST requests are used to perform multiple (batch) searches in a single API call; GET requests are used for non-batch searches. (You do not need to understand the details of POST and GET requests in order to use the API.)
+In the CCD API web interface, the colored boxes next to each endpoint indicate the type of the associated HTTP method: either a GET request ("GET", blue) or a a POST request ("POS", green). GET is used to request data from a specific web resource (e.g. a specific URL); POST is used to send data to a server to create or update a web resource. For the CCD APIs, POST requests are used to perform multiple (batch) searches in a single API call; GET requests are used for non-batch searches. You do not need to understand the details of POST and GET requests in order to use the API.
 
-Click on the second item under `Chemical Details Resource`, the tab labeled `Get data by DTXSID`. The following page appears.
+Click on the second item under `Chemical Details Resource`, the tab labeled `Get data by DTXSID`. The following page will appear.
 
 ![CCTE Get Details by DTXSID](./Pictures/Get Data by DTXSID TOP.png){width=120%}
 
@@ -215,9 +215,9 @@ We show what returned data from searching Bisphenol A looks like using this endp
 
 Formatting an http request is not necessarily intuitive nor worth the time for someone not already familiar with the process, so these endpoints may provide a resource that for many would require a significant investment in time and energy to learn how to use. However, there is a solution to this in the form of the R package `ccdR`.
 
-`ccdR` was developed to streamline the process of accessing the information available through the CCTE APIs without requiring prior knowledge of how to use APIs. As an example, we demonstrate the ease with which one may retrieve the information given by this endpoint for Bisphenol A using the ccdR approach and contrast it with the approach using the CCD or CCTE Chemical Endpoint website.
+`ccdR` was developed to streamline the process of accessing the information available through the CCTE APIs without requiring prior knowledge of how to use APIs. As an example, we demonstrate the ease with which one may retrieve the information given by this endpoint for Bisphenol A using the `ccdR` approach and contrast it with the approach using the CCD or CCTE Chemical Endpoint website.
 
-First, we load in ccdR and other libraries we will need for this module.
+First, we load in `ccdR` and other libraries we will need for this module.
 
 #### Installing required R packages
 
@@ -262,7 +262,7 @@ names(BPA_chemical_detail)
 
 We study two different data sets contained in the CCD and observe how they relate and how they differ. The two data sets that we will explore are a water contaminant priority list and an air toxics list.  
 
-The fourth Drinking Water Contaminant Candidate List (CCL4) is a set of chemicals that "...are not subject to any proposed or promulgated national primary drinking water regulations, but are known or anticipated to occur in public water systems...". Moreover, this list "...was announced on November 17, 2016. The CCL 4 includes 97 chemicals or chemical groups and 12 microbial contaminants...". The National-Scale Air Toxics Assessments (NATA) is "... EPA's ongoing comprehensive evaluation of air toxics in the United States... a state-of-the-science screening tool for State/Local/Tribal agencies to prioritize pollutants, emission sources and locations of interest for further study in order to gain a better understanding of risks... use general information about sources to develop estimates of risks which are more likely to overestimate impacts than underestimate them...".  
+The fourth Drinking Water Contaminant Candidate List (CCL4) is a set of chemicals that "...are not subject to any proposed or promulgated national primary drinking water regulations, but are known or anticipated to occur in public water systems...." Moreover, this list "...was announced on November 17, 2016. The CCL 4 includes 97 chemicals or chemical groups and 12 microbial contaminants...." The National-Scale Air Toxics Assessments (NATA) is "... EPA's ongoing comprehensive evaluation of air toxics in the United States... a state-of-the-science screening tool for State/Local/Tribal agencies to prioritize pollutants, emission sources and locations of interest for further study in order to gain a better understanding of risks... use general information about sources to develop estimates of risks which are more likely to overestimate impacts than underestimate them...."  
 
 These lists can be found in the CCD at [CCL4](https://comptox.epa.gov/dashboard/chemical-lists/CCL4) with additional information at [CCL4 information](https://www.epa.gov/ccl/contaminant-candidate-list-4-ccl-4-0) and [NATADB](https://comptox.epa.gov/dashboard/chemical-lists/NATADB) with additional information at [NATA information](https://www.epa.gov/national-air-toxics-assessment). The quotes from the previous paragraph were excerpted from list detail descriptions found using the CCD links.
 
@@ -311,9 +311,9 @@ ccl4_phys_chem <- get_chem_info_batch(ccl4$dtxsid)
 natadb_phys_chem <- get_chem_info_batch(natadb$dtxsid)
 ```
 
-Observe that this returns a single data.table for each query, and the data.table contains the physico-chemical properties available from the CompTox Chemicals Dashboard for each chemical in the query. We examine the set of physico-chemical properties for the first chemical in CCL4. 
+Observe that this returns a single data.table for each query, and the data.table contains the physico-chemical properties available from the CompTox Chemicals Dashboard for each chemical in the query. Note, a warning message was triggered, `Warning: Setting type to ''!`, which indicates the the parameter `type` was not given a value. A default value is set within the function and more information can be found in the associated documentation. We examine the set of physico-chemical properties for the first chemical in CCL4. 
 
-Before any deeper analysis, lets take a look at the dimensions of the data and the column names.
+Before any deeper analysis, let's take a look at the dimensions of the data and the column names.
 
 ```{r}
 dim(ccl4_phys_chem)
@@ -614,12 +614,13 @@ A visual inspection of this set of graphs is not as clear as in the previous cas
 
 *Through inspecting the last several plots, we can answer **Environmental Health Question 2**:* The physico-chemical property data are reported with both experimental and predicted values present for many chemicals. Are there differences between the mean predicted and experimental results for a variety of physico-chemical properties? 
 
-**Answer**: There are indeed differences between the mean values of various physico-chemical properties when grouped by predicted or experimental. In the case of 'vapor-pressure', the means of predicted values tend to be a little lower than experimental, though they are much closer in the case of NATADB than CCL4. The trend of lower predicted means compared to experimental means is more clearly demonstrated for 'henrys-law' values in both data sets. In the case of 'boiling-point', the predicted values are greater than the experimental values, though this is much more pronounced in CCL4 while the set of means for NATADB are again fairly close.
+**Answer**: There are indeed differences between the mean values of various physico-chemical properties when grouped by predicted or experimental. In the case of 'vapor-pressure', the means of predicted values tend to be a little lower than experimental, though they are much closer in the case of NATADB than CCL4. The trend of lower predicted means compared to experimental means is more clearly demonstrated for 'henrys-law' values in both data sets. In the case of 'boiling-point', the predicted values are greater than the experimental values, though this is much more pronounced in CCL4 while the set of means for NATADB are again fairly close. 
 
 
 
 
-# Hazard data: Genotoxicity
+
+## Hazard data: Genotoxicity
 
 Now, having examined some of the distributions of the physico-chemical properties of the two lists, aggregated between predicted and experimental, we move towards learning more about these chemicals beyond physico-chemical properties. Specifically, we will examine their genotoxicity.
 
@@ -636,7 +637,7 @@ This page includes two sets of information, the first of which provides a summar
 
 We again use the CCTE APIs to streamline the process of retrieving this information in a programmatic fashion. To this end, we will use the genotoxicity endpoints found within the hazard endpoints of the CCTE APIs. Pictured below in Figure 11 is the particular set of genotoxicity resources available in the hazard endpoints of the CCTE APIs.
 
-![Fig 11: CCTE APIs Hazard endpoint gentoxocity resources](./Pictures/Hazard - genotoxicity resource.png){width=120%}
+![Fig 11: CCTE APIs Hazard endpoint genotoxicity resources](./Pictures/Hazard - genotoxicity resource.png){width=120%}
 
 There are both summary and detail resources, reflecting the information one can find on the CompTox Chemicals Dashboard Genotoxicity page for a given chemical.
 
@@ -937,7 +938,7 @@ natadb_hazard[humanEcoNt %in% 'human health' &
 
 *With these results we may answer **Environmental Health Question 6**:* After pulling the hazard data for the different data sets, list the different exposure routes for which there is data. What are the unique risk assessment classes for hazard values for the oral route and for the inhalation exposure route? For each such exposure route, which risk assessment class is most represented by the data sets?
 
-**Answer**: We listed the general exposure routes above for the hazard data associated to the chemicals in each data set. Restricting our attention to human hazard data, the 'acute' `riskAssessmentClass` is most represented by the inhalation exposure route and 'chronic' for the oral exposure route for both the CCL4 and NATADB data sets. 
+**Answer**: We listed the general exposure routes above for the hazard data associated with the chemicals in each data set. Restricting our attention to human hazard data, the 'acute' `riskAssessmentClass` is most represented by the inhalation exposure route and 'chronic' for the oral exposure route for both the CCL4 and NATADB data sets. 
 
 
 
@@ -1097,13 +1098,13 @@ natadb_rfd[, .(numeric_value = min(toxvalNumeric),
            by = .(dtxsid)][order(numeric_value),]
 ```
 
-*With these results, we may answer **Environmental Health Question 8**:* When examining different toxicity values, the data may be reported in multiple units. To assess the relative hazard from this data, it is important to take into account the different units and adjust accordingly. List the units reported for the cancer slope factor, reference dose, and reference concentration values associated with the oral and inhalation exposure routes for human hazard. Which chemicals in each data set has the highest cancer slope factor, lowest reference dose, and lowest reference concentration values?
+*With these results, we may answer **Environmental Health Question 8**:* When examining different toxicity values, the data may be reported in multiple units. To assess the relative hazard from this data, it is important to take into account the different units and adjust accordingly. List the units reported for the cancer slope factor, reference dose, and reference concentration values associated with the oral and inhalation exposure routes for human hazard. Which chemicals in each data set have the highest cancer slope factor, lowest reference dose, and lowest reference concentration values?
 
 **Answer**: The units for these three toxicity value types for CCL4 are given by 'mg/m3', 'g/m3', 'ug/m3' for RfC, 'mg/kg-day', 'mg/kg' for RfD, and '(mg/kg-day)-1' for Cancer Slope Factor. For NATADB, the units for RfC are given by 'mg/m3' and 'ppm', for RfD by 'mg/kg-day', 'mg/kg', and for Cancer Slope Factor by '(mg/kg-day)-1'.  For CCL4, the chemical DTXSID2021028 has the highest CsF at 150 (mg/kg-day)-1, the chemical DTXSID1031040 has the lowest RfC value at 6.0e-9 mg/m3, and the chemical DTXSID7021029 has the lowest RfD value at 4e-6 mg/kg. For NATADB, the chemical DTXSID2020137 has the highest CsF at 500 (mg/kg-day)-1, the chemical DTXSID1020516 has the lowest RfC value at 2.0e-6 mg/m3, and the chemical DTXSID7021029 had the lowest RfD at 4e-6 mg/kg-day.
 
 ## Concluding remarks
 
-In conclusion, we explored how one can access publicly available data from the CompTox Chemicals Dashboard programmatically using the CCTE APIs via the ccdR R package. In the examples above, we investigated different types of data associated to chemicals, visualized and aggregated the data, and employed different data wrangling techniques using data.tables to answer the environmental health questions. With these tools, one can build workflows that take in a list of chemicals and gather and process data associated to those chemicals through the CCTE APIs. Consider how you might use this functionality for building models in your own work.
+In conclusion, we explored how one can access publicly available data from the CompTox Chemicals Dashboard programmatically using the CCTE APIs via the `ccdR` R package. In the examples above, we investigated different types of data associated with chemicals, visualized and aggregated the data, and employed different data wrangling techniques using data.tables to answer the proposed environmental health questions. With these tools, one can build workflows that take in a list of chemicals and gather and process data associated with those chemicals through the CCTE APIs. Consider how you might use this functionality for building models in your own work.
 
 ## Test Your Knowledge
 
