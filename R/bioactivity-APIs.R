@@ -106,7 +106,15 @@ get_bioactivity_summary <- function(AEID = NULL,
   )
 
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    if (length(response$content) > 0){
+      return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    } else if (length(response$content) == 0){
+      return(list(aeid = NA_integer_,
+                  activeMc = NA_integer_,
+                  totalMc = NA_integer_,
+                  activeSc = as.pairlist(NULL),
+                  totalSc = as.pairlist(NULL)))
+    }
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
