@@ -21,8 +21,8 @@ get_bioactivity_details_batch(
 \item{rate_limit}{Number of seconds to wait between each request}
 }
 \value{
-A named list of data.frames containing bioactivity information for the chemicals with
-  DTXSID or assays with AEID matching the input parameter.
+A named list of data.frames containing bioactivity information for
+  the chemicals with DTXSID or assays with AEID matching the input parameter.
 }
 \description{
 Retrieve bioactivity data from DTXSID or AEID batch
