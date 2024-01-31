@@ -189,7 +189,12 @@ get_annotation_by_aeid <- function(AEID = NULL,
   )
 
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    if (length(response$content) > 0){
+      return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    } else {
+      print('The request was successful but there is no information to return...')
+      return(list())
+    }
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
