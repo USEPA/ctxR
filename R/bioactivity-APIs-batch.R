@@ -3,6 +3,7 @@
 #' @param DTXSID A list of chemical identifier DTXSIDs.
 #' @param AEID A list of assay endpoint identifiers AEIDs.
 #' @param API_key The user-specific API key.
+#' @param Server The root address for the API endpoint
 #' @param rate_limit Number of seconds to wait between each request
 #'
 #' @return A named list of data.frames containing bioactivity information for
