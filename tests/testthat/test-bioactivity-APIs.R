@@ -4,8 +4,8 @@ test_that("Catch missing API", {
 })
 
 test_that("DTXSID/AEID errors", {
-  expect_error(get_bioactivity_details(API_key = 'test_key'), 'Please input a DTXSID or AEID!')
-  expect_error(get_bioactivity_details(DTXSID = 'DTXSID7020182', AEID = 1234, API_key = 'test_key'), 'Please input either a DTXSID or AEID, but not both!')
+  expect_error(get_bioactivity_details(API_key = 'test_key'), 'Please input a DTXSID, AEID, SPID, or m4id!')
+  expect_error(get_bioactivity_details(DTXSID = 'DTXSID7020182', AEID = 1234, API_key = 'test_key'), 'Please input a value for only one of DTXSID, AEID, SPID, or m4id, but not multiple!')
 })
 
 test_that('Return data type', {
