@@ -8,6 +8,7 @@ get_bioactivity_details_batch(
   DTXSID = NULL,
   AEID = NULL,
   API_key = NULL,
+  Server = NULL,
   rate_limit = 0L
 )
 }
