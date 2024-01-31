@@ -19,6 +19,8 @@ get_bioactivity_details_batch(
 
 \item{API_key}{The user-specific API key.}
 
+\item{Server}{The root address for the API endpoint}
+
 \item{rate_limit}{Number of seconds to wait between each request}
 }
 \value{
