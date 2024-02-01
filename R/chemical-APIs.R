@@ -229,6 +229,139 @@ create_data.table_chemical_details <- function(index = -1){
   return(data)
 }
 
+get_chemical_details_by_listname <- function(listname = NULL,
+                                             API_key = NULL,
+                                             Server = chemical_api_server){
+  if (is.null(listname) | !is.character(listname)){
+    stop('Please input a character string for listname!')
+  }
+
+  if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
+
+  response <- httr::GET(url = paste0(Server, '/detail/search/by-listname/', listname),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+  } else {
+    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+  }
+  return()
+
+
+}
+
+get_smiles <- function(name = NULL,
+                       API_key = NULL,
+                       Server = chemical_api_server){
+  if (is.null(name) | !is.character(name)){
+    stop('Please input a character string for name!')
+  }
+
+  if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
+
+  response <- httr::GET(url = paste0(Server, '/opsin/to-smiles/', prepare_word(name)),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+
+  if(response$status_code == 200){
+    return(httr::content(response, as = 'text'))
+  } else {
+    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+  }
+  return()
+
+}
+
+get_InChIKey <- function(name = NULL,
+                         API_key = NULL,
+                         Server = chemical_api_server){
+  if (is.null(name) | !is.character(name)){
+    stop('Please input a character string for name!')
+  }
+
+  if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
+
+  response <- httr::GET(url = paste0(Server, '/opsin/to-inchikey/', prepare_word(name)),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+
+  if(response$status_code == 200){
+    return(httr::content(response, as = 'text'))
+  } else {
+    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+  }
+  return()
+
+}
+
+get_InChI <- function(name = NULL,
+                      API_key = NULL,
+                      Server = chemical_api_server){
+  if (is.null(name) | !is.character(name)){
+    stop('Please input a character string for name!')
+  }
+
+  if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input an API_key!')
+    }
+  }
+
+  response <- httr::GET(url = paste0(Server, '/opsin/to-inchi/', prepare_word(name)),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+
+  if(response$status_code == 200){
+    return(httr::content(response, as = 'text'))
+  } else {
+    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+  }
+  return()
+
+}
+
 #' Get chemicals by property and its value range
 #'
 #' @param start A numeric value, the beginning of the range
