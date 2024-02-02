@@ -434,18 +434,19 @@ natadb_vapor_grouped[, log_transform_mean_vapor_pressure :=
 Now we plot the log transformed data.
 
 First plot the CCL4 data.
-```{r}
+```{r, fig.align='center'}
 ggplot(ccl4_vapor_all, aes(log_transform_mean_vapor_pressure)) +
-  geom_boxplot()
+  geom_boxplot() +
+  coord_flip()
 ggplot(ccl4_vapor_grouped, aes(propType, log_transform_mean_vapor_pressure)) +
   geom_boxplot()
 ```
 
 Then plot the NATA data.
 
-```{r}
+```{r, fig.align='center'}
 ggplot(natadb_vapor_all, aes(log_transform_mean_vapor_pressure)) +
-  geom_boxplot()
+  geom_boxplot() + coord_flip()
 ggplot(natadb_vapor_grouped, aes(propType, log_transform_mean_vapor_pressure)) +
   geom_boxplot()
 ```
@@ -461,7 +462,7 @@ all_vapor_grouped <- rbind(ccl4_vapor_grouped, natadb_vapor_grouped)
 
 Now we plot the combined data. First we color the boxplots based on the property type, with mean log transformed vapor pressure plotted for each data set and property type.
 
-```{r}
+```{r, fig.align='center'}
 vapor_box <- ggplot(all_vapor_grouped, 
                     aes(set, log_transform_mean_vapor_pressure)) + 
   geom_boxplot(aes(color = propType))
@@ -470,9 +471,10 @@ vapor_box
 
 Next we color the boxplots based on the data set.
 
-```{r}
+```{r, , fig.align='center'}
 vapor <- ggplot(all_vapor_grouped, aes(log_transform_mean_vapor_pressure)) +
-  geom_boxplot((aes(color = set)))
+  geom_boxplot((aes(color = set))) + 
+  coord_flip()
 vapor
 ```
 
@@ -537,13 +539,14 @@ all_hlc_grouped <- rbind(ccl4_hlc_grouped, natadb_hlc_grouped)
 
 Plot data.
 
-```{r}
+```{r, , fig.align='center'}
 hlc_box <- ggplot(all_hlc_grouped, aes(set, log_transform_mean_hlc)) + 
   geom_boxplot(aes(color = propType))
 hlc_box
 
 hlc <- ggplot(all_hlc_grouped, aes(log_transform_mean_hlc)) +
-  geom_boxplot(aes(color = set))
+  geom_boxplot(aes(color = set)) +
+  coord_flip()
 hlc
 ```
 
@@ -610,13 +613,14 @@ all_boiling_grouped <- rbind(ccl4_boiling_grouped, natadb_boiling_grouped)
 
 Plot the data.
 
-```{r}
+```{r, , fig.align='center'}
 boiling_box <- ggplot(all_boiling_grouped, aes(set, mean_boiling_point)) + 
   geom_boxplot(aes(color = propType))
 boiling_box
 
 boiling <- ggplot(all_boiling_grouped, aes(mean_boiling_point)) +
-  geom_boxplot(aes(color = set))
+  geom_boxplot(aes(color = set)) + 
+  coord_flip()
 boiling
 ```
 
