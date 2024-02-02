@@ -262,7 +262,7 @@ get_smiles_batch <- function(names = NULL,
   }
   if (!is.null(names)){
     if (!is.character(names) & !all(sapply(names, is.character))){
-      stop('Please input a character list for DTXSID!')
+      stop('Please input a character list for names!')
     }
 
     names <- unique(names)
@@ -282,15 +282,6 @@ get_smiles_batch <- function(names = NULL,
                                'x-api-key' = API_key
                              )),
                              body = jsonlite::toJSON(names[indices[[i]]], auto_unbox = ifelse(length(names[indices[[i]]]) > 1, 'T', 'F')))
-      # response <- httr::GET(url = paste0(Server, '/detail/search/by-dtxsid/'),
-      #                                   httr::add_headers(.headers = c(
-      #                                     'Content-Type' =  'application/json',
-      #                                     'x-api-key' = API_key)),
-      #                                     query = list(d = paste0('[', DTXSID[indices[[i]]], ']'))
-      #                                   )
-
-
-      # print(paste('The response code is', response$status_code, 'for index i =', i))
 
       if (response$status_code == 200){
         if (length(response$content) > 0){
@@ -300,6 +291,281 @@ get_smiles_batch <- function(names = NULL,
         }
         dt[indices[[i]]] <- response_list
         }
+      Sys.sleep(rate_limit)
+    }
+
+  }
+  return(dt)
+
+}
+
+get_molecular_weight_batch <- function(names = NULL,
+                                       API_key = NULL,
+                                       rate_limit = 0L,
+                                       Server = chemical_api_server){
+  if (is.null(API_key) || !is.character(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(names)){
+    if (!is.character(names) & !all(sapply(names, is.character))){
+      stop('Please input a character list for names!')
+    }
+
+    names <- unique(names)
+    num_names <- length(names)
+    indices <- generate_ranges(num_names)
+
+    dt <- character(length = num_names)
+    names(dt) <- names
+
+    for (i in seq_along(indices)){
+      print(paste('The current index is i =', i, 'out of', length(indices)))
+
+      response <- httr::POST(url = paste0(Server, '/indigo/to-molweight'),
+                             httr::add_headers(.headers = c(
+                               'Accept' = 'application/json',
+                               'Content-Type' = 'application/json',
+                               'x-api-key' = API_key
+                             )),
+                             body = jsonlite::toJSON(names[indices[[i]]], auto_unbox = ifelse(length(names[indices[[i]]]) > 1, 'T', 'F')))
+
+      if (response$status_code == 200){
+        if (length(response$content) > 0){
+          response_list <- list(httr::content(response, as = 'text'))
+        } else {
+          response_list <- rep('', times = length(indices[[i]]))
+        }
+        dt[indices[[i]]] <- response_list
+      }
+      Sys.sleep(rate_limit)
+    }
+
+  }
+  return(dt)
+
+}
+
+get_mol_v3000_batch <- function(names = NULL,
+                                API_key = NULL,
+                                rate_limit = 0L,
+                                Server = chemical_api_server){
+  if (is.null(API_key) || !is.character(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(names)){
+    if (!is.character(names) & !all(sapply(names, is.character))){
+      stop('Please input a character list for names!')
+    }
+
+    names <- unique(names)
+    num_names <- length(names)
+    indices <- generate_ranges(num_names)
+
+    dt <- character(length = num_names)
+    names(dt) <- names
+
+    for (i in seq_along(indices)){
+      print(paste('The current index is i =', i, 'out of', length(indices)))
+
+      response <- httr::POST(url = paste0(Server, '/indigo/to-mol3000'),
+                             httr::add_headers(.headers = c(
+                               'Accept' = 'application/json',
+                               'Content-Type' = 'application/json',
+                               'x-api-key' = API_key
+                             )),
+                             body = jsonlite::toJSON(names[indices[[i]]], auto_unbox = ifelse(length(names[indices[[i]]]) > 1, 'T', 'F')))
+
+      if (response$status_code == 200){
+        if (length(response$content) > 0){
+          response_list <- list(httr::content(response, as = 'text'))
+        } else {
+          response_list <- rep('', times = length(indices[[i]]))
+        }
+        dt[indices[[i]]] <- response_list
+      }
+      Sys.sleep(rate_limit)
+    }
+
+  }
+  return(dt)
+
+}
+
+get_mol_v2000_batch <- function(names = NULL,
+                                API_key = NULL,
+                                rate_limit = 0L,
+                                Server = chemical_api_server){
+  if (is.null(API_key) || !is.character(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(names)){
+    if (!is.character(names) & !all(sapply(names, is.character))){
+      stop('Please input a character list for names!')
+    }
+
+    names <- unique(names)
+    num_names <- length(names)
+    indices <- generate_ranges(num_names)
+
+    dt <- character(length = num_names)
+    names(dt) <- names
+
+    for (i in seq_along(indices)){
+      print(paste('The current index is i =', i, 'out of', length(indices)))
+
+      response <- httr::POST(url = paste0(Server, '/indigo/to-mol2000'),
+                             httr::add_headers(.headers = c(
+                               'Accept' = 'application/json',
+                               'Content-Type' = 'application/json',
+                               'x-api-key' = API_key
+                             )),
+                             body = jsonlite::toJSON(names[indices[[i]]], auto_unbox = ifelse(length(names[indices[[i]]]) > 1, 'T', 'F')))
+
+      if (response$status_code == 200){
+        if (length(response$content) > 0){
+          response_list <- list(httr::content(response, as = 'text'))
+        } else {
+          response_list <- rep('', times = length(indices[[i]]))
+        }
+        dt[indices[[i]]] <- response_list
+      }
+      Sys.sleep(rate_limit)
+    }
+
+  }
+  return(dt)
+
+}
+
+get_InChI_batch <- function(names = NULL,
+                             API_key = NULL,
+                             rate_limit = 0L,
+                             Server = chemical_api_server){
+  if (is.null(API_key) || !is.character(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(names)){
+    if (!is.character(names) & !all(sapply(names, is.character))){
+      stop('Please input a character list for names!')
+    }
+
+    names <- unique(names)
+    num_names <- length(names)
+    indices <- generate_ranges(num_names)
+
+    dt <- character(length = num_names)
+    names(dt) <- names
+
+    for (i in seq_along(indices)){
+      print(paste('The current index is i =', i, 'out of', length(indices)))
+
+      response <- httr::POST(url = paste0(Server, '/indigo/to-inchi'),
+                             httr::add_headers(.headers = c(
+                               'Accept' = 'application/json',
+                               'Content-Type' = 'application/json',
+                               'x-api-key' = API_key
+                             )),
+                             body = jsonlite::toJSON(names[indices[[i]]], auto_unbox = ifelse(length(names[indices[[i]]]) > 1, 'T', 'F')))
+
+      if (response$status_code == 200){
+        if (length(response$content) > 0){
+          response_list <- list(httr::content(response, as = 'text'))
+        } else {
+          response_list <- rep('', times = length(indices[[i]]))
+        }
+        dt[indices[[i]]] <- response_list
+      }
+      Sys.sleep(rate_limit)
+    }
+
+  }
+  return(dt)
+
+}
+
+get_canonical_smiles_batch <- function(names = NULL,
+                                       API_key = NULL,
+                                       rate_limit = 0L,
+                                       Server = chemical_api_server){
+  if (is.null(API_key) || !is.character(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      message('Using stored API key!')
+    } else {
+      stop('Please input a character string containing a valid API key!')
+    }
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(names)){
+    if (!is.character(names) & !all(sapply(names, is.character))){
+      stop('Please input a character list for names!')
+    }
+
+    names <- unique(names)
+    num_names <- length(names)
+    indices <- generate_ranges(num_names)
+
+    dt <- character(length = num_names)
+    names(dt) <- names
+
+    for (i in seq_along(indices)){
+      print(paste('The current index is i =', i, 'out of', length(indices)))
+
+      response <- httr::POST(url = paste0(Server, '/indigo/to-canonicalsmiles'),
+                             httr::add_headers(.headers = c(
+                               'Accept' = 'application/json',
+                               'Content-Type' = 'application/json',
+                               'x-api-key' = API_key
+                             )),
+                             body = jsonlite::toJSON(names[indices[[i]]], auto_unbox = ifelse(length(names[indices[[i]]]) > 1, 'T', 'F')))
+
+      if (response$status_code == 200){
+        if (length(response$content) > 0){
+          response_list <- list(httr::content(response, as = 'text'))
+        } else {
+          response_list <- rep('', times = length(indices[[i]]))
+        }
+        dt[indices[[i]]] <- response_list
+      }
       Sys.sleep(rate_limit)
     }
 
