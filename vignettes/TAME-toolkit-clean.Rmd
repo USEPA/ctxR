@@ -119,7 +119,10 @@ The CCD can be searched either one chemical at a time, or using a batch search.
 
 In single-substance search, the user types a full or partial chemical identifier (name, CASRN, InChiKey, or DSSTox ID) into a search box on the CCD homepage. Autocomplete provides a list of possible matches; the user selects one by clicking on it, and is then taken to the CCD page for that substance. Figure 1 shows an example: the CCD page for the chemical Bisphenol A. 
 
-![Fig 1: Bisphenol A landing page](./Pictures/CCD_BPA_page.png){width=120%}
+```{r, echo = FALSE, out.width= "90%", fig.align= 'center', fig.cap= "Fig 1: Bisphenol A landing page"}
+knitr::include_graphics('./Pictures/CCD_BPA_page.png')
+```
+
 
 The different domains of data available for this chemical are shown by the tabs on the left side of the page: for example, "Physchem Prop." (physico-chemical properties), "Env. Fate/Transport" (environmental fate and transport data), and "Hazard Data" (*in vivo* hazard and toxicity data), among others. 
 
@@ -128,11 +131,16 @@ The different domains of data available for this chemical are shown by the tabs 
 In batch search, the user enters a list of search inputs, separated by newlines, into a batch-search box on https://comptox.epa.gov/dashboard/batch-search . The user selects the type(s) of inputs by selecting one or more checkboxes – these may include chemical identifiers, monoisotopic masses, or molecular formulas. Then, the user selects “Display All Chemicals” to display the list of substances matching the batch-search inputs, or “Choose Export Options” to choose options for exporting the batch-search results as a spreadsheet. The exported spreadsheet may include data from most of the domains available on an individual substance’s CCD page.
 
 
-![Fig 2: CCD Batch Search](./Pictures/CCD_Batch_Search.png){width=120%}
+```{r, echo = FALSE, out.width = "90%", fig.align = 'center', fig.cap="Fig 2: CCD Batch Search"}
+knitr::include_graphics('./Pictures/CCD_Batch_Search.png')
+```
 
 The user can download the selected information in various formats, such as Excel (.xlsx), comma-separated values (.csv), or different types of chemical table files (.e.g, MOL). 
 
-![Fig 3: CCD Batch Search Customize Export Results](./Pictures/CCD_Batch_Search_customize_export_results.png){width=120%}
+```{r, echo=FALSE, out.width="90%", fig.align='center', fig.cap='Fig 3: CCD Batch Search Customize Export'}
+knitr::include_graphics('./Pictures/CCD_Batch_Search_customize_export_results.png')
+```
+
 
 The web interface for batch search only allows input of 10,000 identifiers at a time. If a user needs to retrieve information for more than 10,000 chemicals, they will need to separate their identifiers into multiple batches and search each one separately.
 
@@ -169,8 +177,9 @@ The [CCTE APIs](https://api-ccte.epa.gov/docs/) are publicly available at no cos
 
 The APIs are organized into three sets of "endpoints" (chemical data domains): `Chemical`, `Hazard`, and `Bioactivity`. Pictured below in Figure 4 is what the `Chemical` section looks like and can be found at [CCTE API Chemical Endpoints](https://api-ccte.epa.gov/docs/chemical.html).
 
-![Fig 4: CCTE API Chemical Endpoints](./Pictures/CCTE_Chemical_API_endpoints.png){width=120%}
-
+```{r, echo = FALSE, out.width = "90%", fig.align='center', fig.cap="Fig 4: CCTE API Chemical Endpoints"}
+knitr::include_graphics('./Pictures/CCTE_Chemical_API_endpoints.png')
+```
 
 The APIs can be explored through the pictured web interface at https://api-ccte.epa.gov/docs/chemical.html .
 
@@ -178,8 +187,9 @@ The APIs can be explored through the pictured web interface at https://api-ccte.
 
 `Authentication` is the first tab on the left. Authentication is required to use the APIs. To authenticate yourself in the API web interface, input your unique API key.
 
-
-![Fig 5: CCTE API Key Authentication](./Pictures/CCTE_API_Key_authentication.png){width=120%}
+```{r, echo = FALSE, out.width = "90%", fig.align='center', fig.cap="Fig 5: CCTE API Key Authentication"}
+knitr::include_graphics("./Pictures/CCTE_API_Key_authentication.png")
+```
 
 
 ### CCTE API Endpoints
@@ -196,7 +206,10 @@ In the CCTE API web interface, the colored boxes next to each endpoint indicate 
 
 Click on the second item under `Chemical Details Resource`, the tab labeled `Get data by dtxsid`. The following page will appear.
 
-![Fig 6: CCTE Get Details by DTXSID](./Pictures/Get_Data_by_DTXSID_TOP.png){width=120%}
+```{r, echo = FALSE, out.width = "90%", fig.align='center', fig.cap="Fig 6: CCTE Get Details by DTXSID"}
+knitr::include_graphics("./Pictures/Get_Data_by_DTXSID_TOP.png")
+```
+
 
 This page has two subheadings: "Path Parameters" and "Query-String Parameters". "Path Parameters" contains user-specified parameters that are required in order to tell the API what URL (web address) to access. In this case, the required parameter is a string for the DTXSID identifying the chemical to be searched.
 
@@ -204,13 +217,16 @@ This page has two subheadings: "Path Parameters" and "Query-String Parameters". 
 
 The default return format is displayed below and includes a variety of fields with data types represented.
 
+```{r, echo = FALSE, out.width = "90%", fig.align='center', fig.cap= "Fig 7: CCTE Get Details by DTXSID data types"}
+knitr::include_graphics("./Pictures/Get_Data_by_DTXSID_BOTTOM.png")
+```
 
-![Fig 7: CCTE Get Details by DTXSID data types](./Pictures/Get_Data_by_DTXSID_BOTTOM.png){width=120%}
 
 We show what returned data from searching Bisphenol A looks like using this endpoint with the `chemicaldetailstandard` value for `projection` selected.
 
-![Fig 8: Bisphenol A output](./Pictures/BPA_chemicaldetailstandard.png){width=120%}
-
+```{r, echo = FALSE, out.width = "90%", fig.align='center', fig.cap="Fig 8: Bisphenol A output"}
+knitr::include_graphics("./Pictures/BPA_chemicaldetailstandard.png")
+```
 
 
 Formatting an http request is not necessarily intuitive nor worth the time for someone not already familiar with the process, so these endpoints may provide a resource that for many would require a significant investment in time and energy to learn how to use. However, there is a solution to this in the form of the R package `ccdR`.
@@ -618,18 +634,23 @@ Now, having examined some of the distributions of the physico-chemical propertie
 
 Using the standard CompTox Chemicals Dashboard approach to access genotoxicity, one would again navigate to the individual chemical page 
 
-![Fig 9: CompTox Chemicals Dashboard Genotoxicity](./Pictures/BPA_Hazard_data_-_Genotoxicity.png){width=120%}
-
+```{r, echo = FALSE, out.width = "90%", fig.align='center', fig.cap="Fig 9: CompTox Chemicals Dashboard Genotoxicity"}
+knitr::include_graphics("./Pictures/BPA_Hazard_data_-_Genotoxicity.png")
+```
 
 Once one navigates to the genotoxicity tab highlighted in the previous page, the following is displayed as seen in Figure 10.
 
-![Fig 10: CompTox Chemicals Dashboard BPA Genotoxicity](./Pictures/CCD_BPA_genotoxicity.png){width=120%}
+```{r, echo = FALSE, out.width = "90%", fig.align='center', fig.cap="Fig 10: CompTox Chemicals Dashboard BPA Genotoxicity"}
+knitr::include_graphics("./Pictures/CCD_BPA_genotoxicity.png")
+```
 
 This page includes two sets of information, the first of which provides a summary of available genotoxicity data while the second provides the individual reports and samples of such data.
 
 We again use the CCTE APIs to streamline the process of retrieving this information in a programmatic fashion. To this end, we will use the genotoxicity endpoints found within the `Hazard` endpoints of the CCTE APIs. Pictured below in Figure 11 is the particular set of genotoxicity resources available in the `Hazard` endpoints of the CCTE APIs.
 
-![Fig 11: CCTE APIs Hazard endpoint genotoxicity resources](./Pictures/Hazard_-_genotoxicity_resource.png){width=120%}
+```{r, echo = FALSE, out.width = "90%", fig.align='center', fig.cap="Fig 11: CCTE APIs Hazard endpoint genotoxicity resources"}
+knitr::include_graphics("./Pictures/Hazard_-_genotoxicity_resource.png")
+```
 
 There are both summary and detail resources, reflecting the information one can find on the CompTox Chemicals Dashboard Genotoxicity page for a given chemical.
 
