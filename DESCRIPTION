@@ -25,7 +25,6 @@ Suggests:
     countcolors,
     devtools,
     ggplot2,
-    httptest,
     knitr,
     rmarkdown,
     testthat (>= 3.0.0),
