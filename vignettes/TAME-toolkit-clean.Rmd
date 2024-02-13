@@ -39,6 +39,10 @@ registerS3method(
 
 ```{r, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
 # This code chunk is included during the development of this rmd and must be removed when deployed!!!
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# KYLE, PLEASE REMOVE THIS ONCE YOU HAVE A COPY OF CCDR AVAILABLE #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#
 if (!library(ccdR, logical.return = TRUE)){
   devtools::load_all()
 }
@@ -46,7 +50,7 @@ if (!library(ccdR, logical.return = TRUE)){
 
 This training module was developed by Paul Kruse (PhD) and Caroline Ring (PhD), with contributions from Julia E. Rager (PhD).
 
-Fall 2023
+Spring 2024
 
 *Disclaimer: The views expressed in this document are those of the authors and do not necessarily reflect the views or policies of the U.S. EPA.*
 
@@ -100,6 +104,11 @@ if (!requireNamespace('ggplot2'))
 
 ```{r}
 # Used to access the CCTE APIs
+#
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# KYLE, PLEASE UNCOMMENT 'library(ccdR)' ONCE YOU HAVE A COPY OF CCDR AVAILABLE #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+#
 #library(ccdR)
 
 # Used to visualize data in a variety of plot designs
