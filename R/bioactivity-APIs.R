@@ -27,8 +27,6 @@ get_bioactivity_details <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -63,7 +61,9 @@ get_bioactivity_details <- function(DTXSID = NULL,
   #   )
   # }
 
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
@@ -93,8 +93,6 @@ get_bioactivity_summary <- function(AEID = NULL,
     if (has_ccte_key()){
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -104,7 +102,9 @@ get_bioactivity_summary <- function(AEID = NULL,
                           'x-api-key' = API_key)
                         )
   )
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     if (length(response$content) > 0){
       return(jsonlite::fromJSON(httr::content(response, as = 'text')))
@@ -137,8 +137,6 @@ get_all_assays <- function(API_key = NULL,
     if (has_ccte_key()){
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -148,7 +146,9 @@ get_all_assays <- function(API_key = NULL,
                            'x-api-key' = API_key)
                          )
   )
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
@@ -176,8 +176,6 @@ get_annotation_by_aeid <- function(AEID = NULL,
     if (has_ccte_key()){
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -187,7 +185,9 @@ get_annotation_by_aeid <- function(AEID = NULL,
                           'x-api-key' = API_key)
                         )
   )
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     if (length(response$content) > 0){
       return(jsonlite::fromJSON(httr::content(response, as = 'text')))
