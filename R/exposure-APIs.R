@@ -76,7 +76,7 @@ get_exposure_functional_use_probability <- function(DTXSID = NULL,
   return()
 }
 
-#' Retireve functional use categories
+#' Retrieve functional use categories
 #'
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint

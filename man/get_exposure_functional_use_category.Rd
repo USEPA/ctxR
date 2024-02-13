@@ -2,7 +2,7 @@
 % Please edit documentation in R/exposure-APIs.R
 \name{get_exposure_functional_use_category}
 \alias{get_exposure_functional_use_category}
-\title{Retireve functional use categories}
+\title{Retrieve functional use categories}
 \usage{
 get_exposure_functional_use_category(
   API_key = NULL,
@@ -18,5 +18,5 @@ get_exposure_functional_use_category(
 A data.frame of functional use categories.
 }
 \description{
-Retireve functional use categories
+Retrieve functional use categories
 }
