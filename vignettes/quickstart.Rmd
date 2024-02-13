@@ -13,6 +13,8 @@ knitr::opts_chunk$set(
   comment = "#>",
   eval = (nchar(Sys.getenv('CCTE_API_KEY')) > 0)
 )
+library(httptest)
+start_vignette("1")
 ```
 
 
@@ -387,3 +389,7 @@ head(assay_id_search)
 print(Sys.getenv('NOT_CRAN'))
 ```
 
+
+```{r, include=FALSE}
+end_vignette()
+```

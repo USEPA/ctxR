@@ -12,6 +12,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+library(httptest)
+start_vignette("2")
 ```
 
 ```{r setup}
@@ -603,3 +605,8 @@ natadb_rfd[, .(numeric_value = min(toxvalNumeric), units = units[which.min(toxva
 
 
 We do a few comparisons of physico-chemical properties on chemicals from a few different lists from the CCD. In particular, we examine the vapor pressure of chemicals found in the [ASPECT](https://comptox.epa.gov/dashboard/chemical-lists/ASPECT) list and the [USGS](https://comptox.epa.gov/dashboard/chemical-lists/USGSWATER) list, which roughly focus on chemicals found in air and water, respectively.
+
+
+```{r, include=FALSE}
+end_vignette()
+```

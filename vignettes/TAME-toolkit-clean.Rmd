@@ -12,6 +12,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+library(httptest)
+start_vignette("3")
 ```
 
 ```{r setup, echo = FALSE}
@@ -1165,3 +1167,6 @@ head(ccl4, 1)
 
 
 
+```{r, include=FALSE}
+end_vignette()
+```

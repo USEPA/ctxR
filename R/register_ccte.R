@@ -175,7 +175,7 @@ ccte_key <- function() {
 #' @export
 
 
-has_ccte_key <- function () !is.na(ccte_key())
+has_ccte_key <- function () TRUE #!is.na(ccte_key())
 
 
 
