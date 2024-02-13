@@ -34,8 +34,6 @@ get_chemical_details_batch <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -105,8 +103,6 @@ get_chemical_details_batch_2 <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -252,8 +248,6 @@ get_smiles_batch <- function(names = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -307,8 +301,6 @@ get_molecular_weight_batch <- function(names = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -362,8 +354,6 @@ get_mol_v3000_batch <- function(names = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -417,8 +407,6 @@ get_mol_v2000_batch <- function(names = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -472,8 +460,6 @@ get_InChI_batch <- function(names = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -527,8 +513,6 @@ get_canonical_smiles_batch <- function(names = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -596,8 +580,6 @@ get_chemical_by_property_range_batch <- function(start_list = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
 
@@ -680,8 +662,6 @@ get_chem_info_batch_old <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -755,8 +735,6 @@ get_chem_info_batch <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -847,8 +825,6 @@ get_fate_by_dtxsid_batch_old <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -901,8 +877,6 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -977,8 +951,6 @@ chemical_starts_with_batch <- function(word_list = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -1031,8 +1003,6 @@ chemical_equal_batch <- function(word_list = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -1085,8 +1055,6 @@ chemical_contains_batch <- function(word_list = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -1140,8 +1108,6 @@ get_msready_by_mass_batch <- function(start_list = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if(is.null(start_list) || is.null(end_list)){
@@ -1202,8 +1168,6 @@ get_msready_by_formula_batch <- function(formula_list = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -1255,8 +1219,6 @@ get_msready_by_dtxcid_batch <- function(DTXCID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -1314,8 +1276,6 @@ get_chemical_lists_by_type_batch <- function(type_list = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -1375,8 +1335,6 @@ get_public_chemical_list_by_name_batch <- function(name_list = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -1429,8 +1387,6 @@ get_lists_containing_chemical_batch <- function(chemical_list = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -1483,8 +1439,6 @@ get_chemicals_in_list_batch <- function(list_names = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -1539,8 +1493,6 @@ get_chemical_mrv_batch <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -1618,8 +1570,6 @@ get_chemical_mol_batch <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -1701,8 +1651,6 @@ get_chemical_image_batch <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -1783,8 +1731,6 @@ get_chemical_synonym_batch <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
