@@ -15,8 +15,6 @@ get_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -70,8 +68,6 @@ get_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -170,8 +166,6 @@ get_human_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -224,8 +218,6 @@ get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -289,8 +281,6 @@ get_ecotox_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -343,8 +333,6 @@ get_ecotox_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -409,8 +397,6 @@ get_skin_eye_hazard_batch_old <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -465,8 +451,6 @@ get_skin_eye_hazard_batch <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -542,8 +526,6 @@ get_cancer_hazard_batch_old <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -598,8 +580,6 @@ get_cancer_hazard_batch <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -670,8 +650,6 @@ get_genetox_summary_batch_old <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -727,8 +705,6 @@ get_genetox_summary_batch <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -802,8 +778,6 @@ get_genetox_details_batch_old <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -859,8 +833,6 @@ get_genetox_details_batch <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){

@@ -23,12 +23,11 @@ get_chemical_details <- function(DTXSID = NULL,
     stop('Please input a DTXSID or DTXCID!')
   else if (!is.null(DTXSID) & !is.null(DTXCID))
     stop('Please input either a DTXSID or DTXCID, but not both!')
-  else if (is.null(API_key)){
+
+  if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -76,7 +75,9 @@ get_chemical_details <- function(DTXSID = NULL,
     )
   }
 
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     empty_table <- create_data.table_chemical_details(index = index)
     data_list <- jsonlite::fromJSON(httr::content(response, as = 'text')) #Parse to list
@@ -240,8 +241,6 @@ get_chemical_details_by_listname <- function(listname = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -252,7 +251,9 @@ get_chemical_details_by_listname <- function(listname = NULL,
                         )
   )
 
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
@@ -274,8 +275,6 @@ get_smiles <- function(name = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -286,7 +285,9 @@ get_smiles <- function(name = NULL,
                         )
   )
 
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(httr::content(response, as = 'text'))
   } else {
@@ -307,8 +308,6 @@ get_InChIKey <- function(name = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -319,7 +318,9 @@ get_InChIKey <- function(name = NULL,
                         )
   )
 
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(httr::content(response, as = 'text'))
   } else {
@@ -340,8 +341,6 @@ get_InChI <- function(name = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -352,7 +351,9 @@ get_InChI <- function(name = NULL,
                         )
   )
 
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(httr::content(response, as = 'text'))
   } else {
@@ -384,8 +385,6 @@ get_chemical_by_property_range <- function(start = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -412,7 +411,9 @@ get_chemical_by_property_range <- function(start = NULL,
                           )
                         )
 
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
     } else {
@@ -446,8 +447,6 @@ get_chem_info <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -487,7 +486,9 @@ get_chem_info <- function(DTXSID = NULL,
 #                        )
 
 
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
@@ -516,8 +517,6 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -528,6 +527,9 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
                         )
   )
 
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
@@ -559,8 +561,6 @@ chemical_starts_with <- function(word = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -607,8 +607,6 @@ chemical_equal <- function(word = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -620,7 +618,9 @@ chemical_equal <- function(word = NULL,
                           'x-api-key' = API_key)
                         )
   )
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
@@ -657,8 +657,6 @@ chemical_contains <- function(word = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -670,7 +668,9 @@ chemical_contains <- function(word = NULL,
                           'x-api-key' = API_key)
                         )
   )
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
@@ -734,8 +734,6 @@ get_msready_by_mass <- function(start = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -756,7 +754,9 @@ get_msready_by_mass <- function(start = NULL,
                           'x-api-key' = API_key)
                         )
   )
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
@@ -790,8 +790,6 @@ get_msready_by_formula <- function(formula = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -801,7 +799,9 @@ get_msready_by_formula <- function(formula = NULL,
                           'x-api-key' = API_key)
                         )
   )
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
@@ -835,8 +835,6 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -846,7 +844,9 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
                           'x-api-key' = API_key)
                         )
   )
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
@@ -884,8 +884,6 @@ get_chemical_lists_by_type <- function(type = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -915,7 +913,9 @@ get_chemical_lists_by_type <- function(type = NULL,
                           'x-api-key' = API_key)
                         )
   )
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
@@ -953,8 +953,6 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -985,7 +983,9 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
                           'x-api-key' = API_key)
                         )
   )
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(data.frame(jsonlite::fromJSON(httr::content(response, as = 'text'))))
   } else {
@@ -1014,8 +1014,6 @@ get_lists_containing_chemical <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -1025,7 +1023,9 @@ get_lists_containing_chemical <- function(DTXSID = NULL,
                           'x-api-key' = API_key)
                         )
   )
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
@@ -1054,8 +1054,6 @@ get_chemicals_in_list <- function(list_name = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -1067,7 +1065,9 @@ get_chemicals_in_list <- function(list_name = NULL,
                           'x-api-key' = API_key)
                         )
   )
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
@@ -1098,8 +1098,6 @@ get_all_public_chemical_lists <- function(Projection = '',
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -1129,7 +1127,9 @@ get_all_public_chemical_lists <- function(Projection = '',
                           'x-api-key' = API_key)
                         )
   )
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
@@ -1163,8 +1163,6 @@ get_chemical_mrv <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -1183,7 +1181,9 @@ get_chemical_mrv <- function(DTXSID = NULL,
                           )
     )
   }
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(httr::content(response))
   } else {
@@ -1216,8 +1216,6 @@ get_chemical_mol <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -1236,7 +1234,9 @@ get_chemical_mol <- function(DTXSID = NULL,
                           )
     )
   }
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(httr::content(response))
   } else {
@@ -1275,8 +1275,6 @@ get_chemical_image <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
   if (format == 'png'){
@@ -1302,7 +1300,9 @@ get_chemical_image <- function(DTXSID = NULL,
                           )
     )
   }
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(httr::content(response))
   } else {
@@ -1331,8 +1331,6 @@ get_chemical_synonym <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -1343,7 +1341,9 @@ get_chemical_synonym <- function(DTXSID = NULL,
                           'x-api-key' = API_key)
                         )
   )
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {

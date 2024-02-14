@@ -1,0 +1,26 @@
+[
+    {
+        "id": 74,
+        "source": "CalEPA",
+        "url": "https://oehha.ca.gov/proposition-65/proposition-65-list",
+        "cancerCall": "Likely Human Carcinogen",
+        "dtxsid": "DTXSID0021125",
+        "exposureRoute": "-"
+    },
+    {
+        "id": 75,
+        "source": "IARC",
+        "url": "https://monographs.iarc.fr/list-of-classifications-volumes/",
+        "cancerCall": "Group 2B - Possibly carcinogenic to humans",
+        "dtxsid": "DTXSID0021125",
+        "exposureRoute": "-"
+    },
+    {
+        "id": 76,
+        "source": "NTP ROC",
+        "url": "https://ntp.niehs.nih.gov/pubhealth/roc/index-1.html#toc1",
+        "cancerCall": "Reasonably Anticipated To Be Human Carcinogen",
+        "dtxsid": "DTXSID0021125",
+        "exposureRoute": "-"
+    }
+]

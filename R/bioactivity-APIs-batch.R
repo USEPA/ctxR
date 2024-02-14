@@ -20,8 +20,6 @@ get_bioactivity_details_batch <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -104,8 +102,6 @@ get_bioactivity_summary_batch <- function(AEID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -163,8 +159,6 @@ get_annotation_by_aeid_batch <- function(AEID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input a character string containing a valid API key!')
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){

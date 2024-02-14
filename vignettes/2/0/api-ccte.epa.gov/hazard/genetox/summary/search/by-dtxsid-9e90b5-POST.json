@@ -1,0 +1,1379 @@
+[
+    {
+        "id": 16410,
+        "reportsPositive": 26,
+        "reportsNegative": 5,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID0020153"
+    },
+    {
+        "id": 24393,
+        "reportsPositive": 10,
+        "reportsNegative": 6,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID0020448"
+    },
+    {
+        "id": 21307,
+        "reportsPositive": 0,
+        "reportsNegative": 2,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID0020523"
+    },
+    {
+        "id": 17542,
+        "reportsPositive": 5,
+        "reportsNegative": 4,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID0020529"
+    },
+    {
+        "id": 23984,
+        "reportsPositive": 20,
+        "reportsNegative": 0,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID0020600"
+    },
+    {
+        "id": 23979,
+        "reportsPositive": 91,
+        "reportsNegative": 8,
+        "reportsOther": 2,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID0020868"
+    },
+    {
+        "id": 23690,
+        "reportsPositive": 5,
+        "reportsNegative": 12,
+        "reportsOther": 7,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID0021381"
+    },
+    {
+        "id": 24426,
+        "reportsPositive": 10,
+        "reportsNegative": 10,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID0021383"
+    },
+    {
+        "id": 23875,
+        "reportsPositive": 33,
+        "reportsNegative": 7,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID0021541"
+    },
+    {
+        "id": 16386,
+        "reportsPositive": 2,
+        "reportsNegative": 5,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID0021834"
+    },
+    {
+        "id": 17090,
+        "reportsPositive": 0,
+        "reportsNegative": 8,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID0021917"
+    },
+    {
+        "id": 17494,
+        "reportsPositive": 1,
+        "reportsNegative": 5,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID0021965"
+    },
+    {
+        "id": 23876,
+        "reportsPositive": 9,
+        "reportsNegative": 7,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID0024187"
+    },
+    {
+        "id": 23997,
+        "reportsPositive": 0,
+        "reportsNegative": 4,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID0024260"
+    },
+    {
+        "id": 21512,
+        "reportsPositive": 27,
+        "reportsNegative": 8,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID0039227"
+    },
+    {
+        "id": 24432,
+        "reportsPositive": 2,
+        "reportsNegative": 8,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID0039229"
+    },
+    {
+        "id": 25506,
+        "reportsPositive": 13,
+        "reportsNegative": 0,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID1020148"
+    },
+    {
+        "id": 23972,
+        "reportsPositive": 11,
+        "reportsNegative": 8,
+        "reportsOther": 2,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID1020302"
+    },
+    {
+        "id": 23002,
+        "reportsPositive": 8,
+        "reportsNegative": 7,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID1020306"
+    },
+    {
+        "id": 16816,
+        "reportsPositive": 1,
+        "reportsNegative": 5,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID1020431"
+    },
+    {
+        "id": 23992,
+        "reportsPositive": 0,
+        "reportsNegative": 1,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID1020437"
+    },
+    {
+        "id": 24454,
+        "reportsPositive": 15,
+        "reportsNegative": 1,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID1020512"
+    },
+    {
+        "id": 21951,
+        "reportsPositive": 13,
+        "reportsNegative": 8,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID1020516"
+    },
+    {
+        "id": 16834,
+        "reportsPositive": 27,
+        "reportsNegative": 6,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID1020566"
+    },
+    {
+        "id": 23985,
+        "reportsPositive": 12,
+        "reportsNegative": 7,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID1021374"
+    },
+    {
+        "id": 25142,
+        "reportsPositive": 19,
+        "reportsNegative": 4,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID1021798"
+    },
+    {
+        "id": 25527,
+        "reportsPositive": 3,
+        "reportsNegative": 20,
+        "reportsOther": 2,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID1021827"
+    },
+    {
+        "id": 21666,
+        "reportsPositive": 14,
+        "reportsNegative": 5,
+        "reportsOther": 3,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID1022057"
+    },
+    {
+        "id": 22539,
+        "reportsPositive": 1,
+        "reportsNegative": 3,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID1023786"
+    },
+    {
+        "id": 22722,
+        "reportsPositive": 30,
+        "reportsNegative": 2,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID1024045"
+    },
+    {
+        "id": 24216,
+        "reportsPositive": 0,
+        "reportsNegative": 6,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID1024382"
+    },
+    {
+        "id": 25380,
+        "reportsPositive": 15,
+        "reportsNegative": 16,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID1026164"
+    },
+    {
+        "id": 24146,
+        "reportsPositive": 1,
+        "reportsNegative": 2,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID1049641"
+    },
+    {
+        "id": 25209,
+        "reportsPositive": 23,
+        "reportsNegative": 1,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID2020137"
+    },
+    {
+        "id": 18022,
+        "reportsPositive": 5,
+        "reportsNegative": 0,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID2020262"
+    },
+    {
+        "id": 17558,
+        "reportsPositive": 2,
+        "reportsNegative": 14,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID2020507"
+    },
+    {
+        "id": 17405,
+        "reportsPositive": 1,
+        "reportsNegative": 2,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID2020682"
+    },
+    {
+        "id": 24177,
+        "reportsPositive": 0,
+        "reportsNegative": 7,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID2020688"
+    },
+    {
+        "id": 24128,
+        "reportsPositive": 0,
+        "reportsNegative": 1,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID2020711"
+    },
+    {
+        "id": 24499,
+        "reportsPositive": 5,
+        "reportsNegative": 4,
+        "reportsOther": 12,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID2020844"
+    },
+    {
+        "id": 24666,
+        "reportsPositive": 0,
+        "reportsNegative": 6,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID2021105"
+    },
+    {
+        "id": 24405,
+        "reportsPositive": 0,
+        "reportsNegative": 8,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID2021157"
+    },
+    {
+        "id": 24807,
+        "reportsPositive": 0,
+        "reportsNegative": 4,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID2021159"
+    },
+    {
+        "id": 16408,
+        "reportsPositive": 86,
+        "reportsNegative": 52,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID2021284"
+    },
+    {
+        "id": 25422,
+        "reportsPositive": 38,
+        "reportsNegative": 14,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID2021286"
+    },
+    {
+        "id": 17785,
+        "reportsPositive": 5,
+        "reportsNegative": 8,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID2021319"
+    },
+    {
+        "id": 18023,
+        "reportsPositive": 0,
+        "reportsNegative": 18,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID2021446"
+    },
+    {
+        "id": 17667,
+        "reportsPositive": 16,
+        "reportsNegative": 9,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID2021658"
+    },
+    {
+        "id": 22998,
+        "reportsPositive": 3,
+        "reportsNegative": 24,
+        "reportsOther": 2,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID2021731"
+    },
+    {
+        "id": 24752,
+        "reportsPositive": 1,
+        "reportsNegative": 5,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID2021781"
+    },
+    {
+        "id": 17980,
+        "reportsPositive": 0,
+        "reportsNegative": 1,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID2021993"
+    },
+    {
+        "id": 16843,
+        "reportsPositive": 16,
+        "reportsNegative": 6,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID3020203"
+    },
+    {
+        "id": 17493,
+        "reportsPositive": 25,
+        "reportsNegative": 18,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID3020257"
+    },
+    {
+        "id": 25424,
+        "reportsPositive": 15,
+        "reportsNegative": 3,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID3020413"
+    },
+    {
+        "id": 16838,
+        "reportsPositive": 46,
+        "reportsNegative": 10,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID3020415"
+    },
+    {
+        "id": 16407,
+        "reportsPositive": 4,
+        "reportsNegative": 16,
+        "reportsOther": 2,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID3020596"
+    },
+    {
+        "id": 24089,
+        "reportsPositive": 1,
+        "reportsNegative": 1,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID3020679"
+    },
+    {
+        "id": 20154,
+        "reportsPositive": 13,
+        "reportsNegative": 3,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID3020702"
+    },
+    {
+        "id": 18759,
+        "reportsPositive": 2,
+        "reportsNegative": 18,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID3020833"
+    },
+    {
+        "id": 25535,
+        "reportsPositive": 0,
+        "reportsNegative": 7,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID3020964"
+    },
+    {
+        "id": 16956,
+        "reportsPositive": 12,
+        "reportsNegative": 10,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID3021431"
+    },
+    {
+        "id": 17159,
+        "reportsPositive": 0,
+        "reportsNegative": 15,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID3021932"
+    },
+    {
+        "id": 17917,
+        "reportsPositive": 0,
+        "reportsNegative": 19,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID3022455"
+    },
+    {
+        "id": 17549,
+        "reportsPositive": 0,
+        "reportsNegative": 4,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID3024366"
+    },
+    {
+        "id": 17447,
+        "reportsPositive": 14,
+        "reportsNegative": 2,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID3025091"
+    },
+    {
+        "id": 23688,
+        "reportsPositive": 19,
+        "reportsNegative": 7,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID3039242"
+    },
+    {
+        "id": 25196,
+        "reportsPositive": 1,
+        "reportsNegative": 62,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID4020161"
+    },
+    {
+        "id": 17001,
+        "reportsPositive": 3,
+        "reportsNegative": 12,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID4020298"
+    },
+    {
+        "id": 25397,
+        "reportsPositive": 15,
+        "reportsNegative": 5,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID4020402"
+    },
+    {
+        "id": 17684,
+        "reportsPositive": 3,
+        "reportsNegative": 10,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID4020533"
+    },
+    {
+        "id": 18306,
+        "reportsPositive": 2,
+        "reportsNegative": 4,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID4020583"
+    },
+    {
+        "id": 22235,
+        "reportsPositive": 5,
+        "reportsNegative": 14,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID4020874"
+    },
+    {
+        "id": 24433,
+        "reportsPositive": 1,
+        "reportsNegative": 11,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID4020901"
+    },
+    {
+        "id": 23223,
+        "reportsPositive": 36,
+        "reportsNegative": 1,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID4021006"
+    },
+    {
+        "id": 22126,
+        "reportsPositive": 16,
+        "reportsNegative": 1,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID4021056"
+    },
+    {
+        "id": 18680,
+        "reportsPositive": 7,
+        "reportsNegative": 7,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID4021395"
+    },
+    {
+        "id": 24674,
+        "reportsPositive": 0,
+        "reportsNegative": 1,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID4024143"
+    },
+    {
+        "id": 25406,
+        "reportsPositive": 0,
+        "reportsNegative": 1,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID4024359"
+    },
+    {
+        "id": 16875,
+        "reportsPositive": 7,
+        "reportsNegative": 5,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID4039231"
+    },
+    {
+        "id": 16872,
+        "reportsPositive": 3,
+        "reportsNegative": 5,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID5020023"
+    },
+    {
+        "id": 24428,
+        "reportsPositive": 7,
+        "reportsNegative": 7,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID5020027"
+    },
+    {
+        "id": 16881,
+        "reportsPositive": 24,
+        "reportsNegative": 11,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID5020029"
+    },
+    {
+        "id": 25201,
+        "reportsPositive": 23,
+        "reportsNegative": 1,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID5020071"
+    },
+    {
+        "id": 17763,
+        "reportsPositive": 6,
+        "reportsNegative": 15,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID5020316"
+    },
+    {
+        "id": 22485,
+        "reportsPositive": 20,
+        "reportsNegative": 11,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID5020449"
+    },
+    {
+        "id": 22225,
+        "reportsPositive": 14,
+        "reportsNegative": 5,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID5020491"
+    },
+    {
+        "id": 25438,
+        "reportsPositive": 13,
+        "reportsNegative": 18,
+        "reportsOther": 4,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID5020601"
+    },
+    {
+        "id": 17379,
+        "reportsPositive": 7,
+        "reportsNegative": 83,
+        "reportsOther": 3,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID5020607"
+    },
+    {
+        "id": 16505,
+        "reportsPositive": 17,
+        "reportsNegative": 4,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID5020865"
+    },
+    {
+        "id": 17005,
+        "reportsPositive": 64,
+        "reportsNegative": 6,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID5021124"
+    },
+    {
+        "id": 24005,
+        "reportsPositive": 22,
+        "reportsNegative": 6,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID5021207"
+    },
+    {
+        "id": 24425,
+        "reportsPositive": 2,
+        "reportsNegative": 7,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID5021380"
+    },
+    {
+        "id": 24947,
+        "reportsPositive": 2,
+        "reportsNegative": 5,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID5021386"
+    },
+    {
+        "id": 16959,
+        "reportsPositive": 0,
+        "reportsNegative": 16,
+        "reportsOther": 2,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID5021889"
+    },
+    {
+        "id": 24187,
+        "reportsPositive": 26,
+        "reportsNegative": 2,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID5024055"
+    },
+    {
+        "id": 17448,
+        "reportsPositive": 15,
+        "reportsNegative": 2,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID5024059"
+    },
+    {
+        "id": 23977,
+        "reportsPositive": 65,
+        "reportsNegative": 4,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID5039224"
+    },
+    {
+        "id": 16821,
+        "reportsPositive": 5,
+        "reportsNegative": 2,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID6020145"
+    },
+    {
+        "id": 16892,
+        "reportsPositive": 2,
+        "reportsNegative": 0,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID6020307"
+    },
+    {
+        "id": 18643,
+        "reportsPositive": 6,
+        "reportsNegative": 17,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID6020353"
+    },
+    {
+        "id": 25161,
+        "reportsPositive": 9,
+        "reportsNegative": 0,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID6020432"
+    },
+    {
+        "id": 16876,
+        "reportsPositive": 22,
+        "reportsNegative": 7,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID6020438"
+    },
+    {
+        "id": 23095,
+        "reportsPositive": 1,
+        "reportsNegative": 4,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID6020515"
+    },
+    {
+        "id": 16833,
+        "reportsPositive": 18,
+        "reportsNegative": 5,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID6020569"
+    },
+    {
+        "id": 24455,
+        "reportsPositive": 8,
+        "reportsNegative": 1,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID6020981"
+    },
+    {
+        "id": 25530,
+        "reportsPositive": 1,
+        "reportsNegative": 5,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID6021828"
+    },
+    {
+        "id": 16527,
+        "reportsPositive": 9,
+        "reportsNegative": 0,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID6022422"
+    },
+    {
+        "id": 23982,
+        "reportsPositive": 2,
+        "reportsNegative": 12,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID6023947"
+    },
+    {
+        "id": 21068,
+        "reportsPositive": 1,
+        "reportsNegative": 0,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID6023949"
+    },
+    {
+        "id": 22236,
+        "reportsPositive": 5,
+        "reportsNegative": 11,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID7020005"
+    },
+    {
+        "id": 23976,
+        "reportsPositive": 6,
+        "reportsNegative": 18,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID7020009"
+    },
+    {
+        "id": 21966,
+        "reportsPositive": 2,
+        "reportsNegative": 1,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID7020267"
+    },
+    {
+        "id": 21202,
+        "reportsPositive": 35,
+        "reportsNegative": 8,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID7020637"
+    },
+    {
+        "id": 24904,
+        "reportsPositive": 0,
+        "reportsNegative": 1,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID7020683"
+    },
+    {
+        "id": 23005,
+        "reportsPositive": 1,
+        "reportsNegative": 3,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID7020689"
+    },
+    {
+        "id": 17604,
+        "reportsPositive": 6,
+        "reportsNegative": 0,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID7020710"
+    },
+    {
+        "id": 17663,
+        "reportsPositive": 9,
+        "reportsNegative": 8,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID7020716"
+    },
+    {
+        "id": 22486,
+        "reportsPositive": 39,
+        "reportsNegative": 3,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID7021029"
+    },
+    {
+        "id": 21867,
+        "reportsPositive": 4,
+        "reportsNegative": 3,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID7021100"
+    },
+    {
+        "id": 24909,
+        "reportsPositive": 3,
+        "reportsNegative": 7,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID7021106"
+    },
+    {
+        "id": 24447,
+        "reportsPositive": 7,
+        "reportsNegative": 1,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID7021318"
+    },
+    {
+        "id": 16999,
+        "reportsPositive": 2,
+        "reportsNegative": 10,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID7021360"
+    },
+    {
+        "id": 24517,
+        "reportsPositive": 4,
+        "reportsNegative": 0,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID7021368"
+    },
+    {
+        "id": 17315,
+        "reportsPositive": 2,
+        "reportsNegative": 3,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID7021948"
+    },
+    {
+        "id": 16971,
+        "reportsPositive": 1,
+        "reportsNegative": 7,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID7024166"
+    },
+    {
+        "id": 21637,
+        "reportsPositive": 1,
+        "reportsNegative": 7,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID7024370"
+    },
+    {
+        "id": 16726,
+        "reportsPositive": 7,
+        "reportsNegative": 3,
+        "reportsOther": 2,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID7024532"
+    },
+    {
+        "id": 16523,
+        "reportsPositive": 2,
+        "reportsNegative": 6,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID7025180"
+    },
+    {
+        "id": 22081,
+        "reportsPositive": 8,
+        "reportsNegative": 5,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID7026156"
+    },
+    {
+        "id": 22481,
+        "reportsPositive": 22,
+        "reportsNegative": 14,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID8020090"
+    },
+    {
+        "id": 21669,
+        "reportsPositive": 3,
+        "reportsNegative": 0,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID8020173"
+    },
+    {
+        "id": 21863,
+        "reportsPositive": 8,
+        "reportsNegative": 4,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID8020250"
+    },
+    {
+        "id": 16888,
+        "reportsPositive": 0,
+        "reportsNegative": 6,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID8020597"
+    },
+    {
+        "id": 18561,
+        "reportsPositive": 44,
+        "reportsNegative": 1,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID8020599"
+    },
+    {
+        "id": 24377,
+        "reportsPositive": 1,
+        "reportsNegative": 16,
+        "reportsOther": 2,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID8020759"
+    },
+    {
+        "id": 23871,
+        "reportsPositive": 7,
+        "reportsNegative": 0,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID8020832"
+    },
+    {
+        "id": 25140,
+        "reportsPositive": 0,
+        "reportsNegative": 13,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID8020913"
+    },
+    {
+        "id": 17280,
+        "reportsPositive": 27,
+        "reportsNegative": 1,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID8021195"
+    },
+    {
+        "id": 21960,
+        "reportsPositive": 25,
+        "reportsNegative": 3,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID8021197"
+    },
+    {
+        "id": 22166,
+        "reportsPositive": 4,
+        "reportsNegative": 1,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID8021432"
+    },
+    {
+        "id": 23973,
+        "reportsPositive": 21,
+        "reportsNegative": 4,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID8021434"
+    },
+    {
+        "id": 23993,
+        "reportsPositive": 17,
+        "reportsNegative": 17,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID8021438"
+    },
+    {
+        "id": 24004,
+        "reportsPositive": 12,
+        "reportsNegative": 0,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID8024286"
+    },
+    {
+        "id": 24054,
+        "reportsPositive": 0,
+        "reportsNegative": 4,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID8042476"
+    },
+    {
+        "id": 17160,
+        "reportsPositive": 8,
+        "reportsNegative": 4,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "negative",
+        "dtxsid": "DTXSID9020168"
+    },
+    {
+        "id": 18015,
+        "reportsPositive": 27,
+        "reportsNegative": 5,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID9020243"
+    },
+    {
+        "id": 22605,
+        "reportsPositive": 5,
+        "reportsNegative": 3,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID9020247"
+    },
+    {
+        "id": 21534,
+        "reportsPositive": 2,
+        "reportsNegative": 2,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID9020293"
+    },
+    {
+        "id": 21322,
+        "reportsPositive": 0,
+        "reportsNegative": 1,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID9020299"
+    },
+    {
+        "id": 23752,
+        "reportsPositive": 1,
+        "reportsNegative": 9,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID9020827"
+    },
+    {
+        "id": 16820,
+        "reportsPositive": 30,
+        "reportsNegative": 19,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "positive",
+        "dtxsid": "DTXSID9021138"
+    },
+    {
+        "id": 24289,
+        "reportsPositive": 2,
+        "reportsNegative": 2,
+        "reportsOther": 0,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID9021261"
+    },
+    {
+        "id": 25211,
+        "reportsPositive": 9,
+        "reportsNegative": 2,
+        "reportsOther": 1,
+        "ames": "-",
+        "micronucleus": "-",
+        "dtxsid": "DTXSID9041522"
+    }
+]

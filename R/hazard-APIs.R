@@ -17,8 +17,6 @@ get_hazard_by_dtxsid <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -29,7 +27,9 @@ get_hazard_by_dtxsid <- function(DTXSID = NULL,
                           'x-api-key' = API_key)
                         )
   )
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
@@ -58,8 +58,6 @@ get_human_hazard_by_dtxsid <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -69,7 +67,9 @@ get_human_hazard_by_dtxsid <- function(DTXSID = NULL,
                           'x-api-key' = API_key)
                         )
   )
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
@@ -98,8 +98,6 @@ get_ecotox_hazard_by_dtxsid <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -109,7 +107,9 @@ get_ecotox_hazard_by_dtxsid <- function(DTXSID = NULL,
                           'x-api-key' = API_key)
                         )
   )
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
@@ -139,8 +139,6 @@ get_skin_eye_hazard <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -150,7 +148,9 @@ get_skin_eye_hazard <- function(DTXSID = NULL,
                           'x-api-key' = API_key)
                         )
   )
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
@@ -179,8 +179,6 @@ get_cancer_hazard <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -191,7 +189,9 @@ get_cancer_hazard <- function(DTXSID = NULL,
                           'x-api-key' = API_key)
                         )
   )
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
@@ -220,8 +220,6 @@ get_genetox_summary <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -232,7 +230,9 @@ get_genetox_summary <- function(DTXSID = NULL,
                           'x-api-key' = API_key)
                         )
   )
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
@@ -261,8 +261,6 @@ get_genetox_details <- function(DTXSID = NULL,
     if (has_ccte_key()) {
       API_key <- ccte_key()
       message('Using stored API key!')
-    } else {
-      stop('Please input an API_key!')
     }
   }
 
@@ -273,7 +271,9 @@ get_genetox_details <- function(DTXSID = NULL,
                           'x-api-key' = API_key)
                         )
   )
-
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
