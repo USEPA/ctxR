@@ -35,13 +35,13 @@ This training module provides an overview of the publicly available databases at
 
 Accessing chemical data and wrangling it is a vital step in many types of workflows related to chemical, biological, and environmental modeling. While there are many resources available from which one can pull data, the [CompTox Chemicals Dashboard](https://comptox.epa.gov/dashboard/)(CCD) built and maintained by the United States Environmental Protection Agency is particularly well-designed and maintained. Originally introduced in [The CompTox Chemistry Dashboard: a community data resource for environmental chemistry](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0247-6), the CCD contains information on over 1.2 million chemicals as of September, 2023. Information contained for chemicals featured in the CCD include but are not limited to physico-chemical properties, documentation and curation information of the featured data, hazard and fate/transport data. One can see an example of this in the search for the chemical Bisphenol A. 
 
-![Bisphenol A landing page](./Pictures/CCD BPA page.png){width=120%}
+![Bisphenol A landing page](./Pictures/CCD_BPA_page.png){width=120%}
 
 As one may observe, on the left side of the image there are several tabs that contain information such as physico-chemical properties, Environmental Fate and Transport data, and hazard data among others. The data contained in these tabs is freely accessible but not necessarily in the best format for data wrangling.
 
 One can use the batch search functionality of the CCD to pull together desired data for a specific user supplied list of chemicals.
 
-![CCD Batch Search](./Pictures/CCD Batch Search.png){width=120%}
+![CCD Batch Search](./Pictures/CCD_Batch_Search.png){width=120%}
 
 One can download the selected information in various formats, such as excel (.xlsx), comma-separated values (.csv), or different types of chemical table files (.e.g MOL). While this is suitable for many projects, it does not necessarily work well when a programmatic approach to a modeling problem is desired. The steps involving inputting chemical identifier information, exporting into a file, loading and wrangling the data from file is both time consuming and a potential source of human error that may be hard to identify after the fact. 
 
@@ -51,18 +51,18 @@ Recently, the [Center for Computational Toxicology and Exposure](https://www.epa
 
 The APIs are organized into three sections of endpoints, `Chemical`, `Hazard`, and `Bioactivity`.Pictured below is what the `Chemical` section looks like and can be found at [CCTE API Chemical Endpoints](https://api-ccte.epa.gov/docs/chemical.html).
 
-![CCTE API Chemical Endpoints](./Pictures/CCTE Chemical API endpoints.png){width=120%}
+![CCTE API Chemical Endpoints](./Pictures/CCTE_Chemical_API_endpoints.png){width=120%}
 
 Notice that Authentication is the first tab on the left and below it are several endpoints organized by what purpose they serve. Authentication is required to use the APIs and the API key authenticates the user. The endpoints are organized into categories of functional use, for instance providing basic information on a chemical in the `Chemical Details Resource`, more comprehensive physico-chemical properties in `Chemical Property Resource`, chemical fate and transport data in `Chemical Fate Resource`, and so on. Also notice that next to each endpoint is a box that indicates what the associated http request is to access the information. These are either a Post or a Get request. Clicking on the `Get data by DTXSID`, we observe that there are certain required pieces of information to construct the request and optional parameters to focus the request.
 
-![CCTE Get Details by DTXSID](./Pictures/Get Data by DTXSID TOP.png){width=120%}
+![CCTE Get Details by DTXSID](./Pictures/Get_Data_by_DTXSID_TOP.png){width=120%}
 
 The user is required to supply a string for the DTXSID and an optional `projection` parameter, which controls the scope of the information returned. The default return format is displayed below and includes a variety of fields with data types represented.
 
-![CCTE Get Details by DTXSID data types](./Pictures/Get Data by DTXSID BOTTOM.png){width=120%}
+![CCTE Get Details by DTXSID data types](./Pictures/Get_Data_by_DTXSID_BOTTOM.png){width=120%}
 We show what returned data from searching Bisphenol A looks like using this endpoint with the `chemicaldetailstandard` projection selected.
 
-![Bisphenol A output](./Pictures/BPA chemicaldetailstandard.png){width=120%}
+![Bisphenol A output](./Pictures/BPA_chemicaldetailstandard.png){width=120%}
 
 
 
@@ -349,18 +349,18 @@ Now, having examined some of the distributions of the phys chem properties of th
 
 Using the standard CompTox Chemicals Dashboard approach to access genotoxicity, one would again navigate to the individual chemical page 
 
-![CompTox Chemicals Dashboard Genotoxicity](./Pictures/BPA Hazard data - Genotoxicity.png){width=120%}
+![CompTox Chemicals Dashboard Genotoxicity](./Pictures/BPA_Hazard_data_-_Genotoxicity.png){width=120%}
 
 
 Once one navigates to the genotoxicity tab highlighted in the previous page, the following is displayed.
 
-![CompTox Chemicals Dashboard BPA Genotoxicity](./Pictures/CCD BPA genotoxicity.png){width=120%}
+![CompTox Chemicals Dashboard BPA Genotoxicity](./Pictures/CCD_BPA_genotoxicity.png){width=120%}
 
 This page includes two sets of information, the first of which provides a summary of available genotoxicity data while the second provides the individual reports and samples of such data.
 
 We again use the CCTE APIs to streamline the process of retrieving this information in a programmatic fashion. To this end, we will use the genotoxicity endpoints found within the hazard endpoints of the CCTE APIs. Pictured below is the particular set of genotoxicity resources available in the hazard endpoints of the CCTE APIs.
 
-![CCTE APIs Hazard endpoint gentoxocity resources](./Pictures/Hazard - genotoxicity resource.png){width=120%}
+![CCTE APIs Hazard endpoint gentoxocity resources](./Pictures/Hazard_-_genotoxicity_resource.png){width=120%}
 
 There are both summary and detail resources, reflecting the information one can find on the CompTox Chemicals Dashboard Genotoxicity page for a given chemical.
 
