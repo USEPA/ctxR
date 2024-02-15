@@ -208,12 +208,12 @@ get_annotation_by_aeid <- function(AEID = NULL,
   if(response$status_code == 200){
     if (length(response$content) > 0){
       res <- jsonlite::fromJSON(httr::content(response, as = 'text'))
-      #for (i in 1:length(res)){
-      #  if (is.null(res[[i]])) res[[i]] <- NA # set any nulls to NA
-      #  if (length(res[[i]]) > 1) {
-      #    res[[i]] <- list(res[[i]]) # put lenghts > 1 into a list to be just length 1, will unnest after
-      #  }
-      #}
+      for (i in 1:length(res)){
+        if (is.null(res[[i]])) res[[i]] <- NA # set any nulls to NA
+        if (length(res[[i]]) > 1) {
+          res[[i]] <- list(res[[i]]) # put lengths > 1 into a list to be just length 1, will unnest after
+        }
+      }
 
       res_dt <- data.table::as.data.table(res)
 
