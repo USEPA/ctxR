@@ -150,7 +150,12 @@ get_all_assays <- function(API_key = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text'))
+    res[c('gene', 'assayList', 'citations')] <- lapply(res[c('gene', 'assayList', 'citations')],
+                                                       function(df) do.call('mapply', c(list, df,
+                                                                                        SIMPLIFY = FALSE,
+                                                                                        USE.NAMES = FALSE)))
+    return(res)
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
