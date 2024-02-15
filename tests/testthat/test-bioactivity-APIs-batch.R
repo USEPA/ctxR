@@ -1,5 +1,14 @@
+with_mock_dir("bioactivity-batch",{
 test_that("catch missing API", {
   # Run register_ccdr(key = 'YOUR KEY', write = TRUE) prior to running tests
+
+  #store env variable so tests don't overwrite
+  tmp <- Sys.getenv("CCDR_CCTE_API_key")
+  on.exit(Sys.setenv("CCDR_CCTE_API_key" = tmp))
+  if(Sys.getenv("CCDR_CCTE_API_key") == ""){
+    #set env variable temporarily for testing
+    Sys.setenv("CCDR_CCTE_API_key" = "stored_api_key")
+  }
   expect_message(get_bioactivity_details_batch(DTXSID = c('DTXSID7020182')), 'Using stored API key!')
   expect_message(get_bioactivity_details_batch(DTXSID = c('DTXSID7020182'), API_key = 1), 'Using stored API key!')
 })
@@ -20,4 +29,4 @@ test_that('Return data types', {
   expect_type(get_bioactivity_details_batch(DTXSID = c('DTXSID8031865'), API_key = ''), 'list')
   expect_type(get_bioactivity_details_batch(DTXSID = c('DTXSID8031865'), API_key = Sys.getenv('CCTE_API_KEY')), 'list')
   expect_type(get_bioactivity_details_batch(AEID = c(42), API_key = 'test_key'), 'list')
-})
+})})

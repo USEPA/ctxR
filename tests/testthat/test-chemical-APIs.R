@@ -1,5 +1,15 @@
+with_mock_dir("chemical",{
 test_that("catch missing API", {
   # Run register_ccdr(key = 'YOUR KEY', write = TRUE) prior to running tests
+
+  #store env variable so tests don't overwrite
+  tmp <- Sys.getenv("CCDR_CCTE_API_key")
+  on.exit(Sys.setenv("CCDR_CCTE_API_key" = tmp))
+  if(Sys.getenv("CCDR_CCTE_API_key") == ""){
+    #set env variable temporarily for testing
+    Sys.setenv("CCDR_CCTE_API_key" = "stored_api_key")
+  }
+
   expect_message(get_chemical_details(DTXSID = 'DTXSID7020182'), 'Using stored API key!')
   #expect_message(get_chemical_by_property_range(start = 1, end = 2, property = 'Density'), 'Using stored API key!')
   expect_message(get_chem_info(DTXSID = 'DTXSID7020182'), 'Using stored API key!')
@@ -57,7 +67,7 @@ test_that('Numeric range input errors and warnings', {
   expect_error(get_msready_by_mass(start = TRUE, end = 4, API_key = 'test_key'), 'Please input a numeric value for both start and end!')
   expect_error(get_msready_by_mass(start = -1, end = 4, API_key = 'test_key'), 'Both start and end must be non-negative!')
   expect_error(get_msready_by_mass(start = 4, end = -1, API_key = 'test_key'), 'Both start and end must be non-negative!')
-  expect_warning(get_msready_by_mass(start = 4, end = 1, API_key = 'test_key'), 'Swapping values for start and end!')
+  expect_warning(get_msready_by_mass(start = 4, end = 1), 'Swapping values for start and end!')
   #expect_warning(get_chemical_by_property_range(start = 4, end = 3, property = 'density', API_key = Sys.getenv('CCTE_API_KEY')), 'Swapping values for start and end!')
 
 })
@@ -67,7 +77,7 @@ test_that('projection/type errors/warnings', {
   expect_warning(get_chemical_details(DTXSID = 'DTXSID7020182', Projection =  2, API_key = 'test_key'), 'Setting `Projection` to `chemicaldetailstandard`')
   expect_warning(get_chemical_details(DTXSID = 'DTXSID7020182', Projection =  c('ntatoolkit', 'chemicaldetailstandard'), API_key = 'test_key'), 'Setting `Projection` to `chemicaldetailstandard`')
   expect_message(get_chemical_details(DTXSID = 'DTXSID7020182', Projection =  c('ntatoolkit', 'chemicaldetaistandard'), API_key = Sys.getenv('CCTE_API_KEY')), 'Using `Projection` = ntatoolkit!')
-  expect_warning(get_chem_info(DTXSID = 'DTXSID', type = c('', 'predicted'), API_key = 'test_key'), 'Setting type to ""!')
+  expect_warning(get_chem_info(DTXSID = 'DTXSID', type = c('', 'predicted')), 'Setting type to ""!')
   expect_error(get_chem_info(DTXSID = 'DTXSID', type = 'l', API_key = 'test_key'), 'Please input a correct choice for type!')
   expect_error(get_chemical_lists_by_type(), 'Please input a value for parameter type')
   expect_error(get_chemical_lists_by_type(type = 1), 'Please input a value for parameter type')
@@ -175,4 +185,4 @@ test_that('check helper functions', {
   expect_type(create_data.table_chemical_details(index = 5), 'list')
   expect_type(create_data.table_chemical_details(index = 6), 'list')
   expect_type(create_data.table_chemical_details(index = 'f'), 'list')
-})
+})})
