@@ -1,11 +1,11 @@
 with_mock_dir("chemical-batch",{
 test_that("catch missing APIs", {
   #store env variable so tests don't overwrite
-  tmp <- Sys.getenv("CCDR_CCTE_API_key")
-  on.exit(Sys.setenv("CCDR_CCTE_API_key" = tmp))
-  if(Sys.getenv("CCDR_CCTE_API_key") == ""){
+  tmp <- Sys.getenv("CCTE_API_KEY")
+  on.exit(Sys.setenv("CCTE_API_KEY" = tmp))
+  if(Sys.getenv("CCTE_API_KEY") == ""){
     #set env variable temporarily for testing
-    Sys.setenv("CCDR_CCTE_API_key" = "stored_api_key")
+    Sys.setenv("CCTE_API_KEY" = "stored_api_key")
   }
   # Run register_ccdr(key = 'YOUR KEY', write = TRUE) prior to running tests
   expect_message(get_chemical_details_batch(DTXSID = c('DTXSID7020182')), 'Using stored API key!')

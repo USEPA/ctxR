@@ -106,29 +106,29 @@ register_ccdr <- function(key, write = FALSE) {
     environ_lines <- readLines(environ_file)
 
     # if no key present, add; otherwise replace old one
-    if (!any(stringr::str_detect(environ_lines, 'CCDR_CCTE_API_KEY='))) {
+    if (!any(stringr::str_detect(environ_lines, 'CCTE_API_KEY='))) {
 
       cli::cli_alert_info('Adding key to {environ_file}')
-      environ_lines <- c(environ_lines, glue::glue('CCDR_CCTE_API_KEY={key}'))
+      environ_lines <- c(environ_lines, glue::glue('CCTE_API_KEY={key}'))
       writeLines(environ_lines, environ_file)
 
     } else {
 
-      key_line_index <- which(stringr::str_detect(environ_lines, 'CCDR_CCTE_API_KEY='))
-      old_key <- stringr::str_extract(environ_lines[key_line_index], '(?<=CCDR_CCTE_API_KEY=)\\w+')
+      key_line_index <- which(stringr::str_detect(environ_lines, 'CCTE_API_KEY='))
+      old_key <- stringr::str_extract(environ_lines[key_line_index], '(?<=CCTE_API_KEY=)\\w+')
       cli::cli_alert_info('Replacing old key ({old_key}) with new key in {environ_file}')
-      environ_lines[key_line_index] <- glue::glue('CCDR_CCTE_API_KEY={key}')
+      environ_lines[key_line_index] <- glue::glue('CCTE_API_KEY={key}')
       writeLines(environ_lines, environ_file)
 
     }
 
     # set key in current session
-    Sys.setenv('CCDR_CCTE_API_KEY' = key)
+    Sys.setenv('CCTE_API_KEY' = key)
 
   } else if (!missing(key) && !write) {
 
     # set key in current session
-    Sys.setenv('CCDR_CCTE_API_KEY' = key)
+    Sys.setenv('CCTE_API_KEY' = key)
 
   }
 
@@ -161,7 +161,7 @@ print.ccte_credentials <- function(...) {
 
 
 ccte_key <- function() {
-  key <- Sys.getenv('CCDR_CCTE_API_KEY')
+  key <- Sys.getenv('CCTE_API_KEY')
 
   if (key == '') {
     return(NA_character_)
