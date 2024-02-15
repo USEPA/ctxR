@@ -2,11 +2,11 @@ with_mock_dir("hazard",{
 test_that("catch missing API", {
    # Run register_ccdr(key = 'YOUR KEY', write = TRUE) prior to running tests
     #store env variable so tests don't overwrite
-    tmp <- Sys.getenv("CCDR_CCTE_API_key")
-    on.exit(Sys.setenv("CCDR_CCTE_API_key" = tmp))
-    if(Sys.getenv("CCDR_CCTE_API_key") == ""){
+    tmp <- Sys.getenv("CCTE_API_KEY")
+    on.exit(Sys.setenv("CCTE_API_KEY" = tmp))
+    if(Sys.getenv("CCTE_API_KEY") == ""){
       #set env variable temporarily for testing
-      Sys.setenv("CCDR_CCTE_API_key" = "stored_api_key")
+      Sys.setenv("CCTE_API_KEY" = "stored_api_key")
     }
    expect_message(get_hazard_by_dtxsid(DTXSID = 'DTXSID7020182'), 'Using stored API key!')
    expect_message(get_human_hazard_by_dtxsid(DTXSID = 'DTXSID7020182'), 'Using stored API key!')
