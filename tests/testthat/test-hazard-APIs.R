@@ -1,5 +1,13 @@
- test_that("catch missing API", {
+with_mock_dir("hazard",{
+test_that("catch missing API", {
    # Run register_ccdr(key = 'YOUR KEY', write = TRUE) prior to running tests
+    #store env variable so tests don't overwrite
+    tmp <- Sys.getenv("CCDR_CCTE_API_key")
+    on.exit(Sys.setenv("CCDR_CCTE_API_key" = tmp))
+    if(Sys.getenv("CCDR_CCTE_API_key") == ""){
+      #set env variable temporarily for testing
+      Sys.setenv("CCDR_CCTE_API_key" = "stored_api_key")
+    }
    expect_message(get_hazard_by_dtxsid(DTXSID = 'DTXSID7020182'), 'Using stored API key!')
    expect_message(get_human_hazard_by_dtxsid(DTXSID = 'DTXSID7020182'), 'Using stored API key!')
    expect_message(get_ecotox_hazard_by_dtxsid(DTXSID = 'DTXSID7020182'), 'Using stored API key!')
@@ -41,4 +49,5 @@ test_that("Return data type", {
   expect_type(get_genetox_details(DTXSID = 'DTXSID7020182', API_key = Sys.getenv('CCTE_API_KEY')), 'list')
   expect_type(get_genetox_details(DTXSID = '', API_key = Sys.getenv('CCTE_API_KEY')), 'NULL')
   #expect_type(get_genetox_details(DTXSID = 'DTXSID7020182', API_key = ''), 'NULL')
+})
 })
