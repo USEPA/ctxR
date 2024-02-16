@@ -65,7 +65,17 @@ get_bioactivity_details <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text'))
+    if (data_index == 4){
+      for (i in 1:length(res)){
+        if (is.null(res[[i]])) res[[i]] <- NA # set any NULLs to NA
+        if (length(res[[i]]) > 1) {
+          res[[i]] <- list(res[[i]]) # put lengths > 1 into a list to be just length 1, will unnest after
+        }
+      }
+    }
+    res_dt <- data.table::as.data.table(res)
+    return(res_dt)
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
