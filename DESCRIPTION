@@ -17,6 +17,7 @@ Imports:
     purrr,
     rlang,
     stringr,
+    tidyr,
     urltools
 Encoding: UTF-8
 LazyData: true
