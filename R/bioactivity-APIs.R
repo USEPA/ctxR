@@ -65,16 +65,7 @@ get_bioactivity_details <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    res <- jsonlite::fromJSON(httr::content(response, as = 'text'))
-    for (i in 1:length(res$geneInfo)){
-      res$geneInfo[[i]] <- tryCatch({
-        list(jsonlite::fromJSON(res$geneInfo[[i]]))
-      }, error = function(){
-        return(res$geneInfo[[i]])
-      }
-      )
-    }
-    return(res)
+    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
