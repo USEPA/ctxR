@@ -65,7 +65,14 @@ get_bioactivity_details <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text'))
+    param_cols <- c('mc3Param', 'mc4Param', 'mc5Param', 'mc6Param')
+    col_index <- which(param_cols %in% names(res))
+    if (length(col_index) > 0){
+     res <- tidyr::unnest_wider(data = res, col = param_cols[col_index])
+    }
+    res_dt <- data.table::data.table(res)
+    return(res_dt)
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
