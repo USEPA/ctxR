@@ -66,13 +66,14 @@ get_bioactivity_details <- function(DTXSID = NULL,
   }
   if(response$status_code == 200){
     res <- jsonlite::fromJSON(httr::content(response, as = 'text'))
-    if (data_index == 4){
+    if (!is.data.frame(res)){
       for (i in 1:length(res)){
         if (is.null(res[[i]])) res[[i]] <- NA # set any NULLs to NA
         if (length(res[[i]]) > 1) {
           res[[i]] <- list(res[[i]]) # put lengths > 1 into a list to be just length 1, will unnest after
         }
       }
+      res <- tibble::as_tibble_row(res)
     }
     param_cols <- c('mc3Param', 'mc4Param', 'mc5Param', 'mc6Param')
     col_index <- which(param_cols %in% names(res))
