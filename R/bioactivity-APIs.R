@@ -66,6 +66,14 @@ get_bioactivity_details <- function(DTXSID = NULL,
   }
   if(response$status_code == 200){
     res <- jsonlite::fromJSON(httr::content(response, as = 'text'))
+    if (data_index == 4){
+      for (i in 1:length(res)){
+        if (is.null(res[[i]])) res[[i]] <- NA # set any NULLs to NA
+        if (length(res[[i]]) > 1) {
+          res[[i]] <- list(res[[i]]) # put lengths > 1 into a list to be just length 1, will unnest after
+        }
+      }
+    }
     param_cols <- c('mc3Param', 'mc4Param', 'mc5Param', 'mc6Param')
     col_index <- which(param_cols %in% names(res))
     if (length(col_index) > 0){
@@ -114,13 +122,21 @@ get_bioactivity_summary <- function(AEID = NULL,
   }
   if(response$status_code == 200){
     if (length(response$content) > 0){
-      return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+      res <- jsonlite::fromJSON(httr::content(response, as = 'text'))
+      for (i in 1:length(res)){
+        if (is.null(res[[i]])) res[[i]] <- NA # set any NULLs to NA
+        if (length(res[[i]]) > 1) {
+          res[[i]] <- list(res[[i]]) # put lengths > 1 into a list to be just length 1, will unnest after
+        }
+      }
+      res_dt <- data.table::as.data.table(res)
+      return(res_dt)
     } else if (length(response$content) == 0){
-      return(list(aeid = NA_integer_,
+      return(data.table(aeid = NA_integer_,
                   activeMc = NA_integer_,
                   totalMc = NA_integer_,
-                  activeSc = as.pairlist(NULL),
-                  totalSc = as.pairlist(NULL)))
+                  activeSc = NA_integer_,
+                  totalSc = NA_integer_))
     }
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
@@ -202,7 +218,17 @@ get_annotation_by_aeid <- function(AEID = NULL,
   }
   if(response$status_code == 200){
     if (length(response$content) > 0){
-      return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+      res <- jsonlite::fromJSON(httr::content(response, as = 'text'))
+      for (i in 1:length(res)){
+        if (is.null(res[[i]])) res[[i]] <- NA # set any nulls to NA
+        if (length(res[[i]]) > 1) {
+          res[[i]] <- list(res[[i]]) # put lengths > 1 into a list to be just length 1, will unnest after
+        }
+      }
+
+      res_dt <- data.table::as.data.table(res)
+
+      return(res_dt)
     } else {
       print('The request was successful but there is no information to return...')
       return(list())
