@@ -143,7 +143,7 @@ test_that('Return data type', {
   expect_type(get_chemical_lists_by_type(type = 'federal', API_key = Sys.getenv('CCTE_API_KEY')), 'list')
   expect_type(get_chemical_lists_by_type(type = '', API_key = Sys.getenv('CCTE_API_KEY')), 'NULL')
   #expect_type(get_chemical_lists_by_type(type = 'federal', API_key = ''), 'NULL')
-  expect_type(get_public_chemical_list_by_name(list_name = 'BIOSOLIDS2021', API_key = Sys.getenv('CCTE_API_KEY')), 'list')
+  expect_type(get_public_chemical_list_by_name(list_name = 'Biosolids2021', API_key = Sys.getenv('CCTE_API_KEY')), 'list')
   expect_type(get_public_chemical_list_by_name(list_name = '', API_key = Sys.getenv('CCTE_API_KEY')), 'NULL')
   #expect_type(get_public_chemical_list_by_name(list_name = 'BIOSOLIDS2021', API_key = ''), 'NULL')
   expect_type(get_lists_containing_chemical(DTXSID = 'DTXSID7020182', API_key = Sys.getenv('CCTE_API_KEY')), 'character')
