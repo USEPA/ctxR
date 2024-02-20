@@ -66,15 +66,21 @@ get_bioactivity_details <- function(DTXSID = NULL,
   }
   if(response$status_code == 200){
     res <- jsonlite::fromJSON(httr::content(response, as = 'text'))
-    if (data_index == 4){
+    if (!is.data.frame(res)){
       for (i in 1:length(res)){
         if (is.null(res[[i]])) res[[i]] <- NA # set any NULLs to NA
         if (length(res[[i]]) > 1) {
           res[[i]] <- list(res[[i]]) # put lengths > 1 into a list to be just length 1, will unnest after
         }
       }
+      res <- tibble::as_tibble_row(res)
     }
-    res_dt <- data.table::as.data.table(res)
+    param_cols <- c('mc3Param', 'mc4Param', 'mc5Param', 'mc6Param')
+    col_index <- which(param_cols %in% names(res))
+    if (length(col_index) > 0){
+     res <- tidyr::unnest_wider(data = res, col = param_cols[col_index])
+    }
+    res_dt <- data.table::data.table(res)
     return(res_dt)
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
@@ -124,10 +130,13 @@ get_bioactivity_summary <- function(AEID = NULL,
           res[[i]] <- list(res[[i]]) # put lengths > 1 into a list to be just length 1, will unnest after
         }
       }
+
       res_dt <- data.table::as.data.table(res)
+
       return(res_dt)
+      return(res)
     } else if (length(response$content) == 0){
-      return(data.table(aeid = NA_integer_,
+      return(data.table::data.table(aeid = NA_integer_,
                   activeMc = NA_integer_,
                   totalMc = NA_integer_,
                   activeSc = NA_integer_,
