@@ -129,10 +129,13 @@ get_bioactivity_summary <- function(AEID = NULL,
           res[[i]] <- list(res[[i]]) # put lengths > 1 into a list to be just length 1, will unnest after
         }
       }
+
       res_dt <- data.table::as.data.table(res)
+
       return(res_dt)
+      return(res)
     } else if (length(response$content) == 0){
-      return(data.table(aeid = NA_integer_,
+      return(data.table::data.table(aeid = NA_integer_,
                   activeMc = NA_integer_,
                   totalMc = NA_integer_,
                   activeSc = NA_integer_,
