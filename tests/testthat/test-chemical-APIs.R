@@ -10,9 +10,9 @@ test_that("catch missing API", {
     Sys.setenv("CCTE_API_KEY" = "stored_api_key")
   }
 
-  expect_message(get_chemical_details(DTXSID = 'DTXSID7020182'), 'Using stored API key!')
+  expect_message(get_chemical_details(DTXSID = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
   #expect_message(get_chemical_by_property_range(start = 1, end = 2, property = 'Density'), 'Using stored API key!')
-  expect_message(get_chem_info(DTXSID = 'DTXSID7020182'), 'Using stored API key!')
+  expect_message(get_chem_info(DTXSID = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
   expect_message(get_fate_by_dtxsid(DTXSID = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
   expect_message(chemical_starts_with(word = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
   expect_message(chemical_equal(word = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')

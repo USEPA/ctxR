@@ -29,7 +29,9 @@ get_chemical_details <- function(DTXSID = NULL,
   if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose){
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -468,7 +470,10 @@ get_chem_info <- function(DTXSID = NULL,
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if(verbose){
+        message('Using stored API key!')
+      }
+
     }
   }
 
