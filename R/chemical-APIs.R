@@ -8,6 +8,7 @@
 #'   mismatch, the default format will be 'chemicaldetailstandard'.
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.table containing chemical information for the chemical with
 #'   DTXSID matching the input parameter.
@@ -18,7 +19,8 @@ get_chemical_details <- function(DTXSID = NULL,
                                  DTXCID = NULL,
                                  Projection = 'chemicaldetailstandard',
                                  API_key = NULL,
-                                 Server = chemical_api_server){
+                                 Server = chemical_api_server,
+                                 verbose = FALSE){
   if (is.null(DTXSID) & is.null(DTXCID))
     stop('Please input a DTXSID or DTXCID!')
   else if (!is.null(DTXSID) & !is.null(DTXCID))
@@ -93,7 +95,9 @@ get_chemical_details <- function(DTXSID = NULL,
                                                  fill = TRUE))
     return(dt)
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 }
@@ -232,7 +236,8 @@ create_data.table_chemical_details <- function(index = -1){
 
 get_chemical_details_by_listname <- function(listname = NULL,
                                              API_key = NULL,
-                                             Server = chemical_api_server){
+                                             Server = chemical_api_server,
+                                             verbose = FALSE){
   if (is.null(listname) | !is.character(listname)){
     stop('Please input a character string for listname!')
   }
@@ -257,7 +262,9 @@ get_chemical_details_by_listname <- function(listname = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -266,7 +273,8 @@ get_chemical_details_by_listname <- function(listname = NULL,
 
 get_smiles <- function(name = NULL,
                        API_key = NULL,
-                       Server = chemical_api_server){
+                       Server = chemical_api_server,
+                       verbose = FALSE){
   if (is.null(name) | !is.character(name)){
     stop('Please input a character string for name!')
   }
@@ -291,7 +299,9 @@ get_smiles <- function(name = NULL,
   if(response$status_code == 200){
     return(httr::content(response, as = 'text'))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -299,7 +309,8 @@ get_smiles <- function(name = NULL,
 
 get_InChIKey <- function(name = NULL,
                          API_key = NULL,
-                         Server = chemical_api_server){
+                         Server = chemical_api_server,
+                         verbose = FALSE){
   if (is.null(name) | !is.character(name)){
     stop('Please input a character string for name!')
   }
@@ -324,7 +335,9 @@ get_InChIKey <- function(name = NULL,
   if(response$status_code == 200){
     return(httr::content(response, as = 'text'))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -332,7 +345,8 @@ get_InChIKey <- function(name = NULL,
 
 get_InChI <- function(name = NULL,
                       API_key = NULL,
-                      Server = chemical_api_server){
+                      Server = chemical_api_server,
+                      verbose = FALSE){
   if (is.null(name) | !is.character(name)){
     stop('Please input a character string for name!')
   }
@@ -357,7 +371,9 @@ get_InChI <- function(name = NULL,
   if(response$status_code == 200){
     return(httr::content(response, as = 'text'))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -370,6 +386,7 @@ get_InChI <- function(name = NULL,
 #' @param property A string, the property in question
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame containing chemical information for chemicals matching
 #'   the search criteria.
@@ -380,7 +397,8 @@ get_chemical_by_property_range <- function(start = NULL,
                                            end = NULL,
                                            property = NULL,
                                            API_key = NULL,
-                                           Server = chemical_api_server){
+                                           Server = chemical_api_server,
+                                           verbose = FALSE){
   if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
@@ -417,7 +435,9 @@ get_chemical_by_property_range <- function(start = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
     } else {
-      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+      if (verbose){
+        print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+      }
     }
     return()
 }
@@ -431,6 +451,7 @@ get_chemical_by_property_range <- function(start = NULL,
 #'   values are "predicted" or "experimental".
 #' @param API_key The user-specific API Key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame containing chemical information for the chemical with
 #'   DTXSID matching the input parameter.
@@ -440,7 +461,8 @@ get_chemical_by_property_range <- function(start = NULL,
 get_chem_info <- function(DTXSID = NULL,
                           type = "",
                           API_key = NULL,
-                          Server = chemical_api_server){
+                          Server = chemical_api_server,
+                          verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
   else if (is.null(API_key)){
@@ -492,7 +514,9 @@ get_chem_info <- function(DTXSID = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
  return()
 }
@@ -502,6 +526,7 @@ get_chem_info <- function(DTXSID = NULL,
 #' @param DTXSID The chemical identifier DTXSID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return @return A data.frame containing chemical information for the chemical with
 #'   DTXSID matching the input parameter.
@@ -510,13 +535,16 @@ get_chem_info <- function(DTXSID = NULL,
 
 get_fate_by_dtxsid <- function(DTXSID = NULL,
                                API_key = NULL,
-                               Server = chemical_api_server){
+                               Server = chemical_api_server,
+                               verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -533,7 +561,9 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -546,6 +576,7 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
 #'   name
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
@@ -554,13 +585,16 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
 
 chemical_starts_with <- function(word = NULL,
                            API_key = NULL,
-                           Server = chemical_api_server){
+                           Server = chemical_api_server,
+                           verbose = FALSE){
   if (is.null(word) || !is.character(word)){
     stop('Please input a character value for word!')
   } else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -576,7 +610,9 @@ chemical_starts_with <- function(word = NULL,
   if(response$status_code %in% c(200, 400)){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -592,6 +628,7 @@ chemical_starts_with <- function(word = NULL,
 #'   name
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
@@ -600,13 +637,16 @@ chemical_starts_with <- function(word = NULL,
 
 chemical_equal <- function(word = NULL,
                            API_key = NULL,
-                           Server = chemical_api_server){
+                           Server = chemical_api_server,
+                           verbose = FALSE){
   if (is.null(word) || !is.character(word)){
     stop('Please input a character value for word!')
   } else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -624,7 +664,9 @@ chemical_equal <- function(word = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -642,6 +684,7 @@ chemical_equal <- function(word = NULL,
 #'   name
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
@@ -650,13 +693,16 @@ chemical_equal <- function(word = NULL,
 
 chemical_contains <- function(word = NULL,
                               API_key = NULL,
-                              Server = chemical_api_server){
+                              Server = chemical_api_server,
+                              verbose = FALSE){
   if (is.null(word) || !is.character(word)){
     stop('Please input a character value for word!')
   } else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -674,7 +720,9 @@ chemical_contains <- function(word = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -719,6 +767,7 @@ prepare_word <- function(word){
 #' @param end The ending value for mass range
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A list of DTXSIDs with msready mass falling within the given range.
 #' @export
@@ -727,13 +776,16 @@ prepare_word <- function(word){
 get_msready_by_mass <- function(start = NULL,
                                 end = NULL,
                                 API_key = NULL,
-                                Server = chemical_api_server){
+                                Server = chemical_api_server,
+                                verbose = FALSE){
   if(is.null(start) || is.null(end) || !is.numeric(start) || !is.numeric(end)){
     stop('Please input a numeric value for both start and end!')
   } else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -760,7 +812,9 @@ get_msready_by_mass <- function(start = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -773,6 +827,7 @@ get_msready_by_mass <- function(start = NULL,
 #' @param formula A string denoting the input chemical formula
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A character list of DTXSIDs with chemical formulas matching the
 #'   search criteria
@@ -781,7 +836,8 @@ get_msready_by_mass <- function(start = NULL,
 
 get_msready_by_formula <- function(formula = NULL,
                                    API_key = NULL,
-                                   Server = chemical_api_server){
+                                   Server = chemical_api_server,
+                                   verbose = FALSE){
   if(is.null(formula)){
     stop("Please input a non-null value for formula!")
   } else if (!is.character(formula)){
@@ -789,7 +845,9 @@ get_msready_by_formula <- function(formula = NULL,
   } else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -805,7 +863,9 @@ get_msready_by_formula <- function(formula = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -818,6 +878,7 @@ get_msready_by_formula <- function(formula = NULL,
 #' @param DTXCID The chemical identifier DTXCID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A character list of DTXSIDs with DTXCIDs matching the
 #'   search criteria
@@ -826,7 +887,8 @@ get_msready_by_formula <- function(formula = NULL,
 
 get_msready_by_dtxcid <- function(DTXCID = NULL,
                                    API_key = NULL,
-                                  Server = chemical_api_server){
+                                  Server = chemical_api_server,
+                                  verbose = FALSE){
   if(is.null(DTXCID)){
     stop("Please input a non-null value for DTXCID!")
   } else if (!is.character(DTXCID)){
@@ -834,7 +896,9 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
   } else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -850,7 +914,9 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -868,6 +934,7 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
 #'   value.
 #' @param API_key The user-specified API key.
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame containing information about lists that meet the search
 #'   criteria.
@@ -877,13 +944,16 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
 get_chemical_lists_by_type <- function(type = NULL,
                                        Projection = '',
                                        API_key = NULL,
-                                       Server = chemical_api_server){
+                                       Server = chemical_api_server,
+                                       verbose = FALSE){
   if (is.null(type) | !is.character(type))
     stop('Please input a value for parameter type from the list `federal`, `international`, `state`, and `other`!')
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -919,7 +989,9 @@ get_chemical_lists_by_type <- function(type = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -935,6 +1007,7 @@ get_chemical_lists_by_type <- function(type = NULL,
 #'   value.
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame containing information about the chemical list. Note,
 #'   this is not the chemical list itself. To access the chemicals in the list,
@@ -946,13 +1019,16 @@ get_chemical_lists_by_type <- function(type = NULL,
 get_public_chemical_list_by_name <- function(list_name = NULL,
                                              Projection = '',
                                              API_key = NULL,
-                                             Server = chemical_api_server){
+                                             Server = chemical_api_server,
+                                             verbose = FALSE){
   if (is.null(list_name))
     stop('Please input list_name!')
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -989,7 +1065,9 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
   if(response$status_code == 200){
     return(data.frame(jsonlite::fromJSON(httr::content(response, as = 'text'))))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -1000,6 +1078,7 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
 #' @param DTXSID The chemical identifier DTXSID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A list of names of chemical lists that contain the given chemical
 #' @export
@@ -1007,13 +1086,16 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
 
 get_lists_containing_chemical <- function(DTXSID = NULL,
                                           API_key = NULL,
-                                          Server = chemical_api_server){
+                                          Server = chemical_api_server,
+                                          verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a non-null value for DTXSID!')
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -1029,7 +1111,9 @@ get_lists_containing_chemical <- function(DTXSID = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -1040,6 +1124,7 @@ get_lists_containing_chemical <- function(DTXSID = NULL,
 #' @param list_name The name of the list of chemicals
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame of the chemical list
 #' @export
@@ -1047,13 +1132,16 @@ get_lists_containing_chemical <- function(DTXSID = NULL,
 
 get_chemicals_in_list <- function(list_name = NULL,
                                   API_key = NULL,
-                                  Server = chemical_api_server){
+                                  Server = chemical_api_server,
+                                  verbose = FALSE){
   if (is.null(list_name) | !is.character(list_name))
     stop('Please input a character value for list_name!')
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -1071,7 +1159,9 @@ get_chemicals_in_list <- function(list_name = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -1085,6 +1175,7 @@ get_chemicals_in_list <- function(list_name = NULL,
 #'   value.
 #' @param API_key The user-specific api key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame containing information on all public chemical lists
 #'   available from the CCTE chemical api.
@@ -1093,11 +1184,14 @@ get_chemicals_in_list <- function(list_name = NULL,
 
 get_all_public_chemical_lists <- function(Projection = '',
                                           API_key = NULL,
-                                          Server = chemical_api_server){
+                                          Server = chemical_api_server,
+                                          verbose = FALSE){
   if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -1133,7 +1227,9 @@ get_all_public_chemical_lists <- function(Projection = '',
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -1146,6 +1242,7 @@ get_all_public_chemical_lists <- function(Projection = '',
 #' @param DTXCID The chemical identifier DTXCID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return XML file format for representing a mrv file.
 #' @export
@@ -1154,7 +1251,8 @@ get_all_public_chemical_lists <- function(Projection = '',
 get_chemical_mrv <- function(DTXSID = NULL,
                              DTXCID = NULL,
                              API_key = NULL,
-                             Server = chemical_api_server){
+                             Server = chemical_api_server,
+                             verbose = FALSE){
   if (is.null(DTXSID) & is.null(DTXCID))
     stop('Please input a DTXSID or DTXCID!')
   else if (!is.null(DTXSID) & !is.null(DTXCID))
@@ -1162,7 +1260,9 @@ get_chemical_mrv <- function(DTXSID = NULL,
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -1187,7 +1287,9 @@ get_chemical_mrv <- function(DTXSID = NULL,
   if(response$status_code == 200){
     return(httr::content(response))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -1199,6 +1301,7 @@ get_chemical_mrv <- function(DTXSID = NULL,
 #' @param DTXCID Chemical identifier DTXCID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A character string giving a mol file representation
 #' @export
@@ -1207,7 +1310,8 @@ get_chemical_mrv <- function(DTXSID = NULL,
 get_chemical_mol <- function(DTXSID = NULL,
                              DTXCID = NULL,
                              API_key = NULL,
-                             Server = chemical_api_server){
+                             Server = chemical_api_server,
+                             verbose = FALSE){
   if (is.null(DTXSID) & is.null(DTXCID))
     stop('Please input a DTXSID or DTXCID!')
   else if (!is.null(DTXSID) & !is.null(DTXCID))
@@ -1215,7 +1319,9 @@ get_chemical_mol <- function(DTXSID = NULL,
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -1240,7 +1346,9 @@ get_chemical_mol <- function(DTXSID = NULL,
   if(response$status_code == 200){
     return(httr::content(response))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -1255,6 +1363,7 @@ get_chemical_mol <- function(DTXSID = NULL,
 #'   default to "png".
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A Large array of three dimensions representing an image. For
 #'   displaying this, one may use \code{png::writePNG()} or
@@ -1263,10 +1372,11 @@ get_chemical_mol <- function(DTXSID = NULL,
 
 
 get_chemical_image <- function(DTXSID = NULL,
-                             DTXCID = NULL,
-                             format = "",
-                             API_key = NULL,
-                             Server = chemical_api_server){
+                               DTXCID = NULL,
+                               format = "",
+                               API_key = NULL,
+                               Server = chemical_api_server,
+                               verbose = FALSE){
   if (is.null(DTXSID) & is.null(DTXCID))
     stop('Please input a DTXSID or DTXCID!')
   else if (!is.null(DTXSID) & !is.null(DTXCID))
@@ -1274,7 +1384,9 @@ get_chemical_image <- function(DTXSID = NULL,
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
   if (format == 'png'){
@@ -1306,7 +1418,9 @@ get_chemical_image <- function(DTXSID = NULL,
   if(response$status_code == 200){
     return(httr::content(response))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -1317,6 +1431,7 @@ get_chemical_image <- function(DTXSID = NULL,
 #' @param DTXSID The chemical identifier DTXSID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A named list of synonym information for the input DTXSID
 #' @export
@@ -1324,13 +1439,16 @@ get_chemical_image <- function(DTXSID = NULL,
 
 get_chemical_synonym <- function(DTXSID = NULL,
                                  API_key = NULL,
-                                 Server = chemical_api_server){
+                                 Server = chemical_api_server,
+                                 verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -1347,7 +1465,9 @@ get_chemical_synonym <- function(DTXSID = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
 
   return()

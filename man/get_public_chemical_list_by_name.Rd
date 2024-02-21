@@ -8,7 +8,8 @@ get_public_chemical_list_by_name(
   list_name = NULL,
   Projection = "",
   API_key = NULL,
-  Server = chemical_api_server
+  Server = chemical_api_server,
+  verbose = FALSE
 )
 }
 \arguments{
@@ -21,6 +22,8 @@ value.}
 \item{API_key}{The user-specific API key}
 
 \item{Server}{The root address for the API endpoint}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A data.frame containing information about the chemical list. Note,

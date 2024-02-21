@@ -7,7 +7,8 @@
 get_chemicals_in_list(
   list_name = NULL,
   API_key = NULL,
-  Server = chemical_api_server
+  Server = chemical_api_server,
+  verbose = FALSE
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ get_chemicals_in_list(
 \item{API_key}{The user-specific API key}
 
 \item{Server}{The root address for the API endpoint}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A data.frame of the chemical list

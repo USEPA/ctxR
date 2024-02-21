@@ -8,7 +8,8 @@ get_chem_info(
   DTXSID = NULL,
   type = "",
   API_key = NULL,
-  Server = chemical_api_server
+  Server = chemical_api_server,
+  verbose = FALSE
 )
 }
 \arguments{
@@ -21,6 +22,8 @@ values are "predicted" or "experimental".}
 \item{API_key}{The user-specific API Key}
 
 \item{Server}{The root address for the API endpoint}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A data.frame containing chemical information for the chemical with

@@ -4,7 +4,12 @@
 \alias{chemical_contains}
 \title{Chemical contains}
 \usage{
-chemical_contains(word = NULL, API_key = NULL, Server = chemical_api_server)
+chemical_contains(
+  word = NULL,
+  API_key = NULL,
+  Server = chemical_api_server,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{word}{A character string of a chemical name or portion of a chemical
@@ -13,6 +18,8 @@ name}
 \item{API_key}{The user-specific API key}
 
 \item{Server}{The root address for the API endpoint}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A data.frame of chemicals and related values matching the query
