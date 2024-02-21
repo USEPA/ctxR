@@ -7,7 +7,8 @@
 get_exposure_list_presence_tags_by_dtxsid(
   DTXSID = NULL,
   API_key = NULL,
-  Server = "https://api-ccte-stg.epa.gov/exposure"
+  Server = "https://api-ccte-stg.epa.gov/exposure",
+  verbose = FALSE
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ get_exposure_list_presence_tags_by_dtxsid(
 \item{API_key}{The user-specific API key}
 
 \item{Server}{The root address for the API endpoint}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A data.frame of document information and list presence tags
