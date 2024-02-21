@@ -4,7 +4,12 @@
 \alias{get_chemical_synonym_batch}
 \title{Get chemical synonym batch}
 \usage{
-get_chemical_synonym_batch(DTXSID = NULL, API_key = NULL, rate_limit = 0L)
+get_chemical_synonym_batch(
+  DTXSID = NULL,
+  API_key = NULL,
+  rate_limit = 0L,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{DTXSID}{A list of chemical identifier DTXSIDs}
@@ -12,6 +17,8 @@ get_chemical_synonym_batch(DTXSID = NULL, API_key = NULL, rate_limit = 0L)
 \item{API_key}{The user-specific API key.}
 
 \item{rate_limit}{The number of seconds to wait between requests.}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A named list of lists containing synonym information for each input

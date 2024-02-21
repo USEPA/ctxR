@@ -9,7 +9,8 @@ get_chemical_details_batch(
   DTXCID = NULL,
   Projection = "chemicaldetailstandard",
   API_key = NULL,
-  rate_limit = 0L
+  rate_limit = 0L,
+  verbose = FALSE
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ mismatch, the default format will be 'chemicaldetailstandard'.}
 \item{API_key}{The user-specific API key}
 
 \item{rate_limit}{Number of seconds to wait between each request}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A data.table (DTXSID) or a named list of data.tables (DTXCID)

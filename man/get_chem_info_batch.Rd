@@ -9,7 +9,8 @@ get_chem_info_batch(
   type = "",
   API_key = NULL,
   rate_limit = 0L,
-  Server = chemical_api_server
+  Server = chemical_api_server,
+  verbose = FALSE
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ grab all details. The allowable input values are "", predicted", or
 \item{rate_limit}{Number of seconds to wait between each request}
 
 \item{Server}{The root address for the API endpoint}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A data.table containing chemical information for the chemicals with
