@@ -4,12 +4,18 @@
 \alias{get_all_assays}
 \title{Retrieve all assays}
 \usage{
-get_all_assays(API_key = NULL, Server = bioactivity_api_server)
+get_all_assays(
+  API_key = NULL,
+  Server = bioactivity_api_server,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{API_key}{The user-specific API key}
 
 \item{Server}{The root address for the API endpoint}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A data.frame containing all the assays and associated information

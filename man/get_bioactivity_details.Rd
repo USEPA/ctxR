@@ -10,7 +10,8 @@ get_bioactivity_details(
   SPID = NULL,
   m4id = NULL,
   API_key = NULL,
-  Server = bioactivity_api_server
+  Server = bioactivity_api_server,
+  verbose = FALSE
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ get_bioactivity_details(
 \item{API_key}{The user-specific API key}
 
 \item{Server}{The root address for the API endpoint}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A data.frame containing bioactivity information for the chemical or assay endpoint with
