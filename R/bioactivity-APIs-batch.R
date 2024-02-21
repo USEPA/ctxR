@@ -5,6 +5,7 @@
 #' @param API_key The user-specific API key.
 #' @param Server The root address for the API endpoint
 #' @param rate_limit Number of seconds to wait between each request
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A named list of data.frames containing bioactivity information for
 #'   the chemicals with DTXSID or assays with AEID matching the input parameter.
@@ -15,7 +16,8 @@ get_bioactivity_details_batch <- function(DTXSID = NULL,
                                           AEID = NULL,
                                           API_key = NULL,
                                           Server = NULL,
-                                          rate_limit = 0L){
+                                          rate_limit = 0L,
+                                          verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
@@ -36,14 +38,17 @@ get_bioactivity_details_batch <- function(DTXSID = NULL,
       stop('Please input a character list for DTXSID!')
     }
     DTXSID <- unique(DTXSID)
-    print('Using DTXSID!')
+    if (verbose) {
+      print('Using DTXSID!')
+    }
     results <- lapply(DTXSID, function(d){
       Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           get_bioactivity_details(DTXSID = d,
                                   API_key = API_key,
-                                  Server = Server)
+                                  Server = Server,
+                                  verbose = verbose)
         },
         error = function(cond){
           message(d)
@@ -58,13 +63,16 @@ get_bioactivity_details_batch <- function(DTXSID = NULL,
     return(results)
   } else if (!is.null(AEID)){
     AEID <- unique(AEID)
-    print('Using AEID!')
+    if (verbose){
+      print('Using AEID!')
+    }
     results <- lapply(AEID, function(a){
       Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           get_bioactivity_details(AEID = a,
-                                  API_key = API_key)
+                                  API_key = API_key,
+                                  verbose = verbose)
         },
         error = function(cond){
           message(a)
@@ -88,6 +96,7 @@ get_bioactivity_details_batch <- function(DTXSID = NULL,
 #' @param API_key The user-specific API key.
 #' @param Server The root address for the API endpoint
 #' @param rate_limit Number of seconds to wait between each request
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A named list of data.frames containing bioactivity summary
 #'   information for the assays with AEID matching the input parameter.
@@ -97,7 +106,8 @@ get_bioactivity_details_batch <- function(DTXSID = NULL,
 get_bioactivity_summary_batch <- function(AEID = NULL,
                                           API_key = NULL,
                                           Server = NULL,
-                                          rate_limit = 0L){
+                                          rate_limit = 0L,
+                                          verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
@@ -114,14 +124,17 @@ get_bioactivity_summary_batch <- function(AEID = NULL,
 
   if (!is.null(AEID)){
     AEID <- unique(AEID)
-    print('Using AEID!')
+    if (verbose){
+      print('Using AEID!')
+    }
     results <- lapply(AEID, function(a){
       Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           get_bioactivity_summary(AEID = a,
                                   API_key = API_key,
-                                  Server = Server)
+                                  Server = Server,
+                                  verbose = verbose)
         },
         error = function(cond){
           message(a)
@@ -146,6 +159,7 @@ get_bioactivity_summary_batch <- function(AEID = NULL,
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
 #' @param rate_limit Number of seconds to wait between each request
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A named list of data.frames containing annotation information for the
 #'   assays with AEID matching the input parameter.
@@ -154,7 +168,8 @@ get_bioactivity_summary_batch <- function(AEID = NULL,
 get_annotation_by_aeid_batch <- function(AEID = NULL,
                                          API_key = NULL,
                                          Server = NULL,
-                                         rate_limit = 0L){
+                                         rate_limit = 0L,
+                                         verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
@@ -171,14 +186,17 @@ get_annotation_by_aeid_batch <- function(AEID = NULL,
 
   if (!is.null(AEID)){
     AEID <- unique(AEID)
-    print('Using AEID!')
+    if (verbose) {
+      print('Using AEID!')
+    }
     results <- lapply(AEID, function(a){
       Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
           get_annotation_by_aeid(AEID = a,
                                  API_key = API_key,
-                                 Server = Server)
+                                 Server = Server,
+                                 verbose = verbose)
         },
         error = function(cond){
           message(a)
