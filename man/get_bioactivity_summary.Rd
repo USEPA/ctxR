@@ -7,7 +7,8 @@
 get_bioactivity_summary(
   AEID = NULL,
   API_key = NULL,
-  Server = bioactivity_api_server
+  Server = bioactivity_api_server,
+  verbose = FALSE
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ get_bioactivity_summary(
 \item{API_key}{The user-specific API key}
 
 \item{Server}{The root address for the API endpoint}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A data.frame containing summary information corresponding to the

@@ -9,8 +9,8 @@ test_that("catch missing API", {
     #set env variable temporarily for testing
     Sys.setenv("CCTE_API_KEY" = "stored_api_key")
   }
-  expect_message(get_bioactivity_details_batch(DTXSID = c('DTXSID7020182')), 'Using stored API key!')
-  expect_message(get_bioactivity_details_batch(DTXSID = c('DTXSID7020182'), API_key = 1), 'Using stored API key!')
+  expect_message(get_bioactivity_details_batch(DTXSID = c('DTXSID7020182'), verbose = TRUE), 'Using stored API key!')
+  expect_message(get_bioactivity_details_batch(DTXSID = c('DTXSID7020182'), API_key = 1, verbose = TRUE), 'Using stored API key!')
 })
 
 test_that('DTXSID/AEID errors', {

@@ -3,18 +3,22 @@
 #' @param DTXSID A list of chemical identifier DTXSIDs
 #' @param API_key The user-specific API key
 #' @param rate_limit Number of seconds to wait between each request
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A named list of data.frames containing chemical (human and eco)
 #'   hazard data for each input chemical.
 
 
 get_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
-                                       API_key = NULL,
-                                       rate_limit = 0L){
+                                           API_key = NULL,
+                                           rate_limit = 0L,
+                                           verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -31,7 +35,8 @@ get_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
       attempt <- tryCatch(
         {
           get_hazard_by_dtxsid(DTXSID = t,
-                               API_key = API_key)
+                               API_key = API_key,
+                               verbose = verbose)
         },
         error = function(cond){
           message(t)
@@ -55,19 +60,23 @@ get_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
 #' @param API_key The user-specific API key
 #' @param rate_limit Number of seconds to wait between each request
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.table containing chemical (human and eco) hazard data for each
 #'   input chemical.
 #' @export
 
 get_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
-                                         API_key = NULL,
-                                         rate_limit = 0L,
-                                         Server = hazard_api_server){
+                                       API_key = NULL,
+                                       rate_limit = 0L,
+                                       Server = hazard_api_server,
+                                       verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -86,7 +95,9 @@ get_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
 
     for (i in seq_along(indices)){
 
-      print(paste('The current index is i =', i, 'out of', length(indices)))
+      if (verbose) {
+        print(paste('The current index is i =', i, 'out of', length(indices)))
+      }
 
       response <- httr::POST(url = paste0(Server, '/search/by-dtxsid/'),
                              httr::add_headers(.headers = c(
@@ -96,7 +107,9 @@ get_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                              )),
                              body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
 
-      print(paste('The response code is', response$status_code, 'for index i =', i))
+      if (verbose) {
+        print(paste('The response code is', response$status_code, 'for index i =', i))
+      }
 
 
       if (response$status_code == 200){
@@ -156,17 +169,21 @@ create_hazard_data.table <- function(){
 #' @param DTXSID A list of chemical identifier DTXSIDs.
 #' @param API_key The user-specific API key.
 #' @param rate_limit Number of seconds to wait between each request
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A named list of data.frames containing chemical human hazard data.
 
 
 get_human_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
-                                             API_key = NULL,
-                                             rate_limit = 0L){
+                                                 API_key = NULL,
+                                                 rate_limit = 0L,
+                                                 verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -183,7 +200,8 @@ get_human_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
       attempt <- tryCatch(
         {
           get_human_hazard_by_dtxsid(DTXSID = t,
-                               API_key = API_key)
+                               API_key = API_key,
+                               verbose = verbose)
         },
         error = function(cond){
           message(t)
@@ -207,18 +225,22 @@ get_human_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
 #' @param API_key The user-specific API key.
 #' @param rate_limit Number of seconds to wait between each request
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.table containing chemical human hazard data.
 #' @export
 
 get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
-                                         API_key = NULL,
-                                         rate_limit = 0L,
-                                         Server = hazard_api_server){
+                                             API_key = NULL,
+                                             rate_limit = 0L,
+                                             Server = hazard_api_server,
+                                             verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -237,7 +259,9 @@ get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
 
     for (i in seq_along(indices)){
 
-      print(paste('The current index is i =', i, 'out of', length(indices)))
+      if (verbose) {
+        print(paste('The current index is i =', i, 'out of', length(indices)))
+      }
 
       response <- httr::POST(url = paste0(Server, '/human/search/by-dtxsid/'),
                              httr::add_headers(.headers = c(
@@ -247,7 +271,9 @@ get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                              )),
                              body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
 
-      print(paste('The response code is', response$status_code, 'for index i =', i))
+      if (verbose) {
+        print(paste('The response code is', response$status_code, 'for index i =', i))
+      }
 
 
       if (response$status_code == 200){
@@ -272,17 +298,21 @@ get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
 #' @param DTXSID A list of chemical identifier DTXSIDs.
 #' @param API_key The user-specific API key.
 #' @param rate_limit Number of seconds to wait between each request
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A named list of data.frames containing chemical ecotox hazard data.
 
 
 get_ecotox_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
-                                              API_key = NULL,
-                                              rate_limit = 0L){
+                                                  API_key = NULL,
+                                                  rate_limit = 0L,
+                                                  verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -299,7 +329,8 @@ get_ecotox_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
       attempt <- tryCatch(
         {
           get_ecotox_hazard_by_dtxsid(DTXSID = t,
-                                     API_key = API_key)
+                                     API_key = API_key,
+                                     verbose = verbose)
         },
         error = function(cond){
           message(t)
@@ -323,18 +354,22 @@ get_ecotox_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
 #' @param API_key The user-specific API key.
 #' @param rate_limit Number of seconds to wait between each request
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.table containing chemical ecotox hazard data.
 #' @export
 
 get_ecotox_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
-                                         API_key = NULL,
-                                         rate_limit = 0L,
-                                         Server = hazard_api_server){
+                                              API_key = NULL,
+                                              rate_limit = 0L,
+                                              Server = hazard_api_server,
+                                              verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -353,7 +388,9 @@ get_ecotox_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
 
     for (i in seq_along(indices)){
 
-      print(paste('The current index is i =', i, 'out of', length(indices)))
+      if (verbose) {
+        print(paste('The current index is i =', i, 'out of', length(indices)))
+      }
 
       response <- httr::POST(url = paste0(Server, '/eco/search/by-dtxsid/'),
                              httr::add_headers(.headers = c(
@@ -363,7 +400,9 @@ get_ecotox_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                              )),
                              body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
 
-      print(paste('The response code is', response$status_code, 'for index i =', i))
+      if (verbose) {
+        print(paste('The response code is', response$status_code, 'for index i =', i))
+      }
 
 
       if (response$status_code == 200){
@@ -388,18 +427,22 @@ get_ecotox_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
 #' @param DTXSID The chemical identifier DTXSIDs
 #' @param API_key The user-specific API key.
 #' @param rate_limit Number of seconds to wait between each request
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A named list of data.frames containing skin and eye hazard data for
 #'   each input DTXSID.
 
 
 get_skin_eye_hazard_batch_old <- function(DTXSID = NULL,
-                                      API_key = NULL,
-                                      rate_limit = 0L){
+                                          API_key = NULL,
+                                          rate_limit = 0L,
+                                          verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -416,7 +459,8 @@ get_skin_eye_hazard_batch_old <- function(DTXSID = NULL,
       attempt <- tryCatch(
         {
           get_skin_eye_hazard(DTXSID = t,
-                              API_key = API_key)
+                              API_key = API_key,
+                              verbose = verbose)
         },
         error = function(cond){
           message(t)
@@ -440,7 +484,8 @@ get_skin_eye_hazard_batch_old <- function(DTXSID = NULL,
 #' @param API_key The user-specific API key.
 #' @param rate_limit Number of seconds to wait between each request
 #' @param Server The root address for the API endpoint
-
+#' @param verbose A logical indicating if some “progress report” should be given.
+#'
 #' @return A named list of data.frames containing skin and eye hazard data for
 #'   each input DTXSID.
 #' @export
@@ -449,11 +494,14 @@ get_skin_eye_hazard_batch_old <- function(DTXSID = NULL,
 get_skin_eye_hazard_batch <- function(DTXSID = NULL,
                                       API_key = NULL,
                                       rate_limit = 0L,
-                                      Server = hazard_api_server){
+                                      Server = hazard_api_server,
+                                      verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -484,7 +532,9 @@ get_skin_eye_hazard_batch <- function(DTXSID = NULL,
 
     for (i in seq_along(indices)){
 
-      print(paste('The current index is i =', i, 'out of', length(indices)))
+      if (verbose) {
+        print(paste('The current index is i =', i, 'out of', length(indices)))
+      }
 
       response <- httr::POST(url = paste0(Server, '/skin-eye/search/by-dtxsid/'),
                              httr::add_headers(.headers = c(
@@ -494,7 +544,9 @@ get_skin_eye_hazard_batch <- function(DTXSID = NULL,
                              )),
                              body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
 
-      print(paste('The response code is', response$status_code, 'for index i =', i))
+      if (verbose) {
+        print(paste('The response code is', response$status_code, 'for index i =', i))
+      }
 
 
       if (response$status_code == 200){
@@ -518,18 +570,22 @@ get_skin_eye_hazard_batch <- function(DTXSID = NULL,
 #' @param DTXSID The chemical identifier DTXSIDs
 #' @param API_key The user-specific API key.
 #' @param rate_limit Number of seconds to wait between requests
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A named list of data.frames, each containing cancer hazard and
 #'   related data for each input DTXSID.
 
 
 get_cancer_hazard_batch_old <- function(DTXSID = NULL,
-                                    API_key = NULL,
-                                    rate_limit = 0L){
+                                        API_key = NULL,
+                                        rate_limit = 0L,
+                                        verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -546,7 +602,8 @@ get_cancer_hazard_batch_old <- function(DTXSID = NULL,
       attempt <- tryCatch(
         {
           get_cancer_hazard(DTXSID = t,
-                            API_key = API_key)
+                            API_key = API_key,
+                            verbose = verbose)
         },
         error = function(cond){
           message(t)
@@ -570,6 +627,7 @@ get_cancer_hazard_batch_old <- function(DTXSID = NULL,
 #' @param API_key The user-specific API key.
 #' @param rate_limit Number of seconds to wait between requests
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.table containing cancer hazard and
 #'   related data for each input DTXSID.
@@ -579,11 +637,14 @@ get_cancer_hazard_batch_old <- function(DTXSID = NULL,
 get_cancer_hazard_batch <- function(DTXSID = NULL,
                                     API_key = NULL,
                                     rate_limit = 0L,
-                                    Server = hazard_api_server){
+                                    Server = hazard_api_server,
+                                    verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -607,7 +668,9 @@ get_cancer_hazard_batch <- function(DTXSID = NULL,
 
     for (i in seq_along(indices)){
 
-      print(paste('The current index is i =', i, 'out of', length(indices)))
+      if (verbose) {
+        print(paste('The current index is i =', i, 'out of', length(indices)))
+      }
 
       response <- httr::POST(url = paste0(Server, '/cancer-summary/search/by-dtxsid/'),
                              httr::add_headers(.headers = c(
@@ -617,7 +680,9 @@ get_cancer_hazard_batch <- function(DTXSID = NULL,
                              )),
                              body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
 
-      print(paste('The response code is', response$status_code, 'for index i =', i))
+      if (verbose) {
+        print(paste('The response code is', response$status_code, 'for index i =', i))
+      }
 
 
       if (response$status_code == 200){
@@ -643,18 +708,22 @@ get_cancer_hazard_batch <- function(DTXSID = NULL,
 #' @param DTXSID The chemical identifier DTXSIDs
 #' @param API_key The user-specific API key.
 #' @param rate_limit Number of seconds to wait between requests
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A named list of data.frames of genetox summary data for each input
 #'   DTXSID.
 
 
 get_genetox_summary_batch_old <- function(DTXSID = NULL,
-                                      API_key = NULL,
-                                      rate_limit = 0L){
+                                          API_key = NULL,
+                                          rate_limit = 0L,
+                                          verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -671,7 +740,8 @@ get_genetox_summary_batch_old <- function(DTXSID = NULL,
       attempt <- tryCatch(
         {
           get_genetox_summary(DTXSID = t,
-                              API_key = API_key)
+                              API_key = API_key,
+                              verbose = verbose)
         },
         error = function(cond){
           message(t)
@@ -696,6 +766,7 @@ get_genetox_summary_batch_old <- function(DTXSID = NULL,
 #' @param API_key The user-specific API key.
 #' @param rate_limit Number of seconds to wait between requests
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.table of genetox summary data for each input
 #'   DTXSID.
@@ -705,11 +776,14 @@ get_genetox_summary_batch_old <- function(DTXSID = NULL,
 get_genetox_summary_batch <- function(DTXSID = NULL,
                                       API_key = NULL,
                                       rate_limit = 0L,
-                                      Server = hazard_api_server){
+                                      Server = hazard_api_server,
+                                      verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -734,7 +808,9 @@ get_genetox_summary_batch <- function(DTXSID = NULL,
 
     for (i in seq_along(indices)){
 
-      print(paste('The current index is i =', i, 'out of', length(indices)))
+      if (verbose) {
+        print(paste('The current index is i =', i, 'out of', length(indices)))
+      }
 
       response <- httr::POST(url = paste0(Server, '/genetox/summary/search/by-dtxsid/'),
                              httr::add_headers(.headers = c(
@@ -744,7 +820,9 @@ get_genetox_summary_batch <- function(DTXSID = NULL,
                              )),
                              body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
 
-      print(paste('The response code is', response$status_code, 'for index i =', i))
+      if (verbose) {
+        print(paste('The response code is', response$status_code, 'for index i =', i))
+      }
 
 
       if (response$status_code == 200){
@@ -771,19 +849,23 @@ get_genetox_summary_batch <- function(DTXSID = NULL,
 #' @param DTXSID The chemical identifier DTXSIDs
 #' @param API_key The user-specific API key.
 #' @param rate_limit Number of seconds to wait between requests
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A named list of data.frames of genetox detail data for each input
 #'   DTXSID.
 
 
 get_genetox_details_batch_old <- function(DTXSID = NULL,
-                                      API_key = NULL,
-                                      rate_limit = 0L){
+                                          API_key = NULL,
+                                          rate_limit = 0L,
+                                          verbose = FALSE){
 
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -800,7 +882,8 @@ get_genetox_details_batch_old <- function(DTXSID = NULL,
       attempt <- tryCatch(
         {
           get_genetox_details(DTXSID = t,
-                              API_key = API_key)
+                              API_key = API_key,
+                              verbose = verbose)
         },
         error = function(cond){
           message(t)
@@ -825,6 +908,7 @@ get_genetox_details_batch_old <- function(DTXSID = NULL,
 #' @param API_key The user-specific API key.
 #' @param rate_limit Number of seconds to wait between requests
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.table of genetox detail data for each input
 #'   DTXSID.
@@ -834,11 +918,14 @@ get_genetox_details_batch_old <- function(DTXSID = NULL,
 get_genetox_details_batch <- function(DTXSID = NULL,
                                       API_key = NULL,
                                       rate_limit = 0L,
-                                      Server = hazard_api_server){
+                                      Server = hazard_api_server,
+                                      verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -866,7 +953,9 @@ get_genetox_details_batch <- function(DTXSID = NULL,
 
     for (i in seq_along(indices)){
 
-      print(paste('The current index is i =', i, 'out of', length(indices)))
+      if (verbose) {
+        print(paste('The current index is i =', i, 'out of', length(indices)))
+      }
 
       response <- httr::POST(url = paste0(Server, '/genetox/details/search/by-dtxsid/'),
                              httr::add_headers(.headers = c(
@@ -876,7 +965,9 @@ get_genetox_details_batch <- function(DTXSID = NULL,
                              )),
                              body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
 
-      print(paste('The response code is', response$status_code, 'for index i =', i))
+      if (verbose) {
+        print(paste('The response code is', response$status_code, 'for index i =', i))
+      }
 
 
       if (response$status_code == 200){

@@ -4,7 +4,12 @@
 \alias{get_fate_by_dtxsid_batch_old}
 \title{Retrieve chemical fate data in batch search}
 \usage{
-get_fate_by_dtxsid_batch_old(DTXSID = NULL, API_key = NULL, rate_limit = 0L)
+get_fate_by_dtxsid_batch_old(
+  DTXSID = NULL,
+  API_key = NULL,
+  rate_limit = 0L,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{DTXSID}{A vector of chemicals identifier DTXSIDs}
@@ -12,6 +17,8 @@ get_fate_by_dtxsid_batch_old(DTXSID = NULL, API_key = NULL, rate_limit = 0L)
 \item{API_key}{The user-specific API key}
 
 \item{rate_limit}{Number of seconds to wait between each request}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A named list of data.frames containing chemical fate information for

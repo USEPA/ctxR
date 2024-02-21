@@ -8,7 +8,8 @@ get_chemical_mol_batch(
   DTXSID = NULL,
   DTXCID = NULL,
   API_key = NULL,
-  rate_limit = 0L
+  rate_limit = 0L,
+  verbose = FALSE
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ get_chemical_mol_batch(
 \item{API_key}{The user-specific API key.}
 
 \item{rate_limit}{Number of seconds to wait between each request}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A named list of character strings giving a mol file representations

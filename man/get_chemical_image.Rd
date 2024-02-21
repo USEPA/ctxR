@@ -9,7 +9,8 @@ get_chemical_image(
   DTXCID = NULL,
   format = "",
   API_key = NULL,
-  Server = chemical_api_server
+  Server = chemical_api_server,
+  verbose = FALSE
 )
 }
 \arguments{
@@ -23,6 +24,8 @@ default to "png".}
 \item{API_key}{The user-specific API key}
 
 \item{Server}{The root address for the API endpoint}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A Large array of three dimensions representing an image. For

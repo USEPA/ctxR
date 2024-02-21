@@ -7,7 +7,8 @@
 get_all_public_chemical_lists(
   Projection = "",
   API_key = NULL,
-  Server = chemical_api_server
+  Server = chemical_api_server,
+  verbose = FALSE
 )
 }
 \arguments{
@@ -18,6 +19,8 @@ value.}
 \item{API_key}{The user-specific api key}
 
 \item{Server}{The root address for the API endpoint}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A data.frame containing information on all public chemical lists

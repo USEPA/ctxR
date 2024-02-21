@@ -6,6 +6,7 @@
 #' @param m4id The chemical identifier m4id
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame containing bioactivity information for the chemical or assay endpoint with
 #'   identifier matching the input parameter.
@@ -16,7 +17,8 @@ get_bioactivity_details <- function(DTXSID = NULL,
                                  SPID = NULL,
                                  m4id = NULL,
                                  API_key = NULL,
-                                 Server = bioactivity_api_server){
+                                 Server = bioactivity_api_server,
+                                 verbose = FALSE){
   #if (is.null(DTXSID) & is.null(AEID))#
   if (all(sapply(list(DTXSID, AEID, SPID, m4id), is.null)))
     stop('Please input a DTXSID, AEID, SPID, or m4id!')
@@ -26,7 +28,9 @@ get_bioactivity_details <- function(DTXSID = NULL,
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -34,9 +38,12 @@ get_bioactivity_details <- function(DTXSID = NULL,
   data_endpoint <- paste0('by-', c('dtxsid', 'aeid', 'spid', 'm4id')[data_index])
   data_input <- unlist(list(DTXSID, AEID, SPID, m4id)[data_index])
 
-  print(data_index)
-  print(data_endpoint)
-  print(data_input)
+  if (verbose){
+    print(data_index)
+    print(data_endpoint)
+    print(data_input)
+  }
+
 
   response <- httr::GET(url = paste0(Server, '/search/', data_endpoint, '/', ifelse(data_index == 3, prepare_word(data_input), data_input)),
                         httr::add_headers(.headers = c(
@@ -83,7 +90,9 @@ get_bioactivity_details <- function(DTXSID = NULL,
     res_dt <- data.table::data.table(res)
     return(res_dt)
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 }
@@ -93,6 +102,7 @@ get_bioactivity_details <- function(DTXSID = NULL,
 #' @param AEID The assay endpoint indentifier AEID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame containing summary information corresponding to the
 #'   input AEID
@@ -100,7 +110,8 @@ get_bioactivity_details <- function(DTXSID = NULL,
 #'
 get_bioactivity_summary <- function(AEID = NULL,
                                     API_key = NULL,
-                                    Server = bioactivity_api_server){
+                                    Server = bioactivity_api_server,
+                                    verbose = FALSE){
   #print("This is broken currently!")
   #return()
   if (is.null(AEID))
@@ -108,7 +119,9 @@ get_bioactivity_summary <- function(AEID = NULL,
   else if (is.null(API_key)){
     if (has_ccte_key()){
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -143,7 +156,9 @@ get_bioactivity_summary <- function(AEID = NULL,
                   totalSc = NA_integer_))
     }
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -153,17 +168,21 @@ get_bioactivity_summary <- function(AEID = NULL,
 #'
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame containing all the assays and associated information
 #' @export
 #'
 get_all_assays <- function(API_key = NULL,
-                           Server = bioactivity_api_server){
+                           Server = bioactivity_api_server,
+                           verbose = FALSE){
 
   if (is.null(API_key)){
     if (has_ccte_key()){
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -184,7 +203,9 @@ get_all_assays <- function(API_key = NULL,
                                                                                         USE.NAMES = FALSE)))
     return(res)
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 }
@@ -194,6 +215,7 @@ get_all_assays <- function(API_key = NULL,
 #' @param AEID The assay endpoint identifier AEID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame containing the annotated assays corresponding to the
 #'   input AEID parameter
@@ -201,13 +223,16 @@ get_all_assays <- function(API_key = NULL,
 #'
 get_annotation_by_aeid <- function(AEID = NULL,
                                    API_key = NULL,
-                                   Server = bioactivity_api_server){
+                                   Server = bioactivity_api_server,
+                                   verbose = FALSE){
   if (is.null(AEID))
     stop('Please input an AEID!')
   else if (is.null(API_key)){
     if (has_ccte_key()){
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -234,11 +259,15 @@ get_annotation_by_aeid <- function(AEID = NULL,
 
       return(res_dt)
     } else {
-      print('The request was successful but there is no information to return...')
+      if (verbose){
+        print('The request was successful but there is no information to return...')
+      }
       return(list())
     }
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 

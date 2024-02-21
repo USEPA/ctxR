@@ -7,7 +7,8 @@
 get_human_hazard_by_dtxsid(
   DTXSID = NULL,
   API_key = NULL,
-  Server = hazard_api_server
+  Server = hazard_api_server,
+  verbose = FALSE
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ get_human_hazard_by_dtxsid(
 \item{API_key}{The user-specific API key}
 
 \item{Server}{The root address for the API endpoint}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A data.frame containing chemical human hazard data

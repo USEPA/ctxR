@@ -8,7 +8,8 @@ get_chemical_lists_by_type_batch(
   type_list = NULL,
   Projection = "",
   API_key = NULL,
-  rate_limit = 0L
+  rate_limit = 0L,
+  verbose = FALSE
 )
 }
 \arguments{
@@ -23,6 +24,8 @@ value.}
 \item{API_key}{The user-specified API key.}
 
 \item{rate_limit}{Number of seconds to wait between each request}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A named list of data.frames containing information about lists that

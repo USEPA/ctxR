@@ -4,7 +4,12 @@
 \alias{get_genetox_summary_batch_old}
 \title{Get genetox summary batch}
 \usage{
-get_genetox_summary_batch_old(DTXSID = NULL, API_key = NULL, rate_limit = 0L)
+get_genetox_summary_batch_old(
+  DTXSID = NULL,
+  API_key = NULL,
+  rate_limit = 0L,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{DTXSID}{The chemical identifier DTXSIDs}
@@ -12,6 +17,8 @@ get_genetox_summary_batch_old(DTXSID = NULL, API_key = NULL, rate_limit = 0L)
 \item{API_key}{The user-specific API key.}
 
 \item{rate_limit}{Number of seconds to wait between requests}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A named list of data.frames of genetox summary data for each input

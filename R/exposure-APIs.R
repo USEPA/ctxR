@@ -3,19 +3,23 @@
 #' @param DTXSID Chemical identifier DTXSID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame of functional use data.
 
 
 get_exposure_functional_use <- function(DTXSID = NULL,
                                         API_key = NULL,
-                                        Server = "https://api-ccte-stg.epa.gov/exposure"){
+                                        Server = "https://api-ccte-stg.epa.gov/exposure",
+                                        verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input an DTXSID!')
   else if (is.null(API_key)){
     if (has_ccte_key()){
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -31,7 +35,9 @@ get_exposure_functional_use <- function(DTXSID = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 }
@@ -42,6 +48,7 @@ get_exposure_functional_use <- function(DTXSID = NULL,
 #' @param DTXSID The chemical identifier DTXSID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame with probabilities corresponding to various routes of
 #'   exposure related to functional use.
@@ -49,13 +56,16 @@ get_exposure_functional_use <- function(DTXSID = NULL,
 
 get_exposure_functional_use_probability <- function(DTXSID = NULL,
                                                     API_key = NULL,
-                                                    Server = "https://api-ccte-stg.epa.gov/exposure"){
+                                                    Server = "https://api-ccte-stg.epa.gov/exposure",
+                                                    verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input an DTXSID!')
   else if (is.null(API_key)){
     if (has_ccte_key()){
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -71,7 +81,9 @@ get_exposure_functional_use_probability <- function(DTXSID = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 }
@@ -80,16 +92,20 @@ get_exposure_functional_use_probability <- function(DTXSID = NULL,
 #'
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame of functional use categories.
 
 
 get_exposure_functional_use_category <- function(API_key = NULL,
-                                                 Server = "https://api-ccte-stg.epa.gov/exposure"){
+                                                 Server = "https://api-ccte-stg.epa.gov/exposure",
+                                                 verbose = FALSE){
    if (is.null(API_key)){
     if (has_ccte_key()){
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -105,7 +121,9 @@ get_exposure_functional_use_category <- function(API_key = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 }
@@ -115,6 +133,7 @@ get_exposure_functional_use_category <- function(API_key = NULL,
 #' @param DTXSID The chemical identifier DTXSID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame with product information relating to exposure to the
 #'   given chemical
@@ -122,13 +141,16 @@ get_exposure_functional_use_category <- function(API_key = NULL,
 
 get_exposure_product_data <- function(DTXSID = NULL,
                                       API_key = NULL,
-                                      Server = "https://api-ccte-stg.epa.gov/exposure"){
+                                      Server = "https://api-ccte-stg.epa.gov/exposure",
+                                      verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input an DTXSID!')
   else if (is.null(API_key)){
     if (has_ccte_key()){
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -144,7 +166,9 @@ get_exposure_product_data <- function(DTXSID = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 }
@@ -153,16 +177,20 @@ get_exposure_product_data <- function(DTXSID = NULL,
 #'
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame consisting of all the product use categories
 
 
 get_exposure_product_data_puc <- function(API_key = NULL,
-                                          Server = "https://api-ccte-stg.epa.gov/exposure"){
+                                          Server = "https://api-ccte-stg.epa.gov/exposure",
+                                          verbose = FALSE){
   if (is.null(API_key)){
     if (has_ccte_key()){
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -178,7 +206,9 @@ get_exposure_product_data_puc <- function(API_key = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 }
@@ -188,16 +218,20 @@ get_exposure_product_data_puc <- function(API_key = NULL,
 #'
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame with all the list presence tags and associated data.
 
 
 get_exposure_list_presence_tags <- function(API_key = NULL,
-                                            Server = "https://api-ccte-stg.epa.gov/exposure"){
+                                            Server = "https://api-ccte-stg.epa.gov/exposure",
+                                            verbose = FALSE){
   if (is.null(API_key)){
     if (has_ccte_key()){
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -213,7 +247,9 @@ get_exposure_list_presence_tags <- function(API_key = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 }
@@ -223,19 +259,23 @@ get_exposure_list_presence_tags <- function(API_key = NULL,
 #' @param DTXSID The chemical identifier DTXSID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame of document information and list presence tags
 
 
 get_exposure_list_presence_tags_by_dtxsid <- function(DTXSID = NULL,
                                                       API_key = NULL,
-                                                      Server = "https://api-ccte-stg.epa.gov/exposure"){
+                                                      Server = "https://api-ccte-stg.epa.gov/exposure",
+                                                      verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input an DTXSID!')
   else if (is.null(API_key)){
     if (has_ccte_key()){
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -251,7 +291,9 @@ get_exposure_list_presence_tags_by_dtxsid <- function(DTXSID = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 }

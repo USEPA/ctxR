@@ -4,7 +4,12 @@
 \alias{chemical_contains_batch}
 \title{Chemical contains batch search}
 \usage{
-chemical_contains_batch(word_list = NULL, API_key = NULL, rate_limit = 0L)
+chemical_contains_batch(
+  word_list = NULL,
+  API_key = NULL,
+  rate_limit = 0L,
+  verbose = verbose
+)
 }
 \arguments{
 \item{word_list}{A list of character strings of chemical names or portion of
@@ -13,6 +18,8 @@ chemical names}
 \item{API_key}{User-specific API key}
 
 \item{rate_limit}{Number of seconds to wait between each request}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A named list of data.frames of chemicals and related values matching

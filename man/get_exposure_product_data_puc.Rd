@@ -6,13 +6,16 @@
 \usage{
 get_exposure_product_data_puc(
   API_key = NULL,
-  Server = "https://api-ccte-stg.epa.gov/exposure"
+  Server = "https://api-ccte-stg.epa.gov/exposure",
+  verbose = FALSE
 )
 }
 \arguments{
 \item{API_key}{The user-specific API key}
 
 \item{Server}{The root address for the API endpoint}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A data.frame consisting of all the product use categories

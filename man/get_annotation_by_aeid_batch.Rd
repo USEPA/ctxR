@@ -8,7 +8,8 @@ get_annotation_by_aeid_batch(
   AEID = NULL,
   API_key = NULL,
   Server = NULL,
-  rate_limit = 0L
+  rate_limit = 0L,
+  verbose = FALSE
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ get_annotation_by_aeid_batch(
 \item{Server}{The root address for the API endpoint}
 
 \item{rate_limit}{Number of seconds to wait between each request}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A named list of data.frames containing annotation information for the
