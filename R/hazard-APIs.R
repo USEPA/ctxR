@@ -31,7 +31,7 @@ get_hazard_by_dtxsid <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -71,7 +71,7 @@ get_human_hazard_by_dtxsid <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -111,7 +111,7 @@ get_ecotox_hazard_by_dtxsid <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -152,7 +152,7 @@ get_skin_eye_hazard <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -193,7 +193,7 @@ get_cancer_hazard <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -234,7 +234,7 @@ get_genetox_summary <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -275,7 +275,7 @@ get_genetox_details <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
