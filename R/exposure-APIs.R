@@ -29,7 +29,7 @@ get_exposure_functional_use <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -69,7 +69,7 @@ get_exposure_functional_use_probability <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -103,7 +103,7 @@ get_exposure_functional_use_category <- function(API_key = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -142,7 +142,7 @@ get_exposure_product_data <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -176,7 +176,7 @@ get_exposure_product_data_puc <- function(API_key = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -211,7 +211,7 @@ get_exposure_list_presence_tags <- function(API_key = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -249,7 +249,7 @@ get_exposure_list_presence_tags_by_dtxsid <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }

@@ -65,7 +65,7 @@ get_bioactivity_details <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    res <- jsonlite::fromJSON(httr::content(response, as = 'text'))
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
     if (!is.data.frame(res)){
       for (i in 1:length(res)){
         if (is.null(res[[i]])) res[[i]] <- NA # set any NULLs to NA
@@ -123,7 +123,7 @@ get_bioactivity_summary <- function(AEID = NULL,
   }
   if(response$status_code == 200){
     if (length(response$content) > 0){
-      res <- jsonlite::fromJSON(httr::content(response, as = 'text'))
+      res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
       for (i in 1:length(res)){
         if (is.null(res[[i]])) res[[i]] <- NA # set any NULLs to NA
         if (length(res[[i]]) > 1) {
@@ -177,7 +177,7 @@ get_all_assays <- function(API_key = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    res <- jsonlite::fromJSON(httr::content(response, as = 'text'))
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
     res[c('gene', 'assayList', 'citations')] <- lapply(res[c('gene', 'assayList', 'citations')],
                                                        function(df) do.call('mapply', c(list, df,
                                                                                         SIMPLIFY = FALSE,
@@ -222,7 +222,7 @@ get_annotation_by_aeid <- function(AEID = NULL,
   }
   if(response$status_code == 200){
     if (length(response$content) > 0){
-      res <- jsonlite::fromJSON(httr::content(response, as = 'text'))
+      res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
       for (i in 1:length(res)){
         if (is.null(res[[i]])) res[[i]] <- NA # set any nulls to NA
         if (length(res[[i]]) > 1) {

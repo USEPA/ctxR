@@ -179,7 +179,8 @@ get_chemical_details_batch_2 <- function(DTXSID = NULL,
       #print(str(jsonlite::fromJSON(httr::content(response, as = 'text'))))
       dt <- suppressWarnings(data.table::rbindlist(list(dt,
                                                         data.table::data.table(jsonlite::fromJSON(httr::content(response,
-                                                                                                                as = 'text')))),
+                                                                                                                as = 'text',
+                                                                                                                encoding = "UTF-8")))),
                                                    fill = TRUE))
       #return(data.frame(jsonlite::fromJSON(httr::content(response, as = 'text'))))
     }
@@ -279,7 +280,7 @@ get_smiles_batch <- function(names = NULL,
 
       if (response$status_code == 200){
         if (length(response$content) > 0){
-          response_list <- list(httr::content(response, as = 'text'))
+          response_list <- list(httr::content(response, as = 'text', encoding = "UTF-8"))
         } else {
           response_list <- rep('', times = length(indices[[i]]))
         }
@@ -332,7 +333,7 @@ get_molecular_weight_batch <- function(names = NULL,
 
       if (response$status_code == 200){
         if (length(response$content) > 0){
-          response_list <- list(httr::content(response, as = 'text'))
+          response_list <- list(httr::content(response, as = 'text', encoding = "UTF-8"))
         } else {
           response_list <- rep('', times = length(indices[[i]]))
         }
@@ -385,7 +386,7 @@ get_mol_v3000_batch <- function(names = NULL,
 
       if (response$status_code == 200){
         if (length(response$content) > 0){
-          response_list <- list(httr::content(response, as = 'text'))
+          response_list <- list(httr::content(response, as = 'text', encoding = "UTF-8"))
         } else {
           response_list <- rep('', times = length(indices[[i]]))
         }
@@ -438,7 +439,7 @@ get_mol_v2000_batch <- function(names = NULL,
 
       if (response$status_code == 200){
         if (length(response$content) > 0){
-          response_list <- list(httr::content(response, as = 'text'))
+          response_list <- list(httr::content(response, as = 'text', encoding = "UTF-8"))
         } else {
           response_list <- rep('', times = length(indices[[i]]))
         }
@@ -491,7 +492,7 @@ get_InChI_batch <- function(names = NULL,
 
       if (response$status_code == 200){
         if (length(response$content) > 0){
-          response_list <- list(httr::content(response, as = 'text'))
+          response_list <- list(httr::content(response, as = 'text', encoding = "UTF-8"))
         } else {
           response_list <- rep('', times = length(indices[[i]]))
         }
@@ -544,7 +545,7 @@ get_canonical_smiles_batch <- function(names = NULL,
 
       if (response$status_code == 200){
         if (length(response$content) > 0){
-          response_list <- list(httr::content(response, as = 'text'))
+          response_list <- list(httr::content(response, as = 'text', encoding = "UTF-8"))
         } else {
           response_list <- rep('', times = length(indices[[i]]))
         }
@@ -779,7 +780,8 @@ get_chem_info_batch <- function(DTXSID = NULL,
       if (response$status_code == 200){
         dt <- suppressWarnings(data.table::rbindlist(list(dt,
                                                           data.table::data.table(jsonlite::fromJSON(httr::content(response,
-                                                                                                                  as = 'text')))),
+                                                                                                                  as = 'text',
+                                                                                                                  encoding = "UTF-8")))),
                                                      fill = TRUE))
       }
       Sys.sleep(rate_limit)
@@ -921,7 +923,8 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
       if (response$status_code == 200){
         dt <- suppressWarnings(data.table::rbindlist(list(dt,
                                                           data.table::data.table(jsonlite::fromJSON(httr::content(response,
-                                                                                                                  as = 'text')))),
+                                                                                                                  as = 'text',
+                                                                                                                  encoding = "UTF-8")))),
                                                      fill = TRUE))
       }
       Sys.sleep(rate_limit)

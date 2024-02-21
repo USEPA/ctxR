@@ -80,7 +80,7 @@ get_chemical_details <- function(DTXSID = NULL,
   }
   if(response$status_code == 200){
     empty_table <- create_data.table_chemical_details(index = index)
-    data_list <- jsonlite::fromJSON(httr::content(response, as = 'text')) #Parse to list
+    data_list <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")) #Parse to list
     missing_names <- which(sapply(data_list, is.null))
     if (length(missing_names) > 0){
     df <- t(data.frame(unlist(data_list), row.names = names(data_list)[-missing_names]))
@@ -255,7 +255,7 @@ get_chemical_details_by_listname <- function(listname = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -289,7 +289,7 @@ get_smiles <- function(name = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(httr::content(response, as = 'text'))
+    return(httr::content(response, as = 'text', encoding = "UTF-8"))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -322,7 +322,7 @@ get_InChIKey <- function(name = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(httr::content(response, as = 'text'))
+    return(httr::content(response, as = 'text', encoding = "UTF-8"))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -355,7 +355,7 @@ get_InChI <- function(name = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(httr::content(response, as = 'text'))
+    return(httr::content(response, as = 'text', encoding = "UTF-8"))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -415,7 +415,7 @@ get_chemical_by_property_range <- function(start = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
     } else {
       print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
     }
@@ -490,7 +490,7 @@ get_chem_info <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text',encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -531,7 +531,7 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -574,7 +574,7 @@ chemical_starts_with <- function(word = NULL,
   )
 
   if(response$status_code %in% c(200, 400)){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -622,7 +622,7 @@ chemical_equal <- function(word = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -672,7 +672,7 @@ chemical_contains <- function(word = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -758,7 +758,7 @@ get_msready_by_mass <- function(start = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -803,7 +803,7 @@ get_msready_by_formula <- function(formula = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -848,7 +848,7 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -917,7 +917,7 @@ get_chemical_lists_by_type <- function(type = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -987,7 +987,7 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(data.frame(jsonlite::fromJSON(httr::content(response, as = 'text'))))
+    return(data.frame(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -1027,7 +1027,7 @@ get_lists_containing_chemical <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -1069,7 +1069,7 @@ get_chemicals_in_list <- function(list_name = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -1131,7 +1131,7 @@ get_all_public_chemical_lists <- function(Projection = '',
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -1185,7 +1185,7 @@ get_chemical_mrv <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(httr::content(response))
+    return(httr::content(response, encoding = "UTF-8"))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -1238,7 +1238,7 @@ get_chemical_mol <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(httr::content(response))
+    return(httr::content(response, encoding = "UTF-8"))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -1304,7 +1304,7 @@ get_chemical_image <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(httr::content(response))
+    return(httr::content(response, encoding = "UTF-8"))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }
@@ -1345,7 +1345,7 @@ get_chemical_synonym <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text')))
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
   }

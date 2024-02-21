@@ -102,7 +102,8 @@ get_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
       if (response$status_code == 200){
         dt <- suppressWarnings(data.table::rbindlist(list(dt,
                                                           data.table::data.table(jsonlite::fromJSON(httr::content(response,
-                                                                                                                  as = 'text')))),
+                                                                                                                  as = 'text',
+                                                                                                                  encoding = "UTF-8")))),
                                                      fill = TRUE))
       }
       Sys.sleep(rate_limit)
@@ -252,7 +253,8 @@ get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
       if (response$status_code == 200){
         dt <- suppressWarnings(data.table::rbindlist(list(dt,
                                                           data.table::data.table(jsonlite::fromJSON(httr::content(response,
-                                                                                                                  as = 'text')))),
+                                                                                                                  as = 'text',
+                                                                                                                  encoding = "UTF-8")))),
                                                      fill = TRUE))
       }
       Sys.sleep(rate_limit)
@@ -367,7 +369,8 @@ get_ecotox_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
       if (response$status_code == 200){
         dt <- suppressWarnings(data.table::rbindlist(list(dt,
                                                           data.table::data.table(jsonlite::fromJSON(httr::content(response,
-                                                                                                                  as = 'text')))),
+                                                                                                                  as = 'text',
+                                                                                                                  encoding = "UTF-8")))),
                                                      fill = TRUE))
       }
       Sys.sleep(rate_limit)
@@ -497,7 +500,8 @@ get_skin_eye_hazard_batch <- function(DTXSID = NULL,
       if (response$status_code == 200){
         dt <- suppressWarnings(data.table::rbindlist(list(dt,
                                                           data.table::data.table(jsonlite::fromJSON(httr::content(response,
-                                                                                                                  as = 'text')))),
+                                                                                                                  as = 'text',
+                                                                                                                  encoding = "UTF-8")))),
                                                      fill = TRUE))
       }
       Sys.sleep(rate_limit)
@@ -619,7 +623,8 @@ get_cancer_hazard_batch <- function(DTXSID = NULL,
       if (response$status_code == 200){
         dt <- suppressWarnings(data.table::rbindlist(list(dt,
                                                           data.table::data.table(jsonlite::fromJSON(httr::content(response,
-                                                                                                                  as = 'text')))),
+                                                                                                                  as = 'text',
+                                                                                                                  encoding = "UTF-8")))),
                                                      fill = TRUE))
       }
       Sys.sleep(rate_limit)
@@ -745,7 +750,8 @@ get_genetox_summary_batch <- function(DTXSID = NULL,
       if (response$status_code == 200){
         dt <- suppressWarnings(data.table::rbindlist(list(dt,
                                                           data.table::data.table(jsonlite::fromJSON(httr::content(response,
-                                                                                                                  as = 'text')))),
+                                                                                                                  as = 'text',
+                                                                                                                  encoding = "UTF-8")))),
                                                      fill = TRUE))
       }
       Sys.sleep(rate_limit)
@@ -876,7 +882,8 @@ get_genetox_details_batch <- function(DTXSID = NULL,
       if (response$status_code == 200){
         dt <- suppressWarnings(data.table::rbindlist(list(dt,
                                                           data.table::data.table(jsonlite::fromJSON(httr::content(response,
-                                                                                                                  as = 'text')))),
+                                                                                                                  as = 'text',
+                                                                                                                  encoding = "UTF-8")))),
                                                      fill = TRUE))
       }
       Sys.sleep(rate_limit)
