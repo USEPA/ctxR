@@ -28,7 +28,9 @@ get_bioactivity_details <- function(DTXSID = NULL,
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -117,7 +119,9 @@ get_bioactivity_summary <- function(AEID = NULL,
   else if (is.null(API_key)){
     if (has_ccte_key()){
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -176,7 +180,9 @@ get_all_assays <- function(API_key = NULL,
   if (is.null(API_key)){
     if (has_ccte_key()){
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -224,7 +230,9 @@ get_annotation_by_aeid <- function(AEID = NULL,
   else if (is.null(API_key)){
     if (has_ccte_key()){
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
