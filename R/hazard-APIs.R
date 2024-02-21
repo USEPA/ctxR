@@ -3,20 +3,24 @@
 #' @param DTXSID The chemical identifier DTXSID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame containing chemical (human and eco) hazard data
 #' @export
 
 
 get_hazard_by_dtxsid <- function(DTXSID = NULL,
-                               API_key = NULL,
-                               Server = hazard_api_server){
+                                 API_key = NULL,
+                                 Server = hazard_api_server,
+                                 verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -33,7 +37,9 @@ get_hazard_by_dtxsid <- function(DTXSID = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -44,20 +50,24 @@ get_hazard_by_dtxsid <- function(DTXSID = NULL,
 #' @param DTXSID The chemical identifier DTXSID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame containing chemical human hazard data
 #' @export
 
 
 get_human_hazard_by_dtxsid <- function(DTXSID = NULL,
-                                 API_key = NULL,
-                                 Server = hazard_api_server){
+                                       API_key = NULL,
+                                       Server = hazard_api_server,
+                                       verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -73,7 +83,9 @@ get_human_hazard_by_dtxsid <- function(DTXSID = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -84,20 +96,24 @@ get_human_hazard_by_dtxsid <- function(DTXSID = NULL,
 #' @param DTXSID The chemical identifier DTXSID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame containing chemical (ecotox) hazard data
 #' @export
 
 
 get_ecotox_hazard_by_dtxsid <- function(DTXSID = NULL,
-                                 API_key = NULL,
-                                 Server = hazard_api_server){
+                                        API_key = NULL,
+                                        Server = hazard_api_server,
+                                        verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -113,7 +129,9 @@ get_ecotox_hazard_by_dtxsid <- function(DTXSID = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -125,6 +143,7 @@ get_ecotox_hazard_by_dtxsid <- function(DTXSID = NULL,
 #' @param DTXSID The chemical identifier DTXSID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame containing skin and eye hazard data.
 #' @export
@@ -132,13 +151,16 @@ get_ecotox_hazard_by_dtxsid <- function(DTXSID = NULL,
 
 get_skin_eye_hazard <- function(DTXSID = NULL,
                                 API_key = NULL,
-                                Server = hazard_api_server){
+                                Server = hazard_api_server,
+                                verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -154,7 +176,9 @@ get_skin_eye_hazard <- function(DTXSID = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -165,6 +189,7 @@ get_skin_eye_hazard <- function(DTXSID = NULL,
 #' @param DTXSID The chemical identifier DTXSID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame of cancer hazard data related to the input DTXSID.
 #' @export
@@ -172,13 +197,16 @@ get_skin_eye_hazard <- function(DTXSID = NULL,
 
 get_cancer_hazard <- function(DTXSID = NULL,
                               API_key = NULL,
-                              Server = hazard_api_server){
+                              Server = hazard_api_server,
+                              verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -195,7 +223,9 @@ get_cancer_hazard <- function(DTXSID = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -206,6 +236,7 @@ get_cancer_hazard <- function(DTXSID = NULL,
 #' @param DTXSID The chemical identifier DTXSID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame of genetox summary data related to the input DTXSID.
 #' @export
@@ -213,13 +244,16 @@ get_cancer_hazard <- function(DTXSID = NULL,
 
 get_genetox_summary <- function(DTXSID = NULL,
                                 API_key = NULL,
-                                Server = hazard_api_server){
+                                Server = hazard_api_server,
+                                verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -236,7 +270,9 @@ get_genetox_summary <- function(DTXSID = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
@@ -247,6 +283,7 @@ get_genetox_summary <- function(DTXSID = NULL,
 #' @param DTXSID The chemical identifier DTXSID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame of genetox detail data related to the input DTXSID.
 #' @export
@@ -254,13 +291,16 @@ get_genetox_summary <- function(DTXSID = NULL,
 
 get_genetox_details <- function(DTXSID = NULL,
                                 API_key = NULL,
-                                Server = hazard_api_server){
+                                Server = hazard_api_server,
+                                verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
-      message('Using stored API key!')
+      if (verbose) {
+        message('Using stored API key!')
+      }
     }
   }
 
@@ -277,7 +317,9 @@ get_genetox_details <- function(DTXSID = NULL,
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text')))
   } else {
-    print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
   }
   return()
 
