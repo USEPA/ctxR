@@ -8,7 +8,8 @@ get_genetox_details_batch(
   DTXSID = NULL,
   API_key = NULL,
   rate_limit = 0L,
-  Server = hazard_api_server
+  Server = hazard_api_server,
+  verbose = FALSE
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ get_genetox_details_batch(
 \item{rate_limit}{Number of seconds to wait between requests}
 
 \item{Server}{The root address for the API endpoint}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A data.table of genetox detail data for each input

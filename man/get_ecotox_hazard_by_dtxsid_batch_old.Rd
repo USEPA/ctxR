@@ -7,7 +7,8 @@
 get_ecotox_hazard_by_dtxsid_batch_old(
   DTXSID = NULL,
   API_key = NULL,
-  rate_limit = 0L
+  rate_limit = 0L,
+  verbose = FALSE
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ get_ecotox_hazard_by_dtxsid_batch_old(
 \item{API_key}{The user-specific API key.}
 
 \item{rate_limit}{Number of seconds to wait between each request}
+
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 A named list of data.frames containing chemical ecotox hazard data.
