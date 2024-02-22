@@ -20,10 +20,9 @@ if (!library(devtools, logical.return = TRUE)){
   library(devtools)
 }
 
-# Set API key to build vignette properly. If not run in this order, the Vignette will not build correctly!!!
-Sys.setenv('CCTE_API_KEY' = '<YOUR API KEY>')
-
-devtools::install_git(url = 'https://bitbucket.epa.gov/scm/ccdr1/ccdr.git',
-                      build_vignettes = TRUE,
-                      git = 'external')
+devtools::install_gitub("USEPA/ccdR")
 ```
+
+Disclaimer: You won’t need a API key to install the ccdR package, but
+will need to supply an API key to use ccdR. Please visit [CCTE
+API](https://api-ccte.epa.gov/docs/index.html) to request an API key.
