@@ -12,6 +12,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+library(httptest)
+start_vignette("4")
 ```
 
 ```{r setup, echo=FALSE, results='hide', warning=FALSE}
@@ -458,4 +460,8 @@ registerS3method(
   "knit_print", "data.table", knit_print.data.table,
   envir = asNamespace("knitr")
 )
+```
+
+```{r, include=FALSE}
+end_vignette()
 ```
