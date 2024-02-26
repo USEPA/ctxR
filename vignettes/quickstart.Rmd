@@ -24,6 +24,29 @@ if (!library(ccdR, logical.return = TRUE)){
 }
 ```
 
+```{r setup-print, echo = FALSE}
+# Redefining the knit_print method to truncate character values to 25 characters
+# in each column and to truncate the columns in the print call to prevent 
+# wrapping tables with several columns.
+#library(ccdR)
+knit_print.data.table = function(x, ...) {
+  y <- data.table::copy(x)
+  y <- y[, lapply(.SD, function(t){
+    if (is.character(t)){
+      t <- strtrim(t, 25)
+    }
+    return(t)
+  })]
+  print(y, trunc.cols = TRUE)
+}
+
+registerS3method(
+  "knit_print", "data.table", knit_print.data.table,
+  envir = asNamespace("knitr")
+)
+```
+
+
 # ccdR quickstart guide
 
 The [CompTox Chemicals Dashboard](https://comptox.epa.gov/dashboard/) (CCD) provides a centralized location for data on chemicals. Such data includes phys-chem properties, hazard details, and bioactivity, among others. For users interested in looking up a few chemicals and using the associated data, the website provides a great resource. Moreover, for those interested in batch searching a list of chemicals, the CCD also supplies this functionality, offering a variety of output formats from which one can choose.
@@ -35,18 +58,18 @@ Users who are not familiar or experienced with using APIs may not find it appeal
 
 ## API key
 
-Before getting started, a user must have an API key ready to use in order to access the CCTE APIs. This can be obtained from the admins of the CCTE APIs by emailing [CCTE API Admins](mailto:ccte_api@epa.gov). In this vignette, the key will be stored as the variable `my_key`.
+Before getting started, a user must have an API key ready to use in order to access the CCTE APIs. This can be obtained from the admins of the CCTE APIs by emailing [CCTE API Admins](mailto:ccte_api@epa.gov). In this vignette, the key will be stored as the variable `my_key`. We will also demonstrate how to store the key in a single session or across sessions and how to access the key.
 
-To run this vignette locally, execute the following code prior to knitting the vignette (in fact, prior to downloading the package). 
+First, we store the api key in the variable `my_key`.
 
-```{r, eval=FALSE}
-Sys.setenv('CCTE_API_KEY' = '<YOUR API KEY>')
+```{r, echo = FALSE}
+my_key <- ccte_key()
 ```
 
-Next, we store the api key in the variable `my_key`.
 
-```{r, api-key}
-my_key <- Sys.getenv('CCTE_API_key')
+
+```{r, eval = FALSE, api-key}
+my_key <- 'YOUR_CCTE_API_key'
 ```
 
 For general use of the package, one may use the function `register_ccdr()` to store the API key in the current session or more permanently for access across sessions. The following example demonstrates this.
@@ -81,7 +104,7 @@ ccte_key()
 
 ## Chemical APIs
 
-The CCTE APIs are split into three sections, the first of which is [Chemical APIs](https://api-ccte.epa.gov/docs/chemical.html#/). In the next several code chunks, we demonstrate how to use functions from ccdR to access different types of chemical information.
+The CCTE APIs are split into three sections, the first of which is [Chemical APIs](https://api-ccte.epa.gov/docs/chemical.html#/). In the next few code chunks, we demonstrate how to use functions from ccdR to access different types of chemical information.
 
 ### Chemical Details Resource
 
@@ -90,6 +113,7 @@ The first function we explore is `get_chemical_details()`, which takes in either
 ```{r, bpa-chem-details}
 bpa_details <- get_chemical_details(DTXSID = 'DTXSID7020182',
                                     API_key = my_key)
+bpa_details <- data.table::as.data.table(bpa_details)
 head(bpa_details)
 ```
 The output of this function is a data.table. We could have also input the DTXCID rather than the DTXSID and returned the same data.
@@ -104,6 +128,7 @@ First, we grab all results.
 ```{r, bpa-chem-info}
 bpa_info <- get_chem_info(DTXSID = "DTXSID7020182",
                           API_key = my_key)
+bpa_info <- data.table::as.data.table(bpa_info)
 
 head(bpa_info)
 ```
@@ -114,188 +139,16 @@ Next, we filter by experimental results.
 bpa_info_experimental <- get_chem_info(DTXSID = "DTXSID7020182",
                                        type = 'experimental',
                                        API_key = my_key)
+bpa_info_experimental <- data.table::as.data.table(bpa_info_experimental)
 
 head(bpa_info_experimental)
 ```
 
-Finally, we filter by predicted results.
-
-```{r, bpa-predicted}
-bpa_info_predicted <- get_chem_info(DTXSID = "DTXSID7020182",
-                                    type = 'predicted',
-                                    API_key = my_key)
-
-head(bpa_info_predicted)
-```
-
-### Chemical Fate Resource
-
-To gather chemical fate details, we supply the same information as we did for *bpa_info* to the function `get_fate_by_dtxsid()`.
-
-```{r, fate}
-bpa_fate <- get_fate_by_dtxsid(DTXSID = 'DTXSID7020182',
-                               API_key = my_key)
-head(bpa_fate)
-```
-
-
-### Chemical Search Resource
-
-The next set of functions operate by searching for chemicals that match an input character string; those that start with, those that contain, and those that equal the input string. Each takes in a string and the API key and each returns a data.frame with 11 columns, giving various details of the matched chemicals.
-
-We demonstrate this on the function `chemical_equal()`, though the behavior of the functions `chemical_contains()` and `chemical_starts_with()` are analogous.
-
-```{r, bpa-equal}
-bpa_equals <- chemical_equal(word = 'Bisphenol a',
-                             API_key = my_key)
-head(bpa_equals)
-```
-
-Note that input strings may include URLencoded chemical names, DTXSIDs, DTXCIDs, InChIKeys, and CASRNs. For `chemical_starts_with()`, the InChIKey string needs to include the first 13 characters.
-
-Next we demonstrate the family of ms ready functions. These return lists of DTXSIDs of chemicals that match the search criteria. For the example, we use Methane, with chemical formula CH4, mono-isotopic mass of 16.0313g, and DTXCID of DTXSID8025545.
-
-First, we use the formula for methane and display the first ten responses.
-
-```{r, msready-formula}
-methane_formula <- get_msready_by_formula(formula = 'CH4', 
-                                          API_key = my_key)
-length(methane_formula)
-methane_formula[1:10]
-```
-
-Next, we search by mass and again display the first ten responses.
-
-```{r, msready-mass}
-methane_mass <- get_msready_by_mass(start = 16.0313,
-                                    end = 16.0314,
-                                    API_key = my_key)
-length(methane_mass)
-methane_mass[1:10]
-```
-
-We follow up with searching by DTXCID and display the first 10 responses.
-
-```{r, msready-dtxcid}
-methane_dtxcid <- get_msready_by_dtxcid(DTXCID = 'DTXCID705545',
-                                        API_key = my_key)
-length(methane_dtxcid)
-methane_dtxcid[1:10]
-```
-
-Now, we show that the returned lists of DTXSIDs are in fact identical from all three calls to the API.
-
-```{r, methane-check}
-print(identical(methane_dtxcid, methane_formula))
-print(identical(methane_dtxcid, methane_mass))
-```
-
-Observe that the lists of chemical DTXSIDs returned from the three functions are identical. One should note that when using the function `get_msready_by_mass`, the start and end range are sensitive to very small changes, so extra attention needs to be given to the input of this function.
-
-#### Batch searching and combining functions
-
-Before moving to the next set of functions, a demonstration of using more than one of the API functions may be helpful. With the previous set of functions, each returned a list of DTXSIDs. However, what these chemicals are is unclear without either memorizing vast sets of DTXSIDs or accessing information using this identifier. The latter is more tractable, so we demonstrate how to combine functions to achieve identification of the returned chemicals.
-
-Here we combine the data.tables from the `get_chemical_details()` calls for a list of ten DTXSIDs.
-
-```{r, methane-chemical-details-batch}
-methane_df <- get_chemical_details_batch(DTXSID = methane_mass[1:10],
-                                              API_key = my_key)
-#methane_df <- data.table::rbindlist(methane_df_list)
-methane_df
-```
-If instead we just want the information from a single column, we can specify that as follows.
-
-```{r, mol-formula-batch}
-methane_formula_list <- methane_df$molFormula
-methane_formula_list
-```
-### Chemical List Resource
-
-The next set of functions allow the user to access publicly available lists of chemicals. We first display the list of chemical lists and the search by the type of chemical lists available.
-
-```{r, all-public-lists}
-public_lists <- get_all_public_chemical_lists(API_key = my_key)
-head(public_lists)
-```
-
-Next, we display a filtered set of lists focusing on federal lists.
-
-```{r, federal-public-lists}
-federal_public_lists <- get_chemical_lists_by_type(type = 'federal',
-                                                   API_key = my_key)
-head(federal_public_lists)
-```
-
-We can then access information about a specific list, for instance 'BIOSOLIDS2021'.
-
-```{r, biosolids2021}
-biosolids_2021_info <- get_public_chemical_list_by_name(list_name = 'BIOSOLIDS2021',
-                                                        API_key = my_key)
-biosolids_2021_info
-```
-
-And we can access the chemicals contained in the list as follows.
-
-```{r, biosolids2021-chemicals}
-biosolids_2021_chemicals <- get_chemicals_in_list(list_name = 'BIOSOLIDS2021',
-                                                  API_key = my_key)
-head(biosolids_2021_chemicals)
-```
-
-Finally, if one is interested in finding all lists that contain a particular chemical, one may do so by using the DTXSID of the chemical in question.
-
-```{r, bpa-lists}
-bpa_lists <- get_lists_containing_chemical(DTXSID = 'DTXSID7020182',
-                                           API_key = my_key)
-bpa_lists
-```
-### Chemical File Resource
-
-Additional formats of chemical data are also available for interested users. These include Marvin files (.mrv), mol files (.mol), and image files.
-
-We demonstrate this below.
-
-We first grab the marvin file (.mrv) for BPA.
-
-```{r, bpa-mrv}
-bpa_mrv <- get_chemical_mrv(DTXSID = 'DTXSID7020182',
-                            API_key = my_key)
-if (requireNamespace("XML", quietly = TRUE)){
-  XML::xmlTreeParse(bpa_mrv)
-}
-```
-
-Next, we grab the mol file (.mol) for BPA.
-
-```{r, bpa-mol}
-bpa_mol <- get_chemical_mol(DTXSID = 'DTXSID7020182',
-                            API_key = my_key)
-cat(bpa_mol)
-```
-
-Finally, we grab an image file for BPA. Note that the image can be a .png or .svg format, and will default to png if none is specified.
-
-```{r, bpa-image}
-# bpa_image_matrix <- get_chemical_image(DTXSID = 'DTXSID7020182',
-#                                        API_key = my_key)
-# if (requireNamespace("countcolors", quietly = TRUE)){
-#   countcolors::plotArrayAsImage(bpa_image_matrix)
-# }
-```
-
-If one wants to gather the synonyms of a given chemical, this is also avilable through the chemical APIs as demonstrated below.
-
-```{r, synonym}
-bpa_synonym <- get_chemical_synonym(DTXSID = 'DTXSID7020182',
-                                    API_key = my_key)
-head(bpa_synonym)
-```
-
+For a more comprehensive treatment of the chemical endpoints, please see the 'Chemical' vignette that explores more of the ccdR functions related to the associated chemical endpoints.
 
 ## Hazard APIs
 
-Next, we explore the hazard APIs. TWe first demonstrate how to access human or ecological toxicity data for a given chemical. One can specify the chemical in question through the DTXSID.
+Next, we explore the hazard APIs. We first demonstrate how to access human or ecological toxicity data for a given chemical. One can specify the chemical in question through the DTXSID.
 
 ### Hazard Resource
 
@@ -304,6 +157,7 @@ We first grab all such hazard data.
 ```{r, hazard}
 bpa_hazard <- get_hazard_by_dtxsid(DTXSID = 'DTXSID7020182',
                                    API_key = my_key)
+bpa_hazard <- data.table::as.data.table(bpa_hazard)
 head(bpa_hazard)
 ```
 
@@ -312,6 +166,7 @@ Then we focus on human hazard data.
 ```{r, human-hazard}
 bpa_human_hazard <- get_human_hazard_by_dtxsid(DTXSID = 'DTXSID7020182',
                                                API_key = my_key)
+bpa_human_hazard <- data.table::as.data.table(bpa_human_hazard)
 head(bpa_human_hazard)
 ```
 
@@ -320,47 +175,11 @@ And finally we focus on ecotox hazard data.
 ```{r, ecotox-hazard}
 bpa_eco_hazard <- get_ecotox_hazard_by_dtxsid(DTXSID = 'DTXSID7020182',
                                               API_key = my_key)
+bpa_eco_hazard <- data.table::as.data.table(bpa_eco_hazard)
 head(bpa_eco_hazard)
 ```
-### Skin and eye resource
 
-Next, we demonstrate the skin and eye resource endpoint.
-
-```{r, skin-eye}
-bpa_skin_and_eye <- get_skin_eye_hazard(DTXSID = 'DTXSID7020182',
-                                        API_key = my_key)
-bpa_skin_and_eye
-```
-
-### Cancer summary
-
-We then demonstrate the cancer summary endpoint.
-
-```{r, cancer}
-phenolphthalein_cancer <- get_cancer_hazard(DTXSID = 'DTXSID0021125',
-                                API_key = my_key)
-phenolphthalein_cancer
-```
-
-### Genetox resource
-
-Finally we explore the genetox resource. This allows us to grab either summary or detail level genetox data. We first demonstrate the summary endpoint.
-
-```{r, genetox-summary}
-bpa_genetox_summary <- get_genetox_summary(DTXSID = 'DTXSID7020182',
-                                           API_key = my_key)
-bpa_genetox_summary
-```
-
-Next we demonstrate the details endpoint.
-
-```{r, genetox-details}
-bpa_genetox_details <- get_genetox_details(DTXSID = 'DTXSID7020182',
-                                           API_key = my_key)
-bpa_genetox_details
-```
-
-
+For more examples, please refer to the 'Hazard' vignette.
 
 ## Bioactivity APIs
 
@@ -373,6 +192,8 @@ We first demonstrate obtaining bioactivity data based on an input DTXSID.
 ```{r, bioactivity-dtxsid}
 bpa_bioactivity <- get_bioactivity_details(DTXSID = 'DTXSID7020182',
                                            API_key = my_key)
+
+bpa_bioactivity <- data.table::as.data.table(bpa_bioactivity)
 head(bpa_bioactivity)
 ```
 
@@ -381,14 +202,28 @@ If instead we want to search by assay id, we can do so using the same function.
 ```{r, bioactivity-aeid}
 assay_id_search <- get_bioactivity_details(AEID = 42,
                                            API_key = my_key)
+assay_id_search <- data.table::as.data.table(assay_id_search)
 head(assay_id_search)
 ```
 
+Again, for more information please refer to the 'Bioactivity' vignette.
 
-```{r, include=FALSE}
-print(Sys.getenv('NOT_CRAN'))
+## Conclusion
+
+The ccdR package provides a streamlined approach to accessing data from the CCD for users with little or no prior experience using APIs. The functionality can be used within a variety of workflows that require data found on the CCD. To explore more examples of the various endpoints and functionality provided by the ccdR package, please refer to the 'Chemical', 'Hazard', or 'Bioactivity' vignettes.
+
+```{r breakdown, echo = FALSE, results = 'hide'}
+# This chunk will be hidden in the final product. It serves to undo defining the
+# custom print function to prevent unexpected behavior after this module during
+# the final knitting process
+
+knit_print.data.table = knitr::normal_print
+  
+registerS3method(
+  "knit_print", "data.table", knit_print.data.table,
+  envir = asNamespace("knitr")
+)
 ```
-
 
 ```{r, include=FALSE}
 end_vignette()
