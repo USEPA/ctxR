@@ -103,7 +103,7 @@ natadb <- data.table::as.data.table(natadb)
 
 ### Accessing and analyzing genotoxicity data
 
-Using the standard CompTox Chemicals Dashboard approach to access genotoxicity, one would again navigate to the individual chemical page 
+Using the standard CompTox Chemicals Dashboard approach to access genotoxicity, one would again navigate to the individual chemical page. 
 
 ```{r, echo = FALSE, out.width = "90%", fig.align='center', fig.cap="Fig 1: CompTox Chemicals Dashboard Genotoxicity"}
 knitr::include_graphics("./Pictures/BPA_Hazard_data_-_Genotoxicity.png")
