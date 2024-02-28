@@ -106,6 +106,32 @@ natadb <- data.table::as.data.table(natadb)
 
 ### Accessing and analyzing bioactivity data
 
+Using the standard CompTox Chemicals Dashboard approach to access bioactivity, one would again navigate to the individual chemical page. 
+
+```{r, echo = FALSE, out.width = "90%", fig.align='center', fig.cap="Fig 1: CompTox Chemicals Dashboard Genotoxicity"}
+knitr::include_graphics("./Pictures/BPA_Bioactivity_data_ToxCast.png")
+```
+
+Once one navigates to the bioactivity tab highlighted in the previous page, the following is displayed as seen in Figure 2 and 3.
+
+```{r, echo = FALSE, out.width = "90%", fig.align='center', fig.cap="Fig 2: CompTox Chemicals Dashboard BPA Genotoxicity"}
+knitr::include_graphics("./Pictures/CCD_BPA_Bioactivity_ToxCast_TOP.png")
+```
+
+```{r, echo = FALSE, out.width = "90%", fig.align='center', fig.cap="Fig 3: CompTox Chemicals Dashboard BPA Genotoxicity"}
+knitr::include_graphics("./Pictures/CCD_BPA_Bioactivity_ToxCast_BOTTOM.png")
+```
+
+This page includes two sets of information, the first of which provides a visual representation of the bioactivity data available while the second provides a summary of available genotoxicity data and associated data of the studies and sources..
+
+We again use the CCTE APIs to streamline the process of retrieving this information in a programmatic fashion. To this end, we will use the endpoints found within the `Bioactivity` endpoints of the CCTE APIs. Pictured below in Figure 4 is the particular set of bioactivity resources available in the `Bioactivity` endpoints of the CCTE APIs.
+
+```{r, echo = FALSE, out.width = "90%", fig.align='center', fig.cap="Fig 4: CCTE APIs Bioactivity endpoint resources"}
+knitr::include_graphics("./Pictures/Bioactivity_data_resource.png")
+```
+
+
+
 First, we will access the bioactivity data associated to a single chemical before starting an analysis of the two chemical lists CCL4 and NATADB. We explore the data associated with Bisphenol A (BPA).
 
 ```{r}
@@ -153,19 +179,37 @@ Let us now look at which chemicals from each data set have assay data associated
 
 ```{r}
 ccl4_2037 <- intersect(ccl4$dtxsid, assay_2037_data$dtxsid)
-natadb_2037 <- intersect(ccl4$dtxsid, assay_2037_data$dtxsid)
+natadb_2037 <- intersect(natadb$dtxsid, assay_2037_data$dtxsid)
 
-head(ccl4_2037)
-head(natadb_2037)
+ccl4_2037
+natadb_2037
 ```
-Since the two lists are the same, we do the following search to determine the assay results for chemicals in each of CCL4 and NATADB that have assay aeid 2037.
+We do the following search to determine the assay results for chemicals in each of CCL4 and NATADB that have assay aeid 2037.
 
 ```{r}
-assay_2037_data[dtxsid %in% ccl4_2037, ][order(dtxsid), ]
+ccl4_2037 <- assay_2037_data[dtxsid %in% ccl4_2037, ][order(dtxsid), ]
+natadb_2037 <- assay_2037_data[dtxsid %in% natadb_2037, ][order(dtxsid), ]
 ```
 
-!!!ADD SOME NUMERIC CALCULATIONS OF THE ASSAY RESULTS AND THEN PROMPT THIS TO ANSWER A QUESTION ABOUT SAID NUMERIC RESULTS AS IT RELATES TO BPA!!!
+We calculate the mean `ac50` value for the associated data and grouped by chemical.
 
+```{r}
+ccl4_2037[!is.na(ac50), .(Mean_AC50 = mean(ac50))]
+ccl4_2037[!is.na(ac50), .(Mean_AC50 = mean(ac50)), by = .(dtxsid)][order(-Mean_AC50),]
+
+natadb_2037[!is.na(ac50), .(Mean_AC50 = mean(ac50))]
+natadb_2037[!is.na(ac50), .(Mean_AC50 = mean(ac50)), by = .(dtxsid)][order(-Mean_AC50),]
+```
+
+From this we observe that the average AC50 values of the chemicals in CCL4 that have assay data for AEID 2037 is 20.38932 while for NATADB it is 37.8065. The maximum AC50 values for CCL4 chemicals is 50, shared by the four chemicals identified by DTXSID0021464, DTXSID4022361, DTXSID9032113, and DTXSID5020576 while for NATADB the max value if 90.59979 given by the chemical identified by DTXSID9020299. For CCL4, the minimum AC50 value for this set of chemicals is 0.4138751 given by the chemical identified by DTXSID8031865 and for NATADB is 4.67915 given by the chemical identified by DTXSID4021395.
+
+We look at the same assay result for BPA to compared the values we just calculated.
+
+```{r}
+bpa_bioactivity[aeid %in% 2037, .(Mean_AC50 = mean(ac50))]
+```
+
+From this, we see that the average AC50 value for aeid 2037 Assay data for CCL4 chemicals is distributed above and below that of BPA in equal quantity, while for NATADB chemicals, all but two of 13 are higher. 
 
 
 ## Conclusion
