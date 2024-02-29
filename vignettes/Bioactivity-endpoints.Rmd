@@ -122,7 +122,7 @@ knitr::include_graphics("./Pictures/CCD_BPA_Bioactivity_ToxCast_TOP.png")
 knitr::include_graphics("./Pictures/CCD_BPA_Bioactivity_ToxCast_BOTTOM.png")
 ```
 
-This page includes two sets of information, the first of which provides a visual representation of the bioactivity data available while the second provides a summary of available genotoxicity data and associated data of the studies and sources..
+This page includes two sets of information, the first of which provides a visual representation of the bioactivity data available while the second provides a summary of available bioactivity data and associated data of the studies and sources.
 
 We again use the CCTE APIs to streamline the process of retrieving this information in a programmatic fashion. To this end, we will use the endpoints found within the `Bioactivity` endpoints of the CCTE APIs. Pictured below in Figure 4 is the particular set of bioactivity resources available in the `Bioactivity` endpoints of the CCTE APIs.
 
@@ -149,7 +149,7 @@ names(bpa_bioactivity)
 ```
 
 
-We first determine the AEID values associated with BPA and then determine the number of data points for each AEID.
+We first determine the `aeid` values associated with BPA and then determine the number of data points for each `aeid`.
 
 ```{r}
 sort(bpa_bioactivity[, unique(aeid)])
@@ -157,7 +157,7 @@ sort(bpa_bioactivity[, unique(aeid)])
 bpa_bioactivity[, .(Number = .N), by = .(aeid)][order(-Number, aeid),]
 ```
 
-Observe that the assay with aeid value 2037 is the most represented assay. To learn more about this assay, we retrieve the associated assay information.
+Observe that the assay with `aeid` value 2037 is the most represented assay. To learn more about this assay, we retrieve the associated assay information.
 
 ```{r}
 assay_2037 <- get_annotation_by_aeid(AEID = 2037, Server = 'https://api-ccte-stg.epa.gov/bioactivity')
@@ -166,7 +166,7 @@ assay_2037 <- data.table::as.data.table(assay_2037)
 head(assay_2037)
 ```
 
-We can then determine which chemicals have results that correspond to this pariticlar assay.
+We can then determine which chemicals have results that correspond to this particular assay.
 
 ```{r}
 assay_2037_data <- get_bioactivity_details(AEID = 2037, Server = stg_bioactivity_server)
@@ -175,7 +175,7 @@ assay_2037_data <- data.table::as.data.table(assay_2037_data)
 head(assay_2037_data)
 ```
 
-Let us now look at which chemicals from each data set have assay data associated to aeid 2037.
+Let us now look at which chemicals from each data set have assay data associated to `aeid` value 2037.
 
 ```{r}
 ccl4_2037 <- intersect(ccl4$dtxsid, assay_2037_data$dtxsid)
@@ -184,7 +184,7 @@ natadb_2037 <- intersect(natadb$dtxsid, assay_2037_data$dtxsid)
 ccl4_2037
 natadb_2037
 ```
-We do the following search to determine the assay results for chemicals in each of CCL4 and NATADB that have assay aeid 2037.
+We do the following search to determine the assay results for chemicals in each of CCL4 and NATADB that have assay `aeid` value 2037.
 
 ```{r}
 ccl4_2037 <- assay_2037_data[dtxsid %in% ccl4_2037, ][order(dtxsid), ]
@@ -201,7 +201,7 @@ natadb_2037[!is.na(ac50), .(Mean_AC50 = mean(ac50))]
 natadb_2037[!is.na(ac50), .(Mean_AC50 = mean(ac50)), by = .(dtxsid)][order(-Mean_AC50),]
 ```
 
-From this we observe that the average AC50 values of the chemicals in CCL4 that have assay data for AEID 2037 is 20.38932 while for NATADB it is 37.8065. The maximum AC50 values for CCL4 chemicals is 50, shared by the four chemicals identified by DTXSID0021464, DTXSID4022361, DTXSID9032113, and DTXSID5020576 while for NATADB the max value if 90.59979 given by the chemical identified by DTXSID9020299. For CCL4, the minimum AC50 value for this set of chemicals is 0.4138751 given by the chemical identified by DTXSID8031865 and for NATADB is 4.67915 given by the chemical identified by DTXSID4021395.
+From this we observe that the average `ac50` values of the chemicals in CCL4 that have assay data for `aeid` 2037 is 20.38932 while for NATADB it is 37.8065. The maximum `ac50` values for CCL4 chemicals is 50, shared by the four chemicals identified by DTXSID0021464, DTXSID4022361, DTXSID9032113, and DTXSID5020576 while for NATADB the max value if 90.59979 given by the chemical identified by DTXSID9020299. For CCL4, the minimum `ac50` value for this set of chemicals is 0.4138751 given by the chemical identified by DTXSID8031865 and for NATADB is 4.67915 given by the chemical identified by DTXSID4021395.
 
 We look at the same assay result for BPA to compared the values we just calculated.
 
@@ -209,7 +209,7 @@ We look at the same assay result for BPA to compared the values we just calculat
 bpa_bioactivity[aeid %in% 2037, .(Mean_AC50 = mean(ac50))]
 ```
 
-From this, we see that the average AC50 value for aeid 2037 Assay data for CCL4 chemicals is distributed above and below that of BPA in equal quantity, while for NATADB chemicals, all but two of 13 are higher. 
+From this, we see that the average `ac50` value for `aeid` value 2037 Assay data for CCL4 chemicals is distributed above and below that of BPA in equal quantity, while for NATADB chemicals, all but two of 13 are higher. 
 
 
 ## Conclusion
