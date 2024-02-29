@@ -103,15 +103,15 @@ natadb <- data.table::as.data.table(natadb)
 
 ### Accessing and analyzing genotoxicity data
 
-Using the standard CompTox Chemicals Dashboard approach to access genotoxicity, one would again navigate to the individual chemical page. 
+Using the standard CompTox Chemicals Dashboard approach to access genotoxicity hazard data, one would again navigate to the individual chemical page. 
 
-```{r, echo = FALSE, out.width = "90%", fig.align='center', fig.cap="Fig 1: CompTox Chemicals Dashboard Genotoxicity"}
+```{r, echo = FALSE, out.width = "90%", fig.align='center', fig.cap="Fig 1: CompTox Chemicals Dashboard Hazard"}
 knitr::include_graphics("./Pictures/BPA_Hazard_data_-_Genotoxicity.png")
 ```
 
-Once one navigates to the genotoxicity tab highlighted in the previous page, the following is displayed as seen in Figure 2.
+Once one navigates to the genotoxicity portion of the hazard tab highlighted in the previous page, the following is displayed as seen in Figure 2.
 
-```{r, echo = FALSE, out.width = "90%", fig.align='center', fig.cap="Fig 2: CompTox Chemicals Dashboard BPA Genotoxicity"}
+```{r, echo = FALSE, out.width = "90%", fig.align='center', fig.cap="Fig 2: CompTox Chemicals Dashboard BPA Hazard Data - Genotoxicity"}
 knitr::include_graphics("./Pictures/CCD_BPA_genotoxicity.png")
 ```
 
@@ -147,7 +147,7 @@ colnames(ccl4_genotox)
 head(ccl4_genotox)
 ```
 
-The information returned is of the first variety highlighted in the Figure 10, that is, summary data on the available genotoxicity data for each chemical.
+The information returned is of the first variety highlighted in the Figure 2, that is, summary data on the available genotoxicity data for each chemical.
 
 Observe that we have information on 71 chemicals from the CCL4 data and 153 from the NATA data. We note the chemicals not included in the results and then dig into the returned results.
 
