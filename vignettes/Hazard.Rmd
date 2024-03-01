@@ -1,8 +1,13 @@
 ---
-title: "Hazard-endpoints"
-output: rmarkdown::html_vignette
+title: "Hazard APIs"
+author: "Center for Computational Toxicology and Exposure"
+output:
+   prettydoc::html_pretty:
+    theme: architect
+    toc: yes
+    toc_depth: 5
 vignette: >
-  %\VignetteIndexEntry{Hazard-endpoints}
+  %\VignetteIndexEntry{Hazard}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
