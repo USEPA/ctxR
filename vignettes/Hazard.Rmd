@@ -11,6 +11,20 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+```{css, echo=FALSE}
+.scroll-100 {
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+.noticebox {
+  padding: 1em;
+  background: lightgray;
+  color: blue;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+```
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -21,7 +35,7 @@ library(httptest)
 start_vignette("5")
 ```
 
-```{r setup, echo=FALSE, results='hide', warning=FALSE}
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
 if (!library(ccdR, logical.return = TRUE)){
   devtools::load_all()
 }
@@ -49,31 +63,15 @@ registerS3method(
 )
 ```
 
-
 ## Introduction
 
-In this vignette, we will explore the `Hazard` domain of endpoints found in the [CCTE API Hazard Endpoints](https://api-ccte.epa.gov/docs/hazard.html). Before getting started, we need to provide an API key to access the endpoints.
+In this vignette, [CCTE Hazard APIs](https://api-ccte.epa.gov/docs/hazard.html) will be explored. 
 
-### Setting, using, and storing the API key
+::: {.noticebox data-latex=""}
 
-We store the API key required to access the APIs. To do this for the current session, run the first command. If you want to store your key across multiple sessions, run the second command.
+**NOTE:** Please see the introductory vignette for an overview of the *ccdR* package and initial set up instruction with API key storage.
 
-```{r, eval=FALSE}
-# This stores the key in the current session
-register_ccdr(key = '<YOUR API KEY>')
-
-# This stores the key across multiple sessions and only needs to be run once. 
-# If the key changes, rerun this with the new key.
-register_ccdr(key = '<YOUR API KEY>', write = TRUE)
-```
-
-To check that your key has successfully been stored for the session, run the following command.
-
-```{r, eval=FALSE}
-ccte_key()
-```
-
-After registering your API key, the functions in *ccdR* will automatically access the API key you saved without requiring you to input it as a function parameter each time you call a function.
+:::
 
 ## Hazard Resource
 
@@ -581,7 +579,7 @@ From this analysis, observe that the units for these three toxicity value types 
 
 ## Conclusion
 
-In this vignette, we explored a variety of functions that access different types of data found in the `Hazard` endpoints of the CCTE APIs. While this exploration was not exhaustive, it provides a basic introduction to how one may access data and work with it. Additional endpoints and corresponding functions exist and we encourage the user to explore these while keeping in mind the examples contained in this vignette.
+In this vignette, a variety of functions that access different types of data found in the `Hazard` endpoints of the CCTE APIs were explored. While this exploration was not exhaustive, it provides a basic introduction to how one may access data and work with it. Additional endpoints and corresponding functions exist and we encourage the user to explore these while keeping in mind the examples contained in this vignette.
 
 ```{r breakdown, echo = FALSE, results = 'hide'}
 # This chunk will be hidden in the final product. It serves to undo defining the

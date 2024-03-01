@@ -66,10 +66,9 @@ registerS3method(
 stg_bioactivity_server <- 'https://api-ccte-stg.epa.gov/bioactivity/data'
 ```
 
-
 ## Introduction
 
-In this vignette, [CCTE API Bioactivity Endpoints](https://api-ccte.epa.gov/docs/bioactivity.html) will be explored. 
+In this vignette, [CCTE Bioactivity APIs](https://api-ccte.epa.gov/docs/bioactivity.html) will be explored. 
 
 ::: {.noticebox data-latex=""}
 
@@ -181,7 +180,7 @@ res_dt <- get_bioactivity_details(DTXSID = "DTXSID7020182", API_key = apikey, Se
 printFormattedTable(head(res_dt), c(ncol(res_dt)-2)) # printed using custom formatted table
 ```
 
-### Example Use Case: Comparing Bioactivity Data Across Chemical Lists
+## Example Use Case: Comparing Bioactivity Data Across Chemical Lists
 
 The fourth Drinking Water Contaminant Candidate List (CCL4) is a set of chemicals that "...are not subject to any proposed or promulgated national primary drinking water regulations, but are known or anticipated to occur in public water systems...." Moreover, this list "...was announced on November 17, 2016. The CCL 4 includes 97 chemicals or chemical groups and 12 microbial contaminants...." The National-Scale Air Toxics Assessments (NATA) is "... EPA's ongoing comprehensive evaluation of air toxics in the United States... a state-of-the-science screening tool for State/Local/Tribal agencies to prioritize pollutants, emission sources and locations of interest for further study in order to gain a better understanding of risks... use general information about sources to develop estimates of risks which are more likely to overestimate impacts than underestimate them...."  
 
@@ -189,7 +188,7 @@ These lists can be found in the CCD at [CCL4](https://comptox.epa.gov/dashboard/
 
 In this example use case, bioactivity data will be compared between a water contaminant priority and an air toxics list.  
 
-#### Obtain Lists of Chemicals
+### Obtain Lists of Chemicals
 
 First, confirm the chemical list to query. 
 
@@ -211,7 +210,7 @@ natadb <- get_chemicals_in_list('NATADB')
 natadb <- data.table::as.data.table(natadb)
 ```
 
-#### Review Bioactivity Data for a Single Chemical
+### Review Bioactivity Data for a Single Chemical
 
 ToxCast data is made accessible via the CompTox Chemicals Dashboard (CCD). After navigating to a chemical of interest, select Bioactivity > ToxCast Summary to explore available ToxCast data. The ToxCast bioactivity module presents a view of potency and relative efficacy metrics across ToxCast endpoints for chemicals of interest, such as shown for BPA below. 
 
@@ -263,7 +262,7 @@ assay_2037 <- data.table::as.data.table(assay_2037)
 head(assay_2037)
 ```
 
-#### Review Bioactivity Data for Chemical Lists
+### Review Bioactivity Data for Chemical Lists
 
 Then, if curious about other chemicals tested for this same endpoint:
 
@@ -273,7 +272,6 @@ assay_2037_data <- data.table::as.data.table(assay_2037_data)
 
 head(assay_2037_data)
 ```
-
 
 Let us now look at which chemicals from each data set have assay data associated to `aeid` value 2037.
 
@@ -314,7 +312,7 @@ From this, we see that the average `ac50` value for `aeid` value 2037 Assay data
 
 ## Conclusion
 
-In this vignette, we explored a variety of functions that access different types of data found in the `Bioactivity` endpoints of the CCTE APIs. While this exploration was not exhaustive, it provides a basic introduction to how one may access data and work with it. Additional endpoints and corresponding functions exist and we encourage the user to explore these while keeping in mind the examples contained in this vignette.
+In this vignette, a variety of functions that access different types of data found in the `Bioactivity` endpoints of the CCTE APIs were explored. While this exploration was not exhaustive, it provides a basic introduction to how one may access data and work with it. Additional endpoints and corresponding functions exist and we encourage the user to explore these while keeping in mind the examples contained in this vignette.
 
 ```{r breakdown, echo = FALSE, results = 'hide'}
 # This chunk will be hidden in the final product. It serves to undo defining the
