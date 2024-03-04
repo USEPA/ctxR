@@ -27,6 +27,7 @@ Suggests:
     countcolors,
     devtools,
     ggplot2,
+    gridExtra,
     httptest,
     knitr,
     rmarkdown,
