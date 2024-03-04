@@ -85,7 +85,10 @@ In this vignette, [CCTE Chemical APIs](https://api-ccte.epa.gov/docs/chemical.ht
 
 ## Functions
 
-Now, we demonstrate how to retrieve the information for Bisphenol A (BPA) given by the `Chemical Detail Resource` endpoint under the `chemicaldetailstandard` value for `projection`. Note, this `projection` value is the default value for the function `get_chemical_details()`.
+Several ccdR functions are used to access the CCTE Chemical API data.
+
+### Get chemical details 
+`get_chemical_details()` retrieves all chemical details for chemical of interest. 
 
 ```{r}
 BPA_chemical_detail <- get_chemical_details(DTXSID = 'DTXSID7020182')
@@ -93,7 +96,6 @@ dim(BPA_chemical_detail)
 class(BPA_chemical_detail)
 names(BPA_chemical_detail)
 ```
-
 
 ## Example Use Case: Comparing Physico-chemical Properties Across Chemical Lists
  
@@ -130,12 +132,11 @@ We examine the dimensions of the data, the column names, and display a single ro
 ```{r, eval=FALSE}
 dim(ccl4)
 dim(natadb)
-
 colnames(ccl4)
 head(ccl4, 1)
 ```
 
-### Access Physico-chemical Property Data
+### Access Physico-chemical Property Data for Chemical Lists
 
 Next, physico-chemical properties for all chemicals in each list can be retrieved. The function `get_chem_info()` will be used to batch search for a list of DTXSIDs.
 

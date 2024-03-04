@@ -92,7 +92,7 @@ This flexible analysis pipeline is capable of efficiently processing and storing
 
 ## Functions
 
-Several ccdR functions are used to access the CCTE API Bioactivity data.
+Several ccdR functions are used to access the CCTE Bioactivity API data.
 
 ### Get all assay annotations
 
@@ -239,7 +239,7 @@ bpa_bioactivity <- data.table::as.data.table(bpa_bioactivity)
 head(bpa_bioactivity)
 ```
 
-Next, it may be helpful to examine the dimensions and column names of output.
+Next, it may be helpful to examine the dimensions and column names of the output.
 
 ```{r, eval=FALSE}
 dim(bpa_bioactivity)
