@@ -49,6 +49,7 @@ if (!library(ccdR, logical.return = TRUE)){
 ```{r, echo=FALSE}
 # Used to visualize data in a variety of plot designs
 library(ggplot2)
+library(gridExtra)
 ```
 
 ```{r setup-print, echo = FALSE}
