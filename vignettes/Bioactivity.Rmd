@@ -309,6 +309,29 @@ bpa_bioactivity[aeid %in% 2037, .(Mean_AC50 = mean(ac50))]
 
 From this, we see that the average `ac50` value for `aeid` value 2037 Assay data for CCL4 chemicals is distributed above and below that of BPA in equal quantity, while for NATADB chemicals, all but two of 13 are higher. 
 
+To investigate additional endpoints, we could do the following.
+
+```{r, eval = FALSE}
+bpa_aeid_batch <- get_bioactivity_details_batch(AEID = unique(bpa_bioactivity$aeid), Server = stg_bioactivity_server)
+all_bpa_aeid <- data.table::rbindlist(bpa_aeid_batch, use.names = TRUE)
+
+ccl4_bpa_aeid <- all_bpa_aeid[dtxsid %in% ccl4[, unique(dtxsid)], ][order(dtxsid)]
+natadb_bpa_aeid <- all_bpa_aeid[dtxsid %in% natadb[, unique(dtxsid)], ][order(dtxsid)]
+
+ccl4_bpa_aeid[!is.na(ac50), .(Mean_AC50 = mean(ac50))]
+ccl4_bpa_aeid[!is.na(ac50), .(Mean_AC50 = mean(ac50)), by = .(dtxsid)][order(-Mean_AC50),]
+
+natadb_bpa_aeid[!is.na(ac50), .(Mean_AC50 = mean(ac50))]
+natadb_bpa_aeid[!is.na(ac50), .(Mean_AC50 = mean(ac50)), by = .(dtxsid)][order(-Mean_AC50),]
+```
+In the previous chunk, we used the batch search version of the `get_bioactivity_details()` function. 
+
+To finish this example off, we could compare these average `ac50` values with those found in the BPA bioactivity information. We filter out NA values, take the mean of the `ac50` values grouped by `aeid` value.
+
+```{r}
+bpa_bioactivity[!is.na(ac50), .(Mean_AC50 = mean(ac50)), by = .(aeid)]
+```
+
 
 ## Conclusion
 
