@@ -7,6 +7,8 @@
 get_bioactivity_details_batch(
   DTXSID = NULL,
   AEID = NULL,
+  SPID = NULL,
+  m4id = NULL,
   API_key = NULL,
   Server = NULL,
   rate_limit = 0L,
@@ -17,6 +19,10 @@ get_bioactivity_details_batch(
 \item{DTXSID}{A list of chemical identifier DTXSIDs.}
 
 \item{AEID}{A list of assay endpoint identifiers AEIDs.}
+
+\item{SPID}{A list of ChemSpider chemical inputs}
+
+\item{m4id}{A list of chemical identifier m4ids}
 
 \item{API_key}{The user-specific API key.}
 
