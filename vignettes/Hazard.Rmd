@@ -32,7 +32,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 library(httptest)
-start_vignette("5")
+start_vignette("3")
 ```
 
 ```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
