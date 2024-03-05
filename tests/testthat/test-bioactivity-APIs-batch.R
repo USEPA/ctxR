@@ -16,7 +16,7 @@ test_that("catch missing API", {
 test_that('DTXSID/AEID errors', {
   expect_error(get_bioactivity_details_batch(DTXSID = 1, API_key = 'test_key'), 'Please input a character list for DTXSID!')
   expect_error(get_bioactivity_details_batch(DTXSID = list('first' = '1', 'second' = 2), API_key = 'test_key'), 'Please input a character list for DTXSID!')
-  expect_error(get_bioactivity_details_batch(API_key = 'test_key'), 'Please input a list of DTXSIDs or AEIDs!')
+  expect_error(get_bioactivity_details_batch(API_key = 'test_key'), 'Please input a list of DTXSIDs, AEIDs, SPIDs, or m4ids!')
 
 })
 
