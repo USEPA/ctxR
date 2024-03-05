@@ -81,6 +81,61 @@ This resource is a compilation of information sourced from multiple public datas
 
 Several ccdR functions are used to access the CCTE Hazard API data.
 
+### Get hazard data by dtxsid
+
+`get_hazard_by_dtxsid()` retrieves all hazard data, both human and ecotox data.
+
+```{r ccdR all hazard, message=FALSE, eval=FALSE}
+res_dt <- get_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
+```
+
+#### Get human hazard by dtxsid
+
+`get_human_hazard_by_dtxsid()` retrieves only the human hazard data.
+
+```{r ccdR human hazard, message=FALSE, eval=FALSE}
+res_dt <- get_human_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
+```
+
+#### Get ecotox hazard by dtxsid
+
+`get_ecotox_hazard_by_dtxsid()` retrieves only the ecotox hazard data.
+
+```{r ccdR ecotox hazard, message=FALSE, eval=FALSE}
+res_dt <- get_ecotox_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
+```
+
+### Skin eye resource
+
+`get_skin_eye_hazard()` retrieves hazard data specific to skin and eye hazard.
+
+```{r ccdR skin and eye hazard, message=FALSE, eval=FALSE}
+res_dt <- get_skin_eye_hazard(DTXSID = 'DTXSID7020182')
+```
+
+### Cancer resource
+
+`get_cancer_hazard()` retrieves cancer hazard data. 
+
+```{r ccdR cancer hazard, message=FALSE, eval=FALSE}
+res_dt <- get_cancer_hazard(DTXSID = 'DTXSID7020182')
+```
+
+### Genetox resource
+
+`get_genetox_summary()` retrieves summary level data for genetox data associated to a chemical.
+
+```{r ccdR genetox summary hazard, message=FALSE, eval=FALSE}
+res_dt <- get_genetox_summary(DTXSID = 'DTXSID7020182')
+```
+
+`get_genetox_detail()` retrieves more detailed genetox data for a chemical than is provided on the summary level.
+
+```{r ccdR genetox detail hazard, message=FALSE, eval=FALSE}
+res_dt <- get_genetox_details(DTXSID = 'DTXSID7020182')
+```
+
+
 ## Example Use Case: Comparing Hazard Data Across Chemical Lists
 
 The fourth Drinking Water Contaminant Candidate List (CCL4) is a set of chemicals that "...are not subject to any proposed or promulgated national primary drinking water regulations, but are known or anticipated to occur in public water systems...." Moreover, this list "...was announced on November 17, 2016. The CCL 4 includes 97 chemicals or chemical groups and 12 microbial contaminants...." The National-Scale Air Toxics Assessments (NATA) is "... EPA's ongoing comprehensive evaluation of air toxics in the United States... a state-of-the-science screening tool for State/Local/Tribal agencies to prioritize pollutants, emission sources and locations of interest for further study in order to gain a better understanding of risks... use general information about sources to develop estimates of risks which are more likely to overestimate impacts than underestimate them...."  
