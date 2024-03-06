@@ -26,13 +26,18 @@ to the screen when web queries are placed. For both of those, see
 [register_ccte()].
 }
 \examples{
-
-getOption('ccdr')
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Set ccdr options
+set_ccdr_option('display_api_key' = FALSE)
+\dontshow{\}) # examplesIf}
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Check if there are options registered to 'ccdr'
 has_ccdr_options()
+\dontshow{\}) # examplesIf}
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Check if a specific option is registered for 'ccdr'
 has_ccdr_option('display_api_key')
-
-
-
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 [register_ccte()]
