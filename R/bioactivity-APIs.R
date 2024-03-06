@@ -11,7 +11,11 @@
 #' @return A data.frame containing bioactivity information for the chemical or assay endpoint with
 #'   identifier matching the input parameter.
 #' @export
-#'
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Pull BPA bioactivity details
+#' bpa <- get_bioactivity_details(DTXSID = 'DTXSID7020182')
+#' # Pull assay bioactivity details
+#' assay <- get_bioactivity_details(AEID = 159)
 get_bioactivity_details <- function(DTXSID = NULL,
                                  AEID = NULL,
                                  SPID = NULL,
@@ -107,7 +111,9 @@ get_bioactivity_details <- function(DTXSID = NULL,
 #' @return A data.frame containing summary information corresponding to the
 #'   input AEID
 #' @export
-#'
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Pull an assay bioactivity summary
+#' aeid_1386 <- get_bioactivity_summary(AEID = 1386)
 get_bioactivity_summary <- function(AEID = NULL,
                                     API_key = NULL,
                                     Server = bioactivity_api_server,
@@ -172,7 +178,9 @@ get_bioactivity_summary <- function(AEID = NULL,
 #'
 #' @return A data.frame containing all the assays and associated information
 #' @export
-#'
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Retrieve all assays
+#' assays <- get_all_assays()
 get_all_assays <- function(API_key = NULL,
                            Server = bioactivity_api_server,
                            verbose = FALSE){
@@ -220,7 +228,9 @@ get_all_assays <- function(API_key = NULL,
 #' @return A data.frame containing the annotated assays corresponding to the
 #'   input AEID parameter
 #' @export
-#'
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Retrieve annotation for an assay
+#' annotation <- get_annotation_by_aeid(AEID = 159)
 get_annotation_by_aeid <- function(AEID = NULL,
                                    API_key = NULL,
                                    Server = bioactivity_api_server,
