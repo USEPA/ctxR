@@ -33,6 +33,13 @@ A named list of data.frames containing information about the chemical
 \description{
 Get chemical list by name batch
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull chemical list information by list names
+list_info <- get_public_chemical_list_by_name_batch(name_list = c('CCL4',
+                                                                  'NATADB'))
+\dontshow{\}) # examplesIf}
+}
 \seealso{
 \code{\link{get_chemicals_in_list}}
 }

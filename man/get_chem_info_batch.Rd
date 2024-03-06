@@ -36,3 +36,10 @@ A data.table containing chemical information for the chemicals with
 \description{
 Retrieve chemical information in batch search
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull chemical info for multiple chemicals
+chem_info <- get_chem_info_batch(DTXSID = c('DTXSID7020182',
+                                            'DTXSID2021315'))
+\dontshow{\}) # examplesIf}
+}

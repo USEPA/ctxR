@@ -28,3 +28,10 @@ A named list of data.frames of chemicals and related values matching
 \description{
 Chemical starts with batch search
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull chemicals that start with given substrings
+bpa_substrings <- chemical_starts_with_batch(word_list = c('DTXSID702018',
+                                                           'DTXCID3018'))
+\dontshow{\}) # examplesIf}
+}

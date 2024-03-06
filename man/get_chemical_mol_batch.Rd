@@ -30,3 +30,13 @@ A named list of character strings giving a mol file representations
 \description{
 Get mol file by DTXSID or DTXCID batch
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull mol files for multiple chemicals by DTXSID
+dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
+mol_files <- get_chemical_mol_batch(DTXSID = dtxsid)
+# Pull mol files for multiple chemicals by DTXCID
+dtxcid <- c('DTXCID30182', 'DTXCID001315')
+mol_files <- get_chemical_mol_batch(DTXCID = dtxcid)
+\dontshow{\}) # examplesIf}
+}
