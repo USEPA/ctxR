@@ -33,3 +33,12 @@ A named list of data.frames containing bioactivity information for
 \description{
 Retrieve bioactivity data from DTXSID or AEID batch
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull bioactivity details for multiple chemicals
+dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
+batch_bioactivity <- get_bioactivity_details_batch(DTXSID = dtxsid)
+# Pull bioactivity details for multiple assays
+batch_bioactivity <- get_bioactivity_details_batch(AEID = c(159, 160))
+\dontshow{\}) # examplesIf}
+}
