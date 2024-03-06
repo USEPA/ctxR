@@ -29,3 +29,10 @@ A data.table containing chemical ecotox hazard data.
 \description{
 Get ecotox hazard data by DTXSID batch
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull ecotox hazard data for multiples chemicals
+dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
+dtxsid_ecotox_hazard <- get_ecotox_hazard_by_dtxsid_batch(DTXSID = dtxsid)
+\dontshow{\}) # examplesIf}
+}
