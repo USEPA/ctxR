@@ -26,3 +26,9 @@ A named list of synonym information for the input DTXSID
 \description{
 Get chemical synonym
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull synonyms for BPA
+bpa_synonym <- get_chemical_synonym(DTXSID = 'DTXSID7020182')
+\dontshow{\}) # examplesIf}
+}

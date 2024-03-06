@@ -29,3 +29,11 @@ A character string giving a mol file representation
 \description{
 Get mol file by DTXSID or DTXCID
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull mol file for BPA by dtxsid
+bpa_mol <- get_chemical_mol(DTXSID = 'DTXSID7020182')
+# Pull mol file for BPA by dtxcid
+bpa_mol <- get_chemical_mol(DTXCID = 'DTXCID30182')
+\dontshow{\}) # examplesIf}
+}

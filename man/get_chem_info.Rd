@@ -32,3 +32,9 @@ A data.frame containing chemical information for the chemical with
 \description{
 Retrieve chemical information
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull chemical information for BPA
+bpa <- get_chem_info(DTXSID = 'DTXSID7020182')
+\dontshow{\}) # examplesIf}
+}

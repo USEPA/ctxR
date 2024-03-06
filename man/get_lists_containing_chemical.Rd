@@ -26,3 +26,9 @@ A list of names of chemical lists that contain the given chemical
 \description{
 Get chemical lists containing given chemical
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull chemical lists containing BPA
+bpa_lists <- get_lists_containing_chemical(DTXSID = 'DTXSID7020182')
+\dontshow{\}) # examplesIf}
+}
