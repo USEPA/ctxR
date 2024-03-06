@@ -5,7 +5,7 @@ output:
    prettydoc::html_pretty:
     theme: architect
     toc: yes
-    toc_depth: 5
+    toc_depth: 6
 vignette: >
   %\VignetteIndexEntry{Chemical}
   %\VignetteEngine{knitr::rmarkdown}
@@ -84,27 +84,38 @@ In this vignette, [CCTE Chemical APIs](https://api-ccte.epa.gov/docs/chemical.ht
 
 :::
 
+The foundation of toxicology, toxicokinetics, and exposure is embedded in the physics and chemistry of chemical-biological interactions. The accurate characterization of chemical structure linked to commonly used identifiers, such as names and Chemical Abstracts Service Registry Numbers (CASRNs), is essential to support both predictive modeling of the data as well as dissemination and application of the data for chemical safety decisions. 
+
+With cheminformatics as the backbone for research efforts, sources of available data through the CCTE Chemical APIs include:
+
+-  Chemical structures, nomenclature, synonyms, IDs, list associations, physicochemical property, environmental fate, and transport data from the Distributed Structure-Searchable Toxicity (DSSTox) database
+- Predictions from Toxicity Estimation Software Tool (TEST) suite of QSAR models 
+
+More information on Chemicals and Chemistry Data can be found here: <https://www.epa.gov/comptox-tools/downloadable-computational-toxicology-data#SCD>.
+
 ## Functions
 
 Several ccdR functions are used to access the CCTE Chemical API data.
 
-### Get chemical data
+### Chemical Details Resource
+
+#### Get chemical data
 
 `get_chemical_details()` retrieves chemical detail data either using the chemical identifier DTXSID or DTXCID. Alternate parameter "projection" determines the type of data returned. Examples for each are provided below:
 
-#### By DTXSID
+##### By DTXSID
 
 ```{r ccdR dtxsid data chemical, message=FALSE, eval=FALSE}
 res_dt <- get_chemical_details(DTXSID = 'DTXSID7020182')
 ```
 
-#### By DTXCID
+##### By DTXCID
 
 ```{r ccdR dtxcid data chemical, message=FALSE, eval=FALSE}
 res_dt <- get_chemical_details(DTXCID = 'DTXCID30182')
 ```
 
-### Chemical Property 
+### Chemical Property Resource
 
 `get_chemical_by_property_range()` retrieves data for chemicals that have a specified property within the input range.
 
@@ -118,7 +129,7 @@ res_dt <- get_chemical_by_property_range(start = 1.311, end = 1.313, property = 
 res_dt <- get_chem_info(DTXSID = 'DTXSID7020182')
 ```
 
-### Chemical Fate resource
+### Chemical Fate Resource
 
 `get_fate_by_dtxsid()` retrieves chemical fate data.
 
@@ -142,29 +153,29 @@ res_dt <- chemical_starts_with(word = 'DTXSID70201')
 res_dt <- chemical_equal(word = 'DTXSID7020182')
 ```
 
-#### By Substring value
+#### By substring value
 
 ```{r ccdR substring value chemical, message=FALSE, eval=FALSE}
 res_dt <- chemical_contains(word = 'DTXSID702018')
 ```
 
-### MS Ready data
+#### Subset for MS-Ready Structures
 
-MS Ready data can be retrieved using a variety of input information. Examples for each are provided below:
+MS-Ready data can be retrieved using a variety of input information. Examples for each are provided below:
 
-#### Mass Range
+##### Mass Range
 
 ```{r ccdR mass range ms ready chemical, message=FALSE, eval=FALSE}
 res_dt <- get_msready_by_mass(start = 200.9, end = 200.95)
 ```
 
-#### Chemical Formula
+##### Chemical Formula
 
 ```{r ccdR chemical formula ms ready chemical, message=FALSE, eval=FALSE}
 res_dt <- get_msready_by_formula(formula = 'C16H24N2O5S')
 ```
 
-#### DTXCID
+##### DTXCID
 
 ```{r ccdR dtxcid ms ready chemical, message=FALSE, eval=FALSE}
 res_dt <- get_msready_by_dtxcid(DTXCID = 'DTXCID30182')
@@ -174,19 +185,19 @@ res_dt <- get_msready_by_dtxcid(DTXCID = 'DTXCID30182')
 
 There are several lists of chemicals one can access. These can be filtered by the type, name, inclusion of a specific chemical, or name of list.
 
-### All lists by type
+#### All lists by type
 
 ```{r ccdR all list types chemical, message=FALSE, eval=FALSE}
 res_dt <- get_chemical_lists_by_type(type =  'federal')
 ```
 
-### List by name
+#### List by name
 
 ```{r ccdR list by name chemical, message=FALSE, eval=FALSE}
 res_dt <- get_public_chemical_list_by_name(listname = 'CCL4')
 ```
 
-### Lists containing a specific chemical
+#### Lists containing a specific chemical
 
 `get_lists_containing_chemical()` retrieves a list of names of chemical lists, each of which contains the specified chemical.
 
@@ -194,7 +205,7 @@ res_dt <- get_public_chemical_list_by_name(listname = 'CCL4')
 res_dt <- get_lists_containing_chemical(DTXSID = 'DTXSID7020182')
 ```
 
-### Chemicals in a specific list
+#### Chemicals in a specific list
 
 `get_chemicals_in_list()` retrieves the specific chemical information for each chemical contained in the specified list.
 
@@ -202,7 +213,7 @@ res_dt <- get_lists_containing_chemical(DTXSID = 'DTXSID7020182')
 res_dt <- get_chemicals_in_list(list_name = 'CCL4')
 ```
 
-### Chemical file resource
+### Chemical File Resource
 
 There a mrv, mol, and image files that can be accessed using either the DTXSID or DTXCID. Examples are provided below:
 
@@ -233,7 +244,7 @@ res_dt <- get_chemical_image(DTXSID = 'DTXSID7020182')
 res_dt <- get_chemical_image(DTXCID = 'DTXCID30182')
 ```
 
-### Chemical Synonym resource
+### Chemical Synonym Resource
 
 `get_chemical_synonym()` retrieves synonyms for the specified chemical.
 

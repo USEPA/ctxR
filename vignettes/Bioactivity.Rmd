@@ -12,8 +12,8 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 ```{css, echo=FALSE}
-.scroll-100 {
-  max-height: 100px;
+.scroll-200 {
+  max-height: 200px;
   overflow-y: auto;
 }
 
@@ -291,7 +291,7 @@ natadb_2037 <- assay_2037_data[dtxsid %in% natadb_2037, ][order(dtxsid), ]
 
 We calculate the mean `ac50` value for the associated data and grouped by chemical.
 
-```{r}
+```{r fig.align='center',class.source="scroll-200",message=FALSE}
 ccl4_2037[!is.na(ac50), .(Mean_AC50 = mean(ac50))]
 ccl4_2037[!is.na(ac50), .(Mean_AC50 = mean(ac50)), by = .(dtxsid)][order(-Mean_AC50),]
 
