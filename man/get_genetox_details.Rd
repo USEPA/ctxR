@@ -26,3 +26,9 @@ A data.frame of genetox detail data related to the input DTXSID.
 \description{
 Get genetox details
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull genetox details for BPA
+bpa_genetox_details <- get_genetox_details(DTXSID = 'DTXSID7020182')
+\dontshow{\}) # examplesIf}
+}

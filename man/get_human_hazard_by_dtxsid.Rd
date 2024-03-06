@@ -26,3 +26,9 @@ A data.frame containing chemical human hazard data
 \description{
 Get human hazard data by DTXSID
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull human hazard data for BPA
+bpa_human <- get_human_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
+\dontshow{\}) # examplesIf}
+}
