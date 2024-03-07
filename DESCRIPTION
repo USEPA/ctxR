@@ -3,18 +3,18 @@ Package: ccdR
 Title: Utilities for Interacting with the CCTE APIs in R
 Version: 1.0.0
 Authors@R: c(
-            person("Kruse", "Paul", email = "kruse.paul@epa.gov", 
+            person("Paul", "Kruse", email = "kruse.paul@epa.gov", 
               role = c("aut", "cre"), 
               comment = c(ORCID = "0000-0001-5516-9717")),
-    	      person("Ring", "Caroline", email = "ring.caroline@epa.gov", 
+    	      person("Caroline", "Ring", email = "ring.caroline@epa.gov", 
     	        role = c("aut"), 
     	        comment = c(ORCID = "0000-0002-0463-1251")),
-	          person("Madison","Feshuk", role = "ctb", 
+	          person("Madison", "Feshuk", role = "ctb", 
 	            email = "feshuk.madison@epa.gov", 
 	            comment = c(ORCID = "0000-0002-1390-6405")),
 	          person("Carter", "Thunes", role = "ctb", 
 	            email = "thunes.carter@epa.gov"),
-    	      person("Jason","Brown",role = "ctb", 
+    	      person("Jason", "Brown", role = "ctb", 
     	        email = "brown.jason@epa.gov")
     	        )
 Description: Access chemical, hazard, and bioactivity data from the Center for 
