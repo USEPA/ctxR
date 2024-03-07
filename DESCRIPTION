@@ -47,6 +47,7 @@ Suggests:
     gridExtra,
     httptest,
     knitr,
+    prettydoc,
     rmarkdown,
     testthat (>= 3.0.0),
     XML
