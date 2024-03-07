@@ -28,3 +28,9 @@ A named list of data.frames of chemicals and related values matching
 \description{
 Chemical equal batch search
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull chemicals that match input strings
+bpa <- chemical_equal_batch(word_list = c('DTXSID7020182', 'DTXCID30182'))
+\dontshow{\}) # examplesIf}
+}

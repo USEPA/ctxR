@@ -33,3 +33,14 @@ A named list of data.frames containing chemical information for the
 \description{
 Retrieve chemicals by property and value range in batch search
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull chemicals by property ranges
+prop_ranges <- get_chemical_by_property_range_batch(start_list = c(1.311,
+                                                                   211.99),
+                                                    end_list = c(1.313,
+                                                                     212.01),
+                                                    property_list = c('Density',
+                                                                      'Boiling Point'))
+\dontshow{\}) # examplesIf}
+}

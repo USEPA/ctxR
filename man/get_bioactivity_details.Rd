@@ -36,3 +36,11 @@ A data.frame containing bioactivity information for the chemical or assay endpoi
 \description{
 Retrieve bioactivity data from DTXSID, AEID, SPID, or m4id
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull BPA bioactivity details
+bpa <- get_bioactivity_details(DTXSID = 'DTXSID7020182')
+# Pull assay bioactivity details
+assay <- get_bioactivity_details(AEID = 159)
+\dontshow{\}) # examplesIf}
+}

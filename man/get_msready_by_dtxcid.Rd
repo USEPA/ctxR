@@ -27,3 +27,9 @@ A character list of DTXSIDs with DTXCIDs matching the
 \description{
 Get msready by DTXCID
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull chemicals with matching DTXCID
+dtxcid_msready <- get_msready_by_dtxcid(DTXSID = 'DTXCID30182')
+\dontshow{\}) # examplesIf}
+}

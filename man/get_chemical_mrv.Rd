@@ -29,3 +29,11 @@ XML file format for representing a mrv file.
 \description{
 Get mrv file by DTXSID or DTXCID
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull mrv file for BPA by dtxsid
+bpa_mrv <- get_chemical_mrv(DTXSID = 'DTXSID7020182')
+# Pull mrv file for BPA by dtxcid
+bpa_mrv <- getchemical_mrv(DTXCID = 'DTXCID30182')
+\dontshow{\}) # examplesIf}
+}

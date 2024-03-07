@@ -26,3 +26,9 @@ A data.frame of cancer hazard data related to the input DTXSID.
 \description{
 Get cancer hazard
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull cancer hazard data for BPA
+bpa_cancer <- get_cancer_hazard(DTXSID = 'DTXSID7020182')
+\dontshow{\}) # examplesIf}
+}

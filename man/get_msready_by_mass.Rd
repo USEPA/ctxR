@@ -29,3 +29,9 @@ A list of DTXSIDs with msready mass falling within the given range.
 \description{
 Get msready by mass
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull chemicals with msready mass in given range
+mass_range <- get_msready_by_mass(start = 200.9, end = 200.95)
+\dontshow{\}) # examplesIf}
+}

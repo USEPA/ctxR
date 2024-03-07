@@ -30,3 +30,9 @@ A named list of data.frames containing annotation information for the
 \description{
 Retrieve annotations for AEID batch
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Get annotations for multiple aeids
+aeid_annotations <- get_annotation_by_aeid_batch(AEID = c(159, 160))
+\dontshow{\}) # examplesIf}
+}

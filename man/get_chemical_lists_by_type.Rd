@@ -33,3 +33,9 @@ A data.frame containing information about lists that meet the search
 \description{
 Get chemical lists by type
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull chemical lists by type
+federal <- get_chemical_lists_by_type(type = 'Federal')
+\dontshow{\}) # examplesIf}
+}

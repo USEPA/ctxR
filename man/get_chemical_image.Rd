@@ -35,3 +35,17 @@ A Large array of three dimensions representing an image. For
 \description{
 Get image file by DTXSID or DTXCID
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull chemical image for BPA by dtxsid
+bpa_image_matrix <- get_chemical_image(DTXSID = 'DTXSID7020182')
+if (requireNamespace("countcolors", quietly = TRUE)){
+  countcolors::plotArrayAsImage(bpa_image_matrix)
+}
+# Pull chemical image for BPA by dtxcid
+bpa_image_matrix <- get_chemical_image(DTXCID = 'DTXCID30182')
+if (requireNamespace("countcolors", quietly = TRUE)){
+  countcolors::plotArrayAsImage(bpa_image_matrix)
+}
+\dontshow{\}) # examplesIf}
+}

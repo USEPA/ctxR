@@ -28,3 +28,9 @@ A data.frame of chemicals and related values matching the query
 \description{
 Chemical starts with
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull chemicals that start with a fragment DTXSID
+dtxsid_fragment <- chemical_starts_with(word = 'DTXSID702018')
+\dontshow{\}) # examplesIf}
+}

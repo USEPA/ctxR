@@ -64,3 +64,35 @@ accesses the key and uploads it to a third party. For this reason, when using
 ccdr we recommend a heightened sense of security and self-awareness: only use
 trusted packages, do not save the API keys in script files, etc.
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Check if API key is showing
+showing_key()
+\dontshow{\}) # examplesIf}
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Toggle API key to display
+ccdr_show_api_key()
+\dontshow{\}) # examplesIf}
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Toggle API key to be hidden
+ccdr_hide_api_key()
+\dontshow{\}) # examplesIf}
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Register key for this session
+register_ccdr(key = 'YOUR API KEY')
+# Register key over sessions
+register_ccdr(key = 'YOUR API KEY', write = TRUE)
+\dontshow{\}) # examplesIf}
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Print function for ccte_credentials class
+print.ccte_credentials()
+\dontshow{\}) # examplesIf}
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Display ccte API key
+ccte_key()
+\dontshow{\}) # examplesIf}
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Check whether API key is registered
+has_ccte_key()
+\dontshow{\}) # examplesIf}
+}

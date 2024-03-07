@@ -29,3 +29,9 @@ A data.frame containing information on all public chemical lists
 \description{
 Get all public chemical lists
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull all chemical lists
+all_lists <- get_all_public_chemical_lists()
+\dontshow{\}) # examplesIf}
+}

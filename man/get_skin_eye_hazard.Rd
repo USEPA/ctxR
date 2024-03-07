@@ -26,3 +26,9 @@ A data.frame containing skin and eye hazard data.
 \description{
 Get skin and eye hazard
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull skin and eye hazard data for BPA
+bpa_skin_eye <- get_skin_eye_hazard_batch(DTXSID = 'DTXSID7020182')
+\dontshow{\}) # examplesIf}
+}

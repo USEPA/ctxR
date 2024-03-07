@@ -28,3 +28,9 @@ A data.frame of chemicals and related values matching the query
 \description{
 Chemical contains
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull chemicals that contain substring
+substring_chemicals <- chemical_contains(word = 'TXSID702018')
+\dontshow{\}) # examplesIf}
+}

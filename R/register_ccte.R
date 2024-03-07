@@ -40,7 +40,9 @@
 
 #' @rdname register_ccte
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Check if API key is showing
+#' showing_key()
 
 showing_key <- function() {
 
@@ -55,7 +57,9 @@ showing_key <- function() {
 
 #' @rdname register_ccte
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Toggle API key to display
+#' ccdr_show_api_key()
 
 ccdr_show_api_key <- function() {
   set_ccdr_option('display_api_key' = TRUE)
@@ -66,7 +70,9 @@ ccdr_show_api_key <- function() {
 
 #' @rdname register_ccte
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Toggle API key to be hidden
+#' ccdr_hide_api_key()
 
 ccdr_hide_api_key <- function() {
   set_ccdr_option('display_api_key' = FALSE)
@@ -77,7 +83,11 @@ ccdr_hide_api_key <- function() {
 
 #' @rdname register_ccte
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Register key for this session
+#' register_ccdr(key = 'YOUR API KEY')
+#' # Register key over sessions
+#' register_ccdr(key = 'YOUR API KEY', write = TRUE)
 
 register_ccdr <- function(key, write = FALSE) {
 
@@ -148,7 +158,9 @@ register_ccdr <- function(key, write = FALSE) {
 
 #' @rdname register_ccte
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Print function for ccte_credentials class
+#' print.ccte_credentials()
 
 print.ccte_credentials <- function(...) {
   cat('Key -',     if (!has_ccte_key()) '' else {if(showing_key()) ccte_key() else 'xxx' }, '\n')
@@ -158,7 +170,9 @@ print.ccte_credentials <- function(...) {
 
 #' @rdname register_ccte
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Display ccte API key
+#' ccte_key()
 
 ccte_key <- function() {
   key <- Sys.getenv('CCTE_API_KEY')
@@ -173,7 +187,9 @@ ccte_key <- function() {
 
 #' @rdname register_ccte
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Check whether API key is registered
+#' has_ccte_key()
 
 has_ccte_key <- function () !is.na(ccte_key())
 

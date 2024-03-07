@@ -26,3 +26,10 @@ A named list of chemical lists that contain the given chemicals.
 \description{
 Get chemical lists containing given chemical batch
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull lists containing chemicals for multiple chemicals
+lists <- get_lists_containing_chemical_batch(chemical_list = c('DTXSID7020182',
+                                                               'DTXSID2021315'))
+\dontshow{\}) # examplesIf}
+}

@@ -34,3 +34,10 @@ A named list of data.frames containing information about lists that
 \description{
 Get chemical lists by type batch search
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull chemical lists by type
+federal_state <- get_chemical_lists_by_type_batch(type_list = c('Federal',
+                                                                'State'))
+\dontshow{\}) # examplesIf}
+}

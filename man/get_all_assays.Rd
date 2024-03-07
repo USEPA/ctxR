@@ -23,3 +23,9 @@ A data.frame containing all the assays and associated information
 \description{
 Retrieve all assays
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Retrieve all assays
+assays <- get_all_assays()
+\dontshow{\}) # examplesIf}
+}

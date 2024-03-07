@@ -28,3 +28,9 @@ A data.frame of chemicals and related values matching the query
 \description{
 Chemical equal
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull chemicals with matching DTXSID
+bpa_dtxsid <- chemical_equal(word = 'DTXSID7020182')
+\dontshow{\}) # examplesIf}
+}

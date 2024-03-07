@@ -37,3 +37,13 @@ A data.table (DTXSID) or a named list of data.tables (DTXCID)
 \description{
 Retrieve chemical details from DTXSID of DTXCID in batch search
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull chemical details for multiple chemicals by dtxsid
+dtxsids <- c('DTXSID7020182', 'DTXSID2021315')
+dtxsid_details <- get_chemical_details_batch(DTXSID = dtxsid)
+# Pull chemical details for multiple chemicals by dtxcid
+dtxcids <- c('DTXCID30182', 'DTXCID001315')
+dtxcid_details <- get_chemical_details_batch(DTXCID = dtxcids)
+\dontshow{\}) # examplesIf}
+}

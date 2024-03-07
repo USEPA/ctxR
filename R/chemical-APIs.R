@@ -13,7 +13,9 @@
 #' @return A data.table containing chemical information for the chemical with
 #'   DTXSID matching the input parameter.
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Pull chemical details for BPA
+#' bpa <- get_chemical_details(DTXSID = 'DTXSID7020182')
 
 get_chemical_details <- function(DTXSID = NULL,
                                  DTXCID = NULL,
@@ -388,12 +390,16 @@ get_InChI <- function(name = NULL,
 #' @param property A string, the property in question
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
-#' @param verbose A logical indicating if some “progress report” should be given.
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
 #'
 #' @return A data.frame containing chemical information for chemicals matching
 #'   the search criteria.
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Pull chemicals with a given property in a set range
+#' density <- get_chemical_by_property_range(start = 1.311, end = 1.313,
+#'                                           property = 'Density')
 
 get_chemical_by_property_range <- function(start = NULL,
                                            end = NULL,
@@ -458,7 +464,9 @@ get_chemical_by_property_range <- function(start = NULL,
 #' @return A data.frame containing chemical information for the chemical with
 #'   DTXSID matching the input parameter.
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Pull chemical information for BPA
+#' bpa <- get_chem_info(DTXSID = 'DTXSID7020182')
 
 get_chem_info <- function(DTXSID = NULL,
                           type = "",
@@ -536,7 +544,9 @@ get_chem_info <- function(DTXSID = NULL,
 #' @return @return A data.frame containing chemical information for the chemical with
 #'   DTXSID matching the input parameter.
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Pull chemical fate data for BPA
+#' bpa <- get_fate_by_dtxsid(DTXSID = 'DTXSID7020182')
 
 get_fate_by_dtxsid <- function(DTXSID = NULL,
                                API_key = NULL,
@@ -586,7 +596,9 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Pull chemicals that start with a fragment DTXSID
+#' dtxsid_fragment <- chemical_starts_with(word = 'DTXSID702018')
 
 chemical_starts_with <- function(word = NULL,
                            API_key = NULL,
@@ -638,7 +650,9 @@ chemical_starts_with <- function(word = NULL,
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Pull chemicals with matching DTXSID
+#' bpa_dtxsid <- chemical_equal(word = 'DTXSID7020182')
 
 chemical_equal <- function(word = NULL,
                            API_key = NULL,
@@ -694,7 +708,9 @@ chemical_equal <- function(word = NULL,
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Pull chemicals that contain substring
+#' substring_chemicals <- chemical_contains(word = 'TXSID702018')
 
 chemical_contains <- function(word = NULL,
                               API_key = NULL,
@@ -776,7 +792,9 @@ prepare_word <- function(word){
 #'
 #' @return A list of DTXSIDs with msready mass falling within the given range.
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Pull chemicals with msready mass in given range
+#' mass_range <- get_msready_by_mass(start = 200.9, end = 200.95)
 
 get_msready_by_mass <- function(start = NULL,
                                 end = NULL,
@@ -837,7 +855,9 @@ get_msready_by_mass <- function(start = NULL,
 #' @return A character list of DTXSIDs with chemical formulas matching the
 #'   search criteria
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Pull chemicals that match input formula
+#' mass_formula <- get_msready_by_formula(formula = 'C16H24N2O5S')
 
 get_msready_by_formula <- function(formula = NULL,
                                    API_key = NULL,
@@ -888,7 +908,9 @@ get_msready_by_formula <- function(formula = NULL,
 #' @return A character list of DTXSIDs with DTXCIDs matching the
 #'   search criteria
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Pull chemicals with matching DTXCID
+#' dtxcid_msready <- get_msready_by_dtxcid(DTXSID = 'DTXCID30182')
 
 get_msready_by_dtxcid <- function(DTXCID = NULL,
                                    API_key = NULL,
@@ -944,7 +966,9 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
 #' @return A data.frame containing information about lists that meet the search
 #'   criteria.
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Pull chemical lists by type
+#' federal <- get_chemical_lists_by_type(type = 'Federal')
 
 get_chemical_lists_by_type <- function(type = NULL,
                                        Projection = '',
@@ -1019,7 +1043,9 @@ get_chemical_lists_by_type <- function(type = NULL,
 #'   use \code{\link{get_chemicals_in_list}}.
 #' @seealso \code{\link{get_chemicals_in_list}}
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Pull chemical list by list name
+#' ccl4 <- get_public_chemical_list_by_name(list_name = 'CCL4')
 
 get_public_chemical_list_by_name <- function(list_name = NULL,
                                              Projection = '',
@@ -1087,7 +1113,9 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
 #'
 #' @return A list of names of chemical lists that contain the given chemical
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Pull chemical lists containing BPA
+#' bpa_lists <- get_lists_containing_chemical(DTXSID = 'DTXSID7020182')
 
 get_lists_containing_chemical <- function(DTXSID = NULL,
                                           API_key = NULL,
@@ -1133,7 +1161,9 @@ get_lists_containing_chemical <- function(DTXSID = NULL,
 #'
 #' @return A data.frame of the chemical list
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Retrieve chemicals contained in chemical list 'CCL4'
+#' ccl4_chemicals <- get_chemicals_in_list(list_name = 'CCL4')
 
 get_chemicals_in_list <- function(list_name = NULL,
                                   API_key = NULL,
@@ -1185,7 +1215,9 @@ get_chemicals_in_list <- function(list_name = NULL,
 #' @return A data.frame containing information on all public chemical lists
 #'   available from the CCTE chemical api.
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Pull all chemical lists
+#' all_lists <- get_all_public_chemical_lists()
 
 get_all_public_chemical_lists <- function(Projection = '',
                                           API_key = NULL,
@@ -1251,7 +1283,11 @@ get_all_public_chemical_lists <- function(Projection = '',
 #'
 #' @return XML file format for representing a mrv file.
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Pull mrv file for BPA by dtxsid
+#' bpa_mrv <- get_chemical_mrv(DTXSID = 'DTXSID7020182')
+#' # Pull mrv file for BPA by dtxcid
+#' bpa_mrv <- getchemical_mrv(DTXCID = 'DTXCID30182')
 
 get_chemical_mrv <- function(DTXSID = NULL,
                              DTXCID = NULL,
@@ -1310,7 +1346,11 @@ get_chemical_mrv <- function(DTXSID = NULL,
 #'
 #' @return A character string giving a mol file representation
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Pull mol file for BPA by dtxsid
+#' bpa_mol <- get_chemical_mol(DTXSID = 'DTXSID7020182')
+#' # Pull mol file for BPA by dtxcid
+#' bpa_mol <- get_chemical_mol(DTXCID = 'DTXCID30182')
 
 get_chemical_mol <- function(DTXSID = NULL,
                              DTXCID = NULL,
@@ -1374,7 +1414,17 @@ get_chemical_mol <- function(DTXSID = NULL,
 #'   displaying this, one may use \code{png::writePNG()} or
 #'   \code{countcolors::plotArrayAsImage()} among many such functions.
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Pull chemical image for BPA by dtxsid
+#' bpa_image_matrix <- get_chemical_image(DTXSID = 'DTXSID7020182')
+#' if (requireNamespace("countcolors", quietly = TRUE)){
+#'   countcolors::plotArrayAsImage(bpa_image_matrix)
+#' }
+#' # Pull chemical image for BPA by dtxcid
+#' bpa_image_matrix <- get_chemical_image(DTXCID = 'DTXCID30182')
+#' if (requireNamespace("countcolors", quietly = TRUE)){
+#'   countcolors::plotArrayAsImage(bpa_image_matrix)
+#' }
 
 get_chemical_image <- function(DTXSID = NULL,
                                DTXCID = NULL,
@@ -1440,7 +1490,9 @@ get_chemical_image <- function(DTXSID = NULL,
 #'
 #' @return A named list of synonym information for the input DTXSID
 #' @export
-
+#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' # Pull synonyms for BPA
+#' bpa_synonym <- get_chemical_synonym(DTXSID = 'DTXSID7020182')
 
 get_chemical_synonym <- function(DTXSID = NULL,
                                  API_key = NULL,

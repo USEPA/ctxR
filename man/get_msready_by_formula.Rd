@@ -27,3 +27,9 @@ A character list of DTXSIDs with chemical formulas matching the
 \description{
 Get msready by formula
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull chemicals that match input formula
+mass_formula <- get_msready_by_formula(formula = 'C16H24N2O5S')
+\dontshow{\}) # examplesIf}
+}

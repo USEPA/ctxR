@@ -35,3 +35,14 @@ A named list of Large arrays of three dimensions representing an image. For
 \description{
 Get image file by DTXSID or DTXCID batch
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull images for multiple chemicals
+dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
+images <- get_chemical_image_batch(DTXSID = dtxsid)
+if (requireNamespace("countcolors", quietly = TRUE)){
+  countcolors::plotArrayAsImage(images[[1]])
+  countcolors::plotArrayAsImage(images[[2]])
+}
+\dontshow{\}) # examplesIf}
+}

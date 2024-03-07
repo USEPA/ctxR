@@ -27,3 +27,9 @@ get_fate_by_dtxsid(
 \description{
 Get fate by DTXSID
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull chemical fate data for BPA
+bpa <- get_fate_by_dtxsid(DTXSID = 'DTXSID7020182')
+\dontshow{\}) # examplesIf}
+}

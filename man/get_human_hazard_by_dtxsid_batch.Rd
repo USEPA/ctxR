@@ -29,3 +29,10 @@ A data.table containing chemical human hazard data.
 \description{
 Get human hazard data by DTXSID batch
 }
+\examples{
+\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull human hazard data for multiples chemicals
+dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
+dtxsid_human_hazard <- get_human_hazard_by_dtxsid_batch(DTXSID = dtxsid)
+\dontshow{\}) # examplesIf}
+}
