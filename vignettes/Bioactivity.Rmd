@@ -94,22 +94,11 @@ This flexible analysis pipeline is capable of efficiently processing and storing
 
 Several ccdR functions are used to access the CCTE Bioactivity API data.
 
-### Get all assay annotations
+### Bioactivity Assay Resource
 
-`get_all_assays()` retrieves all annotations for all assays available. Optionally, the user can unnest "citation", "gene", "assayList" wider so each element has its own column.
+Specific assays may be searched as well as all available assays that have data.
 
-```{r ccdR all assays, message=FALSE, eval=FALSE}
-res_dt <- get_all_assays(API_key = apikey, Server = url)
-# optionally perform the following unnest, apply names_repair = "unique" to give a unique column name
-# note - the gene column may be an array of multiple genes rather than just one, meaning this step may not work
-#res_dt <- res_dt |> tidyr::unnest_wider(col = c("citation", "gene", "assayList"), names_repair = "unique")
-```
-
-```{r, echo=FALSE, eval=FALSE}
-printFormattedTable(head(res_dt), c(4, 18, 19, 33, 51)) # printed using custom formatted table
-```
-
-### Get annotation by aeid
+#### Get annotation by aeid
 
 `get_annotation_by_aeid()` retrieves annotation for a specific assay endpoint id (aeid).
 
@@ -124,7 +113,26 @@ res_dt <- get_annotation_by_aeid(AEID = "891", API_key = apikey, Server = url)
 printFormattedTable(head(res_dt), c(4, 18, 33, 51)) # printed using custom formatted table
 ```
 
-### Get summary data
+#### Get all assay annotations
+
+`get_all_assays()` retrieves all annotations for all assays available. Optionally, the user can unnest "citation", "gene", "assayList" wider so each element has its own column.
+
+```{r ccdR all assays, message=FALSE, eval=FALSE}
+res_dt <- get_all_assays(API_key = apikey, Server = url)
+# optionally perform the following unnest, apply names_repair = "unique" to give a unique column name
+# note - the gene column may be an array of multiple genes rather than just one, meaning this step may not work
+#res_dt <- res_dt |> tidyr::unnest_wider(col = c("citation", "gene", "assayList"), names_repair = "unique")
+```
+
+```{r, echo=FALSE, eval=FALSE}
+printFormattedTable(head(res_dt), c(4, 18, 19, 33, 51)) # printed using custom formatted table
+```
+
+### Bioactivity Data Resource
+
+There are several resources for retrieving bioactivity data associated with a variety of identifier types (e.g., DTXSID, aeid) that are available to the user. 
+
+#### Get summary data
 
 `get_bioactivity_summary()` retrieves a summary of the number of active hits compared to the total number tested for both multiple and single concentration by aeid.
 
@@ -136,21 +144,11 @@ res_dt <- get_bioactivity_summary(AEID = "891", API_key = apikey, Server = url)
 printFormattedTable(head(res_dt), c()) # printed using custom formatted table
 ```
 
-### Get data
+#### Get data
 
 `get_bioactivity_details()` can retrieve all available multiple concentration data by assay endpoint id (aeid), sample id (spid), Level 4 ID (m4id), or chemical DTXSID. Examples for each are provided below:
 
-#### By aeid
-
-```{r ccdR data by aeid, message=FALSE, results = FALSE, eval=FALSE}
-res_dt <- get_bioactivity_details(AEID = "891", API_key = apikey, Server = paste0(url, "/data"))
-```
-
-```{r, echo=FALSE, eval=FALSE}
-printFormattedTable(res_dt[205:210,], c(ncol(res_dt)-2)) # printed using custom formatted table
-```
-
-#### By spid
+##### By spid
 
 ```{r ccdR data by spid, message=FALSE, results = FALSE, eval=FALSE}
 res_dt <- get_bioactivity_details(SPID = "TP0001055F12", API_key = apikey, Server = paste0(url, "/data"))
@@ -160,7 +158,7 @@ res_dt <- get_bioactivity_details(SPID = "TP0001055F12", API_key = apikey, Serve
 printFormattedTable(head(res_dt), c(ncol(res_dt)-2)) # printed using custom formatted table
 ```
 
-#### By m4id
+##### By m4id
 
 ```{r ccdR data by m4id, message=FALSE, results = FALSE, eval=FALSE}
 res_dt <- get_bioactivity_details(m4id = 739695, API_key = apikey, Server = paste0(url, "/data"))
@@ -170,7 +168,7 @@ res_dt <- get_bioactivity_details(m4id = 739695, API_key = apikey, Server = past
 printFormattedTable(head(res_dt), c(ncol(res_dt)-2)) # printed using custom formatted table
 ```
 
-#### By DTXSID
+##### By DTXSID
 
 ```{r ccdR data by dtxsid, message=FALSE, results = FALSE, eval=FALSE}
 res_dt <- get_bioactivity_details(DTXSID = "DTXSID7020182", API_key = apikey, Server = paste0(url, "/data"))
@@ -178,6 +176,16 @@ res_dt <- get_bioactivity_details(DTXSID = "DTXSID7020182", API_key = apikey, Se
 
 ```{r, echo=FALSE, eval=FALSE}
 printFormattedTable(head(res_dt), c(ncol(res_dt)-2)) # printed using custom formatted table
+```
+
+##### By aeid
+
+```{r ccdR data by aeid, message=FALSE, results = FALSE, eval=FALSE}
+res_dt <- get_bioactivity_details(AEID = "891", API_key = apikey, Server = paste0(url, "/data"))
+```
+
+```{r, echo=FALSE, eval=FALSE}
+printFormattedTable(res_dt[205:210,], c(ncol(res_dt)-2)) # printed using custom formatted table
 ```
 
 ## Example Use Case: Comparing Bioactivity Data Across Chemical Lists
