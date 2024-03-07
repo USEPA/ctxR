@@ -19,7 +19,7 @@ Authors@R: c(
     	        )
 Description: Access chemical, hazard, and bioactivity data from the Center for 
        Computational Toxicology and Exposure ("CCTE") APIs 
-       < https://api-ccte.epa.gov/docs/>. ccdR was developed to streamline the 
+       <https://api-ccte.epa.gov/docs/>. ccdR was developed to streamline the 
        process of accessing the information available through the CCTE APIs 
        without requiring prior knowledge of how to use APIs. All data is also 
        available on the CompTox Chemical Dashboard ("CCD")
