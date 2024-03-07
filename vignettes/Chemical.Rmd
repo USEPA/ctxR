@@ -5,12 +5,31 @@ output:
    prettydoc::html_pretty:
     theme: architect
     toc: yes
-    toc_depth: 5
+    toc_depth: 6
 vignette: >
   %\VignetteIndexEntry{Chemical}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+```{css, echo=FALSE}
+.scroll-200 {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.scroll-300 {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.noticebox {
+  padding: 1em;
+  background: lightgray;
+  color: blue;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+```
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -18,18 +37,19 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 library(httptest)
-start_vignette("4")
+start_vignette("2")
 ```
 
-```{r setup, echo=FALSE, results='hide', warning=FALSE}
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
 if (!library(ccdR, logical.return = TRUE)){
   devtools::load_all()
 }
 ```
 
-```{r}
+```{r, echo=FALSE, warning=FALSE}
 # Used to visualize data in a variety of plot designs
 library(ggplot2)
+library(gridExtra)
 ```
 
 ```{r setup-print, echo = FALSE}
@@ -54,54 +74,196 @@ registerS3method(
 )
 ```
 
-
 ## Introduction
 
-In this vignette, we will explore the `Chemical` domain of endpoints found in the [CCTE API Chemical Endpoints](https://api-ccte.epa.gov/docs/chemical.html). Before getting started, we need to provide an API key to access the endpoints.
+In this vignette, [CCTE Chemical APIs](https://api-ccte.epa.gov/docs/chemical.html) will be explored. 
 
-### Setting, using, and storing the API key
+::: {.noticebox data-latex=""}
 
-We store the API key required to access the APIs. To do this for the current session, run the first command. If you want to store your key across multiple sessions, run the second command.
+**NOTE:** Please see the introductory vignette for an overview of the *ccdR* package and initial set up instruction with API key storage.
 
-```{r, eval=FALSE}
-# This stores the key in the current session
-register_ccdr(key = '<YOUR API KEY>')
+:::
 
-# This stores the key across multiple sessions and only needs to be run once. 
-# If the key changes, rerun this with the new key.
-register_ccdr(key = '<YOUR API KEY>', write = TRUE)
+The foundation of toxicology, toxicokinetics, and exposure is embedded in the physics and chemistry of chemical-biological interactions. The accurate characterization of chemical structure linked to commonly used identifiers, such as names and Chemical Abstracts Service Registry Numbers (CASRNs), is essential to support both predictive modeling of the data as well as dissemination and application of the data for chemical safety decisions. 
+
+With cheminformatics as the backbone for research efforts, sources of available data through the CCTE Chemical APIs include:
+
+-  Chemical structures, nomenclature, synonyms, IDs, list associations, physicochemical property, environmental fate, and transport data from the Distributed Structure-Searchable Toxicity (DSSTox) database
+- Predictions from Toxicity Estimation Software Tool (TEST) suite of QSAR models 
+
+More information on Chemicals and Chemistry Data can be found here: <https://www.epa.gov/comptox-tools/downloadable-computational-toxicology-data#SCD>.
+
+## Functions
+
+Several ccdR functions are used to access the CCTE Chemical API data.
+
+### Chemical Details Resource
+
+#### Get chemical data
+
+`get_chemical_details()` retrieves chemical detail data either using the chemical identifier DTXSID or DTXCID. Alternate parameter "projection" determines the type of data returned. Examples for each are provided below:
+
+##### By DTXSID
+
+```{r ccdR dtxsid data chemical, message=FALSE, eval=FALSE}
+res_dt <- get_chemical_details(DTXSID = 'DTXSID7020182')
 ```
 
-To check that your key has successfully been stored for the session, run the following command.
+##### By DTXCID
 
-```{r, eval=FALSE}
-ccte_key()
+```{r ccdR dtxcid data chemical, message=FALSE, eval=FALSE}
+res_dt <- get_chemical_details(DTXCID = 'DTXCID30182')
 ```
 
-After registering your API key, the functions in *ccdR* will automatically access the API key you saved without requiring you to input it as a function parameter each time you call a function.
+### Chemical Property Resource
 
-### Retrieving chemical details
+`get_chemical_by_property_range()` retrieves data for chemicals that have a specified property within the input range.
 
-Now, we demonstrate how to retrieve the information for Bisphenol A (BPA) given by the `Chemical Detail Resource` endpoint under the `chemicaldetailstandard` value for `projection`. Note, this `projection` value is the default value for the function `get_chemical_details()`.
+```{r ccdR property range chemical, message=FALSE, eval=FALSE}
+res_dt <- get_chemical_by_property_range(start = 1.311, end = 1.313, property = 'Density')
+```
 
-```{r}
-BPA_chemical_detail <- get_chemical_details(DTXSID = 'DTXSID7020182')
-dim(BPA_chemical_detail)
-class(BPA_chemical_detail)
-names(BPA_chemical_detail)
+`get_chem_info()` retrieves specific chemical information for an input chemical. This includes both experimental and predicted values by default, but providing "experimental" or "predicted" to the type parameter will return the specific associated information.
+
+```{r ccdR info chemical, message=FALSE, eval=FALSE}
+res_dt <- get_chem_info(DTXSID = 'DTXSID7020182')
+```
+
+### Chemical Fate Resource
+
+`get_fate_by_dtxsid()` retrieves chemical fate data.
+
+```{r ccdR fate data chemical, message=FALSE, eval=FALSE}
+res_dt <- get_fate_by_dtxsid(DTXSID = 'DTXSID7020182')
+```
+
+### Chemical Search Resource
+
+Chemicals can be searched using string values. Examples for each are provided by the following:
+
+#### By starting value
+
+```{r ccdR starting value chemical, message=FALSE, eval=FALSE}
+res_dt <- chemical_starts_with(word = 'DTXSID70201')
+```
+
+#### By exact value
+
+```{r ccdR exact value chemical, message=FALSE, eval=FALSE}
+res_dt <- chemical_equal(word = 'DTXSID7020182')
+```
+
+#### By substring value
+
+```{r ccdR substring value chemical, message=FALSE, eval=FALSE}
+res_dt <- chemical_contains(word = 'DTXSID702018')
+```
+
+#### Subset for MS-Ready Structures
+
+MS-Ready data can be retrieved using a variety of input information. Examples for each are provided below:
+
+##### Mass Range
+
+```{r ccdR mass range ms ready chemical, message=FALSE, eval=FALSE}
+res_dt <- get_msready_by_mass(start = 200.9, end = 200.95)
+```
+
+##### Chemical Formula
+
+```{r ccdR chemical formula ms ready chemical, message=FALSE, eval=FALSE}
+res_dt <- get_msready_by_formula(formula = 'C16H24N2O5S')
+```
+
+##### DTXCID
+
+```{r ccdR dtxcid ms ready chemical, message=FALSE, eval=FALSE}
+res_dt <- get_msready_by_dtxcid(DTXCID = 'DTXCID30182')
+```
+
+### List Resource
+
+There are several lists of chemicals one can access. These can be filtered by the type, name, inclusion of a specific chemical, or name of list.
+
+#### All lists by type
+
+```{r ccdR all list types chemical, message=FALSE, eval=FALSE}
+res_dt <- get_chemical_lists_by_type(type =  'federal')
+```
+
+#### List by name
+
+```{r ccdR list by name chemical, message=FALSE, eval=FALSE}
+res_dt <- get_public_chemical_list_by_name(listname = 'CCL4')
+```
+
+#### Lists containing a specific chemical
+
+`get_lists_containing_chemical()` retrieves a list of names of chemical lists, each of which contains the specified chemical.
+
+```{r ccdR lists containing chemical, message=FALSE, eval=FALSE}
+res_dt <- get_lists_containing_chemical(DTXSID = 'DTXSID7020182')
+```
+
+#### Chemicals in a specific list
+
+`get_chemicals_in_list()` retrieves the specific chemical information for each chemical contained in the specified list.
+
+```{r ccdR chemical in list chemical, message=FALSE, eval=FALSE}
+res_dt <- get_chemicals_in_list(list_name = 'CCL4')
+```
+
+### Chemical File Resource
+
+There a mrv, mol, and image files that can be accessed using either the DTXSID or DTXCID. Examples are provided below:
+
+#### Get mrv by DTXSID or DTXCID
+
+`get_chemical_mrv()` retrieves mrv file information for a chemical specified either by DTXSID or DTXCID.
+
+```{r ccdR mrv by dtxsid dtxcid chemical, message=FALSE, eval=FALSE}
+res_dt <- get_chemical_mrv(DTXSID = 'DTXSID7020182')
+res_dt <- get_chemical_mrv(DTXCID = 'DTXCID30182')
+```
+
+#### Get mol by DTXSID or DTXCID
+
+`get_chemical_mol()` retrieves mol file information for a chemical specified either by DTXSID or DTXCID.
+
+```{r ccdR mol by dtxsid dtxcid chemical, message=FALSE, eval=FALSE}
+res_dt <- get_chemical_mol(DTXSID = 'DTXSID7020182')
+res_dt <- get_chemical_mol(DTXCID = 'DTXCID30182')
+```
+
+#### Get structure image by DTXSID or DTXCID
+
+`get_chemical_image()` retrieves image file information for a chemical specified either by DTXSID or DTXCID.
+
+```{r ccdR image by dtxsid dtxcid chemical, message=FALSE, eval=FALSE}
+res_dt <- get_chemical_image(DTXSID = 'DTXSID7020182')
+res_dt <- get_chemical_image(DTXCID = 'DTXCID30182')
+```
+
+### Chemical Synonym Resource
+
+`get_chemical_synonym()` retrieves synonyms for the specified chemical.
+
+```{r ccdR synonym by dtxsid chemical, message=FALSE, eval=FALSE}
+res_dt <- get_chemical_synonym(DTXSID = 'DTXSID7020182')
 ```
 
 
-## Comparing Physico-chemical Properties between Two Important Environmental Contaminant Lists
-
-We study two different data sets contained in the [CompTox Chemicals Dashboard](https://comptox.epa.gov/dashboard/)(CCD) and observe how they relate and how they differ. The two data sets that we will explore are a water contaminant priority list and an air toxics list.  
-
+## Example Use Case: Comparing Physico-chemical Properties Across Chemical Lists
+ 
 The fourth Drinking Water Contaminant Candidate List (CCL4) is a set of chemicals that "...are not subject to any proposed or promulgated national primary drinking water regulations, but are known or anticipated to occur in public water systems...." Moreover, this list "...was announced on November 17, 2016. The CCL 4 includes 97 chemicals or chemical groups and 12 microbial contaminants...." The National-Scale Air Toxics Assessments (NATA) is "... EPA's ongoing comprehensive evaluation of air toxics in the United States... a state-of-the-science screening tool for State/Local/Tribal agencies to prioritize pollutants, emission sources and locations of interest for further study in order to gain a better understanding of risks... use general information about sources to develop estimates of risks which are more likely to overestimate impacts than underestimate them...."  
 
 These lists can be found in the CCD at [CCL4](https://comptox.epa.gov/dashboard/chemical-lists/CCL4) with additional information at [CCL4 information](https://www.epa.gov/ccl/contaminant-candidate-list-4-ccl-4-0) and [NATADB](https://comptox.epa.gov/dashboard/chemical-lists/NATADB) with additional information at [NATA information](https://www.epa.gov/national-air-toxics-assessment). The quotes from the previous paragraph were excerpted from list detail descriptions found using the CCD links.
 
+In this example use case, physico-chemical Properties data will be compared between a water contaminant priority and an air toxics list. 
 
-We explore details about these two lists of chemicals before diving into analyzing the data contained in each list.
+### Obtain Lists of Chemicals
+
+First, confirm the chemical list to query. 
 
 ```{r}
 options(width = 100)
@@ -111,8 +273,7 @@ print(ccl4_information, trunc.cols = TRUE)
 natadb_information <- get_public_chemical_list_by_name('NATADB')
 print(natadb_information, trunc.cols = TRUE)
 ```
-
-Now we pull the actual chemicals contained in the lists using the APIs.
+Next, retrieve the list of chemicals associated with each list.
 
 ```{r}
 ccl4 <- get_chemicals_in_list('ccl4')
@@ -124,40 +285,31 @@ natadb <- data.table::as.data.table(natadb)
 
 We examine the dimensions of the data, the column names, and display a single row for illustrative purposes.
 
-```{r}
+```{r, eval=FALSE}
 dim(ccl4)
 dim(natadb)
-
 colnames(ccl4)
 head(ccl4, 1)
 ```
 
+### Access Physico-chemical Property Data for Chemical Lists
 
-### Accessing the physico-chemical property data
-
-Once we have the chemicals in each list, we access their physico-chemical properties. We will use the batch search forms of the function `get_chem_info()`, to which we supply a list of DTXSIDs.
+Next, physico-chemical properties for all chemicals in each list can be retrieved. The function `get_chem_info()` will be used to batch search for a list of DTXSIDs.
 
 ```{r}
-ccl4$dtxsid
-natadb$dtxsid
-
 ccl4_phys_chem <- get_chem_info_batch(ccl4$dtxsid)
 natadb_phys_chem <- get_chem_info_batch(natadb$dtxsid)
 ```
 
 Observe that this returns a single data.table for each query, and the data.table contains the physico-chemical properties available from the CompTox Chemicals Dashboard for each chemical in the query. Note, a warning message was triggered, `Warning: Setting type to ''!`, which indicates the the parameter `type` was not given a value. A default value is set within the function and more information can be found in the associated documentation. We examine the set of physico-chemical properties for the first chemical in CCL4. 
 
-Before any deeper analysis, let's take a look at the dimensions of the data and the column names.
+Before any deeper analysis, consider the dimensions of the data and the column names.
 
-```{r}
+```{r, eval=FALSE}
 dim(ccl4_phys_chem)
 colnames(ccl4_phys_chem)
 ```
 Next, we display the unique values for the columns `propertyID` and `propType`.
-
-
-
-
 
 ```{r}
 ccl4_phys_chem[, unique(propertyId)]
@@ -182,7 +334,7 @@ The mean "boiling-point" is 251.1072 degrees Celsius for CCL4, with mean values 
 
 To explore **all** the values of the physico-chemical properties and calculate their means, we can do the following procedure. First we look at all the physico-chemical properties individually, then group them by each property ("boiling-point", "melting-point", etc...), and then additionally group those by property type ("experimental" vs "predicted"). In the grouping, we look at the columns `value`, `unit`, `propertyID` and `propType`. We also demonstrate how take the mean of the values for each grouping.
 
-```{r}
+```{r fig.align='center',class.source="scroll-300",message=FALSE}
 head(ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], ])
 ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(propType, value, unit),
                by = .(propertyId)]
@@ -196,29 +348,21 @@ ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(Mean_value = sapply(.SD, mean)),
                .SDcols = c("value")][order(propertyId)]
 ```
 
-### Analyzing and visualizing physico-chemical properties from two environmental contaminant lists
+### Review Physico-Chemical Properties Across Chemical Lists
 
 We consider exploring the differences in mean predicted and experimental values for a variety of physico-chemical properties in an effort to understand better the CCL4 and NATADB lists. In particular, we examine "vapor-pressure", "henrys-law", and "boiling-point" and plot the means by chemical for these using boxplots. We then compare the values by grouping by both data set and `propType` value.
 
+#### Vapor Pressure
 
+Begin by grouping pulled data by DTXSID, and also by DTXSID and property type.
 
-We first examine the vapor pressures for all the chemicals in each list. We then graph these, grouped by `propType` and pooled together in separate plots. For this we will use boxplots.
-
-
-Group first by DTXSID.
-
-```{r}
+```{r fig.align='center',class.source="scroll-300",message=FALSE}
 ccl4_vapor_all <- ccl4_phys_chem[propertyId %in% 'vapor-pressure', 
                                  .(mean_vapor_pressure = sapply(.SD, mean)), 
                                  .SDcols = c('value'), by = .(dtxsid)]
 natadb_vapor_all <- natadb_phys_chem[propertyId %in% 'vapor-pressure', 
                                      .(mean_vapor_pressure = sapply(.SD, mean)),
                                      .SDcols = c('value'), by = .(dtxsid)]
-```
-
-Then group by DTXSID and then by property type.
-
-```{r}
 ccl4_vapor_grouped <- ccl4_phys_chem[propertyId %in% 'vapor-pressure', 
                                      .(mean_vapor_pressure = sapply(.SD, mean)),
                                      .SDcols = c('value'), 
@@ -230,32 +374,28 @@ natadb_vapor_grouped <- natadb_phys_chem[propertyId %in% 'vapor-pressure',
                                          by = .(dtxsid, propType)]
 ```
 
-Then examine the summary statistics of the data.
+Examine summary statistics.
 
-```{r}
+```{r fig.align='center',class.source="scroll-300",message=FALSE}
 summary(ccl4_vapor_all)
 summary(ccl4_vapor_grouped)
 summary(natadb_vapor_all)
 summary(natadb_vapor_grouped)
 ```
 
-With such a large range of values covering several orders of magnitude, we log transform the data. Since these value are positive, we do not have to worry about illegal transformations.
+With such a large range of values covering several orders of magnitude, log transform the data. This data from both chemical lists can also be plotted individually and by property type. 
 
-```{r}
+```{r fig.align='center',class.source="scroll-300",message=FALSE}
 ccl4_vapor_all[, log_transform_mean_vapor_pressure := log(mean_vapor_pressure)]
 ccl4_vapor_grouped[, log_transform_mean_vapor_pressure := 
                      log(mean_vapor_pressure)]
-
 natadb_vapor_all[, log_transform_mean_vapor_pressure := 
                    log(mean_vapor_pressure)]
 natadb_vapor_grouped[, log_transform_mean_vapor_pressure := 
                        log(mean_vapor_pressure)]
 ```
 
-Now we plot the log transformed data.
-
-First plot the CCL4 data.
-```{r, fig.align='center'}
+```{r, fig.align='center', echo=FALSE, eval=FALSE}
 ggplot(ccl4_vapor_all, aes(log_transform_mean_vapor_pressure)) +
   geom_boxplot() +
   coord_flip()
@@ -263,60 +403,48 @@ ggplot(ccl4_vapor_grouped, aes(propType, log_transform_mean_vapor_pressure)) +
   geom_boxplot()
 ```
 
-Then plot the NATA data.
-
-```{r, fig.align='center'}
+```{r, fig.align='center', echo=FALSE, eval=FALSE}
 ggplot(natadb_vapor_all, aes(log_transform_mean_vapor_pressure)) +
   geom_boxplot() + coord_flip()
 ggplot(natadb_vapor_grouped, aes(propType, log_transform_mean_vapor_pressure)) +
   geom_boxplot()
 ```
 
-Finally, we compare both sets simultaneously. We add in a column to each data.table denoting to which data set the rows correspond and then combine the rows from both data sets together using the function `rbind()`.
+Finally, compare both chemical lists simultaneously. To accomplish this, add a column to each data.table denoting to which chemical list the rows correspond and then combine the rows from both data sets together using the function `rbind()`.
 
-```{r}
+```{r fig.align='center',class.source="scroll-300",message=FALSE}
 ccl4_vapor_grouped[, set := 'CCL4']
 natadb_vapor_grouped[, set := 'NATADB']
 
 all_vapor_grouped <- rbind(ccl4_vapor_grouped, natadb_vapor_grouped)
-```
 
-Now we plot the combined data. First we color the boxplots based on the property type, with mean log transformed vapor pressure plotted for each data set and property type.
-
-```{r, fig.align='center'}
 vapor_box <- ggplot(all_vapor_grouped, 
                     aes(set, log_transform_mean_vapor_pressure)) + 
-  geom_boxplot(aes(color = propType))
-vapor_box
-```
-
-Next we color the boxplots based on the data set.
-
-```{r, , fig.align='center'}
+                    geom_boxplot(aes(color = propType))
 vapor <- ggplot(all_vapor_grouped, aes(log_transform_mean_vapor_pressure)) +
-  geom_boxplot((aes(color = set))) + 
-  coord_flip()
-vapor
+                     geom_boxplot((aes(color = set))) + 
+                     coord_flip()
 ```
 
-In the plots above, when we graph the data separated both by data set and property type as well as just by data set, we observe the general trend that the NATADB chemicals have a higher mean vapor pressure than the CCL4 chemicals.
+Plot the combined data. Boxplots are colored based on the property type, with mean log transformed vapor pressure plotted for each chemical list and property type, or by chemical list alone.
 
-We also explore Henry's Law constant and boiling point in a similar fashion.
+```{r fig.align='center', class.source="scroll-200", echo=FALSE}
+gridExtra::grid.arrange(vapor_box, vapor, ncol=2)
+```
 
-Group by DTXSID.
+In the box plots above, a general trend indicates that that the NATADB chemical list has a higher mean vapor pressure than the CCL4 chemical list.
 
-```{r}
+#### Henry's Law constant
+
+Henry's Law constant can be explored in a similar fashion. Begin by grouping data by DTXSID, and also by DTXSID and property type.
+
+```{r fig.align='center',class.source="scroll-300",message=FALSE}
 ccl4_hlc_all <- ccl4_phys_chem[propertyId %in% 'henrys-law', 
                                .(mean_hlc = sapply(.SD, mean)), 
                                .SDcols = c('value'), by = .(dtxsid)]
 natadb_hlc_all <- natadb_phys_chem[propertyId %in% 'henrys-law', 
                                    .(mean_hlc = sapply(.SD, mean)), 
                                    .SDcols = c('value'), by = .(dtxsid)]
-```
-
-Group by DTXSID and property type.
-
-```{r}
 ccl4_hlc_grouped <- ccl4_phys_chem[propertyId %in% 'henrys-law', 
                                    .(mean_hlc = sapply(.SD, mean)), 
                                    .SDcols = c('value'), 
@@ -329,16 +457,16 @@ natadb_hlc_grouped <- natadb_phys_chem[propertyId %in% 'henrys-law',
 
 Examine summary statistics.
 
-```{r}
+```{r fig.align='center',class.source="scroll-300",message=FALSE}
 summary(ccl4_hlc_all)
 summary(ccl4_hlc_grouped)
 summary(natadb_hlc_all)
 summary(natadb_hlc_grouped)
 ```
 
-Again, we log transform the data as it is positive and covers several orders of magnitude.
+Again, log transform the data as it is positive and covers several orders of magnitude.
 
-```{r}
+```{r fig.align='center',class.source="scroll-300",message=FALSE}
 ccl4_hlc_all[, log_transform_mean_hlc := log(mean_hlc)]
 ccl4_hlc_grouped[, log_transform_mean_hlc := log(mean_hlc)]
 
@@ -346,38 +474,33 @@ natadb_hlc_all[, log_transform_mean_hlc := log(mean_hlc)]
 natadb_hlc_grouped[, log_transform_mean_hlc := log(mean_hlc)]
 ```
 
-We compare both sets simultaneously. We add in a column to each data.table denoting to which set the rows correspond and then `rbind()` the rows together.
+Finally, compare both chemical lists simultaneously. To accomplish this, add a column to each data.table denoting to which chemical list the rows correspond and then combine the rows from both data sets together using the function `rbind()`.
 
-
-Label and combine data.
-
-```{r}
+```{r fig.align='center',class.source="scroll-300",message=FALSE}
 ccl4_hlc_grouped[, set := 'CCL4']
 natadb_hlc_grouped[, set := 'NATADB']
 
 all_hlc_grouped <- rbind(ccl4_hlc_grouped, natadb_hlc_grouped)
-```
 
-Plot data.
-
-```{r, , fig.align='center'}
 hlc_box <- ggplot(all_hlc_grouped, aes(set, log_transform_mean_hlc)) + 
   geom_boxplot(aes(color = propType))
-hlc_box
 
 hlc <- ggplot(all_hlc_grouped, aes(log_transform_mean_hlc)) +
   geom_boxplot(aes(color = set)) +
   coord_flip()
-hlc
 ```
 
-Again, we observe that in both grouping by `propType` and aggregating all results together by data set, that the chemicals in NATADB have a generally higher mean Henry's Law Constant value than those in CCL4.
+```{r fig.align='center',class.source="scroll-200", echo=FALSE}
+gridExtra::grid.arrange(hlc_box, hlc, ncol=2)
+```
 
-Finally, we consider boiling point.
+Again, in both grouping by `propType` and aggregating all results together by chemical list, NATADB chemicals generally higher mean Henry's Law Constant value than CCL4 chemicals.
 
-Group by DTXSID.
+#### Boling Point
 
-```{r}
+Boiling Point data be explored. Begin by grouping data by DTXSID, and also by DTXSID and property type.
+
+```{r fig.align='center',class.source="scroll-300",message=FALSE}
 ccl4_boiling_all <- ccl4_phys_chem[propertyId %in% 'boiling-point', 
                                    .(mean_boiling_point = sapply(.SD, mean)), 
                                    .SDcols = c('value'), by = .(dtxsid)]
@@ -385,11 +508,6 @@ natadb_boiling_all <- natadb_phys_chem[propertyId %in% 'boiling-point',
                                        .(mean_boiling_point = 
                                            sapply(.SD, mean)), 
                                        .SDcols = c('value'), by = .(dtxsid)]
-```
-
-Group by DTXSID and property type.
-
-```{r}
 ccl4_boiling_grouped <- ccl4_phys_chem[propertyId %in% 'boiling-point', 
                                        .(mean_boiling_point = 
                                            sapply(.SD, mean)), 
@@ -404,55 +522,45 @@ natadb_boiling_grouped <- natadb_phys_chem[propertyId %in% 'boiling-point',
 
 Calculate summary statistics.
 
-```{r}
+```{r fig.align='center',class.source="scroll-300",message=FALSE}
 summary(ccl4_boiling_all)
 summary(ccl4_boiling_grouped)
 summary(natadb_boiling_all)
 summary(natadb_boiling_grouped)
 ```
 
-Since some of the boiling point values have negative values, we cannot log transform these values. If we try, as you will see below, there will be warnings of NaNs produced.
+Since some of the boiling point values have negative values, log transformation of these values will result in warnings as NaNs are produced.
 
-```{r, eval}
-ccl4_boiling_all[, log_transform := log(mean_boiling_point)]
-ccl4_boiling_grouped[, log_transform := log(mean_boiling_point)]
+Finally, compare both chemical lists simultaneously. To accomplish this, add a column to each data.table denoting to which chemical list the rows correspond and then combine the rows from both data sets together using the function `rbind()`.
 
-natadb_boiling_all[, log_transform := log(mean_boiling_point)]
-natadb_boiling_grouped[, log_transform := log(mean_boiling_point)]
-```
-
-We compare both sets simultaneously. We add in a column to each data.table denoting to which set the rows correspond and then `rbind()` the rows together. We use the values as is rather than transforming them.
-
-Label and combine data.
-
-```{r}
+```{r fig.align='center',class.source="scroll-300",message=FALSE}
 ccl4_boiling_grouped[, set := 'CCL4']
 natadb_boiling_grouped[, set := 'NATADB']
 
 all_boiling_grouped <- rbind(ccl4_boiling_grouped, natadb_boiling_grouped)
-```
 
-Plot the data.
-
-```{r, , fig.align='center'}
 boiling_box <- ggplot(all_boiling_grouped, aes(set, mean_boiling_point)) + 
   geom_boxplot(aes(color = propType))
-boiling_box
-
 boiling <- ggplot(all_boiling_grouped, aes(mean_boiling_point)) +
   geom_boxplot(aes(color = set)) + 
   coord_flip()
-boiling
 ```
 
-A visual inspection of this set of graphs is not as clear as in the previous cases. Note that the predicted values for each data set tend to be higher than the experimental. The mean of CCL4, by predicted and experimental appears to be greater than the corresponding means for NATADB, as does the overall mean, but the interquartile ranges of these different groupings yield slightly different results. This gives us a sense that the picture for boiling point is not as clear cut between experimental and predicted for these two data sets as it was in the previous cases of physico-chemical properties we investigated.
+```{r fig.align='center',class.source="scroll-200", echo=FALSE}
+gridExtra::grid.arrange(boiling_box, boiling, ncol=2)
+```
 
-To summarize the observations we have made regarding various physico-chemical properties of these two sets, there are indeed differences between the mean values of various physico-chemical properties when grouped by predicted or experimental. In the case of "vapor-pressure", the means of predicted values tend to be a little lower than experimental, though they are much closer in the case of NATADB than CCL4. The trend of lower predicted means compared to experimental means is more clearly demonstrated for "henrys-law" values in both data sets. In the case of "boiling-point", the predicted values are greater than the experimental values, though this is much more pronounced in CCL4 while the set of means for NATADB are again fairly close. 
+A visual inspection of this set of graphs is not as clear as in the previous cases. Note that the predicted values for each data set tend to be higher than the experimental. The mean of CCL4, by predicted and experimental appears to be greater than the corresponding means for NATADB, as does the overall mean, but the interquartile ranges of these different groupings yield slightly different results. This gives us a sense that the picture for boiling point is not as clear cut between experimental and predicted for these two chemical lists as it was in the previous physico-chemical properties investigated.
+
+To summarize the observations, across the various physico-chemical properties for chemicals in these chemical lists, there are indeed differences between the mean values of various physico-chemical properties when grouped by predicted or experimental. 
+
+- For "vapor-pressure", the means of predicted values tend to be a little lower than experimental, though they are much closer in the case of NATADB than CCL4. 
+- The trend of lower predicted means compared to experimental means is more clearly demonstrated for "henrys-law" values in both data sets. 
+- In the case of "boiling-point", the predicted values are greater than the experimental values, though this is much more pronounced in CCL4 while the set of means for NATADB are again fairly close. 
 
 ## Conclusion
 
-In this vignette, we explored a variety of functions that access different types of data found in the `Chemical` endpoints of the CCTE APIs. While this exploration was not exhaustive, it provides a basic introduction to how one may access data and work with it. Additional endpoints and corresponding functions exist and we encourage the user to explore these while keeping in mind the examples contained in this vignette.
-
+In this vignette, a variety of functions that access different types of data found in the `Chemical` endpoints of the CCTE APIs were explored. While this exploration was not exhaustive, it provides a basic introduction to how one may access data and work with it. Additional endpoints and corresponding functions exist and we encourage the user to explore these while keeping in mind the examples contained in this vignette.
 
 ```{r breakdown, echo = FALSE, results = 'hide'}
 # This chunk will be hidden in the final product. It serves to undo defining the

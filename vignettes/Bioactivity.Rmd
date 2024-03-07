@@ -12,8 +12,8 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 ```{css, echo=FALSE}
-.scroll-100 {
-  max-height: 100px;
+.scroll-200 {
+  max-height: 200px;
   overflow-y: auto;
 }
 
@@ -32,7 +32,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 library(httptest)
-start_vignette("6")
+start_vignette("4")
 ```
 
 ```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
@@ -66,10 +66,9 @@ registerS3method(
 stg_bioactivity_server <- 'https://api-ccte-stg.epa.gov/bioactivity/data'
 ```
 
-
 ## Introduction
 
-In this vignette, [CCTE API Bioactivity Endpoints](https://api-ccte.epa.gov/docs/bioactivity.html) will be explored. 
+In this vignette, [CCTE Bioactivity APIs](https://api-ccte.epa.gov/docs/bioactivity.html) will be explored. 
 
 ::: {.noticebox data-latex=""}
 
@@ -93,7 +92,7 @@ This flexible analysis pipeline is capable of efficiently processing and storing
 
 ## Functions
 
-Several ccdR functions are used to access the CCTE API Bioactivity data.
+Several ccdR functions are used to access the CCTE Bioactivity API data.
 
 ### Get all assay annotations
 
@@ -181,7 +180,7 @@ res_dt <- get_bioactivity_details(DTXSID = "DTXSID7020182", API_key = apikey, Se
 printFormattedTable(head(res_dt), c(ncol(res_dt)-2)) # printed using custom formatted table
 ```
 
-### Example Use Case: Comparing Bioactivity Data Across Chemical Lists
+## Example Use Case: Comparing Bioactivity Data Across Chemical Lists
 
 The fourth Drinking Water Contaminant Candidate List (CCL4) is a set of chemicals that "...are not subject to any proposed or promulgated national primary drinking water regulations, but are known or anticipated to occur in public water systems...." Moreover, this list "...was announced on November 17, 2016. The CCL 4 includes 97 chemicals or chemical groups and 12 microbial contaminants...." The National-Scale Air Toxics Assessments (NATA) is "... EPA's ongoing comprehensive evaluation of air toxics in the United States... a state-of-the-science screening tool for State/Local/Tribal agencies to prioritize pollutants, emission sources and locations of interest for further study in order to gain a better understanding of risks... use general information about sources to develop estimates of risks which are more likely to overestimate impacts than underestimate them...."  
 
@@ -189,7 +188,7 @@ These lists can be found in the CCD at [CCL4](https://comptox.epa.gov/dashboard/
 
 In this example use case, bioactivity data will be compared between a water contaminant priority and an air toxics list.  
 
-#### Obtain Lists of Chemicals
+### Obtain Lists of Chemicals
 
 First, confirm the chemical list to query. 
 
@@ -211,7 +210,7 @@ natadb <- get_chemicals_in_list('NATADB')
 natadb <- data.table::as.data.table(natadb)
 ```
 
-#### Review Bioactivity Data for a Single Chemical
+### Review Bioactivity Data for a Single Chemical
 
 ToxCast data is made accessible via the CompTox Chemicals Dashboard (CCD). After navigating to a chemical of interest, select Bioactivity > ToxCast Summary to explore available ToxCast data. The ToxCast bioactivity module presents a view of potency and relative efficacy metrics across ToxCast endpoints for chemicals of interest, such as shown for BPA below. 
 
@@ -240,7 +239,7 @@ bpa_bioactivity <- data.table::as.data.table(bpa_bioactivity)
 head(bpa_bioactivity)
 ```
 
-Next, it may be helpful to examine the dimensions and column names of output.
+Next, it may be helpful to examine the dimensions and column names of the output.
 
 ```{r, eval=FALSE}
 dim(bpa_bioactivity)
@@ -263,7 +262,7 @@ assay_2037 <- data.table::as.data.table(assay_2037)
 head(assay_2037)
 ```
 
-#### Review Bioactivity Data for Chemical Lists
+### Review Bioactivity Data for Chemical Lists
 
 Then, if curious about other chemicals tested for this same endpoint:
 
@@ -273,7 +272,6 @@ assay_2037_data <- data.table::as.data.table(assay_2037_data)
 
 head(assay_2037_data)
 ```
-
 
 Let us now look at which chemicals from each data set have assay data associated to `aeid` value 2037.
 
@@ -293,7 +291,7 @@ natadb_2037 <- assay_2037_data[dtxsid %in% natadb_2037, ][order(dtxsid), ]
 
 We calculate the mean `ac50` value for the associated data and grouped by chemical.
 
-```{r}
+```{r fig.align='center',class.source="scroll-200",message=FALSE}
 ccl4_2037[!is.na(ac50), .(Mean_AC50 = mean(ac50))]
 ccl4_2037[!is.na(ac50), .(Mean_AC50 = mean(ac50)), by = .(dtxsid)][order(-Mean_AC50),]
 
@@ -311,10 +309,33 @@ bpa_bioactivity[aeid %in% 2037, .(Mean_AC50 = mean(ac50))]
 
 From this, we see that the average `ac50` value for `aeid` value 2037 Assay data for CCL4 chemicals is distributed above and below that of BPA in equal quantity, while for NATADB chemicals, all but two of 13 are higher. 
 
+To investigate additional endpoints, we could do the following.
+
+```{r, eval = FALSE}
+bpa_aeid_batch <- get_bioactivity_details_batch(AEID = unique(bpa_bioactivity$aeid), Server = stg_bioactivity_server)
+all_bpa_aeid <- data.table::rbindlist(bpa_aeid_batch, use.names = TRUE)
+
+ccl4_bpa_aeid <- all_bpa_aeid[dtxsid %in% ccl4[, unique(dtxsid)], ][order(dtxsid)]
+natadb_bpa_aeid <- all_bpa_aeid[dtxsid %in% natadb[, unique(dtxsid)], ][order(dtxsid)]
+
+ccl4_bpa_aeid[!is.na(ac50), .(Mean_AC50 = mean(ac50))]
+ccl4_bpa_aeid[!is.na(ac50), .(Mean_AC50 = mean(ac50)), by = .(dtxsid)][order(-Mean_AC50),]
+
+natadb_bpa_aeid[!is.na(ac50), .(Mean_AC50 = mean(ac50))]
+natadb_bpa_aeid[!is.na(ac50), .(Mean_AC50 = mean(ac50)), by = .(dtxsid)][order(-Mean_AC50),]
+```
+In the previous chunk, we used the batch search version of the `get_bioactivity_details()` function. 
+
+To finish this example off, we could compare these average `ac50` values with those found in the BPA bioactivity information. We filter out NA values, take the mean of the `ac50` values grouped by `aeid` value.
+
+```{r}
+bpa_bioactivity[!is.na(ac50), .(Mean_AC50 = mean(ac50)), by = .(aeid)]
+```
+
 
 ## Conclusion
 
-In this vignette, we explored a variety of functions that access different types of data found in the `Bioactivity` endpoints of the CCTE APIs. While this exploration was not exhaustive, it provides a basic introduction to how one may access data and work with it. Additional endpoints and corresponding functions exist and we encourage the user to explore these while keeping in mind the examples contained in this vignette.
+In this vignette, a variety of functions that access different types of data found in the `Bioactivity` endpoints of the CCTE APIs were explored. While this exploration was not exhaustive, it provides a basic introduction to how one may access data and work with it. Additional endpoints and corresponding functions exist and we encourage the user to explore these while keeping in mind the examples contained in this vignette.
 
 ```{r breakdown, echo = FALSE, results = 'hide'}
 # This chunk will be hidden in the final product. It serves to undo defining the
