@@ -1,8 +1,8 @@
 Type: Package
 Package: ccdR
 Title: Utilities for Interacting with the CCTE APIs in R
-Version: 0.1.0
-Authors@R:c(
+Version: 1.0.0
+Authors@R: c(
             person("Kruse", "Paul", email = "kruse.paul@epa.gov", 
               role = c("aut", "cre"), 
               comment = c(ORCID = "0000-0001-5516-9717")),
