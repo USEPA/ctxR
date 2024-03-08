@@ -22,7 +22,7 @@ get_exposure_functional_use_probability(
 }
 \value{
 A data.frame with probabilities corresponding to various routes of
-  exposure related to functional use.
+exposure related to functional use.
 }
 \description{
 Retrieve probability of exposure for functional use category

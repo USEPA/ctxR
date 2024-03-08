@@ -29,14 +29,14 @@ default to "png".}
 }
 \value{
 A Large array of three dimensions representing an image. For
-  displaying this, one may use \code{png::writePNG()} or
-  \code{countcolors::plotArrayAsImage()} among many such functions.
+displaying this, one may use \code{png::writePNG()} or
+\code{countcolors::plotArrayAsImage()} among many such functions.
 }
 \description{
 Get image file by DTXSID or DTXCID
 }
 \examples{
-\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull chemical image for BPA by dtxsid
 bpa_image_matrix <- get_chemical_image(DTXSID = 'DTXSID7020182')
 if (requireNamespace("countcolors", quietly = TRUE)){

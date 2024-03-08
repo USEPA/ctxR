@@ -28,7 +28,7 @@ grab all details. The allowable input values are "", predicted", or
 }
 \value{
 A named list of data.frames containing chemical information for the
-  chemicals with DTXSID matching the input parameter.
+chemicals with DTXSID matching the input parameter.
 }
 \description{
 Retrieve chemical information in batch search

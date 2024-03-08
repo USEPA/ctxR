@@ -22,7 +22,7 @@ get_exposure_product_data(
 }
 \value{
 A data.frame with product information relating to exposure to the
-  given chemical
+given chemical
 }
 \description{
 Retrieve product data for exposure purposes

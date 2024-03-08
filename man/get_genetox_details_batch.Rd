@@ -25,13 +25,13 @@ get_genetox_details_batch(
 }
 \value{
 A data.table of genetox detail data for each input
-  DTXSID.
+DTXSID.
 }
 \description{
 Get genetox details batch
 }
 \examples{
-\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull genetox details data for multiples chemicals
 dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 dtxsid_genetox_details_hazard <- get_genetox_details_batch(DTXSID = dtxsid)

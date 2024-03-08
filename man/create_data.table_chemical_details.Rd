@@ -11,7 +11,7 @@ create_data.table_chemical_details(index = -1)
 }
 \value{
 An empty data.table with columns matching the expected format of the
-  get_chemical_details API call.
+get_chemical_details API call.
 }
 \description{
 Create chemical details data.table helper function

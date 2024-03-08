@@ -23,13 +23,13 @@ name}
 }
 \value{
 A data.frame of chemicals and related values matching the query
-  parameters
+parameters
 }
 \description{
 Chemical contains
 }
 \examples{
-\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull chemicals that contain substring
 substring_chemicals <- chemical_contains(word = 'TXSID702018')
 \dontshow{\}) # examplesIf}

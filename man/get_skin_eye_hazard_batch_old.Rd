@@ -22,7 +22,7 @@ get_skin_eye_hazard_batch_old(
 }
 \value{
 A named list of data.frames containing skin and eye hazard data for
-  each input DTXSID.
+each input DTXSID.
 }
 \description{
 Get skin and eye hazard batch

@@ -22,7 +22,7 @@ get_genetox_summary_batch_old(
 }
 \value{
 A named list of data.frames of genetox summary data for each input
-  DTXSID.
+DTXSID.
 }
 \description{
 Get genetox summary batch

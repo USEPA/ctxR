@@ -22,7 +22,7 @@ get_cancer_hazard_batch_old(
 }
 \value{
 A named list of data.frames, each containing cancer hazard and
-  related data for each input DTXSID.
+related data for each input DTXSID.
 }
 \description{
 Get cancer hazard batch

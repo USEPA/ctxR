@@ -27,14 +27,14 @@ value.}
 }
 \value{
 A named list of data.frames containing information about the chemical
-  lists. Note, these are not the chemical lists themselves. To access the
-  chemicals in a given list, use \code{\link{get_chemicals_in_list}}.
+lists. Note, these are not the chemical lists themselves. To access the
+chemicals in a given list, use \code{\link{get_chemicals_in_list}}.
 }
 \description{
 Get chemical list by name batch
 }
 \examples{
-\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull chemical list information by list names
 list_info <- get_public_chemical_list_by_name_batch(name_list = c('CCL4',
                                                                   'NATADB'))
