@@ -22,10 +22,9 @@
 
 #' @rdname ccdr_options
 #' @export
-#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Set ccdr options
 #' set_ccdr_option('display_api_key' = FALSE)
-
 set_ccdr_option <- function(...) {
 
   # if there is no ccdr option create the list with the arguments and return
@@ -57,7 +56,7 @@ set_ccdr_option <- function(...) {
 
 #' @rdname ccdr_options
 #' @export
-#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Check if there are options registered to 'ccdr'
 #' has_ccdr_options()
 
@@ -67,7 +66,7 @@ has_ccdr_options <- function() {
 
 #' @rdname ccdr_options
 #' @export
-#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Check if a specific option is registered for 'ccdr'
 #' has_ccdr_option('display_api_key')
 

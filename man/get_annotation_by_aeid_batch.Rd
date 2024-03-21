@@ -25,13 +25,13 @@ get_annotation_by_aeid_batch(
 }
 \value{
 A named list of data.frames containing annotation information for the
-  assays with AEID matching the input parameter.
+assays with AEID matching the input parameter.
 }
 \description{
 Retrieve annotations for AEID batch
 }
 \examples{
-\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Get annotations for multiple aeids
 aeid_annotations <- get_annotation_by_aeid_batch(AEID = c(159, 160))
 \dontshow{\}) # examplesIf}

@@ -22,7 +22,7 @@ get_fate_by_dtxsid_batch_old(
 }
 \value{
 A named list of data.frames containing chemical fate information for
-  the chemicals with DTXSID matching the input parameter.
+the chemicals with DTXSID matching the input parameter.
 }
 \description{
 Retrieve chemical fate data in batch search

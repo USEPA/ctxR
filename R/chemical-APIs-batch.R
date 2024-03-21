@@ -16,7 +16,7 @@
 #'   containing chemical information for the chemicals with DTXSID or DTXCID
 #'   matching the input parameter.
 #' @export
-#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Pull chemical details for multiple chemicals by dtxsid
 #' dtxsids <- c('DTXSID7020182', 'DTXSID2021315')
 #' dtxsid_details <- get_chemical_details_batch(DTXSID = dtxsid)
@@ -623,7 +623,7 @@ get_canonical_smiles_batch <- function(names = NULL,
 #' @return A named list of data.frames containing chemical information for the
 #'   chemicals matching the search criteria.
 #' @export
-#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Pull chemicals by property ranges
 #' prop_ranges <- get_chemical_by_property_range_batch(start_list = c(1.311,
 #'                                                                    211.99),
@@ -797,7 +797,7 @@ get_chem_info_batch_old <- function(DTXSID = NULL,
 #' @return A data.table containing chemical information for the chemicals with
 #'   DTXSID matching the input parameter.
 #' @export
-#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Pull chemical info for multiple chemicals
 #' chem_info <- get_chem_info_batch(DTXSID = c('DTXSID7020182',
 #'                                             'DTXSID2021315'))
@@ -953,7 +953,7 @@ get_fate_by_dtxsid_batch_old <- function(DTXSID = NULL,
 #' @return A data.table containing chemical fate information for the chemicals
 #'   with DTXSID matching the input parameter.
 #' @export
-#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Pull chemical fate by dtxsids
 #' chemical_fates <- get_fate_by_dtxsid_batch(DTXSID = c('DTXSID7020182',
 #'                                                       'DTXSID2021315'))
@@ -1036,7 +1036,7 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
 #' @return A named list of data.frames of chemicals and related values matching
 #'   the query parameters
 #' @export
-#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Pull chemicals that start with given substrings
 #' bpa_substrings <- chemical_starts_with_batch(word_list = c('DTXSID702018',
 #'                                                            'DTXCID3018'))
@@ -1095,7 +1095,7 @@ chemical_starts_with_batch <- function(word_list = NULL,
 #' @return A named list of data.frames of chemicals and related values matching
 #'   the query parameters
 #' @export
-#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Pull chemicals that match input strings
 #' bpa <- chemical_equal_batch(word_list = c('DTXSID7020182', 'DTXCID30182'))
 
@@ -1153,7 +1153,7 @@ chemical_equal_batch <- function(word_list = NULL,
 #' @return A named list of data.frames of chemicals and related values matching
 #'   the query parameters
 #' @export
-#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Pull chemicals that contain substrings
 #' substring_chemicals <- chemical_contains_batch(word_list = c('TXDIS702018',
 #'                                                              'DTXSID70201'))
@@ -1212,7 +1212,7 @@ chemical_contains_batch <- function(word_list = NULL,
 #' @return A named list of character lists with DTXSIDs with msready masses
 #'   falling within the given ranges.
 #' @export
-#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Pull msready chemicals by mass ranges
 #' msready_data <- get_msready_by_mass_batch(start_list = c(200.9, 200.95),
 #'                                           end_list = c(200.95, 201.00))
@@ -1281,7 +1281,7 @@ get_msready_by_mass_batch <- function(start_list = NULL,
 #' @return A named list of character lists of DTXSIDs with chemical formulas
 #'   matching the search criteria
 #' @export
-#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Pull msready data for several chemical formulas
 #' msready_data <- get_msready_by_formula_batch(formula_list = c('C16H24N2O5S',
 #'                                                               'C15H16O2'))
@@ -1339,7 +1339,7 @@ get_msready_by_formula_batch <- function(formula_list = NULL,
 #' @return A named list of character lists of DTXSIDs with DTXCIDs matching the
 #'   search criteria
 #' @export
-#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Pull msready chemicals matching specific DTXCID
 #' dtxcid_msready <- get_msready_by_dtxcid_batch(DTXCID = c('DTXCID30182',
 #'                                                          'DTXCID001315'))
@@ -1402,7 +1402,7 @@ get_msready_by_dtxcid_batch <- function(DTXCID = NULL,
 #' @return A named list of data.frames containing information about lists that
 #'   meet the search criteria.
 #' @export
-#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Pull chemical lists by type
 #' federal_state <- get_chemical_lists_by_type_batch(type_list = c('Federal',
 #'                                                                 'State'))
@@ -1469,7 +1469,7 @@ get_chemical_lists_by_type_batch <- function(type_list = NULL,
 #'   chemicals in a given list, use \code{\link{get_chemicals_in_list}}.
 #' @seealso \code{\link{get_chemicals_in_list}}
 #' @export
-#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Pull chemical list information by list names
 #' list_info <- get_public_chemical_list_by_name_batch(name_list = c('CCL4',
 #'                                                                   'NATADB'))
@@ -1530,7 +1530,7 @@ get_public_chemical_list_by_name_batch <- function(name_list = NULL,
 #'
 #' @return A named list of chemical lists that contain the given chemicals.
 #' @export
-#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Pull lists containing chemicals for multiple chemicals
 #' lists <- get_lists_containing_chemical_batch(chemical_list = c('DTXSID7020182',
 #'                                                                'DTXSID2021315'))
@@ -1590,7 +1590,7 @@ get_lists_containing_chemical_batch <- function(chemical_list = NULL,
 #' @return A named list of data.frames each containing chemicals in the
 #'   corresponding chemical lists.
 #' @export
-#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Pull chemicals in lists for multiple lists
 #' chemicals_in_lists <- get_chemicals_in_list_batch(list_names = c('CCL4', 'NATADB'))
 
@@ -1650,7 +1650,7 @@ get_chemicals_in_list_batch <- function(list_names = NULL,
 #' @return A named list of XML file format for representing a mrv file for each
 #'   chemicals.
 #' @export
-#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Pull mrv files for multiple chemicals by DTXSID
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 #' mrv_files <- get_chemical_mrv_batch(DTXSID = dtxsid)
@@ -1741,7 +1741,7 @@ get_chemical_mrv_batch <- function(DTXSID = NULL,
 #' @return A named list of character strings giving a mol file representations
 #'   of the given input chemicals.
 #' @export
-#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Pull mol files for multiple chemicals by DTXSID
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 #' mol_files <- get_chemical_mol_batch(DTXSID = dtxsid)
@@ -1835,7 +1835,7 @@ get_chemical_mol_batch <- function(DTXSID = NULL,
 #'   displaying an image, one may use \code{png::writePNG()} or
 #'   \code{countcolors::plotArrayAsImage()} among many such functions.
 #' @export
-#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Pull images for multiple chemicals
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 #' images <- get_chemical_image_batch(DTXSID = dtxsid)
@@ -1934,7 +1934,7 @@ get_chemical_image_batch <- function(DTXSID = NULL,
 #' @return A named list of lists containing synonym information for each input
 #'   DTXSID.
 #' @export
-#' @examplesIf ccte_key() == 'FAKE_KEY'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Pull synonyms for multiple chemicals
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 #' batch_synonyms <- get_chemical_synonym_batch(DTXSID = dtxsid)

@@ -23,6 +23,12 @@ if (!library(devtools, logical.return = TRUE)){
 devtools::install_gitub("USEPA/ccdR")
 ```
 
+You can install from CRAN using the following:
+
+``` r
+install.packages('ccdR')
+```
+
 Disclaimer: You won’t need a API key to install the ccdR package, but
 will need to supply an API key to use ccdR. Please visit [CCTE
 API](https://api-ccte.epa.gov/docs/index.html) to request an API key.

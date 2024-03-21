@@ -29,14 +29,14 @@ default to "png".}
 }
 \value{
 A named list of Large arrays of three dimensions representing an image. For
-  displaying an image, one may use \code{png::writePNG()} or
-  \code{countcolors::plotArrayAsImage()} among many such functions.
+displaying an image, one may use \code{png::writePNG()} or
+\code{countcolors::plotArrayAsImage()} among many such functions.
 }
 \description{
 Get image file by DTXSID or DTXCID batch
 }
 \examples{
-\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull images for multiple chemicals
 dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 images <- get_chemical_image_batch(DTXSID = dtxsid)

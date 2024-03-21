@@ -25,13 +25,13 @@ get_msready_by_mass_batch(
 }
 \value{
 A named list of character lists with DTXSIDs with msready masses
-  falling within the given ranges.
+falling within the given ranges.
 }
 \description{
 Get ms ready by mass batch search
 }
 \examples{
-\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull msready chemicals by mass ranges
 msready_data <- get_msready_by_mass_batch(start_list = c(200.9, 200.95),
                                           end_list = c(200.95, 201.00))

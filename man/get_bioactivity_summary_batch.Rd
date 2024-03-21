@@ -25,13 +25,13 @@ get_bioactivity_summary_batch(
 }
 \value{
 A named list of data.frames containing bioactivity summary
-  information for the assays with AEID matching the input parameter.
+information for the assays with AEID matching the input parameter.
 }
 \description{
 Retrieve bioactivity summary data from AEID batch
 }
 \examples{
-\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Get bioactivity summary for multiple aeids
 aeids <- get_bioactivity_summary_batch(AEID = c(159, 160))
 \dontshow{\}) # examplesIf}

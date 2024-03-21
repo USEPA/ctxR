@@ -28,13 +28,13 @@ get_chemical_by_property_range_batch(
 }
 \value{
 A named list of data.frames containing chemical information for the
-  chemicals matching the search criteria.
+chemicals matching the search criteria.
 }
 \description{
 Retrieve chemicals by property and value range in batch search
 }
 \examples{
-\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull chemicals by property ranges
 prop_ranges <- get_chemical_by_property_range_batch(start_list = c(1.311,
                                                                    211.99),

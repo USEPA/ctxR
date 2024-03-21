@@ -22,13 +22,13 @@ get_bioactivity_summary(
 }
 \value{
 A data.frame containing summary information corresponding to the
-  input AEID
+input AEID
 }
 \description{
 Retrieve bioactivity summary for AEID
 }
 \examples{
-\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull an assay bioactivity summary
 aeid_1386 <- get_bioactivity_summary(AEID = 1386)
 \dontshow{\}) # examplesIf}

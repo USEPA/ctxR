@@ -27,14 +27,14 @@ value.}
 }
 \value{
 A data.frame containing information about the chemical list. Note,
-  this is not the chemical list itself. To access the chemicals in the list,
-  use \code{\link{get_chemicals_in_list}}.
+this is not the chemical list itself. To access the chemicals in the list,
+use \code{\link{get_chemicals_in_list}}.
 }
 \description{
 Get chemical list by name
 }
 \examples{
-\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull chemical list by list name
 ccl4 <- get_public_chemical_list_by_name(list_name = 'CCL4')
 \dontshow{\}) # examplesIf}

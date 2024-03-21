@@ -25,13 +25,13 @@ get_skin_eye_hazard_batch(
 }
 \value{
 A named list of data.frames containing skin and eye hazard data for
-  each input DTXSID.
+each input DTXSID.
 }
 \description{
 Get skin and eye hazard batch
 }
 \examples{
-\dontshow{if (ccte_key() == 'FAKE_KEY') (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull skin eye hazard data for multiples chemicals
 dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 dtxsid_skin_eye_hazard <- get_skin_eye_hazard_batch(DTXSID = dtxsid)

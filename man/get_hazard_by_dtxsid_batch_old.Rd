@@ -22,7 +22,7 @@ get_hazard_by_dtxsid_batch_old(
 }
 \value{
 A named list of data.frames containing chemical (human and eco)
-  hazard data for each input chemical.
+hazard data for each input chemical.
 }
 \description{
 Get hazard data by DTXSID batch
