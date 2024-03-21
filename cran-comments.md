@@ -67,6 +67,13 @@ Indicated possibly misspelled words in DESCRIPTION (APIs, CCD, CCTE, CompTox, bi
 
 ## local R CMD check results
 
+* checking CRAN incoming feasibility ... NOTE
+  Maintainer: 'Paul Kruse <kruse.paul@epa.gov>'
+  
+  New submission
+  
+  Size of tarball: 25660998 bytes
+
 0 errors | 0 warnings | 1 note
 
 * This is a new release.
