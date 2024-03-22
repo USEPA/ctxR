@@ -74,9 +74,9 @@ test_that('Numeric range input errors and warnings', {
 
 test_that('projection/type errors/warnings', {
   expect_error(get_chemical_details(DTXSID = 'DTXSID7020182', Projection = 't', API_key = 'test_key'), 'Please input a correct value for `Projection`!')
-  expect_warning(get_chemical_details(DTXSID = 'DTXSID7020182', Projection =  2, API_key = 'test_key'), 'Setting `Projection` to `chemicaldetailstandard`')
-  expect_warning(get_chemical_details(DTXSID = 'DTXSID7020182', Projection =  c('ntatoolkit', 'chemicaldetailstandard'), API_key = 'test_key'), 'Setting `Projection` to `chemicaldetailstandard`')
-  expect_message(get_chemical_details(DTXSID = 'DTXSID7020182', Projection =  c('ntatoolkit', 'chemicaldetaistandard'), API_key = Sys.getenv('CCTE_API_KEY')), 'Using `Projection` = ntatoolkit!')
+  expect_warning(get_chemical_details(DTXSID = 'DTXSID7020182', Projection =  2), 'Setting `Projection` to `chemicaldetailstandard`')
+  expect_warning(get_chemical_details(DTXSID = 'DTXSID7020182', Projection =  c('ntatoolkit', 'chemicaldetailstandard')), 'Setting `Projection` to `chemicaldetailstandard`')
+  expect_message(get_chemical_details(DTXSID = 'DTXSID7020182', Projection =  c('ntatoolkit', 'chemicaldetaitandard'), API_key = Sys.getenv('CCTE_API_KEY')), 'Using `Projection` = ntatoolkit!')
   expect_warning(get_chem_info(DTXSID = 'DTXSID', type = c('', 'predicted')), 'Setting type to ""!')
   expect_error(get_chem_info(DTXSID = 'DTXSID', type = 'l', API_key = 'test_key'), 'Please input a correct choice for type!')
   expect_error(get_chemical_lists_by_type(), 'Please input a value for parameter type')
@@ -149,7 +149,7 @@ test_that('Return data type', {
   expect_type(get_lists_containing_chemical(DTXSID = 'DTXSID7020182', API_key = Sys.getenv('CCTE_API_KEY')), 'character')
   expect_type(get_lists_containing_chemical(DTXSID = '', API_key = Sys.getenv('CCTE_API_KEY')), 'NULL')
   #expect_type(get_lists_containing_chemical(DTXSID = 'DTXSID7020182', API_key = ''), 'NULL')
-  expect_type(get_chemicals_in_list(list_name = 'BIOSOLDIS2021'), 'list')
+  expect_type(get_chemicals_in_list(list_name = 'CCL4'), 'list')
   expect_type(get_chemicals_in_list(list_name = '', API_key = Sys.getenv('CCTE_API_KEY')), 'NULL')
   #expect_type(get_chemicals_in_list(list_name = 'BIOSOLDIS2021', API_key = ''), 'NULL')
   expect_type(get_all_public_chemical_lists(API_key = Sys.getenv('CCTE_API_KEY')), 'list')
