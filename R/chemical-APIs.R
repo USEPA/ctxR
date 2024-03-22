@@ -1065,6 +1065,7 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
 
   projection_entries <- c('chemicallistall',
                           'chemicallistname',
+                          'chemicallistwithdtxsids',
                           '')
   index <- -1
   if (!is.character(Projection)){
@@ -1080,7 +1081,7 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
     }
   }
 
-  projection_url <- ifelse(index %in% c(-1, 3), '', paste0('?projection=', projection_entries[index]))
+  projection_url <- ifelse(index %in% c(-1, 4), '', paste0('?projection=', projection_entries[index]))
 
 
 
@@ -1169,6 +1170,12 @@ get_chemicals_in_list <- function(list_name = NULL,
                                   API_key = NULL,
                                   Server = chemical_api_server,
                                   verbose = FALSE){
+
+
+
+
+
+
   if (is.null(list_name) | !is.character(list_name))
     stop('Please input a character value for list_name!')
   else if (is.null(API_key)){
@@ -1180,7 +1187,19 @@ get_chemicals_in_list <- function(list_name = NULL,
     }
   }
 
+  new_response <- get_public_chemical_list_by_name(list_name = list_name,
+                                                   Projection = 'chemicallistwithdtxsids',
+                                                   API_key = API_key,
+                                                   Server = Server,
+                                                   verbose = verbose)
 
+  if (is.null(new_response)){
+    return()
+  }
+
+  if ('dtxsids' %in% names(new_response)){
+    return(get_chemical_details_batch(DTXSID = strsplit(x = new_response$dtxsids, split = ',')[[1]]))
+  }
 
   response <- httr::GET(url = paste0(Server, '/list/chemicals/search/by-listname/', list_name),
                         httr::add_headers(.headers = c(
@@ -1202,6 +1221,49 @@ get_chemicals_in_list <- function(list_name = NULL,
 
 
 }
+
+
+get_chemicals_in_list_start <- function(list_name = NULL,
+                                        word = NULL,
+                                        API_key = NULL,
+                                        Server = chemical_api_server,
+                                        verbose = FALSE){
+  if (is.null(list_name) | !is.character(list_name))
+    stop('Please input a character value for list_name!')
+  else if (is.null(word) | !is.character(word))
+    stop('Please input a character value for word!')
+  else if (is.null(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      if (verbose) {
+        message('Using stored API key!')
+      }
+    }
+  }
+
+
+  response <- httr::GET(url = paste0(Server, '/list/chemicals/search/start-with/', list_name,'/', word),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
+
+
 
 #' Get all public chemical lists
 #'
