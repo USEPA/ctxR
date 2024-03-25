@@ -1,3 +1,10 @@
+## Resubmission
+This is a resubmission. In this version I have:
+
+* Reduced the size of the vignettes and associated saved httptest responses 
+* Updated the unit tests and reduced the size of the associated saved httptest
+responses
+
 ## Test environments
 
 * local Windows 10 install, R 4.2.1
@@ -5,7 +12,16 @@
 * Rhub Windows Server 2022, R-devel, 64 bit
 * Rhub Fedora Linux, R-devel, clang, gfortran
 * Rhub Ubuntu Linux 20.04.1 LTS, R-release, GCC
+* Mac mini, Apple M1, macOS 13.3.1 (22E261)
 
+## mac release results
+
+Passed all checks.
+
+Status: OK
+* using check arguments '--no-clean-on-error '
+
+* elapsed time (check, wall clock): 0:56
 
 ## rhub CMD check results
 - Most notes appear to be related to testing (rhub) environment
@@ -72,7 +88,6 @@ Indicated possibly misspelled words in DESCRIPTION (APIs, CCD, CCTE, CompTox, bi
   
   New submission
   
-  Size of tarball: 25660998 bytes
 
 0 errors | 0 warnings | 1 note
 
