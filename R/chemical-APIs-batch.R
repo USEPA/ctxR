@@ -168,7 +168,9 @@ get_chemical_details_batch_2 <- function(DTXSID = NULL,
     DTXSID <- unique(DTXSID)
     num_dtxsid <- length(DTXSID)
     indices <- generate_ranges(num_dtxsid)
-    print(indices)
+    if (verbose) {
+      print(indices)
+    }
 
     dt <- create_data.table_chemical_details(index = index)
 

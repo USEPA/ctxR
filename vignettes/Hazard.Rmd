@@ -161,7 +161,7 @@ print(natadb_information, trunc.cols = TRUE)
 Next, retrieve the list of chemicals associated with each list.
 
 ```{r}
-ccl4 <- get_chemicals_in_list('ccl4')
+ccl4 <- get_chemicals_in_list('CCL4')
 ccl4 <- data.table::as.data.table(ccl4)
 
 natadb <- get_chemicals_in_list('NATADB')
@@ -293,231 +293,20 @@ There were five assays that produced a negative result, 22 that produced a posit
 
 ### Review Hazard Data for Chemical Lists
 
-Hazard data associated with the chemicals in each chemical list can be retrieved. For each chemical, there are potentially hundreds of rows of hazard data, so the returned results will be much larger than in most other API endpoints.
+Hazard data associated with the chemicals in each chemical list can be retrieved. For each chemical, there are potentially hundreds of rows of hazard data, so the returned results will be much larger than in most other API endpoints. We model how one would structure such a query of the chemicals in CCL4 and NATADB, and leave it to the reader to explore the data in a similar fashion to the previous examples.
 
-```{r}
+```{r, eval = FALSE}
 ccl4_hazard <- get_hazard_by_dtxsid_batch(DTXSID = ccl4$dtxsid)
 natadb_hazard <- get_hazard_by_dtxsid_batch(DTXSID = natadb$dtxsid)
 ```
 
 Next, it may be helpful to examine the dimensions and column names of the output.
-```{r fig.align='center',class.source="scroll-300",message=FALSE}
+```{r, eval = FALSE, fig.align='center',class.source="scroll-300",message=FALSE}
 dim(ccl4_hazard)
 dim(natadb_hazard)
 colnames(ccl4_hazard)
 head(ccl4_hazard)
 ```
-
-#### Critical Effects
-
-The number of unique values in the `criticalEffect`, `supercategory`, and `toxvalType` columns for each chemical list can be reviewed.
-
-```{r fig.align='center',class.source="scroll-300",message=FALSE}
-# Number of unique values for `criticalEffect`
-length(ccl4_hazard[, unique(criticalEffect)])
-length(natadb_hazard[, unique(criticalEffect)])
-# Number of unique values of `supercategory`
-length(ccl4_hazard[, unique(supercategory)])
-length(natadb_hazard[, unique(supercategory)])
-# Number of unique values for `toxvalType`
-length(ccl4_hazard[, unique(toxvalType)])
-length(natadb_hazard[, unique(toxvalType)])
-# Number of entries per `supercategory`
-ccl4_hazard[, .N, by = .(supercategory)]
-natadb_hazard[, .N, by = .(supercategory)]
-```
-
-The over 17,000 results for the `supercategory` value "Point of Departure" for each chemical list can be explored.`toxvalType` within "Point of Departure" `supercategory` value can be grouped and displayed in descending order.
-
-```{r fig.align='center',class.source="scroll-300",message=FALSE}
-ccl4_hazard[ supercategory %in% 'Point of Departure', .N, 
-             by = .(toxvalType)][order(-N),]
-natadb_hazard[ supercategory %in% 'Point of Departure', .N, 
-               by = .(toxvalType)][order(-N),]
-```
-
-"NOEL" (No Observed Effect Level) and "LOEL" (Lowest Observed Effect Level) can be inspected. Consider the case where `media` value is either "soil" or "water" and review the minimum "LOEL" and "NOEL" for chemicals in each chemical list.
-
-First, consider  soil and water, respectively, and order by `toxvalType` and by the minimum `toxvalNumeric` value in each group, descending.
-
-```{r fig.align='center',class.source="scroll-300",message=FALSE}
-ccl4_hazard[media %in% 'soil' & toxvalType %in% c('LOEL', 'NOEL'), 
-            .(toxvalNumeric = min(toxvalNumeric)), 
-            by = .(toxvalType, toxvalUnits, dtxsid)][order(toxvalType,
-                                                           -toxvalNumeric)]
-natadb_hazard[media %in% 'soil' & toxvalType %in% c('LOEL', 'NOEL'), 
-              .(toxvalNumeric = min(toxvalNumeric)), 
-              by = .(toxvalType, toxvalUnits, dtxsid)][order(toxvalType,
-                                                             -toxvalNumeric)]
-
-ccl4_hazard[media %in% 'water' & toxvalType %in% c('LOEL', 'NOEL'), 
-            .(toxvalNumeric = min(toxvalNumeric)), 
-            by = .(toxvalType, toxvalUnits, dtxsid)][order(toxvalType,
-                                                           -toxvalNumeric)]
-natadb_hazard[media %in% 'water' & toxvalType %in% c('LOEL', 'NOEL'), 
-              .(toxvalNumeric = min(toxvalNumeric)), 
-              by = .(toxvalType, toxvalUnits, dtxsid)][order(toxvalType,
-                                                             -toxvalNumeric)]
-```
-
-#### Exposure Route
-
-Next limit results to human hazard and focus on the exposure routes given by inhalation and oral. To do this, filter the data into the corresponding exposure routes, then group by `exposureRoute` and `riskAssessmentClass`, and finally count the number of instances for each grouping. To determine the most represented class, order the results descending.
-
-```{r fig.align='center',class.source="scroll-300",message=FALSE}
-ccl4_hazard[humanEcoNt %in% 'human health', unique(exposureRoute)]
-natadb_hazard[humanEcoNt %in% 'human health', unique(exposureRoute)]
-
-ccl4_hazard[humanEcoNt %in% 'human health' & 
-              exposureRoute %in% c('inhalation', 'oral'), .(Hits = .N), 
-            by = .(exposureRoute, riskAssessmentClass)][order(exposureRoute, 
-                                                              -Hits)]
-natadb_hazard[humanEcoNt %in% 'human health' & 
-                exposureRoute %in% c('inhalation', 'oral'), .(Hits = .N), 
-              by = .(exposureRoute, riskAssessmentClass)][order(exposureRoute,
-                                                                -Hits)]
-```
-
-To summarize, the "acute" `riskAssessmentClass` is most represented by the inhalation exposure route and "chronic" for the oral exposure route for both the CCL4 and NATADB data sets. 
-
-The different types of toxicity values present in each chemical list for the inhalation and oral exposure routes can be explored to understand exposure routes common to both. Herein, the "human health" `humanEcoNT` value and "inhalation" or "oral" `exposureRoute` value is explored, and unique `toxvalType` values are returned.
-
-```{r fig.align='center',class.source="scroll-300",message=FALSE}
-ccl4_hazard[humanEcoNt %in% 'human health' &
-              exposureRoute %in% c('inhalation'), unique(toxvalType)]
-ccl4_hazard[humanEcoNt %in% 'human health' &
-              exposureRoute %in% c('oral'), unique(toxvalType)]
-intersect(ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'inhalation', unique(toxvalType)], ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral', unique(toxvalType)])
-
-natadb_hazard[humanEcoNt %in% 'human health' & 
-                exposureRoute %in% c('inhalation'), unique(toxvalType)]
-natadb_hazard[humanEcoNt %in% 'human health' & 
-                exposureRoute %in% c('oral'), unique(toxvalType)]
-intersect(natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'inhalation', unique(toxvalType)], natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral', unique(toxvalType)])
-```
-
-From this, 24 toxicity value types shared between the oral and inhalation exposure routes for CCL4 with 29 shared in the NATADB chemical lists. The lists above indicate the variety of toxicity values present in the hazard data for the two different exposure routes considered.
-
-#### Risk Assessment Class
-
-For the next data exploration, We will turn to the `riskAssessmentClass` value of "developmental". We will examine the "NOEL" and "LOEL" values for chemicals with oral exposure, human hazard, and a `riskAssessmentClass` value of "developmental". We also examine the units to determine whether any unit conversions are necessary to compare numeric values.
-
-```{r fig.align='center',class.source="scroll-300",message=FALSE}
-ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' &
-              riskAssessmentClass %in% 'developmental' & 
-              toxvalType %in% c('NOEL', 'LOEL'), ]
-ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' &
-              riskAssessmentClass %in% 'developmental' &
-              toxvalType %in% c('NOEL', 'LOEL'), unique(toxvalUnits)]
-natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' &
-                riskAssessmentClass %in% 'developmental' &
-                toxvalType %in% c('NOEL', 'LOEL'), ]
-natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' &
-                riskAssessmentClass %in% 'developmental' & 
-                toxvalType %in% c('NOEL', 'LOEL'), unique(toxvalUnits)]
-```
-
-Observe that for CCL4 chemical list, the units are given by "mg/kg-day" and "ppm", while the units for NATADB are given by "mg/kg-day", "ppm", and "ml/kg". "mg/kg-day" and "ppm" are comparable units, so ignore the "ml/kg" units for now and group by DTXSID to find the lowest or highest value.
-
-```{r fig.align='center',class.source="scroll-300",message=FALSE}
-ccl4_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' &
-            riskAssessmentClass %in% 'developmental' & 
-            toxvalType %in% c('NOEL', 'LOEL'),
-            .(numeric_value = min(toxvalNumeric), 
-            units = toxvalUnits[[which.min(toxvalNumeric)]]), 
-            by = .(dtxsid, toxvalType)]
-natadb_hazard[humanEcoNt %in% 'human health' & exposureRoute %in% 'oral' &
-              riskAssessmentClass %in% 'developmental' & 
-              toxvalType %in% c('NOEL', 'LOEL') & !(toxvalUnits %in% 'ml/kg'), 
-              .(numeric_value = min(toxvalNumeric), 
-              units = toxvalUnits[[which.min(toxvalNumeric)]]), 
-              by = .(dtxsid, toxvalType)]
-```
-
-#### ToxValType
-
-"RfD", "RfC", and "cancer slope factor" values within the `toxvalType` can also be explored. First, determine the set of units for each and make appropriate conversions, if necessary, before making comparisons.
-
-```{r fig.align='center',class.source="scroll-300",message=FALSE}
-ccl4_hazard[humanEcoNt %in% 'human health' & toxvalType %in% 
-            c('cancer slope factor', 'RfD', 'RfC'), .N, 
-            by = .(toxvalType, toxvalUnits)][order(toxvalType, -N)]
-natadb_hazard[humanEcoNt %in% 'human health' & toxvalType %in%
-              c('cancer slope factor', 'RfD', 'RfC'), .N, 
-              by = .(toxvalType, toxvalUnits)][order(toxvalType, -N)]
-```
-For CCL4, there are three inequivalent sets of units that need conversions. We convert to "mg/m3", which means scaling values given in "g/m3" by 1E3 and values given in "ug/m3" by 1E-3. The Rfd units and cancer slope factor units require no conversions.
-
-For NATADB, we need to convert RfC values from ppm to mg/m3, with a conversion factor that relies on the molecular weight of the chemical in question. We will remove these from consideration for now. The units for RfD and cancer slope factor require no conversions.
-
-After inspection, filter and separate out the relevant data subsets and perform appropriate unit convserions.
-
-```{r fig.align='center',class.source="scroll-300",message=FALSE}
-# Separate out into relevant data subsets for CCL4
-ccl4_csf <- ccl4_hazard[humanEcoNt %in% 'human health' & 
-                          toxvalType %in% c('cancer slope factor'), ]
-ccl4_rfc <- ccl4_hazard[humanEcoNt %in% 'human health' & 
-                          toxvalType %in% c('RfC'), ]
-ccl4_rfd <- ccl4_hazard[humanEcoNt %in% 'human health' & 
-                          toxvalType %in% c('RfD'), ]
-# Set mass by volume units to mg/m3, so scale g/m3 by 1E3 and ug/m3 by 1E-3
-ccl4_rfc[toxvalUnits == 'mg/m3', conversion := 1]
-ccl4_rfc[toxvalUnits == 'g/m3', conversion := 1E3]
-ccl4_rfc[toxvalUnits == 'ug/m3', conversion := 1E-3]
-ccl4_rfc[toxvalUnits %in% c('mg/m3', 'g/m3', 'ug/m3'), units := 'mg/m3']
-# Set mass by mass units to mg/kg
-ccl4_rfd[toxvalUnits %in% c('mg/kg-day', 'mg/kg'), conversion := 1]
-ccl4_rfd[toxvalUnits %in% c('mg/kg-day', 'mg/kg'), units := 'mg/kg']
-# Run data aggregations grouping by dtxsid and taking either the max or the min
-# depending on the toxvalType we are considering.
-ccl4_csf[,.(numeric_value = max(toxvalNumeric), 
-            units = toxvalUnits[which.max(toxvalNumeric)]), 
-         by = .(dtxsid)][order(-numeric_value),]
-ccl4_rfc[,.(numeric_value = min(toxvalNumeric*conversion), 
-            units = units[which.min(toxvalNumeric*conversion)]), 
-         by = .(dtxsid)][order(numeric_value),]
-ccl4_rfd[,.(numeric_value = min(toxvalNumeric*conversion), 
-            units = units[which.min(toxvalNumeric*conversion)]), 
-         by = .(dtxsid)][order(numeric_value),]
-
-# Separate out into relevant data subsets for NATADB
-natadb_csf <- natadb_hazard[humanEcoNt %in% 'human health' & 
-                              toxvalType %in% c('cancer slope factor'), ]
-natadb_rfc <- natadb_hazard[humanEcoNt %in% 'human health' &
-                              toxvalType %in% c('RfC'), ]
-natadb_rfd <- natadb_hazard[humanEcoNt %in% 'human health' & 
-                              toxvalType %in% c('RfD'), ]
-# Set mass by mass units to mg/kg. Note that ppm is already in mg/kg
-natadb_rfc <- natadb_rfc[toxvalUnits != 'ppm',]
-natadb_rfd[, units := 'mg/kg-day']
-# Run data aggregations grouping by dtxsid and taking either the max or the min
-# depending on the toxvalType we are considering.
-natadb_csf[, .(numeric_value = max(toxvalNumeric), 
-               units = toxvalUnits[which.max(toxvalNumeric)]), 
-           by = .(dtxsid)][order(-numeric_value),]
-natadb_rfc[, .(numeric_value = min(toxvalNumeric), 
-               units = toxvalUnits[which.min(toxvalNumeric)]), 
-           by = .(dtxsid)][order(numeric_value),]
-natadb_rfd[, .(numeric_value = min(toxvalNumeric), 
-               units = units[which.min(toxvalNumeric)]), 
-           by = .(dtxsid)][order(numeric_value),]
-```
-
-Observe that the units for these three toxicity value types for CCL4 chemical list results are:
-
-- "mg/m3", "g/m3", and "ug/m3" for RfC
-- "mg/kg-day" and "mg/kg" for RfD
-- "(mg/kg-day)-1" for Cancer Slope Factor
-
-whereas the units for these three toxicity value types for NATADB chemical list results are:
-
-- "mg/m3" and "ppm" for RfC
-- "mg/kg-day", "mg/kg" for RfD
-- "(mg/kg-day)-1" for Cancer Slope Factor. 
-
-For the CCL4 chemical list, the chemical DTXSID2021028 has the highest CsF at 150 (mg/kg-day)-1, the chemical DTXSID1031040 has the lowest RfC value at 6.0e-9 mg/m3, and the chemical DTXSID7021029 has the lowest RfD value at 4e-6 mg/kg.
-
-For NATADB chemical list, the chemical DTXSID2020137 has the highest CsF at 500 (mg/kg-day)-1, the chemical DTXSID1020516 has the lowest RfC value at 2.0e-6 mg/m3, and the chemical DTXSID7021029 had the lowest RfD at 4e-6 mg/kg-day.
 
 ## Conclusion
 
