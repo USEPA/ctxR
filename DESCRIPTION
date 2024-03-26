@@ -1,6 +1,6 @@
 Type: Package
 Package: ccdR
-Title: Utilities for Interacting with the CCTE APIs
+Title: Utilities for Interacting with the 'CCTE' APIs
 Version: 1.0.0
 Authors@R: c(
             person("Paul", "Kruse", email = "kruse.paul@epa.gov", 
@@ -18,11 +18,11 @@ Authors@R: c(
     	        email = "brown.jason@epa.gov")
     	        )
 Description: Access chemical, hazard, and bioactivity data from the Center for 
-       Computational Toxicology and Exposure ("CCTE") APIs 
-       <https://api-ccte.epa.gov/docs/>. ccdR was developed to streamline the 
-       process of accessing the information available through the CCTE APIs 
+       Computational Toxicology and Exposure ('CCTE') APIs 
+       <https://api-ccte.epa.gov/docs/>. 'ccdR' was developed to streamline the 
+       process of accessing the information available through the 'CCTE' APIs 
        without requiring prior knowledge of how to use APIs. All data is also 
-       available on the CompTox Chemical Dashboard ("CCD")
+       available on the CompTox Chemical Dashboard ('CCD')
        <https://comptox.epa.gov/dashboard/>. 
 License: GPL (>= 3)
 Imports: 
