@@ -33,7 +33,20 @@
 #' @param key an API key
 #' @param write if TRUE, stores the secrets provided in the .Renviron file
 #' @param ... a dumped formal argument to the generic print method
-#' @return NULL
+#' @returns
+#'  * `showing_key` returns a Boolean.
+#'
+#'  * `ccdr_show_api_key()` has no return value.
+#'
+#'  * `ccdr_hide_api_key()` has no return value.
+#'
+#'  * `register_ccdr()` has no return value.
+#'
+#'  * `print.ccte_credentials()` has no return value.
+#'
+#'  * `ccte_key()` returns a string, either the stored API key or NA_character_.
+#'
+#'  * `has_ccte_key()` returns a Boolean.
 #' @name register_ccte
 
 
@@ -64,6 +77,7 @@ showing_key <- function() {
 ccdr_show_api_key <- function() {
   set_ccdr_option('display_api_key' = TRUE)
   cli::cli_alert_warning('ccdr will now display PRIVATE API keys in the console.')
+  invisible()
 }
 
 
@@ -77,6 +91,7 @@ ccdr_show_api_key <- function() {
 ccdr_hide_api_key <- function() {
   set_ccdr_option('display_api_key' = FALSE)
   cli::cli_alert_info('ccdr will now suppress private API keys in the console.')
+  invisible()
 }
 
 

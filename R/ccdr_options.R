@@ -8,8 +8,13 @@
 #'
 #' @param ... a named listing of options to set
 #' @param option a specific option to query, e.g. `display_api_key`
-#' @return NULL
 #' @name ccdr_options
+#' @returns
+#'  * `set_ccdr_option()` does not have a return value.
+#'
+#'  * `has_ccdr_option()` returns a Boolean.
+#'
+#'  * `has_ccdr_options()` returns a Boolean.
 #' @seealso [register_ccte()]
 #'
 #'

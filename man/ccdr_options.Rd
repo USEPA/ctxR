@@ -18,6 +18,13 @@ has_ccdr_option(option)
 
 \item{option}{a specific option to query, e.g. \code{display_api_key}}
 }
+\value{
+\itemize{
+\item \code{set_ccdr_option()} does not have a return value.
+\item \code{has_ccdr_option()} returns a Boolean.
+\item \code{has_ccdr_options()} returns a Boolean.
+}
+}
 \description{
 ccdr stores options as a named list in R's global options, i.e.
 \code{getOption('ccdr')}. It currently stores two such options, one for CCTE
