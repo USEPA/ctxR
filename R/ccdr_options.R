@@ -10,7 +10,8 @@
 #' @param option a specific option to query, e.g. `display_api_key`
 #' @name ccdr_options
 #' @returns
-#'  * `set_ccdr_option()` does not have a return value.
+#'  * `set_ccdr_option()` does not have a return value but has the side effect
+#'  of setting options used by other functions.
 #'
 #'  * `has_ccdr_option()` returns a Boolean.
 #'

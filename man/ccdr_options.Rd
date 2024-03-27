@@ -20,7 +20,8 @@ has_ccdr_option(option)
 }
 \value{
 \itemize{
-\item \code{set_ccdr_option()} does not have a return value.
+\item \code{set_ccdr_option()} does not have a return value but has the side effect
+of setting options used by other functions.
 \item \code{has_ccdr_option()} returns a Boolean.
 \item \code{has_ccdr_options()} returns a Boolean.
 }

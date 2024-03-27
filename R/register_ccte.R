@@ -36,15 +36,20 @@
 #' @returns
 #'  * `showing_key` returns a Boolean.
 #'
-#'  * `ccdr_show_api_key()` has no return value.
+#'  * `ccdr_show_api_key()` has no return value but has the side effect of
+#'  changing the display settings of the API key.
 #'
-#'  * `ccdr_hide_api_key()` has no return value.
+#'  * `ccdr_hide_api_key()` has no return value but has the side effect of
+#'  changing the display settings of the API key.
 #'
-#'  * `register_ccdr()` has no return value.
+#'  * `register_ccdr()` has no return value but has the side effect of
+#'  storing the API key.
 #'
-#'  * `print.ccte_credentials()` has no return value.
+#'  * `print.ccte_credentials()` has no return value and is an S3 method for
+#'  printing the `ccte_credentials` class.
 #'
-#'  * `ccte_key()` returns a string, either the stored API key or NA_character_.
+#'  * `ccte_key()` returns a string, either the stored API key or
+#'   \code{NA_character_}.
 #'
 #'  * `has_ccte_key()` returns a Boolean.
 #' @name register_ccte
