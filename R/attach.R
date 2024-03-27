@@ -59,7 +59,6 @@ bootstrap_ccdr <- function() {
     res <- read.dcf(fname)
     if (!is.na(match("key", colnames(res)))) {
       .pkgenv[["api"]] <- res[[1, "key"]]
-      Sys.setenv('CCTE_API_KEY' = res[[1, "key"]])
       if (!silent) packageStartupMessage("Setting API key from config file.")
     } else {
       if (!silent) packageStartupMessage("API key file found but no api entry.")
