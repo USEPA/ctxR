@@ -28,7 +28,6 @@ License: GPL (>= 3)
 Imports: 
     cli,
     data.table,
-    glue,
     httr,
     jsonlite,
     purrr,
