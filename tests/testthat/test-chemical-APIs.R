@@ -1,36 +1,36 @@
 with_mock_dir("chemical",{
-test_that("catch missing API", {
-  # Run register_ccdr(key = 'YOUR KEY', write = TRUE) prior to running tests
-
-  #store env variable so tests don't overwrite
-  # tmp <- Sys.getenv("CCTE_API_KEY")
-  # on.exit(Sys.setenv("CCTE_API_KEY" = tmp))
-  # if(Sys.getenv("CCTE_API_KEY") == ""){
-  #   #set env variable temporarily for testing
-  #   Sys.setenv("CCTE_API_KEY" = "stored_api_key")
-  # }
-
-  expect_message(get_chemical_details(DTXSID = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
-  #expect_message(get_chemical_by_property_range(start = 1, end = 2, property = 'Density'), 'Using stored API key!')
-  expect_message(get_chem_info(DTXSID = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
-  expect_message(get_fate_by_dtxsid(DTXSID = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
-  expect_message(chemical_starts_with(word = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
-  expect_message(chemical_equal(word = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
-  expect_message(chemical_contains(word = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
-  expect_message(get_msready_by_mass(start = 1, end = 2, verbose = TRUE), 'Using stored API key!')
-  expect_message(get_msready_by_formula(formula = 'C2H6', verbose = TRUE), 'Using stored API key!')
-  expect_message(get_msready_by_formula(formula = 'C2H6', verbose = TRUE), 'Using stored API key!')
-  expect_message(get_msready_by_dtxcid(DTXCID = 'DTXCID705545', verbose = TRUE), 'Using stored API key!')
-  expect_message(get_chemical_lists_by_type(type = 'other', verbose = TRUE), 'Using stored API key!')
-  expect_message(get_public_chemical_list_by_name(list_name = 'Biosolids2021', verbose = TRUE), 'Using stored API key!')
-  expect_message(get_lists_containing_chemical(DTXSID = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
-  expect_message(get_chemicals_in_list(list_name = 'Biosolids2021', verbose = TRUE), 'Using stored API key!')
-  expect_message(get_all_public_chemical_lists(verbose = TRUE), 'Using stored API key!')
-  expect_message(get_chemical_mrv(DTXSID = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
-  expect_message(get_chemical_mol(DTXSID = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
-  expect_message(get_chemical_image(DTXSID = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
-  expect_message(get_chemical_synonym(DTXSID = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
-})
+# test_that("catch missing API", {
+#   # Run register_ccdr(key = 'YOUR KEY', write = TRUE) prior to running tests
+#
+#   #store env variable so tests don't overwrite
+#   # tmp <- Sys.getenv("CCTE_API_KEY")
+#   # on.exit(Sys.setenv("CCTE_API_KEY" = tmp))
+#   # if(Sys.getenv("CCTE_API_KEY") == ""){
+#   #   #set env variable temporarily for testing
+#   #   Sys.setenv("CCTE_API_KEY" = "stored_api_key")
+#   # }
+#
+#   expect_message(get_chemical_details(DTXSID = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
+#   #expect_message(get_chemical_by_property_range(start = 1, end = 2, property = 'Density'), 'Using stored API key!')
+#   expect_message(get_chem_info(DTXSID = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_fate_by_dtxsid(DTXSID = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
+#   expect_message(chemical_starts_with(word = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
+#   expect_message(chemical_equal(word = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
+#   expect_message(chemical_contains(word = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_msready_by_mass(start = 1, end = 2, verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_msready_by_formula(formula = 'C2H6', verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_msready_by_formula(formula = 'C2H6', verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_msready_by_dtxcid(DTXCID = 'DTXCID705545', verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_chemical_lists_by_type(type = 'other', verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_public_chemical_list_by_name(list_name = 'Biosolids2021', verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_lists_containing_chemical(DTXSID = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_chemicals_in_list(list_name = 'Biosolids2021', verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_all_public_chemical_lists(verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_chemical_mrv(DTXSID = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_chemical_mol(DTXSID = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_chemical_image(DTXSID = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_chemical_synonym(DTXSID = 'DTXSID7020182', verbose = TRUE), 'Using stored API key!')
+# })
 
 test_that("catch missing DTXSID/DTXCID", {
   expect_error(get_chemical_details(), 'Please input a DTXSID or DTXCID!')

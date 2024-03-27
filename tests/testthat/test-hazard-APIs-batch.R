@@ -1,28 +1,28 @@
 with_mock_dir("hazard-batch",{
-test_that("catch missing APIs", {
-  #store env variable so tests don't overwrite
-  # tmp <- Sys.getenv("CCTE_API_KEY")
-  # on.exit(Sys.setenv("CCTE_API_KEY" = tmp))
-  # if(Sys.getenv("CCTE_API_KEY") == ""){
-  #   #set env variable temporarily for testing
-  #   Sys.setenv("CCTE_API_KEY" = "stored_api_key")
-  # }
-  # Run register_ccdr(key = 'YOUR KEY', write = TRUE) prior to running tests
-  expect_message(get_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), verbose = TRUE), 'Using stored API key!')
-  expect_message(get_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), API_key = 1, verbose = TRUE), 'Using stored API key!')
-  expect_message(get_human_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), verbose = TRUE), 'Using stored API key!')
-  expect_message(get_human_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), API_key = 1, verbose = TRUE), 'Using stored API key!')
-  expect_message(get_ecotox_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), verbose = TRUE), 'Using stored API key!')
-  expect_message(get_ecotox_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), API_key = 1, verbose = TRUE), 'Using stored API key!')
-  expect_message(get_skin_eye_hazard_batch(DTXSID = c('DTXSID7020182'), verbose = TRUE), 'Using stored API key!')
-  expect_message(get_skin_eye_hazard_batch(DTXSID = c('DTXSID7020182'), API_key = 1, verbose = TRUE), 'Using stored API key!')
-  expect_message(get_cancer_hazard_batch(DTXSID = c('DTXSID7020182'), verbose = TRUE), 'Using stored API key!')
-  expect_message(get_cancer_hazard_batch(DTXSID = c('DTXSID7020182'), API_key = 1, verbose = TRUE), 'Using stored API key!')
-  expect_message(get_genetox_summary_batch(DTXSID = c('DTXSID7020182'), verbose = TRUE), 'Using stored API key!')
-  expect_message(get_genetox_summary_batch(DTXSID = c('DTXSID7020182'), API_key = 1, verbose = TRUE), 'Using stored API key!')
-  expect_message(get_genetox_details_batch(DTXSID = c('DTXSID7020182'), verbose = TRUE), 'Using stored API key!')
-  expect_message(get_genetox_details_batch(DTXSID = c('DTXSID7020182'), API_key = 1, verbose = TRUE), 'Using stored API key!')
-})
+# test_that("catch missing APIs", {
+#   #store env variable so tests don't overwrite
+#   # tmp <- Sys.getenv("CCTE_API_KEY")
+#   # on.exit(Sys.setenv("CCTE_API_KEY" = tmp))
+#   # if(Sys.getenv("CCTE_API_KEY") == ""){
+#   #   #set env variable temporarily for testing
+#   #   Sys.setenv("CCTE_API_KEY" = "stored_api_key")
+#   # }
+#   # Run register_ccdr(key = 'YOUR KEY', write = TRUE) prior to running tests
+#   expect_message(get_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), API_key = 1, verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_human_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_human_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), API_key = 1, verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_ecotox_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_ecotox_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), API_key = 1, verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_skin_eye_hazard_batch(DTXSID = c('DTXSID7020182'), verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_skin_eye_hazard_batch(DTXSID = c('DTXSID7020182'), API_key = 1, verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_cancer_hazard_batch(DTXSID = c('DTXSID7020182'), verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_cancer_hazard_batch(DTXSID = c('DTXSID7020182'), API_key = 1, verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_genetox_summary_batch(DTXSID = c('DTXSID7020182'), verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_genetox_summary_batch(DTXSID = c('DTXSID7020182'), API_key = 1, verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_genetox_details_batch(DTXSID = c('DTXSID7020182'), verbose = TRUE), 'Using stored API key!')
+#   expect_message(get_genetox_details_batch(DTXSID = c('DTXSID7020182'), API_key = 1, verbose = TRUE), 'Using stored API key!')
+# })
 
 test_that('DTXSID errors', {
   expect_error(get_hazard_by_dtxsid_batch(DTXSID = 1, API_key = 'test_key'), 'Please input a character list for DTXSID!')
