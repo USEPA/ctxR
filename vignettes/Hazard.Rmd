@@ -39,6 +39,7 @@ start_vignette("3")
 if (!library(ccdR, logical.return = TRUE)){
   devtools::load_all()
 }
+old_options <- options("width")
 ```
 
 ```{r setup-print, echo = FALSE}
@@ -315,7 +316,7 @@ In this vignette, a variety of functions that access different types of data fou
 ```{r breakdown, echo = FALSE, results = 'hide'}
 # This chunk will be hidden in the final product. It serves to undo defining the
 # custom print function to prevent unexpected behavior after this module during
-# the final knitting process
+# the final knitting process and restores original option values.
 
 knit_print.data.table = knitr::normal_print
   
@@ -323,6 +324,8 @@ registerS3method(
   "knit_print", "data.table", knit_print.data.table,
   envir = asNamespace("knitr")
 )
+
+options(old_options)
 ```
 
 ```{r, include=FALSE}
