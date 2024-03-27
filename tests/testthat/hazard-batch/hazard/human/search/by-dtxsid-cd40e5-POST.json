@@ -3,8 +3,7 @@
         "id": 1101340,
         "year": "1993",
         "source": "Chiu",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "IRIS",
         "sourceUrl": "https://doi.org/10.1289/EHP3368",
         "subsourceUrl": "-",
@@ -31,14 +30,14 @@
         "supercategory": "Toxicity Value",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866977,
         "year": "1993",
         "source": "Chiu",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "IRIS",
         "sourceUrl": "https://doi.org/10.1289/EHP3368",
         "subsourceUrl": "-",
@@ -65,14 +64,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1376090,
         "year": "-",
         "source": "DOE Protective Action Criteria",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "inhalation",
+        "priorityId": 7,
         "subsource": "DOE EHSS",
         "sourceUrl": "https://www.energy.gov/ehss/protective-action-criteria-pac-aegls-erpgs-teels-rev-29-chemicals-concern-may-2016",
         "subsourceUrl": "-",
@@ -99,14 +98,14 @@
         "supercategory": "Exposure Limit",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "inhalation"
     },
     {
         "id": 1375486,
         "year": "-",
         "source": "DOE Protective Action Criteria",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "inhalation",
+        "priorityId": 7,
         "subsource": "DOE EHSS",
         "sourceUrl": "https://www.energy.gov/ehss/protective-action-criteria-pac-aegls-erpgs-teels-rev-29-chemicals-concern-may-2016",
         "subsourceUrl": "-",
@@ -133,14 +132,14 @@
         "supercategory": "Exposure Limit",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "inhalation"
     },
     {
         "id": 1375547,
         "year": "-",
         "source": "DOE Protective Action Criteria",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "inhalation",
+        "priorityId": 7,
         "subsource": "DOE EHSS",
         "sourceUrl": "https://www.energy.gov/ehss/protective-action-criteria-pac-aegls-erpgs-teels-rev-29-chemicals-concern-may-2016",
         "subsourceUrl": "-",
@@ -167,14 +166,14 @@
         "supercategory": "Exposure Limit",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "inhalation"
     },
     {
         "id": 867435,
         "year": "2002",
         "source": "ECHA",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "eChemPortal",
         "sourceUrl": "-",
         "subsourceUrl": "-",
@@ -201,14 +200,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866963,
         "year": "2002",
         "source": "ECHA",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "eChemPortal",
         "sourceUrl": "-",
         "subsourceUrl": "-",
@@ -235,14 +234,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866821,
         "year": "2002",
         "source": "ECHA",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "eChemPortal",
         "sourceUrl": "-",
         "subsourceUrl": "-",
@@ -269,14 +268,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866793,
         "year": "2008",
         "source": "ECHA",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "eChemPortal",
         "sourceUrl": "-",
         "subsourceUrl": "-",
@@ -303,14 +302,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867251,
         "year": "2008",
         "source": "ECHA",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "eChemPortal",
         "sourceUrl": "-",
         "subsourceUrl": "-",
@@ -337,14 +336,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867789,
         "year": "2000",
         "source": "ECHA eChemPortal 2020",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "ECHA REACH",
         "sourceUrl": "https://www.echemportal.org/echemportal/",
         "subsourceUrl": "-",
@@ -371,14 +370,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867735,
         "year": "2002",
         "source": "ECHA eChemPortal 2020",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "ECHA REACH",
         "sourceUrl": "https://www.echemportal.org/echemportal/",
         "subsourceUrl": "-",
@@ -405,14 +404,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867484,
         "year": "2001",
         "source": "ECHA eChemPortal 2020",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "ECHA REACH",
         "sourceUrl": "https://www.echemportal.org/echemportal/",
         "subsourceUrl": "-",
@@ -439,14 +438,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867663,
         "year": "2001",
         "source": "ECHA eChemPortal 2020",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "ECHA REACH",
         "sourceUrl": "https://www.echemportal.org/echemportal/",
         "subsourceUrl": "-",
@@ -473,14 +472,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1217348,
         "year": "1985",
         "source": "ECHA eChemPortal 2020",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "ECHA REACH",
         "sourceUrl": "https://www.echemportal.org/echemportal/",
         "subsourceUrl": "-",
@@ -507,14 +506,14 @@
         "supercategory": "Lethality Effect Level",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867239,
         "year": "2001",
         "source": "ECHA eChemPortal 2020",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "ECHA REACH",
         "sourceUrl": "https://www.echemportal.org/echemportal/",
         "subsourceUrl": "-",
@@ -541,14 +540,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866959,
         "year": "2007",
         "source": "ECHA eChemPortal 2020",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "ECHA REACH",
         "sourceUrl": "https://www.echemportal.org/echemportal/",
         "subsourceUrl": "-",
@@ -575,14 +574,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867621,
         "year": "2001",
         "source": "ECHA eChemPortal 2020",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "ECHA REACH",
         "sourceUrl": "https://www.echemportal.org/echemportal/",
         "subsourceUrl": "-",
@@ -609,14 +608,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866915,
         "year": "2001",
         "source": "ECHA eChemPortal 2020",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "ECHA REACH",
         "sourceUrl": "https://www.echemportal.org/echemportal/",
         "subsourceUrl": "-",
@@ -643,14 +642,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867155,
         "year": "2007",
         "source": "ECHA eChemPortal 2020",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "ECHA REACH",
         "sourceUrl": "https://www.echemportal.org/echemportal/",
         "subsourceUrl": "-",
@@ -677,14 +676,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867075,
         "year": "2000",
         "source": "ECHA eChemPortal 2020",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "ECHA REACH",
         "sourceUrl": "https://www.echemportal.org/echemportal/",
         "subsourceUrl": "-",
@@ -711,14 +710,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867190,
         "year": "1948",
         "source": "ECHA IUCLID",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "EU REACH",
         "sourceUrl": "https://echa.europa.eu/",
         "subsourceUrl": "ECHA-13a8fb9e-34a0-4dba-8509-65d65c53c650",
@@ -745,14 +744,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867188,
         "year": "1948",
         "source": "ECHA IUCLID",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "EU REACH",
         "sourceUrl": "https://echa.europa.eu/",
         "subsourceUrl": "ECHA-13a8fb9e-34a0-4dba-8509-65d65c53c650",
@@ -779,14 +778,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1217400,
         "year": "1948",
         "source": "ECHA IUCLID",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "EU REACH",
         "sourceUrl": "https://echa.europa.eu/",
         "subsourceUrl": "ECHA-13a8fb9e-34a0-4dba-8509-65d65c53c650",
@@ -813,14 +812,14 @@
         "supercategory": "Lethality Effect Level",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866982,
         "year": "1948",
         "source": "ECHA IUCLID",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "EU REACH",
         "sourceUrl": "https://echa.europa.eu/",
         "subsourceUrl": "ECHA-13a8fb9e-34a0-4dba-8509-65d65c53c650",
@@ -847,14 +846,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1217390,
         "year": "1948",
         "source": "ECHA IUCLID",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "EU REACH",
         "sourceUrl": "https://echa.europa.eu/",
         "subsourceUrl": "ECHA-13a8fb9e-34a0-4dba-8509-65d65c53c650",
@@ -881,14 +880,14 @@
         "supercategory": "Lethality Effect Level",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867660,
         "year": "1948",
         "source": "ECHA IUCLID",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "EU REACH",
         "sourceUrl": "https://echa.europa.eu/",
         "subsourceUrl": "ECHA-13a8fb9e-34a0-4dba-8509-65d65c53c650",
@@ -915,14 +914,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867651,
         "year": "1948",
         "source": "ECHA IUCLID",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "EU REACH",
         "sourceUrl": "https://echa.europa.eu/",
         "subsourceUrl": "ECHA-13a8fb9e-34a0-4dba-8509-65d65c53c650",
@@ -949,14 +948,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1216486,
         "year": "1948",
         "source": "ECHA IUCLID",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "EU REACH",
         "sourceUrl": "https://echa.europa.eu/",
         "subsourceUrl": "ECHA-13a8fb9e-34a0-4dba-8509-65d65c53c650",
@@ -983,14 +982,14 @@
         "supercategory": "Lethality Effect Level",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867023,
         "year": "1948",
         "source": "ECHA IUCLID",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "EU REACH",
         "sourceUrl": "https://echa.europa.eu/",
         "subsourceUrl": "ECHA-13a8fb9e-34a0-4dba-8509-65d65c53c650",
@@ -1017,14 +1016,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867037,
         "year": "1948",
         "source": "ECHA IUCLID",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "EU REACH",
         "sourceUrl": "https://echa.europa.eu/",
         "subsourceUrl": "ECHA-13a8fb9e-34a0-4dba-8509-65d65c53c650",
@@ -1051,14 +1050,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866911,
         "year": "1948",
         "source": "ECHA IUCLID",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "EU REACH",
         "sourceUrl": "https://echa.europa.eu/",
         "subsourceUrl": "ECHA-13a8fb9e-34a0-4dba-8509-65d65c53c650",
@@ -1085,14 +1084,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867373,
         "year": "1948",
         "source": "ECHA IUCLID",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "EU REACH",
         "sourceUrl": "https://echa.europa.eu/",
         "subsourceUrl": "ECHA-13a8fb9e-34a0-4dba-8509-65d65c53c650",
@@ -1119,14 +1118,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866936,
         "year": "1948",
         "source": "ECHA IUCLID",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "EU REACH",
         "sourceUrl": "https://echa.europa.eu/",
         "subsourceUrl": "ECHA-13a8fb9e-34a0-4dba-8509-65d65c53c650",
@@ -1153,14 +1152,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867265,
         "year": "1948",
         "source": "ECHA IUCLID",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "EU REACH",
         "sourceUrl": "https://echa.europa.eu/",
         "subsourceUrl": "ECHA-13a8fb9e-34a0-4dba-8509-65d65c53c650",
@@ -1187,14 +1186,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867752,
         "year": "1948",
         "source": "ECHA IUCLID",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "EU REACH",
         "sourceUrl": "https://echa.europa.eu/",
         "subsourceUrl": "ECHA-13a8fb9e-34a0-4dba-8509-65d65c53c650",
@@ -1221,14 +1220,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1217529,
         "year": "1948",
         "source": "ECHA IUCLID",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "dermal",
+        "priorityId": 7,
         "subsource": "EU REACH",
         "sourceUrl": "https://echa.europa.eu/",
         "subsourceUrl": "ECHA-13a8fb9e-34a0-4dba-8509-65d65c53c650",
@@ -1255,14 +1254,14 @@
         "supercategory": "Lethality Effect Level",
         "speciesCommon": "rabbit",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "dermal"
     },
     {
         "id": 867223,
         "year": "1948",
         "source": "ECHA IUCLID",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "EU REACH",
         "sourceUrl": "https://echa.europa.eu/",
         "subsourceUrl": "ECHA-13a8fb9e-34a0-4dba-8509-65d65c53c650",
@@ -1289,14 +1288,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867214,
         "year": "1948",
         "source": "ECHA IUCLID",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "EU REACH",
         "sourceUrl": "https://echa.europa.eu/",
         "subsourceUrl": "ECHA-13a8fb9e-34a0-4dba-8509-65d65c53c650",
@@ -1323,14 +1322,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867203,
         "year": "1948",
         "source": "ECHA IUCLID",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "EU REACH",
         "sourceUrl": "https://echa.europa.eu/",
         "subsourceUrl": "ECHA-13a8fb9e-34a0-4dba-8509-65d65c53c650",
@@ -1357,14 +1356,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866967,
         "year": "1948",
         "source": "ECHA IUCLID",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "EU REACH",
         "sourceUrl": "https://echa.europa.eu/",
         "subsourceUrl": "ECHA-13a8fb9e-34a0-4dba-8509-65d65c53c650",
@@ -1391,14 +1390,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867747,
         "year": "1948",
         "source": "ECHA IUCLID",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "EU REACH",
         "sourceUrl": "https://echa.europa.eu/",
         "subsourceUrl": "ECHA-13a8fb9e-34a0-4dba-8509-65d65c53c650",
@@ -1425,14 +1424,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867193,
         "year": "1948",
         "source": "ECHA IUCLID",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "inhalation",
+        "priorityId": 7,
         "subsource": "EU REACH",
         "sourceUrl": "https://echa.europa.eu/",
         "subsourceUrl": "ECHA-13a8fb9e-34a0-4dba-8509-65d65c53c650",
@@ -1459,14 +1458,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "inhalation"
     },
     {
         "id": 867708,
         "year": "2000",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -1493,14 +1492,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866789,
         "year": "2008",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -1527,14 +1526,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866796,
         "year": "2014",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -1561,14 +1560,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866802,
         "year": "2008",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -1595,14 +1594,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866816,
         "year": "2002",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -1629,14 +1628,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866831,
         "year": "2010",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -1663,14 +1662,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866833,
         "year": "1982",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -1697,14 +1696,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866837,
         "year": "2014",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -1731,14 +1730,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866849,
         "year": "2000",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -1765,14 +1764,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866863,
         "year": "2009",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -1799,14 +1798,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866868,
         "year": "2011",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -1833,14 +1832,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866876,
         "year": "2001",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -1867,14 +1866,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866879,
         "year": "2000",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -1901,14 +1900,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866884,
         "year": "2012",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -1935,14 +1934,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866891,
         "year": "2011",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -1969,14 +1968,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866901,
         "year": "2002",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2003,14 +2002,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866912,
         "year": "1985",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2037,14 +2036,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866927,
         "year": "2000",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2071,14 +2070,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866933,
         "year": "2000",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2105,14 +2104,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866942,
         "year": "1988",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "inhalation",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2139,14 +2138,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "inhalation"
     },
     {
         "id": 866955,
         "year": "2014",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2173,14 +2172,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866973,
         "year": "2013",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2207,14 +2206,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866980,
         "year": "2002",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2241,14 +2240,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866987,
         "year": "2014",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2275,14 +2274,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866995,
         "year": "2008",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2309,14 +2308,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867020,
         "year": "2008",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2343,14 +2342,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867043,
         "year": "1982",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2377,14 +2376,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867054,
         "year": "2001",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2411,14 +2410,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867065,
         "year": "2015",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2445,14 +2444,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867070,
         "year": "2002",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2479,14 +2478,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867080,
         "year": "2013",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2513,14 +2512,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867081,
         "year": "2000",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2547,14 +2546,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867085,
         "year": "1985",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2581,14 +2580,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867104,
         "year": "2007",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2615,14 +2614,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867105,
         "year": "1982",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2649,14 +2648,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867115,
         "year": "2014",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2683,14 +2682,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867118,
         "year": "2000",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2717,14 +2716,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867126,
         "year": "2014",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2751,14 +2750,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867132,
         "year": "1985",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2785,14 +2784,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867149,
         "year": "2018",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2819,14 +2818,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867157,
         "year": "2007",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2853,14 +2852,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867161,
         "year": "2007",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2887,14 +2886,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867164,
         "year": "2007",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2921,14 +2920,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867191,
         "year": "1985",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2955,14 +2954,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867195,
         "year": "1982",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -2989,14 +2988,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867196,
         "year": "2008",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3023,14 +3022,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867209,
         "year": "2008",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3057,14 +3056,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867218,
         "year": "1982",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3091,14 +3090,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867226,
         "year": "2008",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3125,14 +3124,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867231,
         "year": "2010",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3159,14 +3158,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867254,
         "year": "2016",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3193,14 +3192,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867255,
         "year": "2000",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3227,14 +3226,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867272,
         "year": "2010",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3261,14 +3260,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867285,
         "year": "2007",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3295,14 +3294,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867298,
         "year": "2007",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3329,14 +3328,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867303,
         "year": "2008",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3363,14 +3362,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867305,
         "year": "2008",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3397,14 +3396,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867328,
         "year": "2007",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3431,14 +3430,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867336,
         "year": "1985",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3465,14 +3464,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867338,
         "year": "2016",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3499,14 +3498,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867352,
         "year": "2000",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3533,14 +3532,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867354,
         "year": "2008",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3567,14 +3566,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867366,
         "year": "2013",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3601,14 +3600,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867376,
         "year": "2002",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3635,14 +3634,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867382,
         "year": "2007",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3669,14 +3668,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867386,
         "year": "2002",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3703,14 +3702,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867392,
         "year": "2012",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3737,14 +3736,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867419,
         "year": "2000",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3771,14 +3770,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867428,
         "year": "2002",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3805,14 +3804,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867432,
         "year": "2002",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3839,14 +3838,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867456,
         "year": "2000",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3873,14 +3872,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867466,
         "year": "2008",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3907,14 +3906,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867468,
         "year": "2008",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3941,14 +3940,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867471,
         "year": "2000",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -3975,14 +3974,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867479,
         "year": "2012",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4009,14 +4008,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867499,
         "year": "2015",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4043,14 +4042,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867518,
         "year": "2001",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4077,14 +4076,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867520,
         "year": "2002",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4111,14 +4110,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867522,
         "year": "2008",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4145,14 +4144,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867538,
         "year": "2002",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4179,14 +4178,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867549,
         "year": "2007",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4213,14 +4212,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867554,
         "year": "2016",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4247,14 +4246,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867559,
         "year": "2014",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4281,14 +4280,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867581,
         "year": "2002",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4315,14 +4314,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867585,
         "year": "2002",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4349,14 +4348,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867597,
         "year": "2018",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4383,14 +4382,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867600,
         "year": "1988",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "inhalation",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4417,14 +4416,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "inhalation"
     },
     {
         "id": 867604,
         "year": "2007",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4451,14 +4450,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867613,
         "year": "2007",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4485,14 +4484,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867622,
         "year": "2010",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4519,14 +4518,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867668,
         "year": "2007",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4553,14 +4552,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867674,
         "year": "2002",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4587,14 +4586,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867681,
         "year": "1982",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4621,14 +4620,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867687,
         "year": "2013",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4655,14 +4654,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867725,
         "year": "2012",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4689,14 +4688,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867730,
         "year": "2001",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4723,14 +4722,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867743,
         "year": "2000",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4757,14 +4756,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867754,
         "year": "2008",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4791,14 +4790,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867758,
         "year": "2013",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4825,14 +4824,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867771,
         "year": "1985",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4859,14 +4858,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867782,
         "year": "2002",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4893,14 +4892,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867813,
         "year": "2001",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4927,14 +4926,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867834,
         "year": "2009",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4961,14 +4960,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867852,
         "year": "2014",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -4995,14 +4994,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867867,
         "year": "2015",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -5029,14 +5028,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1217053,
         "year": "1982",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -5063,14 +5062,14 @@
         "supercategory": "Lethality Effect Level",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1217459,
         "year": "1985",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -5097,14 +5096,14 @@
         "supercategory": "Lethality Effect Level",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1217531,
         "year": "1948",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "dermal",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -5131,14 +5130,14 @@
         "supercategory": "Lethality Effect Level",
         "speciesCommon": "rabbit",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "dermal"
     },
     {
         "id": 1218170,
         "year": "1982",
         "source": "ECHA POC",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "TSCA POC ECHA",
         "sourceUrl": "https://echa.europa.eu/information-on-chemicals/registered-substances",
         "subsourceUrl": "-",
@@ -5165,14 +5164,14 @@
         "supercategory": "Lethality Effect Level",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867192,
         "year": "2003",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Subcutaneous",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5199,14 +5198,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Subcutaneous"
     },
     {
         "id": 867194,
         "year": "2003",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Subcutaneous",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5233,14 +5232,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Subcutaneous"
     },
     {
         "id": 867598,
         "year": "2014",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Gavage",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5267,14 +5266,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "microtus ochrogaster",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Gavage"
     },
     {
         "id": 867365,
         "year": "1997",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Terrestrial Not Reported",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5301,14 +5300,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "house mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Terrestrial Not Reported"
     },
     {
         "id": 867785,
         "year": "1981",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Intraperitoneal",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5335,14 +5334,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Intraperitoneal"
     },
     {
         "id": 867617,
         "year": "1981",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Intraperitoneal",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5369,14 +5368,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Intraperitoneal"
     },
     {
         "id": 867296,
         "year": "2012",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Gavage",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5403,14 +5402,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Gavage"
     },
     {
         "id": 867637,
         "year": "2013",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Food",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5437,14 +5436,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "california mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Food"
     },
     {
         "id": 867292,
         "year": "1981",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Intraperitoneal",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5471,14 +5470,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Intraperitoneal"
     },
     {
         "id": 867282,
         "year": "1981",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Intraperitoneal",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5505,14 +5504,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Intraperitoneal"
     },
     {
         "id": 867672,
         "year": "1999",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Subcutaneous",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5539,14 +5538,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Subcutaneous"
     },
     {
         "id": 867106,
         "year": "1981",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Intraperitoneal",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5573,14 +5572,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Intraperitoneal"
     },
     {
         "id": 867679,
         "year": "1981",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Intraperitoneal",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5607,14 +5606,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Intraperitoneal"
     },
     {
         "id": 867749,
         "year": "1981",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Intraperitoneal",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5641,14 +5640,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Intraperitoneal"
     },
     {
         "id": 867116,
         "year": "1981",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Intraperitoneal",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5675,14 +5674,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Intraperitoneal"
     },
     {
         "id": 867233,
         "year": "2012",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Gavage",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5709,14 +5708,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Gavage"
     },
     {
         "id": 867689,
         "year": "2012",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Gavage",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5743,14 +5742,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Gavage"
     },
     {
         "id": 867180,
         "year": "2003",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Subcutaneous",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5777,14 +5776,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Subcutaneous"
     },
     {
         "id": 867206,
         "year": "1981",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Intraperitoneal",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5811,14 +5810,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Intraperitoneal"
     },
     {
         "id": 867032,
         "year": "1997",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Terrestrial Not Reported",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5845,14 +5844,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "house mouse",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Terrestrial Not Reported"
     },
     {
         "id": 867501,
         "year": "1981",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Intraperitoneal",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5879,14 +5878,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Intraperitoneal"
     },
     {
         "id": 867509,
         "year": "1981",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Intraperitoneal",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5913,14 +5912,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Intraperitoneal"
     },
     {
         "id": 867455,
         "year": "2012",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Gavage",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5947,14 +5946,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Gavage"
     },
     {
         "id": 866907,
         "year": "1981",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Intraperitoneal",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -5981,14 +5980,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Intraperitoneal"
     },
     {
         "id": 866906,
         "year": "1981",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Intraperitoneal",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -6015,14 +6014,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Intraperitoneal"
     },
     {
         "id": 867050,
         "year": "1981",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Intraperitoneal",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -6049,14 +6048,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Intraperitoneal"
     },
     {
         "id": 867478,
         "year": "2003",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Subcutaneous",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -6083,14 +6082,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Subcutaneous"
     },
     {
         "id": 866920,
         "year": "2012",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Gavage",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -6117,14 +6116,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Gavage"
     },
     {
         "id": 867413,
         "year": "1981",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Intraperitoneal",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -6151,14 +6150,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Intraperitoneal"
     },
     {
         "id": 866856,
         "year": "1981",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Intraperitoneal",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -6185,14 +6184,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Intraperitoneal"
     },
     {
         "id": 867058,
         "year": "2002",
         "source": "ECOTOX",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "Subcutaneous",
+        "priorityId": 3,
         "subsource": "EPA ORD",
         "sourceUrl": "https://cfpub.epa.gov/ecotox/",
         "subsourceUrl": "-",
@@ -6219,14 +6218,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "norway rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "Subcutaneous"
     },
     {
         "id": 867270,
         "year": "2008",
         "source": "EFSA",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "-",
+        "priorityId": 5,
         "subsource": "EFSA AFC",
         "sourceUrl": "https://zenodo.org/record/3693783#.XrsBMmhKjIU",
         "subsourceUrl": "-",
@@ -6253,14 +6252,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 5
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "-"
     },
     {
         "id": 1375806,
         "year": "2008",
         "source": "EFSA",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 5,
         "subsource": "EFSA AFC",
         "sourceUrl": "https://zenodo.org/record/3693783#.XrsBMmhKjIU",
         "subsourceUrl": "-",
@@ -6287,14 +6286,14 @@
         "supercategory": "Exposure Limit",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 5
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1377289,
         "year": "2008",
         "source": "EFSA",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 5,
         "subsource": "EFSA AFC",
         "sourceUrl": "https://zenodo.org/record/3693783#.XrsBMmhKjIU",
         "subsourceUrl": "-",
@@ -6321,14 +6320,14 @@
         "supercategory": "Exposure Limit",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 5
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867016,
         "year": "2008",
         "source": "EFSA",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "-",
+        "priorityId": 5,
         "subsource": "EFSA AFC",
         "sourceUrl": "https://zenodo.org/record/3693783#.XrsBMmhKjIU",
         "subsourceUrl": "-",
@@ -6355,14 +6354,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 5
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "-"
     },
     {
         "id": 867742,
         "year": "2008",
         "source": "EFSA",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 5,
         "subsource": "EFSA AFC",
         "sourceUrl": "https://zenodo.org/record/3693783#.XrsBMmhKjIU",
         "subsourceUrl": "-",
@@ -6389,14 +6388,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 5
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1376445,
         "year": "-",
         "source": "FDA CEDI",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 2,
         "subsource": "FDA CFSAN",
         "sourceUrl": "https://www.accessdata.fda.gov/scripts/sda/sdNavigation.cfm?sd=edisrev",
         "subsourceUrl": "-",
@@ -6423,14 +6422,14 @@
         "supercategory": "Exposure Limit",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 2
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1375699,
         "year": "-",
         "source": "FDA CEDI",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 2,
         "subsource": "FDA CFSAN",
         "sourceUrl": "https://www.accessdata.fda.gov/scripts/sda/sdNavigation.cfm?sd=edisrev",
         "subsourceUrl": "-",
@@ -6457,14 +6456,14 @@
         "supercategory": "Exposure Limit",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 2
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866909,
         "year": "-",
         "source": "HEAST",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "EPA/ORNL/OLEM",
         "sourceUrl": "https://epa-heast.ornl.gov/heast.php",
         "subsourceUrl": "-",
@@ -6491,14 +6490,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1101366,
         "year": "-",
         "source": "HEAST",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 3,
         "subsource": "EPA/ORNL/OLEM",
         "sourceUrl": "https://epa-heast.ornl.gov/heast.php",
         "subsourceUrl": "-",
@@ -6525,14 +6524,14 @@
         "supercategory": "Toxicity Value",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 3
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1217154,
         "year": "-",
         "source": "HPVIS",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA OPPT",
         "sourceUrl": "-",
         "subsourceUrl": "-",
@@ -6559,14 +6558,14 @@
         "supercategory": "Lethality Effect Level",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867483,
         "year": "-",
         "source": "HPVIS",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA OPPT",
         "sourceUrl": "-",
         "subsourceUrl": "-",
@@ -6593,14 +6592,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867403,
         "year": "-",
         "source": "HPVIS",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA OPPT",
         "sourceUrl": "-",
         "subsourceUrl": "-",
@@ -6627,14 +6626,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1216619,
         "year": "-",
         "source": "HPVIS",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA OPPT",
         "sourceUrl": "-",
         "subsourceUrl": "-",
@@ -6661,14 +6660,14 @@
         "supercategory": "Lethality Effect Level",
         "speciesCommon": "rabbit",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1217229,
         "year": "-",
         "source": "HPVIS",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA OPPT",
         "sourceUrl": "-",
         "subsourceUrl": "-",
@@ -6695,14 +6694,14 @@
         "supercategory": "Lethality Effect Level",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867010,
         "year": "1982",
         "source": "HPVIS",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA OPPT",
         "sourceUrl": "-",
         "subsourceUrl": "-",
@@ -6729,14 +6728,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1218193,
         "year": "-",
         "source": "HPVIS",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "inhalation",
+        "priorityId": 4,
         "subsource": "EPA OPPT",
         "sourceUrl": "-",
         "subsourceUrl": "-",
@@ -6763,14 +6762,14 @@
         "supercategory": "Lethality Effect Level",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "inhalation"
     },
     {
         "id": 867420,
         "year": "-",
         "source": "HPVIS",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA OPPT",
         "sourceUrl": "-",
         "subsourceUrl": "-",
@@ -6797,14 +6796,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1101673,
         "year": "-",
         "source": "IRIS",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 1,
         "subsource": "EPA NCEA",
         "sourceUrl": "https://cfpub.epa.gov/ncea/iris_drafts/simple_list.cfm",
         "subsourceUrl": "-",
@@ -6831,14 +6830,14 @@
         "supercategory": "Toxicity Value",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 1
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867557,
         "year": "-",
         "source": "IRIS",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 1,
         "subsource": "EPA NCEA",
         "sourceUrl": "https://cfpub.epa.gov/ncea/iris_drafts/simple_list.cfm",
         "subsourceUrl": "-",
@@ -6865,14 +6864,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 1
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1425643,
         "year": "-",
         "source": "Pennsylvania DEP MCLs",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 5,
         "subsource": "MSC Table 1",
         "sourceUrl": "https://www.dep.pa.gov/Business/Land/LandRecycling/Standards-Guidance-Procedures/Pages/Statewide-Health-Standards.aspx",
         "subsourceUrl": "-",
@@ -6899,14 +6898,14 @@
         "supercategory": "Misc Information",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 5
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1427018,
         "year": "-",
         "source": "Pennsylvania DEP MCLs",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 5,
         "subsource": "MSC Table 1",
         "sourceUrl": "https://www.dep.pa.gov/Business/Land/LandRecycling/Standards-Guidance-Procedures/Pages/Statewide-Health-Standards.aspx",
         "subsourceUrl": "-",
@@ -6933,14 +6932,14 @@
         "supercategory": "Misc Information",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 5
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1425542,
         "year": "-",
         "source": "Pennsylvania DEP MCLs",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 5,
         "subsource": "MSC Table 1",
         "sourceUrl": "https://www.dep.pa.gov/Business/Land/LandRecycling/Standards-Guidance-Procedures/Pages/Statewide-Health-Standards.aspx",
         "subsourceUrl": "-",
@@ -6967,14 +6966,14 @@
         "supercategory": "Misc Information",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 5
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1427636,
         "year": "-",
         "source": "Pennsylvania DEP MCLs",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 5,
         "subsource": "MSC Table 1",
         "sourceUrl": "https://www.dep.pa.gov/Business/Land/LandRecycling/Standards-Guidance-Procedures/Pages/Statewide-Health-Standards.aspx",
         "subsourceUrl": "-",
@@ -7001,14 +7000,14 @@
         "supercategory": "Misc Information",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 5
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1426666,
         "year": "-",
         "source": "Pennsylvania DEP MCLs",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 5,
         "subsource": "MSC Table 1",
         "sourceUrl": "https://www.dep.pa.gov/Business/Land/LandRecycling/Standards-Guidance-Procedures/Pages/Statewide-Health-Standards.aspx",
         "subsourceUrl": "-",
@@ -7035,14 +7034,14 @@
         "supercategory": "Misc Information",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 5
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1426386,
         "year": "-",
         "source": "Pennsylvania DEP MCLs",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 5,
         "subsource": "MSC Table 1",
         "sourceUrl": "https://www.dep.pa.gov/Business/Land/LandRecycling/Standards-Guidance-Procedures/Pages/Statewide-Health-Standards.aspx",
         "subsourceUrl": "-",
@@ -7069,14 +7068,14 @@
         "supercategory": "Misc Information",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 5
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1101660,
         "year": "-",
         "source": "RSL",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": null,
+        "priorityId": 2,
         "subsource": "EPA Regions",
         "sourceUrl": "https://www.epa.gov/risk/regional-screening-levels-rsls-generic-tables",
         "subsourceUrl": "-",
@@ -7103,14 +7102,14 @@
         "supercategory": "Toxicity Value",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 2
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": null
     },
     {
         "id": 1369572,
         "year": "-",
         "source": "RSL",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": null,
+        "priorityId": 2,
         "subsource": "EPA Regions",
         "sourceUrl": "https://www.epa.gov/risk/regional-screening-levels-rsls-generic-tables",
         "subsourceUrl": "-",
@@ -7137,14 +7136,14 @@
         "supercategory": "Screening Level",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 2
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": null
     },
     {
         "id": 1369493,
         "year": "-",
         "source": "RSL",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": null,
+        "priorityId": 2,
         "subsource": "EPA Regions",
         "sourceUrl": "https://www.epa.gov/risk/regional-screening-levels-rsls-generic-tables",
         "subsourceUrl": "-",
@@ -7171,14 +7170,14 @@
         "supercategory": "Screening Level",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 2
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": null
     },
     {
         "id": 1369086,
         "year": "-",
         "source": "RSL",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": null,
+        "priorityId": 2,
         "subsource": "EPA Regions",
         "sourceUrl": "https://www.epa.gov/risk/regional-screening-levels-rsls-generic-tables",
         "subsourceUrl": "-",
@@ -7205,14 +7204,14 @@
         "supercategory": "Screening Level",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 2
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": null
     },
     {
         "id": 1370348,
         "year": "-",
         "source": "RSL",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": null,
+        "priorityId": 2,
         "subsource": "EPA Regions",
         "sourceUrl": "https://www.epa.gov/risk/regional-screening-levels-rsls-generic-tables",
         "subsourceUrl": "-",
@@ -7239,14 +7238,14 @@
         "supercategory": "Screening Level",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 2
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": null
     },
     {
         "id": 1368805,
         "year": "-",
         "source": "RSL",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": null,
+        "priorityId": 2,
         "subsource": "EPA Regions",
         "sourceUrl": "https://www.epa.gov/risk/regional-screening-levels-rsls-generic-tables",
         "subsourceUrl": "-",
@@ -7273,14 +7272,14 @@
         "supercategory": "Screening Level",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 2
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": null
     },
     {
         "id": 1370737,
         "year": "-",
         "source": "RSL",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": null,
+        "priorityId": 2,
         "subsource": "EPA Regions",
         "sourceUrl": "https://www.epa.gov/risk/regional-screening-levels-rsls-generic-tables",
         "subsourceUrl": "-",
@@ -7307,14 +7306,14 @@
         "supercategory": "Screening Level",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 2
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": null
     },
     {
         "id": 1371521,
         "year": "-",
         "source": "RSL",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": null,
+        "priorityId": 2,
         "subsource": "EPA Regions",
         "sourceUrl": "https://www.epa.gov/risk/regional-screening-levels-rsls-generic-tables",
         "subsourceUrl": "-",
@@ -7341,14 +7340,14 @@
         "supercategory": "Screening Level",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 2
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": null
     },
     {
         "id": 1367998,
         "year": "-",
         "source": "RSL",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": null,
+        "priorityId": 2,
         "subsource": "EPA Regions",
         "sourceUrl": "https://www.epa.gov/risk/regional-screening-levels-rsls-generic-tables",
         "subsourceUrl": "-",
@@ -7375,14 +7374,14 @@
         "supercategory": "Screening Level",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 2
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": null
     },
     {
         "id": 1217032,
         "year": "-",
         "source": "TEST",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 7,
         "subsource": "EPA ORD",
         "sourceUrl": "-",
         "subsourceUrl": "-",
@@ -7409,14 +7408,14 @@
         "supercategory": "Lethality Effect Level",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 7
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866984,
         "year": "2001",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -7443,14 +7442,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867753,
         "year": "2007",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -7477,14 +7476,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867646,
         "year": "2006",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -7511,14 +7510,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867295,
         "year": "1999",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -7545,14 +7544,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867626,
         "year": "2001",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -7579,14 +7578,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866815,
         "year": "2001",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -7613,14 +7612,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867769,
         "year": "1982",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -7647,14 +7646,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867307,
         "year": "1978",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -7681,14 +7680,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867315,
         "year": "1985",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -7715,14 +7714,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867026,
         "year": "1978",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -7749,14 +7748,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867779,
         "year": "1982",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -7783,14 +7782,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866800,
         "year": "1978",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -7817,14 +7816,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867348,
         "year": "1985",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -7851,14 +7850,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867616,
         "year": "1982",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -7885,14 +7884,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866931,
         "year": "2001",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -7919,14 +7918,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867369,
         "year": "1978",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -7953,14 +7952,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867814,
         "year": "2007",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -7987,14 +7986,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867378,
         "year": "1982",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8021,14 +8020,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867816,
         "year": "2010",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8055,14 +8054,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867817,
         "year": "1999",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8089,14 +8088,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867387,
         "year": "1982",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8123,14 +8122,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867584,
         "year": "1982",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8157,14 +8156,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867562,
         "year": "2006",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8191,14 +8190,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867431,
         "year": "2010",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8225,14 +8224,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867558,
         "year": "1982",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8259,14 +8258,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866902,
         "year": "2007",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8293,14 +8292,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867439,
         "year": "1982",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8327,14 +8326,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867490,
         "year": "1978",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8361,14 +8360,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866786,
         "year": "1985",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8395,14 +8394,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867712,
         "year": "1999",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8429,14 +8428,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867137,
         "year": "2001",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8463,14 +8462,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867693,
         "year": "1978",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8497,14 +8496,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867131,
         "year": "2010",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8531,14 +8530,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867125,
         "year": "1982",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8565,14 +8564,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867224,
         "year": "1985",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8599,14 +8598,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866978,
         "year": "2007",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8633,14 +8632,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "mouse",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866830,
         "year": "2001",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8667,14 +8666,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867238,
         "year": "1999",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8701,14 +8700,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867121,
         "year": "2010",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8735,14 +8734,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867244,
         "year": "1978",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8769,14 +8768,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867686,
         "year": "2006",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8803,14 +8802,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866968,
         "year": "1978",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8837,14 +8836,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 866951,
         "year": "2006",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8871,14 +8870,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 867163,
         "year": "1982",
         "source": "ToxRefDB",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "EPA ORD",
         "sourceUrl": "https://doi.org/10.23645/epacomptox.6062545.v3",
         "subsourceUrl": "-",
@@ -8905,14 +8904,14 @@
         "supercategory": "Point of Departure",
         "speciesCommon": "rat",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     },
     {
         "id": 1365657,
         "year": "-",
         "source": "USGS HBSL",
-        "dtxsid": "DTXSID7020182",
-        "exposureRoute": "oral",
+        "priorityId": 4,
         "subsource": "Water Quality Data",
         "sourceUrl": "https://water.usgs.gov/water-resources/hbsl",
         "subsourceUrl": "-",
@@ -8939,6 +8938,7 @@
         "supercategory": "Screening Level",
         "speciesCommon": "-",
         "humanEcoNt": "human health",
-        "priorityId": 4
+        "dtxsid": "DTXSID7020182",
+        "exposureRoute": "oral"
     }
 ]

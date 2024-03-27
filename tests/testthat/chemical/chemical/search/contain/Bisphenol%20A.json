@@ -7369,7 +7369,7 @@
     },
     {
         "searchName": "Expert Validated Synonym",
-        "searchValue": "4,4'-Bisphenol A diphthalic anhydride",
+        "searchValue": "Bisphenol A dianhydride",
         "rank": 10,
         "dtxsid": "DTXSID3028001",
         "dtxcid": "DTXCID208001",
@@ -7525,7 +7525,7 @@
     },
     {
         "searchName": "Synonym from Valid Source",
-        "searchValue": "Diglycidyl ether bisphenol A homopolymer",
+        "searchValue": "Bisphenol A diglycidyl ether polymer",
         "rank": 11,
         "dtxsid": "DTXSID3049590",
         "dtxcid": null,
@@ -7681,7 +7681,7 @@
     },
     {
         "searchName": "Synonym",
-        "searchValue": "Bisphenol ACP",
+        "searchValue": "Bisphenol AP",
         "rank": 15,
         "dtxsid": "DTXSID5051444",
         "dtxcid": "DTXCID4030041",
@@ -7729,7 +7729,7 @@
     },
     {
         "searchName": "Synonym",
-        "searchValue": "Bisphenol A ethoxylate",
+        "searchValue": "Bisphenol A bis(2-hydroxyethyl)ether",
         "rank": 15,
         "dtxsid": "DTXSID6029204",
         "dtxcid": "DTXCID909204",
