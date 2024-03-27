@@ -103,35 +103,51 @@ register_ccdr <- function(key, write = FALSE) {
   # deal with API key
   if (!missing(key) && write) {
 
-    # grab .Renviron file path
-    environ_file <- file.path(Sys.getenv('HOME'), '.Renviron')
-
-    # create .Renviron file it does not exist
-    if (!file.exists(file.path(Sys.getenv('HOME'), '.Renviron'))) {
-      cli::cli_alert_info('Creating file {environ_file}')
-      file.create(environ_file)
-    }
-
-    # read in lines
-    environ_lines <- readLines(environ_file)
-
-    # if no key present, add; otherwise replace old one
-    if (!any(stringr::str_detect(environ_lines, 'CCTE_API_KEY='))) {
-
-      cli::cli_alert_info('Adding key to {environ_file}')
-      environ_lines <- c(environ_lines, glue::glue('CCTE_API_KEY={key}'))
-      writeLines(environ_lines, environ_file)
-
+    if (R.version.string < "4.0.0"){
+      warning("This function relies on R version 4.0.0 or later. Cannot store API key over multiple sessions.")
     } else {
-
-      key_line_index <- which(stringr::str_detect(environ_lines, 'CCTE_API_KEY='))
-      old_key <- stringr::str_extract(environ_lines[key_line_index], '(?<=CCTE_API_KEY=)\\w+')
-      cli::cli_alert_info('Replacing old key ({old_key}) with new key in {environ_file}')
-      environ_lines[key_line_index] <- glue::glue('CCTE_API_KEY={key}')
-      writeLines(environ_lines, environ_file)
-
+      ccdrdir <- tools::R_user_dir("ccdR")
+      if (!dir.exists(ccdrdir)){
+        dir.create(ccdrdir, recursive = TRUE)
+      }
+      fname <- file.path(ccdrdir, "api.dcf")
+      if (file.exists(fname)) {
+        warning("Existing file found, so overwriting")
+      }
+      con <- file(fname)
+      cat("key:", key, file = con)
+      close(con)
     }
-
+#
+#     # grab .Renviron file path
+#     environ_file <- file.path(Sys.getenv('HOME'), '.Renviron')
+#
+#     # create .Renviron file it does not exist
+#     if (!file.exists(file.path(Sys.getenv('HOME'), '.Renviron'))) {
+#       cli::cli_alert_info('Creating file {environ_file}')
+#       file.create(environ_file)
+#     }
+#
+#     # read in lines
+#     environ_lines <- readLines(environ_file)
+#
+#     # if no key present, add; otherwise replace old one
+#     if (!any(stringr::str_detect(environ_lines, 'CCTE_API_KEY='))) {
+#
+#       cli::cli_alert_info('Adding key to {environ_file}')
+#       environ_lines <- c(environ_lines, glue::glue('CCTE_API_KEY={key}'))
+#       writeLines(environ_lines, environ_file)
+#
+#     } else {
+#
+#       key_line_index <- which(stringr::str_detect(environ_lines, 'CCTE_API_KEY='))
+#       old_key <- stringr::str_extract(environ_lines[key_line_index], '(?<=CCTE_API_KEY=)\\w+')
+#       cli::cli_alert_info('Replacing old key ({old_key}) with new key in {environ_file}')
+#       environ_lines[key_line_index] <- glue::glue('CCTE_API_KEY={key}')
+#       writeLines(environ_lines, environ_file)
+#
+#     }
+#
     # set key in current session
     Sys.setenv('CCTE_API_KEY' = key)
 
