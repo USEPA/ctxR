@@ -149,12 +149,14 @@ register_ccdr <- function(key, write = FALSE) {
 #     }
 #
     # set key in current session
-    Sys.setenv('CCTE_API_KEY' = key)
+    .pkgenv[["api"]] <- key
+    #Sys.setenv('CCTE_API_KEY' = key)
 
   } else if (!missing(key) && !write) {
 
     # set key in current session
-    Sys.setenv('CCTE_API_KEY' = key)
+    .pkgenv[["api"]] <- key
+    #Sys.setenv('CCTE_API_KEY' = key)
 
   }
 
@@ -191,7 +193,7 @@ print.ccte_credentials <- function(...) {
 #' ccte_key()
 
 ccte_key <- function() {
-  key <- Sys.getenv('CCTE_API_KEY')
+  key <- .pkgenv[["api"]] #Sys.getenv('CCTE_API_KEY')
 
   if (key == '') {
     return(NA_character_)
