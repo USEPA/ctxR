@@ -5,11 +5,11 @@
         "id": 54041850,
         "source": "PhysPropNCCT",
         "description": "The PHYSPROP data sets are the publicly available data files underpinning the EPISuiteTM prediction models.  The data were curated by NCCT using a combination of manual and automated processing routines with only the highest quality data reported.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "experimental",
         "unit": null,
-        "propertyId": "logkoa-octanol-air"
+        "propertyId": "logkoa-octanol-air",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "LogKow: Octanol-Water",
@@ -17,11 +17,11 @@
         "id": 56883880,
         "source": "PhysPropNCCT",
         "description": "The PHYSPROP data sets are the publicly available data files underpinning the EPISuiteTM prediction models.  The data were curated by NCCT using a combination of manual and automated processing routines with only the highest quality data reported.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "experimental",
         "unit": null,
-        "propertyId": "logkow-octanol-water"
+        "propertyId": "logkow-octanol-water",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "LogKow: Octanol-Water",
@@ -29,11 +29,11 @@
         "id": 43385491,
         "source": "Yalkowsky et al. Chemosphere 2002, 48, 487–509",
         "description": "Ran, Y.; He, Y.; Yang, G.; Johnson, J. L. H.; Yalkowsky, S. H. Estimation of aqueous solubility of organic compounds by using the general solubility equation.  (<a href=\"http://dx.doi.org/10.15152/QDB.188\" target=\"_blank\">Chemosphere 2002, 48, 487–509<\/a>)\r\n",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "experimental",
         "unit": null,
-        "propertyId": "logkow-octanol-water"
+        "propertyId": "logkow-octanol-water",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Melting Point",
@@ -41,11 +41,11 @@
         "id": 53338790,
         "source": "Jean-Claude Bradley Open Melting Point Dataset",
         "description": "Jean-Claude Bradley's Legacy Dataset of Open Melting Points. Website: <a href='http://dx.doi.org/10.6084/m9.figshare.1031637' target='_blank'>http://dx.doi.org/10.6084/m9.figshare.1031637<\/a>",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "experimental",
         "unit": "°C",
-        "propertyId": "melting-point"
+        "propertyId": "melting-point",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Melting Point",
@@ -53,11 +53,11 @@
         "id": 50264016,
         "source": "PhysPropNCCT",
         "description": "The PHYSPROP data sets are the publicly available data files underpinning the EPISuiteTM prediction models.  The data were curated by NCCT using a combination of manual and automated processing routines with only the highest quality data reported.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "experimental",
         "unit": "°C",
-        "propertyId": "melting-point"
+        "propertyId": "melting-point",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Vapor Pressure",
@@ -65,11 +65,11 @@
         "id": 44649469,
         "source": "PhysPropNCCT",
         "description": "The PHYSPROP data sets are the publicly available data files underpinning the EPISuiteTM prediction models.  The data were curated by NCCT using a combination of manual and automated processing routines with only the highest quality data reported.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "experimental",
         "unit": "mmHg",
-        "propertyId": "vapor-pressure"
+        "propertyId": "vapor-pressure",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Water Solubility",
@@ -77,11 +77,11 @@
         "id": 58807926,
         "source": "PhysPropNCCT",
         "description": "The PHYSPROP data sets are the publicly available data files underpinning the EPISuiteTM prediction models.  The data were curated by NCCT using a combination of manual and automated processing routines with only the highest quality data reported.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "experimental",
         "unit": "mol/L",
-        "propertyId": "water-solubility"
+        "propertyId": "water-solubility",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Water Solubility",
@@ -89,11 +89,11 @@
         "id": 45322962,
         "source": "Yalkowsky et al. Chemosphere 2002, 48, 487–509",
         "description": "Ran, Y.; He, Y.; Yang, G.; Johnson, J. L. H.; Yalkowsky, S. H. Estimation of aqueous solubility of organic compounds by using the general solubility equation.  (<a href=\"http://dx.doi.org/10.15152/QDB.188\" target=\"_blank\">Chemosphere 2002, 48, 487–509<\/a>)\r\n",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "experimental",
         "unit": "mol/L",
-        "propertyId": "water-solubility"
+        "propertyId": "water-solubility",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Water Solubility",
@@ -101,11 +101,11 @@
         "id": 51318099,
         "source": "Kovdienko, et. al. Molecular informatics 29.5 (2010): 394-406.",
         "description": "Kovdienko, Nikolay A., et al. \"Application of random forest and multiple linear regression techniques to QSPR prediction of an aqueous solubility for military compounds.\" <a href='https://onlinelibrary.wiley.com/doi/full/10.1002/minf.201000001'target='_blank'>Molecular informatics 29.5 (2010): 394-406. <\/a>",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "experimental",
         "unit": "mol/L",
-        "propertyId": "water-solubility"
+        "propertyId": "water-solubility",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Boiling Point",
@@ -113,11 +113,11 @@
         "id": 49444874,
         "source": "TEST",
         "description": "The <a href='https://www.epa.gov/chemical-research/toxicity-estimation-software-tool-test' target='_blank'>Toxicity Estimation Software Tool (TEST)<\/a> is an EPA software application developed to allow users to easily estimate the toxicity of chemicals using Quantitative Structure Activity Relationships (QSARs) methodologies.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "°C",
-        "propertyId": "boiling-point"
+        "propertyId": "boiling-point",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Boiling Point",
@@ -125,11 +125,11 @@
         "id": 46062863,
         "source": "EPISUITE",
         "description": "<a href='https://www.epa.gov/tsca-screening-tools/epi-suitetm-estimation-program-interface' target='_blank'>EPISUITE Estimation Programs Interface Suite™<\/a> is a Windows®-based suite of physical/chemical property and environmental fate estimation programs developed by EPA’s and Syracuse Research Corp.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "°C",
-        "propertyId": "boiling-point"
+        "propertyId": "boiling-point",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Boiling Point",
@@ -137,11 +137,11 @@
         "id": 41341888,
         "source": "OPERA",
         "description": "OPERA is a free and open source/open data suite of QSAR Models providing predictions and additional information including applicability domain and accuracy assessment, as described in the publication <a href='http://dx.doi.org/10.1186/s13321-018-0263-1'target='_blank'>OPERA models for predicting physicochemical properties and environmental fate endpoints<\/a>. All models were built on curated data and standardized chemical structures as described in the publication <a href='http://dx.doi.org/10.1080/1062936X.2016.1253611'target='_blank'>An automated curation procedure for addressing chemical errors and inconsistencies in public datasets used in QSAR modelling<\/a>. All OPERA properties are predicted under ambient conditions of 760mm of Hg at 25 degrees Celsius.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "°C",
-        "propertyId": "boiling-point"
+        "propertyId": "boiling-point",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Boiling Point",
@@ -149,11 +149,11 @@
         "id": 48586842,
         "source": "ACD/Labs",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "°C",
-        "propertyId": "boiling-point"
+        "propertyId": "boiling-point",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Density",
@@ -161,11 +161,11 @@
         "id": 45846969,
         "source": "TEST",
         "description": "The <a href='https://www.epa.gov/chemical-research/toxicity-estimation-software-tool-test' target='_blank'>Toxicity Estimation Software Tool (TEST)<\/a> is an EPA software application developed to allow users to easily estimate the toxicity of chemicals using Quantitative Structure Activity Relationships (QSARs) methodologies.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "g/cm^3",
-        "propertyId": "density"
+        "propertyId": "density",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Density",
@@ -173,11 +173,11 @@
         "id": 47065894,
         "source": "ACD/Labs",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "g/cm^3",
-        "propertyId": "density"
+        "propertyId": "density",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Flash Point",
@@ -185,11 +185,11 @@
         "id": 54985749,
         "source": "TEST",
         "description": "The <a href='https://www.epa.gov/chemical-research/toxicity-estimation-software-tool-test' target='_blank'>Toxicity Estimation Software Tool (TEST)<\/a> is an EPA software application developed to allow users to easily estimate the toxicity of chemicals using Quantitative Structure Activity Relationships (QSARs) methodologies.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "°C",
-        "propertyId": "flash-point"
+        "propertyId": "flash-point",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Flash Point",
@@ -197,11 +197,11 @@
         "id": 43770155,
         "source": "ACD/Labs",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "°C",
-        "propertyId": "flash-point"
+        "propertyId": "flash-point",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Henry's Law",
@@ -209,11 +209,11 @@
         "id": 56697832,
         "source": "OPERA",
         "description": "OPERA is a free and open source/open data suite of QSAR Models providing predictions and additional information including applicability domain and accuracy assessment, as described in the publication <a href='http://dx.doi.org/10.1186/s13321-018-0263-1'target='_blank'>OPERA models for predicting physicochemical properties and environmental fate endpoints<\/a>. All models were built on curated data and standardized chemical structures as described in the publication <a href='http://dx.doi.org/10.1080/1062936X.2016.1253611'target='_blank'>An automated curation procedure for addressing chemical errors and inconsistencies in public datasets used in QSAR modelling<\/a>. All OPERA properties are predicted under ambient conditions of 760mm of Hg at 25 degrees Celsius.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "atm-m3/mole",
-        "propertyId": "henrys-law"
+        "propertyId": "henrys-law",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Index of Refraction",
@@ -221,11 +221,11 @@
         "id": 45202962,
         "source": "ACD/Labs",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": null,
-        "propertyId": "index-of-refraction"
+        "propertyId": "index-of-refraction",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "LogKoa: Octanol-Air",
@@ -233,11 +233,11 @@
         "id": 53741250,
         "source": "OPERA",
         "description": "OPERA is a free and open source/open data suite of QSAR Models providing predictions and additional information including applicability domain and accuracy assessment, as described in the publication <a href='http://dx.doi.org/10.1186/s13321-018-0263-1'target='_blank'>OPERA models for predicting physicochemical properties and environmental fate endpoints<\/a>. All models were built on curated data and standardized chemical structures as described in the publication <a href='http://dx.doi.org/10.1080/1062936X.2016.1253611'target='_blank'>An automated curation procedure for addressing chemical errors and inconsistencies in public datasets used in QSAR modelling<\/a>. All OPERA properties are predicted under ambient conditions of 760mm of Hg at 25 degrees Celsius.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": null,
-        "propertyId": "logkoa-octanol-air"
+        "propertyId": "logkoa-octanol-air",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "LogKow: Octanol-Water",
@@ -245,11 +245,11 @@
         "id": 52315425,
         "source": "ACD/Labs",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": null,
-        "propertyId": "logkow-octanol-water"
+        "propertyId": "logkow-octanol-water",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "LogKow: Octanol-Water",
@@ -257,11 +257,11 @@
         "id": 42109348,
         "source": "ACD/Labs Consensus",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": null,
-        "propertyId": "logkow-octanol-water"
+        "propertyId": "logkow-octanol-water",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "LogKow: Octanol-Water",
@@ -269,11 +269,11 @@
         "id": 47005456,
         "source": "EPISUITE",
         "description": "<a href='https://www.epa.gov/tsca-screening-tools/epi-suitetm-estimation-program-interface' target='_blank'>EPISUITE Estimation Programs Interface Suite™<\/a> is a Windows®-based suite of physical/chemical property and environmental fate estimation programs developed by EPA’s and Syracuse Research Corp.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": null,
-        "propertyId": "logkow-octanol-water"
+        "propertyId": "logkow-octanol-water",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "LogKow: Octanol-Water",
@@ -281,11 +281,11 @@
         "id": 54015200,
         "source": "OPERA",
         "description": "OPERA is a free and open source/open data suite of QSAR Models providing predictions and additional information including applicability domain and accuracy assessment, as described in the publication <a href='http://dx.doi.org/10.1186/s13321-018-0263-1'target='_blank'>OPERA models for predicting physicochemical properties and environmental fate endpoints<\/a>. All models were built on curated data and standardized chemical structures as described in the publication <a href='http://dx.doi.org/10.1080/1062936X.2016.1253611'target='_blank'>An automated curation procedure for addressing chemical errors and inconsistencies in public datasets used in QSAR modelling<\/a>. All OPERA properties are predicted under ambient conditions of 760mm of Hg at 25 degrees Celsius.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": null,
-        "propertyId": "logkow-octanol-water"
+        "propertyId": "logkow-octanol-water",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Melting Point",
@@ -293,11 +293,11 @@
         "id": 49667283,
         "source": "OPERA",
         "description": "OPERA is a free and open source/open data suite of QSAR Models providing predictions and additional information including applicability domain and accuracy assessment, as described in the publication <a href='http://dx.doi.org/10.1186/s13321-018-0263-1'target='_blank'>OPERA models for predicting physicochemical properties and environmental fate endpoints<\/a>. All models were built on curated data and standardized chemical structures as described in the publication <a href='http://dx.doi.org/10.1080/1062936X.2016.1253611'target='_blank'>An automated curation procedure for addressing chemical errors and inconsistencies in public datasets used in QSAR modelling<\/a>. All OPERA properties are predicted under ambient conditions of 760mm of Hg at 25 degrees Celsius. All OPERA properties are predicted under ambient conditions of 760mm of Hg at 25 degrees Celsius.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "°C",
-        "propertyId": "melting-point"
+        "propertyId": "melting-point",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Melting Point",
@@ -305,11 +305,11 @@
         "id": 60015997,
         "source": "TEST",
         "description": "The <a href='https://www.epa.gov/chemical-research/toxicity-estimation-software-tool-test' target='_blank'>Toxicity Estimation Software Tool (TEST)<\/a> is an EPA software application developed to allow users to easily estimate the toxicity of chemicals using Quantitative Structure Activity Relationships (QSARs) methodologies.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "°C",
-        "propertyId": "melting-point"
+        "propertyId": "melting-point",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Melting Point",
@@ -317,11 +317,11 @@
         "id": 44706402,
         "source": "EPISUITE",
         "description": "<a href='https://www.epa.gov/tsca-screening-tools/epi-suitetm-estimation-program-interface' target='_blank'>EPISUITE Estimation Programs Interface Suite™<\/a> is a Windows®-based suite of physical/chemical property and environmental fate estimation programs developed by EPA’s and Syracuse Research Corp.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "°C",
-        "propertyId": "melting-point"
+        "propertyId": "melting-point",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Molar Refractivity",
@@ -329,11 +329,11 @@
         "id": 47663173,
         "source": "ACD/Labs",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "cm^3",
-        "propertyId": "molar-refractivity"
+        "propertyId": "molar-refractivity",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Molar Volume",
@@ -341,11 +341,11 @@
         "id": 51056226,
         "source": "ACD/Labs",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "cm^3",
-        "propertyId": "molar-volume"
+        "propertyId": "molar-volume",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Polarizability",
@@ -353,11 +353,11 @@
         "id": 44653864,
         "source": "ACD/Labs",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "Å^3",
-        "propertyId": "polarizability"
+        "propertyId": "polarizability",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Surface Tension",
@@ -365,11 +365,11 @@
         "id": 42518832,
         "source": "ACD/Labs",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "dyn/cm",
-        "propertyId": "surface-tension"
+        "propertyId": "surface-tension",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Thermal Conductivity",
@@ -377,11 +377,11 @@
         "id": 49354617,
         "source": "TEST",
         "description": "The <a href='https://www.epa.gov/chemical-research/toxicity-estimation-software-tool-test' target='_blank'>Toxicity Estimation Software Tool (TEST)<\/a> is an EPA software application developed to allow users to easily estimate the toxicity of chemicals using Quantitative Structure Activity Relationships (QSARs) methodologies.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "mW/(m*K)",
-        "propertyId": "thermal-conductivity"
+        "propertyId": "thermal-conductivity",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Vapor Pressure",
@@ -389,11 +389,11 @@
         "id": 59020164,
         "source": "OPERA",
         "description": "OPERA is a free and open source/open data suite of QSAR Models providing predictions and additional information including applicability domain and accuracy assessment, as described in the publication <a href='http://dx.doi.org/10.1186/s13321-018-0263-1'target='_blank'>OPERA models for predicting physicochemical properties and environmental fate endpoints<\/a>. All models were built on curated data and standardized chemical structures as described in the publication <a href='http://dx.doi.org/10.1080/1062936X.2016.1253611'target='_blank'>An automated curation procedure for addressing chemical errors and inconsistencies in public datasets used in QSAR modelling<\/a>. All OPERA properties are predicted under ambient conditions of 760mm of Hg at 25 degrees Celsius.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "mmHg",
-        "propertyId": "vapor-pressure"
+        "propertyId": "vapor-pressure",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Vapor Pressure",
@@ -401,11 +401,11 @@
         "id": 59581648,
         "source": "TEST",
         "description": "The <a href='https://www.epa.gov/chemical-research/toxicity-estimation-software-tool-test' target='_blank'>Toxicity Estimation Software Tool (TEST)<\/a> is an EPA software application developed to allow users to easily estimate the toxicity of chemicals using Quantitative Structure Activity Relationships (QSARs) methodologies.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "mmHg",
-        "propertyId": "vapor-pressure"
+        "propertyId": "vapor-pressure",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Vapor Pressure",
@@ -413,11 +413,11 @@
         "id": 48967543,
         "source": "ACD/Labs",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "mmHg",
-        "propertyId": "vapor-pressure"
+        "propertyId": "vapor-pressure",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Water Solubility",
@@ -425,11 +425,11 @@
         "id": 52387960,
         "source": "TEST",
         "description": "The <a href='https://www.epa.gov/chemical-research/toxicity-estimation-software-tool-test' target='_blank'>Toxicity Estimation Software Tool (TEST)<\/a> is an EPA software application developed to allow users to easily estimate the toxicity of chemicals using Quantitative Structure Activity Relationships (QSARs) methodologies.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "mol/L",
-        "propertyId": "water-solubility"
+        "propertyId": "water-solubility",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Water Solubility",
@@ -437,11 +437,11 @@
         "id": 41323329,
         "source": "EPISUITE",
         "description": "<a href='https://www.epa.gov/tsca-screening-tools/epi-suitetm-estimation-program-interface' target='_blank'>EPISUITE Estimation Programs Interface Suite™<\/a> is a Windows®-based suite of physical/chemical property and environmental fate estimation programs developed by EPA’s and Syracuse Research Corp.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "mol/L",
-        "propertyId": "water-solubility"
+        "propertyId": "water-solubility",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Water Solubility",
@@ -449,11 +449,11 @@
         "id": 40477806,
         "source": "ACD/Labs",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "mol/L",
-        "propertyId": "water-solubility"
+        "propertyId": "water-solubility",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Water Solubility",
@@ -461,11 +461,11 @@
         "id": 58008023,
         "source": "OPERA",
         "description": "OPERA is a free and open source/open data suite of QSAR Models providing predictions and additional information including applicability domain and accuracy assessment, as described in the publication <a href='http://dx.doi.org/10.1186/s13321-018-0263-1'target='_blank'>OPERA models for predicting physicochemical properties and environmental fate endpoints<\/a>. All models were built on curated data and standardized chemical structures as described in the publication <a href='http://dx.doi.org/10.1080/1062936X.2016.1253611'target='_blank'>An automated curation procedure for addressing chemical errors and inconsistencies in public datasets used in QSAR modelling<\/a>. All OPERA properties are predicted under ambient conditions of 760mm of Hg at 25 degrees Celsius.",
-        "dtxsid": "DTXSID2021315",
-        "dtxcid": "DTXCID001315",
         "propType": "predicted",
         "unit": "mol/L",
-        "propertyId": "water-solubility"
+        "propertyId": "water-solubility",
+        "dtxsid": "DTXSID2021315",
+        "dtxcid": "DTXCID001315"
     },
     {
         "name": "Boiling Point",
@@ -473,11 +473,11 @@
         "id": 59006296,
         "source": "Alfa Aesar (Chemical company)",
         "description": "Alfa Aesar is a leading international manufacturer, supplier and distributor of fine chemicals, metals, and materials. Company website: <a href=\"https://www.alfa.com/\" target=\"_blank\">https://www.alfa.com/<\/a>",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "experimental",
         "unit": "°C",
-        "propertyId": "boiling-point"
+        "propertyId": "boiling-point",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "LogKow: Octanol-Water",
@@ -485,11 +485,11 @@
         "id": 45805432,
         "source": "PhysPropNCCT",
         "description": "The PHYSPROP data sets are the publicly available data files underpinning the EPISuiteTM prediction models.  The data were curated by NCCT using a combination of manual and automated processing routines with only the highest quality data reported.",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "experimental",
         "unit": null,
-        "propertyId": "logkow-octanol-water"
+        "propertyId": "logkow-octanol-water",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Melting Point",
@@ -497,11 +497,11 @@
         "id": 47659047,
         "source": "PhysPropNCCT",
         "description": "The PHYSPROP data sets are the publicly available data files underpinning the EPISuiteTM prediction models.  The data were curated by NCCT using a combination of manual and automated processing routines with only the highest quality data reported.",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "experimental",
         "unit": "°C",
-        "propertyId": "melting-point"
+        "propertyId": "melting-point",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Melting Point",
@@ -509,11 +509,11 @@
         "id": 40045501,
         "source": "Jean-Claude Bradley Open Melting Point Dataset",
         "description": "Jean-Claude Bradley's Legacy Dataset of Open Melting Points. Website: <a href='http://dx.doi.org/10.6084/m9.figshare.1031637' target='_blank'>http://dx.doi.org/10.6084/m9.figshare.1031637<\/a>",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "experimental",
         "unit": "°C",
-        "propertyId": "melting-point"
+        "propertyId": "melting-point",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Melting Point",
@@ -521,11 +521,11 @@
         "id": 41749996,
         "source": "Jean-Claude Bradley Open Melting Point Dataset",
         "description": "Jean-Claude Bradley's Legacy Dataset of Open Melting Points. Website: <a href='http://dx.doi.org/10.6084/m9.figshare.1031637' target='_blank'>http://dx.doi.org/10.6084/m9.figshare.1031637<\/a>",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "experimental",
         "unit": "°C",
-        "propertyId": "melting-point"
+        "propertyId": "melting-point",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Melting Point",
@@ -533,11 +533,11 @@
         "id": 49902687,
         "source": "Merck Millipore (Chemical company)",
         "description": "Merck Millipore Merck Millipore offers tools and technologies to support the research, development and production of biotechnology and pharmaceutical drug therapies.Company website: <a href=\"http://www.merckmillipore.com/\" target=\"_blank\">http://www.merckmillipore.com/<\/a>",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "experimental",
         "unit": "°C",
-        "propertyId": "melting-point"
+        "propertyId": "melting-point",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Melting Point",
@@ -545,11 +545,11 @@
         "id": 48039416,
         "source": "Alfa Aesar (Chemical company)",
         "description": "Alfa Aesar is a leading international manufacturer, supplier and distributor of fine chemicals, metals, and materials. Company website: <a href=\"https://www.alfa.com/\" target=\"_blank\">https://www.alfa.com/<\/a>",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "experimental",
         "unit": "°C",
-        "propertyId": "melting-point"
+        "propertyId": "melting-point",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Melting Point",
@@ -557,11 +557,11 @@
         "id": 43641394,
         "source": "Tokyo Chemical Industry (Chemical company)",
         "description": "Tokyo Chemical Industry Co. Ltd. (TCI) is a manufacturer of research chemicals and produces more than 23,000 mainly organic  chemicals. Company website: <a href=\"http://www.tcichemicals.com/\" target=\"_blank\">http://www.tcichemicals.com/<\/a>",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "experimental",
         "unit": "°C",
-        "propertyId": "melting-point"
+        "propertyId": "melting-point",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Water Solubility",
@@ -569,11 +569,11 @@
         "id": 42276875,
         "source": "Kovdienko, et. al. Molecular informatics 29.5 (2010): 394-406.",
         "description": "Kovdienko, Nikolay A., et al. \"Application of random forest and multiple linear regression techniques to QSPR prediction of an aqueous solubility for military compounds.\" <a href='https://onlinelibrary.wiley.com/doi/full/10.1002/minf.201000001'target='_blank'>Molecular informatics 29.5 (2010): 394-406. <\/a>",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "experimental",
         "unit": "mol/L",
-        "propertyId": "water-solubility"
+        "propertyId": "water-solubility",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Water Solubility",
@@ -581,11 +581,11 @@
         "id": 53726493,
         "source": "Tetko et al. J. Chem. Inf. and Comp. Sci. 41.6 (2001): 1488-1493",
         "description": "Tetko, Igor V., et al. \"Estimation of aqueous solubility of chemical compounds using E-state indices.\" . <a href='https://pubs.acs.org/doi/10.1021/ci000392t'target='_blank'>J. Chem. Inf. and Comp. Sci. 41.6 (2001): 1488-1493<\/a>\r\n\r\n\r\n",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "experimental",
         "unit": "mol/L",
-        "propertyId": "water-solubility"
+        "propertyId": "water-solubility",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Water Solubility",
@@ -593,11 +593,11 @@
         "id": 42185699,
         "source": "PhysPropNCCT",
         "description": "The PHYSPROP data sets are the publicly available data files underpinning the EPISuiteTM prediction models.  The data were curated by NCCT using a combination of manual and automated processing routines with only the highest quality data reported.",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "experimental",
         "unit": "mol/L",
-        "propertyId": "water-solubility"
+        "propertyId": "water-solubility",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Boiling Point",
@@ -605,11 +605,11 @@
         "id": 48581487,
         "source": "TEST",
         "description": "The <a href='https://www.epa.gov/chemical-research/toxicity-estimation-software-tool-test' target='_blank'>Toxicity Estimation Software Tool (TEST)<\/a> is an EPA software application developed to allow users to easily estimate the toxicity of chemicals using Quantitative Structure Activity Relationships (QSARs) methodologies.",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "°C",
-        "propertyId": "boiling-point"
+        "propertyId": "boiling-point",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Boiling Point",
@@ -617,11 +617,11 @@
         "id": 44637263,
         "source": "EPISUITE",
         "description": "<a href='https://www.epa.gov/tsca-screening-tools/epi-suitetm-estimation-program-interface' target='_blank'>EPISUITE Estimation Programs Interface Suite™<\/a> is a Windows®-based suite of physical/chemical property and environmental fate estimation programs developed by EPA’s and Syracuse Research Corp.",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "°C",
-        "propertyId": "boiling-point"
+        "propertyId": "boiling-point",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Boiling Point",
@@ -629,11 +629,11 @@
         "id": 51592357,
         "source": "OPERA",
         "description": "OPERA is a free and open source/open data suite of QSAR Models providing predictions and additional information including applicability domain and accuracy assessment, as described in the publication <a href='http://dx.doi.org/10.1186/s13321-018-0263-1'target='_blank'>OPERA models for predicting physicochemical properties and environmental fate endpoints<\/a>. All models were built on curated data and standardized chemical structures as described in the publication <a href='http://dx.doi.org/10.1080/1062936X.2016.1253611'target='_blank'>An automated curation procedure for addressing chemical errors and inconsistencies in public datasets used in QSAR modelling<\/a>. All OPERA properties are predicted under ambient conditions of 760mm of Hg at 25 degrees Celsius.",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "°C",
-        "propertyId": "boiling-point"
+        "propertyId": "boiling-point",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Boiling Point",
@@ -641,11 +641,11 @@
         "id": 59786877,
         "source": "ACD/Labs",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "°C",
-        "propertyId": "boiling-point"
+        "propertyId": "boiling-point",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Density",
@@ -653,11 +653,11 @@
         "id": 52532007,
         "source": "TEST",
         "description": "The <a href='https://www.epa.gov/chemical-research/toxicity-estimation-software-tool-test' target='_blank'>Toxicity Estimation Software Tool (TEST)<\/a> is an EPA software application developed to allow users to easily estimate the toxicity of chemicals using Quantitative Structure Activity Relationships (QSARs) methodologies.",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "g/cm^3",
-        "propertyId": "density"
+        "propertyId": "density",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Density",
@@ -665,11 +665,11 @@
         "id": 48361328,
         "source": "ACD/Labs",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "g/cm^3",
-        "propertyId": "density"
+        "propertyId": "density",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Flash Point",
@@ -677,11 +677,11 @@
         "id": 46966770,
         "source": "ACD/Labs",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "°C",
-        "propertyId": "flash-point"
+        "propertyId": "flash-point",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Flash Point",
@@ -689,11 +689,11 @@
         "id": 57747845,
         "source": "TEST",
         "description": "The <a href='https://www.epa.gov/chemical-research/toxicity-estimation-software-tool-test' target='_blank'>Toxicity Estimation Software Tool (TEST)<\/a> is an EPA software application developed to allow users to easily estimate the toxicity of chemicals using Quantitative Structure Activity Relationships (QSARs) methodologies.",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "°C",
-        "propertyId": "flash-point"
+        "propertyId": "flash-point",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Henry's Law",
@@ -701,11 +701,11 @@
         "id": 44819614,
         "source": "OPERA",
         "description": "OPERA is a free and open source/open data suite of QSAR Models providing predictions and additional information including applicability domain and accuracy assessment, as described in the publication <a href='http://dx.doi.org/10.1186/s13321-018-0263-1'target='_blank'>OPERA models for predicting physicochemical properties and environmental fate endpoints<\/a>. All models were built on curated data and standardized chemical structures as described in the publication <a href='http://dx.doi.org/10.1080/1062936X.2016.1253611'target='_blank'>An automated curation procedure for addressing chemical errors and inconsistencies in public datasets used in QSAR modelling<\/a>. All OPERA properties are predicted under ambient conditions of 760mm of Hg at 25 degrees Celsius.",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "atm-m3/mole",
-        "propertyId": "henrys-law"
+        "propertyId": "henrys-law",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Index of Refraction",
@@ -713,11 +713,11 @@
         "id": 49954963,
         "source": "ACD/Labs",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": null,
-        "propertyId": "index-of-refraction"
+        "propertyId": "index-of-refraction",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "LogKoa: Octanol-Air",
@@ -725,11 +725,11 @@
         "id": 53296275,
         "source": "OPERA",
         "description": "OPERA is a free and open source/open data suite of QSAR Models providing predictions and additional information including applicability domain and accuracy assessment, as described in the publication <a href='http://dx.doi.org/10.1186/s13321-018-0263-1'target='_blank'>OPERA models for predicting physicochemical properties and environmental fate endpoints<\/a>. All models were built on curated data and standardized chemical structures as described in the publication <a href='http://dx.doi.org/10.1080/1062936X.2016.1253611'target='_blank'>An automated curation procedure for addressing chemical errors and inconsistencies in public datasets used in QSAR modelling<\/a>. All OPERA properties are predicted under ambient conditions of 760mm of Hg at 25 degrees Celsius.",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": null,
-        "propertyId": "logkoa-octanol-air"
+        "propertyId": "logkoa-octanol-air",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "LogKow: Octanol-Water",
@@ -737,11 +737,11 @@
         "id": 46561565,
         "source": "EPISUITE",
         "description": "<a href='https://www.epa.gov/tsca-screening-tools/epi-suitetm-estimation-program-interface' target='_blank'>EPISUITE Estimation Programs Interface Suite™<\/a> is a Windows®-based suite of physical/chemical property and environmental fate estimation programs developed by EPA’s and Syracuse Research Corp.",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": null,
-        "propertyId": "logkow-octanol-water"
+        "propertyId": "logkow-octanol-water",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "LogKow: Octanol-Water",
@@ -749,11 +749,11 @@
         "id": 42949129,
         "source": "OPERA",
         "description": "OPERA is a free and open source/open data suite of QSAR Models providing predictions and additional information including applicability domain and accuracy assessment, as described in the publication <a href='http://dx.doi.org/10.1186/s13321-018-0263-1'target='_blank'>OPERA models for predicting physicochemical properties and environmental fate endpoints<\/a>. All models were built on curated data and standardized chemical structures as described in the publication <a href='http://dx.doi.org/10.1080/1062936X.2016.1253611'target='_blank'>An automated curation procedure for addressing chemical errors and inconsistencies in public datasets used in QSAR modelling<\/a>. All OPERA properties are predicted under ambient conditions of 760mm of Hg at 25 degrees Celsius.",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": null,
-        "propertyId": "logkow-octanol-water"
+        "propertyId": "logkow-octanol-water",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "LogKow: Octanol-Water",
@@ -761,11 +761,11 @@
         "id": 42315416,
         "source": "ACD/Labs Consensus",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": null,
-        "propertyId": "logkow-octanol-water"
+        "propertyId": "logkow-octanol-water",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "LogKow: Octanol-Water",
@@ -773,11 +773,11 @@
         "id": 47275570,
         "source": "ACD/Labs",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": null,
-        "propertyId": "logkow-octanol-water"
+        "propertyId": "logkow-octanol-water",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Melting Point",
@@ -785,11 +785,11 @@
         "id": 40616108,
         "source": "EPISUITE",
         "description": "<a href='https://www.epa.gov/tsca-screening-tools/epi-suitetm-estimation-program-interface' target='_blank'>EPISUITE Estimation Programs Interface Suite™<\/a> is a Windows®-based suite of physical/chemical property and environmental fate estimation programs developed by EPA’s and Syracuse Research Corp.",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "°C",
-        "propertyId": "melting-point"
+        "propertyId": "melting-point",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Melting Point",
@@ -797,11 +797,11 @@
         "id": 58534988,
         "source": "OPERA",
         "description": "OPERA is a free and open source/open data suite of QSAR Models providing predictions and additional information including applicability domain and accuracy assessment, as described in the publication <a href='http://dx.doi.org/10.1186/s13321-018-0263-1'target='_blank'>OPERA models for predicting physicochemical properties and environmental fate endpoints<\/a>. All models were built on curated data and standardized chemical structures as described in the publication <a href='http://dx.doi.org/10.1080/1062936X.2016.1253611'target='_blank'>An automated curation procedure for addressing chemical errors and inconsistencies in public datasets used in QSAR modelling<\/a>. All OPERA properties are predicted under ambient conditions of 760mm of Hg at 25 degrees Celsius. All OPERA properties are predicted under ambient conditions of 760mm of Hg at 25 degrees Celsius.",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "°C",
-        "propertyId": "melting-point"
+        "propertyId": "melting-point",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Melting Point",
@@ -809,11 +809,11 @@
         "id": 53944816,
         "source": "TEST",
         "description": "The <a href='https://www.epa.gov/chemical-research/toxicity-estimation-software-tool-test' target='_blank'>Toxicity Estimation Software Tool (TEST)<\/a> is an EPA software application developed to allow users to easily estimate the toxicity of chemicals using Quantitative Structure Activity Relationships (QSARs) methodologies.",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "°C",
-        "propertyId": "melting-point"
+        "propertyId": "melting-point",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Molar Refractivity",
@@ -821,11 +821,11 @@
         "id": 57452335,
         "source": "ACD/Labs",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "cm^3",
-        "propertyId": "molar-refractivity"
+        "propertyId": "molar-refractivity",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Molar Volume",
@@ -833,11 +833,11 @@
         "id": 58424656,
         "source": "ACD/Labs",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "cm^3",
-        "propertyId": "molar-volume"
+        "propertyId": "molar-volume",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Polarizability",
@@ -845,11 +845,11 @@
         "id": 44831089,
         "source": "ACD/Labs",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "Å^3",
-        "propertyId": "polarizability"
+        "propertyId": "polarizability",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Surface Tension",
@@ -857,11 +857,11 @@
         "id": 55272675,
         "source": "ACD/Labs",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "dyn/cm",
-        "propertyId": "surface-tension"
+        "propertyId": "surface-tension",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Thermal Conductivity",
@@ -869,11 +869,11 @@
         "id": 42031740,
         "source": "TEST",
         "description": "The <a href='https://www.epa.gov/chemical-research/toxicity-estimation-software-tool-test' target='_blank'>Toxicity Estimation Software Tool (TEST)<\/a> is an EPA software application developed to allow users to easily estimate the toxicity of chemicals using Quantitative Structure Activity Relationships (QSARs) methodologies.",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "mW/(m*K)",
-        "propertyId": "thermal-conductivity"
+        "propertyId": "thermal-conductivity",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Vapor Pressure",
@@ -881,11 +881,11 @@
         "id": 52610937,
         "source": "ACD/Labs",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "mmHg",
-        "propertyId": "vapor-pressure"
+        "propertyId": "vapor-pressure",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Vapor Pressure",
@@ -893,11 +893,11 @@
         "id": 43362347,
         "source": "TEST",
         "description": "The <a href='https://www.epa.gov/chemical-research/toxicity-estimation-software-tool-test' target='_blank'>Toxicity Estimation Software Tool (TEST)<\/a> is an EPA software application developed to allow users to easily estimate the toxicity of chemicals using Quantitative Structure Activity Relationships (QSARs) methodologies.",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "mmHg",
-        "propertyId": "vapor-pressure"
+        "propertyId": "vapor-pressure",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Vapor Pressure",
@@ -905,11 +905,11 @@
         "id": 56926039,
         "source": "OPERA",
         "description": "OPERA is a free and open source/open data suite of QSAR Models providing predictions and additional information including applicability domain and accuracy assessment, as described in the publication <a href='http://dx.doi.org/10.1186/s13321-018-0263-1'target='_blank'>OPERA models for predicting physicochemical properties and environmental fate endpoints<\/a>. All models were built on curated data and standardized chemical structures as described in the publication <a href='http://dx.doi.org/10.1080/1062936X.2016.1253611'target='_blank'>An automated curation procedure for addressing chemical errors and inconsistencies in public datasets used in QSAR modelling<\/a>. All OPERA properties are predicted under ambient conditions of 760mm of Hg at 25 degrees Celsius.",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "mmHg",
-        "propertyId": "vapor-pressure"
+        "propertyId": "vapor-pressure",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Viscosity",
@@ -917,11 +917,11 @@
         "id": 55847998,
         "source": "TEST",
         "description": "The <a href='https://www.epa.gov/chemical-research/toxicity-estimation-software-tool-test' target='_blank'>Toxicity Estimation Software Tool (TEST)<\/a> is an EPA software application developed to allow users to easily estimate the toxicity of chemicals using Quantitative Structure Activity Relationships (QSARs) methodologies.",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "cP",
-        "propertyId": "viscosity"
+        "propertyId": "viscosity",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Water Solubility",
@@ -929,11 +929,11 @@
         "id": 55365707,
         "source": "OPERA",
         "description": "OPERA is a free and open source/open data suite of QSAR Models providing predictions and additional information including applicability domain and accuracy assessment, as described in the publication <a href='http://dx.doi.org/10.1186/s13321-018-0263-1'target='_blank'>OPERA models for predicting physicochemical properties and environmental fate endpoints<\/a>. All models were built on curated data and standardized chemical structures as described in the publication <a href='http://dx.doi.org/10.1080/1062936X.2016.1253611'target='_blank'>An automated curation procedure for addressing chemical errors and inconsistencies in public datasets used in QSAR modelling<\/a>. All OPERA properties are predicted under ambient conditions of 760mm of Hg at 25 degrees Celsius.",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "mol/L",
-        "propertyId": "water-solubility"
+        "propertyId": "water-solubility",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Water Solubility",
@@ -941,11 +941,11 @@
         "id": 52524709,
         "source": "ACD/Labs",
         "description": "ACD/Labs physicochemical properties are predicted by the <a href='http://www.acdlabs.com/products/percepta/' target='_blank'>ACD/Labs Percepta Platform<\/a>. ",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "mol/L",
-        "propertyId": "water-solubility"
+        "propertyId": "water-solubility",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Water Solubility",
@@ -953,11 +953,11 @@
         "id": 52007785,
         "source": "TEST",
         "description": "The <a href='https://www.epa.gov/chemical-research/toxicity-estimation-software-tool-test' target='_blank'>Toxicity Estimation Software Tool (TEST)<\/a> is an EPA software application developed to allow users to easily estimate the toxicity of chemicals using Quantitative Structure Activity Relationships (QSARs) methodologies.",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "mol/L",
-        "propertyId": "water-solubility"
+        "propertyId": "water-solubility",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     },
     {
         "name": "Water Solubility",
@@ -965,10 +965,10 @@
         "id": 45980344,
         "source": "EPISUITE",
         "description": "<a href='https://www.epa.gov/tsca-screening-tools/epi-suitetm-estimation-program-interface' target='_blank'>EPISUITE Estimation Programs Interface Suite™<\/a> is a Windows®-based suite of physical/chemical property and environmental fate estimation programs developed by EPA’s and Syracuse Research Corp.",
-        "dtxsid": "DTXSID7020182",
-        "dtxcid": "DTXCID30182",
         "propType": "predicted",
         "unit": "mol/L",
-        "propertyId": "water-solubility"
+        "propertyId": "water-solubility",
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182"
     }
 ]

@@ -5,11 +5,11 @@
         "source": "NTP",
         "species": "-",
         "strain": "-",
+        "dtxsid": "DTXSID7020182",
         "assayCategory": "in vitro",
         "assayType": "Ames",
         "metabolicActivation": "-",
-        "assayResult": "negative",
-        "dtxsid": "DTXSID7020182"
+        "assayResult": "negative"
     },
     {
         "id": 113031,
@@ -17,11 +17,11 @@
         "source": "NTP",
         "species": "-",
         "strain": "-",
+        "dtxsid": "DTXSID7020182",
         "assayCategory": "in vivo",
         "assayType": "in vivo comet (rat)",
         "metabolicActivation": "-",
-        "assayResult": "negative",
-        "dtxsid": "DTXSID7020182"
+        "assayResult": "negative"
     },
     {
         "id": 113030,
@@ -29,10 +29,10 @@
         "source": "NTP",
         "species": "-",
         "strain": "-",
+        "dtxsid": "DTXSID7020182",
         "assayCategory": "in vivo",
         "assayType": "in vivo micronucleus (rat)",
         "metabolicActivation": "-",
-        "assayResult": "negative",
-        "dtxsid": "DTXSID7020182"
+        "assayResult": "negative"
     }
 ]

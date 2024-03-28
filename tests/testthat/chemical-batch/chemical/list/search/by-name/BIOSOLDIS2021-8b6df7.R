@@ -1,22 +1,22 @@
 structure(list(url = "https://api-ccte.epa.gov/chemical/list/search/by-name/BIOSOLDIS2021?projection=chemicallistwithdtxsids", 
     status_code = 400L, headers = structure(list(`content-type` = "application/problem+json", 
         `transfer-encoding` = "chunked", connection = "keep-alive", 
-        date = "Fri, 22 Mar 2024 15:48:23 GMT", `cache-control` = "max-age=0, must-revalidate, no-transform", 
-        `x-vcap-request-id` = "156a1c02-e163-466f-7f3a-4f873eb84120", 
+        date = "Wed, 27 Mar 2024 21:31:38 GMT", `cache-control` = "max-age=0, must-revalidate, no-transform", 
+        `x-vcap-request-id` = "a2038c64-1553-4b35-68cd-bf942b84a62b", 
         `x-frame-options` = "DENY", `strict-transport-security` = "max-age=31536000", 
         `x-content-type-options` = "nosniff", `x-xss-protection` = "1; mode=block", 
-        `x-cache` = "Error from cloudfront", via = "1.1 9d35ce6897d7f02042955443076a54de.cloudfront.net (CloudFront)", 
-        `x-amz-cf-pop` = "EWR53-P1", `x-amz-cf-id` = "focOCl8VRIHy-rXrMuwpRsytBchaSi_c4cHyx3AUHzsevwWEU8lUeA==", 
+        `x-cache` = "Error from cloudfront", via = "1.1 d3b019645d09c89af6e150e75be90942.cloudfront.net (CloudFront)", 
+        `x-amz-cf-pop` = "ATL59-P8", `x-amz-cf-id` = "SXqIDSmQnPSE-zQZrlact-wAQuHk9FtHi_RBnqQsIY3sbr9rYKzbZQ==", 
         age = "1"), class = c("insensitive", "list")), all_headers = list(
         list(status = 400L, version = "HTTP/1.1", headers = structure(list(
             `content-type` = "application/problem+json", `transfer-encoding` = "chunked", 
-            connection = "keep-alive", date = "Fri, 22 Mar 2024 15:48:23 GMT", 
+            connection = "keep-alive", date = "Wed, 27 Mar 2024 21:31:38 GMT", 
             `cache-control` = "max-age=0, must-revalidate, no-transform", 
-            `x-vcap-request-id` = "156a1c02-e163-466f-7f3a-4f873eb84120", 
+            `x-vcap-request-id` = "a2038c64-1553-4b35-68cd-bf942b84a62b", 
             `x-frame-options` = "DENY", `strict-transport-security` = "max-age=31536000", 
             `x-content-type-options` = "nosniff", `x-xss-protection` = "1; mode=block", 
-            `x-cache` = "Error from cloudfront", via = "1.1 9d35ce6897d7f02042955443076a54de.cloudfront.net (CloudFront)", 
-            `x-amz-cf-pop` = "EWR53-P1", `x-amz-cf-id` = "focOCl8VRIHy-rXrMuwpRsytBchaSi_c4cHyx3AUHzsevwWEU8lUeA==", 
+            `x-cache` = "Error from cloudfront", via = "1.1 d3b019645d09c89af6e150e75be90942.cloudfront.net (CloudFront)", 
+            `x-amz-cf-pop` = "ATL59-P8", `x-amz-cf-id` = "SXqIDSmQnPSE-zQZrlact-wAQuHk9FtHi_RBnqQsIY3sbr9rYKzbZQ==", 
             age = "1"), class = c("insensitive", "list")))), 
     cookies = structure(list(domain = logical(0), flag = logical(0), 
         path = logical(0), secure = logical(0), expiration = structure(numeric(0), class = c("POSIXct", 
@@ -41,7 +41,7 @@ structure(list(url = "https://api-ccte.epa.gov/chemical/list/search/by-name/BIOS
     0x65, 0x61, 0x72, 0x63, 0x68, 0x2f, 0x62, 0x79, 0x2d, 0x6e, 
     0x61, 0x6d, 0x65, 0x2f, 0x42, 0x49, 0x4f, 0x53, 0x4f, 0x4c, 
     0x44, 0x49, 0x53, 0x32, 0x30, 0x32, 0x31, 0x22, 0x0a, 0x7d
-    )), date = structure(1711122503, class = c("POSIXct", "POSIXt"
-    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 4.5e-05, 
-    connect = 0, pretransfer = 0.000146, starttransfer = 0.035895, 
-    total = 0.035925)), class = "response")
+    )), date = structure(1711575098, class = c("POSIXct", "POSIXt"
+    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 4.4e-05, 
+    connect = 0, pretransfer = 0.000167, starttransfer = 0.041351, 
+    total = 0.041379)), class = "response")

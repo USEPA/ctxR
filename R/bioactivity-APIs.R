@@ -49,7 +49,7 @@ get_bioactivity_details <- function(DTXSID = NULL,
   }
 
 
-  response <- httr::GET(url = paste0(Server, '/search/', data_endpoint, '/', ifelse(data_index == 3, prepare_word(data_input), data_input)),
+  response <- httr::GET(url = paste0(Server, '/data/search/', data_endpoint, '/', ifelse(data_index == 3, prepare_word(data_input), data_input)),
                         httr::add_headers(.headers = c(
                           'Content-Type' = 'application/json',
                           'x-api-key' = API_key)
@@ -77,7 +77,7 @@ get_bioactivity_details <- function(DTXSID = NULL,
   }
   if(response$status_code == 200){
     res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
-    if (!is.data.frame(res)){
+    if (!is.data.frame(res) & (length(res) != 0)){
       for (i in 1:length(res)){
         if (is.null(res[[i]])) res[[i]] <- NA # set any NULLs to NA
         if (length(res[[i]]) > 1) {

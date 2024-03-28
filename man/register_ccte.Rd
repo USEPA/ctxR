@@ -32,6 +32,22 @@ has_ccte_key()
 
 \item{...}{a dumped formal argument to the generic print method}
 }
+\value{
+\itemize{
+\item \code{showing_key} returns a Boolean.
+\item \code{ccdr_show_api_key()} has no return value but has the side effect of
+changing the display settings of the API key.
+\item \code{ccdr_hide_api_key()} has no return value but has the side effect of
+changing the display settings of the API key.
+\item \code{register_ccdr()} has no return value but has the side effect of
+storing the API key.
+\item \code{print.ccte_credentials()} has no return value and is an S3 method for
+printing the \code{ccte_credentials} class.
+\item \code{ccte_key()} returns a string, either the stored API key or
+\code{NA_character_}.
+\item \code{has_ccte_key()} returns a Boolean.
+}
+}
 \description{
 This page contains documentation tools related to enabling CCTE API services
 in R.

@@ -1,6 +1,11 @@
 ## Resubmission
 This is a resubmission. In this version I have:
 
+* Addressed CRAN comments to fix Description file misuse of quotations, adjusted 
+the title, adjusted spacing.
+* Added missing documentation to ccdr_options.Rd, register_ccte.Rd
+* Rewrote vignettes, functions, tests to not write to user's home filespace
+* Reset user's options in examples, vignettes, and demos
 * Reduced the size of the vignettes and associated saved httptest responses 
 * Updated the unit tests and reduced the size of the associated saved httptest
 responses
@@ -21,18 +26,15 @@ Passed all checks.
 Status: OK
 * using check arguments '--no-clean-on-error '
 
-* elapsed time (check, wall clock): 0:56
+* elapsed time (check, wall clock): 0:37
 
 ## rhub CMD check results
 - Most notes appear to be related to testing (rhub) environment
 
 Possibly misspelled words in DESCRIPTION:
-  APIs (3:48, 21:55, 23:72, 24:56)
-  CCD (25:54)
-  CCTE (3:43, 21:48, 23:67)
-  CompTox (25:25)
+  APIs (3:50, 21:51, 23:70, 24:52)
   bioactivity (20:43)
-  ccdR (22:42)
+  CompTox (25:21)
 
 * checking for non-standard things in the check directory ... NOTE
 Found the following files/directories:
@@ -40,6 +42,7 @@ Found the following files/directories:
 * checking for detritus in the temp directory ... NOTE
 Found the following files/directories:
   'lastMiKTeXException'
+
 Found the following (possibly) invalid URLs:
   URL: https://comptox.epa.gov/dashboard/
     From: DESCRIPTION
@@ -53,15 +56,13 @@ Found the following (possibly) invalid URLs:
     Message: libcurl error code 35:
       	error:0A000152:SSL routines::unsafe legacy renegotiation disabled
   URL: https://comptox.epa.gov/dashboard/chemical-lists/CCL4
-    From: inst/doc/Bioactivity.html
-          inst/doc/Chemical.html
+    From: inst/doc/Chemical.html
           inst/doc/Hazard.html
     Status: Error
     Message: libcurl error code 35:
       	error:0A000152:SSL routines::unsafe legacy renegotiation disabled
   URL: https://comptox.epa.gov/dashboard/chemical-lists/NATADB
-    From: inst/doc/Bioactivity.html
-          inst/doc/Chemical.html
+    From: inst/doc/Chemical.html
           inst/doc/Hazard.html
     Status: Error
     Message: libcurl error code 35:
@@ -71,6 +72,7 @@ Found the following (possibly) invalid URLs:
     Status: Error
     Message: libcurl error code 35:
       	error:0A000152:SSL routines::unsafe legacy renegotiation disabled
+
 * checking HTML version of manual ... NOTE
 Skipping checking HTML validation: no command 'tidy' found
 
@@ -78,7 +80,7 @@ Skipping checking HTML validation: no command 'tidy' found
 
 ## win devel check results
 1 NOTE - CRAN incoming feasibility
-Indicated possibly misspelled words in DESCRIPTION (APIs, CCD, CCTE, CompTox, bioactivity, ccdR). These are all correctly spelled.
+Indicated possibly misspelled words in DESCRIPTION (APIs, CompTox, bioactivity). These are all correctly spelled.
 
 
 ## local R CMD check results

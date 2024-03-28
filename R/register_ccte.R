@@ -33,7 +33,25 @@
 #' @param key an API key
 #' @param write if TRUE, stores the secrets provided in the .Renviron file
 #' @param ... a dumped formal argument to the generic print method
-#' @return NULL
+#' @returns
+#'  * `showing_key` returns a Boolean.
+#'
+#'  * `ccdr_show_api_key()` has no return value but has the side effect of
+#'  changing the display settings of the API key.
+#'
+#'  * `ccdr_hide_api_key()` has no return value but has the side effect of
+#'  changing the display settings of the API key.
+#'
+#'  * `register_ccdr()` has no return value but has the side effect of
+#'  storing the API key.
+#'
+#'  * `print.ccte_credentials()` has no return value and is an S3 method for
+#'  printing the `ccte_credentials` class.
+#'
+#'  * `ccte_key()` returns a string, either the stored API key or
+#'   \code{NA_character_}.
+#'
+#'  * `has_ccte_key()` returns a Boolean.
 #' @name register_ccte
 
 
@@ -64,6 +82,7 @@ showing_key <- function() {
 ccdr_show_api_key <- function() {
   set_ccdr_option('display_api_key' = TRUE)
   cli::cli_alert_warning('ccdr will now display PRIVATE API keys in the console.')
+  invisible()
 }
 
 
@@ -77,6 +96,7 @@ ccdr_show_api_key <- function() {
 ccdr_hide_api_key <- function() {
   set_ccdr_option('display_api_key' = FALSE)
   cli::cli_alert_info('ccdr will now suppress private API keys in the console.')
+  invisible()
 }
 
 
@@ -103,42 +123,60 @@ register_ccdr <- function(key, write = FALSE) {
   # deal with API key
   if (!missing(key) && write) {
 
-    # grab .Renviron file path
-    environ_file <- file.path(Sys.getenv('HOME'), '.Renviron')
-
-    # create .Renviron file it does not exist
-    if (!file.exists(file.path(Sys.getenv('HOME'), '.Renviron'))) {
-      cli::cli_alert_info('Creating file {environ_file}')
-      file.create(environ_file)
-    }
-
-    # read in lines
-    environ_lines <- readLines(environ_file)
-
-    # if no key present, add; otherwise replace old one
-    if (!any(stringr::str_detect(environ_lines, 'CCTE_API_KEY='))) {
-
-      cli::cli_alert_info('Adding key to {environ_file}')
-      environ_lines <- c(environ_lines, glue::glue('CCTE_API_KEY={key}'))
-      writeLines(environ_lines, environ_file)
-
+    if (R.version.string < "4.0.0"){
+      warning("This function relies on R version 4.0.0 or later. Cannot store API key over multiple sessions.")
     } else {
-
-      key_line_index <- which(stringr::str_detect(environ_lines, 'CCTE_API_KEY='))
-      old_key <- stringr::str_extract(environ_lines[key_line_index], '(?<=CCTE_API_KEY=)\\w+')
-      cli::cli_alert_info('Replacing old key ({old_key}) with new key in {environ_file}')
-      environ_lines[key_line_index] <- glue::glue('CCTE_API_KEY={key}')
-      writeLines(environ_lines, environ_file)
-
+      ccdrdir <- tools::R_user_dir("ccdR")
+      if (!dir.exists(ccdrdir)){
+        dir.create(ccdrdir, recursive = TRUE)
+      }
+      fname <- file.path(ccdrdir, "api.dcf")
+      if (file.exists(fname)) {
+        warning("Existing file found, so overwriting")
+      }
+      con <- file(fname)
+      cat("key:", key, file = con)
+      close(con)
     }
-
+#
+#     # grab .Renviron file path
+#     environ_file <- file.path(Sys.getenv('HOME'), '.Renviron')
+#
+#     # create .Renviron file it does not exist
+#     if (!file.exists(file.path(Sys.getenv('HOME'), '.Renviron'))) {
+#       cli::cli_alert_info('Creating file {environ_file}')
+#       file.create(environ_file)
+#     }
+#
+#     # read in lines
+#     environ_lines <- readLines(environ_file)
+#
+#     # if no key present, add; otherwise replace old one
+#     if (!any(stringr::str_detect(environ_lines, 'CCTE_API_KEY='))) {
+#
+#       cli::cli_alert_info('Adding key to {environ_file}')
+#       environ_lines <- c(environ_lines, glue::glue('CCTE_API_KEY={key}'))
+#       writeLines(environ_lines, environ_file)
+#
+#     } else {
+#
+#       key_line_index <- which(stringr::str_detect(environ_lines, 'CCTE_API_KEY='))
+#       old_key <- stringr::str_extract(environ_lines[key_line_index], '(?<=CCTE_API_KEY=)\\w+')
+#       cli::cli_alert_info('Replacing old key ({old_key}) with new key in {environ_file}')
+#       environ_lines[key_line_index] <- glue::glue('CCTE_API_KEY={key}')
+#       writeLines(environ_lines, environ_file)
+#
+#     }
+#
     # set key in current session
-    Sys.setenv('CCTE_API_KEY' = key)
+    .pkgenv[["api"]] <- key
+    #Sys.setenv('CCTE_API_KEY' = key)
 
   } else if (!missing(key) && !write) {
 
     # set key in current session
-    Sys.setenv('CCTE_API_KEY' = key)
+    .pkgenv[["api"]] <- key
+    #Sys.setenv('CCTE_API_KEY' = key)
 
   }
 
@@ -175,7 +213,7 @@ print.ccte_credentials <- function(...) {
 #' ccte_key()
 
 ccte_key <- function() {
-  key <- Sys.getenv('CCTE_API_KEY')
+  key <- .pkgenv[["api"]] #Sys.getenv('CCTE_API_KEY')
 
   if (key == '') {
     return(NA_character_)
