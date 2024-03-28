@@ -20,7 +20,7 @@ if (!library(devtools, logical.return = TRUE)){
   library(devtools)
 }
 
-devtools::install_gitub("USEPA/ccdR")
+devtools::install_github("USEPA/ccdR")
 ```
 
 You can install from CRAN using the following:
