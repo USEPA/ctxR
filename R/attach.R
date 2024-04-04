@@ -24,6 +24,11 @@
 
 }
 
+.onLoad <- function(...) {
+  .getKeyIntoPkgEnv(silent = TRUE)
+  bootstrap_ccdr()
+}
+
 
 bootstrap_ccdr <- function() {
   set_ccdr_option(
