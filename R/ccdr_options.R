@@ -4,7 +4,7 @@
 #' `getOption('ccdr')`. It currently stores two such options, one for CCTE
 #' credentialing and one to supress private API information in the URLs printed
 #' to the screen when web queries are placed. For both of those, see
-#' [register_ccte()].
+#' [register_ccdr()].
 #'
 #' @param ... a named listing of options to set
 #' @param option a specific option to query, e.g. `display_api_key`
@@ -16,7 +16,7 @@
 #'  * `has_ccdr_option()` returns a Boolean.
 #'
 #'  * `has_ccdr_options()` returns a Boolean.
-#' @seealso [register_ccte()]
+#' @seealso [register_ccdr()]
 #'
 #'
 #'

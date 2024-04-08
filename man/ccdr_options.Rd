@@ -31,7 +31,7 @@ ccdr stores options as a named list in R's global options, i.e.
 \code{getOption('ccdr')}. It currently stores two such options, one for CCTE
 credentialing and one to supress private API information in the URLs printed
 to the screen when web queries are placed. For both of those, see
-\code{\link[=register_ccte]{register_ccte()}}.
+\code{\link[=register_ccdr]{register_ccdr()}}.
 }
 \examples{
 \dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
@@ -48,5 +48,5 @@ has_ccdr_option('display_api_key')
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=register_ccte]{register_ccte()}}
+\code{\link[=register_ccdr]{register_ccdr()}}
 }
