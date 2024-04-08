@@ -56,7 +56,6 @@ To obtain an API key and enable services, go to
 \url{https://api-ccte.epa.gov/docs/}. This documentation shows you how to
 obtain an API key to allow access to the CCTE APIs.
 
-
 To tell ccdR about your API key, use \code{\link[=register_ccdr]{register_ccdr()}}, e.g.
 \code{register_ccdr(key = 'grbwigbwoginrowgbwibgdibdvinrginiwgo')} (that's a fake
 key). This will set your API key for the current session, but if you restart
@@ -77,7 +76,6 @@ API key, any R function will have access to it. As a consequence, ccdR will
 not know if another function, potentially from a compromised package,
 accesses the key and uploads it to a third party. For this reason, when using
 ccdR we recommend a heightened sense of security and self-awareness: only use
-
 trusted packages, do not save the API keys in script files, etc.
 }
 \examples{
