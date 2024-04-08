@@ -7,8 +7,8 @@
 #' \url{https://api-ccte.epa.gov/docs/}. This documentation shows you how to
 #' obtain an API key to allow access to the CCTE APIs.
 #'
-#' To tell ccdr about your API key, use [register_ccte()], e.g.
-#' `register_ccte(key = 'grbwigbwoginrowgbwibgdibdvinrginiwgo')` (that's a fake
+#' To tell ccdr about your API key, use [register_ccdr()], e.g.
+#' `register_ccdr(key = 'grbwigbwoginrowgbwibgdibdvinrginiwgo')` (that's a fake
 #' key). This will set your API key for the current session, but if you restart
 #' R, you'll need to do it again. You can set it permanently by setting `write =
 #' TRUE`m see the examples. If you set it permanently it will be stored in your
@@ -52,11 +52,11 @@
 #'   \code{NA_character_}.
 #'
 #'  * `has_ccte_key()` returns a Boolean.
-#' @name register_ccte
+#' @name register_ccdr
 
 
 
-#' @rdname register_ccte
+#' @rdname register_ccdr
 #' @export
 #' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Check if API key is showing
@@ -73,7 +73,7 @@ showing_key <- function() {
 
 
 
-#' @rdname register_ccte
+#' @rdname register_ccdr
 #' @export
 #' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Toggle API key to display
@@ -87,7 +87,7 @@ ccdr_show_api_key <- function() {
 
 
 
-#' @rdname register_ccte
+#' @rdname register_ccdr
 #' @export
 #' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Toggle API key to be hidden
@@ -101,7 +101,7 @@ ccdr_hide_api_key <- function() {
 
 
 
-#' @rdname register_ccte
+#' @rdname register_ccdr
 #' @export
 #' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Register key for this session
@@ -194,7 +194,7 @@ register_ccdr <- function(key, write = FALSE) {
 
 
 
-#' @rdname register_ccte
+#' @rdname register_ccdr
 #' @export
 #' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Print function for ccte_credentials class
@@ -206,7 +206,7 @@ print.ccte_credentials <- function(...) {
 
 
 
-#' @rdname register_ccte
+#' @rdname register_ccdr
 #' @export
 #' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Display ccte API key
@@ -223,7 +223,7 @@ ccte_key <- function() {
 }
 
 
-#' @rdname register_ccte
+#' @rdname register_ccdr
 #' @export
 #' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Check whether API key is registered
