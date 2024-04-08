@@ -7,6 +7,7 @@
 #' \url{https://api-ccte.epa.gov/docs/}. This documentation shows you how to
 #' obtain an API key to allow access to the CCTE APIs.
 #'
+
 #' To tell ccdR about your API key, use [register_ccdr()], e.g.
 #' `register_ccdr(key = 'grbwigbwoginrowgbwibgdibdvinrginiwgo')` (that's a fake
 #' key). This will set your API key for the current session, but if you restart
