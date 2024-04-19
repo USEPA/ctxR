@@ -6,7 +6,7 @@
 \usage{
 get_exposure_functional_use_category(
   API_key = NULL,
-  Server = "https://api-ccte.epa.gov/exposure",
+  Server = exposure_api_server,
   verbose = FALSE
 )
 }

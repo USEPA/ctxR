@@ -6,7 +6,7 @@
 \usage{
 get_exposure_list_presence_tags(
   API_key = NULL,
-  Server = "https://api-ccte.epa.gov/exposure",
+  Server = exposure_api_server,
   verbose = FALSE
 )
 }

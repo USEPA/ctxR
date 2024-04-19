@@ -7,7 +7,7 @@
 get_exposure_list_presence_tags_by_dtxsid(
   DTXSID = NULL,
   API_key = NULL,
-  Server = "https://api-ccte.epa.gov/exposure",
+  Server = exposure_api_server,
   verbose = FALSE
 )
 }

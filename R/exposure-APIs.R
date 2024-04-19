@@ -13,7 +13,7 @@
 
 get_exposure_functional_use <- function(DTXSID = NULL,
                                         API_key = NULL,
-                                        Server = "https://api-ccte.epa.gov/exposure",
+                                        Server = exposure_api_server,
                                         verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input an DTXSID!')
@@ -62,7 +62,7 @@ get_exposure_functional_use <- function(DTXSID = NULL,
 
 get_exposure_functional_use_probability <- function(DTXSID = NULL,
                                                     API_key = NULL,
-                                                    Server = "https://api-ccte.epa.gov/exposure",
+                                                    Server = exposure_api_server,
                                                     verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input an DTXSID!')
@@ -107,7 +107,7 @@ get_exposure_functional_use_probability <- function(DTXSID = NULL,
 #' functional_use_categories <- get_exposure_functional_use_category()
 
 get_exposure_functional_use_category <- function(API_key = NULL,
-                                                 Server = "https://api-ccte.epa.gov/exposure",
+                                                 Server = exposure_api_server,
                                                  verbose = FALSE){
    if (is.null(API_key)){
     if (has_ccte_key()){
@@ -153,7 +153,7 @@ get_exposure_functional_use_category <- function(API_key = NULL,
 
 get_exposure_product_data <- function(DTXSID = NULL,
                                       API_key = NULL,
-                                      Server = "https://api-ccte.epa.gov/exposure",
+                                      Server = exposure_api_server,
                                       verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input an DTXSID!')
@@ -198,7 +198,7 @@ get_exposure_product_data <- function(DTXSID = NULL,
 #' puc_categories <- get_exposure_product_data_puc()
 
 get_exposure_product_data_puc <- function(API_key = NULL,
-                                          Server = "https://api-ccte.epa.gov/exposure",
+                                          Server = exposure_api_server,
                                           verbose = FALSE){
   if (is.null(API_key)){
     if (has_ccte_key()){
@@ -242,7 +242,7 @@ get_exposure_product_data_puc <- function(API_key = NULL,
 #' tags <- get_exposure_list_presence_tags()
 
 get_exposure_list_presence_tags <- function(API_key = NULL,
-                                            Server = "https://api-ccte.epa.gov/exposure",
+                                            Server = exposure_api_server,
                                             verbose = FALSE){
   if (is.null(API_key)){
     if (has_ccte_key()){
@@ -287,7 +287,7 @@ get_exposure_list_presence_tags <- function(API_key = NULL,
 
 get_exposure_list_presence_tags_by_dtxsid <- function(DTXSID = NULL,
                                                       API_key = NULL,
-                                                      Server = "https://api-ccte.epa.gov/exposure",
+                                                      Server = exposure_api_server,
                                                       verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input an DTXSID!')

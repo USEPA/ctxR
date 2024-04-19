@@ -7,7 +7,7 @@
 get_exposure_functional_use(
   DTXSID = NULL,
   API_key = NULL,
-  Server = "https://api-ccte.epa.gov/exposure",
+  Server = exposure_api_server,
   verbose = FALSE
 )
 }
