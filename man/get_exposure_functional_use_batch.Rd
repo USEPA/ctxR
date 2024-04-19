@@ -21,7 +21,8 @@ get_exposure_functional_use_batch(
 
 \item{Server}{The root address for the API endpoint}
 
-\item{Verbose}{A logical indicating if some “progress report” should be given.}
+\item{Verbose}{A logical indicating if some “progress report” should be
+given.}
 }
 \value{
 A named list of data.frames, each containing exposure functional use

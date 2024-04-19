@@ -21,7 +21,8 @@ get_exposure_functional_use_probability_batch(
 
 \item{Server}{The root address for the API endpoint}
 
-\item{Verbose}{A logical indicating if some “progress report” should be given.}
+\item{Verbose}{A logical indicating if some “progress report” should be
+given.}
 }
 \value{
 A data.table, with each row containing exposure functional use
