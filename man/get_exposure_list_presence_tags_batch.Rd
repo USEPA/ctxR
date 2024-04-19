@@ -21,7 +21,7 @@ get_exposure_list_presence_tags_batch(
 
 \item{Server}{The root address for the API endpoint}
 
-\item{Verbose}{A logical indicating if some “progress report” should be
+\item{verbose}{A logical indicating if some “progress report” should be
 given.}
 }
 \value{

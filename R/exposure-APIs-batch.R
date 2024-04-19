@@ -4,7 +4,7 @@
 #' @param API_key The user-specific API key
 #' @param rate_limit Number of seconds to wait between each request
 #' @param Server The root address for the API endpoint
-#' @param Verbose A logical indicating if some “progress report” should be
+#' @param verbose A logical indicating if some “progress report” should be
 #' given.
 #'
 #' @return A named list of data.frames, each containing exposure functional use
@@ -71,7 +71,7 @@ get_exposure_functional_use_batch <- function(DTXSID = NULL,
 #' @param API_key The user-specific API key
 #' @param rate_limit Number of seconds to wait between each request
 #' @param Server The root address for the API endpoint
-#' @param Verbose A logical indicating if some “progress report” should be
+#' @param verbose A logical indicating if some “progress report” should be
 #' given.
 #'
 #' @return A data.table, with each row containing exposure functional use
@@ -141,7 +141,7 @@ get_exposure_functional_use_probability_batch <- function(DTXSID = NULL,
         }
       }
       names(results_dt) <- DTXSID
-      final_dt <- rbindlist(results_dt, fill = TRUE)
+      final_dt <- data.table::rbindlist(results_dt, fill = TRUE)
     } else {
       final_dt <- data.table::data.table()
     }
@@ -157,7 +157,7 @@ get_exposure_functional_use_probability_batch <- function(DTXSID = NULL,
 #' @param API_key The user-specific API key
 #' @param rate_limit Number of seconds to wait between each request
 #' @param Server The root address for the API endpoint
-#' @param Verbose A logical indicating if some “progress report” should be
+#' @param verbose A logical indicating if some “progress report” should be
 #' given.
 #'
 #' @return A named list of data.frames, each containing exposure product
@@ -220,7 +220,7 @@ get_exposure_product_data_batch <- function(DTXSID = NULL,
 #' @param API_key The user-specific API key
 #' @param rate_limit Number of seconds to wait between each request
 #' @param Server The root address for the API endpoint
-#' @param Verbose A logical indicating if some “progress report” should be
+#' @param verbose A logical indicating if some “progress report” should be
 #' given.
 #'
 #' @return A named list of data.frames, each containing exposure list presence
