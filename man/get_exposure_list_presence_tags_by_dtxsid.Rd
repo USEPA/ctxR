@@ -7,7 +7,7 @@
 get_exposure_list_presence_tags_by_dtxsid(
   DTXSID = NULL,
   API_key = NULL,
-  Server = "https://api-ccte-stg.epa.gov/exposure",
+  Server = "https://api-ccte.epa.gov/exposure",
   verbose = FALSE
 )
 }
@@ -25,4 +25,10 @@ A data.frame of document information and list presence tags
 }
 \description{
 Retrieve document data and list presence tags for a chemical
+}
+\examples{
+\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull list presence tags for BPA
+bpa <- get_exposure_list_presence_tags(DTXSID = 'DTXSID7020182')
+\dontshow{\}) # examplesIf}
 }

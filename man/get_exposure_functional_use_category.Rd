@@ -6,7 +6,7 @@
 \usage{
 get_exposure_functional_use_category(
   API_key = NULL,
-  Server = "https://api-ccte-stg.epa.gov/exposure",
+  Server = "https://api-ccte.epa.gov/exposure",
   verbose = FALSE
 )
 }
@@ -22,4 +22,10 @@ A data.frame of functional use categories.
 }
 \description{
 Retrieve functional use categories
+}
+\examples{
+\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull functional use category data for BPA
+functional_use_categories <- get_exposure_functional_use_category()
+\dontshow{\}) # examplesIf}
 }
