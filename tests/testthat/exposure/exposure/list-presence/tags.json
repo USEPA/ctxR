@@ -1,0 +1,938 @@
+[
+    {
+        "id": 52,
+        "tagName": "detected",
+        "tagDefinition": "chemicals measured or identified in environmental media or products",
+        "kindName": "Modifiers"
+    },
+    {
+        "id": 53,
+        "tagName": "drinking_water",
+        "tagDefinition": "water intended for drinking, or related to drinking water; includes bottled water, finished water from drinking water treatment plants, and untreated water that has been denoted as a drinking source",
+        "kindName": "Media"
+    },
+    {
+        "id": 54,
+        "tagName": "Electronics/small appliances - computers and accessories/supplies - printer ink",
+        "tagDefinition": "ink for inkjet printers",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 25,
+        "tagName": "Canada",
+        "tagDefinition": "Sources specific to Canada",
+        "kindName": "Location"
+    },
+    {
+        "id": 26,
+        "tagName": "CEDI",
+        "tagDefinition": "The U.S. FDA Cumulative Estimated Daily Intake database of publicly available cumulative estimated daily intakes (CEDIs) for a large number of food contact substances",
+        "kindName": "Specialty list"
+    },
+    {
+        "id": 27,
+        "tagName": "children",
+        "tagDefinition": "pertaining to, or intended for use specifically by children",
+        "kindName": "Subpopulation"
+    },
+    {
+        "id": 115,
+        "tagName": "Personal care - hair styling and care - shampoo-dandruff",
+        "tagDefinition": "shampoos, including dual shampoo/conditioner products for treatment of dandruff",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 116,
+        "tagName": "Personal care - liniment",
+        "tagDefinition": "products for treatment of muscle or joint pain",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 117,
+        "tagName": "Personal care - make-up and related",
+        "tagDefinition": "make-up or cosmetic products which do not fit into a more refined category",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 58,
+        "tagName": "food_additive",
+        "tagDefinition": "substances added to food to preserve flavor or enhance taste, appearance, or other sensory qualities",
+        "kindName": "Foods & Agriculture"
+    },
+    {
+        "id": 59,
+        "tagName": "Food contact items",
+        "tagDefinition": "articles intended for food contact, including food-contact packaging (e.g. glasses, plates, pots/pans, food storage containers, cloth napkins and placemats, cutlery, paper plates, and plastic utensils, take-out containers, plastic wrap and foil; includes small electronics with direct food contact (e.g. blender)",
+        "kindName": "PUC - article"
+    },
+    {
+        "id": 60,
+        "tagName": "fossil_fuels",
+        "tagDefinition": "coal, petroleum, natural gas, and heavy oils",
+        "kindName": "General use"
+    },
+    {
+        "id": 67,
+        "tagName": "ground_water",
+        "tagDefinition": "of, found in, or related to ground water",
+        "kindName": "Media"
+    },
+    {
+        "id": 68,
+        "tagName": "Home maintenance - adhesives and adhesive removers - multipurpose adhesive",
+        "tagDefinition": "general purpose repair adhesives including all purpose glues, super glue, and epoxies; not including wood glues",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 69,
+        "tagName": "Home maintenance - adhesives and adhesive removers - wood adhesive",
+        "tagDefinition": "adhesives specifically designated for gluing wooden surfaces together",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 49,
+        "tagName": "consumer_product",
+        "tagDefinition": "Indicated as related to, or in, consumer products, but with no more specific information designating product category",
+        "kindName": "General use"
+    },
+    {
+        "id": 50,
+        "tagName": "cotton",
+        "tagDefinition": "of or related to the growing of cotton, or processed cotton used as a textile for consumer goods",
+        "kindName": "Foods & Agriculture"
+    },
+    {
+        "id": 51,
+        "tagName": "dairy",
+        "tagDefinition": "milk and foods produced from or containing milk",
+        "kindName": "Foods & Agriculture"
+    },
+    {
+        "id": 118,
+        "tagName": "Personal care - make-up and related - eye liner",
+        "tagDefinition": "eye liners or brow coloring products",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 119,
+        "tagName": "Personal care - make-up and related - toner",
+        "tagDefinition": "face and skin toners and astringents excluding eye related products",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 120,
+        "tagName": "Personal care - nails",
+        "tagDefinition": "products for nail or cuticle treatment or decoration",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 121,
+        "tagName": "Personal care - nails - nail adhesive",
+        "tagDefinition": "adhesives for repairing fingernails or attaching artificial nails",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 122,
+        "tagName": "Personal care - nails - nail polish",
+        "tagDefinition": "clear or colored nail enamels, polishes, basecoats, topcoats, and other acrylic coatings",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 123,
+        "tagName": "Personal care - self-tanner",
+        "tagDefinition": "chemical products for tanning, staining, or coloring the skin",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 124,
+        "tagName": "Personal care - sexual wellness",
+        "tagDefinition": "sexual wellness products, including personal lubricants",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 125,
+        "tagName": "Personal care - shaving and hair removal - shaving cream",
+        "tagDefinition": "shaving creams, foams, balms and soaps",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 126,
+        "tagName": "Personal care - specialized bath products - bath salts",
+        "tagDefinition": "solid or powdered products added to bathwater including bath salts, soaks, and fizzes",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 127,
+        "tagName": "Personal care - specialized bath products - bubble bath",
+        "tagDefinition": "products added to bath water to create bubbles, may provide cleaning, fragrance, or improve skin characteristics (including bubble bath marketed to babies or children)",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 128,
+        "tagName": "Personal care - sunscreen",
+        "tagDefinition": "products applied to the skin to block harmful effects of sunlight",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 129,
+        "tagName": "Pesticides",
+        "tagDefinition": "Relating to pesticides or pesticide usage. Includes specific types of pesticides, e.g. insecticides,  herbicides, fungicides, and fumigants; also includes general biocides",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 130,
+        "tagName": "pharmaceutical",
+        "tagDefinition": "includes, medicinal and illicit drugs, biologics, and the salts, esters, and hydrates of pharmaceuticals, includes precursors to pharmaceuticals, additives, and pharmaceuticals for animal/veterinary use",
+        "kindName": "General use"
+    },
+    {
+        "id": 131,
+        "tagName": "plastic_additive",
+        "tagDefinition": "additives used in plastics",
+        "kindName": "Manufacturing"
+    },
+    {
+        "id": 132,
+        "tagName": "prohibited",
+        "tagDefinition": "noted chemical is prohibited from specified use",
+        "kindName": "Modifiers"
+    },
+    {
+        "id": 133,
+        "tagName": "radioactive",
+        "tagDefinition": "compounds identified as being radioactive",
+        "kindName": "General use"
+    },
+    {
+        "id": 134,
+        "tagName": "Raw materials",
+        "tagDefinition": "Pure chemicals or ingredients",
+        "kindName": "PUC - industrial"
+    },
+    {
+        "id": 135,
+        "tagName": "residue",
+        "tagDefinition": "chemical residues, typically from drugs or pesticides",
+        "kindName": "Modifiers"
+    },
+    {
+        "id": 136,
+        "tagName": "restricted",
+        "tagDefinition": "noted chemical is restricted from specified use",
+        "kindName": "Modifiers"
+    },
+    {
+        "id": 137,
+        "tagName": "Road vehicles",
+        "tagDefinition": "Road vehicles for passengers and goods (e.g. cars, trucks, vans), including vehicle parts (tires, brakes, etc.)",
+        "kindName": "PUC - article"
+    },
+    {
+        "id": 138,
+        "tagName": "SCIL (9/2019)",
+        "tagDefinition": "present on the Safer Chemicals Ingredients List (SCIL) (https://www.epa.gov/saferchoice/safer-ingredients); version of list updated 9/14/2019",
+        "kindName": "Specialty list"
+    },
+    {
+        "id": 139,
+        "tagName": "soil",
+        "tagDefinition": "of, found in, or related to sediment or soil (including sand)",
+        "kindName": "Media"
+    },
+    {
+        "id": 140,
+        "tagName": "Southeast Asia",
+        "tagDefinition": "Sources specific to ASEAN countries, governing body for various Southeast Asian countries",
+        "kindName": "Location"
+    },
+    {
+        "id": 141,
+        "tagName": "Specialty occupational products",
+        "tagDefinition": "Specialty products used in a specific occupational setting, by members of that occupation (e.g. firefighting foam, metal working fluids, products used in portable toilets)",
+        "kindName": "PUC - industrial"
+    },
+    {
+        "id": 142,
+        "tagName": "Substances Added to Food (formerly EAFUS) (2/2019)",
+        "tagDefinition": "U.S. FDA Substances Added to Food inventory (formerly known as 'Everything Added to Foods in the United States (EAFUS)' (version of list updated 2/8/2019)",
+        "kindName": "Specialty list"
+    },
+    {
+        "id": 143,
+        "tagName": "Substances in PCP - Canada (4/2014)",
+        "tagDefinition": "Substances in cosmetics and personal care products regulated under the Canadian Food and Drugs Act (F&DA) that were in commerce between January 1, 1987 and September 13, 2001; list updated 4/24/2014)",
+        "kindName": "Specialty list"
+    },
+    {
+        "id": 144,
+        "tagName": "Substances in Products - Canada (4/2014)",
+        "tagDefinition": "Substances in products regulated under the Canadian Food and Drugs Act (F&DA) that were in Commerce between January 1, 1987 and September 13, 2001 (list updated 4/24/2014)",
+        "kindName": "Specialty list"
+    },
+    {
+        "id": 145,
+        "tagName": "supplements",
+        "tagDefinition": "supplements for human consumption, includes prebiotics, probiotics, and vitamins",
+        "kindName": "Foods & Agriculture"
+    },
+    {
+        "id": 146,
+        "tagName": "surface_water",
+        "tagDefinition": "of, in, or related to surface water",
+        "kindName": "Media"
+    },
+    {
+        "id": 147,
+        "tagName": "tobacco",
+        "tagDefinition": "any product made or derived from tobacco that is intended for human consumption, including smoked and chewed tobacco products",
+        "kindName": "Foods & Agriculture"
+    },
+    {
+        "id": 148,
+        "tagName": "Toys and children's products",
+        "tagDefinition": "Toys and articles intended for use by children (not including formulations) (e.g. stuffed toys, blankets, games, baby bottles and pacifiers, dolls)",
+        "kindName": "PUC - article"
+    },
+    {
+        "id": 149,
+        "tagName": "Vehicle - car interior",
+        "tagDefinition": "formulation products used on the interior of cars, which do not fit into a more refined category",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 150,
+        "tagName": "Vehicle - car interior - auto air freshener",
+        "tagDefinition": "products for masking odors or adding fragrance to car cabin air",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 151,
+        "tagName": "Vehicle - car surface treatment",
+        "tagDefinition": "treatments for the surfaces/body of vehicles that can not be otherwise categorized",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 152,
+        "tagName": "Vehicle - car surface treatment - body cleaner",
+        "tagDefinition": "cleaners, shampoos, and washes for auto body exterior (not including wax products or combo wash/wax products)",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 153,
+        "tagName": "Vehicle - car surface treatment - body wax",
+        "tagDefinition": "auto body waxes and coatings, excluding combo wash/wax products",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 154,
+        "tagName": "WA Children's Safe Product Act (4/2020)",
+        "tagDefinition": "present on the WA State Department of Ecology - Chemicals of High Concern to Children Reporting List (version of list pulled 4/24/2020)",
+        "kindName": "Specialty list"
+    },
+    {
+        "id": 155,
+        "tagName": "wastewater",
+        "tagDefinition": "of, in, or related to wastewater, includes sludge and biosolids",
+        "kindName": "Media"
+    },
+    {
+        "id": 156,
+        "tagName": "water",
+        "tagDefinition": "found in water of a nondescript or unspecified type (e.g. not ground water, surface water, etc)",
+        "kindName": "Media"
+    },
+    {
+        "id": 13,
+        "tagName": "Arts and crafts/Office supplies - children's art and toys - crayons",
+        "tagDefinition": "wax crayons for coloring or illustration",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 14,
+        "tagName": "Arts and crafts/Office supplies - children's art and toys - modeling clay",
+        "tagDefinition": "soft modeling compounds",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 15,
+        "tagName": "Arts and crafts/Office supplies - fabric treatment and dye",
+        "tagDefinition": "Fabric treatments or dyes which can not be assigned to a more refined category",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 91,
+        "tagName": "Other direct contact consumer goods",
+        "tagDefinition": "Misc. consumer goods likely to have direct contact with the user (e.g. sports equipment, hand-held non-electric tools, jewelry, clothing, jackets, bags/luggage/purses, and other apparel, blankets and sheets, newspapers, adult diapers, feminine hygiene products, pencils and writing implements",
+        "kindName": "PUC - article"
+    },
+    {
+        "id": 92,
+        "tagName": "Other direct contact consumer goods - apparel",
+        "tagDefinition": "Clothing and accessories likely to have direct contact with the user. Includes jackets, hats, shoes, etc.",
+        "kindName": "PUC - article"
+    },
+    {
+        "id": 93,
+        "tagName": "Other indirect contact consumer goods",
+        "tagDefinition": "Misc. consumer goods likely to have indirect contact with the user (e.g. home decor (paintings, decorations), lampshades)",
+        "kindName": "PUC - article"
+    },
+    {
+        "id": 55,
+        "tagName": "emissions",
+        "tagDefinition": "release of a chemical from a source to an environmental medium; includes off-gassing",
+        "kindName": "General use"
+    },
+    {
+        "id": 56,
+        "tagName": "Europe",
+        "tagDefinition": "Sources specific to a European country or subset of countries",
+        "kindName": "Location"
+    },
+    {
+        "id": 57,
+        "tagName": "Flavornet",
+        "tagDefinition": "substances on the Flavornet list of compounds found in the human odor sphere",
+        "kindName": "Specialty list"
+    },
+    {
+        "id": 76,
+        "tagName": "inert_ingredient",
+        "tagDefinition": "inert (non-active) ingredients in a product",
+        "kindName": "Modifiers"
+    },
+    {
+        "id": 77,
+        "tagName": "Israel",
+        "tagDefinition": "Sources specific to Israel",
+        "kindName": "Location"
+    },
+    {
+        "id": 78,
+        "tagName": "Landscape/yard",
+        "tagDefinition": "products related or for use in the outdoor landscape or yard, which do not fit into a more refined category",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 43,
+        "tagName": "Cleaning products and household care - lime remover",
+        "tagDefinition": "products used to remove lime or scale from hard surfaces, excludes dishwasher related products",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 44,
+        "tagName": "Cleaning products and household care - oven - oven cleaner",
+        "tagDefinition": "products used to clean grills, ovens, or range cooktops",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 45,
+        "tagName": "Cleaning products and household care - shoes",
+        "tagDefinition": "Products related to the care of footwear which do not fit into a more refined category",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 4,
+        "tagName": "animal_feed",
+        "tagDefinition": "Includes hay, alfalfa hay, and pastures/rangeland",
+        "kindName": "Foods & Agriculture"
+    },
+    {
+        "id": 5,
+        "tagName": "animal_products",
+        "tagDefinition": "Meat, poultry, fish and eggs (includes honey)",
+        "kindName": "Foods & Agriculture"
+    },
+    {
+        "id": 6,
+        "tagName": "applied",
+        "tagDefinition": "modifier, e.g. for a pesticide applied to a particular crop (as compared to a pesticide being detected in that crop or food product)",
+        "kindName": "Modifiers"
+    },
+    {
+        "id": 106,
+        "tagName": "Personal care - facial cleansing and moisturizing",
+        "tagDefinition": "facial cleansing and moisturizing products which do not fit into a more refined category",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 107,
+        "tagName": "Personal care - fragrance",
+        "tagDefinition": "fragrances, colognes, and perfumes",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 108,
+        "tagName": "Personal care - general moisturizing - hand/body lotion",
+        "tagDefinition": "products specifically marketed for application to hands or body to moisturize or improve skin characteristics (excluding baby lotion)",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 73,
+        "tagName": "IFRA Transparency",
+        "tagDefinition": "substances on the International Fragrance Association's ordered register of all fragrance ingredients used in consumer goods by the fragrance industry's customers worldwide",
+        "kindName": "Specialty list"
+    },
+    {
+        "id": 74,
+        "tagName": "Indirect additives food contact (10/2018)",
+        "tagDefinition": "U.S. FDA list of Indirect Additives used in Food Contact Substances; presence of a substance in this list indicates that only certain intended uses and use conditions are authorized by FDA regulations (version of list updated 10/4/2018)",
+        "kindName": "Specialty list"
+    },
+    {
+        "id": 75,
+        "tagName": "Industrial products - marking paint",
+        "tagDefinition": "Specialty paint that adheres to outdoor surfaces (gravel, soil, trees, grass, concrete, blacktop, etc,) used by professionals (in land surveying, utility locating, traffic marking, public safety, etc.) for marking outdoor environments (construction sites, roads, yards, etc.)",
+        "kindName": "PUC - industrial"
+    },
+    {
+        "id": 88,
+        "tagName": "occupational",
+        "tagDefinition": "relating to a job or profession",
+        "kindName": "Modifiers"
+    },
+    {
+        "id": 89,
+        "tagName": "OEHHA Proposition 65 (3/2019)",
+        "tagDefinition": "California Office of Environmental Health Hazard Assessment Proposition 65; version of list updated 3/18/2019",
+        "kindName": "Specialty list"
+    },
+    {
+        "id": 90,
+        "tagName": "organic",
+        "tagDefinition": "for food or crops that are specified as being grown or produced organically",
+        "kindName": "Foods & Agriculture"
+    },
+    {
+        "id": 31,
+        "tagName": "Cleaning products and household care - carpet and floor - carpet cleaner",
+        "tagDefinition": "carpet cleaning products that may be used directly (or require dilution), includes solutions that may be used by hand or in mechanical carpet cleaners",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 32,
+        "tagName": "Cleaning products and household care - carpet and floor - floor polish",
+        "tagDefinition": "products that impart a shine to solid floors",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 33,
+        "tagName": "Cleaning products and household care - dishwasher and dishes",
+        "tagDefinition": "cleaning products used in the dishwasher or on dishes, which do not fit into a more refined category",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 97,
+        "tagName": "Personal care - body hygiene - body wash",
+        "tagDefinition": "body cleaners, washes, shower gels",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 98,
+        "tagName": "Personal care - body hygiene - feminine hygiene",
+        "tagDefinition": "Feminine hygiene products such as vaginal washes",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 99,
+        "tagName": "Personal care - body hygiene - hand soap",
+        "tagDefinition": "liquid hand soaps",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 79,
+        "tagName": "Landscape/Yard - cleaner",
+        "tagDefinition": "products used to clean  hard surfaces outside of the  home including decks, driveways, and external walls; includes products used as part of a mechanical cleaning system (e.g. solutions for pressure sprayers)",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 80,
+        "tagName": "legumes",
+        "tagDefinition": "Legumes, excludes green beans and peas (included with fruits and vegetables); excludes peanuts and peanut butter (included with nuts)",
+        "kindName": "Foods & Agriculture"
+    },
+    {
+        "id": 81,
+        "tagName": "manufacturing",
+        "tagDefinition": "Related to the creation or production of goods",
+        "kindName": "Manufacturing"
+    },
+    {
+        "id": 85,
+        "tagName": "nondetect",
+        "tagDefinition": "Chemicals that were tested for but not found in media or products. May include concentrations below the limit of detection, and instances where a measurement was not reported due to issues with measuring equipment, QA concerns, or other reasons.",
+        "kindName": "Modifiers"
+    },
+    {
+        "id": 86,
+        "tagName": "non_food_use",
+        "tagDefinition": "chemicals specifically designated as not for food use (e.g., pesticides approved for non-food use)",
+        "kindName": "Modifiers"
+    },
+    {
+        "id": 87,
+        "tagName": "nuts",
+        "tagDefinition": "includes peanuts and nut butters",
+        "kindName": "Foods & Agriculture"
+    },
+    {
+        "id": 22,
+        "tagName": "baby_food",
+        "tagDefinition": "Jarred and canned foods intended for consumption by infants and toddlers (includes formula)",
+        "kindName": "Foods & Agriculture"
+    },
+    {
+        "id": 23,
+        "tagName": "banned",
+        "tagDefinition": "noted chemical is banned from specified use",
+        "kindName": "Modifiers"
+    },
+    {
+        "id": 24,
+        "tagName": "Batteries",
+        "tagDefinition": "A device consisting of one or more electrochemical cells with external connections used in powering electrical devices.",
+        "kindName": "PUC - article"
+    },
+    {
+        "id": 19,
+        "tagName": "Arts and crafts/Office supplies - general arts and crafts supplies - flocking",
+        "tagDefinition": "products used to create textured or fiber covered surfaces, including artificial snow",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 20,
+        "tagName": "Arts and crafts/Office supplies - home office - pens and markers",
+        "tagDefinition": "writing utensils containing liquid or gel ink",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 21,
+        "tagName": "Australia",
+        "tagDefinition": "Sources specific to Australia",
+        "kindName": "Location"
+    },
+    {
+        "id": 82,
+        "tagName": "Medical/dental",
+        "tagDefinition": "Medical and dental supplies and equipment, e.g. medical equipment used in a hospital or doctor's office setting, at home (e.g. wheelchairs, colostomy bag). Includes clothing and personal protective equipment used in medical settings (e.g. scrubs, face masks, gowns, gloves)",
+        "kindName": "PUC - industrial"
+    },
+    {
+        "id": 83,
+        "tagName": "MN Chemical Screening",
+        "tagDefinition": "applied to all data sources used in MN DoH chemical screening proof of concept",
+        "kindName": "Specialty list"
+    },
+    {
+        "id": 84,
+        "tagName": "New Zealand",
+        "tagDefinition": "Sources specific to New Zealand",
+        "kindName": "Location"
+    },
+    {
+        "id": 37,
+        "tagName": "Cleaning products and household care - general household cleaning - surface cleaner",
+        "tagDefinition": "products used to clean hard surfaces in the home, including kitchen specific hard surface cleaners",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 38,
+        "tagName": "Cleaning products and household care - laundry and fabric treatment",
+        "tagDefinition": "Cleaning or care products for laundry and fabric treatment which do not fit into a more refined category",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 39,
+        "tagName": "Cleaning products and household care - laundry and fabric treatment - fabric deodorizer",
+        "tagDefinition": "fabric deodorizers",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 70,
+        "tagName": "Home maintenance - caulk/sealant",
+        "tagDefinition": "liquid or gels designed to seal cracks or fill cracks and depressions on hard surfaces",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 71,
+        "tagName": "Home maintenance - paint/stain and related products",
+        "tagDefinition": "paint or stain related products that do not fit into a more refined category",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 72,
+        "tagName": "Home maintenance - plumbing",
+        "tagDefinition": "miscellaneous plumbing repair products (putties, tapes, cements)",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 109,
+        "tagName": "Personal care - hair coloring",
+        "tagDefinition": "general hair coloring products which can not be classified into a more refined category",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 110,
+        "tagName": "Personal care - hair coloring - hair color - permanent",
+        "tagDefinition": "hair colors and dyes characterized as permanent, excludes dyes intended for use by professionals",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 111,
+        "tagName": "Personal care - hair coloring - hair color - professional",
+        "tagDefinition": "hair colors and dyes characterized as for professional use",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 1,
+        "tagName": "active_ingredient",
+        "tagDefinition": "active ingredients in a product",
+        "kindName": "Modifiers"
+    },
+    {
+        "id": 2,
+        "tagName": "agricultural",
+        "tagDefinition": "general term pertaining to agricultural practices, including the raising and farming of animals and growing of crops",
+        "kindName": "Foods & Agriculture"
+    },
+    {
+        "id": 3,
+        "tagName": "air",
+        "tagDefinition": "air - media specific to the chemical presence",
+        "kindName": "Media"
+    },
+    {
+        "id": 94,
+        "tagName": "Packaging (non-food contact)",
+        "tagDefinition": "Packaging that does not come into contact with food, e.g. boxes, cloth packaging, phone covers, bubble wrap",
+        "kindName": "PUC - article"
+    },
+    {
+        "id": 95,
+        "tagName": "Personal care",
+        "tagDefinition": "General personal care products which can not be assigned to a more refined category",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 96,
+        "tagName": "Personal care - body adhesive",
+        "tagDefinition": "adhesive products for attaching clothing or accessories to skin",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 10,
+        "tagName": "Arts and crafts/Office supplies - body paint",
+        "tagDefinition": "products placed on the skin for decorative purposes (body paints, markers, glitters, play cosmetics, Halloween cosmetics, and henna)",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 11,
+        "tagName": "Arts and crafts/Office supplies - body paint - tattoo ink",
+        "tagDefinition": "inks used for permanent tattoos",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 12,
+        "tagName": "Arts and crafts/Office supplies - children's art and toys",
+        "tagDefinition": "General children's art supplies and toys which can not be classified into a more refined category",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 112,
+        "tagName": "Personal care - hair styling and care",
+        "tagDefinition": "general hair styling or hair care products which do not fit into a more refined category",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 113,
+        "tagName": "Personal care - hair styling and care - hair conditioner",
+        "tagDefinition": "rinse-out everyday hair conditioners (excluding combo shampoo/conditioner products)",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 114,
+        "tagName": "Personal care - hair styling and care - shampoo",
+        "tagDefinition": "shampoos, including dual shampoo/conditioner products",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 7,
+        "tagName": "artificial_saliva",
+        "tagDefinition": "artificial saliva - media specific to the chemical presence",
+        "kindName": "Media"
+    },
+    {
+        "id": 8,
+        "tagName": "artificial_sweat",
+        "tagDefinition": "artificial sweat - media specific to the chemical presence",
+        "kindName": "Media"
+    },
+    {
+        "id": 9,
+        "tagName": "Arts and crafts/Office supplies",
+        "tagDefinition": "general arts and crafts or office supplies which can not be classified into a more refined category",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 100,
+        "tagName": "Personal care - body oil",
+        "tagDefinition": "lipophilic producs applied to skin (excluding baby oils)",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 101,
+        "tagName": "Personal care - child specific",
+        "tagDefinition": "Personal care products intended for use by children, which do not fit into a more specific category",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 102,
+        "tagName": "Personal care - dental care",
+        "tagDefinition": "Personal dental care products that can not be assigned to a more refined category",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 46,
+        "tagName": "Cleaning products and household care - shoes - shoe polish or protectant",
+        "tagDefinition": "products applied to footwear to color, polish, clean, or add a protective surface",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 47,
+        "tagName": "Cons electronics mech appliances and machinery",
+        "tagDefinition": "Including small and large consumer electronics appliances (e.g. refrigerator, washing machine, vacuum cleaner, computer, phone, smoke detector, electric tools, lamps); includes small electronics with direct personal contact such as massagers; excludes electronics specifically intended for use by children; excludes electronics with direct food contact (e.g. electric blender)",
+        "kindName": "PUC - article"
+    },
+    {
+        "id": 48,
+        "tagName": "Construction and building materials",
+        "tagDefinition": "Materials used for construction (e.g. flooring, tile, sinks, bathtubs, mirrors, wall materials/drywall, wall-to-wall carpets, insulation, playground surfaces); includes  semi-permanent fixtures such as faucets and light fixtures",
+        "kindName": "PUC - article"
+    },
+    {
+        "id": 103,
+        "tagName": "Personal care - dental care - toothpaste",
+        "tagDefinition": "toothpastes and dentrifices",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 104,
+        "tagName": "Personal care - deodorant",
+        "tagDefinition": "deodorants and antiperspirants",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 105,
+        "tagName": "Personal care - eye care and contacts - eye cream",
+        "tagDefinition": "products applied to skin located around the eye to moisturize or improve skin qualities",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 61,
+        "tagName": "fracking",
+        "tagDefinition": "chemicals related to or used during the fracking process",
+        "kindName": "General use"
+    },
+    {
+        "id": 62,
+        "tagName": "fruits_and_vegetables",
+        "tagDefinition": "includes fresh, canned and frozen forms, as well as juices and sauces (e.g. applesauce), excludes forms intended for consumption by young children (i.e. baby foods); includes green beans and peas",
+        "kindName": "Foods & Agriculture"
+    },
+    {
+        "id": 63,
+        "tagName": "Furniture and Furnishings",
+        "tagDefinition": "Items used to furnish a home or workplace, e.g. tables, chairs, sofa, outdoor patio furniture, sofa cover, hammock, mattress, area rug",
+        "kindName": "PUC - article"
+    },
+    {
+        "id": 28,
+        "tagName": "Cleaning products and household care",
+        "tagDefinition": "Cleaning and household care products that can not be placed in a more refined category",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 29,
+        "tagName": "Cleaning products and household care - air freshener",
+        "tagDefinition": "home air fresheners, including candles with a fragrance",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 30,
+        "tagName": "Cleaning products and household care - carpet and floor",
+        "tagDefinition": "Household carpet and floor cleaning products that can not be assigned to a more refined category",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 40,
+        "tagName": "Cleaning products and household care - laundry and fabric treatment - fabric softener",
+        "tagDefinition": "products used to improve tactile properties of fabrics that are added to the rinse water of clothes washers (excluding dryer sheets)",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 41,
+        "tagName": "Cleaning products and household care - laundry and fabric treatment - laundry detergent",
+        "tagDefinition": "products used in washing machines to clean fabrics",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 42,
+        "tagName": "Cleaning products and household care - laundry and fabric treatment - laundry stain remover",
+        "tagDefinition": "stain removers or laundry pre-treatment products",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 34,
+        "tagName": "Cleaning products and household care - dishwasher and dishes - automatic dishwashing additive",
+        "tagDefinition": "products used in automatic dishwashers other than detergents (rinse aids, spot removers, and dishwasher cleaners/scale or rust removers)",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 35,
+        "tagName": "Cleaning products and household care - dishwasher and dishes - automatic dishwashing detergent",
+        "tagDefinition": "detergents for automatic dishwashers",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 36,
+        "tagName": "Cleaning products and household care - general household cleaning",
+        "tagDefinition": "cleaning products for general household cleaning, which do not fit into a more refined category",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 64,
+        "tagName": "general_crops",
+        "tagDefinition": "Misc. crops, including sunflowers",
+        "kindName": "Foods & Agriculture"
+    },
+    {
+        "id": 65,
+        "tagName": "general_foods",
+        "tagDefinition": "unspecified foods or beverages for human consumption; these may be crops (e.g. raw fruits or vegetables) or processed goods",
+        "kindName": "Foods & Agriculture"
+    },
+    {
+        "id": 66,
+        "tagName": "grain",
+        "tagDefinition": "excludes soybean grain (included with legumes'; excludes corn grain (included with fruits and vegetables)",
+        "kindName": "Foods & Agriculture"
+    },
+    {
+        "id": 16,
+        "tagName": "Arts and crafts/Office supplies - general arts and crafts supplies",
+        "tagDefinition": "arts and crafts supplies which can not be assigned to a more refined category",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 17,
+        "tagName": "Arts and crafts/Office supplies - general arts and crafts supplies - arts and crafts adhesive",
+        "tagDefinition": "glue sticks, glitter glues, fabric glues, craft glue, spray mounts, stencil sprays, and other adhesives used for primarily craft purposes",
+        "kindName": "PUC - formulation"
+    },
+    {
+        "id": 18,
+        "tagName": "Arts and crafts/Office supplies - general arts and crafts supplies - arts and crafts paint",
+        "tagDefinition": "paints (including acrylic and enamel), colorants (materials that color solid objects, i.e. glass, porcelain), and pigments primarily used for craft purposes",
+        "kindName": "PUC - formulation"
+    }
+]

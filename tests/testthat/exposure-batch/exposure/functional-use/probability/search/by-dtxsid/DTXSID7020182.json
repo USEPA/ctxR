@@ -1,0 +1,50 @@
+[
+    {
+        "harmonizedFunctionalUse": "antimicrobial",
+        "probability": 0.3722
+    },
+    {
+        "harmonizedFunctionalUse": "antioxidant",
+        "probability": 0.8941
+    },
+    {
+        "harmonizedFunctionalUse": "catalyst",
+        "probability": 0.2031
+    },
+    {
+        "harmonizedFunctionalUse": "colorant",
+        "probability": 0.1560
+    },
+    {
+        "harmonizedFunctionalUse": "crosslinker",
+        "probability": 0.7743
+    },
+    {
+        "harmonizedFunctionalUse": "flame_retardant",
+        "probability": 0.2208
+    },
+    {
+        "harmonizedFunctionalUse": "flavorant",
+        "probability": 0.0314
+    },
+    {
+        "harmonizedFunctionalUse": "fragrance",
+        "probability": 0.2071
+    },
+    {
+        "harmonizedFunctionalUse": "heat_stabilizer",
+        "probability": 0.5119
+    },
+    {
+        "harmonizedFunctionalUse": "skin_conditioner",
+        "probability": 0.1168
+    },
+    {
+        "harmonizedFunctionalUse": "skin_protectant",
+        "probability": 0.3306
+    },
+    {
+        "harmonizedFunctionalUse": "uv_absorber",
+        "probability": 0.8046
+    }
+]
