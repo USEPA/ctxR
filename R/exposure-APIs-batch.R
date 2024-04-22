@@ -230,7 +230,7 @@ get_exposure_product_data_batch <- function(DTXSID = NULL,
 #' @examples has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Pull exposure functional use data for multiple chemicals
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
-#' exp_list_tags <- get_exposure_list_presence_tags__by_dtxsidbatch(DTXSID = dtxsid)
+#' exp_list_tags <- get_exposure_list_presence_tags_by_dtxsid_batch(DTXSID = dtxsid)
 
 get_exposure_list_presence_tags_by_dtxsid_batch <- function(DTXSID = NULL,
                                                             API_key = NULL,
