@@ -1,0 +1,189 @@
+---
+title: "Exposure APIs"
+author: "Center for Computational Toxicology and Exposure"
+output:
+   prettydoc::html_pretty:
+    theme: architect
+    toc: yes
+    toc_depth: 6
+vignette: >
+  %\VignetteIndexEntry{Exposure}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+```{css, echo=FALSE}
+.scroll-200 {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.scroll-300 {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.noticebox {
+  padding: 1em;
+  background: lightgray;
+  color: blue;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+```
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(httptest)
+start_vignette("5")
+```
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+if (!library(ccdR, logical.return = TRUE)){
+  devtools::load_all()
+}
+old_options <- options("width")
+```
+
+```{r setup-print, echo = FALSE}
+# Redefining the knit_print method to truncate character values to 25 characters
+# in each column and to truncate the columns in the print call to prevent 
+# wrapping tables with several columns.
+#library(ccdR)
+knit_print.data.table = function(x, ...) {
+  y <- data.table::copy(x)
+  y <- y[, lapply(.SD, function(t){
+    if (is.character(t)){
+      t <- strtrim(t, 25)
+    }
+    return(t)
+  })]
+  print(y, trunc.cols = TRUE)
+}
+
+registerS3method(
+  "knit_print", "data.table", knit_print.data.table,
+  envir = asNamespace("knitr")
+)
+```
+
+## Introduction
+
+In this vignette, [CCTE Exposure APIs](https://api-ccte.epa.gov/docs/exposure.html) will be explored. 
+
+::: {.noticebox data-latex=""}
+
+**NOTE:** Please see the introductory vignette for an overview of the *ccdR* package and initial set up instruction with API key storage.
+
+:::
+
+Data for the Exposure APIs comes from FILL IN THE DEETS!!!
+
+## Functions
+
+Several ccdR functions are used to access the CCTE Exposure API data.
+
+### Functional Use Resource
+
+Functional uses for chemicals may be searched.
+
+#### Exposure Functional Use
+
+`get_exposure_functional_use()` retrieves functional use exposure data for a specific chemical (by DTXSID).
+
+```{r exposure functional use}
+exp_fun_use <- get_exposure_functional_use(DTXSID = 'DTXSID7020182')
+head(data.table::as.data.table(exp_fun_use))
+```
+
+#### Exposure Functional Use Probability
+
+`get_exposure_functional_use_probability()` retrieves the probability of functional use within different use categories for a given chemical (by DTXSID). Note, this is not probability of how the chemical is used across all categories but rather the probability within each functional use category that the chemical is used.
+
+```{r}
+exp_fun_use_prob <- get_exposure_functional_use_probability(DTXSID = 'DTXSID7020182')
+exp_fun_use_prob
+```
+
+#### Exposure Functional Use Categories
+
+`get_exposure_functional_use_categories()` retrieves all the functional use categories. This is not specific to a chemical, but rather a list of all functional use categories.
+
+```{r}
+exp_fun_use_cat <- get_exposure_functional_use_category()
+head(data.table::as.data.table(exp_fun_use_cat))
+```
+
+### Product Data Resource
+
+There are a few resources for retrieving product use data associated with chemical identifiers (DTXSID) or general use.
+
+#### Exposure Product Data
+
+`get_exposure_product_data()` retrieves the product data for products that use the specified chemical (by DTXSID).
+
+```{r}
+exp_prod_dat <- get_exposure_product_data(DTXSID = 'DTXSID7020182')
+head(data.table::as.data.table(exp_prod_dat))
+```
+
+#### Exposure Product Use Category Data
+
+`get_exposure_product_data_puc()` retrieves the product use categories. This is not specific to a chemical, but rather a list of all product use categories.
+
+```{r}
+exp_prod_data_puc <- get_exposure_product_data_puc()
+head(data.table::as.data.table(exp_prod_data_puc))
+```
+
+### List Presence Resource
+
+There are a few resources for retrieving list data for specific chemicals (by DTXSID) or general list presence information.
+
+#### List Presence Tags
+
+`get_exposure_list_presence_tags()` retrieves all the list presence tag information. This is not specific to a chemical, but rather a list of the the list presence tags.
+
+```{r}
+exp_list_tags <- get_exposure_list_presence_tags()
+head(data.table::as.data.table(exp_list_tags))
+```
+
+#### List Presence Tag Data
+
+`get_exposure_list_presence_tags_by_dtxsid()` retrieves list presence tag data for a specific chemical (by DTXSID).
+
+```{r}
+exp_list_tags_dat <- get_exposure_list_presence_tags_by_dtxsid(DTXSID = 'DTXSID7020182')
+head(data.table::as.data.table(exp_list_tags_dat))
+```
+
+### Batch Search
+
+There are batch search versions for several endpoints that gather data specific to a chemical. Namely, `get_exposure_functional_use_batch()`, `get_exposure_functional_use_probability()`, `get_exposure_product_data_batch()`, and `get_exposure_list_presence_tags_by_dtxsid_batch()`. The function `get_exposure_functional_use_probability()` returns a data.table with each row corresponding to a unique chemical and each column representing a functional use category associated to at least one input chemical. The other three batch functions return a named list of data.frames, the names corresponding to the unique chemicals input and the data.frames corresponding to the information to each individual chemical.
+
+## Conclusion
+
+There are several CCTE `Exposure` API endpoints and ccdR contains functions for each, and batch versions for some of these as well. These allow users to access various types of exposure data associated to a given chemical. In this vignette, we explored all of the non-batch versions and discussed the batch versions. We encourage the user to experiment with the different endpoints to understand better what sorts of data are available.
+
+```{r breakdown, echo = FALSE, results = 'hide'}
+# This chunk will be hidden in the final product. It serves to undo defining the
+# custom print function to prevent unexpected behavior after this module during
+# the final knitting process and restores original option values.
+
+knit_print.data.table = knitr::normal_print
+  
+registerS3method(
+  "knit_print", "data.table", knit_print.data.table,
+  envir = asNamespace("knitr")
+)
+
+options(old_options)
+```
+
+```{r, include=FALSE}
+end_vignette()
+```
+

@@ -1,0 +1,362 @@
+[
+    {
+        "id": 22724,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Chemical presence list",
+        "docid": 1371471,
+        "doctitle": "The 25 Chemicals Found in All Nine of the Biosolids Studied",
+        "docdate": "",
+        "reportedfunction": "fire retardant",
+        "functioncategory": "Flame retardant"
+    },
+    {
+        "id": 22722,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Chemical presence list",
+        "docid": 1497376,
+        "doctitle": "A regional assessment of chemicals of concern in surface waters of four Midwestern United States national parks- Table 1",
+        "docdate": "6 December 2016",
+        "reportedfunction": "plastic component",
+        "functioncategory": null
+    },
+    {
+        "id": 22728,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1389481,
+        "doctitle": "halcyon radiant barrier shades",
+        "docdate": "2015-08-25",
+        "reportedfunction": "monomer, polycarbonate",
+        "functioncategory": "Monomers"
+    },
+    {
+        "id": 22726,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1550827,
+        "doctitle": "Thin-Set_Epoxy_Terrazzo_Flooring-Master_Terrazzo_Technologies-2017-02-02",
+        "docdate": "february 2, 2017",
+        "reportedfunction": "curing agent",
+        "functioncategory": "Hardener"
+    },
+    {
+        "id": 22727,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1389695,
+        "doctitle": "kerapoxy 410- part b",
+        "docdate": "2015-01-19",
+        "reportedfunction": "resin amide",
+        "functioncategory": null
+    },
+    {
+        "id": 22732,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1390773,
+        "doctitle": "universal litter and recycling receptacle - 30 gallon with",
+        "docdate": "2016-03-15",
+        "reportedfunction": "monomer, polycarbonate",
+        "functioncategory": "Monomers"
+    },
+    {
+        "id": 22706,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1388864,
+        "doctitle": "ardex ep 2000 part b",
+        "docdate": "2015-04-22",
+        "reportedfunction": "binder",
+        "functioncategory": "Binder"
+    },
+    {
+        "id": 22707,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1388207,
+        "doctitle": "lightweight honeycomb reinforced stone panels for interior",
+        "docdate": "2014-03-03",
+        "reportedfunction": "monomer, epichlorohydrin-bisphenol a resin",
+        "functioncategory": "Monomers"
+    },
+    {
+        "id": 22719,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1389212,
+        "doctitle": "drytek moisture vapor barrier",
+        "docdate": "2016-01-05",
+        "reportedfunction": "hardener",
+        "functioncategory": "Hardener"
+    },
+    {
+        "id": 22708,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1389977,
+        "doctitle": "lightweight fiberglass reinforced stone panels",
+        "docdate": "2014-03-04",
+        "reportedfunction": "monomer, epichlorohydrin-bisphenol a resin",
+        "functioncategory": "Monomers"
+    },
+    {
+        "id": 22709,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1388209,
+        "doctitle": "lightweight fiberglass reinforced stone panels",
+        "docdate": "2014-03-04",
+        "reportedfunction": "monomer, epichlorohydrin-bisphenol a resin",
+        "functioncategory": "Monomers"
+    },
+    {
+        "id": 22720,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1389947,
+        "doctitle": "laticrete nxttm vapor reduction coating",
+        "docdate": "2016-01-06",
+        "reportedfunction": "hardener",
+        "functioncategory": "Hardener"
+    },
+    {
+        "id": 22698,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1388496,
+        "doctitle": "laticrete supercap moisture vapor control",
+        "docdate": "2014-04-03",
+        "reportedfunction": "hardener",
+        "functioncategory": "Hardener"
+    },
+    {
+        "id": 22710,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1389981,
+        "doctitle": "lightweight polymer aluminum reinforced stone panels",
+        "docdate": "2014-03-01",
+        "reportedfunction": "monomer, epichlorohydrin-bisphenol a resin",
+        "functioncategory": "Monomers"
+    },
+    {
+        "id": 22699,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1388287,
+        "doctitle": "laticrete supercap moisture vapor control (part a)",
+        "docdate": "2014-04-03",
+        "reportedfunction": "hardener",
+        "functioncategory": "Hardener"
+    },
+    {
+        "id": 22711,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1389969,
+        "doctitle": "levele wall cladding system",
+        "docdate": "2014-03-17",
+        "reportedfunction": "monomer, bisphenol a-epichlorohydrin acrylate",
+        "functioncategory": "Monomers"
+    },
+    {
+        "id": 22712,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1388210,
+        "doctitle": "lightweight polymer aluminum reinforced stone panels",
+        "docdate": "2014-03-01",
+        "reportedfunction": "monomer, epichlorohydrin-bisphenol a resin",
+        "functioncategory": "Monomers"
+    },
+    {
+        "id": 22713,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1389976,
+        "doctitle": "lightweight ceramic backed stone panels",
+        "docdate": "2014-03-04",
+        "reportedfunction": "monomer, epichlorohydrin-bisphenol a resin",
+        "functioncategory": "Monomers"
+    },
+    {
+        "id": 22714,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1388205,
+        "doctitle": "lightweight ceramic backed stone panels",
+        "docdate": "2014-03-04",
+        "reportedfunction": "monomer, epichlorohydrin-bisphenol a resin",
+        "functioncategory": "Monomers"
+    },
+    {
+        "id": 22715,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1550827,
+        "doctitle": "Thin-Set_Epoxy_Terrazzo_Flooring-Master_Terrazzo_Technologies-2017-02-02",
+        "docdate": "february 2, 2017",
+        "reportedfunction": "epoxy hardener",
+        "functioncategory": null
+    },
+    {
+        "id": 22702,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1390728,
+        "doctitle": "triad litter and recycling receptacle",
+        "docdate": "2015-11-17",
+        "reportedfunction": "monomer, polycarbonate",
+        "functioncategory": "Monomers"
+    },
+    {
+        "id": 22700,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1389978,
+        "doctitle": "lightweight honeycomb reinforced stone panels",
+        "docdate": "2014-02-20",
+        "reportedfunction": "monomer, epichlorohydrin bisphenol a resin",
+        "functioncategory": "Monomers"
+    },
+    {
+        "id": 22729,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1389222,
+        "doctitle": "drytek moisture vapor barrier for pigments",
+        "docdate": "2016-04-13",
+        "reportedfunction": "hardener",
+        "functioncategory": "Hardener"
+    },
+    {
+        "id": 22723,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1389871,
+        "doctitle": "laticrete nxttm vapor reduction coating",
+        "docdate": "2016-01-06",
+        "reportedfunction": "hardener",
+        "functioncategory": "Hardener"
+    },
+    {
+        "id": 22716,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1550807,
+        "doctitle": "Terroxy_Binder_Resin_Part_B-Terrazzo_and_Marble_Supply-2017-04-13",
+        "docdate": "april 13, 2017",
+        "reportedfunction": "catalyst",
+        "functioncategory": "Catalyst"
+    },
+    {
+        "id": 22733,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1388497,
+        "doctitle": "laticrete nxt vapor reduction coating (part a)",
+        "docdate": "2014-04-03",
+        "reportedfunction": "hardener",
+        "functioncategory": "Hardener"
+    },
+    {
+        "id": 22725,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1388383,
+        "doctitle": "laticrete nxt vapor reduction coating",
+        "docdate": "2014-04-03",
+        "reportedfunction": "hardener",
+        "functioncategory": "Hardener"
+    },
+    {
+        "id": 22704,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1389980,
+        "doctitle": "lightweight honeycomb reinforced stone panels for interior",
+        "docdate": "2014-03-03",
+        "reportedfunction": "monomer, epichlorohydrin-bisphenol a resin",
+        "functioncategory": "Monomers"
+    },
+    {
+        "id": 22718,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1390640,
+        "doctitle": "laticrete supercap moisture vapor control",
+        "docdate": "2016-01-06",
+        "reportedfunction": "hardener",
+        "functioncategory": "Hardener"
+    },
+    {
+        "id": 22705,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1389979,
+        "doctitle": "lightweight honeycomb reinforced stone panels for exterior",
+        "docdate": "2014-03-03",
+        "reportedfunction": "monomer, epichlorohydrin-bisphenol a resin",
+        "functioncategory": "Monomers"
+    },
+    {
+        "id": 22721,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1388208,
+        "doctitle": "lightweight honeycomb reinforced stone panels for exterior",
+        "docdate": "2014-03-03",
+        "reportedfunction": "monom er, epichlorohydrin-bisphenol a resin",
+        "functioncategory": null
+    },
+    {
+        "id": 22717,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1389956,
+        "doctitle": "laticrete supercap moisture vapor control",
+        "docdate": "2016-01-06",
+        "reportedfunction": "hardener",
+        "functioncategory": "Hardener"
+    },
+    {
+        "id": 22731,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Composition",
+        "docid": 1389221,
+        "doctitle": "drytek moisture vapor barrier",
+        "docdate": "2016-01-05",
+        "reportedfunction": "hardener",
+        "functioncategory": "Hardener"
+    },
+    {
+        "id": 22703,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Function",
+        "docid": 1630343,
+        "doctitle": "Octolite 485",
+        "docdate": "",
+        "reportedfunction": "antioxidants>phenolics",
+        "functioncategory": "Antioxidant"
+    },
+    {
+        "id": 22730,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Function",
+        "docid": 1631119,
+        "doctitle": "4",
+        "docdate": "",
+        "reportedfunction": "phenolics",
+        "functioncategory": null
+    },
+    {
+        "id": 22701,
+        "dtxsid": "DTXSID7020182",
+        "datatype": "Function",
+        "docid": 1514560,
+        "doctitle": "4,4'-isopropylidenediphenol",
+        "docdate": "",
+        "reportedfunction": "not reported",
+        "functioncategory": "No specific technical function"
+    }
+]
