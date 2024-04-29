@@ -72,28 +72,40 @@
         "shortDescription": "The Agency for Toxic Substances and Disease Registry (ATSDR) is a federal public health agency of the U.S. Department of Health and Human Services."
     },
     {
+        "id": 1902,
+        "type": "federal",
+        "label": "ATSDR: Minimal Risk Levels (MRLs) for Hazardous Substances NAVIGATION",
+        "visibility": "PUBLIC",
+        "longDescription": "The Comprehensive Environmental Response, Compensation, and Liability Act (CERCLA) [<a href='https://www.govinfo.gov/app/details/USCODE-2010-title42/USCODE-2010-title42-chap103-subchapI-sec9604' target='_blank'>42 U.S.C. 9604 et seq.<\/a>], as amended by the Superfund Amendments and Reauthorization Act (SARA) [Pub. L. 99 499], requires that the <a href='https://www.atsdr.cdc.gov/' target='_blank'>Agency for Toxic Substances and Disease Registry<\/a> (ATSDR) develop jointly with the U.S. Environmental Protection Agency (EPA), in order of priority, a list of hazardous substances most commonly found at facilities on the CERCLA National Priorities List (NPL) (<a href='https://www.govinfo.gov/app/details/USCODE-2010-title42/USCODE-2010-title42-chap103-subchapI-sec9604\r\n' target='_blank'>42 U.S.C. 9604(i)(2)<\/a>); prepare toxicological profiles for each substance included on the priority list of hazardous substances, and to ascertain significant human exposure levels (SHELs) for hazardous substances in the environment, and the associated acute, subacute, and chronic health effects (42 U.S.C. 9604(i)(3)); and assure the initiation of a research program to fill identified data needs associated with the substances (42 U.S.C. 9604(i)(5)). The ATSDR Minimal Risk Levels (MRLs) were developed as an initial response to the mandate. An MRL is an estimate of the amount of a chemical a person can eat, drink, or breathe each day without a detectable risk to health. MRLs are developed for health effects other than cancer. MRLs can be made for 3 different time periods [the length of time people are exposed to the chemical: acute (about 1 to 14 days), intermediate (from 15-364 days), and chronic (exposure for more than 364 days)]. It is important to note that MRLs are not intended to define clean up or action levels for ATSDR or other Agencies. <br/><br/>   \r\n\r\n<a href='https://comptox.epa.gov/dashboard/chemical-lists/ATSDRMRLSV2' target='_blank'>ATSDRMRLSV2 - August 2022<\/a> This list <br/><br/>\r\n\r\n<a href='https://comptox.epa.gov/dashboard/chemical-lists/ATSDRMRLSV1' target='_blank'>ATSDRMRLSV1 - November 2018<\/a>",
+        "listName": "ATSDRMRLS",
+        "chemicalCount": 207,
+        "createdAt": "2024-01-12T13:55:41Z",
+        "updatedAt": "2024-01-14T17:38:26Z",
+        "shortDescription": "The ATSDR Minimal Risk Levels (MRLs) were developed as an initial response to the Comprehensive Environmental Response, Compensation, and Liability Act (CERCLA) (NAVIGATION)"
+    },
+    {
         "id": 564,
         "type": "federal",
-        "label": "ATSDR: Minimal Risk Levels (MRLs) for Hazardous Substances (version 1)",
+        "label": "ATSDR: Minimal Risk Levels (MRLs) for Hazardous Substances (version 1 - November 2018)",
         "visibility": "PUBLIC",
-        "longDescription": "The Comprehensive Environmental Response, Compensation, and Liability Act (CERCLA) [<a href='https://www.govinfo.gov/app/details/USCODE-2010-title42/USCODE-2010-title42-chap103-subchapI-sec9604' target='_blank'>42 U.S.C. 9604 et seq.<\/a>], as amended by the Superfund Amendments and Reauthorization Act (SARA) [Pub. L. 99 499], requires that the <a href='https://www.atsdr.cdc.gov/' target='_blank'>Agency for Toxic Substances and Disease Registry<\/a> (ATSDR) develop jointly with the U.S. Environmental Protection Agency (EPA), in order of priority, a list of hazardous substances most commonly found at facilities on the CERCLA National Priorities List (NPL) (<a href='https://www.govinfo.gov/app/details/USCODE-2010-title42/USCODE-2010-title42-chap103-subchapI-sec9604\r\n' target='_blank'>42 U.S.C. 9604(i)(2)<\/a>); prepare toxicological profiles for each substance included on the priority list of hazardous substances, and to ascertain significant human exposure levels (SHELs) for hazardous substances in the environment, and the associated acute, subacute, and chronic health effects (42 U.S.C. 9604(i)(3)); and assure the initiation of a research program to fill identified data needs associated with the substances (42 U.S.C. 9604(i)(5)). The ATSDR Minimal Risk Levels (MRLs) were developed as an initial response to the mandate. An MRL is an estimate of the amount of a chemical a person can eat, drink, or breathe each day without a detectable risk to health. MRLs are developed for health effects other than cancer. MRLs can be made for 3 different time periods [the length of time people are exposed to the chemical: acute (about 1 to 14 days), intermediate (from 15-364 days), and chronic (exposure for more than 364 days)]. It is important to note that MRLs are not intended to define clean up or action levels for ATSDR or other Agencies. (Version 1)\r\n",
+        "longDescription": "The Comprehensive Environmental Response, Compensation, and Liability Act (CERCLA) [<a href='https://www.govinfo.gov/app/details/USCODE-2010-title42/USCODE-2010-title42-chap103-subchapI-sec9604' target='_blank'>42 U.S.C. 9604 et seq.<\/a>], as amended by the Superfund Amendments and Reauthorization Act (SARA) [Pub. L. 99 499], requires that the <a href='https://www.atsdr.cdc.gov/' target='_blank'>Agency for Toxic Substances and Disease Registry<\/a> (ATSDR) develop jointly with the U.S. Environmental Protection Agency (EPA), in order of priority, a list of hazardous substances most commonly found at facilities on the CERCLA National Priorities List (NPL) (<a href='https://www.govinfo.gov/app/details/USCODE-2010-title42/USCODE-2010-title42-chap103-subchapI-sec9604\r\n' target='_blank'>42 U.S.C. 9604(i)(2)<\/a>); prepare toxicological profiles for each substance included on the priority list of hazardous substances, and to ascertain significant human exposure levels (SHELs) for hazardous substances in the environment, and the associated acute, subacute, and chronic health effects (42 U.S.C. 9604(i)(3)); and assure the initiation of a research program to fill identified data needs associated with the substances (42 U.S.C. 9604(i)(5)). The ATSDR Minimal Risk Levels (MRLs) were developed as an initial response to the mandate. An MRL is an estimate of the amount of a chemical a person can eat, drink, or breathe each day without a detectable risk to health. MRLs are developed for health effects other than cancer. MRLs can be made for 3 different time periods [the length of time people are exposed to the chemical: acute (about 1 to 14 days), intermediate (from 15-364 days), and chronic (exposure for more than 364 days)]. It is important to note that MRLs are not intended to define clean up or action levels for ATSDR or other Agencies. (Version 1 - November 2018)\r\n",
         "listName": "ATSDRMRLSV1",
         "chemicalCount": 756,
         "createdAt": "2018-11-16T13:38:00Z",
-        "updatedAt": "2022-12-17T13:03:08Z",
-        "shortDescription": "The ATSDR Minimal Risk Levels (MRLs) were developed as an initial response to the Comprehensive Environmental Response, Compensation, and Liability Act (CERCLA) (version 1)"
+        "updatedAt": "2024-01-12T13:51:40Z",
+        "shortDescription": "The ATSDR Minimal Risk Levels (MRLs) were developed as an initial response to the Comprehensive Environmental Response, Compensation, and Liability Act (CERCLA) (version 1 - November 2018)"
     },
     {
         "id": 1675,
         "type": "federal",
-        "label": "ATSDR: Minimal Risk Levels (MRLs) for Hazardous Substances (Version 2 - Updated 12/12/2022))",
+        "label": "ATSDR: Minimal Risk Levels (MRLs) for Hazardous Substances (Version 2 -  December 2022)",
         "visibility": "PUBLIC",
         "longDescription": "The Comprehensive Environmental Response, Compensation, and Liability Act (CERCLA) [<a href='https://www.govinfo.gov/app/details/USCODE-2010-title42/USCODE-2010-title42-chap103-subchapI-sec9604' target='_blank'>42 U.S.C. 9604 et seq.<\/a>], as amended by the Superfund Amendments and Reauthorization Act (SARA) [Pub. L. 99 499], requires that the <a href='https://www.atsdr.cdc.gov/' target='_blank'>Agency for Toxic Substances and Disease Registry<\/a> (ATSDR) develop jointly with the U.S. Environmental Protection Agency (EPA), in order of priority, a list of hazardous substances most commonly found at facilities on the CERCLA National Priorities List (NPL) (<a href='https://www.govinfo.gov/app/details/USCODE-2010-title42/USCODE-2010-title42-chap103-subchapI-sec9604' target='_blank'>42 U.S.C. 9604(i)(2)<\/a>); prepare toxicological profiles for each substance included on the priority list of hazardous substances, and to ascertain significant human exposure levels (SHELs) for hazardous substances in the environment, and the associated acute, subacute, and chronic health effects (42 U.S.C. 9604(i)(3)); and assure the initiation of a research program to fill identified data needs associated with the substances (42 U.S.C. 9604(i)(5)). The ATSDR Minimal Risk Levels (MRLs) were developed as an initial response to the mandate. An MRL is an estimate of the amount of a chemical a person can eat, drink, or breathe each day without a detectable risk to health. MRLs are developed for health effects other than cancer. MRLs can be made for 3 different time periods [the length of time people are exposed to the chemical: acute (about 1 to 14 days), intermediate (from 15-364 days), and chronic (exposure for more than 364 days)]. It is important to note that MRLs are not intended to define clean up or action levels for ATSDR or other Agencies. (Last Updated 12/12/2022 based on <a href='https://www.atsdr.cdc.gov/mrls/pdfs/ATSDR%20MRLs%20-%20August%202022%20-%20H.pdf' target='_blank'>August 2022 release of MRL values<\/a>)",
         "listName": "ATSDRMRLSV2",
         "chemicalCount": 207,
         "createdAt": "2022-12-12T19:59:21Z",
-        "updatedAt": "2022-12-17T13:03:34Z",
-        "shortDescription": "The ATSDR Minimal Risk Levels (MRLs) were developed as an initial response to the Comprehensive Environmental Response, Compensation, and Liability Act (CERCLA).  (Version 2 - Updated 12/12/2022)\r\n"
+        "updatedAt": "2024-01-14T17:35:50Z",
+        "shortDescription": "The ATSDR Minimal Risk Levels (MRLs) were developed as an initial response to the Comprehensive Environmental Response, Compensation, and Liability Act (CERCLA).  (Version 2 - December 2022)\r\n"
     },
     {
         "id": 1024,
@@ -222,7 +234,7 @@
         "visibility": "PUBLIC",
         "longDescription": "The Contaminant Candidate List (CCL) is a list of contaminants that are currently not subject to any proposed or promulgated national primary drinking water regulations, but are known or anticipated to occur in public water systems. Contaminants listed on the CCL may require future regulation under the Safe Drinking Water Act (SDWA). EPA announced the Final Contaminant Candidate List 5 on November 2nd 2022. \r\n\r\nFor the purpose of CCL 5, excluding PFOA and PFOS, the structural definition of per- and polyfluoroalkyl substances (PFAS) includes chemicals that contain at least one of these three structures: \r\n1)           R-(CF2)-CF(R′)R′′, where both the CF2 and CF moieties are saturated carbons, and none of the R groups can be hydrogen \r\n2)           R-CF2OCF2-R′, where both the CF2 moieties are saturated carbons, and none of the R groups can be hydrogen\r\n3)           CF3C(CF3)RR′, where all the carbons are saturated, and none of the R groups can be hydrogen  \r\n\r\n\r\nThe Final CCL 5 includes 69 chemicals or chemical groups and 12 microbial contaminants. The CCL 5 list is available <a href='https://comptox.epa.gov/dashboard/chemical_lists/CCL5' target='_blank'>here<\/a><br/><br/>.\r\n",
         "listName": "CCL5PFAS",
-        "chemicalCount": 10239,
+        "chemicalCount": 10246,
         "createdAt": "2022-10-07T11:02:35Z",
         "updatedAt": "2022-10-29T23:06:51Z",
         "shortDescription": "The Contaminant Candidate List (CCL) is a list of contaminants that are known or anticipated to occur in public water systems. EPA announced the Final Contaminant Candidate List 5 on November 2nd 2022."
@@ -246,7 +258,7 @@
         "visibility": "PUBLIC",
         "longDescription": "The <a href='https://www.epa.gov/chemical-data-reporting/basic-information-about-chemical-data-reporting#what' target='_blank'>Chemical Data Reporting (CDR) rule<\/a> under the Toxic Substances Control Act (TSCA), requires manufacturers (including importers) to provide EPA with information on the production and use of chemicals in commerce. <br/>\r\n\r\nUnder the CDR rule, EPA collects basic exposure-related information including information on the types, quantities and uses of chemical substances produced domestically and imported into the United States. The CDR database constitutes the most comprehensive source of basic screening-level, exposure-related information on chemicals available to EPA, and is used by the Agency to protect the public from potential chemical risks. <br/>\r\n\r\nThe information is collected every four years from manufacturers (including importers) of certain chemicals in commerce generally when production volumes for the chemical are 25,000 lbs or greater for a specific reporting year. Collecting the information every four years assures that EPA and (for non-confidential data) the public have access to up-to-date information on chemicals. <br/>\r\n\r\nThe CDR rule is required by section 8(a) of the Toxic Substances Control Act (TSCA) and was formerly known as the Inventory Update Rule (IUR). <br/>\r\n\r\nThe CDR2020 data are accessible from the <a href='https://www.epa.gov/chemical-data-reporting/access-cdr-data' target='_blank'>Access CDR Data<\/a> page. The dataset registered here is for the set of chemicals with CAS Registry Numbers and excludes the ~600 chemicals without CASRNs and/or flagged as provisional. (Last Updated 9/16/2022)\r\n\r\n",
         "listName": "CDR2020",
-        "chemicalCount": 7969,
+        "chemicalCount": 8033,
         "createdAt": "2022-09-16T19:30:54Z",
         "updatedAt": "2022-09-16T23:01:42Z",
         "shortDescription": "Chemical Data Reporting (CDR) 2020 Use data."
@@ -314,14 +326,14 @@
     {
         "id": 316,
         "type": "federal",
-        "label": "EPA|CPDAT: Chemical and Products Database",
+        "label": "Chemical and Products Database v1",
         "visibility": "PUBLIC",
-        "longDescription": "This is a list of chemicals reported in the EPA's Chemical and Products Database, surfaced in the Dashboard and in the supplementary info file associated with the Nature Scientific Data article <a href='here' target='_blank'>https://www.nature.com/articles/sdata2018125<\/a>.",
-        "listName": "CPDAT",
-        "chemicalCount": 45323,
+        "longDescription": "This is a list of chemicals reported in the EPA's Chemical and Products Database from the supplementary info file associated with the Nature Scientific Data article <a href='here' target='_blank'>https://www.nature.com/articles/sdata2018125<\/a> (original release February 14th 2017).",
+        "listName": "CPDATv1",
+        "chemicalCount": 45358,
         "createdAt": "2017-02-14T10:17:56Z",
-        "updatedAt": "2022-12-05T12:50:32Z",
-        "shortDescription": "Chemicals contained in the EPA's Chemical and Products Database"
+        "updatedAt": "2024-03-13T02:40:53Z",
+        "shortDescription": "Chemicals contained in the EPA's Chemical and Products Database: Version 1 (original release February 14th 2017)\r\n\r\n"
     },
     {
         "id": 1103,
@@ -336,13 +348,73 @@
         "shortDescription": "Clean Water Act (CWA) Section 311(b)(2)(A) list of hazardous substances"
     },
     {
+        "id": 1986,
+        "type": "federal",
+        "label": "DEA Schedule 1 Drugs",
+        "visibility": "PUBLIC",
+        "longDescription": "Schedule I drugs, substances, or chemicals are defined as drugs with no currently accepted medical use and a high potential for abuse. Some examples of Schedule I drugs are: heroin, lysergic acid diethylamide (LSD), marijuana (cannabis), 3,4-methylenedioxymethamphetamine (ecstasy), methaqualone, and peyote.\r\n\r\nThe Alphabetical listing of Controlled Substances is available online <a href='https://www.dea.gov/drug-information/drug-scheduling' target='_blank'>here<\/a>.",
+        "listName": "DEASCHED1",
+        "chemicalCount": 275,
+        "createdAt": "2024-02-07T20:06:11Z",
+        "updatedAt": "2024-02-07T20:21:22Z",
+        "shortDescription": "Schedule I drugs, substances, or chemicals are defined as drugs with no currently accepted medical use and a high potential for abuse. "
+    },
+    {
+        "id": 1987,
+        "type": "federal",
+        "label": "DEA Schedule 2 Drugs",
+        "visibility": "PUBLIC",
+        "longDescription": "Schedule II drugs, substances, or chemicals are defined as drugs with a high potential for abuse, with use potentially leading to severe psychological or physical dependence. These drugs are also considered dangerous. Some examples of Schedule II drugs are: combination products with less than 15 milligrams of hydrocodone per dosage unit (Vicodin), cocaine, methamphetamine, methadone, hydromorphone (Dilaudid), meperidine (Demerol), oxycodone (OxyContin), fentanyl, Dexedrine, Adderall, and Ritalin\r\n\r\nThe Alphabetical listing of Controlled Substances is available online <a href='https://www.dea.gov/drug-information/drug-scheduling' target='_blank'>here<\/a>.",
+        "listName": "DEASCHED2",
+        "chemicalCount": 58,
+        "createdAt": "2024-02-07T20:26:37Z",
+        "updatedAt": "2024-02-07T20:31:52Z",
+        "shortDescription": "Schedule II drugs, substances, or chemicals are defined as drugs with a high potential for abuse, with use potentially leading to severe psychological or physical dependence."
+    },
+    {
+        "id": 1991,
+        "type": "federal",
+        "label": "DEA Schedule 3 Drugs",
+        "visibility": "PUBLIC",
+        "longDescription": "Schedule III drugs, substances, or chemicals are defined as drugs with a moderate to low potential for physical and psychological dependence. Schedule III drugs abuse potential is less than Schedule I and Schedule II drugs but more than Schedule IV. Some examples of Schedule III drugs are: products containing less than 90 milligrams of codeine per dosage unit (Tylenol with codeine), ketamine, anabolic steroids, testosterone\r\n\r\nThe Alphabetical listing of Controlled Substances is available online <a href='https://www.dea.gov/drug-information/drug-scheduling' target='_blank'>here<\/a>.\r\n",
+        "listName": "DEASCHED3",
+        "chemicalCount": 104,
+        "createdAt": "2024-02-07T23:32:55Z",
+        "updatedAt": "2024-02-08T18:35:04Z",
+        "shortDescription": "Schedule III drugs, substances, or chemicals are defined as drugs with a moderate to low potential for physical and psychological dependence. "
+    },
+    {
+        "id": 1988,
+        "type": "federal",
+        "label": "DEA Schedule 4 Drugs",
+        "visibility": "PUBLIC",
+        "longDescription": "Schedule IV drugs, substances, or chemicals are defined as drugs with a low potential for abuse and low risk of dependence. Some examples of Schedule IV drugs are: Xanax, Soma, Darvon, Darvocet, Valium, Ativan, Talwin, Ambien, Tramadol.\r\n\r\nThe Alphabetical listing of Controlled Substances is available online <a href='https://www.dea.gov/drug-information/drug-scheduling' target='_blank'>here<\/a>.\r\n",
+        "listName": "DEASCHED4",
+        "chemicalCount": 81,
+        "createdAt": "2024-02-07T23:01:52Z",
+        "updatedAt": "2024-02-07T23:02:31Z",
+        "shortDescription": "Schedule IV drugs, substances, or chemicals are defined as drugs with a low potential for abuse and low risk of dependence. "
+    },
+    {
+        "id": 1989,
+        "type": "federal",
+        "label": "DEA Schedule 5 Drugs",
+        "visibility": "PUBLIC",
+        "longDescription": "Schedule V drugs, substances, or chemicals are defined as drugs with lower potential for abuse than Schedule IV and consist of preparations containing limited quantities of certain narcotics. Schedule V drugs are generally used for antidiarrheal, antitussive, and analgesic purposes. Some examples of Schedule V drugs are: cough preparations with less than 200 milligrams of codeine or per 100 milliliters (Robitussin AC), Lomotil, Motofen, Lyrica, Parepectolin.\r\n\r\nThe Alphabetical listing of Controlled Substances is available online <a href='https://www.dea.gov/drug-information/drug-scheduling' target='_blank'>here<\/a>.",
+        "listName": "DEASCHED5",
+        "chemicalCount": 12,
+        "createdAt": "2024-02-07T23:05:29Z",
+        "updatedAt": "2024-02-07T23:06:22Z",
+        "shortDescription": "Schedule V drugs, substances, or chemicals are defined as drugs with lower potential for abuse than Schedule IV and consist of preparations containing limited quantities of certain narcotics. "
+    },
+    {
         "id": 952,
         "type": "federal",
         "label": "EPA|ECOTOX: Ecotoxicology knowledgebase version 4",
         "visibility": "PUBLIC",
         "longDescription": "The ECOTOX Knowledgebase is a comprehensive, dynamic, curated database that summarizes chemical environmental toxicity data on aquatic life, terrestrial plants, and wildlife. This publically available database includes curated data from over 47,000 publications and is updated quarterly. For more information on the ECOTOX Knowledgebase and to search the ECOTOX records, see: https://cfpub.epa.gov/ecotox/. This is the data snapshot as of June 30 2020. Curation is an ongoing process.\r\n",
         "listName": "ECOTOX_v4",
-        "chemicalCount": 13175,
+        "chemicalCount": 13189,
         "createdAt": "2020-06-30T22:19:23Z",
         "updatedAt": "2022-06-21T18:41:36Z",
         "shortDescription": "ECOTOXicology knowledgebase (ECOTOX) is a comprehensive, publicly available knowledgebase providing single chemical environmental toxicity data on aquatic life, terrestrial plants and wildlife"
@@ -354,7 +426,7 @@
         "visibility": "PUBLIC",
         "longDescription": "The ECOTOX Knowledgebase is a comprehensive, dynamic, curated database that summarizes chemical environmental toxicity data on aquatic life, terrestrial plants, and wildlife. This publically available database includes curated data from over 47,000 publications and is updated quarterly. For more information on the ECOTOX Knowledgebase and to search the ECOTOX records, see: https://cfpub.epa.gov/ecotox/. This is the data snapshot as of September 30 2022. Curation is an ongoing process.",
         "listName": "ECOTOX_v5",
-        "chemicalCount": 12541,
+        "chemicalCount": 12571,
         "createdAt": "2022-09-30T20:51:16Z",
         "updatedAt": "2022-11-08T13:10:47Z",
         "shortDescription": "ECOTOXicology knowledgebase (ECOTOX) is a comprehensive, publicly available knowledgebase providing single chemical environmental toxicity data on aquatic life, terrestrial plants and wildlife."
@@ -366,7 +438,7 @@
         "visibility": "PUBLIC",
         "longDescription": "The ECOTOX Knowledgebase is a comprehensive, dynamic, curated database that summarizes chemical environmental toxicity data on aquatic life, terrestrial plants, and wildlife. This publically available database includes curated data from over 47,000 publications and is updated quarterly. For more information on the ECOTOX Knowledgebase and to search the ECOTOX records, see: https://cfpub.epa.gov/ecotox/. This is the data snapshot as of February 5th 2023. Curation is an ongoing process.",
         "listName": "ECOTOX_v6",
-        "chemicalCount": 12586,
+        "chemicalCount": 12690,
         "createdAt": "2023-02-05T23:13:55Z",
         "updatedAt": "2023-02-22T08:46:57Z",
         "shortDescription": "ECOTOXicology knowledgebase (ECOTOX) is a comprehensive, publicly available knowledgebase providing single chemical environmental toxicity data on aquatic life, terrestrial plants and wildlife."
@@ -414,7 +486,7 @@
         "visibility": "PUBLIC",
         "longDescription": "The Office of Pesticide Programs has migrated all of its major data systems including regulatory and scientific data, workflow tracking and electronic document management into one integrated system, the Office of Pesticide Programs Information Network (OPPIN). OPPIN consolidates information now stored on the mainframe, the OPP LAN, on stand alone computers and in paper copy. This list represents a Biopesticides subset of the larger OPPIN list specifically labeled for use as biopesticides, sourced from <a href='https://www.epa.gov/ingredients-used-pesticide-products/biopesticide-active-ingredients' target='_blank'>https://www.epa.gov/ingredients-used-pesticide-products/biopesticide-active-ingredients<\/a>. (Last updated 8/17/2022 and under constant curation).   ",
         "listName": "EPABIOPESTICIDES",
-        "chemicalCount": 180,
+        "chemicalCount": 313,
         "createdAt": "2022-03-31T17:59:22Z",
         "updatedAt": "2022-08-17T19:37:02Z",
         "shortDescription": "CATEGORY|EPA|BIOPESTICIDES:Office of Pesticide Programs Information Network Biopesticides Subset List"
@@ -462,7 +534,7 @@
         "visibility": "PUBLIC",
         "longDescription": "Under the Clean Air Act, EPA is required to regulate emissions of hazardous air pollutants. This is the current list of pollutants (Final rule effective: February 4, 2022). \r\n\r\nNOTE: For all listings above which contain the word 'compounds' and for glycol ethers, the following applies: Unless otherwise specified, these listings are defined as including any unique chemical substance that contains the named chemical (i.e., antimony, arsenic, etc.) as part of that chemical's infrastructure.\r\n",
         "listName": "EPAHAPS",
-        "chemicalCount": 184,
+        "chemicalCount": 188,
         "createdAt": "2023-01-31T20:30:58Z",
         "updatedAt": "2023-02-01T10:07:45Z",
         "shortDescription": "Under the Clean Air Act, EPA is required to regulate emissions of hazardous air pollutants. This is the current list of pollutants (Final rule effective: February 4, 2022)."
@@ -546,7 +618,7 @@
         "visibility": "PUBLIC",
         "longDescription": "The entries in this list have been classified in the U.S. as pesticidal “active ingredients” (conventional, antimicrobial, or biopesticidal agents), and were sourced from the Pesticide Chemical Search database (<a href=\"https://iaspub.epa.gov/apex/pesticides/f?p=chemicalsearch:1\" target=\"_blank\">https://iaspub.epa.gov/apex/pesticides/f?p=chemicalsearch:1<\/a>) created by EPA’s Office of Pesticide Programs. <br/><br/>\r\nChemical Search provides a single point of reference for easy access to information previously published in a variety of locations, including various EPA web pages and Regulations.gov. Chemical search contains the following: <br/>1) More than 20,000 regulatory documents; <br/>2) Links to over 800 dockets in Regulations.gov <br/>3) Links to pesticide tolerance (or maximum residue levels) information; <br/>4) A variety of web services providing easy access to other scientific and regulatory information on particular chemicals from other EPA programs and federal government sources.<br/><br/>\r\nIt should be noted that the Pesticide Chemical Search site is not actively maintained and the various chemicals can be out of date in terms of status.\r\n\r\n\r\n",
         "listName": "EPAPCS",
-        "chemicalCount": 4038,
+        "chemicalCount": 4039,
         "createdAt": "2017-11-07T13:48:05Z",
         "updatedAt": "2019-10-25T22:10:41Z",
         "shortDescription": "The entries in this list have been classified in the U.S. as pesticidal “active ingredients” (conventional, antimicrobial, or biopesticidal agents), and were sourced from the Pesticide Chemical Search database."
@@ -642,7 +714,7 @@
         "visibility": "PUBLIC",
         "longDescription": "EPAPFASRL is a manually curated listing of mainly straight-chain and branched PFAS (Per- & Poly-fluorinated alkyl substances) compiled from various internal, literature and public sources by EPA researchers and program office representatives. Note that this list includes a number of parent, salt and anionic forms of PFAS, the latter being the form detected by mass spectroscopic methods. These different forms are assigned unique DTXSIDs, with a unique structure, CAS (if available) and name, but will collapse to a single form in the MS-ready (or QSAR-ready) structure representations.  ",
         "listName": "EPAPFASRL",
-        "chemicalCount": 194,
+        "chemicalCount": 199,
         "createdAt": "2017-11-16T17:01:14Z",
         "updatedAt": "2018-11-16T21:07:16Z",
         "shortDescription": "EPAPFASRL is a manually curated listing of mainly straight-chain and branched PFAS (Per- & Poly-fluorinated alkyl substances) compiled from various internal, literature and public sources by EPA researchers and program office representatives."
@@ -666,7 +738,7 @@
         "visibility": "PUBLIC",
         "longDescription": "Substance Registry Services (SRS) is the Environmental Protection Agency's (EPA) central system for information about substances that are tracked or regulated by EPA or other sources. It is the authoritative resource for basic information about chemicals, biological organisms, and other substances of interest to EPA and its state and tribal partners.\r\n\r\nThe SRS makes it possible to identify which EPA data systems, environmental statutes, or other sources have information about a substance and which synonym is used by that system or statute. It becomes possible therefore to map substance data across EPA programs regardless of synonym.\r\n\r\nThe system provides a common basis for identification of, and information about:\r\n\r\nChemicals\r\nBiological organisms\r\nPhysical properties\r\nMiscellaneous objects\r\n\r\n(Updated May 2022)",
         "listName": "EPASRS2022V2",
-        "chemicalCount": 31176,
+        "chemicalCount": 31352,
         "createdAt": "2022-05-28T16:02:59Z",
         "updatedAt": "2022-10-03T09:08:20Z",
         "shortDescription": "The Substance Registry Services (SRS) is an EPA resource for information about chemicals, biological organisms, and other substances tracked or regulated by EPA. (Updated May 2022)\r\n"
@@ -678,7 +750,7 @@
         "visibility": "PUBLIC",
         "longDescription": "Substance Registry Services (SRS) is the Environmental Protection Agency's (EPA) central system for information about substances that are tracked or regulated by EPA or other sources. It is the authoritative resource for basic information about chemicals, biological organisms, and other substances of interest to EPA and its state and tribal partners.\r\n\r\nThe SRS makes it possible to identify which EPA data systems, environmental statutes, or other sources have information about a substance and which synonym is used by that system or statute. It becomes possible therefore to map substance data across EPA programs regardless of synonym.\r\n\r\nThe system provides a common basis for identification of, and information about:\r\n\r\nChemicals\r\nBiological organisms\r\nPhysical properties\r\nMiscellaneous objects\r\n\r\n(Updated January 2023)",
         "listName": "EPASRS2022V4",
-        "chemicalCount": 93046,
+        "chemicalCount": 93563,
         "createdAt": "2023-01-29T10:46:52Z",
         "updatedAt": "2023-04-16T18:58:49Z",
         "shortDescription": "The Substance Registry Services (SRS) is an EPA resource for information about chemicals, biological organisms, and other substances tracked or regulated by EPA. (Updated January 2023)"
@@ -726,7 +798,7 @@
         "visibility": "PUBLIC",
         "longDescription": "The Substances Added to Food inventory replaces what was previously known as Everything Added to Foods in the United States (EAFUS).\r\n\r\nThe Substances Added to Food inventory includes the following types of ingredients regulated by the U.S. Food and Drug Administration (FDA):\r\n\r\n-Food additives and color additives that are listed in FDA regulations (21 CFR Parts 172, 173 and Parts 73, 74 respectively), and flavoring substances evaluated by FEMA* and JECFA*.\r\n-Generally Recognized as Safe (\"GRAS\") substances that are listed in FDA regulations (21 CFR Parts 182 and 184).\r\n-Substances approved for specific uses in foods prior to September 6, 1958, known as prior-sanctioned substances (21 CFR Part 181).",
         "listName": "FDAFOODSUBS",
-        "chemicalCount": 3117,
+        "chemicalCount": 3128,
         "createdAt": "2020-01-30T08:06:21Z",
         "updatedAt": "2020-10-28T11:35:14Z",
         "shortDescription": "The Substances Added to Food inventory replaces what was previously known as Everything Added to Foods in the United States (EAFUS)."
@@ -750,7 +822,7 @@
         "visibility": "PUBLIC",
         "longDescription": "The publication \"Approved Drug Products with Therapeutic Equivalence Evaluations\" (commonly known as the Orange Book) identifies drug products approved on the basis of safety and effectiveness by the Food and Drug Administration (FDA) under the Federal Food, Drug, and Cosmetic Act (the Act) and related patent and exclusivity information.  Chemical names were collected from the ingredients listed in the product.txt file contained within the zipfile available on the \"Orange Book Data Files (compressed)\" link available on <a href='https://www.fda.gov/drugs/drug-approvals-and-databases/approved-drug-products-therapeutic-equivalence-evaluations-orange-b' target='_blank'>this page<\/a>.",
         "listName": "FDAORANGE",
-        "chemicalCount": 2036,
+        "chemicalCount": 2039,
         "createdAt": "2020-02-01T20:52:05Z",
         "updatedAt": "2023-11-22T08:23:03Z",
         "shortDescription": "The FDA Orange Book: \"Approved Drug Products with Therapeutic Equivalence Evaluations\" "
@@ -762,10 +834,22 @@
         "visibility": "PUBLIC",
         "longDescription": "FDA’s Global Substance Registration System Unique Ingredient Identifiers (UNIIs) file: April 12th 2021 download subset of chemicals with CASRN and/or structure SMILES\r\n\r\nTo this end, FDA’s Health Informatics team, NIH's National Center for Advancing Translational Sciences (NCATS), and the European Medicines Agency (EMA) have collaborated to create a Global Substance Registration System (GSRS) that will enable the efficient and accurate exchange of information on what substances are in regulated products.\r\n\r\nInstead of relying on names--which vary across regulatory domains, countries, and regions—the GSRS knowledge base makes it possible for substances to be defined by standardized, scientific descriptions. It classifies substances as chemical, protein, nucleic acid, polymer, structurally diverse, or mixture as detailed in the ISO 11238  (International Organization for Standardization)  and ISO DTS 19844. FDA’s GSRS generates Unique Ingredient Identifiers (UNIIs) used in electronic listings.",
         "listName": "FDAUNII0421",
-        "chemicalCount": 59925,
+        "chemicalCount": 61056,
         "createdAt": "2021-06-01T22:25:07Z",
-        "updatedAt": "2023-04-27T13:48:18Z",
+        "updatedAt": "2023-12-30T11:52:55Z",
         "shortDescription": "FDA’s Global Substance Registration System Unique Ingredient Identifiers (UNIIs) file: April 12th 2021 download subset of chemicals with CASRN and/or structure SMILES"
+    },
+    {
+        "id": 961,
+        "type": "federal",
+        "label": "GlobalWarming_Title40Part98",
+        "visibility": "PUBLIC",
+        "longDescription": "Chemicals listed in Table A-1 to Subpart A of <a href='https://ecfr.io/Title-40/Part-98/Appendix#40:23.0.1.1.3.1.1.10.11' target='_blank'>Part 98 - Global Warming Potentials [100-Year Time Horizon] in the electronic code of Federal Regulations (e-CFR)<\/a>.",
+        "listName": "GLOBALWARMING",
+        "chemicalCount": 165,
+        "createdAt": "2020-07-29T23:39:19Z",
+        "updatedAt": "2024-03-14T20:11:29Z",
+        "shortDescription": "Chemicals with global warming potentials listed in Table A-1 to Subpart A of Part 98 of the electronic code of Federal Regulations (e-CFR)"
     },
     {
         "id": 1052,
@@ -882,9 +966,9 @@
         "visibility": "PUBLIC",
         "longDescription": "InertFinder is a database that allows pesticide formulators and other interested parties to easily identify chemicals approved for use as inert ingredients in pesticide products. It will allow registrants developing new products or new product formulations to readily determine which inert ingredients may be acceptable for use and make the same information more readily available to the public. This subset list is the <a href='https://iaspub.epa.gov/apex/pesticides/f?p=INERTFINDER:2::::::' target='_blank'>Non-Food Use chemicals available on InertFinder<\/a>.",
         "listName": "INERTNONFOOD",
-        "chemicalCount": 5190,
+        "chemicalCount": 5484,
         "createdAt": "2020-11-16T20:59:19Z",
-        "updatedAt": "2022-08-14T17:11:52Z",
+        "updatedAt": "2023-12-29T13:35:01Z",
         "shortDescription": "List of chemicals listed in InertFinder as Non-Food Use Chemicals\r\n"
     },
     {
@@ -1026,7 +1110,7 @@
         "visibility": "PUBLIC",
         "longDescription": "List of Ozone Depleting Substances contained in Class 1. The chemicals were sourced from the \r\n<a href='https://www.epa.gov/ozone-layer-protection/ozone-depleting-substances#tab-1' target='_blank'> Ozone Depleting Substances EPA website<\/a>.",
         "listName": "OZONECL1",
-        "chemicalCount": 80,
+        "chemicalCount": 293,
         "createdAt": "2022-04-22T18:11:57Z",
         "updatedAt": "2022-05-28T07:45:55Z",
         "shortDescription": "List of Ozone Depleting Substances contained in Class 1"
@@ -1080,28 +1164,52 @@
         "shortDescription": "EPA has developed human health benchmarks for 430 pesticides."
     },
     {
-        "id": 1890,
+        "id": 2084,
         "type": "federal",
-        "label": "PFAS|Toxic Substances Control Act Reporting and Recordkeeping Requirements for Perfluoroalkyl and Polyfluoroalkyl Substances:  Section 8(a)(7) Rule List of Chemicals",
+        "label": "PFAS|Toxic Substances Control Act Reporting and Recordkeeping Requirements for Perfluoroalkyl and Polyfluoroalkyl Substances: Section 8(a)(7) Rule List of Chemicals",
         "visibility": "PUBLIC",
-        "longDescription": "EPA promulgated a reporting and recordkeeping rule for perfluoroalkyl and polyfluoroalkyl substances (PFAS) under the <a href='https://www.govinfo.gov/content/pkg/FR-2023-10-11/pdf/2023-22094.pdf' target='_blank'> Toxic Substances Control Act (TSCA) section 8(a)(7)<\/a>. Any entity who has manufactured a PFAS that is a TSCA chemical substance for commercial purposes in any year since January 1, 2011, is required to submit certain information to EPA. For the purpose of this TSCA section 8(a)(7) rule, EPA defines PFAS to include at least one of these three structures: 1) R-(CF<sub>2<\/sub>)-CF(R’)R”, where both the CF<sub>2<\/sub> and CF moieties are saturated carbons; 2) R-CF<sub>2<\/sub>OCF<sub>2<\/sub>-R’, where R and R’ can either be F, O, or saturated carbons; 3) CF<sub>3<\/sub>C(CF<sub>3<\/sub>)R’R’’, where R’ and R” can either be F or saturated carbons.<\/br> <\/br>\r\nThe list below is a subset of reportable substances and includes chemicals on the EPA Comptox Chemicals Dashboard that meet this rule’s structural definition of PFAS, including chemical substances from the publicly available TSCA Inventory and Low-Volume Exemption submissions that would meet the structural definition (~10% of the total number of compounds). While this list includes substances beyond the known TSCA universe to provide as comprehensive a list as possible to potential reporting entities, it is not exhaustive and does not contain polymers or <a href='https://www.epa.gov/tsca-inventory/chemical-substances-unknown-or-variable-composition-complex-reaction-products-and' target='_blank'>UVCBs (Unknown or Variable compositions, Complex reaction products, and Biological materials)<\/a> which may be covered by the rule. Substances that meet the rule’s structural definition but are not found on this list may be found on the <a href='https://cdxapps.epa.gov/oms-substance-registry-services/substance-list-details/490' target='_blank'>TSCA 8(a)(7) PFAS Chemicals list in the System of Registries<\/a>. <\/br> <\/br>\r\nNote that the list could change as the chemicals included on the CompTox Chemicals Dashboard are expanded or otherwise as modified. Such changes will be noted and curated in a transparent manner. <\/br> <\/br>\r\n(last updated December 6th 2023)\r\n",
+        "longDescription": "EPA promulgated a reporting and recordkeeping rule for perfluoroalkyl and polyfluoroalkyl substances (PFAS) under the <a href='https://www.govinfo.gov/content/pkg/FR-2023-10-11/pdf/2023-22094.pdf' target='_blank'> Toxic Substances Control Act (TSCA) section 8(a)(7)<\/a>. Any entity who has manufactured a PFAS that is a TSCA chemical substance for commercial purposes in any year since January 1, 2011, is required to submit certain information to EPA. For the purpose of this TSCA section 8(a)(7) rule, EPA defines PFAS to include at least one of these three structures: 1) R-(CF<sub>2<\/sub>)-CF(R’)R”, where both the CF<sub>2<\/sub> and CF moieties are saturated carbons; 2) R-CF<sub>2<\/sub>OCF<sub>2<\/sub>-R’, where R and R’ can either be F, O, or saturated carbons; 3) CF<sub>3<\/sub>C(CF<sub>3<\/sub>)R’R’’, where R’ and R” can either be F or saturated carbons.<\/br> <\/br>\r\nThe list below is a subset of reportable substances and includes chemicals on the EPA Comptox Chemicals Dashboard that meet this rule’s structural definition of PFAS, including chemical substances from the publicly available TSCA Inventory and Low-Volume Exemption submissions that would meet the structural definition (~10% of the total number of compounds). While this list includes substances beyond the known TSCA universe to provide as comprehensive a list as possible to potential reporting entities, it is not exhaustive and does not contain polymers or <a href='https://www.epa.gov/tsca-inventory/chemical-substances-unknown-or-variable-composition-complex-reaction-products-and' target='_blank'>UVCBs (Unknown or Variable compositions, Complex reaction products, and Biological materials)<\/a> which may be covered by the rule. Substances that meet the rule’s structural definition but are not found on this list may be found on the <a href='https://cdxapps.epa.gov/oms-substance-registry-services/substance-list-details/490' target='_blank'>TSCA 8(a)(7) PFAS Chemicals list in the System of Registries<\/a>. <\/br> <\/br>\r\nNote that the list could change as the chemicals included on the CompTox Chemicals Dashboard are expanded or otherwise as modified. Such changes will be noted and curated in a transparent manner. Last Updated (April 24th 2024).  For the versioned lists please use the hyperlinked lists below.<br/><br/>\r\n\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/PFAS8a7V3' target='_blank'>PFAS8a7v3 - April 24th 2024<\/a> This List <br/><br/>\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/PFAS8a7V2' target='_blank'>PFAS8a7v2 - March 29th 2024<\/a> <br/><br/>\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/PFAS8a7V1' target='_blank'>PFAS8a7V1 - December 6th 2023<\/a> <br/><br/>\r\n",
         "listName": "PFAS8a7",
-        "chemicalCount": 11409,
-        "createdAt": "2023-11-06T20:45:20Z",
-        "updatedAt": "2023-12-06T12:45:23Z",
-        "shortDescription": "List of PFAS chemicals that meets the TSCA section 8(a)(7) rule structural definition of PFAS (last updated December 6th 2023)"
+        "chemicalCount": 13054,
+        "createdAt": "2024-04-24T10:05:04Z",
+        "updatedAt": "2024-04-24T10:06:27Z",
+        "shortDescription": "List of PFAS chemicals that meets the TSCA section 8(a)(7) rule structural definition of PFAS"
     },
     {
-        "id": 961,
+        "id": 1890,
         "type": "federal",
-        "label": "PFAS|GlobalWarming_Title40Part98",
+        "label": "PFAS|Toxic Substances Control Act Reporting and Recordkeeping Requirements for Perfluoroalkyl and Polyfluoroalkyl Substances: Section 8(a)(7) Rule List of Chemicals (Version 1)",
         "visibility": "PUBLIC",
-        "longDescription": "PFAS listed in Table A-1 to Subpart A of <a href='https://ecfr.io/Title-40/Part-98/Appendix#40:23.0.1.1.3.1.1.10.11' target='_blank'>Part 98 - Global Warming Potentials [100-Year Time Horizon] in the electronic code of Federal Regulations (e-CFR)<\/a>.",
-        "listName": "PFASGLOBALWARMING",
-        "chemicalCount": 165,
-        "createdAt": "2020-07-29T23:39:19Z",
-        "updatedAt": "2020-09-14T11:49:36Z",
-        "shortDescription": "PFAS with global warming potentials listed in Table A-1 to Subpart A of Part 98 of the electronic code of Federal Regulations (e-CFR)"
+        "longDescription": "EPA promulgated a reporting and recordkeeping rule for perfluoroalkyl and polyfluoroalkyl substances (PFAS) under the <a href='https://www.govinfo.gov/content/pkg/FR-2023-10-11/pdf/2023-22094.pdf' target='_blank'> Toxic Substances Control Act (TSCA) section 8(a)(7)<\/a>. Any entity who has manufactured a PFAS that is a TSCA chemical substance for commercial purposes in any year since January 1, 2011, is required to submit certain information to EPA. For the purpose of this TSCA section 8(a)(7) rule, EPA defines PFAS to include at least one of these three structures: 1) R-(CF<sub>2<\/sub>)-CF(R’)R”, where both the CF<sub>2<\/sub> and CF moieties are saturated carbons; 2) R-CF<sub>2<\/sub>OCF<sub>2<\/sub>-R’, where R and R’ can either be F, O, or saturated carbons; 3) CF<sub>3<\/sub>C(CF<sub>3<\/sub>)R’R’’, where R’ and R” can either be F or saturated carbons.<\/br> <\/br>\r\nThe list below is a subset of reportable substances and includes chemicals on the EPA Comptox Chemicals Dashboard that meet this rule’s structural definition of PFAS, including chemical substances from the publicly available TSCA Inventory and Low-Volume Exemption submissions that would meet the structural definition (~10% of the total number of compounds). While this list includes substances beyond the known TSCA universe to provide as comprehensive a list as possible to potential reporting entities, it is not exhaustive and does not contain polymers or <a href='https://www.epa.gov/tsca-inventory/chemical-substances-unknown-or-variable-composition-complex-reaction-products-and' target='_blank'>UVCBs (Unknown or Variable compositions, Complex reaction products, and Biological materials)<\/a> which may be covered by the rule. Substances that meet the rule’s structural definition but are not found on this list may be found on the <a href='https://cdxapps.epa.gov/oms-substance-registry-services/substance-list-details/490' target='_blank'>TSCA 8(a)(7) PFAS Chemicals list in the System of Registries<\/a>. <\/br> <\/br>\r\nNote that the list could change as the chemicals included on the CompTox Chemicals Dashboard are expanded or otherwise as modified. Such changes will be noted and curated in a transparent manner. <\/br> <\/br>\r\n(Version 1: created December 6th 2023)\r\n",
+        "listName": "PFAS8a7v1",
+        "chemicalCount": 11409,
+        "createdAt": "2023-11-06T20:45:20Z",
+        "updatedAt": "2024-03-30T20:26:05Z",
+        "shortDescription": "List of PFAS chemicals that meets the TSCA section 8(a)(7) rule structural definition of PFAS (Version 1: created December 6th 2023)"
+    },
+    {
+        "id": 2055,
+        "type": "federal",
+        "label": "PFAS|Toxic Substances Control Act Reporting and Recordkeeping Requirements for Perfluoroalkyl and Polyfluoroalkyl Substances:  Section 8(a)(7) Rule List of Chemicals (Version 2)",
+        "visibility": "PUBLIC",
+        "longDescription": "EPA promulgated a reporting and recordkeeping rule for perfluoroalkyl and polyfluoroalkyl substances (PFAS) under the <a href='https://www.govinfo.gov/content/pkg/FR-2023-10-11/pdf/2023-22094.pdf' target='_blank'> Toxic Substances Control Act (TSCA) section 8(a)(7)<\/a>. Any entity who has manufactured a PFAS that is a TSCA chemical substance for commercial purposes in any year since January 1, 2011, is required to submit certain information to EPA. For the purpose of this TSCA section 8(a)(7) rule, EPA defines PFAS to include at least one of these three structures: 1) R-(CF<sub>2<\/sub>)-CF(R’)R”, where both the CF<sub>2<\/sub> and CF moieties are saturated carbons; 2) R-CF<sub>2<\/sub>OCF<sub>2<\/sub>-R’, where R and R’ can either be F, O, or saturated carbons; 3) CF<sub>3<\/sub>C(CF<sub>3<\/sub>)R’R’’, where R’ and R” can either be F or saturated carbons.<\/br> <\/br>\r\nThe list below is a subset of reportable substances and includes chemicals on the EPA Comptox Chemicals Dashboard that meet this rule’s structural definition of PFAS, including chemical substances from the publicly available TSCA Inventory and Low-Volume Exemption submissions that would meet the structural definition (~10% of the total number of compounds). While this list includes substances beyond the known TSCA universe to provide as comprehensive a list as possible to potential reporting entities, it is not exhaustive and does not contain polymers or <a href='https://www.epa.gov/tsca-inventory/chemical-substances-unknown-or-variable-composition-complex-reaction-products-and' target='_blank'>UVCBs (Unknown or Variable compositions, Complex reaction products, and Biological materials)<\/a> which may be covered by the rule. Substances that meet the rule’s structural definition but are not found on this list may be found on the <a href='https://cdxapps.epa.gov/oms-substance-registry-services/substance-list-details/490' target='_blank'>TSCA 8(a)(7) PFAS Chemicals list in the System of Registries<\/a>. <\/br> <\/br>\r\nNote that the list could change as the chemicals included on the CompTox Chemicals Dashboard are expanded or otherwise as modified. Such changes will be noted and curated in a transparent manner. <\/br> <\/br>\r\n(last updated March 29th 2024)",
+        "listName": "PFAS8a7v2",
+        "chemicalCount": 12990,
+        "createdAt": "2024-03-30T20:51:20Z",
+        "updatedAt": "2024-03-30T20:53:06Z",
+        "shortDescription": "List of PFAS chemicals that meets the TSCA section 8(a)(7) rule structural definition of PFAS (last updated March 29th 2024)"
+    },
+    {
+        "id": 2082,
+        "type": "federal",
+        "label": "PFAS|Toxic Substances Control Act Reporting and Recordkeeping Requirements for Perfluoroalkyl and Polyfluoroalkyl Substances:  Section 8(a)(7) Rule List of Chemicals (Version 3)",
+        "visibility": "PUBLIC",
+        "longDescription": "EPA promulgated a reporting and recordkeeping rule for perfluoroalkyl and polyfluoroalkyl substances (PFAS) under the <a href='https://www.govinfo.gov/content/pkg/FR-2023-10-11/pdf/2023-22094.pdf' target='_blank'> Toxic Substances Control Act (TSCA) section 8(a)(7)<\/a>. Any entity who has manufactured a PFAS that is a TSCA chemical substance for commercial purposes in any year since January 1, 2011, is required to submit certain information to EPA. For the purpose of this TSCA section 8(a)(7) rule, EPA defines PFAS to include at least one of these three structures: 1) R-(CF<sub>2<\/sub>)-CF(R’)R”, where both the CF<sub>2<\/sub> and CF moieties are saturated carbons; 2) R-CF<sub>2<\/sub>OCF<sub>2<\/sub>-R’, where R and R’ can either be F, O, or saturated carbons; 3) CF<sub>3<\/sub>C(CF<sub>3<\/sub>)R’R’’, where R’ and R” can either be F or saturated carbons.<\/br> <\/br>\r\nThe list below is a subset of reportable substances and includes chemicals on the EPA Comptox Chemicals Dashboard that meet this rule’s structural definition of PFAS, including chemical substances from the publicly available TSCA Inventory and Low-Volume Exemption submissions that would meet the structural definition (~10% of the total number of compounds). While this list includes substances beyond the known TSCA universe to provide as comprehensive a list as possible to potential reporting entities, it is not exhaustive and does not contain polymers or <a href='https://www.epa.gov/tsca-inventory/chemical-substances-unknown-or-variable-composition-complex-reaction-products-and' target='_blank'>UVCBs (Unknown or Variable compositions, Complex reaction products, and Biological materials)<\/a> which may be covered by the rule. Substances that meet the rule’s structural definition but are not found on this list may be found on the <a href='https://cdxapps.epa.gov/oms-substance-registry-services/substance-list-details/490' target='_blank'>TSCA 8(a)(7) PFAS Chemicals list in the System of Registries<\/a>. <\/br> <\/br>\r\nNote that the list could change as the chemicals included on the CompTox Chemicals Dashboard are expanded or otherwise as modified. Such changes will be noted and curated in a transparent manner. <\/br> <\/br>\r\n(last updated April 24th 2024)",
+        "listName": "PFAS8a7v3",
+        "chemicalCount": 13054,
+        "createdAt": "2024-04-24T09:21:53Z",
+        "updatedAt": "2024-04-25T16:31:14Z",
+        "shortDescription": "List of PFAS chemicals that meets the TSCA section 8(a)(7) rule structural definition of PFAS (last updated April 24th 2024)"
     },
     {
         "id": 517,
@@ -1182,7 +1290,7 @@
         "visibility": "PUBLIC",
         "longDescription": "PFAS Toxics Release Inventory (TRI) structure lists are versioned iteratively and this description navigates between the various versions of the structure lists. The list of structures displayed below represents the latest iteration of structures (PFASTRIV2 - February 2023). For the versioned lists please use the hyperlinked lists below. <br/><br/>\r\n\r\n<a href=' https://comptox.epa.gov/dashboard/chemical-lists/PFASTRI2' target='_blank'>PFASTRI2<\/a> - February 2023 This list <br/><br/>\r\n\r\n<a href=' https://comptox.epa.gov/dashboard/chemical-lists/PFASTRI1' target='_blank'>PFASTRI1<\/a> - February 2022  <br/><br/>",
         "listName": "PFASTRI",
-        "chemicalCount": 185,
+        "chemicalCount": 189,
         "createdAt": "2023-09-23T11:41:01Z",
         "updatedAt": "2023-09-23T11:50:36Z",
         "shortDescription": "PFAS Toxics Release Inventory (TRI) structure lists are versioned iteratively and this description navigates between the various versions of the structure lists."
@@ -1518,7 +1626,7 @@
         "visibility": "PUBLIC",
         "longDescription": "The Toxicity Values database is delivered via the Hazard Tab in the CompTox Chemicals Dashboard. As of August 2018 the ToxVal Database contains the following data: 772,721 toxicity values from 29 sources of data, 21,507 sub-sources, 4585 journals cited and 69,833 literature citations.\r\n",
         "listName": "TOXVAL_V5",
-        "chemicalCount": 57922,
+        "chemicalCount": 57972,
         "createdAt": "2017-09-22T18:08:22Z",
         "updatedAt": "2019-11-18T11:34:47Z",
         "shortDescription": "The Toxicity Values database is delivered via the Hazard Tab in the CompTox Chemicals Dashboard."
@@ -1542,7 +1650,7 @@
         "visibility": "PUBLIC",
         "longDescription": "Section 8 (b) of the Toxic Substances Control Act (TSCA) requires EPA to compile, keep current and publish a list of each chemical substance that is manufactured or processed, including imports, in the United States for uses under TSCA. Information about what types of substances are on the TSCA inventory can be found here. The Toxic Substances Control Act (TSCA), as amended by the Frank R. Lautenberg Chemical Safety for the 21st Century Act, requires EPA to designate chemical substances on the TSCA Chemical Substance Inventory as either “active” or “inactive” in U.S. commerce. To accomplish this, EPA finalized a rule requiring industry reporting of chemicals manufactured (including imported) or processed in the U.S.. This reporting is used to identify which chemical substances on the TSCA Inventory are active in U.S. commerce and help inform the prioritization of chemicals for risk evaluation. The list contained in the dashboard includes the active TSCA inventory based on notifications through Feb. 7th 2018 and substances reported from Feb 8, 2018 – March 30, 2018 that have been unambiguously mapped to DSSTox using CASRN and chemical names. The curation of the non-confidential portion of active TSCA inventory is an ongoing process involving trained chemists to validate the correctness of DSSTox structural and identifier data. The content of the list will change over time as the non-confidential active TSCA inventory is updated and more substances are curated. (Updated February 3rd 2021)",
         "listName": "TSCA_ACTIVE_NCTI_0221",
-        "chemicalCount": 33602,
+        "chemicalCount": 33603,
         "createdAt": "2021-02-03T08:55:59Z",
         "updatedAt": "2021-08-07T11:16:59Z",
         "shortDescription": "TSCA Active Inventory non-confidential portion (updated February 3rd 2021). The content of the list will change over time as both the non-confidential active TSCA inventory is updated and more substances are curated."
@@ -1554,7 +1662,7 @@
         "visibility": "PUBLIC",
         "longDescription": "Section 8 (b) of the Toxic Substances Control Act (TSCA) requires EPA to compile, keep current and publish a list of each chemical substance that is manufactured or processed, including imports, in the United States for uses under TSCA. Information about what types of substances are on the TSCA inventory can be found here. The Toxic Substances Control Act (TSCA), as amended by the Frank R. Lautenberg Chemical Safety for the 21st Century Act, requires EPA to designate chemical substances on the TSCA Chemical Substance Inventory as either “active” or “inactive” in U.S. commerce. To accomplish this, EPA finalized a rule requiring industry reporting of chemicals manufactured (including imported) or processed in the U.S.. This reporting is used to identify which chemical substances on the TSCA Inventory are active in U.S. commerce and help inform the prioritization of chemicals for risk evaluation. (Updated March 23rd 2022)",
         "listName": "TSCA_ACTIVE_NCTI_0222",
-        "chemicalCount": 33856,
+        "chemicalCount": 33857,
         "createdAt": "2022-03-23T20:27:54Z",
         "updatedAt": "2022-06-02T14:12:25Z",
         "shortDescription": "TSCA Active Inventory non-confidential portion (updated March 23rd 2022). The content of the list will change over time as both the non-confidential active TSCA inventory is updated and more substances are curated."
@@ -1566,10 +1674,22 @@
         "visibility": "PUBLIC",
         "longDescription": "Section 8 (b) of the Toxic Substances Control Act (TSCA) requires EPA to compile, keep current and publish a list of each chemical substance that is manufactured or processed, including imports, in the United States for uses under TSCA. Information about what types of substances are on the TSCA inventory can be found here. The Toxic Substances Control Act (TSCA), as amended by the Frank R. Lautenberg Chemical Safety for the 21st Century Act, requires EPA to designate chemical substances on the TSCA Chemical Substance Inventory as either “active” or “inactive” in U.S. commerce. To accomplish this, EPA finalized a rule requiring industry reporting of chemicals manufactured (including imported) or processed in the U.S.. This reporting is used to identify which chemical substances on the TSCA Inventory are active in U.S. commerce and help inform the prioritization of chemicals for risk evaluation. (Updated February 17th 2023)",
         "listName": "TSCA_ACTIVE_NCTI_0223",
-        "chemicalCount": 34046,
+        "chemicalCount": 34534,
         "createdAt": "2023-02-17T15:12:54Z",
         "updatedAt": "2023-03-27T08:38:54Z",
         "shortDescription": "TSCA Active Inventory non-confidential portion (updated February 17th 2023). The content of the list will change over time as both the non-confidential active TSCA inventory is updated and more substances are curated."
+    },
+    {
+        "id": 2005,
+        "type": "federal",
+        "label": "TSCA Active Inventory non-confidential portion (Updated February 26th 2024)",
+        "visibility": "PUBLIC",
+        "longDescription": "Section 8 (b) of the Toxic Substances Control Act (TSCA) requires EPA to compile, keep current and publish a list of each chemical substance that is manufactured or processed, including imports, in the United States for uses under TSCA. Information about what types of substances are on the TSCA inventory can be found here. The Toxic Substances Control Act (TSCA), as amended by the Frank R. Lautenberg Chemical Safety for the 21st Century Act, requires EPA to designate chemical substances on the TSCA Chemical Substance Inventory as either “active” or “inactive” in U.S. commerce. To accomplish this, EPA finalized a rule requiring industry reporting of chemicals manufactured (including imported) or processed in the U.S.. This reporting is used to identify which chemical substances on the TSCA Inventory are active in U.S. commerce and help inform the prioritization of chemicals for risk evaluation. This is the TSCA Active Non-Confidential Subset (Updated February 26th 2024)",
+        "listName": "TSCA_ACTIVE_NCTI_0224",
+        "chemicalCount": 28903,
+        "createdAt": "2024-02-26T13:41:26Z",
+        "updatedAt": "2024-04-08T14:50:50Z",
+        "shortDescription": "TSCA Active Inventory non-confidential portion (Updated February 26th 2024). The content of the list will change over time as both the non-confidential active TSCA inventory is updated and more substances are curated."
     },
     {
         "id": 859,
@@ -1578,7 +1698,7 @@
         "visibility": "PUBLIC",
         "longDescription": "Section 8 (b) of the Toxic Substances Control Act (TSCA) requires EPA to compile, keep current and publish a list of each chemical substance that is manufactured or processed, including imports, in the United States for uses under TSCA. Information about what types of substances are on the TSCA inventory can be found here. The Toxic Substances Control Act (TSCA), as amended by the Frank R. Lautenberg Chemical Safety for the 21st Century Act, requires EPA to designate chemical substances on the TSCA Chemical Substance Inventory as either “active” or “inactive” in U.S. commerce. To accomplish this, EPA finalized a rule requiring industry reporting of chemicals manufactured (including imported) or processed in the U.S.. This reporting is used to identify which chemical substances on the TSCA Inventory are active in U.S. commerce and help inform the prioritization of chemicals for risk evaluation. The list contained in the dashboard includes the active TSCA inventory based on notifications through Feb. 7th 2018 and substances reported from Feb 8, 2018 – March 30, 2018 that have been unambiguously mapped to DSSTox using CASRN and chemical names. The curation of the non-confidential portion of active TSCA inventory is an ongoing process involving trained chemists to validate the correctness of DSSTox structural and identifier data. The content of the list will change over time as the non-confidential active TSCA inventory is updated and more substances are curated. (Updated March 20th 2020)",
         "listName": "TSCA_ACTIVE_NCTI_0320",
-        "chemicalCount": 33368,
+        "chemicalCount": 33369,
         "createdAt": "2020-03-19T11:48:10Z",
         "updatedAt": "2020-05-18T18:32:29Z",
         "shortDescription": "TSCA Active Inventory non-confidential portion (updated March 20th 2020). The content of the list will change over time as both the non-confidential active TSCA inventory is updated and more substances are curated."
@@ -1590,10 +1710,22 @@
         "visibility": "PUBLIC",
         "longDescription": "Section 8 (b) of the Toxic Substances Control Act (TSCA) requires EPA to compile, keep current and publish a list of each chemical substance that is manufactured or processed, including imports, in the United States for uses under TSCA. Information about what types of substances are on the TSCA inventory can be found here. The Toxic Substances Control Act (TSCA), as amended by the Frank R. Lautenberg Chemical Safety for the 21st Century Act, requires EPA to designate chemical substances on the TSCA Chemical Substance Inventory as either “active” or “inactive” in U.S. commerce. To accomplish this, EPA finalized a rule requiring industry reporting of chemicals manufactured (including imported) or processed in the U.S.. This reporting is used to identify which chemical substances on the TSCA Inventory are active in U.S. commerce and help inform the prioritization of chemicals for risk evaluation. (Updated August 20th 2021)",
         "listName": "TSCA_ACTIVE_NCTI_0821",
-        "chemicalCount": 33657,
+        "chemicalCount": 33658,
         "createdAt": "2021-10-17T11:22:49Z",
         "updatedAt": "2021-10-22T14:17:24Z",
         "shortDescription": "TSCA Active Inventory non-confidential portion (updated August 20th 2021). The content of the list will change over time as both the non-confidential active TSCA inventory is updated and more substances are curated.\r\n"
+    },
+    {
+        "id": 1898,
+        "type": "federal",
+        "label": "TSCA Active Inventory non-confidential portion (Updated August 16th 2023)",
+        "visibility": "PUBLIC",
+        "longDescription": "Section 8 (b) of the Toxic Substances Control Act (TSCA) requires EPA to compile, keep current and publish a list of each chemical substance that is manufactured or processed, including imports, in the United States for uses under TSCA. Information about what types of substances are on the TSCA inventory can be found here. The Toxic Substances Control Act (TSCA), as amended by the Frank R. Lautenberg Chemical Safety for the 21st Century Act, requires EPA to designate chemical substances on the TSCA Chemical Substance Inventory as either “active” or “inactive” in U.S. commerce. To accomplish this, EPA finalized a rule requiring industry reporting of chemicals manufactured (including imported) or processed in the U.S.. This reporting is used to identify which chemical substances on the TSCA Inventory are active in U.S. commerce and help inform the prioritization of chemicals for risk evaluation. (Updated August 16th 2023)",
+        "listName": "TSCA_ACTIVE_NCTI_0823",
+        "chemicalCount": 34716,
+        "createdAt": "2023-12-31T16:34:58Z",
+        "updatedAt": "2024-01-10T12:10:29Z",
+        "shortDescription": "TSCA Active Inventory non-confidential portion (Updated August 16th 2023). The content of the list will change over time as both the non-confidential active TSCA inventory is updated and more substances are curated.\r\n"
     },
     {
         "id": 766,
@@ -1614,7 +1746,7 @@
         "visibility": "PUBLIC",
         "longDescription": "Section 8 (b) of the Toxic Substances Control Act (TSCA) requires EPA to compile, keep current and publish a list of each chemical substance that is manufactured or processed, including imports, in the United States for uses under TSCA. Information about what types of substances are on the TSCA inventory can be found here. The Toxic Substances Control Act (TSCA), as amended by the Frank R. Lautenberg Chemical Safety for the 21st Century Act, requires EPA to designate chemical substances on the TSCA Chemical Substance Inventory as either “active” or “inactive” in U.S. commerce. To accomplish this, EPA finalized a rule requiring industry reporting of chemicals manufactured (including imported) or processed in the U.S.. This reporting is used to identify which chemical substances on the TSCA Inventory are active in U.S. commerce and help inform the prioritization of chemicals for risk evaluation. (Updated March 23rd 2022)",
         "listName": "TSCA_INACTIVE_NCTI_0222",
-        "chemicalCount": 34477,
+        "chemicalCount": 34482,
         "createdAt": "2022-03-23T20:34:22Z",
         "updatedAt": "2022-06-06T16:38:59Z",
         "shortDescription": "TSCA Inactive Inventory non-confidential portion (Updated March 23rd 2022). The content of the list will change over time as both the non-confidential active TSCA inventory is updated and more substances are curated."
@@ -1626,10 +1758,22 @@
         "visibility": "PUBLIC",
         "longDescription": "Section 8 (b) of the Toxic Substances Control Act (TSCA) requires EPA to compile, keep current and publish a list of each chemical substance that is manufactured or processed, including imports, in the United States for uses under TSCA. Information about what types of substances are on the TSCA inventory can be found here. The Toxic Substances Control Act (TSCA), as amended by the Frank R. Lautenberg Chemical Safety for the 21st Century Act, requires EPA to designate chemical substances on the TSCA Chemical Substance Inventory as either “active” or “inactive” in U.S. commerce. To accomplish this, EPA finalized a rule requiring industry reporting of chemicals manufactured (including imported) or processed in the U.S.. This reporting is used to identify which chemical substances on the TSCA Inventory are active in U.S. commerce and help inform the prioritization of chemicals for risk evaluation. (Updated February 17th 2023)",
         "listName": "TSCA_INACTIVE_NCTI_0223",
-        "chemicalCount": 34419,
+        "chemicalCount": 34427,
         "createdAt": "2023-02-17T16:54:44Z",
         "updatedAt": "2023-03-23T22:01:04Z",
         "shortDescription": "TSCA Inactive Inventory non-confidential portion (Updated February 17th 2023). The content of the list will change over time as both the non-confidential active TSCA inventory is updated and more substances are curated."
+    },
+    {
+        "id": 2004,
+        "type": "federal",
+        "label": "TSCA Inactive Inventory non-confidential portion (Updated February 26th 2024)",
+        "visibility": "PUBLIC",
+        "longDescription": "Section 8 (b) of the Toxic Substances Control Act (TSCA) requires EPA to compile, keep current and publish a list of each chemical substance that is manufactured or processed, including imports, in the United States for uses under TSCA. Information about what types of substances are on the TSCA inventory can be found here. The Toxic Substances Control Act (TSCA), as amended by the Frank R. Lautenberg Chemical Safety for the 21st Century Act, requires EPA to designate chemical substances on the TSCA Chemical Substance Inventory as either “active” or “inactive” in U.S. commerce. To accomplish this, EPA finalized a rule requiring industry reporting of chemicals manufactured (including imported) or processed in the U.S.. This reporting is used to identify which chemical substances on the TSCA Inventory are active in U.S. commerce and help inform the prioritization of chemicals for risk evaluation. This is the TSCA Inactive Non-Confidential Subset (Updated February 26th 2024)\r\n",
+        "listName": "TSCA_INACTIVE_NCTI_0224",
+        "chemicalCount": 34387,
+        "createdAt": "2024-02-26T13:01:07Z",
+        "updatedAt": "2024-02-27T21:50:31Z",
+        "shortDescription": "TSCA Inactive Inventory non-confidential portion (Updated February 26th 2024). The content of the list will change over time as both the non-confidential active TSCA inventory is updated and more substances are curated."
     },
     {
         "id": 1320,
@@ -1638,10 +1782,22 @@
         "visibility": "PUBLIC",
         "longDescription": "Section 8 (b) of the Toxic Substances Control Act (TSCA) requires EPA to compile, keep current and publish a list of each chemical substance that is manufactured or processed, including imports, in the United States for uses under TSCA. Information about what types of substances are on the TSCA inventory can be found here. The Toxic Substances Control Act (TSCA), as amended by the Frank R. Lautenberg Chemical Safety for the 21st Century Act, requires EPA to designate chemical substances on the TSCA Chemical Substance Inventory as either “active” or “inactive” in U.S. commerce. To accomplish this, EPA finalized a rule requiring industry reporting of chemicals manufactured (including imported) or processed in the U.S.. This reporting is used to identify which chemical substances on the TSCA Inventory are active in U.S. commerce and help inform the prioritization of chemicals for risk evaluation. (Updated August 20th 2021)",
         "listName": "TSCA_INACTIVE_NCTI_0821",
-        "chemicalCount": 18246,
+        "chemicalCount": 34527,
         "createdAt": "2021-10-17T11:41:18Z",
-        "updatedAt": "2022-04-06T12:36:54Z",
+        "updatedAt": "2023-12-29T08:49:14Z",
         "shortDescription": "TSCA Inactive Inventory non-confidential portion (updated August 20th 2021). The content of the list will change over time as both the non-confidential active TSCA inventory is updated and more substances are curated.\r\n"
+    },
+    {
+        "id": 1900,
+        "type": "federal",
+        "label": "TSCA Inactive Inventory non-confidential portion (Updated August 16th 2023)",
+        "visibility": "PUBLIC",
+        "longDescription": "Section 8 (b) of the Toxic Substances Control Act (TSCA) requires EPA to compile, keep current and publish a list of each chemical substance that is manufactured or processed, including imports, in the United States for uses under TSCA. Information about what types of substances are on the TSCA inventory can be found here. The Toxic Substances Control Act (TSCA), as amended by the Frank R. Lautenberg Chemical Safety for the 21st Century Act, requires EPA to designate chemical substances on the TSCA Chemical Substance Inventory as either “active” or “inactive” in U.S. commerce. To accomplish this, EPA finalized a rule requiring industry reporting of chemicals manufactured (including imported) or processed in the U.S.. This reporting is used to identify which chemical substances on the TSCA Inventory are active in U.S. commerce and help inform the prioritization of chemicals for risk evaluation. (Updated August 16th 2023)",
+        "listName": "TSCA_INACTIVE_NCTI_0823",
+        "chemicalCount": 34405,
+        "createdAt": "2023-12-31T17:26:30Z",
+        "updatedAt": "2023-12-31T17:55:21Z",
+        "shortDescription": "TSCA Inactive Inventory non-confidential portion (Updated August 16th 2023). The content of the list will change over time as both the non-confidential active TSCA inventory is updated and more substances are curated."
     },
     {
         "id": 767,
@@ -1774,6 +1930,18 @@
         "createdAt": "2021-05-10T17:18:03Z",
         "updatedAt": "2021-05-10T17:23:01Z",
         "shortDescription": "The National Recommended Water Quality Criteria Aquatic Life chemical table contains criteria for aquatic life ambient water quality criteria."
+    },
+    {
+        "id": 1892,
+        "type": "federal",
+        "label": "LIST: Water Contaminant Information Tool (WCIT)",
+        "visibility": "PUBLIC",
+        "longDescription": "This list is the list of chemicals contained in the Water Contaminant Information Tool. The Water Contaminant Information Tool (WCIT) is used by the water sector to prepare for, respond to or recover from drinking water and wastewater contamination incidents. WCIT includes comprehensive information about contaminants that could be introduced into a water system following a natural disaster, vandalism, accident or act or terrorism. There are currently over 800 priority contaminants of concern listed in WCIT. The tool is available online here: https://www.epa.gov/waterdata/water-contaminant-information-tool-wcit ",
+        "listName": "WCIT",
+        "chemicalCount": 795,
+        "createdAt": "2023-12-11T22:20:21Z",
+        "updatedAt": "2023-12-11T23:16:25Z",
+        "shortDescription": "List of chemicals contained in the Water Contaminant Information Tool"
     },
     {
         "id": 631,
