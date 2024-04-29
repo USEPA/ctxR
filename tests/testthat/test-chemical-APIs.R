@@ -41,7 +41,7 @@ test_that("catch missing DTXSID/DTXCID", {
   expect_error(get_lists_containing_chemical(), 'Please input a non-null value for DTXSID!')
   expect_error(get_chemical_mrv(), 'Please input a DTXSID or DTXCID!')
   expect_error(get_chemical_mol(), 'Please input a DTXSID or DTXCID!')
-  expect_error(get_chemical_image(), 'Please input a DTXSID or DTXCID!')
+  expect_error(get_chemical_image(), 'Please input a DTXSID, DTXCID, or SMILES!')
   expect_error(get_chemical_synonym(), 'Please input a DTXSID!')
 })
 
@@ -49,7 +49,7 @@ test_that('Catch both DTXSID and DTXCID', {
   expect_error(get_chemical_details(DTXSID = 'DTXSID7020182', DTXCID = 'DTXCID30182'), 'Please input either a DTXSID or DTXCID, but not both!')
   expect_error(get_chemical_mrv(DTXSID = 'DTXSID7020182', DTXCID = 'DTXCID30182'), 'Please input either a DTXSID or DTXCID, but not both!')
   expect_error(get_chemical_mol(DTXSID = 'DTXSID7020182', DTXCID = 'DTXCID30182'), 'Please input either a DTXSID or DTXCID, but not both!')
-  expect_error(get_chemical_image(DTXSID = 'DTXSID7020182', DTXCID = 'DTXCID30182'), 'Please input either a DTXSID or DTXCID, but not both!')
+  expect_error(get_chemical_image(DTXSID = 'DTXSID7020182', DTXCID = 'DTXCID30182'), 'Please input only one DTXSID, DTXCID, or SMILES, and not multiple!')
 
 })
 
