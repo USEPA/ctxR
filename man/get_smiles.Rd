@@ -28,5 +28,7 @@ A string FILL IN DETAILS!!!
 Get Smiles
 }
 \examples{
+\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 bpa_smiles <- get_smiles(name = "Bisphenol A")
+\dontshow{\}) # examplesIf}
 }
