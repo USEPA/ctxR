@@ -318,3 +318,18 @@ get_exposure_list_presence_tags_by_dtxsid <- function(DTXSID = NULL,
   }
   return()
 }
+
+
+#' Exposure API Endpoint status
+#'
+#' @return Status of Exposure API Endpoints
+#' @export
+#'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' status <- get_exposure_endpoint_status()
+#' print(status)
+
+get_exposure_endpoint_status <- function(){
+  request <- httr::GET(url = "https://api-ccte.epa.gov/exposure/health")
+  return(request$status_code)
+}
