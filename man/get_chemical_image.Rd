@@ -7,6 +7,7 @@
 get_chemical_image(
   DTXSID = NULL,
   DTXCID = NULL,
+  SMILES = NULL,
   format = "",
   API_key = NULL,
   Server = chemical_api_server,
@@ -17,6 +18,8 @@ get_chemical_image(
 \item{DTXSID}{Chemical identifier DTXSID}
 
 \item{DTXCID}{Chemical identifier DTXCID}
+
+\item{SMILES}{Chemical identifier SMILES}
 
 \item{format}{The image type, either "png" or "svg". If left blank, will
 default to "png".}
