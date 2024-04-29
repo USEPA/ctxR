@@ -40,7 +40,7 @@ Retrieve chemical details from DTXSID of DTXCID
 }
 \examples{
 \dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# Pull chemical
-details for BPA bpa <- get_chemical_details(DTXSID = 'DTXSID7020182')
+# Pull chemical details for BPA
+bpa <- get_chemical_details(DTXSID = 'DTXSID7020182')
 \dontshow{\}) # examplesIf}
 }
