@@ -16,8 +16,8 @@
 #'   DTXSID matching the input parameter.
 #' @export
 #' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
-#' # Pull chemical
-#' details for BPA bpa <- get_chemical_details(DTXSID = 'DTXSID7020182')
+#' # Pull chemical details for BPA
+#' bpa <- get_chemical_details(DTXSID = 'DTXSID7020182')
 
 get_chemical_details <- function(DTXSID = NULL,
                                  DTXCID = NULL,
@@ -326,8 +326,9 @@ get_chemical_details_by_listname <- function(listname = NULL,
 #'
 #' @return A string FILL IN DETAILS!!!
 #'
-#' @examples
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' bpa_smiles <- get_smiles(name = "Bisphenol A")
+
 get_smiles <- function(name = NULL,
                        API_key = NULL,
                        Server = chemical_api_server,
@@ -373,9 +374,10 @@ get_smiles <- function(name = NULL,
 #'   given.
 #' @return A string FILL IN DETAILS!!!
 #'
-#' @examples
-#' bpa_inchikey <- get_InChIKey(name = "Bisphenol A")
-get_InChIKey <- function(name = NULL,
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' bpa_inchikey <- get_inchikey(name = "Bisphenol A")
+
+get_inchikey <- function(name = NULL,
                          API_key = NULL,
                          Server = chemical_api_server,
                          verbose = FALSE){
@@ -418,12 +420,12 @@ get_InChIKey <- function(name = NULL,
 #' @param Server The root address for the API endpoint
 #' @param verbose A logical indicating if some “progress report” should be
 #'   given.
-#'
 #' @return A string FILL IN DETAILS!!!
 #'
-#' @examples
-#' bpa_inchi <- get_InChI(name = "Bisphenol A")
-get_InChI <- function(name = NULL,
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' bpa_inchi <- get_inchi(name = "Bisphenol A")
+
+get_inchi <- function(name = NULL,
                       API_key = NULL,
                       Server = chemical_api_server,
                       verbose = FALSE){
@@ -667,8 +669,10 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
 #'   name
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
-#' @param verbose A logical indicating if some “progress report” should be given.
-#'
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
+#' @param top The number of results to return if there are multiple results
+#'   available
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
 #' @export
@@ -679,7 +683,8 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
 chemical_starts_with <- function(word = NULL,
                            API_key = NULL,
                            Server = chemical_api_server,
-                           verbose = FALSE){
+                           verbose = FALSE,
+                           top = NULL){
   if (is.null(word) || !is.character(word)){
     stop('Please input a character value for word!')
   } else if (is.null(API_key)){
@@ -691,9 +696,22 @@ chemical_starts_with <- function(word = NULL,
     }
   }
 
+  if (!is.null(top)){
+    if (!is.numeric(top)) {
+      warning("Setting 'top' to NULL")
+      top <- NULL
+    } else {
+      top <- max(-1, as.integer(top))
+      if (top < 1){
+        warning("Setting 'top' to NULL")
+        top <- NULL
+      }
+    }
+  }
+
   word <- prepare_word(word)
 
-  response <- httr::GET(url = paste0(Server, '/search/start-with/', word),
+  response <- httr::GET(url = paste0(Server, '/search/start-with/', word, ifelse(is.null(top), '', paste0("?top=", top))),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
