@@ -4,18 +4,20 @@
 #' @param DTXCID The chemical identifier DTXCID
 #' @param Projection The format and chemical detail data returned. Allowed
 #'   values are 'chemicaldetailall', 'chemicaldetailstandard',
-#'   'chemicalidentifier', 'chemicalstructure'. If left empty or there is a
-#'   mismatch, the default format will be 'chemicaldetailstandard'.
+#'   'chemicalidentifier', 'chemicalstructure', 'ntatoolkit',
+#'   'ccdchemicaldetails'. If left empty or there is a mismatch, the default
+#'   format will be 'chemicaldetailstandard'.
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
-#' @param verbose A logical indicating if some “progress report” should be given.
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
 #'
 #' @return A data.table containing chemical information for the chemical with
 #'   DTXSID matching the input parameter.
 #' @export
 #' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
-#' # Pull chemical details for BPA
-#' bpa <- get_chemical_details(DTXSID = 'DTXSID7020182')
+#' # Pull chemical
+#' details for BPA bpa <- get_chemical_details(DTXSID = 'DTXSID7020182')
 
 get_chemical_details <- function(DTXSID = NULL,
                                  DTXCID = NULL,
@@ -41,7 +43,8 @@ get_chemical_details <- function(DTXSID = NULL,
                           'chemicaldetailstandard',
                           'chemicalidentifier',
                           'chemicalstructure',
-                          'ntatoolkit')
+                          'ntatoolkit',
+                          'ccdchemicaldetails')
   index <- 2
   if (!is.character(Projection)){
     warning('Setting `Projection` to `chemicaldetailstandard`')
@@ -115,7 +118,7 @@ get_chemical_details <- function(DTXSID = NULL,
 
 
 create_data.table_chemical_details <- function(index = -1){
-  if (index %in% 2:5 ){
+  if (index %in% 2:6 ){
     if (index == 2){
       data <- data.table::data.table(id = character(),
                                      cpdataCount = integer(),
@@ -173,7 +176,7 @@ create_data.table_chemical_details <- function(index = -1){
                                      msReadySmiles = character(),
                                      dtxsid = character(),
                                      dtxcid = character())
-    } else {
+    } else if (index == 5) {
       data <- data.table::data.table(preferredName = character(),
                                      inchikey = character(),
                                      msReadySmiles = character(),
@@ -191,6 +194,44 @@ create_data.table_chemical_details <- function(index = -1){
                                      expocatMedianPrediction = character(),
                                      expocat = character(),
                                      nhanes = character())
+    } else {
+      data <- data.table::data.table(id = character(),
+                                     dtxsid = character(),
+                                     dtxcid = character(),
+                                     casrn = character(),
+                                     compoundId = integer(),
+                                     genericSubstanceId = integer(),
+                                     preferredName = character(),
+                                     activeAssays = integer(),
+                                     molFormula = character(),
+                                     monoisotopicMass = numeric(),
+                                     percentAssays = integer(),
+                                     pubchemCount = integer(),
+                                     pubmedCount = integer(),
+                                     sourcesCount = integer(),
+                                     qcLevel = integer(),
+                                     qcLevelDesc = character(),
+                                     isotope = integer(),
+                                     multicomponent = integer(),
+                                     totalAssays = integer(),
+                                     toxcastSelect = character(),
+                                     pubchemCid = integer(),
+                                     relatedSubstanceCount = integer(),
+                                     relatedStructureCount = integer(),
+                                     hasStructureImage = integer(),
+                                     iupacName = character(),
+                                     smiles = character(),
+                                     inchiString = character(),
+                                     averageMass = numeric(),
+                                     qcNotes = character(),
+                                     qsarReadySmiles = character(),
+                                     msReadySmiles = character(),
+                                     irisLink = character(),
+                                     pprtvLink = character(),
+                                     isMarkush = integer(),
+                                     inchikey = character(),
+                                     wikipediaArticle = character(),
+                                     cpdataCount = integer())
     }
     return(data)
   }
@@ -275,6 +316,18 @@ get_chemical_details_by_listname <- function(listname = NULL,
 
 }
 
+#' Get Smiles
+#'
+#' @param name Chemical name
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
+#'
+#' @return A string FILL IN DETAILS!!!
+#'
+#' @examples
+#' bpa_smiles <- get_smiles(name = "Bisphenol A")
 get_smiles <- function(name = NULL,
                        API_key = NULL,
                        Server = chemical_api_server,
@@ -311,6 +364,17 @@ get_smiles <- function(name = NULL,
 
 }
 
+#' Get InChIKey
+#'
+#' @param name Chemical name
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
+#' @return A string FILL IN DETAILS!!!
+#'
+#' @examples
+#' bpa_inchikey <- get_InChIKey(name = "Bisphenol A")
 get_InChIKey <- function(name = NULL,
                          API_key = NULL,
                          Server = chemical_api_server,
@@ -347,6 +411,18 @@ get_InChIKey <- function(name = NULL,
 
 }
 
+#' Get InChI
+#'
+#' @param name Chemical name
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
+#'
+#' @return A string FILL IN DETAILS!!!
+#'
+#' @examples
+#' bpa_inchi <- get_InChI(name = "Bisphenol A")
 get_InChI <- function(name = NULL,
                       API_key = NULL,
                       Server = chemical_api_server,
