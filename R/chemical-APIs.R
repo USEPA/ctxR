@@ -1712,3 +1712,16 @@ get_chemical_synonym <- function(DTXSID = NULL,
   return()
 }
 
+#' Chemical API Endpoint status
+#'
+#' @return Status of Chemical API Endpoints
+#' @export
+#'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' status <- get_chemical_endpoint_status()
+#' print(status)
+
+get_chemical_endpoint_status <- function(){
+  request <- httr::GET(url = "https://api-ccte.epa.gov/chemical/health")
+  return(request$status_code)
+}
