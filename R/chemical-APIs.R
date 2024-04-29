@@ -673,6 +673,7 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
 #'   given.
 #' @param top The number of results to return if there are multiple results
 #'   available
+#'
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
 #' @export
@@ -798,6 +799,8 @@ chemical_equal <- function(word = NULL,
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
 #' @param verbose A logical indicating if some “progress report” should be given.
+#' @param top The number of results to return if there are multiple results
+#'   available
 #'
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
@@ -809,7 +812,8 @@ chemical_equal <- function(word = NULL,
 chemical_contains <- function(word = NULL,
                               API_key = NULL,
                               Server = chemical_api_server,
-                              verbose = FALSE){
+                              verbose = FALSE,
+                              top = NULL){
   if (is.null(word) || !is.character(word)){
     stop('Please input a character value for word!')
   } else if (is.null(API_key)){
@@ -821,9 +825,22 @@ chemical_contains <- function(word = NULL,
     }
   }
 
+  if (!is.null(top)){
+    if (!is.numeric(top)) {
+      warning("Setting 'top' to NULL")
+      top <- NULL
+    } else {
+      top <- max(-1, as.integer(top))
+      if (top < 1){
+        warning("Setting 'top' to NULL")
+        top <- NULL
+      }
+    }
+  }
+
   word <- prepare_word(word)
 
-  response <- httr::GET(url = paste0(Server, '/search/contain/', word),
+  response <- httr::GET(url = paste0(Server, '/search/contain/', word, ifelse(is.null(top), '', paste0("?top=", top))),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -1560,6 +1577,7 @@ get_chemical_mol <- function(DTXSID = NULL,
 #'
 #' @param DTXSID Chemical identifier DTXSID
 #' @param DTXCID Chemical identifier DTXCID
+#' @param SMILES Chemical identifier SMILES
 #' @param format The image type, either "png" or "svg". If left blank, will
 #'   default to "png".
 #' @param API_key The user-specific API key
@@ -1584,14 +1602,15 @@ get_chemical_mol <- function(DTXSID = NULL,
 
 get_chemical_image <- function(DTXSID = NULL,
                                DTXCID = NULL,
+                               SMILES = NULL,
                                format = "",
                                API_key = NULL,
                                Server = chemical_api_server,
                                verbose = FALSE){
-  if (is.null(DTXSID) & is.null(DTXCID))
-    stop('Please input a DTXSID or DTXCID!')
-  else if (!is.null(DTXSID) & !is.null(DTXCID))
-    stop('Please input either a DTXSID or DTXCID, but not both!')
+  if (is.null(DTXSID) & is.null(DTXCID) & is.null(SMILES))
+    stop('Please input a DTXSID, DTXCID, or SMILES!')
+  else if (length(which(!sapply(list(DTXSID, DTXCID, SMILES), is.null))) > 1)
+    stop('Please input only one DTXSID, DTXCID, or SMILES, and not multiple!')
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
@@ -1601,22 +1620,29 @@ get_chemical_image <- function(DTXSID = NULL,
     }
   }
   if (format == 'png'){
-    image_type = "?format=png"
+    image_type = "Image+Format=png"
   } else if (format == 'svg'){
-    image_type = "?format=svg"
+    image_type = "Image+Format=svg"
   } else {
     image_type = ""
   }
 
   if (!is.null(DTXSID)){
-    response <- httr::GET(url = paste0(Server, '/file/image/search/by-dtxsid/', DTXSID, image_type),
+    response <- httr::GET(url = paste0(Server, '/file/image/search/by-dtxsid/', DTXSID, '?', image_type),
+                          httr::add_headers(.headers = c(
+                            'Content-Type' =  'application/json',
+                            'x-api-key' = API_key)
+                          )
+    )
+  } else if (!is.null(DTXCID)) {
+    response <- httr::GET(url = paste0(Server, '/file/image/search/by-dtxcid/', DTXCID, '?', image_type),
                           httr::add_headers(.headers = c(
                             'Content-Type' =  'application/json',
                             'x-api-key' = API_key)
                           )
     )
   } else {
-    response <- httr::GET(url = paste0(Server, '/file/image/search/by-dtxcid/', DTXCID, image_type),
+    response <- httr::GET(url = paste0(Server, '/file/image/generate?smiles=', prepare_word(SMILES), '&', image_type),
                           httr::add_headers(.headers = c(
                             'Content-Type' =  'application/json',
                             'x-api-key' = API_key)
