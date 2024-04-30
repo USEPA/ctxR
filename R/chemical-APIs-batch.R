@@ -1037,6 +1037,8 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
 #' @param API_key User-specific API key
 #' @param rate_limit Number of seconds to wait between each request
 #' @param verbose A logical indicating if some “progress report” should be given.
+#' @param top The number of results to return if there are multiple results
+#'   available
 #'
 #' @return A named list of data.frames of chemicals and related values matching
 #'   the query parameters
@@ -1049,7 +1051,8 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
 chemical_starts_with_batch <- function(word_list = NULL,
                                        API_key = NULL,
                                        rate_limit = 0L,
-                                       verbose = FALSE){
+                                       verbose = FALSE,
+                                       top = NULL){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
@@ -1062,6 +1065,20 @@ chemical_starts_with_batch <- function(word_list = NULL,
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
+
+  if (!is.null(top)){
+    if (!is.numeric(top)) {
+      warning("Setting 'top' to NULL")
+      top <- NULL
+    } else {
+      top <- max(-1, as.integer(top))
+      if (top < 1){
+        warning("Setting 'top' to NULL")
+        top <- NULL
+      }
+    }
+  }
+
   if (!is.null(word_list)){
     if (!is.character(word_list) & !all(sapply(word_list, is.character))){
       stop('Please input a character list for word_list!')
@@ -1071,7 +1088,8 @@ chemical_starts_with_batch <- function(word_list = NULL,
       Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
-          chemical_starts_with(word = t, API_key = API_key, verbose = verbose)
+          chemical_starts_with(word = t, API_key = API_key, verbose = verbose,
+                               top = top)
         },
         error = function(cond){
           message(t)
@@ -1154,6 +1172,8 @@ chemical_equal_batch <- function(word_list = NULL,
 #' @param API_key User-specific API key
 #' @param rate_limit Number of seconds to wait between each request
 #' @param verbose A logical indicating if some “progress report” should be given.
+#' @param top The number of results to return if there are multiple results
+#'   available
 #'
 #' @return A named list of data.frames of chemicals and related values matching
 #'   the query parameters
@@ -1166,7 +1186,8 @@ chemical_equal_batch <- function(word_list = NULL,
 chemical_contains_batch <- function(word_list = NULL,
                                     API_key = NULL,
                                     rate_limit = 0L,
-                                    verbose = verbose){
+                                    verbose = verbose,
+                                    top = NULL){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
@@ -1179,6 +1200,20 @@ chemical_contains_batch <- function(word_list = NULL,
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
+
+  if (!is.null(top)){
+    if (!is.numeric(top)) {
+      warning("Setting 'top' to NULL")
+      top <- NULL
+    } else {
+      top <- max(-1, as.integer(top))
+      if (top < 1){
+        warning("Setting 'top' to NULL")
+        top <- NULL
+      }
+    }
+  }
+
   if (!is.null(word_list)){
     if (!is.character(word_list) & !all(sapply(word_list, is.character))){
       stop('Please input a character list for word_list!')
@@ -1188,7 +1223,8 @@ chemical_contains_batch <- function(word_list = NULL,
       Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
-          chemical_equal(word = t, API_key = API_key, verbose = verbose)
+          chemical_contains(word = t, API_key = API_key, verbose = verbose,
+                            top = top)
         },
         error = function(cond){
           message(t)
