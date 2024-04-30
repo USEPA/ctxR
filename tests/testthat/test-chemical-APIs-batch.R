@@ -75,7 +75,7 @@ test_that("DTXSID/DTXCID errors", {
   expect_error(get_chemical_image_batch(DTXSID = list('first' = '1', 'second' = 2), API_key = 'test_key'), 'Please input a character list for DTXSID!')
   expect_error(get_chemical_image_batch(DTXCID = 1, API_key = 'test_key'), 'Please input a character list for DTXCID!')
   expect_error(get_chemical_image_batch(DTXCID = list('first' = '1', 'second' = 2), API_key = 'test_key'), 'Please input a character list for DTXCID!')
-  expect_error(get_chemical_image_batch(API_key = 'test_key'), 'Please input a list of DTXSIDs or DTXCIDs!')
+  expect_error(get_chemical_image_batch(API_key = 'test_key'), 'Please input a list of DTXSIDs, DTXCIDs, or SMILEs!')
   expect_error(get_chemical_synonym_batch(DTXSID = 1, API_key = 'test_key'), 'Please input a character list for DTXSID!')
   expect_error(get_chemical_synonym_batch(DTXSID = list('first' = '1', 'second' = 2), API_key = 'test_key'), 'Please input a character list for DTXSID!')
   expect_error(get_chemical_synonym_batch(API_key = 'test_key'), 'Please input a list of DTXSIDs!')
