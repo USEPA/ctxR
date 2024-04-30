@@ -6,11 +6,13 @@
 #' @param DTXCID The chemical identifier DTXCID
 #' @param Projection The format and chemical detail data returned. Allowed
 #'   values are 'chemicaldetailall', 'chemicaldetailstandard',
-#'   chemicalidentifier', 'chemicalstructure'. If left empty or there is a
+#'   chemicalidentifier', 'chemicalstructure', 'ntatoolkit',
+#'   ccdchemicaldetails'. If left empty or there is a
 #'   mismatch, the default format will be 'chemicaldetailstandard'.
 #' @param API_key The user-specific API key
 #' @param rate_limit Number of seconds to wait between each request
-#' @param verbose A logical indicating if some “progress report” should be given.
+#' @param verbose A logical indicating if some “progress report” should be
+#' given.
 #'
 #' @return A data.table (DTXSID) or a named list of data.tables (DTXCID)
 #'   containing chemical information for the chemicals with DTXSID or DTXCID
@@ -138,7 +140,8 @@ get_chemical_details_batch_2 <- function(DTXSID = NULL,
                             'chemicaldetailstandard',
                             'chemicalidentifier',
                             'chemicalstructure',
-                            'ntatoolkit')
+                            'ntatoolkit',
+                            'ccdchemicaldetails')
     index <- 2
     if (!is.character(Projection)){
       warning('Setting `Projection` to `chemicaldetailstandard`')
