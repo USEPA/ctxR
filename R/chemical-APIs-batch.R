@@ -1866,6 +1866,7 @@ get_chemical_mol_batch <- function(DTXSID = NULL,
 #'
 #' @param DTXSID A list of chemical identifier DTXSIDs.
 #' @param DTXCID A list of chemical identifier DTXCIDs.
+#' @param SMILES A list of chemical identifier SMILES.
 #' @param format The image type, either "png" or "svg". If left blank, will
 #'   default to "png".
 #' @param API_key The user-specific API key.
@@ -1887,6 +1888,7 @@ get_chemical_mol_batch <- function(DTXSID = NULL,
 
 get_chemical_image_batch <- function(DTXSID = NULL,
                                      DTXCID = NULL,
+                                     SMILES = NULL,
                                      format = "",
                                      API_key = NULL,
                                      rate_limit = 0L,
@@ -1959,8 +1961,36 @@ get_chemical_image_batch <- function(DTXSID = NULL,
     )
     names(results) <- DTXCID
     return(results)
+  } else if (!is.null(SMILES)) {
+    if (!is.character(SMILES) & !all(sapply(SMILES, is.character))){
+      stop('Please input a character list for SMILES!')
+    }
+    SMILES <- unique(SMILES)
+    if (verbose) {
+      print('Using SMILES!')
+    }
+    results <- purrr::map2(.x = SMILES, .y = format, function(d, f){
+      Sys.sleep(rate_limit)
+      attempt <- tryCatch(
+        {
+          get_chemical_image(SMILES = d,
+                             format = f,
+                             API_key = API_key,
+                             verbose = verbose)
+        },
+        error = function(cond){
+          message(d)
+          message(cond$message)
+          return(NA)
+        }
+      )
+      return(attempt)
+    }
+    )
+    names(results) <- SMILES
+    return(results)
   } else {
-    stop('Please input a list of DTXSIDs or DTXCIDs!')
+    stop('Please input a list of DTXSIDs, DTXCIDs, or SMILEs!')
   }
 }
 
