@@ -79,7 +79,20 @@ In this vignette, [CCTE Exposure APIs](https://api-ccte.epa.gov/docs/exposure.ht
 
 :::
 
-Data for the Exposure APIs comes from FILL IN THE DEETS!!!
+Data for the Exposure APIs come is accessible using the [ChemExpo](https://comptox.epa.gov/chemexpo/) interactive web application developed by the United State Environmental Protection Agency. The data are known as the Chemicals and Products Database [(CPDat)](https://www.epa.gov/chemical-research/chemical-and-products-database-cpdat) and describe how chemicals are used in commerce and how they occur in consumer and industrial products [Dionisio et al. (2018)](https://www.nature.com/articles/sdata2018125). For more information on ChemExpo, please see the user guide. 
+
+Data is broadly organized in three different areas, Product Use Categories (PUCs), List Presence Keywords, and Function Categories. 
+
+The PUCs are assigned to products and indicate the type of product associated to each data record. They are organized hierarchically, with General Category containing Product Family, which in turn contains Product type. More information on PUC categories can be found in [Isaacs et al. (2020)](https://doi.org/10.1038/s41370-019-0187-5).
+
+List Presence Keywords communicate information contained in the Chemical Presence documents in ChemExpo. Information in these documents details use of chemicals and may be sourced from a variety of federal and state agencies and trade associations. List keywords may be used in the chemical records and are updated from the original set developed for the Chemical and Product Categories (CPDat) database [Dionisio et al. (2015)](https://www.sciencedirect.com/science/article/pii/S2214750014001632?via%3Dihub). For the most up to date information on the current List Presence keywords, see [Koval et al. (2022)](https://www.nature.com/articles/s41370-022-00451-8).
+
+
+
+
+Information is sourced from
+
+Sakshi Handa, Katherine A. Phillips, Kenta Baron-Furuyama, and Kristin K. Isaacs. 2023. “ChemExpo Knowledgebase User Guide”. https://comptox.epa.gov/chemexpo/static/user_guide/index.html.
 
 ## Functions
 
