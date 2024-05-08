@@ -76,7 +76,11 @@ get_bioactivity_details <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+    req_content <- httr::content(response, as = 'text', encoding = "UTF-8")
+    if (nchar(req_content) == 0){
+      return(data.table::data.table())
+    }
+    res <- jsonlite::fromJSON(req_content)
     if (!is.data.frame(res) & (length(res) != 0)){
       for (i in 1:length(res)){
         if (is.null(res[[i]])) res[[i]] <- NA # set any NULLs to NA
