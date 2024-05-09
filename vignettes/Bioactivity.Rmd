@@ -61,9 +61,6 @@ registerS3method(
   "knit_print", "data.table", knit_print.data.table,
   envir = asNamespace("knitr")
 )
-
-# Remove this once Bioactivity goes public
-stg_bioactivity_server <- 'https://api-ccte-stg.epa.gov/bioactivity/data'
 ```
 
 ## Introduction
