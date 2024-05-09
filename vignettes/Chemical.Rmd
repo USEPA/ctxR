@@ -121,7 +121,9 @@ res_dt <- get_chemical_details(DTXCID = 'DTXCID30182')
 `get_chemical_by_property_range()` retrieves data for chemicals that have a specified property within the input range.
 
 ```{r ccdR property range chemical, message=FALSE, eval=FALSE}
-res_dt <- get_chemical_by_property_range(start = 1.311, end = 1.313, property = 'Density')
+res_dt <- get_chemical_by_property_range(start = 1.311, 
+                                         end = 1.313, 
+                                         property = 'Density')
 ```
 
 `get_chem_info()` retrieves specific chemical information for an input chemical. This includes both experimental and predicted values by default, but providing "experimental" or "predicted" to the type parameter will return the specific associated information.
@@ -167,7 +169,8 @@ MS-Ready data can be retrieved using a variety of input information. Examples fo
 ##### Mass Range
 
 ```{r ccdR mass range ms ready chemical, message=FALSE, eval=FALSE}
-res_dt <- get_msready_by_mass(start = 200.9, end = 200.95)
+res_dt <- get_msready_by_mass(start = 200.9, 
+                              end = 200.95)
 ```
 
 ##### Chemical Formula
