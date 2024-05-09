@@ -120,7 +120,7 @@ Moreover, the manual stages of this kind of workflow are also non-transparent an
 
 Recently, the [Center for Computational Toxicology and Exposure](https://www.epa.gov/aboutepa/about-center-computational-toxicology-and-exposure-ccte) (CCTE) developed a set of Application Programming Interfaces (APIs) that allows programmatic access to the CCD, bypassing the manual steps of the web-based batch search workflow. APIs effectively automate the process of accessing and downloading the data that populates the CCD. 
 
-The [CCTE APIs](https://api-ccte.epa.gov/docs/) are publicly available at no cost to the user. However, in order to use the CCTE APIs, users must have a individual API key. The API key uniquely identifies the user to the CCD servers and verifies that you have permission to access the database. Getting an API key is free, but requires contacting the API support team at [ccte_api@epa.gov](mailto:ccte_api@epa.gov).
+The [CCTE APIs](https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-data-apis) are publicly available at no cost to the user. However, in order to use the CCTE APIs, users must have a individual API key. The API key uniquely identifies the user to the CCD servers and verifies that you have permission to access the database. Getting an API key is free, but requires contacting the API support team at [ccte_api@epa.gov](mailto:ccte_api@epa.gov).
 
 The APIs are organized into sets of "endpoints" by data domains: `Chemical`, `Hazard`, and `Bioactivity`. An endpoint provides access to a specific set of information and data, e.g. physical-chemical properties for a chemical that the user specifies. A view from the [Chemical APIs](https://api-ccte.epa.gov/docs/chemical.html) web interface is pictured below.
 
