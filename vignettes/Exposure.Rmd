@@ -71,7 +71,7 @@ registerS3method(
 
 ## Introduction
 
-In this vignette, [CCTE Exposure APIs](https://api-ccte.epa.gov/docs/exposure.html) will be explored. 
+In this vignette, the [CCTE Exposure APIs](https://api-ccte.epa.gov/docs/exposure.html) will be explored. 
 
 ::: {.noticebox data-latex=""}
 
@@ -79,16 +79,13 @@ In this vignette, [CCTE Exposure APIs](https://api-ccte.epa.gov/docs/exposure.ht
 
 :::
 
-Data for the Exposure APIs come is accessible using the [ChemExpo](https://comptox.epa.gov/chemexpo/) interactive web application developed by the United State Environmental Protection Agency. The data are known as the Chemicals and Products Database [(CPDat)](https://www.epa.gov/chemical-research/chemical-and-products-database-cpdat) and describe how chemicals are used in commerce and how they occur in consumer and industrial products [Dionisio et al. (2018)](https://www.nature.com/articles/sdata2018125). For more information on ChemExpo, please see the user guide. 
+Data provided by the Exposure APIs are broadly organized in three different areas, Functional Use Information, Product Data, and List Presence Data. These data (except for the Functional Use Probability endpoint) are developed from publicly available documents and are also accessible using the Chemical Exposure Knowledgebase ([ChempExpo](https://comptox.epa.gov/chemexpo/)) interactive web application developed by the United States Environmental Protection Agency. The underlying database for both the Exposure APIs and ChemExpo is the Chemicals and Products Database (CPDat). CPDat provides reported information on how chemicals are used in commerce and (where possible) at what quantities they occur in consumer and industrial products; see [Dionisio et al. (2018)](https://www.nature.com/articles/sdata2018125) for more information on CPDat. The data provided by the Functional Use Probability endpoint are predictions from EPA's Quantitative Structure Use Relationship (QSUR) models [Phillips et al. (2017)](https://pubs.rsc.org/en/content/articlelanding/2017/gc/c6gc02744j).
 
-Data is broadly organized in three different areas, Product Use Categories (PUCs), List Presence Keywords, and Function Categories. 
+Product Data are organized by harmonized Product Use Categories (PUCs). The PUCs are assigned to products (which are associated with Composition Documents) and indicate the type of product associated to each data record. They are organized hierarchicially, with General Category containing Product Family, which in turn contains Product Type. The Exposure APIs also provide information on how the PUC was assigned. Do note that a Machine Learning model is used to assign PUCs with the "classificationmethod" equal to "Automatic". As such, these assignments may be incorrect. More information on PUC categories can be found in [Isaacs et al. (2020)](https://doi.org/10.1038/s41370-019-0187-5).
 
-The PUCs are assigned to products and indicate the type of product associated to each data record. They are organized hierarchically, with General Category containing Product Family, which in turn contains Product type. More information on PUC categories can be found in [Isaacs et al. (2020)](https://doi.org/10.1038/s41370-019-0187-5).
+List Presence Data reflect the occurrence of chemicals on lists present in publicly available documents (sourced from a variety of federal and state agencies and trade associations). These lists are tagged with List Presence Keywords (LPKs) that together describe information contained in the document relevant to how the chemical was used. LPKs are an updated version of the cassettes provided in the Chemical and Product Categories (CPCat) database; see [Dionisio et al. (2015)](https://www.sciencedirect.com/science/article/pii/S2214750014001632?via%3Dihub). For the most up to date information on the current LPKs and to see how the CPCat cassettes were updated, see [Koval et al. (2022)](https://www.nature.com/articles/s41370-022-00451-8).
 
-List Presence Keywords communicate information contained in the Chemical Presence documents in ChemExpo. Information in these documents details use of chemicals and may be sourced from a variety of federal and state agencies and trade associations. List keywords may be used in the chemical records and are updated from the original set developed for the Chemical and Product Categories (CPDat) database [Dionisio et al. (2015)](https://www.sciencedirect.com/science/article/pii/S2214750014001632?via%3Dihub). For the most up to date information on the current List Presence keywords, see [Koval et al. (2022)](https://www.nature.com/articles/s41370-022-00451-8).
-
-Functional Use Categories describe the function a specific chemical serves. Standardized categories and definitions have been developed by the Organization for Economic Co-operation and Development [(OECD)](https://one.oecd.org/document/ENV/JM/MONO(2017)14/en/pdf). As it becomes necessary to augment the current set of categories, new function categories will be added. Originally developed and released in the Functional Use (FuSE) database now maintained within CPDat. These form the bases for ORD's Quantitative Structure Use Relationship (QSUR) models [Phillips et al. (2016)](https://pubs.rsc.org/en/content/articlelanding/2017/GC/C6GC02744J).
-
+Both reported and predicted Function Use Information is available. Reported functional use information is organized by harmonized Function Categories (FCs) that describe the role a chemical serves in a product or industrial process. The harmonized technical function categories and definitions were developed by the Organization for Economic Co-operation and Development (OECD) (with the exception of a few categories unique to consumer products which are noted as being developed by EPA). These categories have been augmented with additional categories needed to describe chemicals in personal care, pharmaceutical, or other commercial sectors. The reported function data form the basis for ORD's QSUR models [(Phillips et al. (2016))](https://pubs.rsc.org/en/content/articlelanding/2017/GC/C6GC02744J). These models provide the structure-based predictions of chemical function available in the Functional Use Probability endpoint. Note that these models were developed prior to the OECD function categories, so their function categories are not yet aligned with the harmonized categories used in the reported data. Updated models for the harmonized categories are under development.
 
 Information for ChemExpo is sourced from
 
@@ -104,7 +101,7 @@ Functional uses for chemicals may be searched.
 
 #### Exposure Functional Use
 
-`get_exposure_functional_use()` retrieves functional use exposure data for a specific chemical (by DTXSID).
+`get_exposure_functional_use()` retrieves FCs and associated exposure data for a specific chemical (by DTXSID).
 
 ```{r exposure functional use}
 exp_fun_use <- get_exposure_functional_use(DTXSID = 'DTXSID7020182')
@@ -113,7 +110,7 @@ head(data.table::as.data.table(exp_fun_use))
 
 #### Exposure Functional Use Probability
 
-`get_exposure_functional_use_probability()` retrieves the probability of functional use within different use categories for a given chemical (by DTXSID). Note, this is not probability of how the chemical is used across all categories but rather the probability within each functional use category that the chemical is used.
+`get_exposure_functional_use_probability()` retrieves the probability of functional use within different FCs for a given chemical (by DTXSID). Note, this is not probability of how the chemical is used across all categories but rather the probability within each FC that the chemical is used.
 
 ```{r}
 exp_fun_use_prob <- get_exposure_functional_use_probability(DTXSID = 'DTXSID7020182')
@@ -122,7 +119,7 @@ exp_fun_use_prob
 
 #### Exposure Functional Use Categories
 
-`get_exposure_functional_use_categories()` retrieves all the functional use categories. This is not specific to a chemical, but rather a list of all functional use categories.
+`get_exposure_functional_use_categories()` retrieves all the FCs. This is not specific to a chemical, but rather a list of all FCs.
 
 ```{r}
 exp_fun_use_cat <- get_exposure_functional_use_category()
@@ -135,7 +132,7 @@ There are a few resources for retrieving product use data associated with chemic
 
 #### Exposure Product Data
 
-`get_exposure_product_data()` retrieves the product data for products that use the specified chemical (by DTXSID).
+`get_exposure_product_data()` retrieves the product data (PUCs and related data) for products that use the specified chemical (by DTXSID).
 
 ```{r}
 exp_prod_dat <- get_exposure_product_data(DTXSID = 'DTXSID7020182')
@@ -144,7 +141,7 @@ head(data.table::as.data.table(exp_prod_dat))
 
 #### Exposure Product Use Category Data
 
-`get_exposure_product_data_puc()` retrieves the product use categories. This is not specific to a chemical, but rather a list of all product use categories.
+`get_exposure_product_data_puc()` retrieves the PUCs. This is not specific to a chemical, but rather a list of all PUCs.
 
 ```{r}
 exp_prod_data_puc <- get_exposure_product_data_puc()
@@ -157,7 +154,7 @@ There are a few resources for retrieving list data for specific chemicals (by DT
 
 #### List Presence Tags
 
-`get_exposure_list_presence_tags()` retrieves all the list presence tag information. This is not specific to a chemical, but rather a list of the the list presence tags.
+`get_exposure_list_presence_tags()` retrieves all the list presence tag information (including LPKs). This is not specific to a chemical, but rather a list of the the list presence tags.
 
 ```{r}
 exp_list_tags <- get_exposure_list_presence_tags()
@@ -166,7 +163,7 @@ head(data.table::as.data.table(exp_list_tags))
 
 #### List Presence Tag Data
 
-`get_exposure_list_presence_tags_by_dtxsid()` retrieves list presence tag data for a specific chemical (by DTXSID).
+`get_exposure_list_presence_tags_by_dtxsid()` retrieves LPKs and associated data for a specific chemical (by DTXSID).
 
 ```{r}
 exp_list_tags_dat <- get_exposure_list_presence_tags_by_dtxsid(DTXSID = 'DTXSID7020182')
