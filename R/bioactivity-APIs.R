@@ -93,7 +93,9 @@ get_bioactivity_details <- function(DTXSID = NULL,
     param_cols <- c('mc3Param', 'mc4Param', 'mc5Param', 'mc6Param')
     col_index <- which(param_cols %in% names(res))
     if (length(col_index) > 0){
-      col_index <- which(unname(!sapply(res[which(names(res) %in% param_cols)], is.na)))
+      if (data_index == 4) { #m4id
+        col_index <- which(unname(!sapply(res[which(names(res) %in% param_cols)], is.na)))
+      }
       if (length(col_index) > 0){
         res <- tidyr::unnest_wider(data = res, col = param_cols[col_index])
       }
