@@ -22,7 +22,7 @@ get_inchikey(
 given.}
 }
 \value{
-A string FILL IN DETAILS!!!
+A string giving the associated InChIKey.
 }
 \description{
 Get InChIKey

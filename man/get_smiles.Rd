@@ -22,7 +22,7 @@ get_smiles(
 given.}
 }
 \value{
-A string FILL IN DETAILS!!!
+A string giving a SMILES string for the input chemical.
 }
 \description{
 Get Smiles

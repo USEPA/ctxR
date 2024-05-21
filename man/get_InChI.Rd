@@ -22,7 +22,7 @@ get_inchi(
 given.}
 }
 \value{
-A string FILL IN DETAILS!!!
+A string giving the associated inchi string.
 }
 \description{
 Get InChI
