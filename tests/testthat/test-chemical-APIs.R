@@ -186,3 +186,24 @@ test_that('check helper functions', {
   expect_type(create_data.table_chemical_details(index = 6), 'list')
   expect_type(create_data.table_chemical_details(index = 'f'), 'list')
 })})
+
+with_mock_dir('IUPAC', simplify = FALSE, {
+
+test_that('IUPAC endpoint input errors', {
+    expect_error(get_smiles(), 'Please input a character string for name!')
+    expect_error(get_smiles(name = 3), 'Please input a character string for name!')
+    expect_error(get_inchi(), 'Please input a character string for name!')
+    expect_error(get_inchi(name = 3), 'Please input a character string for name!')
+    expect_error(get_inchikey(), 'Please input a character string for name!')
+    expect_error(get_inchikey(name = 3), 'Please input a character string for name!')
+})
+
+
+test_that('Return data type', {
+  expect_type(get_smiles(''), 'NULL')
+  expect_type(get_smiles('Acetamide'), 'character')
+  expect_type(get_inchi(''), 'NULL')
+  expect_type(get_inchi('Acetamide'), 'character')
+  expect_type(get_inchikey(''), 'NULL')
+  expect_type(get_inchikey('Acetamide'), 'character')
+})})
