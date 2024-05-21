@@ -116,6 +116,33 @@ res_dt <- get_chemical_details(DTXSID = 'DTXSID7020182')
 res_dt <- get_chemical_details(DTXCID = 'DTXCID30182')
 ```
 
+### Structure from IUPAC Systematic 
+
+#### Get Smiles
+
+`get_smiles()` retrieves a SMILES string for the input chemical name.
+
+```{r smiles from chemical name, message = FALSE, eval = FALSE}
+res_string <- get_smiles(name = 'Bisphenol A')
+```
+
+#### Get inchikey
+
+`get_inchikey()` retrieves the InChIKey string for the input chemical name.
+
+```{r inchikey from chemical name, message = FALSE, eval = FALSE}
+res_string <- get_inchikey(name = 'Bisphenol A')
+```
+
+#### Get inchi
+
+`get_inchi()` retrieves the InChI string for the input chemical name.
+
+```{r inchi string from chemical name, message = FALSE, eval = FALSE}
+res_string <- get_inchi(name = 'Bisphenol A')
+```
+
+
 ### Chemical Property Resource
 
 `get_chemical_by_property_range()` retrieves data for chemicals that have a specified property within the input range.
