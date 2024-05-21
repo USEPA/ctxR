@@ -324,7 +324,7 @@ get_chemical_details_by_listname <- function(listname = NULL,
 #' @param verbose A logical indicating if some “progress report” should be
 #'   given.
 #'
-#' @return A string FILL IN DETAILS!!!
+#' @return A string giving a SMILES string for the input chemical.
 #' @export
 #' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' bpa_smiles <- get_smiles(name = "Bisphenol A")
@@ -372,7 +372,7 @@ get_smiles <- function(name = NULL,
 #' @param Server The root address for the API endpoint
 #' @param verbose A logical indicating if some “progress report” should be
 #'   given.
-#' @return A string FILL IN DETAILS!!!
+#' @return A string giving the associated InChIKey.
 #' @export
 #' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' bpa_inchikey <- get_inchikey(name = "Bisphenol A")
@@ -420,7 +420,7 @@ get_inchikey <- function(name = NULL,
 #' @param Server The root address for the API endpoint
 #' @param verbose A logical indicating if some “progress report” should be
 #'   given.
-#' @return A string FILL IN DETAILS!!!
+#' @return A string giving the associated inchi string.
 #' @export
 #' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' bpa_inchi <- get_inchi(name = "Bisphenol A")
