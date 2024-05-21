@@ -325,7 +325,7 @@ get_chemical_details_by_listname <- function(listname = NULL,
 #'   given.
 #'
 #' @return A string FILL IN DETAILS!!!
-#'
+#' @export
 #' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' bpa_smiles <- get_smiles(name = "Bisphenol A")
 
@@ -373,7 +373,7 @@ get_smiles <- function(name = NULL,
 #' @param verbose A logical indicating if some “progress report” should be
 #'   given.
 #' @return A string FILL IN DETAILS!!!
-#'
+#' @export
 #' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' bpa_inchikey <- get_inchikey(name = "Bisphenol A")
 
@@ -421,7 +421,7 @@ get_inchikey <- function(name = NULL,
 #' @param verbose A logical indicating if some “progress report” should be
 #'   given.
 #' @return A string FILL IN DETAILS!!!
-#'
+#' @export
 #' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' bpa_inchi <- get_inchi(name = "Bisphenol A")
 
