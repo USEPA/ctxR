@@ -93,7 +93,11 @@ get_bioactivity_details <- function(DTXSID = NULL,
     param_cols <- c('mc3Param', 'mc4Param', 'mc5Param', 'mc6Param')
     col_index <- which(param_cols %in% names(res))
     if (length(col_index) > 0){
-      col_index <- which(unname(!sapply(res[which(names(res) %in% param_cols)], is.na)))
+      # In some cases, columns are given by data.frames and we will not try to unnest these
+      non_df_cols <- param_cols[col_index][which(sapply(param_cols[col_index], function(t){!is.data.frame(res[[t]])}))]
+      if (length(non_df_cols) > 0)
+        # In some cases, columns will be NA (in the m4id cases) and we will not try to unnest these
+        col_index <- which(unname(!sapply(res[which(names(res) %in% non_df_cols)], is.na)))
       if (length(col_index) > 0){
         res <- tidyr::unnest_wider(data = res, col = param_cols[col_index])
       }
