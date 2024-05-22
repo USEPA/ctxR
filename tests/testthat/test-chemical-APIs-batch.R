@@ -96,6 +96,8 @@ test_that('Rate limit warnings', {
   expect_warning(chemical_equal_batch(word_list = c('gvfdsr7'), API_key = ccte_key(), rate_limit = -1), 'Setting rate limit to 0 seconds between requests!')
   expect_warning(chemical_contains_batch(word_list = c('gvfdsr7'), API_key = ccte_key(), rate_limit = '0'), 'Setting rate limit to 0 seconds between requests!')
   expect_warning(chemical_contains_batch(word_list = c('gvfdsr7'), API_key = ccte_key(), rate_limit = -1), 'Setting rate limit to 0 seconds between requests!')
+  expect_warning(get_msready_by_mass_with_error_batch(mass = 226, error = 1, rate_limit = '0'), 'Setting rate limit to 0 seconds between requests!')
+  expect_warning(get_msready_by_mass_with_error_batch(mass = 226, error = 1, rate_limit = -1), 'Setting rate limit to 0 seconds between requests!')
   expect_warning(get_msready_by_mass_batch(start_list = c(1), end_list = c(1), API_key = ccte_key(), rate_limit = '0'), 'Setting rate limit to 0 seconds between requests!')
   expect_warning(get_msready_by_mass_batch(start_list = c(1), end_list = c(1), API_key = ccte_key(), rate_limit = -1), 'Setting rate limit to 0 seconds between requests!')
   expect_warning(get_msready_by_formula_batch(formula_list = c('CH4'), API_key = ccte_key(), rate_limit = '0'), 'Setting rate limit to 0 seconds between requests!')
@@ -128,6 +130,12 @@ test_that('Numeric range input errors and warnings', {
   expect_error(get_chemical_by_property_range_batch(start_list = c(1), end_list = c('2'), API_key = ''), 'Only numeric values allowed in each list!')
   #expect_error(get_chemical_by_property_range_batch(start_list = c(1, 2), end_list = c(2, 3), property_list = c('a'), API_key = ''), 'Setting `property_list` to repeat to match length of `start_list/end_list`!')
   expect_error(get_chemical_by_property_range_batch(start_list = c(1), end_list = c(2), property_list = c('1', '2'), API_key = ''), 'Mismatch in length of `property_list` and `start_list/end_list`!')
+
+  expect_error(get_msready_by_mass_with_error_batch(), 'Please input a list of masses and an error value!')
+  expect_error(get_msready_by_mass_with_error_batch(masses = c(1)), 'Please input a list of masses and an error value!')
+  expect_error(get_msready_by_mass_with_error_batch(error = 1), 'Please input a list of masses and an error value!')
+  expect_error(get_msready_by_mass_with_error_batch(masses = -1, error = 1), 'Please input only positive values for masses!')
+  expect_warning(get_msready_by_mass_with_error_batch(masses = 1, error = c(1, 2)), 'Using the first positive value contained in error!')
 
 
   expect_error(get_msready_by_mass_batch(API_key = ''), 'Please input a list for both `start_list` and `end_list`!')
@@ -195,6 +203,8 @@ test_that('Return data types', {
   expect_type(chemical_contains_batch(word_list = c('DTXSID7020182'), API_key = ccte_key()), 'list')
   expect_type(chemical_contains_batch(word_list = c('gvfdsr7'), API_key = ccte_key()), 'list')
   expect_type(chemical_contains_batch(word_list = c('DTXSID7020182'), API_key = ''), 'list')
+  expect_type(get_msready_by_mass_with_error_batch(masses = 226, error = 1), 'list')
+  expect_type(get_msready_by_mass_with_error_batch(masses = c(226, 228), error = 1), 'list')
   expect_type(get_msready_by_mass_batch(start_list = c(16.0313), end_list = c(16.0314), API_key = ccte_key()), 'list')
   expect_type(get_msready_by_mass_batch(start_list = c(16.0314), end_list = c(16.0314), API_key = ccte_key()), 'list')
   expect_type(get_msready_by_mass_batch(start_list = c(-16.0313), end_list = c(16.0314), API_key = ''), 'list')
