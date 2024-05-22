@@ -191,6 +191,13 @@ res_dt <- chemical_contains(word = 'DTXSID702018')
 
 MS-Ready data can be retrieved using a variety of input information. Examples for each are provided below:
 
+##### Mass and error offset
+
+```{r ccdR msready mass and error offset, message=FALSE, eval=FALSE}
+res_list <- get_msready_by_mass_with_error_batch(masses = c(226, 228), error = 10)
+```
+
+
 ##### Mass Range
 
 ```{r ccdR mass range ms ready chemical, message=FALSE, eval=FALSE}
