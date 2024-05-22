@@ -1030,6 +1030,8 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
   }
 }
 
+
+
 #' Chemical starts with batch search
 #'
 #' @param word_list A list of character strings of chemical names or portion of
@@ -1110,7 +1112,7 @@ chemical_starts_with_batch <- function(word_list = NULL,
 #' Chemical equal batch search
 #'
 #' @param word_list A list of character strings of chemical names or portion of
-#'   chemical names
+#'   chemical names, DTXSIDs, CASRNs, InChIKeys.
 #' @param API_key User-specific API key
 #' @param rate_limit Number of seconds to wait between each request
 #' @param verbose A logical indicating if some “progress report” should be given.
@@ -1142,23 +1144,39 @@ chemical_equal_batch <- function(word_list = NULL,
     if (!is.character(word_list) & !all(sapply(word_list, is.character))){
       stop('Please input a character list for word_list!')
     }
+
+    results <- data.frame()
     word_list <- unique(word_list)
-    results <- lapply(word_list, function(t){
-      Sys.sleep(rate_limit)
-      attempt <- tryCatch(
-        {
-          chemical_equal(word = t, API_key = API_key, verbose = verbose)
-        },
-        error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
-        }
-      )
-      return(attempt)
-    }
-    )
-    names(results) <- word_list
+    response <- httr::POST(url = paste0(chemical_api_server, '/search/equal/'),
+                           httr::add_headers(.headers = c(
+                             'accept' = 'application/json',
+                             'content-type' = 'application/json',
+                             'x-api-key' = API_key
+                             )),
+                             body = c(word_list)
+                           )
+
+    if (response$status_code == 200){
+      results <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
+      return(results)
+      }
+
+    # results <- lapply(word_list, function(t){
+    #   Sys.sleep(rate_limit)
+    #   attempt <- tryCatch(
+    #     {
+    #       chemical_equal(word = t, API_key = API_key, verbose = verbose)
+    #     },
+    #     error = function(cond){
+    #       message(t)
+    #       message(cond$message)
+    #       return(NA)
+    #     }
+    #   )
+    #   return(attempt)
+    # }
+    # )
+    # names(results) <- word_list
     return(results)
   } else {
     stop('Please input a list of chemical names!')
