@@ -1242,6 +1242,79 @@ chemical_contains_batch <- function(word_list = NULL,
   }
 }
 
+#' Get msready by mass and error offset
+#'
+#' @param masses A numeric list of masses.
+#' @param error The mass offset value.
+#' @param API_key The user-specific API key.
+#' @param rate_limit Number of seconds to wait between each request
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A list (of lists) of DTXSIDs, with a list returned for each input
+#' mass value.
+#' @export
+#'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' #Pull chemicals by msready mass and error offset
+#' msready_data <- get_msready_by_mass_with_error_batch(masses = c(226, 228),
+#'                                                      error = 4)
+
+get_msready_by_mass_with_error_batch <- function(masses = NULL,
+                                                 error = NULL,
+                                                 API_key = NULL,
+                                                 rate_limit = 0,
+                                                 verbose = FALSE){
+  if (is.null(API_key) || !is.character(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      if (verbose) {
+        message('Using stored API key!')
+      }
+    }
+  }
+
+  if (is.null(masses) || is.null(error)){
+    stop('Please input a list of masses and an error value!')
+  } else if (!all(sapply(c(masses, error), is.numeric))) {
+    stop('Please input only numeric values for masses and error!')
+  }
+
+  masses <- unique(masses)
+  masses <- masses[masses > 0]
+
+  if (length(masses) == 0) {
+    stop('Please input only positive values for masses!')
+  }
+
+  error <- unique(error)
+  error <- error[error > 0]
+
+  if (length(error) == 0){
+    stop('Value for error must be positive!')
+  } else if (length(error) > 1){
+    warning('Using the first positive value contained in error!')
+    error <- error[[1]]
+  }
+
+  json_body <- jsonlite::toJSON(x = list(masses = masses,
+                                error = error),
+                                auto_unbox = TRUE)
+
+  response <- httr::POST(url = paste0(chemical_api_server, '/msready/search/by-mass/'),
+                         httr::add_headers(.headers = c(
+                           'Accept' = 'application/json',
+                           'Content-Type' = 'application/json',
+                           'x-api-key' = API_key)),
+                         body = json_body)
+
+  if (response$status_code == 200){
+    return(httr::content(response))
+  }
+
+  return(list())
+
+}
+
 #' Get ms ready by mass batch search
 #'
 #' @param start_list A numeric list of starting values for mass range
