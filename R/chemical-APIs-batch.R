@@ -1296,6 +1296,11 @@ get_msready_by_mass_with_error_batch <- function(masses = NULL,
     error <- error[[1]]
   }
 
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+
   json_body <- jsonlite::toJSON(x = list(masses = masses,
                                 error = error),
                                 auto_unbox = TRUE)
