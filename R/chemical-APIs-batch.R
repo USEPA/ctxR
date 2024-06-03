@@ -305,10 +305,10 @@ get_smiles_batch <- function(names = NULL,
       response <- httr::POST(url = paste0(Server, '/indigo/to-smiles'),
                              httr::add_headers(.headers = c(
                                'Accept' = 'application/json',
-                               'Content-Type' = 'application/json',
+                               'Content-Type' = 'text/plain',
                                'x-api-key' = API_key
                              )),
-                             body = jsonlite::toJSON(names[indices[[i]]], auto_unbox = ifelse(length(names[indices[[i]]]) > 1, 'T', 'F')))
+                             body = c(names[indices[[i]]]))
 
       if (response$status_code == 200){
         if (length(response$content) > 0){
@@ -363,10 +363,10 @@ get_molecular_weight_batch <- function(names = NULL,
       response <- httr::POST(url = paste0(Server, '/indigo/to-molweight'),
                              httr::add_headers(.headers = c(
                                'Accept' = 'application/json',
-                               'Content-Type' = 'application/json',
+                               'Content-Type' = 'text/plain',
                                'x-api-key' = API_key
                              )),
-                             body = jsonlite::toJSON(names[indices[[i]]], auto_unbox = ifelse(length(names[indices[[i]]]) > 1, 'T', 'F')))
+                             body = c(names[indices[[i]]]))
 
       if (response$status_code == 200){
         if (length(response$content) > 0){
@@ -421,10 +421,10 @@ get_mol_v3000_batch <- function(names = NULL,
       response <- httr::POST(url = paste0(Server, '/indigo/to-mol3000'),
                              httr::add_headers(.headers = c(
                                'Accept' = 'application/json',
-                               'Content-Type' = 'application/json',
+                               'Content-Type' = 'text/plain',
                                'x-api-key' = API_key
                              )),
-                             body = jsonlite::toJSON(names[indices[[i]]], auto_unbox = ifelse(length(names[indices[[i]]]) > 1, 'T', 'F')))
+                             body = c(names[indices[[i]]]))
 
       if (response$status_code == 200){
         if (length(response$content) > 0){
@@ -479,10 +479,10 @@ get_mol_v2000_batch <- function(names = NULL,
       response <- httr::POST(url = paste0(Server, '/indigo/to-mol2000'),
                              httr::add_headers(.headers = c(
                                'Accept' = 'application/json',
-                               'Content-Type' = 'application/json',
+                               'Content-Type' = 'text/plain',
                                'x-api-key' = API_key
                              )),
-                             body = jsonlite::toJSON(names[indices[[i]]], auto_unbox = ifelse(length(names[indices[[i]]]) > 1, 'T', 'F')))
+                             body = c(names[indices[[i]]]))
 
       if (response$status_code == 200){
         if (length(response$content) > 0){
@@ -537,10 +537,10 @@ get_InChI_batch <- function(names = NULL,
       response <- httr::POST(url = paste0(Server, '/indigo/to-inchi'),
                              httr::add_headers(.headers = c(
                                'Accept' = 'application/json',
-                               'Content-Type' = 'application/json',
+                               'Content-Type' = 'text/plain',
                                'x-api-key' = API_key
                              )),
-                             body = jsonlite::toJSON(names[indices[[i]]], auto_unbox = ifelse(length(names[indices[[i]]]) > 1, 'T', 'F')))
+                             body = c(names[indices[[i]]]))
 
       if (response$status_code == 200){
         if (length(response$content) > 0){
@@ -595,10 +595,10 @@ get_canonical_smiles_batch <- function(names = NULL,
       response <- httr::POST(url = paste0(Server, '/indigo/to-canonicalsmiles'),
                              httr::add_headers(.headers = c(
                                'Accept' = 'application/json',
-                               'Content-Type' = 'application/json',
+                               'Content-Type' = 'text/plain',
                                'x-api-key' = API_key
                              )),
-                             body = jsonlite::toJSON(names[indices[[i]]], auto_unbox = ifelse(length(names[indices[[i]]]) > 1, 'T', 'F')))
+                             body = c(names[indices[[i]]]))
 
       if (response$status_code == 200){
         if (length(response$content) > 0){
