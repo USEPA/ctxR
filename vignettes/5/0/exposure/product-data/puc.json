@@ -1,0 +1,3514 @@
+[
+    {
+        "id": 45,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "oven",
+        "prodtype": "",
+        "definition": "cleaning or other products used in or on ovens that do not fit in a more refined category"
+    },
+    {
+        "id": 44,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "metal specific",
+        "prodtype": "",
+        "definition": "cleaning or care products specific to metals, which do not fit into a more refined category"
+    },
+    {
+        "id": 43,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "laundry and fabric treatment",
+        "prodtype": "",
+        "definition": "Cleaning or care products for laundry and fabric treatment which do not fit into a more refined category"
+    },
+    {
+        "id": 42,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "laundry and fabric treatment",
+        "prodtype": "anti-static spray",
+        "definition": "anti-static sprays for fabrics (spray formulation assumed)"
+    },
+    {
+        "id": 291,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "bathroom",
+        "prodtype": "urinal cakes and deodorizers",
+        "definition": "Includes urinal cakes and screens for use in urinals, also includes deodorizers used in portable toilets"
+    },
+    {
+        "id": 292,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "jewelry",
+        "prodtype": "jewelry cleaner",
+        "definition": "Cleaning solutions specifically for jewelry products"
+    },
+    {
+        "id": 41,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "hand cleaner",
+        "prodtype": "",
+        "definition": "products that remove grease, oil, and other hydrophobic  materials from hands, includes waterless products"
+    },
+    {
+        "id": 40,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "general household cleaning",
+        "prodtype": "",
+        "definition": "cleaning products for general household cleaning, which do not fit into a more refined category"
+    },
+    {
+        "id": 39,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "general household cleaning",
+        "prodtype": "surface cleaner",
+        "definition": "products used to clean hard surfaces in the home, including kitchen specific hard surface cleaners"
+    },
+    {
+        "id": 37,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "drain products",
+        "prodtype": "",
+        "definition": "products poured down, or placed in, drains to control odors or clear blockages that work by chemical or biological processes"
+    },
+    {
+        "id": 133,
+        "kindName": "Formulation",
+        "genCat": "Landscape/yard",
+        "prodfam": "surface deicer",
+        "prodtype": "",
+        "definition": "products for deicing surfaces, including ice/snow melt"
+    },
+    {
+        "id": 27,
+        "kindName": "Article",
+        "genCat": "Manufacturing Components",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Article components that are used as parts in the manufacturing of other products, including hardware (such as nuts, bolts, screws, etc.) or seals (such as gaskets, o-rings, etc.), that do not fit into a more refined PUC."
+    },
+    {
+        "id": 431,
+        "kindName": "Occupation",
+        "genCat": "Medical/dental",
+        "prodfam": "medical personal protective equipment",
+        "prodtype": "",
+        "definition": "Clothing and personal protective equipment used in medical settings to minimize exposure to workplace hazards (e.g. scrubs, face masks, gowns, gloves);"
+    },
+    {
+        "id": 407,
+        "kindName": "Occupation",
+        "genCat": "Medical/dental",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Medical and dental supplies and equipment, e.g. medical equipment used in a hospital or doctor's office setting, at home (e.g. wheelchairs), Excludes medical testing supplies. See Medical PPE for clothing and personal protective equipment used in medical settings (e.g. scrubs, face masks, gowns, gloves); See Personal Care - Ostomy products for ostomy related products used in home settings."
+    },
+    {
+        "id": 350,
+        "kindName": "Formulation",
+        "genCat": "Other consumer products",
+        "prodfam": "personal safety",
+        "prodtype": "",
+        "definition": "Consumer products related to personal safety"
+    },
+    {
+        "id": 349,
+        "kindName": "Formulation",
+        "genCat": "Other consumer products",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Other consumer products that do not fit into more common categories"
+    },
+    {
+        "id": 301,
+        "kindName": "Formulation",
+        "genCat": "Other consumer products",
+        "prodfam": "personal safety",
+        "prodtype": "pepper spray",
+        "definition": "Pepper sprays for personal self-defense"
+    },
+    {
+        "id": 26,
+        "kindName": "Article",
+        "genCat": "Other direct contact consumer goods",
+        "prodfam": "gun ammo",
+        "prodtype": "",
+        "definition": "Materials that are fired, scattered, dropped or detonated from guns, including ammunition and components such as shell casing, a bullet, gun powder, and primer."
+    },
+    {
+        "id": 16,
+        "kindName": "Article",
+        "genCat": "Other direct contact consumer goods",
+        "prodfam": "apparel",
+        "prodtype": "",
+        "definition": "Clothing and accessories likely to have direct contact with the user. Includes jackets, hats, shoes, etc."
+    },
+    {
+        "id": 11,
+        "kindName": "Article",
+        "genCat": "Other direct contact consumer goods",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Misc. consumer goods likely to have direct contact with the user (e.g. sports equipment, hand-held non-electric tools, jewelry, clothing, jackets, bags/luggage/purses, and other apparel, blankets and sheets, newspapers, adult diapers, feminine hygiene products, pencils and writing implements"
+    },
+    {
+        "id": 67,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "metal specific",
+        "prodtype": "metal polish",
+        "definition": "products used to polish metal surfaces"
+    },
+    {
+        "id": 66,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "lime remover",
+        "prodtype": "",
+        "definition": "products used to remove lime or scale from hard surfaces excludes dishwasher related products"
+    },
+    {
+        "id": 29,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "carpet and floor",
+        "prodtype": "carpet deodorizer",
+        "definition": "products applied to carpets to remove or mask odors"
+    },
+    {
+        "id": 343,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "carpet and floor",
+        "prodtype": "carpet cleaner",
+        "definition": "carpet-cleaning products that may be used directly (or require dilution), includes solutions that may be used by hand or in mechanical carpet cleaners"
+    },
+    {
+        "id": 342,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "bathroom",
+        "prodtype": "",
+        "definition": "products related to cleaning or care of bathrooms, which do not fit into a more refined category"
+    },
+    {
+        "id": 340,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "air freshener",
+        "prodtype": "",
+        "definition": "home air fresheners, including fragranced candles and incense"
+    },
+    {
+        "id": 341,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "bathroom",
+        "prodtype": "bathroom cleaner",
+        "definition": "bathtub, tile, and toilet surface cleaners"
+    },
+    {
+        "id": 12,
+        "kindName": "Article",
+        "genCat": "Cons. electronics, mech. appliances, and machinery",
+        "prodfam": "light bulbs",
+        "prodtype": "",
+        "definition": "Products used to convert electricity into light, consisting of a source of illumination (e.g. an electric filament or one or more LEDs) enclosed within a transparent or translucent shell."
+    },
+    {
+        "id": 28,
+        "kindName": "Article",
+        "genCat": "Cons. electronics, mech. appliances, and machinery",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Including small and large consumer electronics appliances (e.g. refrigerator, washing machine, vacuum cleaner, computer, phone, smoke detector, electric tools, lamps); includes small electronics with direct personal contact such as massagers; excludes electronics specifically intended for use by children; excludes electronics with direct food contact (e.g. electric blender)"
+    },
+    {
+        "id": 374,
+        "kindName": "Occupation",
+        "genCat": "Construction",
+        "prodfam": "road construction",
+        "prodtype": "",
+        "definition": "Products used by professionals in the construction of roadways."
+    },
+    {
+        "id": 324,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "fabric treatment and dye",
+        "prodtype": "",
+        "definition": "Fabric treatments or dyes which can not be assigned to a more refined category"
+    },
+    {
+        "id": 323,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "fabric treatment and dye",
+        "prodtype": "fabric paints and sealers",
+        "definition": "paints or sealers for treating fabrics"
+    },
+    {
+        "id": 109,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "body paint",
+        "prodtype": "",
+        "definition": "products placed on the skin for decorative purposes (body paints, markers, play cosmetics, Halloween cosmetics, and products such as henna)"
+    },
+    {
+        "id": 294,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "body paint",
+        "prodtype": "tattoo ink",
+        "definition": "inks used for permanent tattoos"
+    },
+    {
+        "id": 331,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "general arts and crafts supplies",
+        "prodtype": "flocking",
+        "definition": "products used to create textured or fiber covered surfaces, including artificial snow"
+    },
+    {
+        "id": 330,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "general arts and crafts supplies",
+        "prodtype": "craft kit",
+        "definition": "multi-component crafting kits where individual products are not designated"
+    },
+    {
+        "id": 332,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "general arts and crafts supplies",
+        "prodtype": "",
+        "definition": "arts and crafts supplies which can not be assigned to a more refined category"
+    },
+    {
+        "id": 333,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "home office",
+        "prodtype": "",
+        "definition": "home office supplies which can not be assigned to a more refined category"
+    },
+    {
+        "id": 334,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "pottery making",
+        "prodtype": "",
+        "definition": "products related to pottery making which can not be assigned to a more refined category"
+    },
+    {
+        "id": 335,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "General arts and crafts or office supplies which can not be classified into a more refined category."
+    },
+    {
+        "id": 13,
+        "kindName": "Article",
+        "genCat": "Other indirect contact consumer goods",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Misc. consumer goods likely to have indirect contact with the user (e.g. home decor (paintings, decorations), lampshades)"
+    },
+    {
+        "id": 3,
+        "kindName": "Article",
+        "genCat": "Other vehicles/mass transit",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Vehicles beyond standard road vehicles for passengers and goods (e.g. planes, trains, boats, *not* cars, trucks, vans); also including mass transit vehicles"
+    },
+    {
+        "id": 8,
+        "kindName": "Article",
+        "genCat": "Packaging (non-food contact)",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Packaging that does not come into contact with food, e.g. boxes, cloth packaging, phone covers, bubble wrap, packing tape."
+    },
+    {
+        "id": 166,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "deodorant",
+        "prodtype": "",
+        "definition": "deodorants and antiperspirants"
+    },
+    {
+        "id": 38,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "dental care",
+        "prodtype": "teeth whitener",
+        "definition": "teeth whitening products (excluding toothpastes)"
+    },
+    {
+        "id": 134,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "general personal care products which do not fit into a more refined category"
+    },
+    {
+        "id": 135,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "acne treatment",
+        "prodtype": "acne spot treatment",
+        "definition": "products for spot-treating acne, including creams, lotions, wipes and pads"
+    },
+    {
+        "id": 136,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "acne treatment",
+        "prodtype": "",
+        "definition": "general products for acne treatment that do not fit into a more refined category"
+    },
+    {
+        "id": 137,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "acne treatment",
+        "prodtype": "face scrub",
+        "definition": "facial cleansing products containing exfoliating particles, for acne treatment"
+    },
+    {
+        "id": 138,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "acne treatment",
+        "prodtype": "face wash",
+        "definition": "facial cleansing products (excluding scrubs), for acne treatment"
+    },
+    {
+        "id": 90,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "lubricant",
+        "prodtype": "",
+        "definition": "household maintenance lubricants"
+    },
+    {
+        "id": 87,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "insulation",
+        "prodtype": "spray foam",
+        "definition": "spray products that form ridged or semi ridged foams used to fill cracks and voids or to provide insulation"
+    },
+    {
+        "id": 86,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "finish",
+        "prodtype": "",
+        "definition": "general home maintenance finishes"
+    },
+    {
+        "id": 85,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "degreaser",
+        "prodtype": "",
+        "definition": "products for removing grease and other hydrophobic materials from hard surfaces"
+    },
+    {
+        "id": 316,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "surface sealers",
+        "prodtype": "glass surface sealer",
+        "definition": "products for coating and protecting glass household surfaces"
+    },
+    {
+        "id": 1,
+        "kindName": "Article",
+        "genCat": "Industrial machinery",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Large scale stationary industrial machines/tools"
+    },
+    {
+        "id": 386,
+        "kindName": "Occupation",
+        "genCat": "Industrial products",
+        "prodfam": "electrical insulation",
+        "prodtype": "",
+        "definition": "Sprays, varnishes, resins, etc. intended for coating and insulating electrical and electronic products."
+    },
+    {
+        "id": 388,
+        "kindName": "Occupation",
+        "genCat": "Industrial products",
+        "prodfam": "vulcanizing fluid",
+        "prodtype": "",
+        "definition": "Fluids used to cure (vulcanize) rubber components for enhanced strength and durability, especially as used repairing rubber products, such as tires."
+    },
+    {
+        "id": 406,
+        "kindName": "Occupation",
+        "genCat": "Industrial products",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Formulations used as part of a process, or in a piece of equipment (e.g. lubricants, adhesives, oils)"
+    },
+    {
+        "id": 418,
+        "kindName": "Occupation",
+        "genCat": "Industrial products",
+        "prodfam": "blast media",
+        "prodtype": "",
+        "definition": "Products used in an industrial setting as blast media for a variety of purposes, including: paint stripping, coatings removal, pressure blasting, powder coating, deflashing, deburring, surface preparation and mold cleaning."
+    },
+    {
+        "id": 99,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "paint/stain and related products",
+        "prodtype": "stain",
+        "definition": "products used on wooden surfaces, including decks, to impart transparent or semitransparent color"
+    },
+    {
+        "id": 98,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "paint/stain and related products",
+        "prodtype": "primer",
+        "definition": "paints applied to hard surfaces that are intended to be painted over and that improve adhesion, coverage, or prevent the bleeding through of stains"
+    },
+    {
+        "id": 97,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "paint/stain and related products",
+        "prodtype": "paint thinner",
+        "definition": "paint or lacquer thinners"
+    },
+    {
+        "id": 96,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "paint/stain and related products",
+        "prodtype": "paint texture",
+        "definition": "textured paints including those used on ceilings"
+    },
+    {
+        "id": 95,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "paint/stain and related products",
+        "prodtype": "paint cleaner",
+        "definition": "paint removing products for clean-up"
+    },
+    {
+        "id": 80,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "adhesives and adhesive removers",
+        "prodtype": "wood adhesive",
+        "definition": "adhesives specifically designated for gluing wooden surfaces together"
+    },
+    {
+        "id": 93,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "paint/stain and related products",
+        "prodtype": "paint",
+        "definition": "home improvement paints, excluding or not specified as oil-, solvent-, or water-based paints"
+    },
+    {
+        "id": 77,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "general formulation products used for home maintenance, which do not fit into a more refined category"
+    },
+    {
+        "id": 78,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "adhesives and adhesive removers",
+        "prodtype": "adhesive remover",
+        "definition": "solvent- or detergent-based products for removing adhesives from surfaces"
+    },
+    {
+        "id": 79,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "adhesives and adhesive removers",
+        "prodtype": "multipurpose adhesive",
+        "definition": "general purpose repair adhesives including all purpose glues, super glue, and epoxies; not including wood glues"
+    },
+    {
+        "id": 305,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "nails",
+        "prodtype": "nail treatment",
+        "definition": "Products used to treat nails and/or cuticles, including strengthening serums and repair for brittle nails, cuticle creams, etc."
+    },
+    {
+        "id": 345,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "topical skin treatment",
+        "prodtype": "",
+        "definition": "Treatments for skin infections that are not otherwise specified. Excludes antifungal or antibacterial skin treatments."
+    },
+    {
+        "id": 346,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "makeup and related",
+        "prodtype": "eye primer",
+        "definition": "products for priming eyes for makeup"
+    },
+    {
+        "id": 347,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair coloring",
+        "prodtype": "beard and mustache",
+        "definition": "hair colors, dyes and washes intended for beard and mustache facial hair"
+    },
+    {
+        "id": 352,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "body",
+        "prodtype": "",
+        "definition": "Personal Care products intended for use on the body, that do not fall into more specific categories."
+    },
+    {
+        "id": 356,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "child specific",
+        "prodtype": "baby dental care",
+        "definition": "Products intended for infant dental care, including: toothpaste, tooth gel, tooth wipes, etc."
+    },
+    {
+        "id": 358,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "topical skin treatment",
+        "prodtype": "antiseptic",
+        "definition": "Products intended to  stops or slow down the growth of microorganisms, primarily used to reduce the risk of infection. Antiseptic substances inhibit the growth and reproduction of many microorganisms, including bacteria, fungi, protozoa, and viruses. Intended for general antiseptic products that do not fit into  more specific categories such as antibacterial or antifungal skin treatments."
+    },
+    {
+        "id": 359,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "skin protectant",
+        "prodtype": "",
+        "definition": "Products that form a protective coating on the skin designed to protect vulnerable areas  from the effects of 1) mechanical or chemical injury and 2) excessive moisture from incontinence, perspiration or wound drainage. Products include petroleum jelly, skin sealants and balms, etc."
+    },
+    {
+        "id": 360,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "oral care",
+        "prodtype": "breath freshener",
+        "definition": "Oral care products intended to remove bad breath. Products include sprays, breath strips, etc. Does not include mints or other ingested food products."
+    },
+    {
+        "id": 362,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "facial cleansing and moisturizing",
+        "prodtype": "facial hair conditioning",
+        "definition": "Products intended for care and grooming of facial hair, such as beard conditioner, oils, creams, etc."
+    },
+    {
+        "id": 321,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "children's art and toys",
+        "prodtype": "",
+        "definition": "Children's art supplies and toys which can not be classified into a more refined category."
+    },
+    {
+        "id": 319,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "children's art and toys",
+        "prodtype": "finger paint",
+        "definition": "non-edible finger paints"
+    },
+    {
+        "id": 318,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "children's art and toys",
+        "prodtype": "crayons",
+        "definition": "wax crayons for coloring or illustration"
+    },
+    {
+        "id": 326,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "general arts and crafts supplies",
+        "prodtype": "arts and crafts adhesive",
+        "definition": "glue sticks, glitter glues, fabric glues, craft glue, spray mounts, stencil sprays, and other adhesives used for primarily craft purposes"
+    },
+    {
+        "id": 317,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "children's art and toys",
+        "prodtype": "bubble solution",
+        "definition": "liquid bubble solutions, including solutions for bubble machines"
+    },
+    {
+        "id": 344,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "children's art and toys",
+        "prodtype": "chalk",
+        "definition": "solid chalk sticks intended for children's use. Does not include chalk paint, or professional marking chalk."
+    },
+    {
+        "id": 325,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "fogger",
+        "prodtype": "",
+        "definition": "liquid solutions for fogger machines"
+    },
+    {
+        "id": 320,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "children's art and toys",
+        "prodtype": "modeling clay",
+        "definition": "soft modeling compounds"
+    },
+    {
+        "id": 328,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "general arts and crafts supplies",
+        "prodtype": "arts and crafts finish",
+        "definition": "shellacs or polyurethane coatings for primarily craft purposes"
+    },
+    {
+        "id": 329,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "general arts and crafts supplies",
+        "prodtype": "arts and crafts paint",
+        "definition": "paints (including acrylic and enamel), colorants (materials that color solid objects), and pigments primarily used for craft purposes"
+    },
+    {
+        "id": 35,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "dishwasher and dishes",
+        "prodtype": "dish soap",
+        "definition": "detergent based products used during the hand washing of dishes"
+    },
+    {
+        "id": 34,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "dishwasher and dishes",
+        "prodtype": "automatic dishwashing detergent",
+        "definition": "detergents for automatic dishwashers"
+    },
+    {
+        "id": 33,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "dishwasher and dishes",
+        "prodtype": "automatic dishwashing additive",
+        "definition": "products used in automatic dishwashers other than detergents (rinse aids, spot removers, and dishwasher cleaners/scale or rust removers )"
+    },
+    {
+        "id": 32,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "carpet and floor",
+        "prodtype": "",
+        "definition": "cleaning products for carpet or other flooring, which do not fit into a more refined category"
+    },
+    {
+        "id": 31,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "carpet and floor",
+        "prodtype": "floor polish",
+        "definition": "products that impart a shine to solid floors"
+    },
+    {
+        "id": 71,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "wood specific",
+        "prodtype": "wood polish",
+        "definition": "products used on wood surfaces for the removal of dust and other finely  powdered material and to provide polish"
+    },
+    {
+        "id": 70,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "upholstery specific",
+        "prodtype": "upholstery cleaner",
+        "definition": "upholstery fabric cleaning products that may be used directly (or require dilution), includes solutions that may be used by hand or in upholstery cleaning machines"
+    },
+    {
+        "id": 30,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "carpet and floor",
+        "prodtype": "floor cleaner",
+        "definition": "hard floor cleaners, including pre-moistened wipes"
+    },
+    {
+        "id": 69,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "shoes",
+        "prodtype": "shoe polish or protectant",
+        "definition": "products applied to footwear to color, polish, clean, or add a protective surface"
+    },
+    {
+        "id": 68,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "oven",
+        "prodtype": "oven cleaner",
+        "definition": "products used to clean grills, ovens, or range cooktops"
+    },
+    {
+        "id": 53,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "general household cleaning",
+        "prodtype": "glass cleaner",
+        "definition": "products used to clean glass, mirrors, and windows"
+    },
+    {
+        "id": 52,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "general household cleaning",
+        "prodtype": "disinfectant",
+        "definition": "products used to control microbial pests on hard surfaces or laundry"
+    },
+    {
+        "id": 51,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "general household cleaning",
+        "prodtype": "bleach",
+        "definition": "products that remove stains or discoloration of fabric (including color-safe bleaches) used in laundry"
+    },
+    {
+        "id": 50,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "fireplace",
+        "prodtype": "",
+        "definition": "products used to clean fireplaces, firepits, stoves, and related objects (screens and grates) also includes chimney cleaners"
+    },
+    {
+        "id": 49,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "cleaning and household care products that can not be placed in a more refined category"
+    },
+    {
+        "id": 48,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "wood specific",
+        "prodtype": "",
+        "definition": "cleaning or care products specifically for wood, which do not fit into a more refined category"
+    },
+    {
+        "id": 361,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "laundry and fabric treatment",
+        "prodtype": "washing machine cleaner",
+        "definition": "Products intended for washing machine cleaning and maintenance, to help prevent the buildup of mold, mildew, dust, dirt, and soap deposits in the machine."
+    },
+    {
+        "id": 47,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "upholstery specific",
+        "prodtype": "",
+        "definition": "care or cleaning products for upholstery which do  not fit into a more refined category"
+    },
+    {
+        "id": 353,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "jewelry",
+        "prodtype": "",
+        "definition": "Cleaning products intended for use with Jewelry, that do not fit into a more refined category"
+    },
+    {
+        "id": 46,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "shoes",
+        "prodtype": "",
+        "definition": "Products related to the care of footwear which do not fit into a more refined category"
+    },
+    {
+        "id": 139,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "bite relief",
+        "prodtype": "",
+        "definition": "products applied to the skin for soothing insect bites"
+    },
+    {
+        "id": 140,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "body",
+        "prodtype": "body adhesive",
+        "definition": "adhesive products for attaching clothing or accessories to skin"
+    },
+    {
+        "id": 141,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "body care set",
+        "prodtype": "",
+        "definition": "multicomponent body care or bath set for which individual products are not designated"
+    },
+    {
+        "id": 142,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "body hygiene",
+        "prodtype": "",
+        "definition": "products related to body hygiene which do not fit into a more refined category"
+    },
+    {
+        "id": 143,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "body hygiene",
+        "prodtype": "bar soap",
+        "definition": "bar and other solid soaps"
+    },
+    {
+        "id": 144,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "body hygiene",
+        "prodtype": "body scrub",
+        "definition": "body cleaners containing abrasives or exfoliants"
+    },
+    {
+        "id": 145,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "body hygiene",
+        "prodtype": "body wash",
+        "definition": "body cleaners, washes, shower gels"
+    },
+    {
+        "id": 146,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "body hygiene",
+        "prodtype": "body wipes",
+        "definition": "textile wipes and towelettes intended for use on body areas outside of the hands and face (excluding diaper or baby wipes)"
+    },
+    {
+        "id": 147,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "body hygiene",
+        "prodtype": "hand sanitizer",
+        "definition": "antibacterial products for application to hands"
+    },
+    {
+        "id": 148,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "body hygiene",
+        "prodtype": "hand soap",
+        "definition": "liquid hand soaps"
+    },
+    {
+        "id": 432,
+        "kindName": "Occupation",
+        "genCat": "Raw materials",
+        "prodfam": "adhesives",
+        "prodtype": "",
+        "definition": "Adhesives used in manufacturing or industrial applications."
+    },
+    {
+        "id": 370,
+        "kindName": "Occupation",
+        "genCat": "Raw materials",
+        "prodfam": "glass microspheres",
+        "prodtype": "",
+        "definition": "Microscopic spheres of glass manufactured for a wide variety of uses in research, medicine, consumer goods and various industries. (e.g. as a filler material) Also known as microballoons or glass bubbles."
+    },
+    {
+        "id": 412,
+        "kindName": "Occupation",
+        "genCat": "Raw materials",
+        "prodfam": "surfactant formulations",
+        "prodtype": "",
+        "definition": "Industrial surfactants (surface-active agents) used as a raw material in industrial/commercial manufacturing processes."
+    },
+    {
+        "id": 385,
+        "kindName": "Occupation",
+        "genCat": "Raw materials",
+        "prodfam": "paints and primers",
+        "prodtype": "",
+        "definition": "Paints and primers used as raw materials in the manufacture of a product"
+    },
+    {
+        "id": 2,
+        "kindName": "Article",
+        "genCat": "Road vehicles",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Road vehicles for passengers and goods (e.g. cars, trucks, vans)"
+    },
+    {
+        "id": 384,
+        "kindName": "Occupation",
+        "genCat": "Specialty occupational products",
+        "prodfam": "gas leak detector",
+        "prodtype": "",
+        "definition": "Compounds, liquids, powders, etc. used for detecting gas leaks in occupational or industrial settings, i.e. air conditioning, mining, etc."
+    },
+    {
+        "id": 415,
+        "kindName": "Occupation",
+        "genCat": "Specialty occupational products",
+        "prodfam": "photography developing chemicals",
+        "prodtype": "",
+        "definition": "Fluids or solutions used in photography developing"
+    },
+    {
+        "id": 403,
+        "kindName": "Occupation",
+        "genCat": "Specialty occupational products",
+        "prodfam": "law enforcement",
+        "prodtype": "fingerprint detection",
+        "definition": "Products used in law enforcement, forensics, etc., settings in order to detect and record fingerprints to determine an individual's identity based on fingerprint matching. Includes detection powders, and additional materials used to assist fingerprint investigation."
+    },
+    {
+        "id": 389,
+        "kindName": "Occupation",
+        "genCat": "Specialty occupational products",
+        "prodfam": "aviation",
+        "prodtype": "",
+        "definition": "Products used in the aviation industry for commercial or military aircraft, that do not belong to a more refined group."
+    },
+    {
+        "id": 381,
+        "kindName": "Occupation",
+        "genCat": "Specialty occupational products",
+        "prodfam": "aviation",
+        "prodtype": "aircraft deicer",
+        "definition": "Deicing fluids and supporting products intended for use in aviation contexts, including aircraft and runway deicers."
+    },
+    {
+        "id": 88,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "insulation",
+        "prodtype": "",
+        "definition": "formulation products related to, or used on or for insulation, which do not fit into a more refined category"
+    },
+    {
+        "id": 94,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "paint/stain and related products",
+        "prodtype": "water-based paint",
+        "definition": "water-based home improvement paints"
+    },
+    {
+        "id": 106,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "roof",
+        "prodtype": "",
+        "definition": "products for roof maintenance or repair, including cleaners, sealers, or coatings (does not include flashing, shingles or underlayment)"
+    },
+    {
+        "id": 314,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "concrete",
+        "prodtype": "concrete paint",
+        "definition": "Products intended to coat or paint concrete surfaces"
+    },
+    {
+        "id": 92,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "paint/stain and related products",
+        "prodtype": "oil-based paint",
+        "definition": "oil or solvent-based home improvement paints"
+    },
+    {
+        "id": 89,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "lock deicer",
+        "prodtype": "",
+        "definition": "products for deicing automotive or residential locks"
+    },
+    {
+        "id": 84,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "corrosion protection",
+        "prodtype": "",
+        "definition": "products for protecting metal surfaces from corrosion or removing corrosion from metal surfaces"
+    },
+    {
+        "id": 91,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "paint/stain and related products",
+        "prodtype": "",
+        "definition": "paint or stain related products that do not fit into a more refined category"
+    },
+    {
+        "id": 114,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "welding",
+        "prodtype": "",
+        "definition": "miscellaneous welding products including gases, fluxes, and adhesives"
+    },
+    {
+        "id": 113,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "tiling",
+        "prodtype": "mortar or grout",
+        "definition": "products for mortaring bricks or blocks and attaching or grouting interior tiles"
+    },
+    {
+        "id": 230,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "shaving and hair removal",
+        "prodtype": "clipper lubricant/cleaner",
+        "definition": "cleaning and lubricating products for hair clippers"
+    },
+    {
+        "id": 231,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "shaving and hair removal",
+        "prodtype": "depilatory",
+        "definition": "products for removal of body or facial hair"
+    },
+    {
+        "id": 232,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "shaving and hair removal",
+        "prodtype": "shaving cream",
+        "definition": "shaving creams, foams, balms and soaps"
+    },
+    {
+        "id": 233,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "shaving and hair removal",
+        "prodtype": "waxing",
+        "definition": "products for removing hair by waxing"
+    },
+    {
+        "id": 234,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "specialized bath products",
+        "prodtype": "",
+        "definition": "specialized bath products that do not fit into a more refined category"
+    },
+    {
+        "id": 235,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "specialized bath products",
+        "prodtype": "bath oil",
+        "definition": "liquid or liquid-filled pods added to bath water"
+    },
+    {
+        "id": 236,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "specialized bath products",
+        "prodtype": "bath salts",
+        "definition": "solid or powdered products added to bathwater including bath salts, soaks,  and fizzes"
+    },
+    {
+        "id": 237,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "specialized bath products",
+        "prodtype": "bubble bath",
+        "definition": "products added to bath water to create bubbles, may provide cleaning, fragrance, or improve skin characteristics (including bubble bath marketed to babies or children)"
+    },
+    {
+        "id": 238,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "sunscreen",
+        "prodtype": "",
+        "definition": "products applied to the skin to block harmful effects of sunlight"
+    },
+    {
+        "id": 288,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair styling and care",
+        "prodtype": "hair conditioner",
+        "definition": "rinse-out everyday hair conditioners (excluding combo shampoo/conditioner products)"
+    },
+    {
+        "id": 149,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "body hygiene",
+        "prodtype": "hand wipes",
+        "definition": "textile wipes and towelettes for hands"
+    },
+    {
+        "id": 150,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "body",
+        "prodtype": "body oil",
+        "definition": "lipophilic products applied to skin (excluding baby oils)"
+    },
+    {
+        "id": 151,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "body",
+        "prodtype": "body powder",
+        "definition": "talcum and dusting powders for the body (excluding baby powder)"
+    },
+    {
+        "id": 152,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "child specific",
+        "prodtype": "",
+        "definition": "personal care products intended for use by children, which do not fit into a more specific category"
+    },
+    {
+        "id": 153,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "child specific",
+        "prodtype": "baby lotion",
+        "definition": "baby cream or lotion (excluding diaper creams)"
+    },
+    {
+        "id": 154,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "child specific",
+        "prodtype": "baby oil",
+        "definition": "lipophilic products applied to skin marketed for use on infants"
+    },
+    {
+        "id": 155,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "child specific",
+        "prodtype": "baby powder",
+        "definition": "powder products applied to skin to absorb excess moisture and lubricate skin, marketed for use on infants"
+    },
+    {
+        "id": 156,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "child specific",
+        "prodtype": "baby shampoo",
+        "definition": "hair cleaning products marketed for use on infants"
+    },
+    {
+        "id": 157,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "child specific",
+        "prodtype": "baby wash",
+        "definition": "body washes and cleaners specifically marketed for use on infants"
+    },
+    {
+        "id": 158,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "child specific",
+        "prodtype": "baby wipes",
+        "definition": "textile wipes and towelettes specifically marketed for use on infants"
+    },
+    {
+        "id": 411,
+        "kindName": "Occupation",
+        "genCat": "Industrial products",
+        "prodfam": "corrosion inhibitor",
+        "prodtype": "",
+        "definition": "Products that decrease the corrosion rate of a material"
+    },
+    {
+        "id": 414,
+        "kindName": "Occupation",
+        "genCat": "Industrial products",
+        "prodfam": "metalworking fluid",
+        "prodtype": "",
+        "definition": "oils and other liquids that are used to cool and/or lubricate metal workpieces when they are being machined, ground, milled, etc. Includes Cutting Fluids used for cooling and lubricating cutting tools, and Stamping fluids used for the forming of metal into shapes."
+    },
+    {
+        "id": 437,
+        "kindName": "Occupation",
+        "genCat": "Industrial products",
+        "prodfam": "hydraulic fluid",
+        "prodtype": "",
+        "definition": "Fluids used to transfer power in hydraulic machinery"
+    },
+    {
+        "id": 435,
+        "kindName": "Occupation",
+        "genCat": "Industrial products",
+        "prodfam": "industrial lubricants",
+        "prodtype": "",
+        "definition": "Lubricants, greases, and oils used in an industrial setting"
+    },
+    {
+        "id": 416,
+        "kindName": "Occupation",
+        "genCat": "Industrial products",
+        "prodfam": "labels",
+        "prodtype": "",
+        "definition": "Products used in an industrial context as labels, to be attached to an object to provide information. (i.e. labels attached to tires)"
+    },
+    {
+        "id": 417,
+        "kindName": "Occupation",
+        "genCat": "Industrial products",
+        "prodfam": "hydraulic fluid",
+        "prodtype": "tractor hydraulic fluid",
+        "definition": "Fluids/oils used to transfer power in hydraulic machinery, specifically for use in tractor vehicles."
+    },
+    {
+        "id": 438,
+        "kindName": "Occupation",
+        "genCat": "Industrial products",
+        "prodfam": "refrigerant",
+        "prodtype": "",
+        "definition": "fluids used as heat carriers in the refrigeration cycle for repeated phase transitions from gas to liquid, primarily used in air conditioners and refrigerators/freezers"
+    },
+    {
+        "id": 436,
+        "kindName": "Occupation",
+        "genCat": "Industrial products",
+        "prodfam": "mold release agents",
+        "prodtype": "",
+        "definition": "Products that prevent materials from adhering to each other, or bonding to surfaces/ manufacturing molds."
+    },
+    {
+        "id": 371,
+        "kindName": "Occupation",
+        "genCat": "Industrial products",
+        "prodfam": "penetrating oil",
+        "prodtype": "",
+        "definition": "Low-viscosity oil used to free rusted mechanical parts"
+    },
+    {
+        "id": 375,
+        "kindName": "Occupation",
+        "genCat": "Industrial products",
+        "prodfam": "food contact formulations",
+        "prodtype": "",
+        "definition": "Food contact formulations used as part of a process, or in a piece of equipment. These are industrial products that are classified as food safe, food grade, etc."
+    },
+    {
+        "id": 338,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "home office",
+        "prodtype": "white out",
+        "definition": "fluids used to cover inked or typed text on paper allowing for over laying of new text"
+    },
+    {
+        "id": 302,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "children's art and toys",
+        "prodtype": "slime",
+        "definition": "children's play slime, including flubber, silly putty, etc. Also includes liquid and powder solutions to make slime."
+    },
+    {
+        "id": 339,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "pottery making",
+        "prodtype": "glaze",
+        "definition": "liquid products for glazing craft pottery"
+    },
+    {
+        "id": 327,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "general arts and crafts supplies",
+        "prodtype": "arts and crafts cleaner",
+        "definition": "solvent- or detergent-based products for removing craft related paints, adhesives, etc. from hands or surfaces"
+    },
+    {
+        "id": 322,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "fabric treatment and dye",
+        "prodtype": "fabric dye",
+        "definition": "products for dying fabrics that require dilution in water prior to application"
+    },
+    {
+        "id": 337,
+        "kindName": "Formulation",
+        "genCat": "Arts and crafts/office supplies",
+        "prodfam": "home office",
+        "prodtype": "pens and markers",
+        "definition": "writing utensils containing liquid or gel ink"
+    },
+    {
+        "id": 18,
+        "kindName": "Article",
+        "genCat": "batteries",
+        "prodfam": "vehicle",
+        "prodtype": "",
+        "definition": "batteries intended for vehicles, including cars."
+    },
+    {
+        "id": 15,
+        "kindName": "Article",
+        "genCat": "Batteries",
+        "prodfam": "watch",
+        "prodtype": "",
+        "definition": "batteries intended for use in wrist watches. Includes replacement batteries for these devices."
+    },
+    {
+        "id": 14,
+        "kindName": "Article",
+        "genCat": "Batteries",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "A device consisting of one or more electrochemical cells with external connections used in powering electrical devices."
+    },
+    {
+        "id": 25,
+        "kindName": "Article",
+        "genCat": "Batteries",
+        "prodfam": "general use",
+        "prodtype": "lithium",
+        "definition": "Single use lithium based batteries for general use, including lithium metal and lithium-ion batteries."
+    },
+    {
+        "id": 378,
+        "kindName": "Occupation",
+        "genCat": "Specialty occupational products",
+        "prodfam": "firefighting agents",
+        "prodtype": "",
+        "definition": "specialty products used for extinguishing fires, including foams, powders, Aqueous Film Forming Foam (AFFF), etc."
+    },
+    {
+        "id": 392,
+        "kindName": "Occupation",
+        "genCat": "Specialty occupational products",
+        "prodfam": "dry cleaning chemicals",
+        "prodtype": "",
+        "definition": "Occupation specific products and chemicals used in the dry cleaning industry to remove stains from clothes, fabrics, etc."
+    },
+    {
+        "id": 393,
+        "kindName": "Occupation",
+        "genCat": "Specialty occupational products",
+        "prodfam": "aviation",
+        "prodtype": "aircraft coatings",
+        "definition": "Coatings, paints, and related surface treatments used in the aviation industry for commercial or military aircraft."
+    },
+    {
+        "id": 377,
+        "kindName": "Occupation",
+        "genCat": "Specialty occupational products",
+        "prodfam": "law enforcement",
+        "prodtype": "pepper spray",
+        "definition": "Spray products for crowd control, including pepper spray and tear gas"
+    },
+    {
+        "id": 376,
+        "kindName": "Occupation",
+        "genCat": "Specialty occupational products",
+        "prodfam": "law enforcement",
+        "prodtype": "stun guns",
+        "definition": "Stun guns or tasers"
+    },
+    {
+        "id": 433,
+        "kindName": "Occupation",
+        "genCat": "Specialty occupational products",
+        "prodfam": "water treatment chemicals",
+        "prodtype": "",
+        "definition": "Water treatment chemicals used in potable and non-potable water systems, including municipal water treatment, industrial boilers, radiators, cooling towers, etc."
+    },
+    {
+        "id": 372,
+        "kindName": "Occupation",
+        "genCat": "Specialty occupational products",
+        "prodfam": "law enforcement",
+        "prodtype": "",
+        "definition": "Specialty products used in the law enforcement setting"
+    },
+    {
+        "id": 404,
+        "kindName": "Occupation",
+        "genCat": "Specialty occupational products",
+        "prodfam": "law enforcement",
+        "prodtype": "fingerprinting ink",
+        "definition": "Products used in commercial, government, law enforcement, legal, etc. settings in order to determine an individual's identity based on fingerprint matching. Products include fingerprint ink, and supporting products used to enhance fingerprint definition for printmaking."
+    },
+    {
+        "id": 434,
+        "kindName": "Occupation",
+        "genCat": "Specialty occupational products",
+        "prodfam": "aviation",
+        "prodtype": "aircraft fluids and additives",
+        "definition": "Fuels, fluids, oils, and other additives used in the aviation industry for commercial or military aircraft"
+    },
+    {
+        "id": 400,
+        "kindName": "Occupation",
+        "genCat": "Specialty occupational products",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Specialty products used in a specific occupational setting, by members of that occupation (e.g. firefighting foam, metal working fluids, products used in portable toilets)"
+    },
+    {
+        "id": 257,
+        "kindName": "Formulation",
+        "genCat": "Sports equipment",
+        "prodfam": "bicycling",
+        "prodtype": "",
+        "definition": "formulation products for use on bicycles, which do not fit into a more refined category"
+    },
+    {
+        "id": 336,
+        "kindName": "Formulation",
+        "genCat": "Sports equipment",
+        "prodfam": "gun cleaner",
+        "prodtype": "",
+        "definition": "products for cleaning interior or exterior of firearms"
+    },
+    {
+        "id": 262,
+        "kindName": "Formulation",
+        "genCat": "Sports equipment",
+        "prodfam": "skiing",
+        "prodtype": "wax",
+        "definition": "waxes for treating skis or snowboards"
+    },
+    {
+        "id": 259,
+        "kindName": "Formulation",
+        "genCat": "Sports equipment",
+        "prodfam": "fishing",
+        "prodtype": "",
+        "definition": "formulation products used for the sport of fishing, which do not fit into a more refined category"
+    },
+    {
+        "id": 256,
+        "kindName": "Formulation",
+        "genCat": "Sports equipment",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "formulation products for use in, with, or as sports equipment, which do not fit into a more refined category"
+    },
+    {
+        "id": 258,
+        "kindName": "Formulation",
+        "genCat": "Sports equipment",
+        "prodfam": "bicycling",
+        "prodtype": "bicycle cleaner",
+        "definition": "washes and rinses for cleaning bicycles"
+    },
+    {
+        "id": 261,
+        "kindName": "Formulation",
+        "genCat": "Sports equipment",
+        "prodfam": "skiing",
+        "prodtype": "",
+        "definition": "formulation products used for skiing, which do not fit into a more refined category"
+    },
+    {
+        "id": 260,
+        "kindName": "Formulation",
+        "genCat": "Sports equipment",
+        "prodfam": "fishing",
+        "prodtype": "reel oil",
+        "definition": "lubricants and cleaner/lubricants for fishing reels"
+    },
+    {
+        "id": 23,
+        "kindName": "Article",
+        "genCat": "Tools",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Tools for consumer or home use"
+    },
+    {
+        "id": 5,
+        "kindName": "Article",
+        "genCat": "Toys and children's products",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Toys and articles intended for use by children (not including formulations) (e.g. stuffed toys, blankets, games, baby bottles and pacifiers, dolls); includes electronics specifically intended for use by children"
+    },
+    {
+        "id": 439,
+        "kindName": "Unknown",
+        "genCat": "Unknown or Indeterminate",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Products for which the product category could not be determined from the available product name, manufacturer and available document metadata."
+    },
+    {
+        "id": 267,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "auto body work",
+        "prodtype": "detailing",
+        "definition": "products for cleaning, polishing, or protecting car interior surfaces, upholstery, leather, carpeting, tires, or rims"
+    },
+    {
+        "id": 283,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "engine maintenance",
+        "prodtype": "auto fluids and additives",
+        "definition": "power steering fluids, transmission fluids, brake fluids, fuel injector cleaners, gas treatments, or leak stoppers"
+    },
+    {
+        "id": 282,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "engine maintenance",
+        "prodtype": "antifreeze",
+        "definition": "antifreeze and/or coolant solutions for motorized vehicles"
+    },
+    {
+        "id": 281,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "engine maintenance",
+        "prodtype": "",
+        "definition": "formulation products used for engine maintenance, which do not fit into a more refined category"
+    },
+    {
+        "id": 280,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "car surface treatment",
+        "prodtype": "degreaser",
+        "definition": "products for removing grease from auto bodies, engines, and brakes"
+    },
+    {
+        "id": 279,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "car surface treatment",
+        "prodtype": "combination product",
+        "definition": "combination wash and wax products"
+    },
+    {
+        "id": 367,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "auto body work",
+        "prodtype": "auto adhesives",
+        "definition": "products used as adhesives in auto body work and repair"
+    },
+    {
+        "id": 278,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "car surface treatment",
+        "prodtype": "body wax",
+        "definition": "auto body waxes and coatings, excluding combo wash/wax products"
+    },
+    {
+        "id": 277,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "car surface treatment",
+        "prodtype": "body cleaner",
+        "definition": "cleaners, shampoos, and washes for auto body exterior (not including wax products or combo wash/wax products)"
+    },
+    {
+        "id": 276,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "car surface treatment",
+        "prodtype": "",
+        "definition": "treatments for the surfaces/body of vehicles that can not be otherwise categorized"
+    },
+    {
+        "id": 275,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "car interior",
+        "prodtype": "",
+        "definition": "formulation products used on the interior of cars, which do not fit into a more refined category"
+    },
+    {
+        "id": 274,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "car interior",
+        "prodtype": "auto air freshener",
+        "definition": "products for masking odors or adding fragrance to car cabin air"
+    },
+    {
+        "id": 273,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "boat care and maintenance",
+        "prodtype": "boat engine fluids",
+        "definition": "antifreeze, fuel additives, engine flushes, liquid gaskets, steering fluids, and  engine, transmission, and mechanical lubricants"
+    },
+    {
+        "id": 272,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "boat care and maintenance",
+        "prodtype": "boat cleaner - hull care",
+        "definition": "cleaners, washes, and polishes for cleaning marine hulls applications"
+    },
+    {
+        "id": 271,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "boat care and maintenance",
+        "prodtype": "boat cleaner - general",
+        "definition": "other cleaners, washes, and polishes for exterior marine applications"
+    },
+    {
+        "id": 270,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "boat care and maintenance",
+        "prodtype": "boat cleaner - deck care",
+        "definition": "cleaners, washes, and polishes for cleaning marine decking"
+    },
+    {
+        "id": 269,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "boat care and maintenance",
+        "prodtype": "",
+        "definition": "products used for boat care and maintenance, which do not fit in a more refined category"
+    },
+    {
+        "id": 268,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "auto body work",
+        "prodtype": "windows/windshield",
+        "definition": "products for washing or protecting windshields or windows, including windshield washer fluid"
+    },
+    {
+        "id": 284,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "engine maintenance",
+        "prodtype": "auto lubricant",
+        "definition": "engine lubricants and belt dressings, not including motor oils"
+    },
+    {
+        "id": 266,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "auto body work",
+        "prodtype": "body repair",
+        "definition": "products for repairing auto body exteriors, including bondo-type products and scratch fillers"
+    },
+    {
+        "id": 265,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "auto body work",
+        "prodtype": "auto paint",
+        "definition": "paints and primers for auto body or engine"
+    },
+    {
+        "id": 264,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "auto body work",
+        "prodtype": "",
+        "definition": "products used for auto body work, which do not fit in a more refined category"
+    },
+    {
+        "id": 263,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "products used in or on vehicles, which do not fit into a more refined category"
+    },
+    {
+        "id": 313,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "recreational vehicle",
+        "prodtype": "holding tank treatment",
+        "definition": "Treatments for RV holding tanks, including deodorants"
+    },
+    {
+        "id": 290,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "car surface treatment",
+        "prodtype": "other",
+        "definition": "products for car surfaces other than paint/primer, cleaners, waxes, and finishes"
+    },
+    {
+        "id": 286,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "engine maintenance",
+        "prodtype": "motor oil",
+        "definition": "petroleum-based or synthetic engine lubricants"
+    },
+    {
+        "id": 285,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "engine maintenance",
+        "prodtype": "auto refrigerant",
+        "definition": "refrigerants and freon products for auto applications"
+    },
+    {
+        "id": 351,
+        "kindName": "Formulation",
+        "genCat": "Vehicle",
+        "prodfam": "recreational vehicle",
+        "prodtype": "",
+        "definition": "formulation products intended for use specifically with Recreational vehicles"
+    },
+    {
+        "id": 289,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "eye care and contacts",
+        "prodtype": "eye products",
+        "definition": "skin treatments applied to the eyelids and skin around the eye (excludes makeup and eye cream)"
+    },
+    {
+        "id": 293,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "body hygiene",
+        "prodtype": "feminine hygiene",
+        "definition": "Feminine hygiene products such as vaginal washes"
+    },
+    {
+        "id": 295,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "makeup and related",
+        "prodtype": "eyebrow makeup",
+        "definition": "Brow gels, pencils, fillers, and other eyebrow cosmetic products"
+    },
+    {
+        "id": 296,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "makeup and related",
+        "prodtype": "lip plumper",
+        "definition": "Lip products that are designed to plump lips"
+    },
+    {
+        "id": 297,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "makeup and related",
+        "prodtype": "combination makeup products",
+        "definition": "Makeup products that are advertised as serving multiple distinct functions (e.g., combination lipstick /blush; combination eyeshadow/highlighter)"
+    },
+    {
+        "id": 298,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "after sun product",
+        "prodtype": "",
+        "definition": "Products for soothing and treating sunburns"
+    },
+    {
+        "id": 299,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "body",
+        "prodtype": "body firming lotion",
+        "definition": "Moisturizers, creams, and serums that claim to firm, tone, tighten, or lift skin"
+    },
+    {
+        "id": 300,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "skin lightener",
+        "prodtype": "",
+        "definition": "Products designed to lighten skin or fade spots and scars"
+    },
+    {
+        "id": 303,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "topical skin treatment",
+        "prodtype": "antifungal treatment",
+        "definition": "Ointments for fungal infections like ringworm, athlete’s foot, and tinea versicolor"
+    },
+    {
+        "id": 304,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "topical skin treatment",
+        "prodtype": "antibacterial treatment",
+        "definition": "Ointments for non-acne bacterial skin infections, including antiseptics"
+    },
+    {
+        "id": 430,
+        "kindName": "Occupation",
+        "genCat": "Cleaning and safety",
+        "prodfam": "safety products",
+        "prodtype": "fire extinguishers",
+        "definition": "Fire extinguishers and related chemicals. Excludes firefighting foam used by professional firefighters."
+    },
+    {
+        "id": 424,
+        "kindName": "Occupation",
+        "genCat": "Cleaning and safety",
+        "prodfam": "cleaning products",
+        "prodtype": "industrial hand cleaner",
+        "definition": "Soaps and hand cleaners designed for workers to remove grease, pigments, and other industrial soils from their hands"
+    },
+    {
+        "id": 425,
+        "kindName": "Occupation",
+        "genCat": "Cleaning and safety",
+        "prodfam": "cleaning products",
+        "prodtype": "industrial carpet and floor cleaner",
+        "definition": "Products used to clean the floors/carpeting of businesses, hospitals, factories, and other places of work"
+    },
+    {
+        "id": 429,
+        "kindName": "Occupation",
+        "genCat": "Cleaning and safety",
+        "prodfam": "safety products",
+        "prodtype": "emergency eye wash solution",
+        "definition": "Eye wash solutions and preservatives to flush eyes with in case of emergency"
+    },
+    {
+        "id": 426,
+        "kindName": "Occupation",
+        "genCat": "Cleaning and safety",
+        "prodfam": "cleaning products",
+        "prodtype": "aircraft cleaners",
+        "definition": "Cleaning products used in the aviation industry for commercial or military aircraft. Includes surface/exterior cleaners"
+    },
+    {
+        "id": 427,
+        "kindName": "Occupation",
+        "genCat": "Cleaning and safety",
+        "prodfam": "safety products",
+        "prodtype": "",
+        "definition": "Products used to promote safety in an occupational or industrial setting"
+    },
+    {
+        "id": 390,
+        "kindName": "Occupation",
+        "genCat": "Cleaning and safety",
+        "prodfam": "safety products",
+        "prodtype": "reflective materials",
+        "definition": "Industrial safety related products or raw materials with reflective properties that are intended to enhance visibility in low light and nighttime conditions. This may include fabrics, tapes, patches, or other solid materials. (See \"marking paint' PUC for reflective paints). Industry applications include firefighting, marine rescue, etc."
+    },
+    {
+        "id": 36,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "dishwasher and dishes",
+        "prodtype": "",
+        "definition": "cleaning products used in the dishwasher or on dishes, which do not fit into a more refined category"
+    },
+    {
+        "id": 65,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "laundry and fabric treatment",
+        "prodtype": "laundry starch",
+        "definition": "products applied to fabric prior to ironing to prevent wrinkles and add stiffness to fabrics"
+    },
+    {
+        "id": 64,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "laundry and fabric treatment",
+        "prodtype": "laundry stain remover",
+        "definition": "stain removers or laundry pre-treatment products"
+    },
+    {
+        "id": 383,
+        "kindName": "Occupation",
+        "genCat": "Industrial products",
+        "prodfam": "anti-seize",
+        "prodtype": "",
+        "definition": "Products applied to bolts, fasteners, flanges and other clamped interfaces to prevent galling, seizing and corrosion, as well as lubricating to ease disassembly"
+    },
+    {
+        "id": 396,
+        "kindName": "Occupation",
+        "genCat": "Laboratory supplies",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Products specifically used in a laboratory setting, e.g. laboratory diagnostics or consumables, solvents and reagents used in experiments or laboratory tests, etc. Includes supplies for medical testing. Note that pure chemicals will be included in the 'Raw materials' category."
+    },
+    {
+        "id": 115,
+        "kindName": "Formulation",
+        "genCat": "Landscape/yard",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "products related or for use in the outdoor landscape or yard, which do not fit into a more refined category"
+    },
+    {
+        "id": 132,
+        "kindName": "Formulation",
+        "genCat": "Landscape/yard",
+        "prodfam": "pool chemicals",
+        "prodtype": "shock",
+        "definition": "shock products for pools, hot tubs, and spas"
+    },
+    {
+        "id": 131,
+        "kindName": "Formulation",
+        "genCat": "Landscape/yard",
+        "prodfam": "pool chemicals",
+        "prodtype": "pH control",
+        "definition": "pH control products for pools, hot tubs, and spas"
+    },
+    {
+        "id": 130,
+        "kindName": "Formulation",
+        "genCat": "Landscape/yard",
+        "prodfam": "pool chemicals",
+        "prodtype": "chlorine and bromine",
+        "definition": "chlorine or bromine products for pools, hot tubs, and spas, to keep water bacteria free"
+    },
+    {
+        "id": 129,
+        "kindName": "Formulation",
+        "genCat": "Landscape/yard",
+        "prodfam": "pool chemicals",
+        "prodtype": "pool algaecide",
+        "definition": "algaecidal products for pools, hot tubs, and spas"
+    },
+    {
+        "id": 128,
+        "kindName": "Formulation",
+        "genCat": "Landscape/yard",
+        "prodfam": "pool chemicals",
+        "prodtype": "",
+        "definition": "products not otherwise characterized for pools, hot tubs, and spas"
+    },
+    {
+        "id": 127,
+        "kindName": "Formulation",
+        "genCat": "Landscape/yard",
+        "prodfam": "plants and garden",
+        "prodtype": "tree care products",
+        "definition": "miscellaneous tree care products including sealers (excluding fertilizers or pesticides)"
+    },
+    {
+        "id": 126,
+        "kindName": "Formulation",
+        "genCat": "Landscape/yard",
+        "prodfam": "plants and garden",
+        "prodtype": "potting soil",
+        "definition": "potting soil and mixes including plant based materials, vermiculite, and hydrogels"
+    },
+    {
+        "id": 180,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "general moisturizing",
+        "prodtype": "hand/body lotion",
+        "definition": "products specifically marketed for application to hands or body to moisturize or improve skin characteristics (excluding baby lotion)"
+    },
+    {
+        "id": 181,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "general moisturizing",
+        "prodtype": "",
+        "definition": "general moisturizing products which do not fit into a more refined category"
+    },
+    {
+        "id": 182,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "glitter",
+        "prodtype": "",
+        "definition": "products containing reflective particles applied to the face or body for cosmetic purposes"
+    },
+    {
+        "id": 183,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair coloring",
+        "prodtype": "",
+        "definition": "general hair coloring products which can not be classified into a more refined category"
+    },
+    {
+        "id": 184,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair coloring",
+        "prodtype": "hair bleach",
+        "definition": "products for lightening or removing color from hair on the head"
+    },
+    {
+        "id": 185,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair coloring",
+        "prodtype": "hair color - permanent",
+        "definition": "hair colors and dyes characterized as permanent, excludes products for use by a professional"
+    },
+    {
+        "id": 186,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair coloring",
+        "prodtype": "hair color - professional",
+        "definition": "hair colors and dyes characterized as for professional use"
+    },
+    {
+        "id": 187,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair coloring",
+        "prodtype": "hair color - temporary",
+        "definition": "hair colors and dyes characterized as temporary"
+    },
+    {
+        "id": 188,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair coloring",
+        "prodtype": "hair color activator",
+        "definition": "chemical activators for hair coloring products"
+    },
+    {
+        "id": 189,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair coloring",
+        "prodtype": "hair color developer",
+        "definition": "chemical developers for hair coloring products"
+    },
+    {
+        "id": 220,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "makeup and related",
+        "prodtype": "mascara",
+        "definition": "eyelash mascaras"
+    },
+    {
+        "id": 221,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "makeup and related",
+        "prodtype": "toner",
+        "definition": "face and skin toners and astringents, excluding eye related products"
+    },
+    {
+        "id": 222,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "nails",
+        "prodtype": "",
+        "definition": "products for nail or cuticle treatment or decoration"
+    },
+    {
+        "id": 223,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "nails",
+        "prodtype": "nail adhesive",
+        "definition": "adhesives for reparing fingernails or attaching artificial nails"
+    },
+    {
+        "id": 224,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "nails",
+        "prodtype": "nail polish",
+        "definition": "clear or colored nail enamels, polishes, basecoats, topcoats, and other acrylic coatings"
+    },
+    {
+        "id": 225,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "nails",
+        "prodtype": "nail polish remover",
+        "definition": "products for removing nail polish or artificial nails"
+    },
+    {
+        "id": 226,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "self-tanner",
+        "prodtype": "",
+        "definition": "chemical products for tanning, staining, or coloring the skin"
+    },
+    {
+        "id": 227,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "sexual wellness",
+        "prodtype": "",
+        "definition": "sexual wellness products, including personal lubricants"
+    },
+    {
+        "id": 228,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "shaving and hair removal",
+        "prodtype": "",
+        "definition": "shaving or hair removal products which do not fit into a more refined category"
+    },
+    {
+        "id": 229,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "shaving and hair removal",
+        "prodtype": "aftershave",
+        "definition": "products applied to the skin following shaving to provide scent, or improve skin characteristics"
+    },
+    {
+        "id": 112,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "tiling",
+        "prodtype": "grout sealer",
+        "definition": "products for coating and protecting tile or grout"
+    },
+    {
+        "id": 111,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "tiling",
+        "prodtype": "",
+        "definition": "products related to tiling which do not fit into a more refined category"
+    },
+    {
+        "id": 110,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "surface sealers",
+        "prodtype": "stone surface sealer",
+        "definition": "products for coating and protecting stone household surfaces"
+    },
+    {
+        "id": 108,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "surface sealers",
+        "prodtype": "",
+        "definition": "products for coating and protecting household surfaces other than glass, stone, or grout"
+    },
+    {
+        "id": 107,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "septic system",
+        "prodtype": "",
+        "definition": "septic system treatment products"
+    },
+    {
+        "id": 287,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "finish",
+        "prodtype": "wood finish",
+        "definition": "products for permanently coating and protecting wood surfaces"
+    },
+    {
+        "id": 83,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "concrete",
+        "prodtype": "",
+        "definition": "products for patching concrete surfaces"
+    },
+    {
+        "id": 82,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "caulk/sealant",
+        "prodtype": "",
+        "definition": "liquid or gels designed to seal cracks or fill cracks and depressions on hard surfaces"
+    },
+    {
+        "id": 354,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "adhesives and adhesive removers",
+        "prodtype": "construction adhesives",
+        "definition": "Adhesives used in construction applications"
+    },
+    {
+        "id": 81,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "adhesives and adhesive removers",
+        "prodtype": "",
+        "definition": "adhesive and adhesive remover related products which do not fit into a more refined category"
+    },
+    {
+        "id": 190,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair coloring",
+        "prodtype": "hair color toner",
+        "definition": "chemical toners for hair coloring products"
+    },
+    {
+        "id": 191,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair styling and care",
+        "prodtype": "dry shampoo",
+        "definition": "products for removing oil and dirt from hair"
+    },
+    {
+        "id": 192,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair styling and care",
+        "prodtype": "",
+        "definition": "general hair styling or hair care products which do not fit into a more refined category"
+    },
+    {
+        "id": 193,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair styling and care",
+        "prodtype": "ethnic hair care",
+        "definition": "products for ethnic hair care, including wrap set lotions and pressing lotions (excluding relaxers)"
+    },
+    {
+        "id": 194,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair styling and care",
+        "prodtype": "hair conditioner - leave-in",
+        "definition": "leave-in everyday hair conditioners and detanglers"
+    },
+    {
+        "id": 195,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair styling and care",
+        "prodtype": "hair conditioning treatment",
+        "definition": "hair conditioning and moisturizing treatments for occasional use"
+    },
+    {
+        "id": 196,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair styling and care",
+        "prodtype": "hair conditioning treatment - professional",
+        "definition": "hair conditioning and moisturizing treatments characterized as for professional use"
+    },
+    {
+        "id": 197,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair styling and care",
+        "prodtype": "hair relaxer",
+        "definition": "chemical hair relaxers"
+    },
+    {
+        "id": 198,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair styling and care",
+        "prodtype": "hair spray",
+        "definition": "spray fixatives for hair"
+    },
+    {
+        "id": 199,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair styling and care",
+        "prodtype": "hair styling",
+        "definition": "products for imparting hold, shine, or texture to hair"
+    },
+    {
+        "id": 366,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "ostomy products",
+        "prodtype": "",
+        "definition": "Ostomy-related products used by patients in home environments. Includes barrier products, adhesives, adhesive removers, creams, etc. for colostomies, ileostomies, urostomies, etc."
+    },
+    {
+        "id": 369,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "oral care",
+        "prodtype": "",
+        "definition": "personal care products related to oral care, which do not fit into a more refined category"
+    },
+    {
+        "id": 242,
+        "kindName": "Formulation",
+        "genCat": "Pesticides",
+        "prodfam": "insect repellent",
+        "prodtype": "",
+        "definition": "miscellaneous products for repelling insects, including citronella type candles (excluding products to be applied to the skin)"
+    },
+    {
+        "id": 241,
+        "kindName": "Formulation",
+        "genCat": "Pesticides",
+        "prodfam": "fungicide",
+        "prodtype": "",
+        "definition": "products used to control fungi pests in the garden or home"
+    },
+    {
+        "id": 240,
+        "kindName": "Formulation",
+        "genCat": "Pesticides",
+        "prodfam": "animal repellent",
+        "prodtype": "",
+        "definition": "products used to repel animals from locations or objects or to keep animals from chewing objects"
+    },
+    {
+        "id": 365,
+        "kindName": "Formulation",
+        "genCat": "Pesticides",
+        "prodfam": "Professional use pesticides",
+        "prodtype": "",
+        "definition": "Pesticide products that are intended for use/application by professionals."
+    },
+    {
+        "id": 239,
+        "kindName": "Formulation",
+        "genCat": "Pesticides",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "general pesticide products that do not fit into a more refined category"
+    },
+    {
+        "id": 245,
+        "kindName": "Formulation",
+        "genCat": "Pesticides",
+        "prodfam": "rodenticide",
+        "prodtype": "",
+        "definition": "rodenticides for interior or exterior use"
+    },
+    {
+        "id": 244,
+        "kindName": "Formulation",
+        "genCat": "Pesticides",
+        "prodfam": "insecticide",
+        "prodtype": "",
+        "definition": "insecticides, for interior or exterior use"
+    },
+    {
+        "id": 243,
+        "kindName": "Formulation",
+        "genCat": "Pesticides",
+        "prodfam": "insect repellent",
+        "prodtype": "insect repellent - skin",
+        "definition": "products for repelling insects from skin"
+    },
+    {
+        "id": 410,
+        "kindName": "Occupation",
+        "genCat": "Construction",
+        "prodfam": "building construction",
+        "prodtype": "",
+        "definition": "Building construction products used by professionals."
+    },
+    {
+        "id": 373,
+        "kindName": "Occupation",
+        "genCat": "Construction",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Products intended for use by professionals in general construction applications, ."
+    },
+    {
+        "id": 402,
+        "kindName": "Occupation",
+        "genCat": "Construction",
+        "prodfam": "marking paint",
+        "prodtype": "",
+        "definition": "Specialty paint that adheres to outdoor surfaces (gravel, soil, trees, grass, concrete, blacktop, etc,) used by professionals (in land surveying, utility locating, traffic marking, public safety,  etc.) for marking outdoor environments (construction sites, roads, yards, etc.)"
+    },
+    {
+        "id": 4,
+        "kindName": "Article",
+        "genCat": "Construction and building materials",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Materials used for construction (e.g. flooring, tile, sinks, bathtubs, mirrors, wall materials/drywall, wall-to-wall carpets, insulation, playground surfaces); includes semi-permanent fixtures such as faucets and light fixtures"
+    },
+    {
+        "id": 21,
+        "kindName": "Article",
+        "genCat": "Construction and building materials",
+        "prodfam": "insulation",
+        "prodtype": "",
+        "definition": "Products used for thermal insulation in construction and home building situations, including tapes, rolls, foam, etc."
+    },
+    {
+        "id": 73,
+        "kindName": "Formulation",
+        "genCat": "Electronics/small appliances",
+        "prodfam": "computers and accessories/supplies",
+        "prodtype": "printer ink",
+        "definition": "ink for inkjet printers"
+    },
+    {
+        "id": 75,
+        "kindName": "Formulation",
+        "genCat": "Electronics/small appliances",
+        "prodfam": "computers and accessories/supplies",
+        "prodtype": "",
+        "definition": "formulation products for use in or on computers and related accessories or supplies, which do not fit into a more refined category"
+    },
+    {
+        "id": 76,
+        "kindName": "Formulation",
+        "genCat": "Electronics/small appliances",
+        "prodfam": "electronics cleaner",
+        "prodtype": "",
+        "definition": "miscellaneous products for cleaning home electronic equipment (including surface cleaners or cleaners for interior parts)"
+    },
+    {
+        "id": 72,
+        "kindName": "Formulation",
+        "genCat": "Electronics/small appliances",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "formulation products used on or for electronics or small appliances, which do not fit into a more refined category"
+    },
+    {
+        "id": 74,
+        "kindName": "Formulation",
+        "genCat": "Electronics/small appliances",
+        "prodfam": "computers and accessories/supplies",
+        "prodtype": "printer toner",
+        "definition": "toners used in laser printers"
+    },
+    {
+        "id": 311,
+        "kindName": "Formulation",
+        "genCat": "Food and drug",
+        "prodfam": "smoking-related products",
+        "prodtype": "vaping chemicals",
+        "definition": "products and chemicals used to deliver nicotine, cannabis (THC, CBD), flavorings, chemicals, and other substances, including 'e-juice' for vaping"
+    },
+    {
+        "id": 312,
+        "kindName": "Formulation",
+        "genCat": "Food and drug",
+        "prodfam": "smoking-related products",
+        "prodtype": "smoking cessation products",
+        "definition": "Products intended to help with smoking cessation; including nicotine gums, lozenges, or patches"
+    },
+    {
+        "id": 9,
+        "kindName": "Article",
+        "genCat": "Food contact items",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Articles intended for food contact, including food-contact packaging (e.g. glasses, plates, pots/pans, food storage containers, cloth napkins and placemats,cutlery, paper plates and plastic utensils, take-out containers, plastic wrap and foil; includes small electronics with direct food contact (e.g. blender)"
+    },
+    {
+        "id": 10,
+        "kindName": "Article",
+        "genCat": "Furniture and furnishings",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Items used to furnish a home or workplace, e.g. tables, chairs, sofa, outdoor patio furniture, sofa cover, hammock, mattress, area rug"
+    },
+    {
+        "id": 105,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "refrigerant",
+        "prodtype": "",
+        "definition": "refrigerants used in air conditioners and refrigerators"
+    },
+    {
+        "id": 104,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "plumbing",
+        "prodtype": "",
+        "definition": "miscellaneous plumbing repair products (putties, tapes, cements)"
+    },
+    {
+        "id": 103,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "patch and repair",
+        "prodtype": "putty or filler",
+        "definition": "products used to fill cracks and holes in wooden and other surfaces"
+    },
+    {
+        "id": 102,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "patch and repair",
+        "prodtype": "wall patch and repair",
+        "definition": "products to fill gaps and cracks in walls and ceilings covered in plaster or drywall"
+    },
+    {
+        "id": 101,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "patch and repair",
+        "prodtype": "",
+        "definition": "products related to patch and repair that do not fit into a more refined category"
+    },
+    {
+        "id": 100,
+        "kindName": "Formulation",
+        "genCat": "Home maintenance",
+        "prodfam": "paint/stain and related products",
+        "prodtype": "stripper",
+        "definition": "products applied to hard surfaces to remove paints and finishes"
+    },
+    {
+        "id": 170,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "eye care and contacts",
+        "prodtype": "eye drops",
+        "definition": "products applied to the eye for lubrication or treating redness"
+    },
+    {
+        "id": 171,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "eye care and contacts",
+        "prodtype": "eyelid spray",
+        "definition": "spray products applied to eyelids to treat skin and eye lash problems"
+    },
+    {
+        "id": 172,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "facial cleansing and moisturizing",
+        "prodtype": "",
+        "definition": "facial cleansing and moisturizing products which do not fit into a more refined category"
+    },
+    {
+        "id": 173,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "facial cleansing and moisturizing",
+        "prodtype": "face cleansing wipes",
+        "definition": "textile wipes or pads treated with cleansing solution applied to the face to clean or improve the characteristics of skin on the face"
+    },
+    {
+        "id": 174,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "facial cleansing and moisturizing",
+        "prodtype": "face cream/moisturizer",
+        "definition": "moisturizers, lotions, and creams for treating the face (excluding eye-specific products)"
+    },
+    {
+        "id": 175,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "facial cleansing and moisturizing",
+        "prodtype": "face mask",
+        "definition": "leave-on masks or peels for treatment of the face"
+    },
+    {
+        "id": 176,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "facial cleansing and moisturizing",
+        "prodtype": "face scrub",
+        "definition": "facial cleansing products containing exfoliating particles (excluding products for acne)"
+    },
+    {
+        "id": 177,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "facial cleansing and moisturizing",
+        "prodtype": "face wash",
+        "definition": "facial cleansing products (excluding scrubs and products for acne)"
+    },
+    {
+        "id": 178,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "foot care",
+        "prodtype": "",
+        "definition": "miscellaneous products for application to feet, including scrubs, lotions, deodorants, and treatments for skin and nail problems"
+    },
+    {
+        "id": 179,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "fragrance",
+        "prodtype": "",
+        "definition": "fragrances, colognes, and perfumes"
+    },
+    {
+        "id": 200,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair styling and care",
+        "prodtype": "lice shampoo",
+        "definition": "shampoos for the treatment of various types of lice"
+    },
+    {
+        "id": 201,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair styling and care",
+        "prodtype": "scalp treatment",
+        "definition": "products for treating the scalp, including products for dandruff or hair loss (excluding dandruff shampoo)"
+    },
+    {
+        "id": 202,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair styling and care",
+        "prodtype": "shampoo",
+        "definition": "shampoos, including dual shampoo/conditioner products"
+    },
+    {
+        "id": 203,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "hair styling and care",
+        "prodtype": "shampoo - dandruff",
+        "definition": "shampoos, including dual shampoo/conditioner products for treatment of dandruff"
+    },
+    {
+        "id": 204,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "liniment",
+        "prodtype": "",
+        "definition": "products for treatment of muscle or joint pain"
+    },
+    {
+        "id": 205,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "makeup and related",
+        "prodtype": "",
+        "definition": "makeup or cosmetic products which do not fit into a more refined category"
+    },
+    {
+        "id": 206,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "makeup and related",
+        "prodtype": "blush/bronzer",
+        "definition": "cheek blushes, bronzers, and rouges"
+    },
+    {
+        "id": 207,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "makeup and related",
+        "prodtype": "cosmetic tool cleaner",
+        "definition": "products for cleaning brushes and other devices used to apply makeup"
+    },
+    {
+        "id": 208,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "makeup and related",
+        "prodtype": "eye liner",
+        "definition": "Liquid or pencil eye liners"
+    },
+    {
+        "id": 209,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "makeup and related",
+        "prodtype": "eye makeup",
+        "definition": "miscellaneous cosmetic eye products including lash adhesives and tints (excludes eye shadow, mascara, eye primer, and eye liner)"
+    },
+    {
+        "id": 308,
+        "kindName": "Formulation",
+        "genCat": "Food and drug",
+        "prodfam": "supplements",
+        "prodtype": "",
+        "definition": "Products intended for human consumption to supplement health, available without a prescription; including vitamins, minerals, prebiotics, probiotics, and herbal products, excluding Cannabis-derived products."
+    },
+    {
+        "id": 368,
+        "kindName": "Formulation",
+        "genCat": "Food and drug",
+        "prodfam": "food products",
+        "prodtype": "infant formula and baby food",
+        "definition": "Food and beverage products intended for infants and children, including infant formula and baby food."
+    },
+    {
+        "id": 363,
+        "kindName": "Formulation",
+        "genCat": "Food and drug",
+        "prodfam": "pharmaceuticals",
+        "prodtype": "childrens",
+        "definition": "Pharmaceutical products intended for use by children or infants."
+    },
+    {
+        "id": 357,
+        "kindName": "Formulation",
+        "genCat": "Food and drug",
+        "prodfam": "pharmaceuticals",
+        "prodtype": "over the counter",
+        "definition": "Over-the-counter (OTC) drugs that are available to consumers without a prescription. Includes products that are taken primarily by oral route. Examples include acetaminophen, aspirin, antacids, decongestants, antihistamines, and laxatives."
+    },
+    {
+        "id": 355,
+        "kindName": "Formulation",
+        "genCat": "Food and drug",
+        "prodfam": "pharmaceuticals",
+        "prodtype": "vaccines",
+        "definition": "Pharmaceutical products intended to produce host immunity to a specific disease."
+    },
+    {
+        "id": 348,
+        "kindName": "Formulation",
+        "genCat": "Food and drug",
+        "prodfam": "smoking-related products",
+        "prodtype": "",
+        "definition": "Smoking related products that do not fit within a more refined category"
+    },
+    {
+        "id": 306,
+        "kindName": "Formulation",
+        "genCat": "Food and drug",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Products that are related to food and drugs, but do not fit into any more refined categories."
+    },
+    {
+        "id": 307,
+        "kindName": "Formulation",
+        "genCat": "Food and drug",
+        "prodfam": "food products",
+        "prodtype": "",
+        "definition": "Food and beverage products intended for human consumption, such as protein bars, energy drinks, etc. Excluding supplements, protein powder, or products for smoking cessation."
+    },
+    {
+        "id": 309,
+        "kindName": "Formulation",
+        "genCat": "Food and drug",
+        "prodfam": "pharmaceuticals",
+        "prodtype": "",
+        "definition": "A product, compound, medicine or therapeutic which is subject to regulation, including medicinal and illicit drugs, biologics, and the salts, esters, and hydrates of pharmaceuticals, includes precursors to pharmaceuticals, additives, and pharmaceuticals for animal/veterinary use. Includes prescription drugs. See 'Food and drug - pharmaceuticals - over the counter' for over-the-counter drugs."
+    },
+    {
+        "id": 310,
+        "kindName": "Formulation",
+        "genCat": "Food and drug",
+        "prodfam": "smoking-related products",
+        "prodtype": "tobacco products",
+        "definition": "Products made or derived from tobacco intended for human consumption, including smoked and chewed tobacco products, excluding vaping chemicals and smoking cessation products"
+    },
+    {
+        "id": 401,
+        "kindName": "Occupation",
+        "genCat": "Cleaning and safety",
+        "prodfam": "cleaning products",
+        "prodtype": "industrial electrical cleaner",
+        "definition": "products for cleaning industrial/commercial electronic equipment (including surface cleaners or cleaners for interior parts, connectors, switches and other electrical and electronic components.) Also called contact cleaner, switch cleaner, electrical contact cleaner."
+    },
+    {
+        "id": 405,
+        "kindName": "Occupation",
+        "genCat": "Cleaning and safety",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Products used for cleaning or safety in an occupational or industrial setting (e.g. industrial cleaning supplies or laundry detergent, eye wash, spill kits)"
+    },
+    {
+        "id": 419,
+        "kindName": "Occupation",
+        "genCat": "Cleaning and safety",
+        "prodfam": "cleaning products",
+        "prodtype": "",
+        "definition": "Products used for cleaning in an occupational or industrial setting"
+    },
+    {
+        "id": 420,
+        "kindName": "Occupation",
+        "genCat": "Cleaning and safety",
+        "prodfam": "cleaning products",
+        "prodtype": "Sorbents and spill kits",
+        "definition": "Products used to control spills in an industrial setting"
+    },
+    {
+        "id": 421,
+        "kindName": "Occupation",
+        "genCat": "Cleaning and safety",
+        "prodfam": "cleaning products",
+        "prodtype": "industrial dishwashing detergent",
+        "definition": "Dishwashing detergent used in an occupational setting (e.g. in restaurants)"
+    },
+    {
+        "id": 422,
+        "kindName": "Occupation",
+        "genCat": "Cleaning and safety",
+        "prodfam": "cleaning products",
+        "prodtype": "industrial laundry detergent",
+        "definition": "Laundry detergent used in an occupational setting (e.g. in hotels)"
+    },
+    {
+        "id": 423,
+        "kindName": "Occupation",
+        "genCat": "Cleaning and safety",
+        "prodfam": "cleaning products",
+        "prodtype": "industrial degreaser",
+        "definition": "Degreasers used in industrial applications"
+    },
+    {
+        "id": 428,
+        "kindName": "Occupation",
+        "genCat": "Cleaning and safety",
+        "prodfam": "safety products",
+        "prodtype": "personal protective equipment",
+        "definition": "Articles used to minimize exposure to workplace hazards including goggles, face masks, gloves, hard hats, and ear protection. Does NOT include medical/dental PPE"
+    },
+    {
+        "id": 382,
+        "kindName": "Occupation",
+        "genCat": "Cleaning and safety",
+        "prodfam": "cleaning products",
+        "prodtype": "industrial deodorizer",
+        "definition": "Deodorizing sprays or compounds used in an industrial or commercial setting."
+    },
+    {
+        "id": 380,
+        "kindName": "Occupation",
+        "genCat": "Cleaning and safety",
+        "prodfam": "cleaning products",
+        "prodtype": "graffiti remover",
+        "definition": "Products used to remove graffiti from surfaces"
+    },
+    {
+        "id": 210,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "makeup and related",
+        "prodtype": "eye shadow",
+        "definition": "products for coloring eye lids"
+    },
+    {
+        "id": 211,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "makeup and related",
+        "prodtype": "face powder",
+        "definition": "pressed or loose powders for face"
+    },
+    {
+        "id": 212,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "makeup and related",
+        "prodtype": "foundation/concealer",
+        "definition": "foundation makeup and concealers"
+    },
+    {
+        "id": 213,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "makeup and related",
+        "prodtype": "lip balm",
+        "definition": "lip products primarily for protection"
+    },
+    {
+        "id": 214,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "makeup and related",
+        "prodtype": "lip color",
+        "definition": "colored lip products, excluding glosses"
+    },
+    {
+        "id": 215,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "makeup and related",
+        "prodtype": "lip gloss",
+        "definition": "glossy lip products"
+    },
+    {
+        "id": 216,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "makeup and related",
+        "prodtype": "lip liner",
+        "definition": "pencils for lining lips"
+    },
+    {
+        "id": 217,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "makeup and related",
+        "prodtype": "makeup primer",
+        "definition": "products for priming face for make-up, excluding eye primers"
+    },
+    {
+        "id": 218,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "makeup and related",
+        "prodtype": "makeup remover",
+        "definition": "products for removing face makeup"
+    },
+    {
+        "id": 219,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "makeup and related",
+        "prodtype": "makeup set",
+        "definition": "multicomponent makeup set for which individual products are not designated"
+    },
+    {
+        "id": 315,
+        "kindName": "Formulation",
+        "genCat": "Pet and animal care",
+        "prodfam": "birds",
+        "prodtype": "",
+        "definition": "products related to the care of birds, including bird seed, nectar, etc."
+    },
+    {
+        "id": 251,
+        "kindName": "Formulation",
+        "genCat": "Pet and animal care",
+        "prodfam": "all pets",
+        "prodtype": "pet stain cleaner",
+        "definition": "carpet and upholstery cleaners for pet stains"
+    },
+    {
+        "id": 387,
+        "kindName": "Occupation",
+        "genCat": "Raw materials",
+        "prodfam": "inks",
+        "prodtype": "",
+        "definition": "Inks manufactured for commercial use"
+    },
+    {
+        "id": 413,
+        "kindName": "Occupation",
+        "genCat": "Raw materials",
+        "prodfam": "food additive formulations",
+        "prodtype": "",
+        "definition": "Substances added as a raw material in the manufacture of food products, to preserve flavor or enhance taste, appearance, or other sensory qualities."
+    },
+    {
+        "id": 409,
+        "kindName": "Occupation",
+        "genCat": "Raw materials",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "Pure chemicals or ingredients"
+    },
+    {
+        "id": 408,
+        "kindName": "Occupation",
+        "genCat": "Raw materials",
+        "prodfam": "paints and primers",
+        "prodtype": "machinery paint",
+        "definition": "Paint and primer products that are intended for use with industrial machinery and equipment, to protect against rust, corrosion, dirt, etc. and improve the appearance of the product. Includes heavy machinery and tractor paint."
+    },
+    {
+        "id": 395,
+        "kindName": "Occupation",
+        "genCat": "Raw materials",
+        "prodfam": "coatings",
+        "prodtype": "fireproof coatings",
+        "definition": "Fireproof coatings manufactured for commercial use, to be used within products."
+    },
+    {
+        "id": 394,
+        "kindName": "Occupation",
+        "genCat": "Raw materials",
+        "prodfam": "coatings",
+        "prodtype": "",
+        "definition": "Coatings manufactured for commercial use."
+    },
+    {
+        "id": 391,
+        "kindName": "Occupation",
+        "genCat": "Raw materials",
+        "prodfam": "flame retardants",
+        "prodtype": "",
+        "definition": "flame retardants used as a raw material in a finished product"
+    },
+    {
+        "id": 379,
+        "kindName": "Occupation",
+        "genCat": "Raw materials",
+        "prodfam": "solvent formulations",
+        "prodtype": "",
+        "definition": "Industrial solvents used as a raw material in industrial/commercial manufacturing processes."
+    },
+    {
+        "id": 159,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "child specific",
+        "prodtype": "bath paints/crayons",
+        "definition": "bath paints or bath crayons"
+    },
+    {
+        "id": 160,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "child specific",
+        "prodtype": "diaper cream",
+        "definition": "diaper creams and ointments"
+    },
+    {
+        "id": 161,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "dental care",
+        "prodtype": "",
+        "definition": "personal care products related to dental care, which do not fit into a more refined category"
+    },
+    {
+        "id": 162,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "dental care",
+        "prodtype": "denture adhesive",
+        "definition": "denture adhesives"
+    },
+    {
+        "id": 163,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "dental care",
+        "prodtype": "denture cleaner",
+        "definition": "denture cleansers"
+    },
+    {
+        "id": 164,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "dental care",
+        "prodtype": "mouthwash",
+        "definition": "antiseptic and dental mouthwashes and rinses"
+    },
+    {
+        "id": 165,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "dental care",
+        "prodtype": "toothpaste",
+        "definition": "toothpastes and dentrifices"
+    },
+    {
+        "id": 167,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "eye care and contacts",
+        "prodtype": "contact care",
+        "definition": "contact lens cleaners and solutions"
+    },
+    {
+        "id": 168,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "eye care and contacts",
+        "prodtype": "",
+        "definition": "products for use around or in the eye that are not otherwise categorized"
+    },
+    {
+        "id": 169,
+        "kindName": "Formulation",
+        "genCat": "Personal care",
+        "prodfam": "eye care and contacts",
+        "prodtype": "eye cream",
+        "definition": "products applied to skin located around the eye to moisturize or improve skin qualities"
+    },
+    {
+        "id": 125,
+        "kindName": "Formulation",
+        "genCat": "Landscape/yard",
+        "prodfam": "plants and garden",
+        "prodtype": "mulch",
+        "definition": "organic materials placed on soil surface or mixed with soil to improve water retention, suppress weeds, or otherwise improve soils"
+    },
+    {
+        "id": 124,
+        "kindName": "Formulation",
+        "genCat": "Landscape/yard",
+        "prodfam": "plants and garden",
+        "prodtype": "garden fertilizer",
+        "definition": "fertilizers for vegetable or flower gardens, including in combination with pest/weed controllers"
+    },
+    {
+        "id": 123,
+        "kindName": "Formulation",
+        "genCat": "Landscape/yard",
+        "prodfam": "plants and garden",
+        "prodtype": "garden care",
+        "definition": "miscellaneous garden care products not otherwise characterized (e.g. rooting powders)"
+    },
+    {
+        "id": 122,
+        "kindName": "Formulation",
+        "genCat": "Landscape/yard",
+        "prodfam": "plants and garden",
+        "prodtype": "",
+        "definition": "general products for use with plants or in the garden, which do not fit into a more refined category"
+    },
+    {
+        "id": 121,
+        "kindName": "Formulation",
+        "genCat": "Landscape/yard",
+        "prodfam": "lawnmower",
+        "prodtype": "lawnmower fluids",
+        "definition": "oils and other fluids for lawnmowers or other small yard care equipment"
+    },
+    {
+        "id": 120,
+        "kindName": "Formulation",
+        "genCat": "Landscape/yard",
+        "prodfam": "lawnmower",
+        "prodtype": "",
+        "definition": "formulation products for use in or with lawnmowers, which do not fit into a more refined category"
+    },
+    {
+        "id": 119,
+        "kindName": "Formulation",
+        "genCat": "Landscape/yard",
+        "prodfam": "lawn fertilizer",
+        "prodtype": "",
+        "definition": "fertilizers for lawns, including in combination with pest/weed controllers"
+    },
+    {
+        "id": 118,
+        "kindName": "Formulation",
+        "genCat": "Landscape/yard",
+        "prodfam": "herbicide",
+        "prodtype": "",
+        "definition": "products used to control or kill unwanted plants"
+    },
+    {
+        "id": 117,
+        "kindName": "Formulation",
+        "genCat": "Landscape/yard",
+        "prodfam": "grill/camping fuel",
+        "prodtype": "",
+        "definition": "fuels used for outdoor heating, cooking, or illumination"
+    },
+    {
+        "id": 116,
+        "kindName": "Formulation",
+        "genCat": "Landscape/yard",
+        "prodfam": "outdoor cleaner",
+        "prodtype": "",
+        "definition": "products used to clean hard surfaces outside of the home including decks, driveways, and external walls includes products used as part of a mechanical cleaning system (e.g., solutions for pressure sprayers)"
+    },
+    {
+        "id": 63,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "laundry and fabric treatment",
+        "prodtype": "laundry fragrance",
+        "definition": "products added to clothes washers or dryers to scent clothing and other fabrics"
+    },
+    {
+        "id": 62,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "laundry and fabric treatment",
+        "prodtype": "laundry detergent",
+        "definition": "products used in washing machines to clean fabrics"
+    },
+    {
+        "id": 61,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "laundry and fabric treatment",
+        "prodtype": "fabric softener",
+        "definition": "products used to improve tactile properties of fabrics that are added to the rinse water of clothes washers  (excluding dryer sheets)"
+    },
+    {
+        "id": 60,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "laundry and fabric treatment",
+        "prodtype": "fabric protectant",
+        "definition": "products used to release wrinkles or to impart stain resistance to fabric"
+    },
+    {
+        "id": 59,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "laundry and fabric treatment",
+        "prodtype": "fabric deodorizer",
+        "definition": "fabric deodorizers"
+    },
+    {
+        "id": 58,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "laundry and fabric treatment",
+        "prodtype": "dryer sheets",
+        "definition": "dryer fabric softener sheets"
+    },
+    {
+        "id": 57,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "laundry and fabric treatment",
+        "prodtype": "dry cleaner",
+        "definition": "dry cleaning fluids or kits for home use"
+    },
+    {
+        "id": 56,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "lamp oil/lighter fluid",
+        "prodtype": "",
+        "definition": "lighters, lighter fluids, and other indoor fuels"
+    },
+    {
+        "id": 55,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "houseplant care",
+        "prodtype": "",
+        "definition": "products used for houseplants (fertilizers, pesticides, and leaf cleaners) and cut flowers (preservatives and desiccants)"
+    },
+    {
+        "id": 54,
+        "kindName": "Formulation",
+        "genCat": "Cleaning products and household care",
+        "prodfam": "heavy duty cleaner",
+        "prodtype": "",
+        "definition": "heavy duty hard surface cleaning products that may require dilution prior to use (i.e., may  be concentrated)"
+    },
+    {
+        "id": 7,
+        "kindName": "Article",
+        "genCat": "Batteries",
+        "prodfam": "general use",
+        "prodtype": "",
+        "definition": "General use batteries that do not fit into a more refined category."
+    },
+    {
+        "id": 22,
+        "kindName": "Article",
+        "genCat": "Batteries",
+        "prodfam": "electronic device",
+        "prodtype": "",
+        "definition": "Electronic device batteries that do not fit into more refined categories. Includes replacement batteries for these devices."
+    },
+    {
+        "id": 6,
+        "kindName": "Article",
+        "genCat": "Batteries",
+        "prodfam": "general use",
+        "prodtype": "alkaline",
+        "definition": "Single-use alkaline batteries, used in general household products (AA, AAA,  etc)."
+    },
+    {
+        "id": 24,
+        "kindName": "Article",
+        "genCat": "Batteries",
+        "prodfam": "general use",
+        "prodtype": "rechargeable",
+        "definition": "Batteries for general use that are specified as rechargeable."
+    },
+    {
+        "id": 20,
+        "kindName": "Article",
+        "genCat": "Batteries",
+        "prodfam": "electronic device",
+        "prodtype": "phone",
+        "definition": "Electronic device batteries intended for wireless/cordless telephones, including cell phones. Includes replacement batteries for these devices."
+    },
+    {
+        "id": 19,
+        "kindName": "Article",
+        "genCat": "Batteries",
+        "prodfam": "electronic device",
+        "prodtype": "laptop",
+        "definition": "Electronic device batteries intended for laptop computers. Includes replacement batteries for these devices."
+    },
+    {
+        "id": 17,
+        "kindName": "Article",
+        "genCat": "Batteries",
+        "prodfam": "electronic device",
+        "prodtype": "camera",
+        "definition": "Electronic device batteries intended for cameras, including photo and video cameras. Includes replacement batteries for these devices."
+    },
+    {
+        "id": 397,
+        "kindName": "Occupation",
+        "genCat": "Cleaning and safety",
+        "prodfam": "cleaning products",
+        "prodtype": "industrial surface cleaners",
+        "definition": "Products used to clean hard surfaces in commercial/industrial settings. Including surface and glass combination products."
+    },
+    {
+        "id": 398,
+        "kindName": "Occupation",
+        "genCat": "Cleaning and safety",
+        "prodfam": "cleaning products",
+        "prodtype": "industrial disinfectant",
+        "definition": "products used to control viruses, bacteria, etc. on hard surfaces in commercial/industrial settings. Includes disinfectant sprays, wipes, etc."
+    },
+    {
+        "id": 399,
+        "kindName": "Occupation",
+        "genCat": "Cleaning and safety",
+        "prodfam": "cleaning products",
+        "prodtype": "industrial hand sanitizer",
+        "definition": "Antibacterial products for application to hands intended for commercial/industrial settings. Includes sprays, gels, wipes, etc."
+    },
+    {
+        "id": 250,
+        "kindName": "Formulation",
+        "genCat": "Pet and animal care",
+        "prodfam": "all pets",
+        "prodtype": "pet shampoo",
+        "definition": "pet shampoos (including those containing pesticides, such as flea/tick shampoos)"
+    },
+    {
+        "id": 249,
+        "kindName": "Formulation",
+        "genCat": "Pet and animal care",
+        "prodfam": "all pets",
+        "prodtype": "pesticide - pet",
+        "definition": "pesticides orally administered, worn (e.g. collars), or applied to the skin, fur, etc. of pets; including flea/tick collars, excluding pesticidal shampoos"
+    },
+    {
+        "id": 255,
+        "kindName": "Formulation",
+        "genCat": "Pet and animal care",
+        "prodfam": "fish",
+        "prodtype": "aquarium",
+        "definition": "miscellaneous aquarium products for the maintenance of aquatic pets"
+    },
+    {
+        "id": 248,
+        "kindName": "Formulation",
+        "genCat": "Pet and animal care",
+        "prodfam": "all pets",
+        "prodtype": "other pet treatments",
+        "definition": "miscellaneous pet treatments (excluding pesticides and shampoos)"
+    },
+    {
+        "id": 247,
+        "kindName": "Formulation",
+        "genCat": "Pet and animal care",
+        "prodfam": "all pets",
+        "prodtype": "",
+        "definition": "products for pet care which do not fit into a more refined category; specifically those products which can be used on all pets"
+    },
+    {
+        "id": 246,
+        "kindName": "Formulation",
+        "genCat": "Pet and animal care",
+        "prodfam": "",
+        "prodtype": "",
+        "definition": "products intended for pet care and general animal care, which do not fit into a more refined category"
+    },
+    {
+        "id": 364,
+        "kindName": "Formulation",
+        "genCat": "Pet and animal care",
+        "prodfam": "farm animals",
+        "prodtype": "",
+        "definition": "products intended for the care of farm animals, including cows, horses, pigs, chickens, etc."
+    },
+    {
+        "id": 254,
+        "kindName": "Formulation",
+        "genCat": "Pet and animal care",
+        "prodfam": "fish",
+        "prodtype": "",
+        "definition": "care products specifically for pet fish, fish ponds, etc, which do not fit into a more refined category"
+    },
+    {
+        "id": 253,
+        "kindName": "Formulation",
+        "genCat": "Pet and animal care",
+        "prodfam": "cats",
+        "prodtype": "cat litter",
+        "definition": "solids used to capture and deodorize cat wastes"
+    },
+    {
+        "id": 252,
+        "kindName": "Formulation",
+        "genCat": "Pet and animal care",
+        "prodfam": "cats",
+        "prodtype": "",
+        "definition": "care products specifically for cats which do not fit into a more refined category"
+    }
+]
