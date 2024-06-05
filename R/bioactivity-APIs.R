@@ -117,7 +117,7 @@ get_bioactivity_details <- function(DTXSID = NULL,
     })
 
     # Unnest the columns which are nested lists
-    if (length(nested_indices) > 0){
+    if (length(nested_indices) > 0 && any(nested_indices)){
       res_temp <- tidyr::unnest(data = as.data.frame(res_dt), cols = nested_list_cols[nested_indices])
       res_dt <- data.table::as.data.table(res_temp)
     }
