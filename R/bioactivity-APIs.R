@@ -101,8 +101,27 @@ get_bioactivity_details <- function(DTXSID = NULL,
       if (length(col_index) > 0){
         res <- tidyr::unnest_wider(data = res, col = param_cols[col_index])
       }
-     }
+    }
+
+
     res_dt <- data.table::data.table(res)
+
+    # For columns which are lists of lists, we want to unnest the lists
+    # Check which columns that tend to return nested are in the data.table
+    nested_list_cols <- intersect(names(res_dt), c('resp', 'logc', 'flag', 'mc6MthdId'))
+
+    # Check which of these columns are lists of lists. Every entry must be a
+    # list in order to be unnested
+    nested_indices <- sapply(seq_along(nested_list_cols), function(t) {
+      all(sapply(as.data.frame(res_dt)[, nested_list_cols[[t]]], is.list))
+    })
+
+    # Unnest the columns which are nested lists
+    if (length(nested_indices) > 0 && any(nested_indices)){
+      res_temp <- tidyr::unnest(data = as.data.frame(res_dt), cols = nested_list_cols[nested_indices])
+      res_dt <- data.table::as.data.table(res_temp)
+    }
+
     return(res_dt)
   } else {
     if (verbose){
