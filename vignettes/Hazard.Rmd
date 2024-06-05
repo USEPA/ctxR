@@ -66,7 +66,7 @@ registerS3method(
 
 ## Introduction
 
-In this vignette, [CCTE Hazard APIs](https://api-ccte.epa.gov/docs/hazard.html) will be explored. 
+In this vignette, [CTED Hazard APIs](https://api-ccte.epa.gov/docs/hazard.html) will be explored. 
 
 ::: {.noticebox data-latex=""}
 
@@ -80,7 +80,7 @@ This resource is a compilation of information sourced from multiple public datas
 
 ## Functions
 
-Several ccdR functions are used to access the CCTE Hazard API data.
+Several ccdR functions are used to access the CTED Hazard API data.
 
 ### Hazard Resource
 
@@ -185,11 +185,11 @@ Figure 2 shows the genotoxicity section of the hazard tab for Bisphenol A. This 
 ![<font style="font-size:15px"><i>Figure 2: CCD Hazard Data>Genotoxicity for Bisphenol A</i></font>](./Pictures/CCD_BPA_genotoxicity.png)
 </center>
 
-The CCTE APIs streamline the process of retrieving this information in a programmatic fashion. Figure 3 shows the particular set of genotoxicity resources available in the `Hazard` endpoints of the CCTE APIs. There are both summary and detail resources, reflecting the information one can find on the CompTox Chemicals Dashboard Genotoxicity page for a given chemical.
+The CTED APIs streamline the process of retrieving this information in a programmatic fashion. Figure 3 shows the particular set of genotoxicity resources available in the `Hazard` endpoints of the CTED APIs. There are both summary and detail resources, reflecting the information one can find on the CompTox Chemicals Dashboard Genotoxicity page for a given chemical.
 
 <center>
 
-![<font style="font-size:15px"><i>Figure 3: CCTE Hazard APIs for Genotoxicity Endpoints </i></font>](./Pictures/Hazard_-_genotoxicity_resource.png)
+![<font style="font-size:15px"><i>Figure 3: CTED Hazard APIs for Genotoxicity Endpoints </i></font>](./Pictures/Hazard_-_genotoxicity_resource.png)
 </center>
 
 ### Review Genotoxicity Data for Chemical Lists
@@ -311,7 +311,7 @@ head(ccl4_hazard)
 
 ## Conclusion
 
-In this vignette, a variety of functions that access different types of data found in the `Hazard` endpoints of the CCTE APIs were explored. While this exploration was not exhaustive, it provides a basic introduction to how one may access data and work with it. Additional endpoints and corresponding functions exist and we encourage the user to explore these while keeping in mind the examples contained in this vignette.
+In this vignette, a variety of functions that access different types of data found in the `Hazard` endpoints of the CTED APIs were explored. While this exploration was not exhaustive, it provides a basic introduction to how one may access data and work with it. Additional endpoints and corresponding functions exist and we encourage the user to explore these while keeping in mind the examples contained in this vignette.
 
 ```{r breakdown, echo = FALSE, results = 'hide'}
 # This chunk will be hidden in the final product. It serves to undo defining the
