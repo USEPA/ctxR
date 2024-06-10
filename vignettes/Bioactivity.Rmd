@@ -62,10 +62,9 @@ registerS3method(
   envir = asNamespace("knitr")
 )
 
-library(DT)
 # helper function for printing
 printFormattedTable <- function(res_dt, widen = c()) {
-  datatable(res_dt, style = 'bootstrap', class = 'table-bordered table-condensed', rownames = FALSE, options = list(scrollX = TRUE, autoWidth = TRUE, dom = 't', columnDefs = list(list(width = '1250px', targets = widen))))
+  DT::datatable(res_dt, style = 'bootstrap', class = 'table-bordered table-condensed', rownames = FALSE, options = list(scrollX = TRUE, autoWidth = TRUE, dom = 't', columnDefs = list(list(width = '1250px', targets = widen))))
 }
 ```
 
