@@ -74,9 +74,11 @@ In this vignette, [CTED Hazard APIs](https://api-ccte.epa.gov/docs/hazard.html) 
 
 :::
 
-Data for the Hazard APIs comes ToxValDB. The Toxicity Value Database (ToxValDB) includes data on thousands of chemicals from tens of thousands of records, with an emphasis on quantitative estimates of relevant points-of-departure from in vivo toxicology studies, such as no- and low-observable adverse effect levels, screening levels, reference doses, tolerable daily intake, etc. 
+Data for the Hazard APIs come from the Toxicity Value Database [(ToxValDB)](https://cfpub.epa.gov/si/si_public_record_Report.cfm?dirEntryId=344315&Lab=NCCT). ToxValDB includes data on thousands of chemicals from tens of thousands of records, with an emphasis on quantitative estimates of relevant points-of-departure from in vivo toxicology studies, such as no- and low-observable adverse effect levels, screening levels, reference doses, tolerable daily intake, etc. 
 
-This resource is a compilation of information sourced from multiple public datasets, databases and open literature. More information on ToxValDB can be found at <https://www.epa.gov/comptox-tools/downloadable-computational-toxicology-data#AT>.
+Data from the Aggregated Computational Toxicology Resource [(ACToR)](https://www.epa.gov/comptox-tools/downloadable-computational-toxicology-data#actor) is currently being migrated into ToxValDB. The ACToR resource was reported in [Judson et al (2008)](https://doi.org/10.1016/j.taap.2007.12.037) and was designed to serve as a central location for information on chemical structure ***in vitro*** bioassays, and ***in vivo*** toxicology assays used in various [Computational Toxicology](https://www.epa.gov/comptox-tools) efforts at US EPA.
+
+More information on ToxValDB can be found at <https://www.epa.gov/comptox-tools/downloadable-computational-toxicology-data#AT>. Additionally, public presentations and resources to learn more about ToxValDB and the use cases of its data can be found in a [US EPA Computational Toxicology Communities of Practice Monthly Meeting presentation](https://epa.figshare.com/articles/presentation/ToxValDB_Compiling_Publicly_Available_In_Vivo_Toxicity_Data/7800653) and a [2024 Society of Toxicology poster](https://epa.figshare.com/articles/poster/Developing_data_provenance_approaches_in_ToxValDB_An_IRIS_Case_Study/25472164).
 
 ## Functions
 
