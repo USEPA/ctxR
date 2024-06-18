@@ -4,11 +4,13 @@
 #' @param DTXCID The chemical identifier DTXCID
 #' @param Projection The format and chemical detail data returned. Allowed
 #'   values are 'chemicaldetailall', 'chemicaldetailstandard',
-#'   'chemicalidentifier', 'chemicalstructure'. If left empty or there is a
-#'   mismatch, the default format will be 'chemicaldetailstandard'.
+#'   'chemicalidentifier', 'chemicalstructure', 'ntatoolkit',
+#'   'ccdchemicaldetails'. If left empty or there is a mismatch, the default
+#'   format will be 'chemicaldetailstandard'.
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
-#' @param verbose A logical indicating if some “progress report” should be given.
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
 #'
 #' @return A data.table containing chemical information for the chemical with
 #'   DTXSID matching the input parameter.
@@ -41,7 +43,8 @@ get_chemical_details <- function(DTXSID = NULL,
                           'chemicaldetailstandard',
                           'chemicalidentifier',
                           'chemicalstructure',
-                          'ntatoolkit')
+                          'ntatoolkit',
+                          'ccdchemicaldetails')
   index <- 2
   if (!is.character(Projection)){
     warning('Setting `Projection` to `chemicaldetailstandard`')
@@ -115,7 +118,7 @@ get_chemical_details <- function(DTXSID = NULL,
 
 
 create_data.table_chemical_details <- function(index = -1){
-  if (index %in% 2:5 ){
+  if (index %in% 2:6 ){
     if (index == 2){
       data <- data.table::data.table(id = character(),
                                      cpdataCount = integer(),
@@ -173,7 +176,7 @@ create_data.table_chemical_details <- function(index = -1){
                                      msReadySmiles = character(),
                                      dtxsid = character(),
                                      dtxcid = character())
-    } else {
+    } else if (index == 5) {
       data <- data.table::data.table(preferredName = character(),
                                      inchikey = character(),
                                      msReadySmiles = character(),
@@ -191,6 +194,44 @@ create_data.table_chemical_details <- function(index = -1){
                                      expocatMedianPrediction = character(),
                                      expocat = character(),
                                      nhanes = character())
+    } else {
+      data <- data.table::data.table(id = character(),
+                                     dtxsid = character(),
+                                     dtxcid = character(),
+                                     casrn = character(),
+                                     compoundId = integer(),
+                                     genericSubstanceId = integer(),
+                                     preferredName = character(),
+                                     activeAssays = integer(),
+                                     molFormula = character(),
+                                     monoisotopicMass = numeric(),
+                                     percentAssays = integer(),
+                                     pubchemCount = integer(),
+                                     pubmedCount = integer(),
+                                     sourcesCount = integer(),
+                                     qcLevel = integer(),
+                                     qcLevelDesc = character(),
+                                     isotope = integer(),
+                                     multicomponent = integer(),
+                                     totalAssays = integer(),
+                                     toxcastSelect = character(),
+                                     pubchemCid = integer(),
+                                     relatedSubstanceCount = integer(),
+                                     relatedStructureCount = integer(),
+                                     hasStructureImage = integer(),
+                                     iupacName = character(),
+                                     smiles = character(),
+                                     inchiString = character(),
+                                     averageMass = numeric(),
+                                     qcNotes = character(),
+                                     qsarReadySmiles = character(),
+                                     msReadySmiles = character(),
+                                     irisLink = character(),
+                                     pprtvLink = character(),
+                                     isMarkush = integer(),
+                                     inchikey = character(),
+                                     wikipediaArticle = character(),
+                                     cpdataCount = integer())
     }
     return(data)
   }
@@ -275,6 +316,19 @@ get_chemical_details_by_listname <- function(listname = NULL,
 
 }
 
+#' Get Smiles
+#'
+#' @param name Chemical name
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
+#'
+#' @return A string giving a SMILES string for the input chemical.
+#' @export
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' bpa_smiles <- get_smiles(name = "Bisphenol A")
+
 get_smiles <- function(name = NULL,
                        API_key = NULL,
                        Server = chemical_api_server,
@@ -311,7 +365,19 @@ get_smiles <- function(name = NULL,
 
 }
 
-get_InChIKey <- function(name = NULL,
+#' Get InChIKey
+#'
+#' @param name Chemical name
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
+#' @return A string giving the associated InChIKey.
+#' @export
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' bpa_inchikey <- get_inchikey(name = "Bisphenol A")
+
+get_inchikey <- function(name = NULL,
                          API_key = NULL,
                          Server = chemical_api_server,
                          verbose = FALSE){
@@ -347,7 +413,19 @@ get_InChIKey <- function(name = NULL,
 
 }
 
-get_InChI <- function(name = NULL,
+#' Get InChI
+#'
+#' @param name Chemical name
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
+#' @return A string giving the associated inchi string.
+#' @export
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' bpa_inchi <- get_inchi(name = "Bisphenol A")
+
+get_inchi <- function(name = NULL,
                       API_key = NULL,
                       Server = chemical_api_server,
                       verbose = FALSE){
@@ -591,7 +669,10 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
 #'   name
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
-#' @param verbose A logical indicating if some “progress report” should be given.
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
+#' @param top The number of results to return if there are multiple results
+#'   available
 #'
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
@@ -603,7 +684,8 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
 chemical_starts_with <- function(word = NULL,
                            API_key = NULL,
                            Server = chemical_api_server,
-                           verbose = FALSE){
+                           verbose = FALSE,
+                           top = NULL){
   if (is.null(word) || !is.character(word)){
     stop('Please input a character value for word!')
   } else if (is.null(API_key)){
@@ -615,9 +697,22 @@ chemical_starts_with <- function(word = NULL,
     }
   }
 
+  if (!is.null(top)){
+    if (!is.numeric(top)) {
+      warning("Setting 'top' to NULL")
+      top <- NULL
+    } else {
+      top <- max(-1, as.integer(top))
+      if (top < 1){
+        warning("Setting 'top' to NULL")
+        top <- NULL
+      }
+    }
+  }
+
   word <- prepare_word(word)
 
-  response <- httr::GET(url = paste0(Server, '/search/start-with/', word),
+  response <- httr::GET(url = paste0(Server, '/search/start-with/', word, ifelse(is.null(top), '', paste0("?top=", top))),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -704,6 +799,8 @@ chemical_equal <- function(word = NULL,
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
 #' @param verbose A logical indicating if some “progress report” should be given.
+#' @param top The number of results to return if there are multiple results
+#'   available
 #'
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
@@ -715,7 +812,8 @@ chemical_equal <- function(word = NULL,
 chemical_contains <- function(word = NULL,
                               API_key = NULL,
                               Server = chemical_api_server,
-                              verbose = FALSE){
+                              verbose = FALSE,
+                              top = NULL){
   if (is.null(word) || !is.character(word)){
     stop('Please input a character value for word!')
   } else if (is.null(API_key)){
@@ -727,9 +825,22 @@ chemical_contains <- function(word = NULL,
     }
   }
 
+  if (!is.null(top)){
+    if (!is.numeric(top)) {
+      warning("Setting 'top' to NULL")
+      top <- NULL
+    } else {
+      top <- max(-1, as.integer(top))
+      if (top < 1){
+        warning("Setting 'top' to NULL")
+        top <- NULL
+      }
+    }
+  }
+
   word <- prepare_word(word)
 
-  response <- httr::GET(url = paste0(Server, '/search/contain/', word),
+  response <- httr::GET(url = paste0(Server, '/search/contain/', word, ifelse(is.null(top), '', paste0("?top=", top))),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -1466,6 +1577,7 @@ get_chemical_mol <- function(DTXSID = NULL,
 #'
 #' @param DTXSID Chemical identifier DTXSID
 #' @param DTXCID Chemical identifier DTXCID
+#' @param SMILES Chemical identifier SMILES
 #' @param format The image type, either "png" or "svg". If left blank, will
 #'   default to "png".
 #' @param API_key The user-specific API key
@@ -1490,14 +1602,15 @@ get_chemical_mol <- function(DTXSID = NULL,
 
 get_chemical_image <- function(DTXSID = NULL,
                                DTXCID = NULL,
+                               SMILES = NULL,
                                format = "",
                                API_key = NULL,
                                Server = chemical_api_server,
                                verbose = FALSE){
-  if (is.null(DTXSID) & is.null(DTXCID))
-    stop('Please input a DTXSID or DTXCID!')
-  else if (!is.null(DTXSID) & !is.null(DTXCID))
-    stop('Please input either a DTXSID or DTXCID, but not both!')
+  if (is.null(DTXSID) & is.null(DTXCID) & is.null(SMILES))
+    stop('Please input a DTXSID, DTXCID, or SMILES!')
+  else if (length(which(!sapply(list(DTXSID, DTXCID, SMILES), is.null))) > 1)
+    stop('Please input only one DTXSID, DTXCID, or SMILES, and not multiple!')
   else if (is.null(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
@@ -1507,22 +1620,29 @@ get_chemical_image <- function(DTXSID = NULL,
     }
   }
   if (format == 'png'){
-    image_type = "?format=png"
+    image_type = "Image+Format=png"
   } else if (format == 'svg'){
-    image_type = "?format=svg"
+    image_type = "Image+Format=svg"
   } else {
     image_type = ""
   }
 
   if (!is.null(DTXSID)){
-    response <- httr::GET(url = paste0(Server, '/file/image/search/by-dtxsid/', DTXSID, image_type),
+    response <- httr::GET(url = paste0(Server, '/file/image/search/by-dtxsid/', DTXSID, '?', image_type),
+                          httr::add_headers(.headers = c(
+                            'Content-Type' =  'application/json',
+                            'x-api-key' = API_key)
+                          )
+    )
+  } else if (!is.null(DTXCID)) {
+    response <- httr::GET(url = paste0(Server, '/file/image/search/by-dtxcid/', DTXCID, '?', image_type),
                           httr::add_headers(.headers = c(
                             'Content-Type' =  'application/json',
                             'x-api-key' = API_key)
                           )
     )
   } else {
-    response <- httr::GET(url = paste0(Server, '/file/image/search/by-dtxcid/', DTXCID, image_type),
+    response <- httr::GET(url = paste0(Server, '/file/image/generate?smiles=', prepare_word(SMILES), '&', image_type),
                           httr::add_headers(.headers = c(
                             'Content-Type' =  'application/json',
                             'x-api-key' = API_key)
@@ -1592,3 +1712,16 @@ get_chemical_synonym <- function(DTXSID = NULL,
   return()
 }
 
+#' Chemical API Endpoint status
+#'
+#' @return Status of Chemical API Endpoints
+#' @export
+#'
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' status <- get_chemical_endpoint_status()
+#' print(status)
+
+get_chemical_endpoint_status <- function(){
+  request <- httr::GET(url = "https://api-ccte.epa.gov/chemical/health")
+  return(request$status_code)
+}

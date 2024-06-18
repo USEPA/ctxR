@@ -20,14 +20,16 @@ get_chemical_details(
 
 \item{Projection}{The format and chemical detail data returned. Allowed
 values are 'chemicaldetailall', 'chemicaldetailstandard',
-'chemicalidentifier', 'chemicalstructure'. If left empty or there is a
-mismatch, the default format will be 'chemicaldetailstandard'.}
+'chemicalidentifier', 'chemicalstructure', 'ntatoolkit',
+'ccdchemicaldetails'. If left empty or there is a mismatch, the default
+format will be 'chemicaldetailstandard'.}
 
 \item{API_key}{The user-specific API key}
 
 \item{Server}{The root address for the API endpoint}
 
-\item{verbose}{A logical indicating if some “progress report” should be given.}
+\item{verbose}{A logical indicating if some “progress report” should be
+given.}
 }
 \value{
 A data.table containing chemical information for the chemical with

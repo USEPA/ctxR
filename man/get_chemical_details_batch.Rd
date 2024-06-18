@@ -20,14 +20,16 @@ get_chemical_details_batch(
 
 \item{Projection}{The format and chemical detail data returned. Allowed
 values are 'chemicaldetailall', 'chemicaldetailstandard',
-chemicalidentifier', 'chemicalstructure'. If left empty or there is a
+chemicalidentifier', 'chemicalstructure', 'ntatoolkit',
+ccdchemicaldetails'. If left empty or there is a
 mismatch, the default format will be 'chemicaldetailstandard'.}
 
 \item{API_key}{The user-specific API key}
 
 \item{rate_limit}{Number of seconds to wait between each request}
 
-\item{verbose}{A logical indicating if some “progress report” should be given.}
+\item{verbose}{A logical indicating if some “progress report” should be
+given.}
 }
 \value{
 A data.table (DTXSID) or a named list of data.tables (DTXCID)

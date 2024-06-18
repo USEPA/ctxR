@@ -41,7 +41,7 @@ test_that("catch missing DTXSID/DTXCID", {
   expect_error(get_lists_containing_chemical(), 'Please input a non-null value for DTXSID!')
   expect_error(get_chemical_mrv(), 'Please input a DTXSID or DTXCID!')
   expect_error(get_chemical_mol(), 'Please input a DTXSID or DTXCID!')
-  expect_error(get_chemical_image(), 'Please input a DTXSID or DTXCID!')
+  expect_error(get_chemical_image(), 'Please input a DTXSID, DTXCID, or SMILES!')
   expect_error(get_chemical_synonym(), 'Please input a DTXSID!')
 })
 
@@ -49,7 +49,7 @@ test_that('Catch both DTXSID and DTXCID', {
   expect_error(get_chemical_details(DTXSID = 'DTXSID7020182', DTXCID = 'DTXCID30182'), 'Please input either a DTXSID or DTXCID, but not both!')
   expect_error(get_chemical_mrv(DTXSID = 'DTXSID7020182', DTXCID = 'DTXCID30182'), 'Please input either a DTXSID or DTXCID, but not both!')
   expect_error(get_chemical_mol(DTXSID = 'DTXSID7020182', DTXCID = 'DTXCID30182'), 'Please input either a DTXSID or DTXCID, but not both!')
-  expect_error(get_chemical_image(DTXSID = 'DTXSID7020182', DTXCID = 'DTXCID30182'), 'Please input either a DTXSID or DTXCID, but not both!')
+  expect_error(get_chemical_image(DTXSID = 'DTXSID7020182', DTXCID = 'DTXCID30182'), 'Please input only one DTXSID, DTXCID, or SMILES, and not multiple!')
 
 })
 
@@ -185,4 +185,25 @@ test_that('check helper functions', {
   expect_type(create_data.table_chemical_details(index = 5), 'list')
   expect_type(create_data.table_chemical_details(index = 6), 'list')
   expect_type(create_data.table_chemical_details(index = 'f'), 'list')
+})})
+
+with_mock_dir('IUPAC', simplify = FALSE, {
+
+test_that('IUPAC endpoint input errors', {
+    expect_error(get_smiles(), 'Please input a character string for name!')
+    expect_error(get_smiles(name = 3), 'Please input a character string for name!')
+    expect_error(get_inchi(), 'Please input a character string for name!')
+    expect_error(get_inchi(name = 3), 'Please input a character string for name!')
+    expect_error(get_inchikey(), 'Please input a character string for name!')
+    expect_error(get_inchikey(name = 3), 'Please input a character string for name!')
+})
+
+
+test_that('Return data type', {
+  expect_type(get_smiles(''), 'NULL')
+  expect_type(get_smiles('Acetamide'), 'character')
+  expect_type(get_inchi(''), 'NULL')
+  expect_type(get_inchi('Acetamide'), 'character')
+  expect_type(get_inchikey(''), 'NULL')
+  expect_type(get_inchikey('Acetamide'), 'character')
 })})
