@@ -65,7 +65,7 @@ registerS3method(
 
 ## Introduction
 
-In this vignette, [CCTE Bioactivity APIs](https://api-ccte.epa.gov/docs/bioactivity.html) will be explored. 
+In this vignette, [CTX Bioactivity APIs](https://api-ccte.epa.gov/docs/bioactivity.html) will be explored. 
 
 ::: {.noticebox data-latex=""}
 
@@ -89,7 +89,7 @@ This flexible analysis pipeline is capable of efficiently processing and storing
 
 ## Functions
 
-Several ccdR functions are used to access the CCTE Bioactivity API data.
+Several ccdR functions are used to access the CTX Bioactivity API data.
 
 ### Bioactivity Assay Resource
 
@@ -188,7 +188,7 @@ printFormattedTable(res_dt[205:210,], c(ncol(res_dt)-2)) # printed using custom 
 
 ## Conclusion
 
-In this vignette, a variety of functions that access different types of data found in the `Bioactivity` endpoints of the CCTE APIs were listed. We encourage the reader to explore the data accessible through these endpoints work with it to get a better understanding of what data is available. Additional endpoints and corresponding functions exist and we encourage the user to explore these.
+In this vignette, a variety of functions that access different types of data found in the `Bioactivity` endpoints of the CTX APIs were listed. We encourage the reader to explore the data accessible through these endpoints work with it to get a better understanding of what data is available. Additional endpoints and corresponding functions exist and we encourage the user to explore these.
 
 ```{r breakdown, echo = FALSE, results = 'hide'}
 # This chunk will be hidden in the final product. It serves to undo defining the
