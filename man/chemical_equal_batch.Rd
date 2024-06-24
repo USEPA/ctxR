@@ -13,7 +13,7 @@ chemical_equal_batch(
 }
 \arguments{
 \item{word_list}{A list of character strings of chemical names or portion of
-chemical names}
+chemical names, DTXSIDs, CASRNs, InChIKeys.}
 
 \item{API_key}{User-specific API key}
 

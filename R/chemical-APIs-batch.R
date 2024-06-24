@@ -6,11 +6,13 @@
 #' @param DTXCID The chemical identifier DTXCID
 #' @param Projection The format and chemical detail data returned. Allowed
 #'   values are 'chemicaldetailall', 'chemicaldetailstandard',
-#'   chemicalidentifier', 'chemicalstructure'. If left empty or there is a
+#'   chemicalidentifier', 'chemicalstructure', 'ntatoolkit',
+#'   ccdchemicaldetails'. If left empty or there is a
 #'   mismatch, the default format will be 'chemicaldetailstandard'.
 #' @param API_key The user-specific API key
 #' @param rate_limit Number of seconds to wait between each request
-#' @param verbose A logical indicating if some “progress report” should be given.
+#' @param verbose A logical indicating if some “progress report” should be
+#' given.
 #'
 #' @return A data.table (DTXSID) or a named list of data.tables (DTXCID)
 #'   containing chemical information for the chemicals with DTXSID or DTXCID
@@ -138,7 +140,8 @@ get_chemical_details_batch_2 <- function(DTXSID = NULL,
                             'chemicaldetailstandard',
                             'chemicalidentifier',
                             'chemicalstructure',
-                            'ntatoolkit')
+                            'ntatoolkit',
+                            'ccdchemicaldetails')
     index <- 2
     if (!is.character(Projection)){
       warning('Setting `Projection` to `chemicaldetailstandard`')
@@ -302,10 +305,10 @@ get_smiles_batch <- function(names = NULL,
       response <- httr::POST(url = paste0(Server, '/indigo/to-smiles'),
                              httr::add_headers(.headers = c(
                                'Accept' = 'application/json',
-                               'Content-Type' = 'application/json',
+                               'Content-Type' = 'text/plain',
                                'x-api-key' = API_key
                              )),
-                             body = jsonlite::toJSON(names[indices[[i]]], auto_unbox = ifelse(length(names[indices[[i]]]) > 1, 'T', 'F')))
+                             body = c(names[indices[[i]]]))
 
       if (response$status_code == 200){
         if (length(response$content) > 0){
@@ -360,10 +363,10 @@ get_molecular_weight_batch <- function(names = NULL,
       response <- httr::POST(url = paste0(Server, '/indigo/to-molweight'),
                              httr::add_headers(.headers = c(
                                'Accept' = 'application/json',
-                               'Content-Type' = 'application/json',
+                               'Content-Type' = 'text/plain',
                                'x-api-key' = API_key
                              )),
-                             body = jsonlite::toJSON(names[indices[[i]]], auto_unbox = ifelse(length(names[indices[[i]]]) > 1, 'T', 'F')))
+                             body = c(names[indices[[i]]]))
 
       if (response$status_code == 200){
         if (length(response$content) > 0){
@@ -418,10 +421,10 @@ get_mol_v3000_batch <- function(names = NULL,
       response <- httr::POST(url = paste0(Server, '/indigo/to-mol3000'),
                              httr::add_headers(.headers = c(
                                'Accept' = 'application/json',
-                               'Content-Type' = 'application/json',
+                               'Content-Type' = 'text/plain',
                                'x-api-key' = API_key
                              )),
-                             body = jsonlite::toJSON(names[indices[[i]]], auto_unbox = ifelse(length(names[indices[[i]]]) > 1, 'T', 'F')))
+                             body = c(names[indices[[i]]]))
 
       if (response$status_code == 200){
         if (length(response$content) > 0){
@@ -476,10 +479,10 @@ get_mol_v2000_batch <- function(names = NULL,
       response <- httr::POST(url = paste0(Server, '/indigo/to-mol2000'),
                              httr::add_headers(.headers = c(
                                'Accept' = 'application/json',
-                               'Content-Type' = 'application/json',
+                               'Content-Type' = 'text/plain',
                                'x-api-key' = API_key
                              )),
-                             body = jsonlite::toJSON(names[indices[[i]]], auto_unbox = ifelse(length(names[indices[[i]]]) > 1, 'T', 'F')))
+                             body = c(names[indices[[i]]]))
 
       if (response$status_code == 200){
         if (length(response$content) > 0){
@@ -534,10 +537,10 @@ get_InChI_batch <- function(names = NULL,
       response <- httr::POST(url = paste0(Server, '/indigo/to-inchi'),
                              httr::add_headers(.headers = c(
                                'Accept' = 'application/json',
-                               'Content-Type' = 'application/json',
+                               'Content-Type' = 'text/plain',
                                'x-api-key' = API_key
                              )),
-                             body = jsonlite::toJSON(names[indices[[i]]], auto_unbox = ifelse(length(names[indices[[i]]]) > 1, 'T', 'F')))
+                             body = c(names[indices[[i]]]))
 
       if (response$status_code == 200){
         if (length(response$content) > 0){
@@ -592,10 +595,10 @@ get_canonical_smiles_batch <- function(names = NULL,
       response <- httr::POST(url = paste0(Server, '/indigo/to-canonicalsmiles'),
                              httr::add_headers(.headers = c(
                                'Accept' = 'application/json',
-                               'Content-Type' = 'application/json',
+                               'Content-Type' = 'text/plain',
                                'x-api-key' = API_key
                              )),
-                             body = jsonlite::toJSON(names[indices[[i]]], auto_unbox = ifelse(length(names[indices[[i]]]) > 1, 'T', 'F')))
+                             body = c(names[indices[[i]]]))
 
       if (response$status_code == 200){
         if (length(response$content) > 0){
@@ -1027,6 +1030,8 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
   }
 }
 
+
+
 #' Chemical starts with batch search
 #'
 #' @param word_list A list of character strings of chemical names or portion of
@@ -1034,6 +1039,8 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
 #' @param API_key User-specific API key
 #' @param rate_limit Number of seconds to wait between each request
 #' @param verbose A logical indicating if some “progress report” should be given.
+#' @param top The number of results to return if there are multiple results
+#'   available
 #'
 #' @return A named list of data.frames of chemicals and related values matching
 #'   the query parameters
@@ -1046,7 +1053,8 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
 chemical_starts_with_batch <- function(word_list = NULL,
                                        API_key = NULL,
                                        rate_limit = 0L,
-                                       verbose = FALSE){
+                                       verbose = FALSE,
+                                       top = NULL){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
@@ -1059,6 +1067,20 @@ chemical_starts_with_batch <- function(word_list = NULL,
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
+
+  if (!is.null(top)){
+    if (!is.numeric(top)) {
+      warning("Setting 'top' to NULL")
+      top <- NULL
+    } else {
+      top <- max(-1, as.integer(top))
+      if (top < 1){
+        warning("Setting 'top' to NULL")
+        top <- NULL
+      }
+    }
+  }
+
   if (!is.null(word_list)){
     if (!is.character(word_list) & !all(sapply(word_list, is.character))){
       stop('Please input a character list for word_list!')
@@ -1068,7 +1090,8 @@ chemical_starts_with_batch <- function(word_list = NULL,
       Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
-          chemical_starts_with(word = t, API_key = API_key, verbose = verbose)
+          chemical_starts_with(word = t, API_key = API_key, verbose = verbose,
+                               top = top)
         },
         error = function(cond){
           message(t)
@@ -1089,7 +1112,7 @@ chemical_starts_with_batch <- function(word_list = NULL,
 #' Chemical equal batch search
 #'
 #' @param word_list A list of character strings of chemical names or portion of
-#'   chemical names
+#'   chemical names, DTXSIDs, CASRNs, InChIKeys.
 #' @param API_key User-specific API key
 #' @param rate_limit Number of seconds to wait between each request
 #' @param verbose A logical indicating if some “progress report” should be given.
@@ -1121,12 +1144,105 @@ chemical_equal_batch <- function(word_list = NULL,
     if (!is.character(word_list) & !all(sapply(word_list, is.character))){
       stop('Please input a character list for word_list!')
     }
+
+    results <- data.frame()
+    word_list <- unique(word_list)
+    response <- httr::POST(url = paste0(chemical_api_server, '/search/equal/'),
+                           httr::add_headers(.headers = c(
+                             'accept' = 'application/json',
+                             'content-type' = 'application/json',
+                             'x-api-key' = API_key
+                             )),
+                             body = c(word_list)
+                           )
+
+    if (response$status_code == 200){
+      results <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
+      return(results)
+      }
+
+    # results <- lapply(word_list, function(t){
+    #   Sys.sleep(rate_limit)
+    #   attempt <- tryCatch(
+    #     {
+    #       chemical_equal(word = t, API_key = API_key, verbose = verbose)
+    #     },
+    #     error = function(cond){
+    #       message(t)
+    #       message(cond$message)
+    #       return(NA)
+    #     }
+    #   )
+    #   return(attempt)
+    # }
+    # )
+    # names(results) <- word_list
+    return(results)
+  } else {
+    stop('Please input a list of chemical names!')
+  }
+}
+
+#' Chemical contains batch search
+#'
+#' @param word_list A list of character strings of chemical names or portion of
+#'   chemical names
+#' @param API_key User-specific API key
+#' @param rate_limit Number of seconds to wait between each request
+#' @param verbose A logical indicating if some “progress report” should be given.
+#' @param top The number of results to return if there are multiple results
+#'   available
+#'
+#' @return A named list of data.frames of chemicals and related values matching
+#'   the query parameters
+#' @export
+#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' # Pull chemicals that contain substrings
+#' substring_chemicals <- chemical_contains_batch(word_list = c('TXDIS702018',
+#'                                                              'DTXSID70201'))
+
+chemical_contains_batch <- function(word_list = NULL,
+                                    API_key = NULL,
+                                    rate_limit = 0L,
+                                    verbose = verbose,
+                                    top = NULL){
+  if (is.null(API_key) || !is.character(API_key)){
+    if (has_ccte_key()) {
+      API_key <- ccte_key()
+      if (verbose) {
+        message('Using stored API key!')
+      }
+    }
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+
+  if (!is.null(top)){
+    if (!is.numeric(top)) {
+      warning("Setting 'top' to NULL")
+      top <- NULL
+    } else {
+      top <- max(-1, as.integer(top))
+      if (top < 1){
+        warning("Setting 'top' to NULL")
+        top <- NULL
+      }
+    }
+  }
+
+  if (!is.null(word_list)){
+    if (!is.character(word_list) & !all(sapply(word_list, is.character))){
+      stop('Please input a character list for word_list!')
+    }
     word_list <- unique(word_list)
     results <- lapply(word_list, function(t){
       Sys.sleep(rate_limit)
       attempt <- tryCatch(
         {
-          chemical_equal(word = t, API_key = API_key, verbose = verbose)
+          chemical_contains(word = t, API_key = API_key, verbose = verbose,
+                            top = top)
         },
         error = function(cond){
           message(t)
@@ -1144,26 +1260,28 @@ chemical_equal_batch <- function(word_list = NULL,
   }
 }
 
-#' Chemical contains batch search
+#' Get msready by mass and error offset
 #'
-#' @param word_list A list of character strings of chemical names or portion of
-#'   chemical names
-#' @param API_key User-specific API key
+#' @param masses A numeric list of masses.
+#' @param error The mass offset value.
+#' @param API_key The user-specific API key.
 #' @param rate_limit Number of seconds to wait between each request
-#' @param verbose A logical indicating if some “progress report” should be given.
+#' @param verbose A logical indicating if some "progress report" should be given.
 #'
-#' @return A named list of data.frames of chemicals and related values matching
-#'   the query parameters
+#' @return A list (of lists) of DTXSIDs, with a list returned for each input
+#' mass value.
 #' @export
+#'
 #' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
-#' # Pull chemicals that contain substrings
-#' substring_chemicals <- chemical_contains_batch(word_list = c('TXDIS702018',
-#'                                                              'DTXSID70201'))
+#' #Pull chemicals by msready mass and error offset
+#' msready_data <- get_msready_by_mass_with_error_batch(masses = c(226, 228),
+#'                                                      error = 4)
 
-chemical_contains_batch <- function(word_list = NULL,
-                                    API_key = NULL,
-                                    rate_limit = 0L,
-                                    verbose = verbose){
+get_msready_by_mass_with_error_batch <- function(masses = NULL,
+                                                 error = NULL,
+                                                 API_key = NULL,
+                                                 rate_limit = 0,
+                                                 verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ccte_key()) {
       API_key <- ccte_key()
@@ -1172,35 +1290,52 @@ chemical_contains_batch <- function(word_list = NULL,
       }
     }
   }
+
+  if (is.null(masses) || is.null(error)){
+    stop('Please input a list of masses and an error value!')
+  } else if (!all(sapply(c(masses, error), is.numeric))) {
+    stop('Please input only numeric values for masses and error!')
+  }
+
+  masses <- unique(masses)
+  masses <- masses[masses > 0]
+
+  if (length(masses) == 0) {
+    stop('Please input only positive values for masses!')
+  }
+
+  error <- unique(error)
+  error <- error[error > 0]
+
+  if (length(error) == 0){
+    stop('Value for error must be positive!')
+  } else if (length(error) > 1){
+    warning('Using the first positive value contained in error!')
+    error <- error[[1]]
+  }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
-  if (!is.null(word_list)){
-    if (!is.character(word_list) & !all(sapply(word_list, is.character))){
-      stop('Please input a character list for word_list!')
-    }
-    word_list <- unique(word_list)
-    results <- lapply(word_list, function(t){
-      Sys.sleep(rate_limit)
-      attempt <- tryCatch(
-        {
-          chemical_equal(word = t, API_key = API_key, verbose = verbose)
-        },
-        error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
-        }
-      )
-      return(attempt)
-    }
-    )
-    names(results) <- word_list
-    return(results)
-  } else {
-    stop('Please input a list of chemical names!')
+
+  json_body <- jsonlite::toJSON(x = list(masses = masses,
+                                error = error),
+                                auto_unbox = TRUE)
+
+  response <- httr::POST(url = paste0(chemical_api_server, '/msready/search/by-mass/'),
+                         httr::add_headers(.headers = c(
+                           'Accept' = 'application/json',
+                           'Content-Type' = 'application/json',
+                           'x-api-key' = API_key)),
+                         body = json_body)
+
+  if (response$status_code == 200){
+    return(httr::content(response))
   }
+
+  return(list())
+
 }
 
 #' Get ms ready by mass batch search
@@ -1827,6 +1962,7 @@ get_chemical_mol_batch <- function(DTXSID = NULL,
 #'
 #' @param DTXSID A list of chemical identifier DTXSIDs.
 #' @param DTXCID A list of chemical identifier DTXCIDs.
+#' @param SMILES A list of chemical identifier SMILES.
 #' @param format The image type, either "png" or "svg". If left blank, will
 #'   default to "png".
 #' @param API_key The user-specific API key.
@@ -1848,6 +1984,7 @@ get_chemical_mol_batch <- function(DTXSID = NULL,
 
 get_chemical_image_batch <- function(DTXSID = NULL,
                                      DTXCID = NULL,
+                                     SMILES = NULL,
                                      format = "",
                                      API_key = NULL,
                                      rate_limit = 0L,
@@ -1920,8 +2057,36 @@ get_chemical_image_batch <- function(DTXSID = NULL,
     )
     names(results) <- DTXCID
     return(results)
+  } else if (!is.null(SMILES)) {
+    if (!is.character(SMILES) & !all(sapply(SMILES, is.character))){
+      stop('Please input a character list for SMILES!')
+    }
+    SMILES <- unique(SMILES)
+    if (verbose) {
+      print('Using SMILES!')
+    }
+    results <- purrr::map2(.x = SMILES, .y = format, function(d, f){
+      Sys.sleep(rate_limit)
+      attempt <- tryCatch(
+        {
+          get_chemical_image(SMILES = d,
+                             format = f,
+                             API_key = API_key,
+                             verbose = verbose)
+        },
+        error = function(cond){
+          message(d)
+          message(cond$message)
+          return(NA)
+        }
+      )
+      return(attempt)
+    }
+    )
+    names(results) <- SMILES
+    return(results)
   } else {
-    stop('Please input a list of DTXSIDs or DTXCIDs!')
+    stop('Please input a list of DTXSIDs, DTXCIDs, or SMILEs!')
   }
 }
 

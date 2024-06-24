@@ -7,6 +7,7 @@
 get_chemical_image_batch(
   DTXSID = NULL,
   DTXCID = NULL,
+  SMILES = NULL,
   format = "",
   API_key = NULL,
   rate_limit = 0L,
@@ -17,6 +18,8 @@ get_chemical_image_batch(
 \item{DTXSID}{A list of chemical identifier DTXSIDs.}
 
 \item{DTXCID}{A list of chemical identifier DTXCIDs.}
+
+\item{SMILES}{A list of chemical identifier SMILES.}
 
 \item{format}{The image type, either "png" or "svg". If left blank, will
 default to "png".}

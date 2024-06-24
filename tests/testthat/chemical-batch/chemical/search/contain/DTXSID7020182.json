@@ -1,0 +1,38 @@
+[
+    {
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182",
+        "casrn": "80-05-7",
+        "preferredName": "Bisphenol A",
+        "hasStructureImage": 1,
+        "smiles": "CC(C)(C1=CC=C(O)C=C1)C1=CC=C(O)C=C1",
+        "isMarkush": false,
+        "searchName": "DSSTox_Substance_Id",
+        "searchValue": "DTXSID7020182",
+        "rank": 1
+    },
+    {
+        "dtxsid": "DTXSID70201820",
+        "dtxcid": "DTXCID00124311",
+        "casrn": "536-95-8",
+        "preferredName": "Carinamide",
+        "hasStructureImage": 1,
+        "smiles": "OC(=O)C1=CC=C(NS(=O)(=O)CC2=CC=CC=C2)C=C1",
+        "isMarkush": false,
+        "searchName": "DSSTox_Substance_Id",
+        "searchValue": "DTXSID70201820",
+        "rank": 1
+    },
+    {
+        "dtxsid": "DTXSID70201825",
+        "dtxcid": "DTXCID00124316",
+        "casrn": "53605-00-8",
+        "preferredName": "Phosphorothioic acid, O,O-diethyl O-3-pyridazinyl ester",
+        "hasStructureImage": 1,
+        "smiles": "CCOP(=S)(OCC)OC1=NN=CC=C1",
+        "isMarkush": false,
+        "searchName": "DSSTox_Substance_Id",
+        "searchValue": "DTXSID70201825",
+        "rank": 1
+    }
+]

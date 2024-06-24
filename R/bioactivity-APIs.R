@@ -76,7 +76,11 @@ get_bioactivity_details <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+    req_content <- httr::content(response, as = 'text', encoding = "UTF-8")
+    if (nchar(req_content) == 0){
+      return(data.table::data.table())
+    }
+    res <- jsonlite::fromJSON(req_content)
     if (!is.data.frame(res) & (length(res) != 0)){
       for (i in 1:length(res)){
         if (is.null(res[[i]])) res[[i]] <- NA # set any NULLs to NA
@@ -89,9 +93,35 @@ get_bioactivity_details <- function(DTXSID = NULL,
     param_cols <- c('mc3Param', 'mc4Param', 'mc5Param', 'mc6Param')
     col_index <- which(param_cols %in% names(res))
     if (length(col_index) > 0){
-     res <- tidyr::unnest_wider(data = res, col = param_cols[col_index])
+      # In some cases, columns are given by data.frames and we will not try to unnest these
+      non_df_cols <- param_cols[col_index][which(sapply(param_cols[col_index], function(t){!is.data.frame(res[[t]])}))]
+      if (length(non_df_cols) > 0)
+        # In some cases, columns will be NA (in the m4id cases) and we will not try to unnest these
+        col_index <- which(unname(!sapply(res[which(names(res) %in% non_df_cols)], is.na)))
+      if (length(col_index) > 0){
+        res <- tidyr::unnest_wider(data = res, col = param_cols[col_index])
+      }
     }
+
+
     res_dt <- data.table::data.table(res)
+
+    # For columns which are lists of lists, we want to unnest the lists
+    # Check which columns that tend to return nested are in the data.table
+    nested_list_cols <- intersect(names(res_dt), c('resp', 'logc', 'flag', 'mc6MthdId'))
+
+    # Check which of these columns are lists of lists. Every entry must be a
+    # list in order to be unnested
+    nested_indices <- sapply(seq_along(nested_list_cols), function(t) {
+      all(sapply(as.data.frame(res_dt)[, nested_list_cols[[t]]], is.list))
+    })
+
+    # Unnest the columns which are nested lists
+    if (length(nested_indices) > 0 && any(nested_indices)){
+      res_temp <- tidyr::unnest(data = as.data.frame(res_dt), cols = nested_list_cols[nested_indices])
+      res_dt <- data.table::as.data.table(res_temp)
+    }
+
     return(res_dt)
   } else {
     if (verbose){
