@@ -61,7 +61,6 @@ registerS3method(
   "knit_print", "data.table", knit_print.data.table,
   envir = asNamespace("knitr")
 )
-
 # helper function for printing
 printFormattedTable <- function(res_dt, widen = c()) {
   DT::datatable(res_dt, style = 'bootstrap', class = 'table-bordered table-condensed', rownames = FALSE, options = list(scrollX = TRUE, autoWidth = TRUE, dom = 't', columnDefs = list(list(width = '1250px', targets = widen))))
@@ -70,7 +69,9 @@ printFormattedTable <- function(res_dt, widen = c()) {
 
 # Introduction
 
-In this vignette, the [CTED Bioactivity API](https://api-ccte.epa.gov/docs/bioactivity.html) will be explored. 
+
+In this vignette, [CTX Bioactivity API](https://api-ccte.epa.gov/docs/bioactivity.html) will be explored. 
+
 
 ::: {.noticebox data-latex=""}
 
@@ -100,7 +101,9 @@ Regular ToxCast/invitrodb users may find it easier to use [tcpl](https://CRAN.R-
 
 # Functions
 
-Several ccdR functions are used to access the CTED Bioactivity API data.
+
+Several ccdR functions are used to access the CTX Bioactivity API data.
+
 
 ## Bioactivity Assay Resource
 
@@ -110,8 +113,12 @@ Specific assays may be searched as well as all available assays that have data u
 
 `get_annotation_by_aeid()` retrieves annotation for a specific assay endpoint id (aeid).
 
-```{r ccdR annotation by aeid, message=FALSE}
-assay <- get_annotation_by_aeid(AEID = 891)
+
+```{r ccdR annotation by aeid, message=FALSE, eval=FALSE}
+res_dt <- get_annotation_by_aeid(AEID = "891")
+# optionally perform this unnest, apply names_repair = "unique" to give a unique column name
+# note - the gene column may be an array of multiple genes rather than just one, meaning this step may not work
+#res_dt <- res_dt |> tidyr::unnest_wider(col = c("citation", "gene", "assayList"), names_repair = "unique")
 ```
 
 ```{r, echo=FALSE}
@@ -126,8 +133,12 @@ assays <- get_annotation_by_aeid_batch(AEID = c(759,700,891))
 assays <- data.table::rbindlist(assays)
 ```
 
-```{r, echo=FALSE}
-printFormattedTable(assays, c(4, 18, 19, 33, 51)) # printed using custom formatted table
+
+```{r ccdR all assays, message=FALSE, eval=FALSE}
+res_dt <- get_all_assays()
+# optionally perform the following unnest, apply names_repair = "unique" to give a unique column name
+# note - the gene column may be an array of multiple genes rather than just one, meaning this step may not work
+#res_dt <- res_dt |> tidyr::unnest_wider(col = c("citation", "gene", "assayList"), names_repair = "unique")
 ```
 
 ### Get all assay annotations
@@ -146,8 +157,9 @@ There are several resources for retrieving bioactivity data associated with a va
 
 `get_bioactivity_summary()` retrieves a summary of the number of active hits compared to the total number tested for both multiple and single concentration by aeid.
 
-```{r ccdR summary by aeid, message=FALSE}
-summary <- get_bioactivity_summary(AEID = 891)
+
+```{r ccdR summary by aeid, message=FALSE, eval=FALSE}
+res_dt <- get_bioactivity_summary(AEID = "891")
 ```
 
 ```{r, echo=FALSE}
@@ -155,6 +167,7 @@ printFormattedTable(summary) # printed using custom formatted table
 ```
 
 `get_bioactivity_summary_batch()` retrieves a summary for a list (or vector) of assay endpoint ids (aeids).
+
 
 ```{r ccdR summary by aeid batch, message=FALSE}
 summary <- get_bioactivity_summary_batch(AEID = c(759,700,891))
@@ -169,9 +182,10 @@ printFormattedTable(summary) # printed using custom formatted table
 
 `get_bioactivity_details()` can retrieve all available multiple concentration data by assay endpoint id (aeid), sample id (spid), Level 4 ID (m4id), or chemical DTXSID. Returned is chemical information, level 3 concentration-response values, level 4 fit parameters, level 5 hit parameters, and level 6 flags for individual chemicals tested. An example for each request parameter is provided below:
 
-```{r ccdR data by spid, message=FALSE, results = FALSE}
-# By spid
-spid_data <- get_bioactivity_details(SPID = "TP0000904H05")
+
+```{r ccdR data by m4id, message=FALSE, results = FALSE, eval=FALSE}
+res_dt <- get_bioactivity_details(m4id = 739695)
+
 ```
 
 ```{r, echo=FALSE}
@@ -183,8 +197,9 @@ printFormattedTable(head(spid_data), c(ncol(spid_data)-2)) # printed using custo
 m4id_data <- get_bioactivity_details(m4id = 739695)
 ```
 
-```{r, echo=FALSE}
-printFormattedTable(m4id_data, c(ncol(m4id_data)-2)) # printed using custom formatted table
+
+```{r ccdR data by dtxsid, message=FALSE, results = FALSE, eval=FALSE}
+res_dt <- get_bioactivity_details(DTXSID = "DTXSID7020182")
 ```
 
 ```{r ccdR data by dtxsid, message=FALSE, results = FALSE}
@@ -196,9 +211,9 @@ dtxsid_data <- get_bioactivity_details(DTXSID = "DTXSID30944145")
 printFormattedTable(dtxsid_data, c(ncol(dtxsid_data)-2)) # printed using custom formatted table
 ```
 
-```{r ccdR data by aeid, message=FALSE, results = FALSE}
-# By aeid
-aeid_data <- get_bioactivity_details(AEID = 704)
+
+```{r ccdR data by aeid, message=FALSE, results = FALSE, eval=FALSE}
+res_dt <- get_bioactivity_details(AEID = "891")
 ```
 
 ```{r, echo=FALSE}
@@ -214,7 +229,9 @@ aeid_data_batch <- data.table::rbindlist(aeid_data_batch, fill = TRUE)
 
 # Conclusion
 
-In this vignette, a variety of functions that access different types of data found in the `Bioactivity` endpoints of the CCTE APIs were listed. We encourage the reader to explore the data accessible through these endpoints work with it to get a better understanding of what data is available. Additionally, experienced ToxCast/invitrodb users may find it easier to continue to use [tcpl](https://CRAN.R-project.org/package=tcpl), which has integrated ccdR's bioactivity functions to make the API data retrievable in a familiar format.
+
+In this vignette, a variety of functions that access different types of data found in the `Bioactivity` endpoints of the CTX APIs were listed. We encourage the reader to explore the data accessible through these endpoints work with it to get a better understanding of what data is available. Additionally, experienced ToxCast/invitrodb users may find it easier to continue to use [tcpl](https://CRAN.R-project.org/package=tcpl), which has integrated ccdR's bioactivity functions to make the API data retrievable in a familiar format.
+
 
 ```{r breakdown, echo = FALSE, results = 'hide'}
 # This chunk will be hidden in the final product. It serves to undo defining the

@@ -77,7 +77,7 @@ registerS3method(
 
 ## Introduction
 
-In this vignette, [Computational Toxicology and Exposure Data (CTED) API Chemical endpoints](https://api-ccte.epa.gov/docs/chemical.html) will be explored. 
+In this vignette, [CTX Chemical API](https://api-ccte.epa.gov/docs/chemical.html) will be explored. 
 
 ::: {.noticebox data-latex=""}
 
@@ -87,16 +87,17 @@ In this vignette, [Computational Toxicology and Exposure Data (CTED) API Chemica
 
 The foundation of toxicology, toxicokinetics, and exposure is embedded in the physics and chemistry of chemical-biological interactions. The accurate characterization of chemical structure linked to commonly used identifiers, such as names and Chemical Abstracts Service Registry Numbers (CASRNs), is essential to support both predictive modeling of the data as well as dissemination and application of the data for chemical safety decisions. 
 
-With cheminformatics as the backbone for research efforts, sources of available data through the CTED API Chemical endpoints include:
+With cheminformatics as the backbone for research efforts, sources of available data through the CTX Chemical API include:
 
--  Chemical structures, nomenclature, synonyms, IDs, list associations, physicochemical property, environmental fate, and transport data from the Distributed Structure-Searchable Toxicity (DSSTox) database
-- Predictions from Toxicity Estimation Software Tool (TEST) suite of QSAR models 
+-  Chemical structures, nomenclature, synonyms, IDs, list associations, physicochemical property, environmental fate and transport data from the Distributed Structure-Searchable Toxicity  ([DSSTox](https://www.epa.gov/comptox-tools/distributed-structure-searchable-toxicity-dsstox-database)) database. For early references, see [(Richard, A. et al. 2002)](https://doi.org/10.1016/S0027-5107(01)00289-5), [(Richard, A. et al. 2006)](https://files.toxplanet.com/cpdb/pdfs/structure_tox_on_web.pdf), and [(Richard, A. et al 2008)](https://doi.org/10.1080/15376510701857452).
+- Predictions from Toxicity Estimation Software Tool  ([TEST](https://www.epa.gov/comptox-tools/toxicity-estimation-software-tool-test)) suite of QSAR models. For early references, see [(Martin, T. et al. 2001)](https://pubs.acs.org/doi/10.1021/tx0155045), [(Martin, T. et al. 2007)](https://doi.org/10.1080/15376510701857353), and [(Young, D. et al. 2008)]( https://doi.org/10.1002/qsar.200810084).  
 
 More information on Chemicals and Chemistry Data can be found here: <https://www.epa.gov/comptox-tools/downloadable-computational-toxicology-data#SCD>.
 
 ## Functions
 
-Several ccdR functions are used to access the CTED API Chemical data.
+
+Several ccdR functions are used to access the CTX Chemical API data.
 
 ### Chemical Details Resource
 
@@ -148,7 +149,9 @@ res_string <- get_inchi(name = 'Bisphenol A')
 `get_chemical_by_property_range()` retrieves data for chemicals that have a specified property within the input range.
 
 ```{r ccdR property range chemical, message=FALSE, eval=FALSE}
-res_dt <- get_chemical_by_property_range(start = 1.311, end = 1.313, property = 'Density')
+res_dt <- get_chemical_by_property_range(start = 1.311, 
+                                         end = 1.313, 
+                                         property = 'Density')
 ```
 
 `get_chem_info()` retrieves specific chemical information for an input chemical. This includes both experimental and predicted values by default, but providing "experimental" or "predicted" to the type parameter will return the specific associated information.
@@ -201,7 +204,8 @@ res_list <- get_msready_by_mass_with_error_batch(masses = c(226, 228), error = 1
 ##### Mass Range
 
 ```{r ccdR mass range ms ready chemical, message=FALSE, eval=FALSE}
-res_dt <- get_msready_by_mass(start = 200.9, end = 200.95)
+res_dt <- get_msready_by_mass(start = 200.9, 
+                              end = 200.95)
 ```
 
 ##### Chemical Formula
@@ -595,7 +599,7 @@ To summarize the observations, across the various physico-chemical properties fo
 
 ## Conclusion
 
-In this vignette, a variety of functions that access different types of data found in the `Chemical` endpoints of the CTEDAPIs were explored. While this exploration was not exhaustive, it provides a basic introduction to how one may access data and work with it. Additional endpoints and corresponding functions exist and we encourage the user to explore these while keeping in mind the examples contained in this vignette.
+In this vignette, a variety of functions that access different types of data found in the `Chemical` endpoints of the CTX API were explored. While this exploration was not exhaustive, it provides a basic introduction to how one may access data and work with it. Additional endpoints and corresponding functions exist and we encourage the user to explore these while keeping in mind the examples contained in this vignette.
 
 ```{r breakdown, echo = FALSE, results = 'hide'}
 # This chunk will be hidden in the final product. It serves to undo defining the

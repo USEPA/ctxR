@@ -54,15 +54,15 @@ registerS3method(
 
 ## Introduction to the CompTox Chemicals Dashboard (CCD)
 
-Accessing chemical data is a vital step in many workflows related to chemical, biological, and environmental modeling. While there are many resources available from which one can pull data, the [CompTox Chemicals Dashboard](https://comptox.epa.gov/dashboard/) (CCD), built and maintained by the United States Environmental Protection Agency, is particularly well-designed and suitable for these purposes. Originally introduced in [The CompTox Chemistry Dashboard: a community data resource for environmental chemistry](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0247-6), the CCD contains information on over 1.2 million chemicals as of December 2023. 
+Accessing chemical data is a vital step in many workflows related to chemical, biological, and environmental modeling. While there are many resources available from which one can pull data, the [CompTox Chemicals Dashboard](https://comptox.epa.gov/dashboard/) (CCD), built and maintained by the United States Environmental Protection Agency, is particularly well-designed and suitable for these purposes. Originally introduced in [The CompTox Chemistry Dashboard: a community data resource for environmental chemistry](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0247-6), the CCD contains information on over 1.2 million chemicals as of May 2024 and has been cited 612 times according to CrossRef. To learn more about the CCD, please visit the page [About CCD](https://www.epa.gov/comptox-tools/comptox-chemicals-dashboard-about).
 
-The CCD includes chemical information from many different domains, including physicochemical, environmental fate and transport, exposure, usage, *in vivo* toxicity, and *in vitro* bioassay data. For information on data sources and current versions, please review the [CCD Release Notes](https://www.epa.gov/comptox-tools/comptox-chemicals-dashboard-release-notes).
+The CCD includes chemical information from many different domains, including physicochemical, environmental fate and transport, exposure, usage, *in vivo* toxicity, and *in vitro* bioassay data. For information on data sources and current versions, please review the [CCD Release Notes](https://www.epa.gov/comptox-tools/comptox-chemicals-dashboard-release-notes). It provides a graphical user interface that allows for an interactive user experience and is easy to navigate. As such, users can explore the data available on the CCD without any programming background.
 
 The CCD can be queried for one chemical at a time or using batch search.
 
 ### Searching one chemical at a time (single-substance search)
 
-In single-substance search, the user enters a full or partial chemical identifier (name, CASRN, InChiKey, or DSSTox ID) into a search box on the CCD homepage. Autocomplete can provide a list of possible matches. Figure 1 shows an example: the CCD landing page for the chemical [Bisphenol A](https://comptox.epa.gov/dashboard/chemical/invitrodb/DTXSID7020182). 
+In single-substance search, the user enters a full or partial chemical identifier (name, CASRN, InChiKey, or DSSTox ID) into a search box on the CCD homepage. Autocomplete can provide a list of possible matches. Figure 1 shows an example: the CCD landing page for the chemical [Bisphenol A](https://comptox.epa.gov/dashboard/chemical/invitrodb/DTXSID7020182). This page is generated for Bisphenol A and links to but does not represent other chemicals. Each chemical in the CCD has its own page similar to this, with varying levels of accessible based on the information that is available.
 
 <center>
 
@@ -120,13 +120,13 @@ Moreover, the manual stages of this kind of workflow are also non-transparent an
 
 Recently, the [Center for Computational Toxicology and Exposure](https://www.epa.gov/aboutepa/about-center-computational-toxicology-and-exposure-ccte) (CCTE) developed a set of Application Programming Interfaces (APIs) that allows programmatic access to the CCD, bypassing the manual steps of the web-based batch search workflow. APIs effectively automate the process of accessing and downloading the data that populates the CCD. 
 
-The [CCTE APIs](https://api-ccte.epa.gov/docs/) are publicly available at no cost to the user. However, in order to use the CCTE APIs, users must have a individual API key. The API key uniquely identifies the user to the CCD servers and verifies that you have permission to access the database. Getting an API key is free, but requires contacting the API support team at [ccte_api@epa.gov](mailto:ccte_api@epa.gov).
+The [CTX APIs](https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis) are publicly available at no cost to the user. However, in order to use the CTX APIs, users must have a individual API key. The API key uniquely identifies the user to the CCD servers and verifies that you have permission to access the database. Getting an API key is free, but requires contacting the API support team at [ccte_api@epa.gov](mailto:ccte_api@epa.gov).
 
-The APIs are organized into sets of "endpoints" by data domains: `Chemical`, `Hazard`, and `Bioactivity`. A view from the [Chemical APIs](https://api-ccte.epa.gov/docs/chemical.html) web interface is pictured below.
+The APIs are organized into sets of "endpoints" by data domains: `Chemical`, `Hazard`, and `Bioactivity`. An endpoint provides access to a specific set of information and data, e.g. physical-chemical properties for a chemical that the user specifies. A view from the [Chemical APIs](https://api-ccte.epa.gov/docs/chemical.html) web interface is pictured below.
 
 <center>
 
-![<font style="font-size:15px"><i>Figure 4: CCTE API Chemical Endpoints</i></font>](./Pictures/CCTE_Chemical_API_endpoints.png)
+![<font style="font-size:15px"><i>Figure 4: CTX API Chemical Endpoints</i></font>](./Pictures/CTX_Chemical_API_endpoints.png)
 
 </center>
 
@@ -138,7 +138,7 @@ On the left side of each domain's web interface page, there will be several diff
 
 <center>
 
-![<font style="font-size:15px"><i>Figure 5: API Key Authentication</i></font>](./Pictures/CCTE_API_Key_authentication.png)
+![<font style="font-size:15px"><i>Figure 5: API Key Authentication</i></font>](./Pictures/CTX_API_Key_authentication.png)
 
 </center>
 
@@ -146,7 +146,7 @@ On the left side of each domain's web interface page, there will be several diff
 
 APIs effectively automate the process of accessing and downloading the data that populates the CCD. APIs do this via requests using the Hypertext Transfer Protocol (HTTP) that enables communication between clients (e.g. your computer) and servers (e.g. the CCD).
 
-In the CCTE API web interface, the colored boxes next to each endpoint indicate the type of the associated HTTP method. <span style="color:blue">GET</span> is used to request data from a specific web resource (e.g. a specific URL); <span style="color:green">POST</span> is used to send data to a server to create or update a web resource. For the CCTE APIs, <span style="color:green">POST</span> requests are used to perform multiple (batch) searches in a single API call; <span style="color:blue">GET</span> requests are used for non-batch searches. 
+In the CTX API web interface, the colored boxes next to each endpoint indicate the type of the associated HTTP method. <span style="color:blue">GET</span> is used to request data from a specific web resource (e.g. a specific URL); <span style="color:green">POST</span> is used to send data to a server to create or update a web resource. For the CTX APIs, <span style="color:green">POST</span> requests are used to perform multiple (batch) searches in a single API call; <span style="color:blue">GET</span> requests are used for non-batch searches. 
 
 You do not need to understand the details of POST and GET requests in order to use the API. Let's consider constructing an API request to `Get data by dtxsid` under the `Chemical Details Resource`.
 
@@ -182,7 +182,7 @@ Pictured below is an example of returned Details for Bisphenol A with the `chemi
 
 Formatting an http request is not necessarily intuitive nor worth the time for someone not already familiar with the process, so these endpoints may provide a resource that for many would require a significant investment in time and energy to learn how to use. However, there is a solution to this in the form of the R package *ccdR*.
 
-*ccdR* was developed to streamline the process of accessing the information available through the CCTE APIs without requiring prior knowledge of how to use APIs. 
+*ccdR* was developed to streamline the process of accessing the information available through the CTX APIs without requiring prior knowledge of how to use APIs. 
 
 ### Package Settings
 
@@ -198,14 +198,14 @@ devtools::install_github("USEPA/ccdR")
 
 ### API Key Storage
 
-As previously described, a user must have an API key to use in order to access the CCTE APIs. This can be obtained from the admins of the CCTE APIs by emailing [CCTE API Admins](mailto:ccte_api@epa.gov). In the example code, the API key will be stored as the variable `my_key`.
+As previously described, a user must have an API key to use in order to access the CTX APIs. This can be obtained from the admins of the CTX APIs by emailing [CTX API Admins](mailto:ccte_api@epa.gov). In the example code, the API key will be stored as the variable `my_key`.
 
 ```{r, echo = FALSE}
 my_key <- ccte_key()
 ```
 
 ```{r, eval = FALSE, api-key}
-my_key <- 'YOUR_CCTE_API_key'
+my_key <- 'YOUR_CTX_API_key'
 ```
 
 For general use of the package, the user may use the function `register_ccdr()` to store the API key in the current session or more permanently for access across sessions.
@@ -244,7 +244,7 @@ For additional examples and more comprehensive documentation on each endpoint, c
 
 #### Chemical APIs
 
-In this section, several ccdR functions are used to access different types of information from the [CCTE Chemical APIs](https://api-ccte.epa.gov/docs/chemical.html#/).
+In this section, several ccdR functions are used to access different types of information from the [CTX Chemical APIs](https://api-ccte.epa.gov/docs/chemical.html#/).
 
 ##### Chemical Details Resource
 
@@ -284,7 +284,7 @@ head(bpa_info_experimental)
 
 #### Hazard APIs
 
-In this section, several ccdR functions are used to access different types of information from the [CCTE Hazard APIs](https://api-ccte.epa.gov/docs/hazard.html#/).
+In this section, several ccdR functions are used to access different types of information from the [CTX Hazard APIs](https://api-ccte.epa.gov/docs/hazard.html#/).
 
 ##### Hazard Resource
 
@@ -319,7 +319,7 @@ head(bpa_eco_hazard)
 
 #### Bioactivity APIs
 
-In this section, several ccdR functions are used to access different types of information from the [CCTE Bioactivity APIs](https://api-ccte.epa.gov/docs/bioactivity.html#/).
+In this section, several ccdR functions are used to access different types of information from the [CTX Bioactivity APIs](https://api-ccte.epa.gov/docs/bioactivity.html#/).
 
 ##### Bioactivity Resource
 
