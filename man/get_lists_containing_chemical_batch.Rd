@@ -27,7 +27,7 @@ A named list of chemical lists that contain the given chemicals.
 Get chemical lists containing given chemical batch
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull lists containing chemicals for multiple chemicals
 lists <- get_lists_containing_chemical_batch(chemical_list = c('DTXSID7020182',
                                                                'DTXSID2021315'))

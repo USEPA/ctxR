@@ -28,7 +28,7 @@ search criteria
 Get msready by DTXCID batch search
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull msready chemicals matching specific DTXCID
 dtxcid_msready <- get_msready_by_dtxcid_batch(DTXCID = c('DTXCID30182',
                                                          'DTXCID001315'))

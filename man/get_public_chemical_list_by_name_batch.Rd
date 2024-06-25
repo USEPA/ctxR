@@ -34,7 +34,7 @@ chemicals in a given list, use \code{\link{get_chemicals_in_list}}.
 Get chemical list by name batch
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull chemical list information by list names
 list_info <- get_public_chemical_list_by_name_batch(name_list = c('CCL4',
                                                                   'NATADB'))

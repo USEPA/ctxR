@@ -34,7 +34,7 @@ parameters
 Chemical starts with
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull chemicals that start with a fragment DTXSID
 dtxsid_fragment <- chemical_starts_with(word = 'DTXSID702018')
 \dontshow{\}) # examplesIf}

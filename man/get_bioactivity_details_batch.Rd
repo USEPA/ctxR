@@ -40,7 +40,7 @@ the chemicals with DTXSID or assays with AEID matching the input parameter.
 Retrieve bioactivity data from DTXSID or AEID batch
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull bioactivity details for multiple chemicals
 dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 batch_bioactivity <- get_bioactivity_details_batch(DTXSID = dtxsid)

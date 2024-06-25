@@ -33,7 +33,7 @@ the query parameters
 Chemical contains batch search
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull chemicals that contain substrings
 substring_chemicals <- chemical_contains_batch(word_list = c('TXDIS702018',
                                                              'DTXSID70201'))

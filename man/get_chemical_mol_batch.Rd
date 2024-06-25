@@ -31,7 +31,7 @@ of the given input chemicals.
 Get mol file by DTXSID or DTXCID batch
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull mol files for multiple chemicals by DTXSID
 dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 mol_files <- get_chemical_mol_batch(DTXSID = dtxsid)

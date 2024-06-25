@@ -40,7 +40,7 @@ matching the input parameter.
 Retrieve chemical details from DTXSID of DTXCID in batch search
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull chemical details for multiple chemicals by dtxsid
 dtxsids <- c('DTXSID7020182', 'DTXSID2021315')
 dtxsid_details <- get_chemical_details_batch(DTXSID = dtxsid)

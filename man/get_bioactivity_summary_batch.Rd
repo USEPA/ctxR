@@ -31,7 +31,7 @@ information for the assays with AEID matching the input parameter.
 Retrieve bioactivity summary data from AEID batch
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Get bioactivity summary for multiple aeids
 aeids <- get_bioactivity_summary_batch(AEID = c(159, 160))
 \dontshow{\}) # examplesIf}

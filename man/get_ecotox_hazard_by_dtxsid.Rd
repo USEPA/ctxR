@@ -27,7 +27,7 @@ A data.frame containing chemical (ecotox) hazard data
 Get ecotox hazard data by DTXSID
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull ecotox hazard data for BPA
 bpa_ecotox <- get_ecotox_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
 \dontshow{\}) # examplesIf}
