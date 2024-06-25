@@ -1,5 +1,5 @@
 ---
-title: "Hazard APIs"
+title: "Hazard API"
 author: "Center for Computational Toxicology and Exposure"
 output:
    prettydoc::html_pretty:
@@ -66,7 +66,7 @@ registerS3method(
 
 ## Introduction
 
-In this vignette, [CTX Hazard APIs](https://api-ccte.epa.gov/docs/hazard.html) will be explored. 
+In this vignette, [CTX Hazard API](https://api-ccte.epa.gov/docs/hazard.html) will be explored. 
 
 ::: {.noticebox data-latex=""}
 
@@ -74,7 +74,7 @@ In this vignette, [CTX Hazard APIs](https://api-ccte.epa.gov/docs/hazard.html) w
 
 :::
 
-Data for the Hazard APIs come from the Toxicity Value Database [(ToxValDB)](https://cfpub.epa.gov/si/si_public_record_Report.cfm?dirEntryId=344315&Lab=NCCT). ToxValDB includes data on thousands of chemicals from tens of thousands of records, with an emphasis on quantitative estimates of relevant points-of-departure from in vivo toxicology studies, such as no- and low-observable adverse effect levels, screening levels, reference doses, tolerable daily intake, etc. 
+Data for the Hazard API come from the Toxicity Value Database [(ToxValDB)](https://cfpub.epa.gov/si/si_public_record_Report.cfm?dirEntryId=344315&Lab=NCCT). ToxValDB includes data on thousands of chemicals from tens of thousands of records, with an emphasis on quantitative estimates of relevant points-of-departure from in vivo toxicology studies, such as no- and low-observable adverse effect levels, screening levels, reference doses, tolerable daily intake, etc. 
 
 The Aggregated Computational Toxicology Resource [(ACToR)](https://www.epa.gov/comptox-tools/downloadable-computational-toxicology-data#actor) is currently being integrated into ToxValDB. ACToR, as described in [Judson et al (2008)](https://doi.org/10.1016/j.taap.2007.12.037), was designed to serve as a central location for information on chemical structure ***in vitro*** bioassays, and ***in vivo*** toxicology assays used in various [Computational Toxicology](https://www.epa.gov/comptox-tools) efforts at US EPA.
 

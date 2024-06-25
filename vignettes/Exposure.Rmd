@@ -1,5 +1,5 @@
 ---
-title: "Exposure APIs"
+title: "Exposure API"
 author: "Center for Computational Toxicology and Exposure"
 output:
    prettydoc::html_pretty:
@@ -71,7 +71,7 @@ registerS3method(
 
 ## Introduction
 
-In this vignette, the [CTED Exposure APIs](https://api-ccte.epa.gov/docs/exposure.html) will be explored. 
+In this vignette, the [CTX Exposure API](https://api-ccte.epa.gov/docs/exposure.html) will be explored. 
 
 ::: {.noticebox data-latex=""}
 
@@ -79,9 +79,9 @@ In this vignette, the [CTED Exposure APIs](https://api-ccte.epa.gov/docs/exposur
 
 :::
 
-Data provided by the Exposure APIs are broadly organized in three different areas, Functional Use Information, Product Data, and List Presence Data. These data (except for the Functional Use Probability endpoint) are developed from publicly available documents and are also accessible using the Chemical Exposure Knowledgebase ([ChempExpo](https://comptox.epa.gov/chemexpo/)) interactive web application developed by the United States Environmental Protection Agency. The underlying database for both the Exposure APIs and ChemExpo is the Chemicals and Products Database (CPDat). CPDat provides reported information on how chemicals are used in commerce and (where possible) at what quantities they occur in consumer and industrial products; see [Dionisio et al. (2018)](https://www.nature.com/articles/sdata2018125) for more information on CPDat. The data provided by the Functional Use Probability endpoint are predictions from EPA's Quantitative Structure Use Relationship (QSUR) models [Phillips et al. (2017)](https://pubs.rsc.org/en/content/articlelanding/2017/gc/c6gc02744j).
+Data provided by the Exposure API are broadly organized in three different areas, Functional Use Information, Product Data, and List Presence Data. These data (except for the Functional Use Probability endpoint) are developed from publicly available documents and are also accessible using the Chemical Exposure Knowledgebase ([ChempExpo](https://comptox.epa.gov/chemexpo/)) interactive web application developed by the United States Environmental Protection Agency. The underlying database for both the Exposure API and ChemExpo is the Chemicals and Products Database (CPDat). CPDat provides reported information on how chemicals are used in commerce and (where possible) at what quantities they occur in consumer and industrial products; see [Dionisio et al. (2018)](https://www.nature.com/articles/sdata2018125) for more information on CPDat. The data provided by the Functional Use Probability endpoint are predictions from EPA's Quantitative Structure Use Relationship (QSUR) models [Phillips et al. (2017)](https://pubs.rsc.org/en/content/articlelanding/2017/gc/c6gc02744j).
 
-Product Data are organized by harmonized Product Use Categories (PUCs). The PUCs are assigned to products (which are associated with Composition Documents) and indicate the type of product associated to each data record. They are organized hierarchicially, with General Category containing Product Family, which in turn contains Product Type. The Exposure APIs also provide information on how the PUC was assigned. Do note that a Machine Learning model is used to assign PUCs with the "classificationmethod" equal to "Automatic". As such, these assignments may be incorrect. More information on PUC categories can be found in [Isaacs et al. (2020)](https://doi.org/10.1038/s41370-019-0187-5).
+Product Data are organized by harmonized Product Use Categories (PUCs). The PUCs are assigned to products (which are associated with Composition Documents) and indicate the type of product associated to each data record. They are organized hierarchicially, with General Category containing Product Family, which in turn contains Product Type. The Exposure API also provide information on how the PUC was assigned. Do note that a Machine Learning model is used to assign PUCs with the "classificationmethod" equal to "Automatic". As such, these assignments may be incorrect. More information on PUC categories can be found in [Isaacs et al. (2020)](https://doi.org/10.1038/s41370-019-0187-5).
 
 List Presence Data reflect the occurrence of chemicals on lists present in publicly available documents (sourced from a variety of federal and state agencies and trade associations). These lists are tagged with List Presence Keywords (LPKs) that together describe information contained in the document relevant to how the chemical was used. LPKs are an updated version of the cassettes provided in the Chemical and Product Categories (CPCat) database; see [Dionisio et al. (2015)](https://www.sciencedirect.com/science/article/pii/S2214750014001632?via%3Dihub). For the most up to date information on the current LPKs and to see how the CPCat cassettes were updated, see [Koval et al. (2022)](https://www.nature.com/articles/s41370-022-00451-8).
 
@@ -93,7 +93,7 @@ Sakshi Handa, Katherine A. Phillips, Kenta Baron-Furuyama, and Kristin K. Isaacs
 
 ## Functions
 
-Several ccdR functions are used to access the CTED Exposure API data.
+Several ccdR functions are used to access the CTX Exposure API data.
 
 ### Functional Use Resource
 
@@ -200,7 +200,7 @@ Observe that Caffeine only has probabilities assigned to four functional use cat
 
 ## Conclusion
 
-There are several CTED `Exposure` API endpoints and ccdR contains functions for each, and batch versions for some of these as well. These allow users to access various types of exposure data associated to a given chemical. In this vignette, we explored all of the non-batch versions and discussed the batch versions. We encourage the user to experiment with the different endpoints to understand better what sorts of data are available.
+There are several CTX `Exposure` API endpoints and ccdR contains functions for each, and batch versions for some of these as well. These allow users to access various types of exposure data associated to a given chemical. In this vignette, we explored all of the non-batch versions and discussed the batch versions. We encourage the user to experiment with the different endpoints to understand better what sorts of data are available.
 
 ```{r breakdown, echo = FALSE, results = 'hide'}
 # This chunk will be hidden in the final product. It serves to undo defining the
