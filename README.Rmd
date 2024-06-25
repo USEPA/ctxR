@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of ccdR is to provide R users a set of functions to access the [CCTE API](https://api-ccte.epa.gov/docs/index.html) without requiring extensive experience interacting directly with APIs.
+The goal of ccdR is to provide R users a set of functions to access the [CTX APIs](https://api-ccte.epa.gov/docs/index.html) without requiring extensive experience interacting directly with APIs.
 
 ## Installation
 
@@ -39,4 +39,4 @@ install.packages('ccdR')
 ```
 
 
-Disclaimer: You won't need a API key to install the ccdR package, but will need to supply an API key to use ccdR. Please visit [CCTE API](https://api-ccte.epa.gov/docs/index.html) to request an API key. 
+Disclaimer: You won't need a API key to install the ccdR package, but will need to supply an API key to use ccdR. Please visit [CTX APIs](https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis) to request an API key. 

@@ -7,7 +7,7 @@
 <!-- badges: end -->
 
 The goal of ccdR is to provide R users a set of functions to access the
-[CCTE API](https://api-ccte.epa.gov/docs/index.html) without requiring
+[CTX APIs](https://api-ccte.epa.gov/docs/index.html) without requiring
 extensive experience interacting directly with APIs.
 
 ## Installation
@@ -20,7 +20,7 @@ if (!library(devtools, logical.return = TRUE)){
   library(devtools)
 }
 
-devtools::install_github("USEPA/ccdR")
+devtools::install_gitub("USEPA/ccdR")
 ```
 
 You can install from CRAN using the following:
@@ -30,5 +30,6 @@ install.packages('ccdR')
 ```
 
 Disclaimer: You won’t need a API key to install the ccdR package, but
-will need to supply an API key to use ccdR. Please visit [CCTE
-API](https://api-ccte.epa.gov/docs/index.html) to request an API key.
+will need to supply an API key to use ccdR. Please visit [CTX
+APIs](https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis)
+to request an API key.
