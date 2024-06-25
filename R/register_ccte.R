@@ -1,11 +1,11 @@
-#' Register a CCTE API
+#' Register a CTX API
 #'
-#' This page contains documentation tools related to enabling CCTE API services
+#' This page contains documentation tools related to enabling CTX API services
 #' in R.
 #'
 #' To obtain an API key and enable services, go to
 #' \url{https://api-ccte.epa.gov/docs/}. This documentation shows you how to
-#' obtain an API key to allow access to the CCTE APIs.
+#' obtain an API key to allow access to the CTX APIs.
 #'
 
 #' To tell ccdR about your API key, use [register_ccdr()], e.g.
@@ -18,8 +18,8 @@
 #'
 #' Users should be aware that the API key, a string of garbled
 #' characters/numbers/symbols, is a PRIVATE key - it uniquely identifies and
-#' authenticates you to CCTE's services. If anyone gets your API key, they can
-#' use it to masquerade as you to CCTE. To mitigate against users inadvertently
+#' authenticates you to CTX's services. If anyone gets your API key, they can
+#' use it to masquerade as you to CTX. To mitigate against users inadvertently
 #' sharing their keys, by default ccdR never displays a user's key in messages
 #' displayed to the console.
 #'
@@ -46,13 +46,13 @@
 #'  * `register_ccdr()` has no return value but has the side effect of
 #'  storing the API key.
 #'
-#'  * `print.ccte_credentials()` has no return value and is an S3 method for
-#'  printing the `ccte_credentials` class.
+#'  * `print.ctx_credentials()` has no return value and is an S3 method for
+#'  printing the `ctx_credentials` class.
 #'
-#'  * `ccte_key()` returns a string, either the stored API key or
+#'  * `ctx_key()` returns a string, either the stored API key or
 #'   \code{NA_character_}.
 #'
-#'  * `has_ccte_key()` returns a Boolean.
+#'  * `has_ctx_key()` returns a Boolean.
 #' @name register_ccdr
 
 
@@ -177,7 +177,7 @@ register_ccdr <- function(key, write = FALSE) {
 
     # set key in current session
     .pkgenv[["api"]] <- key
-    #Sys.setenv('CCTE_API_KEY' = key)
+    #Sys.setenv('CTX_API_KEY' = key)
 
   }
 
@@ -199,10 +199,10 @@ register_ccdr <- function(key, write = FALSE) {
 #' @export
 #' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
 #' # Print function for ccte_credentials class
-#' print.ccte_credentials()
+#' print.ctx_credentials()
 
-print.ccte_credentials <- function(...) {
-  cat('Key -',     if (!has_ccte_key()) '' else {if(showing_key()) ccte_key() else 'xxx' }, '\n')
+print.ctx_credentials <- function(...) {
+  cat('Key -',     if (!has_ctx_key()) '' else {if(showing_key()) ctx_key() else 'xxx' }, '\n')
 }
 
 
@@ -210,11 +210,11 @@ print.ccte_credentials <- function(...) {
 #' @rdname register_ccdr
 #' @export
 #' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
-#' # Display ccte API key
-#' ccte_key()
+#' # Display ctx API key
+#' ctx_key()
 
-ccte_key <- function() {
-  key <- .pkgenv[["api"]] #Sys.getenv('CCTE_API_KEY')
+ctx_key <- function() {
+  key <- .pkgenv[["api"]] #Sys.getenv('CTX_API_KEY')
 
   if (key == '') {
     return(NA_character_)
@@ -226,11 +226,11 @@ ccte_key <- function() {
 
 #' @rdname register_ccdr
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Check whether API key is registered
 #' has_ccte_key()
 
-has_ccte_key <- function () !is.na(ccte_key())
+has_ctx_key <- function () !is.na(ctx_key())
 
 
 

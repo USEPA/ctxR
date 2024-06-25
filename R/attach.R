@@ -32,11 +32,11 @@
 
 bootstrap_ccdr <- function() {
   set_ccdr_option(
-    'ccte' = structure(
+    'ctx' = structure(
       list(
 
     ),
-    class = 'ccte_credentials'
+    class = 'ctx_credentials'
   ),
   'display_api_key' = FALSE
   )
@@ -68,7 +68,7 @@ bootstrap_ccdr <- function() {
     } else {
       if (!silent) packageStartupMessage("API key file found but no api entry.")
     }
-  } else if ((ev <- Sys.getenv("CCTE_API_KEY")) != "") {
+  } else if ((ev <- Sys.getenv("CTX_API_KEY")) != "") {
     .pkgenv[["api"]] <- ev
     if (!silent) packageStartupMessage("Setting API key from environment variable.")
   } else {
