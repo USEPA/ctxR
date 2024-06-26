@@ -2,7 +2,7 @@
 #'
 #' ccdr stores options as a named list in R's global options, i.e.
 #' `getOption('ccdr')`. It currently stores two such options, one for CCTE
-#' credentialing and one to supress private API information in the URLs printed
+#' credentialing and one to suppress private API information in the URLs printed
 #' to the screen when web queries are placed. For both of those, see
 #' [register_ccdr()].
 #'
