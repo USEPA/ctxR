@@ -330,6 +330,6 @@ get_exposure_list_presence_tags_by_dtxsid <- function(DTXSID = NULL,
 #' print(status)
 
 get_exposure_endpoint_status <- function(){
-  request <- httr::GET(url = "https://api-ccte.epa.gov/exposure/health")
+  request <- httr::GET(url = paste0(exposure_api_server, "/health"))
   return(request$status_code)
 }
