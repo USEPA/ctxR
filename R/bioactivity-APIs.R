@@ -283,3 +283,17 @@ get_annotation_by_aeid <- function(AEID = NULL,
 
 
 }
+
+#' Bioactivity API Endpoint status
+#'
+#' @return Status of Bioactivity API Endpoints
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' status <- get_bioactivity_endpoint_status()
+#' print(status)
+
+get_bioactivity_endpoint_status <- function(){
+  request <- httr::GET(url = paste0(bioactivity_api_server, "/health"))
+  return(request$status_code)
+}
