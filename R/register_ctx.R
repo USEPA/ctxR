@@ -4,8 +4,9 @@
 #' in R.
 #'
 #' To obtain an API key and enable services, go to
-#' \url{https://api-ccte.epa.gov/docs/}. This documentation shows you how to
-#' obtain an API key to allow access to the CTX APIs.
+#' \url{https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis}.
+#' This documentation shows you how to obtain an API key to allow access to the
+#' CTX APIs.
 #'
 
 #' To tell ccdR about your API key, use [register_ccdr()], e.g.
@@ -171,7 +172,7 @@ register_ccdr <- function(key, write = FALSE) {
 #
     # set key in current session
     .pkgenv[["api"]] <- key
-    #Sys.setenv('CCTE_API_KEY' = key)
+    #Sys.setenv('CTX_API_KEY' = key)
 
   } else if (!missing(key) && !write) {
 
@@ -198,7 +199,7 @@ register_ccdr <- function(key, write = FALSE) {
 #' @rdname register_ccdr
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
-#' # Print function for ccte_credentials class
+#' # Print function for ctx_credentials class
 #' print.ctx_credentials()
 
 print.ctx_credentials <- function(...) {
