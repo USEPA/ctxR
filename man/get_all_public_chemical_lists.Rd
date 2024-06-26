@@ -24,7 +24,7 @@ value.}
 }
 \value{
 A data.frame containing information on all public chemical lists
-available from the CCTE chemical api.
+available from the CTX chemical api.
 }
 \description{
 Get all public chemical lists
