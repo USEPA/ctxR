@@ -1386,7 +1386,7 @@ get_chemicals_in_list_start <- function(list_name = NULL,
 #' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame containing information on all public chemical lists
-#'   available from the CCTE chemical api.
+#'   available from the CTX chemical api.
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull all chemical lists
@@ -1722,6 +1722,6 @@ get_chemical_synonym <- function(DTXSID = NULL,
 #' print(status)
 
 get_chemical_endpoint_status <- function(){
-  request <- httr::GET(url = "https://api-ccte.epa.gov/chemical/health")
+  request <- httr::GET(url = paste0(chemical_api_server, "/health"))
   return(request$status_code)
 }
