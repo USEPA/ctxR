@@ -5,7 +5,7 @@
     ' ',
     "CCTE's Terms of Service: ",
     cli::col_blue(cli::style_italic(
-      cli::style_hyperlink('<https://api-ccte.epa.gov/docs/>', 'https://api-ccte.epa.gov/docs/')
+      cli::style_hyperlink('<https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis>', 'https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis')
     ))
   )
   cite <- paste0(
