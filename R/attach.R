@@ -11,7 +11,7 @@
   cite <- paste0(
     cli::col_green(cli::symbol$info),
     ' ',
-    'Please cite ', cli::col_blue('ccdr'), ' if you use it! Use `citation(\'ccdr\')` for details.'
+    'Please cite ', cli::col_blue('ccdR'), ' if you use it! Use `citation(\'ccdR\')` for details.'
   )
 
   rlang::inform(
