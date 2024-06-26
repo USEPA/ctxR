@@ -338,3 +338,18 @@ get_genetox_details <- function(DTXSID = NULL,
   return()
 
 }
+
+
+#' Hazard API Endpoint status
+#'
+#' @return Status of Hazard API Endpoints
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' status <- get_hazard_endpoint_status()
+#' print(status)
+
+get_hazard_endpoint_status <- function(){
+  request <- httr::GET(url = paste0(hazard_api_server,"/health"))
+  return(request$status_code)
+}
