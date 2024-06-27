@@ -27,7 +27,7 @@ A data.frame containing chemical (human and eco) hazard data
 Get hazard data by DTXSID
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull hazard data for BPA
 bpa <- get_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
 \dontshow{\}) # examplesIf}

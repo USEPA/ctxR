@@ -31,7 +31,7 @@ related data for each input DTXSID.
 Get cancer hazard batch
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull cancer hazard data for multiples chemicals
 dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 dtxsid_cancer_hazard <- get_cancer_hazard_batch(DTXSID = dtxsid)

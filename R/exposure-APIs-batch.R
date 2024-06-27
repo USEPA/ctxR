@@ -11,7 +11,7 @@
 #'  data for each input DTXSID.
 #' @export
 #'
-#' @examples has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examples has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull exposure functional use data for multiple chemicals
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 #' dtxsid_func_use <- get_exposure_functional_use_batch(DTXSID = dtxsid)
@@ -22,8 +22,8 @@ get_exposure_functional_use_batch <- function(DTXSID = NULL,
                                               Server = exposure_api_server,
                                               verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -79,7 +79,7 @@ get_exposure_functional_use_batch <- function(DTXSID = NULL,
 #' categories that have probability of 0
 #' @export
 #'
-#' @examples has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examples has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull exposure functional use probability data for multiple chemicals
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 #' dtxsid_func_use_prob <- get_exposure_functional_use_batch(DTXSID = dtxsid)
@@ -89,8 +89,8 @@ get_exposure_functional_use_probability_batch <- function(DTXSID = NULL,
                                               Server = exposure_api_server,
                                               verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -164,7 +164,7 @@ get_exposure_functional_use_probability_batch <- function(DTXSID = NULL,
 #'  data for each input DTXSID.
 #' @export
 #'
-#' @examples has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examples has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull exposure functional use data for multiple chemicals
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 #' dtxsid_product_data <- get_exposure_product_data_batch(DTXSID = dtxsid)
@@ -174,8 +174,8 @@ get_exposure_product_data_batch <- function(DTXSID = NULL,
                                             Server = exposure_api_server,
                                             verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -227,7 +227,7 @@ get_exposure_product_data_batch <- function(DTXSID = NULL,
 #' tags use data for each input DTXSID.
 #' @export
 #'
-#' @examples has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examples has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull exposure functional use data for multiple chemicals
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 #' exp_list_tags <- get_exposure_list_presence_tags_by_dtxsid_batch(DTXSID = dtxsid)
@@ -238,8 +238,8 @@ get_exposure_list_presence_tags_by_dtxsid_batch <- function(DTXSID = NULL,
                                                             Server = exposure_api_server,
                                                             verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }

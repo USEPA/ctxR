@@ -16,7 +16,7 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  eval = (nchar(Sys.getenv('CCTE_API_KEY')) > 0)
+  eval = (nchar(Sys.getenv('CTX_API_KEY')) > 0)
 )
 library(httptest)
 start_vignette("1")
@@ -122,7 +122,7 @@ Recently, the [Center for Computational Toxicology and Exposure](https://www.epa
 
 The [CTX APIs](https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis) are publicly available at no cost to the user. However, in order to use the CTX APIs, users must have a individual API key. The API key uniquely identifies the user to the CCD servers and verifies that you have permission to access the database. Getting an API key is free, but requires contacting the API support team at [ccte_api@epa.gov](mailto:ccte_api@epa.gov).
 
-The APIs are organized into sets of "endpoints" by data domains: `Chemical`, `Hazard`, and `Bioactivity`. An endpoint provides access to a specific set of information and data, e.g. physical-chemical properties for a chemical that the user specifies. A view from the [Chemical APIs](https://api-ccte.epa.gov/docs/chemical.html) web interface is pictured below.
+The APIs are organized into sets of "endpoints" by data domains: `Chemical`, `Hazard`, and `Bioactivity`. An endpoint provides access to a specific set of information and data, e.g. physical-chemical properties for a chemical that the user specifies. A view from the [Chemical API](https://api-ccte.epa.gov/docs/chemical.html) web interface is pictured below.
 
 <center>
 
@@ -201,7 +201,7 @@ devtools::install_github("USEPA/ccdR")
 As previously described, a user must have an API key to use in order to access the CTX APIs. This can be obtained from the admins of the CTX APIs by emailing [CTX API Admins](mailto:ccte_api@epa.gov). In the example code, the API key will be stored as the variable `my_key`.
 
 ```{r, echo = FALSE}
-my_key <- ccte_key()
+my_key <- ctx_key()
 ```
 
 ```{r, eval = FALSE, api-key}
@@ -210,7 +210,7 @@ my_key <- 'YOUR_CTX_API_key'
 
 For general use of the package, the user may use the function `register_ccdr()` to store the API key in the current session or more permanently for access across sessions.
 
-```{r, register-ccte, eval=FALSE}
+```{r, register-ccdr, eval=FALSE}
 # This stores the key in the current session
 register_ccdr(key = '<YOUR API KEY>')
 
@@ -230,10 +230,10 @@ ccdr_hide_api_key()
 getOption('ccdr')$display_api_key
 ```
 
-Finally, to access the key, use the `ccte_key()` function.
+Finally, to access the key, use the `ctx_key()` function.
 
-```{r, ccte-key, eval = FALSE}
-ccte_key()
+```{r, ctx-key, eval = FALSE}
+ctx_key()
 ```
 
 ### Quick Start Examples
@@ -242,9 +242,9 @@ As some quick start examples, we demonstrate the ease* of retrieving the informa
 
 For additional examples and more comprehensive documentation on each endpoint, consider reviewing the other ccdR vignettes for the data domain of interest. 
 
-#### Chemical APIs
+#### Chemical API
 
-In this section, several ccdR functions are used to access different types of information from the [CTX Chemical APIs](https://api-ccte.epa.gov/docs/chemical.html#/).
+In this section, several ccdR functions are used to access different types of information from the [CTX Chemical API](https://api-ccte.epa.gov/docs/chemical.html#/).
 
 ##### Chemical Details Resource
 
@@ -282,9 +282,9 @@ bpa_info_experimental <- data.table::as.data.table(bpa_info_experimental)
 head(bpa_info_experimental)
 ```
 
-#### Hazard APIs
+#### Hazard API
 
-In this section, several ccdR functions are used to access different types of information from the [CTX Hazard APIs](https://api-ccte.epa.gov/docs/hazard.html#/).
+In this section, several ccdR functions are used to access different types of information from the [CTX Hazard API](https://api-ccte.epa.gov/docs/hazard.html#/).
 
 ##### Hazard Resource
 
@@ -317,9 +317,9 @@ bpa_eco_hazard <- data.table::as.data.table(bpa_eco_hazard)
 head(bpa_eco_hazard)
 ```
 
-#### Bioactivity APIs
+#### Bioactivity API
 
-In this section, several ccdR functions are used to access different types of information from the [CTX Bioactivity APIs](https://api-ccte.epa.gov/docs/bioactivity.html#/).
+In this section, several ccdR functions are used to access different types of information from the [CTX Bioactivity API](https://api-ccte.epa.gov/docs/bioactivity.html#/).
 
 ##### Bioactivity Resource
 

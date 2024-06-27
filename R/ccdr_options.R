@@ -2,7 +2,7 @@
 #'
 #' ccdr stores options as a named list in R's global options, i.e.
 #' `getOption('ccdr')`. It currently stores two such options, one for CCTE
-#' credentialing and one to supress private API information in the URLs printed
+#' credentialing and one to suppress private API information in the URLs printed
 #' to the screen when web queries are placed. For both of those, see
 #' [register_ccdr()].
 #'
@@ -28,7 +28,7 @@
 
 #' @rdname ccdr_options
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Set ccdr options
 #' set_ccdr_option('display_api_key' = FALSE)
 set_ccdr_option <- function(...) {
@@ -62,7 +62,7 @@ set_ccdr_option <- function(...) {
 
 #' @rdname ccdr_options
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Check if there are options registered to 'ccdr'
 #' has_ccdr_options()
 
@@ -72,7 +72,7 @@ has_ccdr_options <- function() {
 
 #' @rdname ccdr_options
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Check if a specific option is registered for 'ccdr'
 #' has_ccdr_option('display_api_key')
 

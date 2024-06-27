@@ -31,7 +31,7 @@ DTXSID.
 Get genetox summary batch
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull genetox summary data for multiples chemicals
 dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 dtxsid_genetox_summary_hazard <- get_genetox_summary_batch(DTXSID = dtxsid)

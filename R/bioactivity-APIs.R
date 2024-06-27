@@ -11,7 +11,7 @@
 #' @return A data.frame containing bioactivity information for the chemical or assay endpoint with
 #'   identifier matching the input parameter.
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull BPA bioactivity details
 #' bpa <- get_bioactivity_details(DTXSID = 'DTXSID7020182')
 #' # Pull assay bioactivity details
@@ -30,8 +30,8 @@ get_bioactivity_details <- function(DTXSID = NULL,
   else if (length(which(!sapply(list(DTXSID, AEID, SPID, m4id), is.null))) > 1)
     stop('Please input a value for only one of DTXSID, AEID, SPID, or m4id, but not multiple!')
   else if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -76,11 +76,7 @@ get_bioactivity_details <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    req_content <- httr::content(response, as = 'text', encoding = "UTF-8")
-    if (nchar(req_content) == 0){
-      return(data.table::data.table())
-    }
-    res <- jsonlite::fromJSON(req_content)
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
     if (!is.data.frame(res) & (length(res) != 0)){
       for (i in 1:length(res)){
         if (is.null(res[[i]])) res[[i]] <- NA # set any NULLs to NA
@@ -93,35 +89,9 @@ get_bioactivity_details <- function(DTXSID = NULL,
     param_cols <- c('mc3Param', 'mc4Param', 'mc5Param', 'mc6Param')
     col_index <- which(param_cols %in% names(res))
     if (length(col_index) > 0){
-      # In some cases, columns are given by data.frames and we will not try to unnest these
-      non_df_cols <- param_cols[col_index][which(sapply(param_cols[col_index], function(t){!is.data.frame(res[[t]])}))]
-      if (length(non_df_cols) > 0)
-        # In some cases, columns will be NA (in the m4id cases) and we will not try to unnest these
-        col_index <- which(unname(!sapply(res[which(names(res) %in% non_df_cols)], is.na)))
-      if (length(col_index) > 0){
-        res <- tidyr::unnest_wider(data = res, col = param_cols[col_index])
-      }
+     res <- tidyr::unnest_wider(data = res, col = param_cols[col_index])
     }
-
-
     res_dt <- data.table::data.table(res)
-
-    # For columns which are lists of lists, we want to unnest the lists
-    # Check which columns that tend to return nested are in the data.table
-    nested_list_cols <- intersect(names(res_dt), c('resp', 'logc', 'flag', 'mc6MthdId'))
-
-    # Check which of these columns are lists of lists. Every entry must be a
-    # list in order to be unnested
-    nested_indices <- sapply(seq_along(nested_list_cols), function(t) {
-      all(sapply(as.data.frame(res_dt)[, nested_list_cols[[t]]], is.list))
-    })
-
-    # Unnest the columns which are nested lists
-    if (length(nested_indices) > 0 && any(nested_indices)){
-      res_temp <- tidyr::unnest(data = as.data.frame(res_dt), cols = nested_list_cols[nested_indices])
-      res_dt <- data.table::as.data.table(res_temp)
-    }
-
     return(res_dt)
   } else {
     if (verbose){
@@ -141,7 +111,7 @@ get_bioactivity_details <- function(DTXSID = NULL,
 #' @return A data.frame containing summary information corresponding to the
 #'   input AEID
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull an assay bioactivity summary
 #' aeid_1386 <- get_bioactivity_summary(AEID = 1386)
 get_bioactivity_summary <- function(AEID = NULL,
@@ -153,8 +123,8 @@ get_bioactivity_summary <- function(AEID = NULL,
   if (is.null(AEID))
     stop('Please input an AEID!')
   else if (is.null(API_key)){
-    if (has_ccte_key()){
-      API_key <- ccte_key()
+    if (has_ctx_key()){
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -208,7 +178,7 @@ get_bioactivity_summary <- function(AEID = NULL,
 #'
 #' @return A data.frame containing all the assays and associated information
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Retrieve all assays
 #' assays <- get_all_assays()
 get_all_assays <- function(API_key = NULL,
@@ -216,8 +186,8 @@ get_all_assays <- function(API_key = NULL,
                            verbose = FALSE){
 
   if (is.null(API_key)){
-    if (has_ccte_key()){
-      API_key <- ccte_key()
+    if (has_ctx_key()){
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -258,7 +228,7 @@ get_all_assays <- function(API_key = NULL,
 #' @return A data.frame containing the annotated assays corresponding to the
 #'   input AEID parameter
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Retrieve annotation for an assay
 #' annotation <- get_annotation_by_aeid(AEID = 159)
 get_annotation_by_aeid <- function(AEID = NULL,
@@ -268,8 +238,8 @@ get_annotation_by_aeid <- function(AEID = NULL,
   if (is.null(AEID))
     stop('Please input an AEID!')
   else if (is.null(API_key)){
-    if (has_ccte_key()){
-      API_key <- ccte_key()
+    if (has_ctx_key()){
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -312,4 +282,18 @@ get_annotation_by_aeid <- function(AEID = NULL,
   return()
 
 
+}
+
+#' Bioactivity API Endpoint status
+#'
+#' @return Status of Bioactivity API Endpoints
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' status <- get_bioactivity_endpoint_status()
+#' print(status)
+
+get_bioactivity_endpoint_status <- function(){
+  request <- httr::GET(url = paste0(bioactivity_api_server, "/health"))
+  return(request$status_code)
 }

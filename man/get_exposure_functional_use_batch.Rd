@@ -32,7 +32,7 @@ data for each input DTXSID.
 Retrieve exposure related functional use data batch
 }
 \examples{
-has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 # Pull exposure functional use data for multiple chemicals
 dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 dtxsid_func_use <- get_exposure_functional_use_batch(DTXSID = dtxsid)

@@ -1,5 +1,5 @@
 ---
-title: "Chemical APIs"
+title: "Chemical API"
 author: "Center for Computational Toxicology and Exposure"
 output:
    prettydoc::html_pretty:
@@ -96,7 +96,6 @@ More information on Chemicals and Chemistry Data can be found here: <https://www
 
 ## Functions
 
-
 Several ccdR functions are used to access the CTX Chemical API data.
 
 ### Chemical Details Resource
@@ -116,33 +115,6 @@ res_dt <- get_chemical_details(DTXSID = 'DTXSID7020182')
 ```{r ccdR dtxcid data chemical, message=FALSE, eval=FALSE}
 res_dt <- get_chemical_details(DTXCID = 'DTXCID30182')
 ```
-
-### Structure from IUPAC Systematic 
-
-#### Get Smiles
-
-`get_smiles()` retrieves a SMILES string for the input chemical name.
-
-```{r smiles from chemical name, message = FALSE, eval = FALSE}
-res_string <- get_smiles(name = 'Bisphenol A')
-```
-
-#### Get inchikey
-
-`get_inchikey()` retrieves the InChIKey string for the input chemical name.
-
-```{r inchikey from chemical name, message = FALSE, eval = FALSE}
-res_string <- get_inchikey(name = 'Bisphenol A')
-```
-
-#### Get inchi
-
-`get_inchi()` retrieves the InChI string for the input chemical name.
-
-```{r inchi string from chemical name, message = FALSE, eval = FALSE}
-res_string <- get_inchi(name = 'Bisphenol A')
-```
-
 
 ### Chemical Property Resource
 
@@ -193,13 +165,6 @@ res_dt <- chemical_contains(word = 'DTXSID702018')
 #### Subset for MS-Ready Structures
 
 MS-Ready data can be retrieved using a variety of input information. Examples for each are provided below:
-
-##### Mass and error offset
-
-```{r ccdR msready mass and error offset, message=FALSE, eval=FALSE}
-res_list <- get_msready_by_mass_with_error_batch(masses = c(226, 228), error = 10)
-```
-
 
 ##### Mass Range
 
@@ -535,7 +500,7 @@ gridExtra::grid.arrange(hlc_box, hlc, ncol=2)
 
 Again, in both grouping by `propType` and aggregating all results together by chemical list, NATADB chemicals generally higher mean Henry's Law Constant value than CCL4 chemicals.
 
-#### Boiling Point
+#### Boling Point
 
 Boiling Point data be explored. Begin by grouping data by DTXSID, and also by DTXSID and property type.
 
@@ -599,7 +564,7 @@ To summarize the observations, across the various physico-chemical properties fo
 
 ## Conclusion
 
-In this vignette, a variety of functions that access different types of data found in the `Chemical` endpoints of the CTX API were explored. While this exploration was not exhaustive, it provides a basic introduction to how one may access data and work with it. Additional endpoints and corresponding functions exist and we encourage the user to explore these while keeping in mind the examples contained in this vignette.
+In this vignette, a variety of functions that access different types of data found in the `Chemical` endpoints of the CTX APIs were explored. While this exploration was not exhaustive, it provides a basic introduction to how one may access data and work with it. Additional endpoints and corresponding functions exist and we encourage the user to explore these while keeping in mind the examples contained in this vignette.
 
 ```{r breakdown, echo = FALSE, results = 'hide'}
 # This chunk will be hidden in the final product. It serves to undo defining the

@@ -28,7 +28,7 @@ matching the search criteria
 Get msready by formula batch search
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull msready data for several chemical formulas
 msready_data <- get_msready_by_formula_batch(formula_list = c('C16H24N2O5S',
                                                               'C15H16O2'))

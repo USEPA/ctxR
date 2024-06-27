@@ -29,20 +29,20 @@ of setting options used by other functions.
 \description{
 ccdr stores options as a named list in R's global options, i.e.
 \code{getOption('ccdr')}. It currently stores two such options, one for CCTE
-credentialing and one to supress private API information in the URLs printed
+credentialing and one to suppress private API information in the URLs printed
 to the screen when web queries are placed. For both of those, see
 \code{\link[=register_ccdr]{register_ccdr()}}.
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Set ccdr options
 set_ccdr_option('display_api_key' = FALSE)
 \dontshow{\}) # examplesIf}
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Check if there are options registered to 'ccdr'
 has_ccdr_options()
 \dontshow{\}) # examplesIf}
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Check if a specific option is registered for 'ccdr'
 has_ccdr_option('display_api_key')
 \dontshow{\}) # examplesIf}

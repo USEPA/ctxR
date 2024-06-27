@@ -114,11 +114,8 @@ Specific assays may be searched as well as all available assays that have data u
 `get_annotation_by_aeid()` retrieves annotation for a specific assay endpoint id (aeid).
 
 
-```{r ccdR annotation by aeid, message=FALSE, eval=FALSE}
-res_dt <- get_annotation_by_aeid(AEID = "891")
-# optionally perform this unnest, apply names_repair = "unique" to give a unique column name
-# note - the gene column may be an array of multiple genes rather than just one, meaning this step may not work
-#res_dt <- res_dt |> tidyr::unnest_wider(col = c("citation", "gene", "assayList"), names_repair = "unique")
+```{r ccdR annotation by aeid, message=FALSE}
+assay <- get_annotation_by_aeid(AEID = "891")
 ```
 
 ```{r, echo=FALSE}
@@ -134,11 +131,8 @@ assays <- data.table::rbindlist(assays)
 ```
 
 
-```{r ccdR all assays, message=FALSE, eval=FALSE}
-res_dt <- get_all_assays()
-# optionally perform the following unnest, apply names_repair = "unique" to give a unique column name
-# note - the gene column may be an array of multiple genes rather than just one, meaning this step may not work
-#res_dt <- res_dt |> tidyr::unnest_wider(col = c("citation", "gene", "assayList"), names_repair = "unique")
+```{r ccdR-all-assays, message=FALSE, eval=FALSE}
+printFormattedTable(assays, c(4, 18, 19, 33, 51)) # printed using custom formatted table
 ```
 
 ### Get all assay annotations
@@ -158,8 +152,8 @@ There are several resources for retrieving bioactivity data associated with a va
 `get_bioactivity_summary()` retrieves a summary of the number of active hits compared to the total number tested for both multiple and single concentration by aeid.
 
 
-```{r ccdR summary by aeid, message=FALSE, eval=FALSE}
-res_dt <- get_bioactivity_summary(AEID = "891")
+```{r ccdR summary by aeid, message=FALSE}
+summary <- get_bioactivity_summary(AEID = "891")
 ```
 
 ```{r, echo=FALSE}
@@ -183,9 +177,9 @@ printFormattedTable(summary) # printed using custom formatted table
 `get_bioactivity_details()` can retrieve all available multiple concentration data by assay endpoint id (aeid), sample id (spid), Level 4 ID (m4id), or chemical DTXSID. Returned is chemical information, level 3 concentration-response values, level 4 fit parameters, level 5 hit parameters, and level 6 flags for individual chemicals tested. An example for each request parameter is provided below:
 
 
-```{r ccdR data by m4id, message=FALSE, results = FALSE, eval=FALSE}
-res_dt <- get_bioactivity_details(m4id = 739695)
-
+```{r ccdR data by spid, message=FALSE, results = FALSE}
+# By spid
+spid_data <- get_bioactivity_details(SPID = 'TP0000904H05')
 ```
 
 ```{r, echo=FALSE}
@@ -197,10 +191,10 @@ printFormattedTable(head(spid_data), c(ncol(spid_data)-2)) # printed using custo
 m4id_data <- get_bioactivity_details(m4id = 739695)
 ```
 
-
-```{r ccdR data by dtxsid, message=FALSE, results = FALSE, eval=FALSE}
-res_dt <- get_bioactivity_details(DTXSID = "DTXSID7020182")
+```{r, echo=FALSE}
+printFormattedTable(m4id_data, c(ncol(m4id_data) - 2)) # printed using custom formatted table
 ```
+
 
 ```{r ccdR data by dtxsid, message=FALSE, results = FALSE}
 # By DTXSID
@@ -212,8 +206,9 @@ printFormattedTable(dtxsid_data, c(ncol(dtxsid_data)-2)) # printed using custom 
 ```
 
 
-```{r ccdR data by aeid, message=FALSE, results = FALSE, eval=FALSE}
-res_dt <- get_bioactivity_details(AEID = "891")
+```{r ccdR data by aeid, message=FALSE, results = FALSE}
+# By aeid
+aeid_data <- get_bioactivity_details(AEID = 704)
 ```
 
 ```{r, echo=FALSE}
