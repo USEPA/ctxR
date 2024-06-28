@@ -1,5 +1,5 @@
 Type: Package
-Package: ccdR
+Package: ctxR
 Title: Utilities for Interacting with the 'CTX' APIs
 Version: 1.0.0
 Authors@R: c(
