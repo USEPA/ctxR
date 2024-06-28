@@ -1,4 +1,4 @@
-# ccdR 1..
+# ccdR (development version)
 
 ## Breaking changes
 
