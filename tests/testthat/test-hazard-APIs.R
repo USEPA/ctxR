@@ -1,6 +1,6 @@
 with_mock_dir("hazard",{
 # test_that("catch missing API", {
-#    # Run register_ccdr(key = 'YOUR KEY', write = TRUE) prior to running tests
+#    # Run register_ctxR(key = 'YOUR KEY', write = TRUE) prior to running tests
 #     #store env variable so tests don't overwrite
 #     # tmp <- Sys.getenv("CTX_API_KEY")
 #     # on.exit(Sys.setenv("CTX_API_KEY" = tmp))

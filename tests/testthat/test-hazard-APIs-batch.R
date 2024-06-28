@@ -7,7 +7,7 @@ with_mock_dir("hazard-batch",{
 #   #   #set env variable temporarily for testing
 #   #   Sys.setenv("CTX_API_KEY" = "stored_api_key")
 #   # }
-#   # Run register_ccdr(key = 'YOUR KEY', write = TRUE) prior to running tests
+#   # Run register_ctxR(key = 'YOUR KEY', write = TRUE) prior to running tests
 #   expect_message(get_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), verbose = TRUE), 'Using stored API key!')
 #   expect_message(get_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), API_key = 1, verbose = TRUE), 'Using stored API key!')
 #   expect_message(get_human_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), verbose = TRUE), 'Using stored API key!')
