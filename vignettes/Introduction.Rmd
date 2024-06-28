@@ -1,5 +1,5 @@
 ---
-title: "Getting started with ccdR: <br> Introduction Vignette </br>"
+title: "Getting started with ctxR: <br> Introduction Vignette </br>"
 author: "Center for Computational Toxicology and Exposure"
 output:
    prettydoc::html_pretty:
@@ -7,7 +7,7 @@ output:
     toc: yes
     toc_depth: 5
 vignette: >
-  %\VignetteIndexEntry{"Getting started with ccdR: Introduction Vignette"}
+  %\VignetteIndexEntry{"Getting started with ctxR: Introduction Vignette"}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -24,7 +24,7 @@ start_vignette("1")
 
 
 ```{r setup, echo=FALSE}
-if (!library(ccdR, logical.return = TRUE)){
+if (!library(ctxR, logical.return = TRUE)){
   devtools::load_all()
 }
 ```
@@ -33,7 +33,7 @@ if (!library(ccdR, logical.return = TRUE)){
 # Redefining the knit_print method to truncate character values to 25 characters
 # in each column and to truncate the columns in the print call to prevent 
 # wrapping tables with several columns.
-#library(ccdR)
+#library(ctxR)
 knit_print.data.table = function(x, ...) {
   y <- data.table::copy(x)
   y <- y[, lapply(.SD, function(t){
@@ -178,22 +178,22 @@ Pictured below is an example of returned Details for Bisphenol A with the `chemi
 
 </center>
 
-## Introduction to ccdR
+## Introduction to ctxR
 
-Formatting an http request is not necessarily intuitive nor worth the time for someone not already familiar with the process, so these endpoints may provide a resource that for many would require a significant investment in time and energy to learn how to use. However, there is a solution to this in the form of the R package *ccdR*.
+Formatting an http request is not necessarily intuitive nor worth the time for someone not already familiar with the process, so these endpoints may provide a resource that for many would require a significant investment in time and energy to learn how to use. However, there is a solution to this in the form of the R package *ctxR*.
 
-*ccdR* was developed to streamline the process of accessing the information available through the CTX APIs without requiring prior knowledge of how to use APIs. 
+*ctxR* was developed to streamline the process of accessing the information available through the CTX APIs without requiring prior knowledge of how to use APIs. 
 
 ### Package Settings
 
-Users can run `library(ccdR)` to install from CRAN or install the development version of ccdR like so:
+Users can run `library(ctxR)` to install from CRAN or install the development version of ctxR like so:
 
 ```{r, eval=FALSE}
 if (!library(devtools, logical.return = TRUE)){
   install.packages(devtools)
   library(devtools)}
 
-devtools::install_github("USEPA/ccdR")
+devtools::install_github("USEPA/ctxR")
 ```
 
 ### API Key Storage
@@ -208,26 +208,26 @@ my_key <- ctx_key()
 my_key <- 'YOUR_CTX_API_key'
 ```
 
-For general use of the package, the user may use the function `register_ccdr()` to store the API key in the current session or more permanently for access across sessions.
+For general use of the package, the user may use the function `register_ctxR()` to store the API key in the current session or more permanently for access across sessions.
 
-```{r, register-ccdr, eval=FALSE}
+```{r, register-ctxR, eval=FALSE}
 # This stores the key in the current session
-register_ccdr(key = '<YOUR API KEY>')
+register_ctxR(key = '<YOUR API KEY>')
 
 # This stores the key across multiple sessions and only needs to be run once. If the key changes, rerun this with the new key.
-register_ccdr(key = '<YOUR API KEY>', write = TRUE)
+register_ctxR(key = '<YOUR API KEY>', write = TRUE)
 ```
 
 Once the API key is stored, the default display setting is turned off for protection. To change this, use the following functions as demonstrated.
 
 ```{r, display-hide-key}
 # To show the API key
-ccdr_show_api_key()
-getOption('ccdr')$display_api_key
+ctxR_show_api_key()
+getOption('ctxR')$display_api_key
 
 # To hide the API key
-ccdr_hide_api_key()
-getOption('ccdr')$display_api_key
+ctxR_hide_api_key()
+getOption('ctxR')$display_api_key
 ```
 
 Finally, to access the key, use the `ctx_key()` function.
@@ -238,13 +238,13 @@ ctx_key()
 
 ### Quick Start Examples
 
-As some quick start examples, we demonstrate the ease* of retrieving the information across endpoints for Bisphenol A using *ccdR*. *This is in contrast to the approach using the CCD or API web interface. 
+As some quick start examples, we demonstrate the ease* of retrieving the information across endpoints for Bisphenol A using *ctxR*. *This is in contrast to the approach using the CCD or API web interface. 
 
-For additional examples and more comprehensive documentation on each endpoint, consider reviewing the other ccdR vignettes for the data domain of interest. 
+For additional examples and more comprehensive documentation on each endpoint, consider reviewing the other ctxR vignettes for the data domain of interest. 
 
 #### Chemical API
 
-In this section, several ccdR functions are used to access different types of information from the [CTX Chemical API](https://api-ccte.epa.gov/docs/chemical.html#/).
+In this section, several ctxR functions are used to access different types of information from the [CTX Chemical API](https://api-ccte.epa.gov/docs/chemical.html#/).
 
 ##### Chemical Details Resource
 
@@ -284,7 +284,7 @@ head(bpa_info_experimental)
 
 #### Hazard API
 
-In this section, several ccdR functions are used to access different types of information from the [CTX Hazard API](https://api-ccte.epa.gov/docs/hazard.html#/).
+In this section, several ctxR functions are used to access different types of information from the [CTX Hazard API](https://api-ccte.epa.gov/docs/hazard.html#/).
 
 ##### Hazard Resource
 
@@ -319,7 +319,7 @@ head(bpa_eco_hazard)
 
 #### Bioactivity API
 
-In this section, several ccdR functions are used to access different types of information from the [CTX Bioactivity API](https://api-ccte.epa.gov/docs/bioactivity.html#/).
+In this section, several ctxR functions are used to access different types of information from the [CTX Bioactivity API](https://api-ccte.epa.gov/docs/bioactivity.html#/).
 
 ##### Bioactivity Resource
 
@@ -344,9 +344,9 @@ head(assay_id_search)
 
 ## Conclusion
 
-The *ccdR* package provides a streamlined approach to accessing data from the CCD for users with little or no prior experience using APIs. 
+The *ctxR* package provides a streamlined approach to accessing data from the CCD for users with little or no prior experience using APIs. 
 
-For additional examples and more comprehensive documentation on each endpoint, consider reviewing the other ccdR vignettes for the data domain of interest. 
+For additional examples and more comprehensive documentation on each endpoint, consider reviewing the other ctxR vignettes for the data domain of interest. 
 
 ```{r breakdown, echo = FALSE, results = 'hide'}
 # This chunk will be hidden in the final product. It serves to undo defining the
