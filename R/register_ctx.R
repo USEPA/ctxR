@@ -9,27 +9,27 @@
 #' CTX APIs.
 #'
 
-#' To tell ccdR about your API key, use [register_ccdr()], e.g.
-#' `register_ccdr(key = 'grbwigbwoginrowgbwibgdibdvinrginiwgo')` (that's a fake
+#' To tell ctxR about your API key, use [register_ctxR()], e.g.
+#' `register_ctxR(key = 'grbwigbwoginrowgbwibgdibdvinrginiwgo')` (that's a fake
 #' key). This will set your API key for the current session, but if you restart
 #' R, you'll need to do it again. You can set it permanently by setting `write =
 #' TRUE`m see the examples. If you set it permanently it will be stored in a
-#' local file, and that will be accessed by ccdR persistently across
+#' local file, and that will be accessed by ctxR persistently across
 #' sessions.
 #'
 #' Users should be aware that the API key, a string of garbled
 #' characters/numbers/symbols, is a PRIVATE key - it uniquely identifies and
 #' authenticates you to CTX's services. If anyone gets your API key, they can
 #' use it to masquerade as you to CTX. To mitigate against users inadvertently
-#' sharing their keys, by default ccdR never displays a user's key in messages
+#' sharing their keys, by default ctxR never displays a user's key in messages
 #' displayed to the console.
 #'
-#' Users should be aware that ccdR has no mechanism with which to safeguard the
+#' Users should be aware that ctxR has no mechanism with which to safeguard the
 #' private key once registered with R. That is to say, once you register your
-#' API key, any R function will have access to it. As a consequence, ccdR will
+#' API key, any R function will have access to it. As a consequence, ctxR will
 #' not know if another function, potentially from a compromised package,
 #' accesses the key and uploads it to a third party. For this reason, when using
-#' ccdR we recommend a heightened sense of security and self-awareness: only use
+#' ctxR we recommend a heightened sense of security and self-awareness: only use
 #' trusted packages, do not save the API keys in script files, etc.
 #'
 #' @param key an API key
@@ -38,13 +38,13 @@
 #' @returns
 #'  * `showing_key` returns a Boolean.
 #'
-#'  * `ccdr_show_api_key()` has no return value but has the side effect of
+#'  * `ctxR_show_api_key()` has no return value but has the side effect of
 #'  changing the display settings of the API key.
 #'
-#'  * `ccdr_hide_api_key()` has no return value but has the side effect of
+#'  * `ctxR_hide_api_key()` has no return value but has the side effect of
 #'  changing the display settings of the API key.
 #'
-#'  * `register_ccdr()` has no return value but has the side effect of
+#'  * `register_ctxR()` has no return value but has the side effect of
 #'  storing the API key.
 #'
 #'  * `print.ctx_credentials()` has no return value and is an S3 method for
@@ -54,11 +54,11 @@
 #'   \code{NA_character_}.
 #'
 #'  * `has_ctx_key()` returns a Boolean.
-#' @name register_ccdr
+#' @name register_ctxR
 
 
 
-#' @rdname register_ccdr
+#' @rdname register_ctxR
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Check if API key is showing
@@ -66,8 +66,8 @@
 
 showing_key <- function() {
 
-  if (has_ccdr_option('display_api_key')) {
-    getOption('ccdr')$display_api_key
+  if (has_ctxR_option('display_api_key')) {
+    getOption('ctxR')$display_api_key
   } else {
     FALSE
   }
@@ -75,51 +75,51 @@ showing_key <- function() {
 
 
 
-#' @rdname register_ccdr
+#' @rdname register_ctxR
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Toggle API key to display
-#' ccdr_show_api_key()
+#' ctxR_show_api_key()
 
-ccdr_show_api_key <- function() {
-  set_ccdr_option('display_api_key' = TRUE)
-  cli::cli_alert_warning('ccdR will now display PRIVATE API keys in the console.')
+ctxR_show_api_key <- function() {
+  set_ctxR_option('display_api_key' = TRUE)
+  cli::cli_alert_warning('ctxR will now display PRIVATE API keys in the console.')
   invisible()
 }
 
 
 
-#' @rdname register_ccdr
+#' @rdname register_ctxR
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Toggle API key to be hidden
-#' ccdr_hide_api_key()
+#' ctxR_hide_api_key()
 
-ccdr_hide_api_key <- function() {
-  set_ccdr_option('display_api_key' = FALSE)
-  cli::cli_alert_info('ccdR will now suppress private API keys in the console.')
+ctxR_hide_api_key <- function() {
+  set_ctxR_option('display_api_key' = FALSE)
+  cli::cli_alert_info('ctxR will now suppress private API keys in the console.')
   invisible()
 }
 
 
 
-#' @rdname register_ccdr
+#' @rdname register_ctxR
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Register key for this session
-#' register_ccdr(key = 'YOUR API KEY')
+#' register_ctxR(key = 'YOUR API KEY')
 #' # Register key over sessions
-#' register_ccdr(key = 'YOUR API KEY', write = TRUE)
+#' register_ctxR(key = 'YOUR API KEY', write = TRUE)
 
-register_ccdr <- function(key, write = FALSE) {
+register_ctxR <- function(key, write = FALSE) {
 
-  # allow register_ccdr to work when ccdR not loaded
+  # allow register_ctxR to work when ctxR not loaded
   #
   # FILL in details
   #
 
   # get current options
-  options <- getOption('ccdr')
+  options <- getOption('ctxR')
 
 
   # deal with API key
@@ -128,11 +128,11 @@ register_ccdr <- function(key, write = FALSE) {
     if (R.version.string < "4.0.0"){
       warning("This function relies on R version 4.0.0 or later. Cannot store API key over multiple sessions.")
     } else {
-      ccdrdir <- tools::R_user_dir("ccdR")
-      if (!dir.exists(ccdrdir)){
-        dir.create(ccdrdir, recursive = TRUE)
+      ctxRdir <- tools::R_user_dir("ctxR")
+      if (!dir.exists(ctxRdir)){
+        dir.create(ctxRdir, recursive = TRUE)
       }
-      fname <- file.path(ccdrdir, "api.dcf")
+      fname <- file.path(ctxRdir, "api.dcf")
       if (file.exists(fname)) {
         warning("Existing file found, so overwriting")
       }
@@ -183,10 +183,10 @@ register_ccdr <- function(key, write = FALSE) {
   }
 
   # class
-  class(options) <- 'ccdr_credentials'
+  class(options) <- 'ctxR_credentials'
 
   # set new options
-  options(ccdr = options)
+  options(ctxR = options)
 
   # return
   invisible(NULL)
@@ -196,7 +196,7 @@ register_ccdr <- function(key, write = FALSE) {
 
 
 
-#' @rdname register_ccdr
+#' @rdname register_ctxR
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Print function for ctx_credentials class
@@ -208,7 +208,7 @@ print.ctx_credentials <- function(...) {
 
 
 
-#' @rdname register_ccdr
+#' @rdname register_ctxR
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Display ctx API key
@@ -225,7 +225,7 @@ ctx_key <- function() {
 }
 
 
-#' @rdname register_ccdr
+#' @rdname register_ctxR
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Check whether API key is registered
