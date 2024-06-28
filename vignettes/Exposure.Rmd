@@ -41,7 +41,7 @@ start_vignette("5")
 ```
 
 ```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
-if (!library(ccdR, logical.return = TRUE)){
+if (!library(ctxR, logical.return = TRUE)){
   devtools::load_all()
 }
 old_options <- options("width")
@@ -51,7 +51,7 @@ old_options <- options("width")
 # Redefining the knit_print method to truncate character values to 25 characters
 # in each column and to truncate the columns in the print call to prevent 
 # wrapping tables with several columns.
-#library(ccdR)
+#library(ctxR)
 knit_print.data.table = function(x, ...) {
   y <- data.table::copy(x)
   y <- y[, lapply(.SD, function(t){
@@ -75,7 +75,7 @@ In this vignette, the [CTX Exposure API](https://api-ccte.epa.gov/docs/exposure.
 
 ::: {.noticebox data-latex=""}
 
-**NOTE:** Please see the introductory vignette for an overview of the *ccdR* package and initial set up instruction with API key storage.
+**NOTE:** Please see the introductory vignette for an overview of the *ctxR* package and initial set up instruction with API key storage.
 
 :::
 
@@ -93,7 +93,7 @@ Sakshi Handa, Katherine A. Phillips, Kenta Baron-Furuyama, and Kristin K. Isaacs
 
 ## Functions
 
-Several ccdR functions are used to access the CTX Exposure API data.
+Several ctxR functions are used to access the CTX Exposure API data.
 
 ### Functional Use Resource
 
@@ -200,7 +200,7 @@ Observe that Caffeine only has probabilities assigned to four functional use cat
 
 ## Conclusion
 
-There are several CTX `Exposure` API endpoints and ccdR contains functions for each, and batch versions for some of these as well. These allow users to access various types of exposure data associated to a given chemical. In this vignette, we explored all of the non-batch versions and discussed the batch versions. We encourage the user to experiment with the different endpoints to understand better what sorts of data are available.
+There are several CTX `Exposure` API endpoints and ctxR contains functions for each, and batch versions for some of these as well. These allow users to access various types of exposure data associated to a given chemical. In this vignette, we explored all of the non-batch versions and discussed the batch versions. We encourage the user to experiment with the different endpoints to understand better what sorts of data are available.
 
 ```{r breakdown, echo = FALSE, results = 'hide'}
 # This chunk will be hidden in the final product. It serves to undo defining the
