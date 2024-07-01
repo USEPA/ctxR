@@ -208,14 +208,14 @@ my_key <- ctx_key()
 my_key <- 'YOUR_CTX_API_key'
 ```
 
-For general use of the package, the user may use the function `register_ctxR()` to store the API key in the current session or more permanently for access across sessions.
+For general use of the package, the user may use the function `register_ctx_api_key()` to store the API key in the current session or more permanently for access across sessions.
 
 ```{r, register-ctxR, eval=FALSE}
 # This stores the key in the current session
-register_ctxR(key = '<YOUR API KEY>')
+register_ctx_api_key(key = '<YOUR API KEY>')
 
 # This stores the key across multiple sessions and only needs to be run once. If the key changes, rerun this with the new key.
-register_ctxR(key = '<YOUR API KEY>', write = TRUE)
+register_ctx_api_key(key = '<YOUR API KEY>', write = TRUE)
 ```
 
 Once the API key is stored, the default display setting is turned off for protection. To change this, use the following functions as demonstrated.
