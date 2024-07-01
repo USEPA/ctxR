@@ -39,6 +39,7 @@ start_vignette("4")
 if (!library(ctxR, logical.return = TRUE)){
   devtools::load_all()
 }
+old_options <- options("width")
 ```
 
 ```{r setup-print, echo = FALSE}
@@ -239,6 +240,8 @@ registerS3method(
   "knit_print", "data.table", knit_print.data.table,
   envir = asNamespace("knitr")
 )
+
+options(old_options)
 ```
 
 ```{r, include=FALSE}
