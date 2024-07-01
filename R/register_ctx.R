@@ -1,4 +1,4 @@
-#' Register a CTX API
+#' Register CTX API Key for ctxR
 #'
 #' This page contains documentation tools related to enabling CTX API services
 #' in R.
@@ -9,8 +9,8 @@
 #' CTX APIs.
 #'
 
-#' To tell ctxR about your API key, use [register_ctxR()], e.g.
-#' `register_ctxR(key = 'grbwigbwoginrowgbwibgdibdvinrginiwgo')` (that's a fake
+#' To tell ctxR about your API key, use [register_ctx_api_key()], e.g.
+#' `register_ctx_api_key(key = 'grbwigbwoginrowgbwibgdibdvinrginiwgo')` (that's a fake
 #' key). This will set your API key for the current session, but if you restart
 #' R, you'll need to do it again. You can set it permanently by setting `write =
 #' TRUE`m see the examples. If you set it permanently it will be stored in a
@@ -44,7 +44,7 @@
 #'  * `ctxR_hide_api_key()` has no return value but has the side effect of
 #'  changing the display settings of the API key.
 #'
-#'  * `register_ctxR()` has no return value but has the side effect of
+#'  * `register_ctx_api_key()` has no return value but has the side effect of
 #'  storing the API key.
 #'
 #'  * `print.ctx_credentials()` has no return value and is an S3 method for
@@ -54,11 +54,11 @@
 #'   \code{NA_character_}.
 #'
 #'  * `has_ctx_key()` returns a Boolean.
-#' @name register_ctxR
+#' @name register_ctx_api_key
 
 
 
-#' @rdname register_ctxR
+#' @rdname register_ctx_api_key
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Check if API key is showing
@@ -75,7 +75,7 @@ showing_key <- function() {
 
 
 
-#' @rdname register_ctxR
+#' @rdname register_ctx_api_key
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Toggle API key to display
@@ -89,7 +89,7 @@ ctxR_show_api_key <- function() {
 
 
 
-#' @rdname register_ctxR
+#' @rdname register_ctx_api_key
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Toggle API key to be hidden
@@ -103,17 +103,17 @@ ctxR_hide_api_key <- function() {
 
 
 
-#' @rdname register_ctxR
+#' @rdname register_ctx_api_key
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Register key for this session
-#' register_ctxR(key = 'YOUR API KEY')
+#' register_ctx_api_key(key = 'YOUR API KEY')
 #' # Register key over sessions
-#' register_ctxR(key = 'YOUR API KEY', write = TRUE)
+#' register_ctx_api_key(key = 'YOUR API KEY', write = TRUE)
 
-register_ctxR <- function(key, write = FALSE) {
+register_ctx_api_key <- function(key, write = FALSE) {
 
-  # allow register_ctxR to work when ctxR not loaded
+  # allow register_ctx_api_key to work when ctxR not loaded
   #
   # FILL in details
   #
@@ -196,7 +196,7 @@ register_ctxR <- function(key, write = FALSE) {
 
 
 
-#' @rdname register_ctxR
+#' @rdname register_ctx_api_key
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Print function for ctx_credentials class
@@ -208,7 +208,7 @@ print.ctx_credentials <- function(...) {
 
 
 
-#' @rdname register_ctxR
+#' @rdname register_ctx_api_key
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Display ctx API key
@@ -225,7 +225,7 @@ ctx_key <- function() {
 }
 
 
-#' @rdname register_ctxR
+#' @rdname register_ctx_api_key
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Check whether API key is registered

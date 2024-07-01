@@ -31,7 +31,7 @@ ctxR stores options as a named list in R's global options, i.e.
 \code{getOption('ctxR')}. It currently stores two such options, one for CCTE
 credentialing and one to suppress private API information in the URLs printed
 to the screen when web queries are placed. For both of those, see
-\code{\link[=register_ctxR]{register_ctxR()}}.
+\code{\link[=register_ctx_api_key]{register_ctx_api_key()}}.
 }
 \examples{
 \dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
@@ -48,5 +48,5 @@ has_ctxR_option('display_api_key')
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=register_ctxR]{register_ctxR()}}
+\code{\link[=register_ctx_api_key]{register_ctx_api_key()}}
 }

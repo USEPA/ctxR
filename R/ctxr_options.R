@@ -4,7 +4,7 @@
 #' `getOption('ctxR')`. It currently stores two such options, one for CCTE
 #' credentialing and one to suppress private API information in the URLs printed
 #' to the screen when web queries are placed. For both of those, see
-#' [register_ctxR()].
+#' [register_ctx_api_key()].
 #'
 #' @param ... a named listing of options to set
 #' @param option a specific option to query, e.g. `display_api_key`
@@ -16,7 +16,7 @@
 #'  * `has_ctxR_option()` returns a Boolean.
 #'
 #'  * `has_ctxR_options()` returns a Boolean.
-#' @seealso [register_ctxR()]
+#' @seealso [register_ctx_api_key()]
 #'
 #'
 #'
