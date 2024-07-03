@@ -11,7 +11,7 @@
   cite <- paste0(
     cli::col_green(cli::symbol$info),
     ' ',
-    'Please cite ', cli::col_blue('ccdR'), ' if you use it! Use `citation(\'ccdR\')` for details.'
+    'Please cite ', cli::col_blue('ctxR'), ' if you use it! Use `citation(\'ctxR\')` for details.'
   )
 
   rlang::inform(
@@ -20,18 +20,18 @@
   )
 
   .getKeyIntoPkgEnv(silent = FALSE)
-  bootstrap_ccdr()
+  bootstrap_ctxR()
 
 }
 
 .onLoad <- function(...) {
   .getKeyIntoPkgEnv(silent = TRUE)
-  bootstrap_ccdr()
+  bootstrap_ctxR()
 }
 
 
-bootstrap_ccdr <- function() {
-  set_ccdr_option(
+bootstrap_ctxR <- function() {
+  set_ctxR_option(
     'ctx' = structure(
       list(
 
@@ -46,9 +46,9 @@ bootstrap_ccdr <- function() {
 
 .defaultFile <- function() {
   if (getRversion() >= "4.0.0") {
-    ccdRdir <- tools::R_user_dir("ccdR")
-    if (dir.exists(ccdRdir)) {
-      fname <- file.path(ccdRdir, "api.dcf")
+    ctxRdir <- tools::R_user_dir("ctxR")
+    if (dir.exists(ctxRdir)) {
+      fname <- file.path(ctxRdir, "api.dcf")
       if (file.exists(fname)) {
         return(fname)
       }

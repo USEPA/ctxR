@@ -21,7 +21,7 @@ get_fate_by_dtxsid(
 \item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
-@return A data.frame containing chemical information for the chemical with
+A data.frame containing chemical information for the chemical with
 DTXSID matching the input parameter.
 }
 \description{

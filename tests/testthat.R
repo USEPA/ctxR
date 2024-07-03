@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/reference/test_package.html#special-files
 
 library(testthat)
-library(ccdR)
+library(ctxR)
 
-test_check("ccdR")
+test_check("ctxR")

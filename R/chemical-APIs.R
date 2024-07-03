@@ -619,7 +619,7 @@ get_chem_info <- function(DTXSID = NULL,
 #' @param Server The root address for the API endpoint
 #' @param verbose A logical indicating if some “progress report” should be given.
 #'
-#' @return @return A data.frame containing chemical information for the chemical with
+#' @return A data.frame containing chemical information for the chemical with
 #'   DTXSID matching the input parameter.
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
