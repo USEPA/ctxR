@@ -7,7 +7,7 @@ output:
     toc: yes
     toc_depth: 6
 vignette: >
-  %\VignetteIndexEntry{Chemical}
+  %\VignetteIndexEntry{2. Chemical}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

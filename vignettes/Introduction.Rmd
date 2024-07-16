@@ -7,7 +7,7 @@ output:
     toc: yes
     toc_depth: 5
 vignette: >
-  %\VignetteIndexEntry{"Getting started with ctxR: Introduction Vignette"}
+  %\VignetteIndexEntry{1. Getting started with ctxR: Introduction Vignette}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
