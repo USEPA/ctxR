@@ -1,0 +1,17 @@
+[
+    {
+        "dtxsid": "DTXSID7020182",
+        "dtxcid": "DTXCID30182",
+        "casrn": "80-05-7",
+        "smiles": "CC(C)(C1=CC=C(O)C=C1)C1=CC=C(O)C=C1",
+        "preferredName": "Bisphenol A",
+        "searchName": "DSSTox_Substance_Id",
+        "searchValue": "DTXSID7020182",
+        "rank": 1,
+        "hasStructureImage": 1,
+        "isMarkush": false,
+        "searchMsgs": null,
+        "suggestions": null,
+        "isDuplicate": false
+    }
+]

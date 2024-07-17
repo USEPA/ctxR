@@ -37,7 +37,7 @@ identifier matching the input parameter.
 Retrieve bioactivity data from DTXSID, AEID, SPID, or m4id
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull BPA bioactivity details
 bpa <- get_bioactivity_details(DTXSID = 'DTXSID7020182')
 # Pull assay bioactivity details

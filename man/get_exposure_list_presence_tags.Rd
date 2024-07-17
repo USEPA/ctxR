@@ -6,7 +6,7 @@
 \usage{
 get_exposure_list_presence_tags(
   API_key = NULL,
-  Server = "https://api-ccte-stg.epa.gov/exposure",
+  Server = exposure_api_server,
   verbose = FALSE
 )
 }
@@ -22,4 +22,10 @@ A data.frame with all the list presence tags and associated data.
 }
 \description{
 Retrieve list presence tags
+}
+\examples{
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull list presence tags
+tags <- get_exposure_list_presence_tags()
+\dontshow{\}) # examplesIf}
 }

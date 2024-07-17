@@ -1,8 +1,8 @@
 [
     {
+        "rank": 1,
         "searchName": "DSSTox_Substance_Id",
         "searchValue": "DTXSID7020182",
-        "rank": 1,
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
         "casrn": "80-05-7",

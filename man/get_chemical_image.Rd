@@ -7,6 +7,7 @@
 get_chemical_image(
   DTXSID = NULL,
   DTXCID = NULL,
+  SMILES = NULL,
   format = "",
   API_key = NULL,
   Server = chemical_api_server,
@@ -17,6 +18,8 @@ get_chemical_image(
 \item{DTXSID}{Chemical identifier DTXSID}
 
 \item{DTXCID}{Chemical identifier DTXCID}
+
+\item{SMILES}{Chemical identifier SMILES}
 
 \item{format}{The image type, either "png" or "svg". If left blank, will
 default to "png".}
@@ -36,7 +39,7 @@ displaying this, one may use \code{png::writePNG()} or
 Get image file by DTXSID or DTXCID
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull chemical image for BPA by dtxsid
 bpa_image_matrix <- get_chemical_image(DTXSID = 'DTXSID7020182')
 if (requireNamespace("countcolors", quietly = TRUE)){

@@ -1,11 +1,5 @@
 {
-    "expocatMedianPrediction": "5.50E-05",
-    "expocat": "Y",
-    "nhanes": "Y",
-    "cpdataCount": 292,
     "inchikey": "IISBACLAFKSPIT-UHFFFAOYSA-N",
-    "sourcesCount": 146,
-    "totalAssays": 951,
     "dtxsid": "DTXSID7020182",
     "dtxcid": "DTXCID30182",
     "casrn": "80-05-7",
@@ -14,6 +8,12 @@
     "molFormula": "C15H16O2",
     "monoisotopicMass": 228.115029755,
     "percentAssays": 23.0,
+    "cpdataCount": 292,
+    "sourcesCount": 146,
+    "totalAssays": 951,
     "smiles": "CC(C)(C1=CC=C(O)C=C1)C1=CC=C(O)C=C1",
-    "msReadySmiles": "CC(C)(C1=CC=C(O)C=C1)C1=CC=C(O)C=C1"
+    "msReadySmiles": "CC(C)(C1=CC=C(O)C=C1)C1=CC=C(O)C=C1",
+    "expocatMedianPrediction": "5.50E-05",
+    "expocat": "Y",
+    "nhanes": "Y"
 }

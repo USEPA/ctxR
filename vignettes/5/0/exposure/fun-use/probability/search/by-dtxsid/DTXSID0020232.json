@@ -1,0 +1,18 @@
+[
+    {
+        "harmonizedFunctionalUse": "antimicrobial",
+        "probability": 0.4808
+    },
+    {
+        "harmonizedFunctionalUse": "buffer",
+        "probability": 0.6370
+    },
+    {
+        "harmonizedFunctionalUse": "colorant",
+        "probability": 0.3962
+    },
+    {
+        "harmonizedFunctionalUse": "skin_conditioner",
+        "probability": 0.9821
+    }
+]

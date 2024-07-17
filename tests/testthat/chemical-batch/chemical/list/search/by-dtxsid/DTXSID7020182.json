@@ -72,7 +72,7 @@
         "PUBLIC",
         "Chemical Data Reporting (CDR) 2020 Use data.",
         "The <a href='https://www.epa.gov/chemical-data-reporting/basic-information-about-chemical-data-reporting#what' target='_blank'>Chemical Data Reporting (CDR) rule<\/a> under the Toxic Substances Control Act (TSCA), requires manufacturers (including importers) to provide EPA with information on the production and use of chemicals in commerce. <br/>\r\n\r\nUnder the CDR rule, EPA collects basic exposure-related information including information on the types, quantities and uses of chemical substances produced domestically and imported into the United States. The CDR database constitutes the most comprehensive source of basic screening-level, exposure-related information on chemicals available to EPA, and is used by the Agency to protect the public from potential chemical risks. <br/>\r\n\r\nThe information is collected every four years from manufacturers (including importers) of certain chemicals in commerce generally when production volumes for the chemical are 25,000 lbs or greater for a specific reporting year. Collecting the information every four years assures that EPA and (for non-confidential data) the public have access to up-to-date information on chemicals. <br/>\r\n\r\nThe CDR rule is required by section 8(a) of the Toxic Substances Control Act (TSCA) and was formerly known as the Inventory Update Rule (IUR). <br/>\r\n\r\nThe CDR2020 data are accessible from the <a href='https://www.epa.gov/chemical-data-reporting/access-cdr-data' target='_blank'>Access CDR Data<\/a> page. The dataset registered here is for the set of chemicals with CAS Registry Numbers and excludes the ~600 chemicals without CASRNs and/or flagged as provisional. (Last Updated 9/16/2022)\r\n\r\n",
-        7969,
+        8033,
         "2022-09-16T19:30:54.000+00:00",
         "2022-09-16T23:01:42.000+00:00"
     ],
@@ -88,15 +88,15 @@
         "2019-05-18T20:49:47.000+00:00"
     ],
     [
-        "CPDAT",
-        "EPA|CPDAT: Chemical and Products Database",
+        "CPDATv1",
+        "Chemical and Products Database v1",
         "federal",
         "PUBLIC",
-        "Chemicals contained in the EPA's Chemical and Products Database",
-        "This is a list of chemicals reported in the EPA's Chemical and Products Database, surfaced in the Dashboard and in the supplementary info file associated with the Nature Scientific Data article <a href='here' target='_blank'>https://www.nature.com/articles/sdata2018125<\/a>.",
-        45323,
+        "Chemicals contained in the EPA's Chemical and Products Database: Version 1 (original release February 14th 2017)\r\n\r\n",
+        "This is a list of chemicals reported in the EPA's Chemical and Products Database from the supplementary info file associated with the Nature Scientific Data article <a href='here' target='_blank'>https://www.nature.com/articles/sdata2018125<\/a> (original release February 14th 2017).",
+        45358,
         "2017-02-14T10:17:56.000+00:00",
-        "2022-12-05T12:50:32.000+00:00"
+        "2024-03-13T02:40:53.000+00:00"
     ],
     [
         "ECOTOX_v4",
@@ -105,7 +105,7 @@
         "PUBLIC",
         "ECOTOXicology knowledgebase (ECOTOX) is a comprehensive, publicly available knowledgebase providing single chemical environmental toxicity data on aquatic life, terrestrial plants and wildlife",
         "The ECOTOX Knowledgebase is a comprehensive, dynamic, curated database that summarizes chemical environmental toxicity data on aquatic life, terrestrial plants, and wildlife. This publically available database includes curated data from over 47,000 publications and is updated quarterly. For more information on the ECOTOX Knowledgebase and to search the ECOTOX records, see: https://cfpub.epa.gov/ecotox/. This is the data snapshot as of June 30 2020. Curation is an ongoing process.\r\n",
-        13175,
+        13189,
         "2020-06-30T22:19:23.000+00:00",
         "2022-06-21T18:41:36.000+00:00"
     ],
@@ -116,7 +116,7 @@
         "PUBLIC",
         "ECOTOXicology knowledgebase (ECOTOX) is a comprehensive, publicly available knowledgebase providing single chemical environmental toxicity data on aquatic life, terrestrial plants and wildlife.",
         "The ECOTOX Knowledgebase is a comprehensive, dynamic, curated database that summarizes chemical environmental toxicity data on aquatic life, terrestrial plants, and wildlife. This publically available database includes curated data from over 47,000 publications and is updated quarterly. For more information on the ECOTOX Knowledgebase and to search the ECOTOX records, see: https://cfpub.epa.gov/ecotox/. This is the data snapshot as of September 30 2022. Curation is an ongoing process.",
-        12541,
+        12571,
         "2022-09-30T20:51:16.000+00:00",
         "2022-11-08T13:10:47.000+00:00"
     ],
@@ -127,7 +127,7 @@
         "PUBLIC",
         "ECOTOXicology knowledgebase (ECOTOX) is a comprehensive, publicly available knowledgebase providing single chemical environmental toxicity data on aquatic life, terrestrial plants and wildlife.",
         "The ECOTOX Knowledgebase is a comprehensive, dynamic, curated database that summarizes chemical environmental toxicity data on aquatic life, terrestrial plants, and wildlife. This publically available database includes curated data from over 47,000 publications and is updated quarterly. For more information on the ECOTOX Knowledgebase and to search the ECOTOX records, see: https://cfpub.epa.gov/ecotox/. This is the data snapshot as of February 5th 2023. Curation is an ongoing process.",
-        12586,
+        12690,
         "2023-02-05T23:13:55.000+00:00",
         "2023-02-22T08:46:57.000+00:00"
     ],
@@ -193,7 +193,7 @@
         "PUBLIC",
         "The Substance Registry Services (SRS) is an EPA resource for information about chemicals, biological organisms, and other substances tracked or regulated by EPA. (Updated January 2023)",
         "Substance Registry Services (SRS) is the Environmental Protection Agency's (EPA) central system for information about substances that are tracked or regulated by EPA or other sources. It is the authoritative resource for basic information about chemicals, biological organisms, and other substances of interest to EPA and its state and tribal partners.\r\n\r\nThe SRS makes it possible to identify which EPA data systems, environmental statutes, or other sources have information about a substance and which synonym is used by that system or statute. It becomes possible therefore to map substance data across EPA programs regardless of synonym.\r\n\r\nThe system provides a common basis for identification of, and information about:\r\n\r\nChemicals\r\nBiological organisms\r\nPhysical properties\r\nMiscellaneous objects\r\n\r\n(Updated January 2023)",
-        93046,
+        93563,
         "2023-01-29T10:46:52.000+00:00",
         "2023-04-16T18:58:49.000+00:00"
     ],
@@ -237,9 +237,9 @@
         "PUBLIC",
         "FDA’s Global Substance Registration System Unique Ingredient Identifiers (UNIIs) file: April 12th 2021 download subset of chemicals with CASRN and/or structure SMILES",
         "FDA’s Global Substance Registration System Unique Ingredient Identifiers (UNIIs) file: April 12th 2021 download subset of chemicals with CASRN and/or structure SMILES\r\n\r\nTo this end, FDA’s Health Informatics team, NIH's National Center for Advancing Translational Sciences (NCATS), and the European Medicines Agency (EMA) have collaborated to create a Global Substance Registration System (GSRS) that will enable the efficient and accurate exchange of information on what substances are in regulated products.\r\n\r\nInstead of relying on names--which vary across regulatory domains, countries, and regions—the GSRS knowledge base makes it possible for substances to be defined by standardized, scientific descriptions. It classifies substances as chemical, protein, nucleic acid, polymer, structurally diverse, or mixture as detailed in the ISO 11238  (International Organization for Standardization)  and ISO DTS 19844. FDA’s GSRS generates Unique Ingredient Identifiers (UNIIs) used in electronic listings.",
-        59925,
+        61056,
         "2021-06-01T22:25:07.000+00:00",
-        "2023-04-27T13:48:18.000+00:00"
+        "2023-12-30T11:52:55.000+00:00"
     ],
     [
         "HBSL",
@@ -446,7 +446,7 @@
         "PUBLIC",
         "The Toxicity Values database is delivered via the Hazard Tab in the CompTox Chemicals Dashboard.",
         "The Toxicity Values database is delivered via the Hazard Tab in the CompTox Chemicals Dashboard. As of August 2018 the ToxVal Database contains the following data: 772,721 toxicity values from 29 sources of data, 21,507 sub-sources, 4585 journals cited and 69,833 literature citations.\r\n",
-        57922,
+        57972,
         "2017-09-22T18:08:22.000+00:00",
         "2019-11-18T11:34:47.000+00:00"
     ],
@@ -468,7 +468,7 @@
         "PUBLIC",
         "TSCA Active Inventory non-confidential portion (updated February 3rd 2021). The content of the list will change over time as both the non-confidential active TSCA inventory is updated and more substances are curated.",
         "Section 8 (b) of the Toxic Substances Control Act (TSCA) requires EPA to compile, keep current and publish a list of each chemical substance that is manufactured or processed, including imports, in the United States for uses under TSCA. Information about what types of substances are on the TSCA inventory can be found here. The Toxic Substances Control Act (TSCA), as amended by the Frank R. Lautenberg Chemical Safety for the 21st Century Act, requires EPA to designate chemical substances on the TSCA Chemical Substance Inventory as either “active” or “inactive” in U.S. commerce. To accomplish this, EPA finalized a rule requiring industry reporting of chemicals manufactured (including imported) or processed in the U.S.. This reporting is used to identify which chemical substances on the TSCA Inventory are active in U.S. commerce and help inform the prioritization of chemicals for risk evaluation. The list contained in the dashboard includes the active TSCA inventory based on notifications through Feb. 7th 2018 and substances reported from Feb 8, 2018 – March 30, 2018 that have been unambiguously mapped to DSSTox using CASRN and chemical names. The curation of the non-confidential portion of active TSCA inventory is an ongoing process involving trained chemists to validate the correctness of DSSTox structural and identifier data. The content of the list will change over time as the non-confidential active TSCA inventory is updated and more substances are curated. (Updated February 3rd 2021)",
-        33602,
+        33603,
         "2021-02-03T08:55:59.000+00:00",
         "2021-08-07T11:16:59.000+00:00"
     ],
@@ -479,7 +479,7 @@
         "PUBLIC",
         "TSCA Active Inventory non-confidential portion (updated March 23rd 2022). The content of the list will change over time as both the non-confidential active TSCA inventory is updated and more substances are curated.",
         "Section 8 (b) of the Toxic Substances Control Act (TSCA) requires EPA to compile, keep current and publish a list of each chemical substance that is manufactured or processed, including imports, in the United States for uses under TSCA. Information about what types of substances are on the TSCA inventory can be found here. The Toxic Substances Control Act (TSCA), as amended by the Frank R. Lautenberg Chemical Safety for the 21st Century Act, requires EPA to designate chemical substances on the TSCA Chemical Substance Inventory as either “active” or “inactive” in U.S. commerce. To accomplish this, EPA finalized a rule requiring industry reporting of chemicals manufactured (including imported) or processed in the U.S.. This reporting is used to identify which chemical substances on the TSCA Inventory are active in U.S. commerce and help inform the prioritization of chemicals for risk evaluation. (Updated March 23rd 2022)",
-        33856,
+        33857,
         "2022-03-23T20:27:54.000+00:00",
         "2022-06-02T14:12:25.000+00:00"
     ],
@@ -490,9 +490,20 @@
         "PUBLIC",
         "TSCA Active Inventory non-confidential portion (updated February 17th 2023). The content of the list will change over time as both the non-confidential active TSCA inventory is updated and more substances are curated.",
         "Section 8 (b) of the Toxic Substances Control Act (TSCA) requires EPA to compile, keep current and publish a list of each chemical substance that is manufactured or processed, including imports, in the United States for uses under TSCA. Information about what types of substances are on the TSCA inventory can be found here. The Toxic Substances Control Act (TSCA), as amended by the Frank R. Lautenberg Chemical Safety for the 21st Century Act, requires EPA to designate chemical substances on the TSCA Chemical Substance Inventory as either “active” or “inactive” in U.S. commerce. To accomplish this, EPA finalized a rule requiring industry reporting of chemicals manufactured (including imported) or processed in the U.S.. This reporting is used to identify which chemical substances on the TSCA Inventory are active in U.S. commerce and help inform the prioritization of chemicals for risk evaluation. (Updated February 17th 2023)",
-        34046,
+        34534,
         "2023-02-17T15:12:54.000+00:00",
         "2023-03-27T08:38:54.000+00:00"
+    ],
+    [
+        "TSCA_ACTIVE_NCTI_0224",
+        "TSCA Active Inventory non-confidential portion (Updated February 26th 2024)",
+        "federal",
+        "PUBLIC",
+        "TSCA Active Inventory non-confidential portion (Updated February 26th 2024). The content of the list will change over time as both the non-confidential active TSCA inventory is updated and more substances are curated.",
+        "Section 8 (b) of the Toxic Substances Control Act (TSCA) requires EPA to compile, keep current and publish a list of each chemical substance that is manufactured or processed, including imports, in the United States for uses under TSCA. Information about what types of substances are on the TSCA inventory can be found here. The Toxic Substances Control Act (TSCA), as amended by the Frank R. Lautenberg Chemical Safety for the 21st Century Act, requires EPA to designate chemical substances on the TSCA Chemical Substance Inventory as either “active” or “inactive” in U.S. commerce. To accomplish this, EPA finalized a rule requiring industry reporting of chemicals manufactured (including imported) or processed in the U.S.. This reporting is used to identify which chemical substances on the TSCA Inventory are active in U.S. commerce and help inform the prioritization of chemicals for risk evaluation. This is the TSCA Active Non-Confidential Subset (Updated February 26th 2024)",
+        28903,
+        "2024-02-26T13:41:26.000+00:00",
+        "2024-04-08T14:50:50.000+00:00"
     ],
     [
         "TSCA_ACTIVE_NCTI_0320",
@@ -501,7 +512,7 @@
         "PUBLIC",
         "TSCA Active Inventory non-confidential portion (updated March 20th 2020). The content of the list will change over time as both the non-confidential active TSCA inventory is updated and more substances are curated.",
         "Section 8 (b) of the Toxic Substances Control Act (TSCA) requires EPA to compile, keep current and publish a list of each chemical substance that is manufactured or processed, including imports, in the United States for uses under TSCA. Information about what types of substances are on the TSCA inventory can be found here. The Toxic Substances Control Act (TSCA), as amended by the Frank R. Lautenberg Chemical Safety for the 21st Century Act, requires EPA to designate chemical substances on the TSCA Chemical Substance Inventory as either “active” or “inactive” in U.S. commerce. To accomplish this, EPA finalized a rule requiring industry reporting of chemicals manufactured (including imported) or processed in the U.S.. This reporting is used to identify which chemical substances on the TSCA Inventory are active in U.S. commerce and help inform the prioritization of chemicals for risk evaluation. The list contained in the dashboard includes the active TSCA inventory based on notifications through Feb. 7th 2018 and substances reported from Feb 8, 2018 – March 30, 2018 that have been unambiguously mapped to DSSTox using CASRN and chemical names. The curation of the non-confidential portion of active TSCA inventory is an ongoing process involving trained chemists to validate the correctness of DSSTox structural and identifier data. The content of the list will change over time as the non-confidential active TSCA inventory is updated and more substances are curated. (Updated March 20th 2020)",
-        33368,
+        33369,
         "2020-03-19T11:48:10.000+00:00",
         "2020-05-18T18:32:29.000+00:00"
     ],
@@ -512,9 +523,20 @@
         "PUBLIC",
         "TSCA Active Inventory non-confidential portion (updated August 20th 2021). The content of the list will change over time as both the non-confidential active TSCA inventory is updated and more substances are curated.\r\n",
         "Section 8 (b) of the Toxic Substances Control Act (TSCA) requires EPA to compile, keep current and publish a list of each chemical substance that is manufactured or processed, including imports, in the United States for uses under TSCA. Information about what types of substances are on the TSCA inventory can be found here. The Toxic Substances Control Act (TSCA), as amended by the Frank R. Lautenberg Chemical Safety for the 21st Century Act, requires EPA to designate chemical substances on the TSCA Chemical Substance Inventory as either “active” or “inactive” in U.S. commerce. To accomplish this, EPA finalized a rule requiring industry reporting of chemicals manufactured (including imported) or processed in the U.S.. This reporting is used to identify which chemical substances on the TSCA Inventory are active in U.S. commerce and help inform the prioritization of chemicals for risk evaluation. (Updated August 20th 2021)",
-        33657,
+        33658,
         "2021-10-17T11:22:49.000+00:00",
         "2021-10-22T14:17:24.000+00:00"
+    ],
+    [
+        "TSCA_ACTIVE_NCTI_0823",
+        "TSCA Active Inventory non-confidential portion (Updated August 16th 2023)",
+        "federal",
+        "PUBLIC",
+        "TSCA Active Inventory non-confidential portion (Updated August 16th 2023). The content of the list will change over time as both the non-confidential active TSCA inventory is updated and more substances are curated.\r\n",
+        "Section 8 (b) of the Toxic Substances Control Act (TSCA) requires EPA to compile, keep current and publish a list of each chemical substance that is manufactured or processed, including imports, in the United States for uses under TSCA. Information about what types of substances are on the TSCA inventory can be found here. The Toxic Substances Control Act (TSCA), as amended by the Frank R. Lautenberg Chemical Safety for the 21st Century Act, requires EPA to designate chemical substances on the TSCA Chemical Substance Inventory as either “active” or “inactive” in U.S. commerce. To accomplish this, EPA finalized a rule requiring industry reporting of chemicals manufactured (including imported) or processed in the U.S.. This reporting is used to identify which chemical substances on the TSCA Inventory are active in U.S. commerce and help inform the prioritization of chemicals for risk evaluation. (Updated August 16th 2023)",
+        34716,
+        "2023-12-31T16:34:58.000+00:00",
+        "2024-01-10T12:10:29.000+00:00"
     ],
     [
         "TSCAWP",
@@ -534,9 +556,20 @@
         "PUBLIC",
         "The domestic substances list (DSL) is the sole standard against which a substance is judged to be \"new\" to Canada.\r\n",
         "On May 4, 1994, Environment and Climate Change Canada published the domestic substances list (DSL) in Part II of the Canada Gazette. The DSL is an inventory of approximately 23 000 substances manufactured in, imported into or used in Canada on a commercial scale. It is based on substances present in Canada, under certain conditions, between January 1, 1984 and December 31, 1986.\r\n\r\nThe DSL is the sole standard against which a substance is judged to be \"new\" to Canada. With few exemptions, all substances not on this list are considered new and must be reported prior to importation or manufacture in order that they can be assessed to determine if they are toxic or could become toxic to the environment or human health.",
-        22827,
+        23053,
         "2020-01-29T23:13:52.000+00:00",
-        "2022-11-04T09:22:13.000+00:00"
+        "2023-12-15T14:42:16.000+00:00"
+    ],
+    [
+        "ECHASVHC",
+        "ECHA Candidate List of Substances of Very High Concern  for Authorization",
+        "international",
+        "PUBLIC",
+        "ECHA Candidate List of Substances of Very High Concern for Authorization",
+        "Substances with the following hazard properties may be identified as SVHCs:\r\n\r\nSubstances meeting the criteria for classification as carcinogenic, mutagenic or toxic for reproduction (CMR) category 1A or 1B in accordance with the CLP Regulation.\r\nSubstances which are persistent, bioaccumulative and toxic (PBT) or very persistent and very bioaccumulative (vPvB) according to REACH Annex XIII.\r\nSubstances on a case-by-case basis, that cause an equivalent level of concern as CMR or PBT/vPvB substances.<br/><br/>\r\n\r\nMore details regarding substances of very high concern and their identification are described <a href='https://echa.europa.eu/substances-of-very-high-concern-identification-explained' target='_blank'>here<\/a> and the latest list is posted <a href='https://echa.europa.eu/candidate-list-table' target='_blank'>here<\/a>.",
+        425,
+        "2024-02-11T15:31:26.000+00:00",
+        "2024-02-11T15:38:58.000+00:00"
     ],
     [
         "EFSAOFT",
@@ -545,7 +578,7 @@
         "PUBLIC",
         "The European Food Safety Authority has produced risk assessments for more than 4,000 substances in over 1,600 scientific opinions,",
         "The European Food Safety Authority has produced risk assessments for more than 4,000 substances in over 1,600 scientific opinions, statements and conclusions through the work of its scientists. For individual substances, a summary of human health and – depending on the relevant legislation and intended uses – animal health and ecological hazard assessments has been collected and structured into EFSA’s chemical hazards database: OpenFoodTox. OpenFoodTox provides open source data for the substance characterisation, the links to EFSA’s related output, background European legislation, and a summary of the critical toxicological endpoints and reference values.",
-        4237,
+        4252,
         "2017-06-02T15:27:22.000+00:00",
         "2020-05-30T13:33:20.000+00:00"
     ],
@@ -556,7 +589,7 @@
         "PUBLIC",
         "European INventory of Existing Commercial chemical Substances",
         "In the EU regulatory framework, Existing Chemical substances are those substances listed in EINECS (European INventory of Existing Commercial chemical Substances), an inventory of substances that were deemed to be on the European Community market between 1 January 1971 and 18 September 1981. EINECS was drawn up by the European Commission in the application of Article 13 of Directive 67/548/EEC, as amended by Directive 79/831/EEC, and in accordance with the detailed provisions of Commission Decision 81/437/EEC. In 1993 the Council adopted Council Regulation (EEC) 793/93, more commonly known as the ESR (Existing Substances Regulation), thereby introducing a comprehensive framework for the evaluation and control of existing chemical substances",
-        36536,
+        36678,
         "2016-01-06T11:36:31.000+00:00",
         "2023-10-04T20:22:29.000+00:00"
     ],
@@ -588,10 +621,10 @@
         "other",
         "PUBLIC",
         "List of data associated with Experimental Diffusivity in Air ",
-        "List of data associated with Experimental Diffusivity in Air from the article \"A QSPR model for prediction of diffusion coefficient of non-electrolyte organic compounds in air at ambient condition\" at https://doi.org/10.1016/j.chemosphere.2011.11.021",
-        3688,
+        "List of data associated with Experimental Diffusivity in Air from the article \"<a href='https://doi.org/10.1016/j.chemosphere.2011.11.021' target='_blank'>A QSPR model for prediction of diffusion coefficient of non-electrolyte organic compounds in air at ambient condition<\/a>\"",
+        4562,
         "2023-01-11T07:35:18.000+00:00",
-        "2023-02-08T09:20:35.000+00:00"
+        "2023-12-10T22:49:16.000+00:00"
     ],
     [
         "APCRARETRO",
@@ -655,9 +688,9 @@
         "PUBLIC",
         "Chemicals identified as part of the blood exposome",
         "Barupal et al report on <a href='https://doi.org/10.1289/EHP4713' target='_blank'>Generating the Blood Exposome Database Using a Comprehensive Text Mining and Database Fusion Approach<\/a>. The database can be used for prioritizing chemicals for systematic reviews, developing target assays in exposome research, identifying compounds in untargeted mass spectrometry, and biological interpretation in metabolomics data. (Last remapped February 17th 2023)",
-        28740,
+        29643,
         "2023-02-17T20:17:21.000+00:00",
-        "2023-04-19T09:51:44.000+00:00"
+        "2024-04-03T19:02:02.000+00:00"
     ],
     [
         "BLOODTSCA",
@@ -688,7 +721,7 @@
         "PUBLIC",
         "CAMEO Chemicals is a database of hazardous chemical datasheets (Last updated May 9th 2022)",
         "<a href='https://cameochemicals.noaa.gov/' target='_blank'>CAMEO Chemicals<\/a> is a database of hazardous chemical datasheets that emergency responders and planners can use to get response recommendations and predict hazards. (Last updated May 9th 2022)\r\n\r\n",
-        4502,
+        4540,
         "2022-05-09T11:54:17.000+00:00",
         "2022-08-18T15:58:42.000+00:00"
     ],
@@ -721,7 +754,7 @@
         "PUBLIC",
         "CERAPP uses predictive computational models trained on HTS data to evaluate thousands of chemicals for ER-related activity.",
         "CERAPP (Collaborative Estrogen Receptor Activity Prediction Project) is a large-scale modeling project demonstrate the efficacy of using predictive computational models trained on high-throughput screening data to evaluate thousands of chemicals for ER-related activity and prioritize them for further testing. CERAPP combined multiple models developed in collaboration with 17 groups in the United States and Europe to predict ER activity of a common set of 32,464 chemical structures. Quantitative structure–activity relationship models and docking approaches were employed, mostly using a common training set of 1,677 chemical structures provided by the U.S. EPA, to build a total of 40 categorical and 8 continuous models for binding, agonist, and antagonist ER activity. All predictions were evaluated on a set of 7,522 chemicals curated from the literature. To overcome the limitations of single models, a consensus was built by weighting models on scores based on their evaluated accuracies. The work is described in this peer-reviewed publication: <a href='https://ehp.niehs.nih.gov/doi/10.1289/ehp.1510267' target='_blank'>https://ehp.niehs.nih.gov/doi/10.1289/ehp.1510267<\/a>",
-        25234,
+        26071,
         "2017-11-27T12:48:38.000+00:00",
         "2022-12-13T14:42:20.000+00:00"
     ],
@@ -738,14 +771,36 @@
     ],
     [
         "COMPARA",
-        "ARTICLE: Collaborative Estrogen Receptor Activity Prediction Project (COMPARA)",
+        "ARTICLE: Collaborative Modeling Project for Androgen Receptor Activity (COMPARA)",
         "other",
         "PUBLIC",
         "COMPARA: A list related to the publication (in review), the \"Collaborative Modeling Project for Androgen Receptor Activity (CoMPARA)\" which follows on from the Collaborative Estrogen Receptor Activity Prediction Project (CERAPP)",
         "In support of the <a href='https://www.epa.gov/endocrine-disruption/endocrine-disruptor-screening-program-edsp-overview' target='_blank'>Endocrine Disruptor Screening Program<\/a>, the U.S. Environmental Protection Agency (EPA) led two worldwide consortiums to “virtually” (i.e., in silico) screen chemicals for their potential estrogenic and androgenic activities. A publication (in review) the \"Collaborative Modeling Project for Androgen Receptor Activity (CoMPARA)\" efforts, which follows the steps of the <a href='https://ehp.niehs.nih.gov/doi/10.1289/ehp.1510267' target='_blank'>Collaborative Estrogen Receptor Activity Prediction Project (CERAPP)<\/a>. This CoMPARA list of screened chemicals built upon <a href='https://comptox.epa.gov/dashboard/chemical_lists/CERAPP' target='_blank'>32,464 chemicals<\/a> to include additional lists of interest, as well as simulated ToxCast metabolites, totaling over 55,000 chemical structures.",
         55935,
         "2019-11-17T23:23:59.000+00:00",
-        "2019-11-17T23:42:33.000+00:00"
+        "2024-04-01T10:24:42.000+00:00"
+    ],
+    [
+        "CPDAT",
+        "Navigation Panel to CPDat Versioned Structure Lists ",
+        "other",
+        "PUBLIC",
+        "CPDat Structure lists are versioned iteratively and this panel navigates between the various versions",
+        "CPDat lists are versioned iteratively and this description navigates between the various versions of the lists. The list displayed below represents the latest iteration (CPDATv2 - March 13th 2024) which is available via the <a href='https://comptox.epa.gov/chemexpo/' target='_blank'>ChemExpo application<\/a>. For the versioned lists please use the hyperlinked lists below.<br/><br/>\r\n\r\n<a href='https://comptox.epa.gov/dashboard/chemical-lists/CPDATv2' target='_blank'>CPDATv2 - March 2024<\/a> This list <br/><br/>\r\n<a href='https://comptox.epa.gov/dashboard/chemical-lists/CPDATv1' target='_blank'>CPDATv1 - February 2017<\/a><br/><br/>\r\n",
+        34937,
+        "2024-03-13T02:38:34.000+00:00",
+        "2024-03-13T15:06:57.000+00:00"
+    ],
+    [
+        "CPDATv2",
+        "Chemical and Products Database v2",
+        "other",
+        "PUBLIC",
+        "Chemicals contained in the EPA's Chemical and Products Database: Version 2 (last updated March 13th 2024)",
+        "This is a list of chemicals reported in the EPA's Chemical and Products Database and released via the  <a href='https://comptox.epa.gov/chemexpo/' target='_blank'>ChemExpo application<\/a>. (last updated March 13th 2024)",
+        34937,
+        "2023-10-04T15:13:05.000+00:00",
+        "2024-03-13T02:41:43.000+00:00"
     ],
     [
         "CPDBAS",
@@ -776,9 +831,9 @@
         "PUBLIC",
         "List of chemicals extracted from the supplementary information associated with the article \"Prediction of Collision Cross-Section Values for Extractables and Leachables from Plastic Products\"\r\n",
         "List of chemicals extracted from the supplementary information associated with the article <a href='https://doi.org/10.23645/epacomptox.6062623.v4' target='_blank'>\"Prediction of Collision Cross-Section Values for Extractables and Leachables from Plastic Products\"<\/a>.\r\n",
-        957,
+        1071,
         "2022-06-25T17:09:26.000+00:00",
-        "2023-04-16T09:44:57.000+00:00"
+        "2024-04-02T13:29:18.000+00:00"
     ],
     [
         "CTD",
@@ -787,9 +842,9 @@
         "PUBLIC",
         "CTD is a robust, publicly available database that aims to advance understanding about how environmental exposures affect human health.",
         "CTD is a robust, publicly available database that aims to advance understanding about how environmental exposures affect human health. It provides manually curated information about chemical–gene/protein interactions, chemical–disease and gene–disease relationships. These data are integrated with functional and pathway data to aid in development of hypotheses about the mechanisms underlying environmentally influenced diseases.",
-        55312,
+        56222,
         "2016-01-04T13:22:12.000+00:00",
-        "2022-06-26T11:49:10.000+00:00"
+        "2024-02-09T20:30:11.000+00:00"
     ],
     [
         "DIFFUSIVITY",
@@ -798,7 +853,7 @@
         "PUBLIC",
         "List of data associated with Experimental Diffusivity from the article \"Representation and Prediction of Molecular Diffusivity of Nonelectrolyte Organic Compounds in Water at Infinite Dilution Using the Artificial Neural Network-Group Contribution Method\" at https://pubs.acs.org/doi/10.1021/je101190p",
         "List of data associated with Experimental Diffusivity from the article \"Representation and Prediction of Molecular Diffusivity of Nonelectrolyte Organic Compounds in Water at Infinite Dilution Using the Artificial Neural Network-Group Contribution Method\" at https://pubs.acs.org/doi/10.1021/je101190p",
-        3868,
+        4818,
         "2023-01-05T16:30:00.000+00:00",
         "2023-01-30T11:37:53.000+00:00"
     ],
@@ -842,7 +897,7 @@
         "PUBLIC",
         "The DrugBank database combines detailed drug (i.e. chemical, pharmacological and pharmaceutical) data with comprehensive drug target (i.e. sequence, structure, and pathway) information. ",
         "The <a href='https://www.drugbank.ca/' target='_blank'>DrugBank database<\/a> is a unique bioinformatics and cheminformatics resource that combines detailed drug (i.e. chemical, pharmacological and pharmaceutical) data with comprehensive drug target (i.e. sequence, structure, and pathway) information. The database contains 9591 drug entries including 2037 FDA-approved small molecule drugs, 241 FDA-approved biotech (protein/peptide) drugs, 96 nutraceuticals and over 6000 experimental drugs. Additionally, 4661 non-redundant protein (i.e. drug target/enzyme/transporter/carrier) sequences are linked to these drug entries. Each DrugCard entry contains more than 200 data fields with half of the information being devoted to drug/chemical data and the other half devoted to drug target or protein data.\r\n\r\n",
-        5238,
+        5310,
         "2017-07-30T07:28:51.000+00:00",
         "2023-11-09T23:11:15.000+00:00"
     ],
@@ -853,7 +908,7 @@
         "PUBLIC",
         "The DrugBank database combines detailed drug (i.e. chemical, pharmacological and pharmaceutical) data with comprehensive drug target (i.e. sequence, structure, and pathway) information. (updated 11th November 2023)",
         "The <a href='https://www.drugbank.ca/' target='_blank'>DrugBank database<\/a> is a unique bioinformatics and cheminformatics resource that combines detailed drug (i.e. chemical, pharmacological and pharmaceutical) data with comprehensive drug target (i.e. sequence, structure, and pathway) information. The database contains 9591 drug entries including 2037 FDA-approved small molecule drugs, 241 FDA-approved biotech (protein/peptide) drugs, 96 nutraceuticals and over 6000 experimental drugs. Additionally, 4661 non-redundant protein (i.e. drug target/enzyme/transporter/carrier) sequences are linked to these drug entries. Each DrugCard entry contains more than 200 data fields with half of the information being devoted to drug/chemical data and the other half devoted to drug target or protein data. (updated 11th November 2023)",
-        7068,
+        7168,
         "2023-11-09T23:28:52.000+00:00",
         "2023-11-09T23:40:50.000+00:00"
     ],
@@ -864,7 +919,7 @@
         "PUBLIC",
         "Persistent, Mobile and Toxic (PMT) substances suspect screening list",
         "A Persistent, Mobile and Toxic (PMT) substances suspect screening list containing >1100 entries from <a href='https://doi.org/10.1016/j.watres.2021.116994'target='_blank'>Kiefer et al (2021)<\/a> hosted on the <a href='https://www.norman-network.com/nds/SLE/'target='_blank'>NORMAN Suspect List Exchange<\/a>. Dataset DOI: <a href='https://doi.org/10.5281/zenodo.5500131' target='_blank'>10.5281/zenodo.5500131<\/a>\r\n\r\n\r\n\r\n\r\n\r\n",
-        1147,
+        1148,
         "2021-09-10T19:46:58.000+00:00",
         "2021-09-23T18:58:56.000+00:00"
     ],
@@ -919,9 +974,20 @@
         "PUBLIC",
         "The Substance Registry Services (SRS) is an EPA resource for information about chemicals, biological organisms, and other substances tracked or regulated by EPA. (Updated October 2022)",
         "Substance Registry Services (SRS) is the Environmental Protection Agency's (EPA) central system for information about substances that are tracked or regulated by EPA or other sources. It is the authoritative resource for basic information about chemicals, biological organisms, and other substances of interest to EPA and its state and tribal partners.\r\n\r\nThe SRS makes it possible to identify which EPA data systems, environmental statutes, or other sources have information about a substance and which synonym is used by that system or statute. It becomes possible therefore to map substance data across EPA programs regardless of synonym.\r\n\r\nThe system provides a common basis for identification of, and information about:\r\n\r\nChemicals\r\nBiological organisms\r\nPhysical properties\r\nMiscellaneous objects\r\n\r\n(Updated October 2022)",
-        92971,
+        93401,
         "2022-10-03T09:09:48.000+00:00",
         "2023-08-19T12:38:07.000+00:00"
+    ],
+    [
+        "EPASRS2023V5",
+        "EPA|EPA Substance Registry Service (November 2023)",
+        "other",
+        "PUBLIC",
+        "The Substance Registry Services (SRS) is an EPA resource for information about chemicals, biological organisms, and other substances tracked or regulated by EPA. (Updated November 2023)",
+        "Substance Registry Services (SRS) is the Environmental Protection Agency's (EPA) central system for information about substances that are tracked or regulated by EPA or other sources. It is the authoritative resource for basic information about chemicals, biological organisms, and other substances of interest to EPA and its state and tribal partners.\r\n\r\nThe SRS makes it possible to identify which EPA data systems, environmental statutes, or other sources have information about a substance and which synonym is used by that system or statute. It becomes possible therefore to map substance data across EPA programs regardless of synonym.\r\n\r\nThe system provides a common basis for identification of, and information about:\r\n\r\nChemicals\r\nBiological organisms\r\nPhysical properties\r\nMiscellaneous objects\r\n\r\n(Updated November 2023)",
+        96005,
+        "2023-10-31T15:34:26.000+00:00",
+        "2024-01-30T14:34:23.000+00:00"
     ],
     [
         "EUTOXRISK",
@@ -963,7 +1029,7 @@
         "PUBLIC",
         "List of Flame Retardants including all polybrominated diphenyl ethers (PBDEs)",
         "List of Flame Retardants including all polybrominated diphenyl ethers (PBDEs). Sources include the Wikipedia Flame Retardants list and a text-mining exercise using MeSH identifiers",
-        760,
+        761,
         "2019-11-16T17:49:34.000+00:00",
         "2022-07-26T16:11:59.000+00:00"
     ],
@@ -974,7 +1040,7 @@
         "PUBLIC",
         "A database was created by the Food Packaging Forum Foundation (FPF) and is an overview of intentionally used food contact chemicals (FCC). ",
         "This database was created by the Food Packaging Forum Foundation (FPF) and is an overview of intentionally used food contact chemicals (FCC). ",
-        10834,
+        10854,
         "2021-02-19T21:45:56.000+00:00",
         "2023-04-27T12:30:55.000+00:00"
     ],
@@ -985,7 +1051,7 @@
         "PUBLIC",
         "FOODPLASREVIEW",
         "FOODPLASREVIEW",
-        9364,
+        9396,
         "2023-04-29T17:46:34.000+00:00",
         "2023-05-01T09:57:34.000+00:00"
     ],
@@ -1007,7 +1073,7 @@
         "PUBLIC",
         "Chemical substances associated with skin sensitization, skin irritation, and eye irritation GHS (global harmonization system) data aggregated from international sources.",
         "Chemical substances associated with skin sensitization, skin irritation, and eye irritation GHS (global harmonization system) score data was compiled from the following countries: Australia, Canada, Denmark, ECHA , Germany, Japan, Malaysia, and New Zealand. Data was parsed and converted to a common record format.\r\n",
-        18741,
+        18766,
         "2018-11-15T15:18:27.000+00:00",
         "2018-11-15T19:51:32.000+00:00"
     ],
@@ -1104,11 +1170,11 @@
         "Laboratory Chemical Safety Summary (LCSS)  data from PubChem",
         "other",
         "PUBLIC",
-        "The PubChem Laboratory Chemical Safety Summary (LCSS) provides pertinent chemical health and safety data for a given PubChem Compound record.  The PubChem LCSS is a community effort involving professionals in health and safety, chemistry librarianship, informatics, and other specialties.",
+        "The PubChem Laboratory Chemical Safety Summary (LCSS) provides pertinent chemical health and safety data for a given PubChem Compound record. ",
         "The PubChem Laboratory Chemical Safety Summary (LCSS) provides pertinent chemical health and safety data for a given PubChem Compound record.  The PubChem LCSS is a community effort involving professionals in health and safety, chemistry librarianship, informatics, and other specialties.\r\n\r\nThe LCSS is based on the format described by the National Research Council in the Prudent Practices in the Laboratory: Handling and Management of Chemical Hazards.  Information contained in the PubChem LCSS is a subset of the PubChem Compound summary page content.  It includes a summary of hazard and safety information for a chemical, such as flammability, toxicity, exposure limits, exposure symptoms, first aid, handling, and clean up.",
-        72547,
+        73065,
         "2019-04-12T10:55:54.000+00:00",
-        "2023-04-25T11:17:16.000+00:00"
+        "2024-01-06T00:51:03.000+00:00"
     ],
     [
         "LEACHABLESPCDL",
@@ -1139,7 +1205,7 @@
         "PUBLIC",
         "LSERD is a free online platform, which enables the prediction of partition coefficients based on the linear solvation energy relationship approach.",
         "The free online platform LSERD enables the prediction of partition coefficients based on the linear solvation energy relationship approach. The platform includes about 200 different partitioning systems (e.g. solvent-water, solvent-air, bio materials, technical sorbents) and several tools for the application of these predicted partition coefficients. The tools are:\r\n\r\n1) permeability tool (for prediction of a compound’s membrane permeability) \r\n2) Cfree tool (for the determination of the freely dissolved concentration of a chemical in an cell assay)\r\n3) biopartitioning tool (for the description of the partitioning behavior in an organism)\r\n4) extraction tool (for optimization of sample preparation)\r\n5) blow-down tool (for calculation of analytes loss during preconcentration of extracts with nitrogen stream) \r\n6) thermodesorption tool (for the calculation of optimal parameters for thermodesorption experiments) \r\n7) Freundlich Koc tool (for the prediction of non-linear sorption isotherms for soil organic carbon/water partitioning)\r\n",
-        6452,
+        6457,
         "2017-12-29T09:18:04.000+00:00",
         "2021-04-27T10:49:44.000+00:00"
     ],
@@ -1161,7 +1227,7 @@
         "PUBLIC",
         "The Metabolomics Workbench Metabolite Database contains structures and annotations of biologically relevant metabolites.",
         "The <a href='https://www.metabolomicsworkbench.org/databases/index.php' target='_blank'>https://www.metabolomicsworkbench.org/databases/index.php<\/a> contains structures and annotations of biologically relevant metabolites. Data are under constant curation.",
-        31265,
+        31937,
         "2021-03-17T22:56:55.000+00:00",
         "2022-06-26T17:44:04.000+00:00"
     ],
@@ -1177,15 +1243,158 @@
         "2021-02-19T10:25:31.000+00:00"
     ],
     [
+        "MMDBBRSTMILK",
+        "Multimedia Monitoring Database: Breast Milk subset",
+        "other",
+        "PUBLIC",
+        "Multimedia Monitoring Database: Breast Milk subset",
+        "The Multimedia Monitoring Database (MMDB) was developed by EPA’s Office and Research and Development and reported in the paper \"<a href='https://www.nature.com/articles/s41597-022-01365-8' target='_blank'>A Harmonized Chemical Monitoring Database for Support of Exposure Assessments<\/a>\" by Isaacs et al. Data from 20 individual public monitoring data sources were extracted and curated to harmonized chemical identifiers (DTXSID) and media categories for support of exposure assessments and development of high-throughput models. This list includes chemicals that have been curated as being detected in <a href='https://comptox.epa.gov/dashboard/chemical-lists/MMDBV1' target='_blank'>MMDBV1<\/a>. Curation of MMDB data records and detected chemicals is ongoing. \r\n\r\nThis subset of data relates to the Breast Milk media subset of the MMDB dataset.",
+        80,
+        "2024-03-11T19:19:58.000+00:00",
+        "2024-03-11T19:41:51.000+00:00"
+    ],
+    [
+        "MMDBFOODPROD",
+        "Multimedia Monitoring Database: Food Product subset",
+        "other",
+        "PUBLIC",
+        "Multimedia Monitoring Database: Food Product subset",
+        "The Multimedia Monitoring Database (MMDB) was developed by EPA’s Office and Research and Development and reported in the paper \"<a href='https://www.nature.com/articles/s41597-022-01365-8' target='_blank'>A Harmonized Chemical Monitoring Database for Support of Exposure Assessments<\/a>\" by Isaacs et al. Data from 20 individual public monitoring data sources were extracted and curated to harmonized chemical identifiers (DTXSID) and media categories for support of exposure assessments and development of high-throughput models. This list includes chemicals that have been curated as being detected in <a href='https://comptox.epa.gov/dashboard/chemical-lists/MMDBV1' target='_blank'>MMDBV1<\/a>. Curation of MMDB data records and detected chemicals is ongoing.  \r\n\r\nThis subset of data relates to the Food Product media subset of the MMDB dataset.\r\n",
+        161,
+        "2024-03-11T19:29:13.000+00:00",
+        "2024-03-11T19:40:49.000+00:00"
+    ],
+    [
+        "MMDBGRDWTR",
+        "Multimedia Monitoring Database: Ground Water subset",
+        "other",
+        "PUBLIC",
+        "Multimedia Monitoring Database: Ground Water subset",
+        "The Multimedia Monitoring Database (MMDB) was developed by EPA’s Office and Research and Development and reported in the paper \"<a href='https://www.nature.com/articles/s41597-022-01365-8' target='_blank'>A Harmonized Chemical Monitoring Database for Support of Exposure Assessments<\/a>\" by Isaacs et al. Data from 20 individual public monitoring data sources were extracted and curated to harmonized chemical identifiers (DTXSID) and media categories for support of exposure assessments and development of high-throughput models. This list includes chemicals that have been curated as being detected in <a href='https://comptox.epa.gov/dashboard/chemical-lists/MMDBV1' target='_blank'>MMDBV1<\/a>. Curation of MMDB data records and detected chemicals is ongoing. \r\n\r\nThis subset of data relates to the Ground Water media subset of the MMDB dataset.\r\n",
+        890,
+        "2024-03-11T19:33:09.000+00:00",
+        "2024-03-11T19:40:29.000+00:00"
+    ],
+    [
+        "MMDBHUMBLD",
+        "Multimedia Monitoring Database: Human blood (whole/serum/plasma) subset",
+        "other",
+        "PUBLIC",
+        "Multimedia Monitoring Database: Human blood (whole/serum/plasma) subset",
+        "The Multimedia Monitoring Database (MMDB) was developed by EPA’s Office and Research and Development and reported in the paper \"<a href='https://www.nature.com/articles/s41597-022-01365-8' target='_blank'>A Harmonized Chemical Monitoring Database for Support of Exposure Assessments<\/a>\" by Isaacs et al. Data from 20 individual public monitoring data sources were extracted and curated to harmonized chemical identifiers (DTXSID) and media categories for support of exposure assessments and development of high-throughput models. This list includes chemicals that have been curated as being detected in <a href='https://comptox.epa.gov/dashboard/chemical-lists/MMDBV1' target='_blank'>MMDBV1<\/a>. Curation of MMDB data records and detected chemicals is ongoing.  \r\n\r\nThis subset of data relates to the Human blood (whole/serum/plasma) media subset of the MMDB dataset.",
+        235,
+        "2024-03-11T20:05:20.000+00:00",
+        "2024-03-11T20:05:46.000+00:00"
+    ],
+    [
+        "MMDBHUMOTHER",
+        "Multimedia Monitoring Database: Human (other tissues or fluids) subset",
+        "other",
+        "PUBLIC",
+        "Multimedia Monitoring Database: Human (other tissues or fluids) subset",
+        "The Multimedia Monitoring Database (MMDB) was developed by EPA’s Office and Research and Development and reported in the paper \"<a href='https://www.nature.com/articles/s41597-022-01365-8' target='_blank'>A Harmonized Chemical Monitoring Database for Support of Exposure Assessments<\/a>\" by Isaacs et al. Data from 20 individual public monitoring data sources were extracted and curated to harmonized chemical identifiers (DTXSID) and media categories for support of exposure assessments and development of high-throughput models. This list includes chemicals that have been curated as being detected in <a href='https://comptox.epa.gov/dashboard/chemical-lists/MMDBV1' target='_blank'>MMDBV1<\/a>. Curation of MMDB data records and detected chemicals is ongoing.  \r\n\r\nThis subset of data relates to the Human (other tissues or fluids) media subset of the MMDB dataset.",
+        78,
+        "2024-03-11T19:58:33.000+00:00",
+        "2024-03-11T19:58:57.000+00:00"
+    ],
+    [
+        "MMDBINDOORDUST",
+        "Multimedia Monitoring Database: Indoor Dust subset",
+        "other",
+        "PUBLIC",
+        "Multimedia Monitoring Database: Indoor Dust subset",
+        "The Multimedia Monitoring Database (MMDB) was developed by EPA’s Office and Research and Development and reported in the paper \"<a href='https://www.nature.com/articles/s41597-022-01365-8' target='_blank'>A Harmonized Chemical Monitoring Database for Support of Exposure Assessments<\/a>\" by Isaacs et al. Data from 20 individual public monitoring data sources were extracted and curated to harmonized chemical identifiers (DTXSID) and media categories for support of exposure assessments and development of high-throughput models. This list includes chemicals that have been curated as being detected in <a href='https://comptox.epa.gov/dashboard/chemical-lists/MMDBV1' target='_blank'>MMDBV1<\/a>. Curation of MMDB data records and detected chemicals is ongoing.  \r\n\r\nThis subset of data relates to the Indoor Dust media subset of the MMDB dataset.",
+        172,
+        "2024-03-11T20:16:07.000+00:00",
+        "2024-03-11T20:17:23.000+00:00"
+    ],
+    [
+        "MMDBLANDFILL",
+        "Multimedia Monitoring Database: Landfill Leachate subset",
+        "other",
+        "PUBLIC",
+        "Multimedia Monitoring Database: Landfill Leachate subset",
+        "The Multimedia Monitoring Database (MMDB) was developed by EPA’s Office and Research and Development and reported in the paper \"<a href='https://www.nature.com/articles/s41597-022-01365-8' target='_blank'>A Harmonized Chemical Monitoring Database for Support of Exposure Assessments<\/a>\" by Isaacs et al. Data from 20 individual public monitoring data sources were extracted and curated to harmonized chemical identifiers (DTXSID) and media categories for support of exposure assessments and development of high-throughput models. This list includes chemicals that have been curated as being detected in <a href='https://comptox.epa.gov/dashboard/chemical-lists/MMDBV1' target='_blank'>MMDBV1<\/a>. Curation of MMDB data records and detected chemicals is ongoing.  \r\n\r\nThis subset of data relates to the Landfill Leachate\r\n media subset of the MMDB dataset.",
+        94,
+        "2024-03-11T20:27:16.000+00:00",
+        "2024-03-11T20:28:32.000+00:00"
+    ],
+    [
+        "MMDBMEAT",
+        "Multimedia Monitoring Database: Livestock/Meat subset",
+        "other",
+        "PUBLIC",
+        "Multimedia Monitoring Database: Livestock/Meat subset",
+        "The Multimedia Monitoring Database (MMDB) was developed by EPA’s Office and Research and Development and reported in the paper \"<a href='https://www.nature.com/articles/s41597-022-01365-8' target='_blank'>A Harmonized Chemical Monitoring Database for Support of Exposure Assessments<\/a>\" by Isaacs et al. Data from 20 individual public monitoring data sources were extracted and curated to harmonized chemical identifiers (DTXSID) and media categories for support of exposure assessments and development of high-throughput models. This list includes chemicals that have been curated as being detected in <a href='https://comptox.epa.gov/dashboard/chemical-lists/MMDBV1' target='_blank'>MMDBV1<\/a>. Curation of MMDB data records and detected chemicals is ongoing.  \r\n\r\nThis subset of data relates to the Livestock/Meat media subset of the MMDB dataset.",
+        74,
+        "2024-03-11T20:35:24.000+00:00",
+        "2024-03-11T20:35:54.000+00:00"
+    ],
+    [
+        "MMDBSEDIMENT",
+        "Multimedia Monitoring Database: Sediment subset",
+        "other",
+        "PUBLIC",
+        "Multimedia Monitoring Database: Sediment subset",
+        "The Multimedia Monitoring Database (MMDB) was developed by EPA’s Office and Research and Development and reported in the paper \"<a href='https://www.nature.com/articles/s41597-022-01365-8' target='_blank'>A Harmonized Chemical Monitoring Database for Support of Exposure Assessments<\/a>\" by Isaacs et al. Data from 20 individual public monitoring data sources were extracted and curated to harmonized chemical identifiers (DTXSID) and media categories for support of exposure assessments and development of high-throughput models. This list includes chemicals that have been curated as being detected in <a href='https://comptox.epa.gov/dashboard/chemical-lists/MMDBV1' target='_blank'>MMDBV1<\/a>. Curation of MMDB data records and detected chemicals is ongoing.  \r\n\r\nThis subset of data relates to the Sediment subset of the MMDB dataset.\r\n",
+        870,
+        "2024-03-11T21:29:36.000+00:00",
+        "2024-03-11T21:30:11.000+00:00"
+    ],
+    [
+        "MMDBSURFWATER",
+        "Multimedia Monitoring Database: Surface Water subset",
+        "other",
+        "PUBLIC",
+        "Multimedia Monitoring Database: Surface Water subset",
+        "The Multimedia Monitoring Database (MMDB) was developed by EPA’s Office and Research and Development and reported in the paper \"<a href='https://www.nature.com/articles/s41597-022-01365-8' target='_blank'>A Harmonized Chemical Monitoring Database for Support of Exposure Assessments<\/a>\" by Isaacs et al. Data from 20 individual public monitoring data sources were extracted and curated to harmonized chemical identifiers (DTXSID) and media categories for support of exposure assessments and development of high-throughput models. This list includes chemicals that have been curated as being detected in <a href='https://comptox.epa.gov/dashboard/chemical-lists/MMDBV1' target='_blank'>MMDBV1<\/a>. Curation of MMDB data records and detected chemicals is ongoing.  \r\n\r\nThis subset of data relates to the Surface Water subset of the MMDB dataset.\r\n",
+        1733,
+        "2024-03-11T21:49:24.000+00:00",
+        "2024-03-11T21:50:18.000+00:00"
+    ],
+    [
+        "MMDBURINE",
+        "Multimedia Monitoring Database: Urine subset",
+        "other",
+        "PUBLIC",
+        "Multimedia Monitoring Database: Urine subset",
+        "The Multimedia Monitoring Database (MMDB) was developed by EPA’s Office and Research and Development and reported in the paper \"<a href='https://www.nature.com/articles/s41597-022-01365-8' target='_blank'>A Harmonized Chemical Monitoring Database for Support of Exposure Assessments<\/a>\" by Isaacs et al. Data from 20 individual public monitoring data sources were extracted and curated to harmonized chemical identifiers (DTXSID) and media categories for support of exposure assessments and development of high-throughput models. This list includes chemicals that have been curated as being detected in <a href='https://comptox.epa.gov/dashboard/chemical-lists/MMDBV1' target='_blank'>MMDBV1<\/a>. Curation of MMDB data records and detected chemicals is ongoing.  \r\n\r\nThis subset of data relates to the Urine subset of the MMDB dataset.",
+        286,
+        "2024-03-11T21:52:30.000+00:00",
+        "2024-03-11T21:52:50.000+00:00"
+    ],
+    [
         "MMDBV1",
         "LIST: Chemicals reported in Monitoring Database publication ",
         "other",
         "PUBLIC",
         "List of chemicals reported in the paper \"A Harmonized Chemical Monitoring Database for Support of Exposure Assessments\" by Isaacs et al",
         "The Multimedia Monitoring Database (MMDB) was compiled from existing reputable monitoring databases using a combination of automated and manual curation approaches. The resulting list of chemicals reported in the paper \"<a href='https://www.nature.com/articles/s41597-022-01365-8' target='_blank'>A Harmonized Chemical Monitoring Database for Support of Exposure Assessments<\/a>\" by Isaacs et al. The publication reports on the technical details of the data assembly and curation approaches.\r\n\r\n",
-        3270,
+        3271,
         "2022-03-16T14:17:33.000+00:00",
         "2023-03-09T23:09:19.000+00:00"
+    ],
+    [
+        "MMDBWASTEWAT",
+        "Multimedia Monitoring Database: Wastewater (influent, effluent) subset",
+        "other",
+        "PUBLIC",
+        "Multimedia Monitoring Database: Wastewater (influent, effluent) subset",
+        "The Multimedia Monitoring Database (MMDB) was developed by EPA’s Office and Research and Development and reported in the paper \"<a href='https://www.nature.com/articles/s41597-022-01365-8' target='_blank'>A Harmonized Chemical Monitoring Database for Support of Exposure Assessments<\/a>\" by Isaacs et al. Data from 20 individual public monitoring data sources were extracted and curated to harmonized chemical identifiers (DTXSID) and media categories for support of exposure assessments and development of high-throughput models. This list includes chemicals that have been curated as being detected in <a href='https://comptox.epa.gov/dashboard/chemical-lists/MMDBV1' target='_blank'>MMDBV1<\/a>. Curation of MMDB data records and detected chemicals is ongoing.  \r\n\r\nThis subset of data relates to the Wastewater (influent, effluent) subset of the MMDB dataset.",
+        467,
+        "2024-03-11T22:19:34.000+00:00",
+        "2024-03-11T22:19:54.000+00:00"
+    ],
+    [
+        "MMDBWLTERRINV",
+        "Multimedia Monitoring Database: Wildlife (terrestrial invertebrates/worms) subset",
+        "other",
+        "PUBLIC",
+        "Multimedia Monitoring Database: Wildlife (terrestrial invertebrates/worms) subset",
+        "The Multimedia Monitoring Database (MMDB) was developed by EPA’s Office and Research and Development and reported in the paper \"<a href='https://www.nature.com/articles/s41597-022-01365-8' target='_blank'>A Harmonized Chemical Monitoring Database for Support of Exposure Assessments<\/a>\" by Isaacs et al. Data from 20 individual public monitoring data sources were extracted and curated to harmonized chemical identifiers (DTXSID) and media categories for support of exposure assessments and development of high-throughput models. This list includes chemicals that have been curated as being detected in <a href='https://comptox.epa.gov/dashboard/chemical-lists/MMDBV1' target='_blank'>MMDBV1<\/a>. Curation of MMDB data records and detected chemicals is ongoing.  \r\n\r\nThis subset of data relates to the Wildlife (terrestrial invertebrates/worms) subset of the MMDB dataset.\r\n",
+        66,
+        "2024-03-11T22:45:13.000+00:00",
+        "2024-03-11T22:47:42.000+00:00"
     ],
     [
         "MZCLOUD",
@@ -1194,7 +1403,7 @@
         "PUBLIC",
         "mzCloud is a state of the art mass spectral database that assists analysts in identifying compounds in areas such as life sciences, metabolomics, pharmaceutical research, toxicology, forensic investigations and environmental analysis.\r\n",
         "mzCloud is an extensively curated database of high-resolution tandem mass spectra that are arranged into spectral trees. MS/MS and multi-stage MSn spectra were acquired at various collision energies, precursor m/z, and isolation widths using Collision-induced dissociation (CID) and Higher-energy collisional dissociation (HCD). Each raw mass spectrum was filtered and recalibrated giving rise to additional filtered and recalibrated spectral trees that are fully searchable. Besides the experimental and processed data, each database record contains the compound name with synonyms, the chemical structure, computationally and manually annotated fragments (peaks), identified adducts and multiply charged ions, molecular formulas, predicted precursor structures, detailed experimental information, peak accuracies, mass resolution, InChi, InChiKey, and other identifiers. mzCloud is a fully searchable library that allows spectra searches, tree searches, structure and substructure searches, monoisotopic mass searches, peak (m/z) searches, precursor searches, and name searches.",
-        5217,
+        5400,
         "2017-08-02T21:02:28.000+00:00",
         "2022-06-28T13:50:28.000+00:00"
     ],
@@ -1205,7 +1414,7 @@
         "PUBLIC",
         "mzCloud is a state of the art mass spectral database that assists analysts in identifying compounds in areas such as life sciences, metabolomics, pharmaceutical research, toxicology, forensic investigations and environmental analysis. (Updated 07/05/2022)",
         "mzCloud is an extensively curated database of high-resolution tandem mass spectra that are arranged into spectral trees. MS/MS and multi-stage MSn spectra were acquired at various collision energies, precursor m/z, and isolation widths using Collision-induced dissociation (CID) and Higher-energy collisional dissociation (HCD). Each raw mass spectrum was filtered and recalibrated giving rise to additional filtered and recalibrated spectral trees that are fully searchable. Besides the experimental and processed data, each database record contains the compound name with synonyms, the chemical structure, computationally and manually annotated fragments (peaks), identified adducts and multiply charged ions, molecular formulas, predicted precursor structures, detailed experimental information, peak accuracies, mass resolution, InChi, InChiKey, and other identifiers. mzCloud is a fully searchable library that allows spectra searches, tree searches, structure and substructure searches, monoisotopic mass searches, peak (m/z) searches, precursor searches, and name searches.(Updated 07/05/2022)",
-        5517,
+        6044,
         "2022-07-05T21:21:51.000+00:00",
         "2023-04-10T09:24:24.000+00:00"
     ],
@@ -1293,7 +1502,7 @@
         "PUBLIC",
         "List of chemicals related to polymers from the publication \"Deep Dive into Plastic Monomers, Additives, and Processing Aids\" ",
         "List of chemicals related to polymers from the publication \"<a href='https://pubs.acs.org/doi/10.1021/acs.est.1c00976' target='_blank'>Deep Dive into Plastic Monomers, Additives, and Processing Aids<\/a>\". Substances included can potentially be used as plastic monomers, additives and processing aids.\r\n",
-        10523,
+        10547,
         "2021-08-05T15:10:46.000+00:00",
         "2022-11-01T09:53:32.000+00:00"
     ],
@@ -1315,7 +1524,7 @@
         "PUBLIC",
         "List of chemicals associated with the article \"Workflow for Defining Reference Chemicals for Assessing Performance of In Vitro Assays\"",
         "The article <a href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6784312/' target='_blank'>\"Workflow for Defining Reference Chemicals for Assessing Performance of In Vitro Assays\"<\/a> describes a semi-automated process for selecting and annotating reference chemicals, compounds with defined activity against the test system target, across many targets in a standardized form.",
-        31120,
+        31119,
         "2020-05-05T10:05:07.000+00:00",
         "2020-05-05T10:47:10.000+00:00"
     ],
@@ -1381,7 +1590,7 @@
         "PUBLIC",
         "T3DB provides mechanisms of toxicity and target proteins for each toxin.",
         "The focus of the T3DB is on providing mechanisms of toxicity and target proteins for each toxin. This dual nature of the T3DB, in which toxin and toxin target records are interactively linked in both directions, makes it unique from existing databases. It is both modelled after and closely linked to the Human Metabolome Database (HMDB) and DrugBank. Potential applications of T3DB include toxin metabolism prediction, toxin/drug interaction prediction, and general toxin hazard awareness by the public, making it applicable to various fields. \r\n",
-        3644,
+        3645,
         "2021-04-18T23:19:53.000+00:00",
         "2021-08-04T22:41:13.000+00:00"
     ],
@@ -1441,7 +1650,7 @@
         "2023-10-27T12:11:40.000+00:00"
     ],
     [
-        "TOXCAST_INVITRODB_v4_1",
+        "ToxCast_invitroDB_v4_1",
         "EPA ToxCast invitrodb v4.1 (September 2023)",
         "other",
         "PUBLIC",
@@ -1449,7 +1658,7 @@
         "This list of chemicals corresponds to chemicals with bioactivity assay data in EPA's ToxCast Database, referred to as invitrodb (v4.1 public release, Sept 2023). Invitrodb contains data for chemicals in the ToxCast and Tox21 programs, with more information available here. This list is provided as a resource to support the September 2023 version of the bioactivity data in invitrodb v4.1 and can be downloaded and cited as follows: EPA Center for Computational Toxicology and Exposure. (2023). Invitrodb version 4.1 <a href='https://doi.org/10.23645/epacomptox.6062623.v11' target='_blank'>https://doi.org/10.23645/epacomptox.6062623.v11<\/a>. v4.0 was a beta release of invitrodb (DOI: <a href='https://doi.org/10.23645/epacomptox.24132942.v1' target='_blank'>https://doi.org/10.23645/epacomptox.24132942.v1<\/a>)  to accompany <a href='https://doi.org/10.3389/ftox.2023.1275980' target='_blank'>Feshuk et al, 2023<\/a> and includes the same chemicals as the TOXCAST_INVITRODB_v3_5 chemical list.",
         9559,
         "2023-10-27T12:22:52.000+00:00",
-        "2023-10-28T13:17:20.000+00:00"
+        "2023-12-13T15:17:37.000+00:00"
     ],
     [
         "UACCSCEC",
@@ -1530,14 +1739,25 @@
     ],
     [
         "WIKIPEDIA",
-        "LIST: Wikipedia Chemicals",
+        "LIST: Wikipedia Chemicals_0303_2024",
         "other",
         "PUBLIC",
-        "Wikipedia includes data for thousands of chemicals. ChemBoxes and DrugBoxes includes data such as CAS Registry Numbers, SMILES and InChIs. ",
-        "Wikipedia includes data for thousands of chemicals. ChemBoxes and DrugBoxes includes data such as CAS Registry Numbers, SMILES and InChIs. This list is an assembly from various Wikipedia pages and is a list under ongoing curation and expansion (last updated 8/15/2023).",
-        21124,
-        "2016-06-17T13:01:58.000+00:00",
-        "2023-12-02T11:19:27.000+00:00"
+        "Wikipedia includes data for thousands of chemicals. ChemBoxes and DrugBoxes includes data such as CAS Registry Numbers, SMILES and InChIs.",
+        "Wikipedia includes data for thousands of chemicals. ChemBoxes and DrugBoxes includes data such as CAS Registry Numbers, SMILES and InChIs. This list is an assembly from various Wikipedia pages and is a list under ongoing curation and expansion (last updated 03/3/2024).",
+        20438,
+        "2024-03-03T21:28:26.000+00:00",
+        "2024-03-03T21:36:19.000+00:00"
+    ],
+    [
+        "CALCSCP",
+        "California Safe Cosmetics Program (CSCP) Product Database",
+        "state",
+        "PUBLIC",
+        "California Safe Cosmetics Program (CSCP) Product Database",
+        "The California Safe Cosmetics Act (CSCA) was signed into law in 2005. The Cosmetic Fragrance and Flavor Ingredient Right to Know Act (CFFIRKA) was signed into law in 2020. For all cosmetics sold in California, these laws require the manufacturer, packer, and/or distributor named on the product label to report to the California Department of Public Health (CDPH) all cosmetics that contain any ingredients known or suspected to cause harm, as described in authorizative lists specfied in these laws. The California Safe Cosmetics Program (CSCP) is charged with implementing CSCA and CFFIRKA. The goal of CSCP is to collect and share information on hazardous and potentially hazardous ingredients in cosmetics sold in California and to make this information available to the public. The California Safe Cosmetics Program (CSCP) Product Database is available <a href='https://cscpsearch.cdph.ca.gov/search/publicsearch' target='_blank'>online<\/a>.\r\n\r\nThis list release is a partial registration and curation is underway as of March 12th 2024. ",
+        3000,
+        "2024-03-12T00:47:12.000+00:00",
+        "2024-03-12T00:56:14.000+00:00"
     ],
     [
         "CALSAFER",
@@ -1568,7 +1788,7 @@
         "PUBLIC",
         "The Minnesota Department of Health Toxic Free Kids Program Chemicals of High Concern list (Last updated January 27th 2023)",
         "This is the 2022 Update of the Minnesota Department of Health (MDH) Chemicals of High Concern List. The Toxic Free Kids Program published the fourth update of the Chemicals of High Concern list July 1, 2022. During the 2009 legislative session, the Toxic Free Kids Act (Minn. Stat. 2010 116.9401 – 116.9407), was passed and signed into law by the governor. MDH is required to review and revise the Chemicals of High Concern list at least every three years. A report describing this process as well as public education efforts can be found on the Reports page. The fifth update of the Chemicals of High Concern list is scheduled for July 2025. <br/> <br/>\r\n\r\nThrough the Toxic Free Kids (TFK) program, MDH is working to identify and communicate the potential for hazardous chemical exposures which could be harmful to human health, particularly to vulnerable or susceptible populations, such as children and pregnant women. <br/> <br/>\r\n\r\nURL for original data: <a href='https://www.health.state.mn.us/communities/environment/childenvhealth/tfka/index.html' target='_blank'>https://www.health.state.mn.us/communities/environment/childenvhealth/tfka/index.html<\/a> <br/> <br/>\r\n\r\n(Last updated January 27th 2023) ",
-        1721,
+        1727,
         "2023-01-29T01:53:08.000+00:00",
         "2023-01-29T01:58:40.000+00:00"
     ],

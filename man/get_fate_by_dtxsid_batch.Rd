@@ -31,7 +31,7 @@ with DTXSID matching the input parameter.
 Retrieve chemical fate data in batch search
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull chemical fate by dtxsids
 chemical_fates <- get_fate_by_dtxsid_batch(DTXSID = c('DTXSID7020182',
                                                       'DTXSID2021315'))

@@ -7,6 +7,7 @@
 get_chemical_image_batch(
   DTXSID = NULL,
   DTXCID = NULL,
+  SMILES = NULL,
   format = "",
   API_key = NULL,
   rate_limit = 0L,
@@ -17,6 +18,8 @@ get_chemical_image_batch(
 \item{DTXSID}{A list of chemical identifier DTXSIDs.}
 
 \item{DTXCID}{A list of chemical identifier DTXCIDs.}
+
+\item{SMILES}{A list of chemical identifier SMILES.}
 
 \item{format}{The image type, either "png" or "svg". If left blank, will
 default to "png".}
@@ -36,7 +39,7 @@ displaying an image, one may use \code{png::writePNG()} or
 Get image file by DTXSID or DTXCID batch
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull images for multiple chemicals
 dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 images <- get_chemical_image_batch(DTXSID = dtxsid)

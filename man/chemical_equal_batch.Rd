@@ -13,7 +13,7 @@ chemical_equal_batch(
 }
 \arguments{
 \item{word_list}{A list of character strings of chemical names or portion of
-chemical names}
+chemical names, DTXSIDs, CASRNs, InChIKeys.}
 
 \item{API_key}{User-specific API key}
 
@@ -29,7 +29,7 @@ the query parameters
 Chemical equal batch search
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull chemicals that match input strings
 bpa <- chemical_equal_batch(word_list = c('DTXSID7020182', 'DTXCID30182'))
 \dontshow{\}) # examplesIf}

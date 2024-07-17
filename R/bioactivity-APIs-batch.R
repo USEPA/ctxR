@@ -12,7 +12,7 @@
 #' @return A named list of data.frames containing bioactivity information for
 #'   the chemicals with DTXSID or assays with AEID matching the input parameter.
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull bioactivity details for multiple chemicals
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 #' batch_bioactivity <- get_bioactivity_details_batch(DTXSID = dtxsid)
@@ -28,8 +28,8 @@ get_bioactivity_details_batch <- function(DTXSID = NULL,
                                           rate_limit = 0L,
                                           verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -163,7 +163,7 @@ get_bioactivity_details_batch <- function(DTXSID = NULL,
 #' @return A named list of data.frames containing bioactivity summary
 #'   information for the assays with AEID matching the input parameter.
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Get bioactivity summary for multiple aeids
 #' aeids <- get_bioactivity_summary_batch(AEID = c(159, 160))
 
@@ -175,8 +175,8 @@ get_bioactivity_summary_batch <- function(AEID = NULL,
                                           rate_limit = 0L,
                                           verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -232,7 +232,7 @@ get_bioactivity_summary_batch <- function(AEID = NULL,
 #' @return A named list of data.frames containing annotation information for the
 #'   assays with AEID matching the input parameter.
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Get annotations for multiple aeids
 #' aeid_annotations <- get_annotation_by_aeid_batch(AEID = c(159, 160))
 
@@ -242,8 +242,8 @@ get_annotation_by_aeid_batch <- function(AEID = NULL,
                                          rate_limit = 0L,
                                          verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }

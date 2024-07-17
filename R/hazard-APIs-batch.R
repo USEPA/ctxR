@@ -14,8 +14,8 @@ get_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
                                            rate_limit = 0L,
                                            verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -65,7 +65,7 @@ get_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
 #' @return A data.table containing chemical (human and eco) hazard data for each
 #'   input chemical.
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull hazard data for multiple chemicals
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 #' batch_hazard <- get_hazard_by_dtxsid_batch(DTXSID = dtxsid)
@@ -76,8 +76,8 @@ get_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                                        Server = hazard_api_server,
                                        verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -183,8 +183,8 @@ get_human_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
                                                  rate_limit = 0L,
                                                  verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -233,7 +233,7 @@ get_human_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
 #'
 #' @return A data.table containing chemical human hazard data.
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull human hazard data for multiples chemicals
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 #' dtxsid_human_hazard <- get_human_hazard_by_dtxsid_batch(DTXSID = dtxsid)
@@ -244,8 +244,8 @@ get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                                              Server = hazard_api_server,
                                              verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -316,8 +316,8 @@ get_ecotox_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
                                                   rate_limit = 0L,
                                                   verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -366,7 +366,7 @@ get_ecotox_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
 #'
 #' @return A data.table containing chemical ecotox hazard data.
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull ecotox hazard data for multiples chemicals
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 #' dtxsid_ecotox_hazard <- get_ecotox_hazard_by_dtxsid_batch(DTXSID = dtxsid)
@@ -377,8 +377,8 @@ get_ecotox_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                                               Server = hazard_api_server,
                                               verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -450,8 +450,8 @@ get_skin_eye_hazard_batch_old <- function(DTXSID = NULL,
                                           rate_limit = 0L,
                                           verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -501,7 +501,7 @@ get_skin_eye_hazard_batch_old <- function(DTXSID = NULL,
 #' @return A named list of data.frames containing skin and eye hazard data for
 #'   each input DTXSID.
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull skin eye hazard data for multiples chemicals
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 #' dtxsid_skin_eye_hazard <- get_skin_eye_hazard_batch(DTXSID = dtxsid)
@@ -512,8 +512,8 @@ get_skin_eye_hazard_batch <- function(DTXSID = NULL,
                                       Server = hazard_api_server,
                                       verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -596,8 +596,8 @@ get_cancer_hazard_batch_old <- function(DTXSID = NULL,
                                         rate_limit = 0L,
                                         verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -647,7 +647,7 @@ get_cancer_hazard_batch_old <- function(DTXSID = NULL,
 #' @return A data.table containing cancer hazard and
 #'   related data for each input DTXSID.
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull cancer hazard data for multiples chemicals
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 #' dtxsid_cancer_hazard <- get_cancer_hazard_batch(DTXSID = dtxsid)
@@ -658,8 +658,8 @@ get_cancer_hazard_batch <- function(DTXSID = NULL,
                                     Server = hazard_api_server,
                                     verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -737,8 +737,8 @@ get_genetox_summary_batch_old <- function(DTXSID = NULL,
                                           rate_limit = 0L,
                                           verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -789,7 +789,7 @@ get_genetox_summary_batch_old <- function(DTXSID = NULL,
 #' @return A data.table of genetox summary data for each input
 #'   DTXSID.
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull genetox summary data for multiples chemicals
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 #' dtxsid_genetox_summary_hazard <- get_genetox_summary_batch(DTXSID = dtxsid)
@@ -800,8 +800,8 @@ get_genetox_summary_batch <- function(DTXSID = NULL,
                                       Server = hazard_api_server,
                                       verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -882,8 +882,8 @@ get_genetox_details_batch_old <- function(DTXSID = NULL,
                                           verbose = FALSE){
 
   if (is.null(API_key) || !is.character(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -934,7 +934,7 @@ get_genetox_details_batch_old <- function(DTXSID = NULL,
 #' @return A data.table of genetox detail data for each input
 #'   DTXSID.
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull genetox details data for multiples chemicals
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 #' dtxsid_genetox_details_hazard <- get_genetox_details_batch(DTXSID = dtxsid)
@@ -945,8 +945,8 @@ get_genetox_details_batch <- function(DTXSID = NULL,
                                       Server = hazard_api_server,
                                       verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }

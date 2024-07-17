@@ -1,6 +1,5 @@
-# ccdR 1.0.0
+# ctxR 1.0.0
 
-# ccdR 0.1.0
+* Initial release. Renamed package from `ccdR` package for better alignment 
+with US EPA CTX APIs.
 
-* Added a `NEWS.md` file to track changes to the package.
-* Initial release.

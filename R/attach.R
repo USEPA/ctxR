@@ -5,13 +5,13 @@
     ' ',
     "CCTE's Terms of Service: ",
     cli::col_blue(cli::style_italic(
-      cli::style_hyperlink('<https://api-ccte.epa.gov/docs/>', 'https://api-ccte.epa.gov/docs/')
+      cli::style_hyperlink('<https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis>', 'https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis')
     ))
   )
   cite <- paste0(
     cli::col_green(cli::symbol$info),
     ' ',
-    'Please cite ', cli::col_blue('ccdr'), ' if you use it! Use `citation(\'ccdr\')` for details.'
+    'Please cite ', cli::col_blue('ctxR'), ' if you use it! Use `citation(\'ctxR\')` for details.'
   )
 
   rlang::inform(
@@ -20,18 +20,23 @@
   )
 
   .getKeyIntoPkgEnv(silent = FALSE)
-  bootstrap_ccdr()
+  bootstrap_ctxR()
 
 }
 
+.onLoad <- function(...) {
+  .getKeyIntoPkgEnv(silent = TRUE)
+  bootstrap_ctxR()
+}
 
-bootstrap_ccdr <- function() {
-  set_ccdr_option(
-    'ccte' = structure(
+
+bootstrap_ctxR <- function() {
+  set_ctxR_option(
+    'ctx' = structure(
       list(
 
     ),
-    class = 'ccte_credentials'
+    class = 'ctx_credentials'
   ),
   'display_api_key' = FALSE
   )
@@ -41,9 +46,9 @@ bootstrap_ccdr <- function() {
 
 .defaultFile <- function() {
   if (getRversion() >= "4.0.0") {
-    ccdRdir <- tools::R_user_dir("ccdR")
-    if (dir.exists(ccdRdir)) {
-      fname <- file.path(ccdRdir, "api.dcf")
+    ctxRdir <- tools::R_user_dir("ctxR")
+    if (dir.exists(ctxRdir)) {
+      fname <- file.path(ctxRdir, "api.dcf")
       if (file.exists(fname)) {
         return(fname)
       }
@@ -63,7 +68,7 @@ bootstrap_ccdr <- function() {
     } else {
       if (!silent) packageStartupMessage("API key file found but no api entry.")
     }
-  } else if ((ev <- Sys.getenv("CCTE_API_KEY")) != "") {
+  } else if ((ev <- Sys.getenv("CTX_API_KEY")) != "") {
     .pkgenv[["api"]] <- ev
     if (!silent) packageStartupMessage("Setting API key from environment variable.")
   } else {

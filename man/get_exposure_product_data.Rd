@@ -7,7 +7,7 @@
 get_exposure_product_data(
   DTXSID = NULL,
   API_key = NULL,
-  Server = "https://api-ccte-stg.epa.gov/exposure",
+  Server = exposure_api_server,
   verbose = FALSE
 )
 }
@@ -26,4 +26,10 @@ given chemical
 }
 \description{
 Retrieve product data for exposure purposes
+}
+\examples{
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull exposure product data for BPA
+bpa <- get_exposure_product_data(DTXSID = 'DTXSID7020182')
+\dontshow{\}) # examplesIf}
 }

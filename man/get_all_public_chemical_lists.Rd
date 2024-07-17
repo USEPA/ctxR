@@ -24,13 +24,13 @@ value.}
 }
 \value{
 A data.frame containing information on all public chemical lists
-available from the CCTE chemical api.
+available from the CTX chemical api.
 }
 \description{
 Get all public chemical lists
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull all chemical lists
 all_lists <- get_all_public_chemical_lists()
 \dontshow{\}) # examplesIf}

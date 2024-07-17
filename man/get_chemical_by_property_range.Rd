@@ -35,7 +35,7 @@ the search criteria.
 Get chemicals by property and its value range
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull chemicals with a given property in a set range
 density <- get_chemical_by_property_range(start = 1.311, end = 1.313,
                                           property = 'Density')

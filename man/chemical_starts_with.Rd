@@ -8,7 +8,8 @@ chemical_starts_with(
   word = NULL,
   API_key = NULL,
   Server = chemical_api_server,
-  verbose = FALSE
+  verbose = FALSE,
+  top = NULL
 )
 }
 \arguments{
@@ -19,7 +20,11 @@ name}
 
 \item{Server}{The root address for the API endpoint}
 
-\item{verbose}{A logical indicating if some “progress report” should be given.}
+\item{verbose}{A logical indicating if some “progress report” should be
+given.}
+
+\item{top}{The number of results to return if there are multiple results
+available}
 }
 \value{
 A data.frame of chemicals and related values matching the query
@@ -29,7 +34,7 @@ parameters
 Chemical starts with
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull chemicals that start with a fragment DTXSID
 dtxsid_fragment <- chemical_starts_with(word = 'DTXSID702018')
 \dontshow{\}) # examplesIf}

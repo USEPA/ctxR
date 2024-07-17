@@ -6,7 +6,7 @@
 \usage{
 get_exposure_product_data_puc(
   API_key = NULL,
-  Server = "https://api-ccte-stg.epa.gov/exposure",
+  Server = exposure_api_server,
   verbose = FALSE
 )
 }
@@ -22,4 +22,10 @@ A data.frame consisting of all the product use categories
 }
 \description{
 Retrieve product use categories related to exposure
+}
+\examples{
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull product data use categories for BPA
+puc_categories <- get_exposure_product_data_puc()
+\dontshow{\}) # examplesIf}
 }

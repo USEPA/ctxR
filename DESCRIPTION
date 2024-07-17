@@ -1,6 +1,6 @@
 Type: Package
-Package: ccdR
-Title: Utilities for Interacting with the 'CCTE' APIs
+Package: ctxR
+Title: Utilities for Interacting with the 'CTX' APIs
 Version: 1.0.0
 Authors@R: c(
             person("Paul", "Kruse", email = "kruse.paul@epa.gov", 
@@ -17,13 +17,15 @@ Authors@R: c(
     	      person("Jason", "Brown", role = "ctb", 
     	        email = "brown.jason@epa.gov")
     	        )
-Description: Access chemical, hazard, and bioactivity data from the Center for
-   Computational Toxicology and Exposure ('CCTE') APIs 
-   <https://api-ccte.epa.gov/docs/>. 'ccdR' was developed to streamline the 
-   process of accessing the information available through the 'CCTE' APIs 
-   without requiring prior knowledge of how to use APIs. All data is also 
-   available on the CompTox Chemical Dashboard ('CCD')
-   <https://comptox.epa.gov/dashboard/>. 
+Description: Access chemical, hazard, bioactivity, and exposure data from the 
+   Computational Toxicology and Exposure ('CTX') APIs 
+   <https://api-ccte.epa.gov/docs/>. 'ctxR' was developed to streamline the 
+   process of accessing the information available through the 'CTX' APIs 
+   without requiring prior knowledge of how to use APIs. Most data is also 
+   available on the CompTox Chemical Dashboard ('CCD') 
+   <https://comptox.epa.gov/dashboard/> and other resources found at the 
+   EPA Computational Toxicology and Exposure Online Resources 
+   <https://www.epa.gov/comptox-tools>. 
 License: GPL (>= 3)
 Imports: 
     cli,
@@ -43,6 +45,7 @@ RoxygenNote: 7.3.1
 Suggests: 
     countcolors,
     devtools,
+    DT,
     ggplot2,
     gridExtra,
     httptest,
@@ -51,8 +54,8 @@ Suggests:
     rmarkdown,
     testthat (>= 3.0.0),
     XML
-URL: https://github.com/USEPA/ccdR
-BugReports: https://github.com/USEPA/ccdR/issues
+URL: https://github.com/USEPA/ctxR
+BugReports: https://github.com/USEPA/ctxR/issues
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 Depends: 

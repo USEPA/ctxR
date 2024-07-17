@@ -8,7 +8,8 @@ chemical_starts_with_batch(
   word_list = NULL,
   API_key = NULL,
   rate_limit = 0L,
-  verbose = FALSE
+  verbose = FALSE,
+  top = NULL
 )
 }
 \arguments{
@@ -20,6 +21,9 @@ chemical names}
 \item{rate_limit}{Number of seconds to wait between each request}
 
 \item{verbose}{A logical indicating if some “progress report” should be given.}
+
+\item{top}{The number of results to return if there are multiple results
+available}
 }
 \value{
 A named list of data.frames of chemicals and related values matching
@@ -29,7 +33,7 @@ the query parameters
 Chemical starts with batch search
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull chemicals that start with given substrings
 bpa_substrings <- chemical_starts_with_batch(word_list = c('DTXSID702018',
                                                            'DTXCID3018'))

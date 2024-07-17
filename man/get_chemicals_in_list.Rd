@@ -27,7 +27,7 @@ A data.frame of the chemical list
 Get chemicals in a given chemical list
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Retrieve chemicals contained in chemical list 'CCL4'
 ccl4_chemicals <- get_chemicals_in_list(list_name = 'CCL4')
 \dontshow{\}) # examplesIf}

@@ -1,0 +1,223 @@
+---
+title: "Exposure API"
+author: "Center for Computational Toxicology and Exposure"
+output:
+   prettydoc::html_pretty:
+    theme: architect
+    toc: yes
+    toc_depth: 6
+vignette: >
+  %\VignetteIndexEntry{Exposure}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+```{css, echo=FALSE}
+.scroll-200 {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.scroll-300 {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.noticebox {
+  padding: 1em;
+  background: lightgray;
+  color: blue;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+```
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(httptest)
+start_vignette("5")
+```
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+if (!library(ctxR, logical.return = TRUE)){
+  devtools::load_all()
+}
+old_options <- options("width")
+```
+
+```{r setup-print, echo = FALSE}
+# Redefining the knit_print method to truncate character values to 25 characters
+# in each column and to truncate the columns in the print call to prevent 
+# wrapping tables with several columns.
+#library(ctxR)
+knit_print.data.table = function(x, ...) {
+  y <- data.table::copy(x)
+  y <- y[, lapply(.SD, function(t){
+    if (is.character(t)){
+      t <- strtrim(t, 25)
+    }
+    return(t)
+  })]
+  print(y, trunc.cols = TRUE)
+}
+
+registerS3method(
+  "knit_print", "data.table", knit_print.data.table,
+  envir = asNamespace("knitr")
+)
+```
+
+## Introduction
+
+In this vignette, the [CTX Exposure API](https://api-ccte.epa.gov/docs/exposure.html) will be explored. 
+
+::: {.noticebox data-latex=""}
+
+**NOTE:** Please see the introductory vignette for an overview of the *ctxR* package and initial set up instruction with API key storage.
+
+:::
+
+Data provided by the Exposure API are broadly organized in three different areas, Functional Use Information, Product Data, and List Presence Data. These data (except for the Functional Use Probability endpoint) are developed from publicly available documents and are also accessible using the Chemical Exposure Knowledgebase ([ChempExpo](https://comptox.epa.gov/chemexpo/)) interactive web application developed by the United States Environmental Protection Agency. The underlying database for both the Exposure API and ChemExpo is the Chemicals and Products Database (CPDat). CPDat provides reported information on how chemicals are used in commerce and (where possible) at what quantities they occur in consumer and industrial products; see [Dionisio et al. (2018)](https://www.nature.com/articles/sdata2018125) for more information on CPDat. The data provided by the Functional Use Probability endpoint are predictions from EPA's Quantitative Structure Use Relationship (QSUR) models [Phillips et al. (2017)](https://pubs.rsc.org/en/content/articlelanding/2017/gc/c6gc02744j).
+
+Product Data are organized by harmonized Product Use Categories (PUCs). The PUCs are assigned to products (which are associated with Composition Documents) and indicate the type of product associated to each data record. They are organized hierarchicially, with General Category containing Product Family, which in turn contains Product Type. The Exposure API also provide information on how the PUC was assigned. Do note that a Machine Learning model is used to assign PUCs with the "classificationmethod" equal to "Automatic". As such, these assignments may be incorrect. More information on PUC categories can be found in [Isaacs et al. (2020)](https://doi.org/10.1038/s41370-019-0187-5).
+
+List Presence Data reflect the occurrence of chemicals on lists present in publicly available documents (sourced from a variety of federal and state agencies and trade associations). These lists are tagged with List Presence Keywords (LPKs) that together describe information contained in the document relevant to how the chemical was used. LPKs are an updated version of the cassettes provided in the Chemical and Product Categories (CPCat) database; see [Dionisio et al. (2015)](https://www.sciencedirect.com/science/article/pii/S2214750014001632?via%3Dihub). For the most up to date information on the current LPKs and to see how the CPCat cassettes were updated, see [Koval et al. (2022)](https://www.nature.com/articles/s41370-022-00451-8).
+
+Both reported and predicted Function Use Information is available. Reported functional use information is organized by harmonized Function Categories (FCs) that describe the role a chemical serves in a product or industrial process. The harmonized technical function categories and definitions were developed by the Organization for Economic Co-operation and Development (OECD) (with the exception of a few categories unique to consumer products which are noted as being developed by EPA). These categories have been augmented with additional categories needed to describe chemicals in personal care, pharmaceutical, or other commercial sectors. The reported function data form the basis for ORD's QSUR models [(Phillips et al. (2016))](https://pubs.rsc.org/en/content/articlelanding/2017/GC/C6GC02744J). These models provide the structure-based predictions of chemical function available in the Functional Use Probability endpoint. Note that these models were developed prior to the OECD function categories, so their function categories are not yet aligned with the harmonized categories used in the reported data. Updated models for the harmonized categories are under development.
+
+Information for ChemExpo is sourced from
+
+Sakshi Handa, Katherine A. Phillips, Kenta Baron-Furuyama, and Kristin K. Isaacs. 2023. “ChemExpo Knowledgebase User Guide”. https://comptox.epa.gov/chemexpo/static/user_guide/index.html.
+
+## Functions
+
+Several ctxR functions are used to access the CTX Exposure API data.
+
+### Functional Use Resource
+
+Functional uses for chemicals may be searched.
+
+#### Exposure Functional Use
+
+`get_exposure_functional_use()` retrieves FCs and associated exposure data for a specific chemical (by DTXSID).
+
+```{r exposure functional use}
+exp_fun_use <- get_exposure_functional_use(DTXSID = 'DTXSID7020182')
+head(data.table::as.data.table(exp_fun_use))
+```
+
+#### Exposure Functional Use Probability
+
+`get_exposure_functional_use_probability()` retrieves the probability of functional use within different FCs for a given chemical (by DTXSID). Note, this is not probability of how the chemical is used across all categories but rather the probability within each FC that the chemical is used.
+
+```{r}
+exp_fun_use_prob <- get_exposure_functional_use_probability(DTXSID = 'DTXSID7020182')
+exp_fun_use_prob
+```
+
+#### Exposure Functional Use Categories
+
+`get_exposure_functional_use_categories()` retrieves all the FCs. This is not specific to a chemical, but rather a list of all FCs.
+
+```{r}
+exp_fun_use_cat <- get_exposure_functional_use_category()
+head(data.table::as.data.table(exp_fun_use_cat))
+```
+
+### Product Data Resource
+
+There are a few resources for retrieving product use data associated with chemical identifiers (DTXSID) or general use.
+
+#### Exposure Product Data
+
+`get_exposure_product_data()` retrieves the product data (PUCs and related data) for products that use the specified chemical (by DTXSID).
+
+```{r}
+exp_prod_dat <- get_exposure_product_data(DTXSID = 'DTXSID7020182')
+head(data.table::as.data.table(exp_prod_dat))
+```
+
+#### Exposure Product Use Category Data
+
+`get_exposure_product_data_puc()` retrieves the PUCs. This is not specific to a chemical, but rather a list of all PUCs.
+
+```{r}
+exp_prod_data_puc <- get_exposure_product_data_puc()
+head(data.table::as.data.table(exp_prod_data_puc))
+```
+
+### List Presence Resource
+
+There are a few resources for retrieving list data for specific chemicals (by DTXSID) or general list presence information.
+
+#### List Presence Tags
+
+`get_exposure_list_presence_tags()` retrieves all the list presence tag information (including LPKs). This is not specific to a chemical, but rather a list of the the list presence tags.
+
+```{r}
+exp_list_tags <- get_exposure_list_presence_tags()
+head(data.table::as.data.table(exp_list_tags))
+```
+
+#### List Presence Tag Data
+
+`get_exposure_list_presence_tags_by_dtxsid()` retrieves LPKs and associated data for a specific chemical (by DTXSID).
+
+```{r}
+exp_list_tags_dat <- get_exposure_list_presence_tags_by_dtxsid(DTXSID = 'DTXSID7020182')
+head(data.table::as.data.table(exp_list_tags_dat))
+```
+
+### Batch Search
+
+There are batch search versions for several endpoints that gather data specific to a chemical. Namely, `get_exposure_functional_use_batch()`, `get_exposure_functional_use_probability()`, `get_exposure_product_data_batch()`, and `get_exposure_list_presence_tags_by_dtxsid_batch()`. The function `get_exposure_functional_use_probability()` returns a data.table with each row corresponding to a unique chemical and each column representing a functional use category associated to at least one input chemical. The other three batch functions return a named list of data.frames, the names corresponding to the unique chemicals input and the data.frames corresponding to the information to each individual chemical.
+
+#### Functional use probability batch
+
+We demonstrate how the individual results differ from the batch results when retrieving functional use probabilities.
+
+```{r}
+bpa_prob <- get_exposure_functional_use_probability(DTXSID = 'DTXSID7020182')
+caf_prob <- get_exposure_functional_use_probability(DTXSID = 'DTXSID0020232')
+
+bpa_caf_prob <- get_exposure_functional_use_probability_batch(DTXSID = c('DTXSID7020182', 'DTXSID0020232'))
+```
+
+```{r, echo=FALSE}
+bpa_prob
+```
+```{r, echo=FALSE}
+caf_prob
+```
+```{r, echo=FALSE}
+bpa_caf_prob
+```
+
+Observe that Caffeine only has probabilities assigned to four functional use categories while Bisphenol A has probabilities assigned to twelve categories. For single chemical search, functional use categories denote the row. However, when using the batch search function, all reported categories are included as columns, with rows corresponding to each chemical. If a chemical does not have a probability associated to a functional use, the corresponding entry is given by an NA.
+
+
+## Conclusion
+
+There are several CTX `Exposure` API endpoints and ctxR contains functions for each, and batch versions for some of these as well. These allow users to access various types of exposure data associated to a given chemical. In this vignette, we explored all of the non-batch versions and discussed the batch versions. We encourage the user to experiment with the different endpoints to understand better what sorts of data are available.
+
+```{r breakdown, echo = FALSE, results = 'hide'}
+# This chunk will be hidden in the final product. It serves to undo defining the
+# custom print function to prevent unexpected behavior after this module during
+# the final knitting process and restores original option values.
+
+knit_print.data.table = knitr::normal_print
+  
+registerS3method(
+  "knit_print", "data.table", knit_print.data.table,
+  envir = asNamespace("knitr")
+)
+
+options(old_options)
+```
+
+```{r, include=FALSE}
+end_vignette()
+```
+

@@ -20,14 +20,16 @@ get_chemical_details(
 
 \item{Projection}{The format and chemical detail data returned. Allowed
 values are 'chemicaldetailall', 'chemicaldetailstandard',
-'chemicalidentifier', 'chemicalstructure'. If left empty or there is a
-mismatch, the default format will be 'chemicaldetailstandard'.}
+'chemicalidentifier', 'chemicalstructure', 'ntatoolkit',
+'ccdchemicaldetails'. If left empty or there is a mismatch, the default
+format will be 'chemicaldetailstandard'.}
 
 \item{API_key}{The user-specific API key}
 
 \item{Server}{The root address for the API endpoint}
 
-\item{verbose}{A logical indicating if some “progress report” should be given.}
+\item{verbose}{A logical indicating if some “progress report” should be
+given.}
 }
 \value{
 A data.table containing chemical information for the chemical with
@@ -37,7 +39,7 @@ DTXSID matching the input parameter.
 Retrieve chemical details from DTXSID of DTXCID
 }
 \examples{
-\dontshow{if (has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull chemical details for BPA
 bpa <- get_chemical_details(DTXSID = 'DTXSID7020182')
 \dontshow{\}) # examplesIf}

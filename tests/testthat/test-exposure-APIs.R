@@ -1,0 +1,22 @@
+with_mock_dir("exposure",{
+
+test_that("catch missing DTXSID", {
+  expect_error(get_exposure_functional_use(API_key = 'test_key'), 'Please input an DTXSID!')
+  expect_error(get_exposure_functional_use_probability(API_key = 'test_key'), 'Please input an DTXSID!')
+  expect_error(get_exposure_product_data(API_key = 'test_key'), 'Please input an DTXSID!')
+  expect_error(get_exposure_list_presence_tags_by_dtxsid(API_key = 'test_key'), 'Please input an DTXSID!')
+})
+
+test_that("Return data type", {
+  expect_type(get_exposure_functional_use(DTXSID = 'DTXSID7020182', API_key = ctx_key()), 'list')
+  expect_type(get_exposure_functional_use(DTXSID = '', API_key = ctx_key()), 'NULL')
+  expect_type(get_exposure_functional_use_probability(DTXSID = 'DTXSID7020182', API_key = ctx_key()), 'list')
+  expect_type(get_exposure_functional_use_probability(DTXSID = '', API_key = ctx_key()), 'NULL')
+  expect_type(get_exposure_functional_use_category(API_key = ctx_key()), 'list')
+  expect_type(get_exposure_product_data(DTXSID = 'DTXSID7020182', API_key = ctx_key()), 'list')
+  expect_type(get_exposure_product_data(DTXSID = '', API_key = ctx_key()), 'NULL')
+  expect_type(get_exposure_product_data_puc(API_key = ctx_key()), 'list')
+  expect_type(get_exposure_list_presence_tags(API_key = ctx_key()), 'list')
+  expect_type(get_exposure_list_presence_tags_by_dtxsid(DTXSID = 'DTXSID7020182', API_key = ctx_key()), 'list')
+  expect_type(get_exposure_list_presence_tags_by_dtxsid(DTXSID = '', API_key = ctx_key()), 'NULL')
+})})

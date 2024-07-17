@@ -7,7 +7,7 @@
 get_exposure_functional_use_probability(
   DTXSID = NULL,
   API_key = NULL,
-  Server = "https://api-ccte-stg.epa.gov/exposure",
+  Server = exposure_api_server,
   verbose = FALSE
 )
 }
@@ -26,4 +26,10 @@ exposure related to functional use.
 }
 \description{
 Retrieve probability of exposure for functional use category
+}
+\examples{
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Pull functional use probability data for BPA
+bpa <- get_exposure_functional_use_probability(DTXSID = 'DTXSID7020182')
+\dontshow{\}) # examplesIf}
 }

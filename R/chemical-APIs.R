@@ -4,16 +4,18 @@
 #' @param DTXCID The chemical identifier DTXCID
 #' @param Projection The format and chemical detail data returned. Allowed
 #'   values are 'chemicaldetailall', 'chemicaldetailstandard',
-#'   'chemicalidentifier', 'chemicalstructure'. If left empty or there is a
-#'   mismatch, the default format will be 'chemicaldetailstandard'.
+#'   'chemicalidentifier', 'chemicalstructure', 'ntatoolkit',
+#'   'ccdchemicaldetails'. If left empty or there is a mismatch, the default
+#'   format will be 'chemicaldetailstandard'.
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
-#' @param verbose A logical indicating if some “progress report” should be given.
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
 #'
 #' @return A data.table containing chemical information for the chemical with
 #'   DTXSID matching the input parameter.
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemical details for BPA
 #' bpa <- get_chemical_details(DTXSID = 'DTXSID7020182')
 
@@ -29,8 +31,8 @@ get_chemical_details <- function(DTXSID = NULL,
     stop('Please input either a DTXSID or DTXCID, but not both!')
 
   if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose){
         message('Using stored API key!')
       }
@@ -41,7 +43,8 @@ get_chemical_details <- function(DTXSID = NULL,
                           'chemicaldetailstandard',
                           'chemicalidentifier',
                           'chemicalstructure',
-                          'ntatoolkit')
+                          'ntatoolkit',
+                          'ccdchemicaldetails')
   index <- 2
   if (!is.character(Projection)){
     warning('Setting `Projection` to `chemicaldetailstandard`')
@@ -115,7 +118,7 @@ get_chemical_details <- function(DTXSID = NULL,
 
 
 create_data.table_chemical_details <- function(index = -1){
-  if (index %in% 2:5 ){
+  if (index %in% 2:6 ){
     if (index == 2){
       data <- data.table::data.table(id = character(),
                                      cpdataCount = integer(),
@@ -173,7 +176,7 @@ create_data.table_chemical_details <- function(index = -1){
                                      msReadySmiles = character(),
                                      dtxsid = character(),
                                      dtxcid = character())
-    } else {
+    } else if (index == 5) {
       data <- data.table::data.table(preferredName = character(),
                                      inchikey = character(),
                                      msReadySmiles = character(),
@@ -191,6 +194,44 @@ create_data.table_chemical_details <- function(index = -1){
                                      expocatMedianPrediction = character(),
                                      expocat = character(),
                                      nhanes = character())
+    } else {
+      data <- data.table::data.table(id = character(),
+                                     dtxsid = character(),
+                                     dtxcid = character(),
+                                     casrn = character(),
+                                     compoundId = integer(),
+                                     genericSubstanceId = integer(),
+                                     preferredName = character(),
+                                     activeAssays = integer(),
+                                     molFormula = character(),
+                                     monoisotopicMass = numeric(),
+                                     percentAssays = integer(),
+                                     pubchemCount = integer(),
+                                     pubmedCount = integer(),
+                                     sourcesCount = integer(),
+                                     qcLevel = integer(),
+                                     qcLevelDesc = character(),
+                                     isotope = integer(),
+                                     multicomponent = integer(),
+                                     totalAssays = integer(),
+                                     toxcastSelect = character(),
+                                     pubchemCid = integer(),
+                                     relatedSubstanceCount = integer(),
+                                     relatedStructureCount = integer(),
+                                     hasStructureImage = integer(),
+                                     iupacName = character(),
+                                     smiles = character(),
+                                     inchiString = character(),
+                                     averageMass = numeric(),
+                                     qcNotes = character(),
+                                     qsarReadySmiles = character(),
+                                     msReadySmiles = character(),
+                                     irisLink = character(),
+                                     pprtvLink = character(),
+                                     isMarkush = integer(),
+                                     inchikey = character(),
+                                     wikipediaArticle = character(),
+                                     cpdataCount = integer())
     }
     return(data)
   }
@@ -247,8 +288,8 @@ get_chemical_details_by_listname <- function(listname = NULL,
   }
 
   if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       message('Using stored API key!')
     }
   }
@@ -275,6 +316,19 @@ get_chemical_details_by_listname <- function(listname = NULL,
 
 }
 
+#' Get Smiles
+#'
+#' @param name Chemical name
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
+#'
+#' @return A string giving a SMILES string for the input chemical.
+#' @export
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' bpa_smiles <- get_smiles(name = "Bisphenol A")
+
 get_smiles <- function(name = NULL,
                        API_key = NULL,
                        Server = chemical_api_server,
@@ -284,8 +338,8 @@ get_smiles <- function(name = NULL,
   }
 
   if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       message('Using stored API key!')
     }
   }
@@ -311,7 +365,19 @@ get_smiles <- function(name = NULL,
 
 }
 
-get_InChIKey <- function(name = NULL,
+#' Get InChIKey
+#'
+#' @param name Chemical name
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
+#' @return A string giving the associated InChIKey.
+#' @export
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' bpa_inchikey <- get_inchikey(name = "Bisphenol A")
+
+get_inchikey <- function(name = NULL,
                          API_key = NULL,
                          Server = chemical_api_server,
                          verbose = FALSE){
@@ -320,8 +386,8 @@ get_InChIKey <- function(name = NULL,
   }
 
   if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       message('Using stored API key!')
     }
   }
@@ -347,7 +413,19 @@ get_InChIKey <- function(name = NULL,
 
 }
 
-get_InChI <- function(name = NULL,
+#' Get InChI
+#'
+#' @param name Chemical name
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
+#' @return A string giving the associated inchi string.
+#' @export
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' bpa_inchi <- get_inchi(name = "Bisphenol A")
+
+get_inchi <- function(name = NULL,
                       API_key = NULL,
                       Server = chemical_api_server,
                       verbose = FALSE){
@@ -356,8 +434,8 @@ get_InChI <- function(name = NULL,
   }
 
   if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       message('Using stored API key!')
     }
   }
@@ -396,7 +474,7 @@ get_InChI <- function(name = NULL,
 #' @return A data.frame containing chemical information for chemicals matching
 #'   the search criteria.
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemicals with a given property in a set range
 #' density <- get_chemical_by_property_range(start = 1.311, end = 1.313,
 #'                                           property = 'Density')
@@ -408,8 +486,8 @@ get_chemical_by_property_range <- function(start = NULL,
                                            Server = chemical_api_server,
                                            verbose = FALSE){
   if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       message('Using stored API key!')
     }
   }
@@ -464,7 +542,7 @@ get_chemical_by_property_range <- function(start = NULL,
 #' @return A data.frame containing chemical information for the chemical with
 #'   DTXSID matching the input parameter.
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemical information for BPA
 #' bpa <- get_chem_info(DTXSID = 'DTXSID7020182')
 
@@ -476,8 +554,8 @@ get_chem_info <- function(DTXSID = NULL,
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
   else if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if(verbose){
         message('Using stored API key!')
       }
@@ -541,10 +619,10 @@ get_chem_info <- function(DTXSID = NULL,
 #' @param Server The root address for the API endpoint
 #' @param verbose A logical indicating if some “progress report” should be given.
 #'
-#' @return @return A data.frame containing chemical information for the chemical with
+#' @return A data.frame containing chemical information for the chemical with
 #'   DTXSID matching the input parameter.
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemical fate data for BPA
 #' bpa <- get_fate_by_dtxsid(DTXSID = 'DTXSID7020182')
 
@@ -555,8 +633,8 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
   else if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -591,33 +669,50 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
 #'   name
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
-#' @param verbose A logical indicating if some “progress report” should be given.
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
+#' @param top The number of results to return if there are multiple results
+#'   available
 #'
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemicals that start with a fragment DTXSID
 #' dtxsid_fragment <- chemical_starts_with(word = 'DTXSID702018')
 
 chemical_starts_with <- function(word = NULL,
                            API_key = NULL,
                            Server = chemical_api_server,
-                           verbose = FALSE){
+                           verbose = FALSE,
+                           top = NULL){
   if (is.null(word) || !is.character(word)){
     stop('Please input a character value for word!')
   } else if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
     }
   }
 
+  if (!is.null(top)){
+    if (!is.numeric(top)) {
+      warning("Setting 'top' to NULL")
+      top <- NULL
+    } else {
+      top <- max(-1, as.integer(top))
+      if (top < 1){
+        warning("Setting 'top' to NULL")
+        top <- NULL
+      }
+    }
+  }
+
   word <- prepare_word(word)
 
-  response <- httr::GET(url = paste0(Server, '/search/start-with/', word),
+  response <- httr::GET(url = paste0(Server, '/search/start-with/', word, ifelse(is.null(top), '', paste0("?top=", top))),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -650,7 +745,7 @@ chemical_starts_with <- function(word = NULL,
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemicals with matching DTXSID
 #' bpa_dtxsid <- chemical_equal(word = 'DTXSID7020182')
 
@@ -661,8 +756,8 @@ chemical_equal <- function(word = NULL,
   if (is.null(word) || !is.character(word)){
     stop('Please input a character value for word!')
   } else if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -704,32 +799,48 @@ chemical_equal <- function(word = NULL,
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
 #' @param verbose A logical indicating if some “progress report” should be given.
+#' @param top The number of results to return if there are multiple results
+#'   available
 #'
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemicals that contain substring
 #' substring_chemicals <- chemical_contains(word = 'TXSID702018')
 
 chemical_contains <- function(word = NULL,
                               API_key = NULL,
                               Server = chemical_api_server,
-                              verbose = FALSE){
+                              verbose = FALSE,
+                              top = NULL){
   if (is.null(word) || !is.character(word)){
     stop('Please input a character value for word!')
   } else if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
     }
   }
 
+  if (!is.null(top)){
+    if (!is.numeric(top)) {
+      warning("Setting 'top' to NULL")
+      top <- NULL
+    } else {
+      top <- max(-1, as.integer(top))
+      if (top < 1){
+        warning("Setting 'top' to NULL")
+        top <- NULL
+      }
+    }
+  }
+
   word <- prepare_word(word)
 
-  response <- httr::GET(url = paste0(Server, '/search/contain/', word),
+  response <- httr::GET(url = paste0(Server, '/search/contain/', word, ifelse(is.null(top), '', paste0("?top=", top))),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -792,7 +903,7 @@ prepare_word <- function(word){
 #'
 #' @return A list of DTXSIDs with msready mass falling within the given range.
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemicals with msready mass in given range
 #' mass_range <- get_msready_by_mass(start = 200.9, end = 200.95)
 
@@ -804,8 +915,8 @@ get_msready_by_mass <- function(start = NULL,
   if(is.null(start) || is.null(end) || !is.numeric(start) || !is.numeric(end)){
     stop('Please input a numeric value for both start and end!')
   } else if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -855,7 +966,7 @@ get_msready_by_mass <- function(start = NULL,
 #' @return A character list of DTXSIDs with chemical formulas matching the
 #'   search criteria
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemicals that match input formula
 #' mass_formula <- get_msready_by_formula(formula = 'C16H24N2O5S')
 
@@ -868,8 +979,8 @@ get_msready_by_formula <- function(formula = NULL,
   } else if (!is.character(formula)){
     stop("Please input a character string for the formula parameter!")
   } else if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -908,7 +1019,7 @@ get_msready_by_formula <- function(formula = NULL,
 #' @return A character list of DTXSIDs with DTXCIDs matching the
 #'   search criteria
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemicals with matching DTXCID
 #' dtxcid_msready <- get_msready_by_dtxcid(DTXSID = 'DTXCID30182')
 
@@ -921,8 +1032,8 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
   } else if (!is.character(DTXCID)){
     stop("Please input a character string for the DTXCID parameter!")
   } else if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -966,7 +1077,7 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
 #' @return A data.frame containing information about lists that meet the search
 #'   criteria.
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemical lists by type
 #' federal <- get_chemical_lists_by_type(type = 'Federal')
 
@@ -978,8 +1089,8 @@ get_chemical_lists_by_type <- function(type = NULL,
   if (is.null(type) | !is.character(type))
     stop('Please input a value for parameter type from the list `federal`, `international`, `state`, and `other`!')
   else if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -1043,7 +1154,7 @@ get_chemical_lists_by_type <- function(type = NULL,
 #'   use \code{\link{get_chemicals_in_list}}.
 #' @seealso \code{\link{get_chemicals_in_list}}
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemical list by list name
 #' ccl4 <- get_public_chemical_list_by_name(list_name = 'CCL4')
 
@@ -1055,8 +1166,8 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
   if (is.null(list_name))
     stop('Please input list_name!')
   else if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -1114,7 +1225,7 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
 #'
 #' @return A list of names of chemical lists that contain the given chemical
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemical lists containing BPA
 #' bpa_lists <- get_lists_containing_chemical(DTXSID = 'DTXSID7020182')
 
@@ -1125,8 +1236,8 @@ get_lists_containing_chemical <- function(DTXSID = NULL,
   if (is.null(DTXSID))
     stop('Please input a non-null value for DTXSID!')
   else if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -1162,7 +1273,7 @@ get_lists_containing_chemical <- function(DTXSID = NULL,
 #'
 #' @return A data.frame of the chemical list
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Retrieve chemicals contained in chemical list 'CCL4'
 #' ccl4_chemicals <- get_chemicals_in_list(list_name = 'CCL4')
 
@@ -1179,8 +1290,8 @@ get_chemicals_in_list <- function(list_name = NULL,
   if (is.null(list_name) | !is.character(list_name))
     stop('Please input a character value for list_name!')
   else if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -1233,8 +1344,8 @@ get_chemicals_in_list_start <- function(list_name = NULL,
   else if (is.null(word) | !is.character(word))
     stop('Please input a character value for word!')
   else if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -1275,9 +1386,9 @@ get_chemicals_in_list_start <- function(list_name = NULL,
 #' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A data.frame containing information on all public chemical lists
-#'   available from the CCTE chemical api.
+#'   available from the CTX chemical api.
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull all chemical lists
 #' all_lists <- get_all_public_chemical_lists()
 
@@ -1286,8 +1397,8 @@ get_all_public_chemical_lists <- function(Projection = '',
                                           Server = chemical_api_server,
                                           verbose = FALSE){
   if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -1345,7 +1456,7 @@ get_all_public_chemical_lists <- function(Projection = '',
 #'
 #' @return XML file format for representing a mrv file.
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull mrv file for BPA by dtxsid
 #' bpa_mrv <- get_chemical_mrv(DTXSID = 'DTXSID7020182')
 #' # Pull mrv file for BPA by dtxcid
@@ -1361,8 +1472,8 @@ get_chemical_mrv <- function(DTXSID = NULL,
   else if (!is.null(DTXSID) & !is.null(DTXCID))
     stop('Please input either a DTXSID or DTXCID, but not both!')
   else if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -1408,7 +1519,7 @@ get_chemical_mrv <- function(DTXSID = NULL,
 #'
 #' @return A character string giving a mol file representation
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull mol file for BPA by dtxsid
 #' bpa_mol <- get_chemical_mol(DTXSID = 'DTXSID7020182')
 #' # Pull mol file for BPA by dtxcid
@@ -1424,8 +1535,8 @@ get_chemical_mol <- function(DTXSID = NULL,
   else if (!is.null(DTXSID) & !is.null(DTXCID))
     stop('Please input either a DTXSID or DTXCID, but not both!')
   else if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -1466,6 +1577,7 @@ get_chemical_mol <- function(DTXSID = NULL,
 #'
 #' @param DTXSID Chemical identifier DTXSID
 #' @param DTXCID Chemical identifier DTXCID
+#' @param SMILES Chemical identifier SMILES
 #' @param format The image type, either "png" or "svg". If left blank, will
 #'   default to "png".
 #' @param API_key The user-specific API key
@@ -1476,7 +1588,7 @@ get_chemical_mol <- function(DTXSID = NULL,
 #'   displaying this, one may use \code{png::writePNG()} or
 #'   \code{countcolors::plotArrayAsImage()} among many such functions.
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemical image for BPA by dtxsid
 #' bpa_image_matrix <- get_chemical_image(DTXSID = 'DTXSID7020182')
 #' if (requireNamespace("countcolors", quietly = TRUE)){
@@ -1490,39 +1602,47 @@ get_chemical_mol <- function(DTXSID = NULL,
 
 get_chemical_image <- function(DTXSID = NULL,
                                DTXCID = NULL,
+                               SMILES = NULL,
                                format = "",
                                API_key = NULL,
                                Server = chemical_api_server,
                                verbose = FALSE){
-  if (is.null(DTXSID) & is.null(DTXCID))
-    stop('Please input a DTXSID or DTXCID!')
-  else if (!is.null(DTXSID) & !is.null(DTXCID))
-    stop('Please input either a DTXSID or DTXCID, but not both!')
+  if (is.null(DTXSID) & is.null(DTXCID) & is.null(SMILES))
+    stop('Please input a DTXSID, DTXCID, or SMILES!')
+  else if (length(which(!sapply(list(DTXSID, DTXCID, SMILES), is.null))) > 1)
+    stop('Please input only one DTXSID, DTXCID, or SMILES, and not multiple!')
   else if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
     }
   }
   if (format == 'png'){
-    image_type = "?format=png"
+    image_type = "Image+Format=png"
   } else if (format == 'svg'){
-    image_type = "?format=svg"
+    image_type = "Image+Format=svg"
   } else {
     image_type = ""
   }
 
   if (!is.null(DTXSID)){
-    response <- httr::GET(url = paste0(Server, '/file/image/search/by-dtxsid/', DTXSID, image_type),
+    response <- httr::GET(url = paste0(Server, '/file/image/search/by-dtxsid/', DTXSID, '?', image_type),
+                          httr::add_headers(.headers = c(
+                            'Content-Type' =  'application/json',
+                            'x-api-key' = API_key)
+                          )
+    )
+  } else if (!is.null(DTXCID)) {
+    response <- httr::GET(url = paste0(Server, '/file/image/search/by-dtxcid/', DTXCID, '?', image_type),
                           httr::add_headers(.headers = c(
                             'Content-Type' =  'application/json',
                             'x-api-key' = API_key)
                           )
     )
   } else {
-    response <- httr::GET(url = paste0(Server, '/file/image/search/by-dtxcid/', DTXCID, image_type),
+    response <- httr::GET(url = paste0(Server, '/file/image/generate?smiles=', prepare_word(SMILES), '&', image_type),
                           httr::add_headers(.headers = c(
                             'Content-Type' =  'application/json',
                             'x-api-key' = API_key)
@@ -1552,7 +1672,7 @@ get_chemical_image <- function(DTXSID = NULL,
 #'
 #' @return A named list of synonym information for the input DTXSID
 #' @export
-#' @examplesIf has_ccte_key() & is.na(ccte_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull synonyms for BPA
 #' bpa_synonym <- get_chemical_synonym(DTXSID = 'DTXSID7020182')
 
@@ -1563,8 +1683,8 @@ get_chemical_synonym <- function(DTXSID = NULL,
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
   else if (is.null(API_key)){
-    if (has_ccte_key()) {
-      API_key <- ccte_key()
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
       if (verbose) {
         message('Using stored API key!')
       }
@@ -1592,3 +1712,16 @@ get_chemical_synonym <- function(DTXSID = NULL,
   return()
 }
 
+#' Chemical API Endpoint status
+#'
+#' @return Status of Chemical API Endpoints
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' status <- get_chemical_endpoint_status()
+#' print(status)
+
+get_chemical_endpoint_status <- function(){
+  request <- httr::GET(url = paste0(chemical_api_server, "/health"))
+  return(request$status_code)
+}
