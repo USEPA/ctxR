@@ -1258,8 +1258,7 @@ chemical_contains_batch <- function(word_list = NULL,
     return(results)
   }
 
-  return()
-    stop('Please input a list of chemical names!')
+  stop('Please input a list of chemical names!')
 
 }
 
