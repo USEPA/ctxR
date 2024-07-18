@@ -1204,7 +1204,7 @@ chemical_equal_batch <- function(word_list = NULL,
 chemical_contains_batch <- function(word_list = NULL,
                                     API_key = NULL,
                                     rate_limit = 0L,
-                                    verbose = verbose,
+                                    verbose = FALSE,
                                     top = NULL){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ctx_key()) {
@@ -1214,6 +1214,7 @@ chemical_contains_batch <- function(word_list = NULL,
       }
     }
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -1255,10 +1256,18 @@ chemical_contains_batch <- function(word_list = NULL,
     )
     names(results) <- word_list
     return(results)
-  } else {
-    stop('Please input a list of chemical names!')
   }
+
+  return()
+    stop('Please input a list of chemical names!')
+
 }
+
+check_search_dtxsid <- function(list){
+  # Check if chemical search returned chemical information or suggestions
+  return('dtxsid' %in% names(list))
+}
+
 
 #' Get msready by mass and error offset
 #'
