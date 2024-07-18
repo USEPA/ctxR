@@ -8,7 +8,7 @@ chemical_contains_batch(
   word_list = NULL,
   API_key = NULL,
   rate_limit = 0L,
-  verbose = verbose,
+  verbose = FALSE,
   top = NULL
 )
 }
