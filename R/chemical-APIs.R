@@ -676,6 +676,7 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
 #'
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
+#' @author Paul Kruse, Kristin Issacs
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemicals that start with a fragment DTXSID
@@ -751,6 +752,7 @@ chemical_starts_with <- function(word = NULL,
 #'
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
+#' @author Paul Kruse, Kristin Issacs
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemicals with matching DTXSID
@@ -817,6 +819,7 @@ chemical_equal <- function(word = NULL,
 #'
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
+#' @author Paul Kruse, Kristin Issacs
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemicals that contain substring
