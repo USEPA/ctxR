@@ -38,3 +38,6 @@ Chemical contains
 substring_chemicals <- chemical_contains(word = 'TXSID702018')
 \dontshow{\}) # examplesIf}
 }
+\author{
+Paul Kruse, Kristin Issacs
+}

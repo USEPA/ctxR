@@ -34,3 +34,6 @@ Chemical equal
 bpa_dtxsid <- chemical_equal(word = 'DTXSID7020182')
 \dontshow{\}) # examplesIf}
 }
+\author{
+Paul Kruse, Kristin Issacs
+}
