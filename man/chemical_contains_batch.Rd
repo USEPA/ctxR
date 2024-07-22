@@ -8,7 +8,7 @@ chemical_contains_batch(
   word_list = NULL,
   API_key = NULL,
   rate_limit = 0L,
-  verbose = verbose,
+  verbose = FALSE,
   top = NULL
 )
 }
@@ -27,7 +27,10 @@ available}
 }
 \value{
 A named list of data.frames of chemicals and related values matching
-the query parameters
+the query parameters. The data.frames under the 'valid' entry contain
+chemical information for successful requests while the data.frames under
+the 'invalid' entry contain data.frames with chemical name suggestions
+based on the input search values.
 }
 \description{
 Chemical contains batch search
@@ -38,4 +41,7 @@ Chemical contains batch search
 substring_chemicals <- chemical_contains_batch(word_list = c('TXDIS702018',
                                                              'DTXSID70201'))
 \dontshow{\}) # examplesIf}
+}
+\author{
+Paul Kruse, Kristin Issacs
 }

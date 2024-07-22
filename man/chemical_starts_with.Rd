@@ -39,3 +39,6 @@ Chemical starts with
 dtxsid_fragment <- chemical_starts_with(word = 'DTXSID702018')
 \dontshow{\}) # examplesIf}
 }
+\author{
+Paul Kruse, Kristin Issacs
+}

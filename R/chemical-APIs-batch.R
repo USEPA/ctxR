@@ -1043,7 +1043,11 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
 #'   available
 #'
 #' @return A named list of data.frames of chemicals and related values matching
-#'   the query parameters
+#'   the query parameters. The data.frames under the 'valid' entry contain
+#'   chemical information for successful requests while the data.frames under
+#'   the 'invalid' entry contain data.frames with chemical name suggestions
+#'   based on the input search values.
+#' @author Paul Kruse, Kristin Issacs
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemicals that start with given substrings
@@ -1081,6 +1085,8 @@ chemical_starts_with_batch <- function(word_list = NULL,
     }
   }
 
+  return_list <- list()
+
   if (!is.null(word_list)){
     if (!is.character(word_list) & !all(sapply(word_list, is.character))){
       stop('Please input a character list for word_list!')
@@ -1103,7 +1109,19 @@ chemical_starts_with_batch <- function(word_list = NULL,
     }
     )
     names(results) <- word_list
-    return(results)
+
+    index_200 <- which(unlist(lapply(results, check_search_dtxsid)))
+
+    if (length(index_200) < length(word_list)){
+      return_list$invalid <- results[-index_200]
+      if (length(index_200) > 0){
+        return_list$valid <- results[index_200]
+      }
+    } else {
+      return_list$valid <- results
+    }
+    return(return_list)
+
   } else {
     stop('Please input a list of chemical names!')
   }
@@ -1117,8 +1135,12 @@ chemical_starts_with_batch <- function(word_list = NULL,
 #' @param rate_limit Number of seconds to wait between each request
 #' @param verbose A logical indicating if some “progress report” should be given.
 #'
-#' @return A named list of data.frames of chemicals and related values matching
-#'   the query parameters
+#' @return A named list of data.tables of chemicals and related values matching
+#' the query parameters. The list contains two entries, 'valid' and 'invalid';
+#' 'valid', contains a data.table of the results of the the searched chemical
+#' that were found in the databases; 'invalid' contains a data.table with
+#' 'suggestions' for each searched valued that did not return a chemical.
+#' @author Paul Kruse, Kristin Issacs
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemicals that match input strings
@@ -1140,6 +1162,9 @@ chemical_equal_batch <- function(word_list = NULL,
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
+
+  return_list <- list()
+
   if (!is.null(word_list)){
     if (!is.character(word_list) & !all(sapply(word_list, is.character))){
       stop('Please input a character list for word_list!')
@@ -1158,7 +1183,27 @@ chemical_equal_batch <- function(word_list = NULL,
 
     if (response$status_code == 200){
       results <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
-      return(results)
+      results <- data.table::as.data.table(results)
+
+
+      valid_index <- which(unlist(lapply(results$searchMsgs, is.null)))
+      invalid_index <- setdiff(seq_along(results$searchMsgs), valid_index)
+
+      print('Valid')
+      print(valid_index)
+
+      print('Invalid')
+      print(setdiff(seq_along(results$suggestions), valid_index))
+
+      print(names(results))
+
+      return_list$valid <- data.table::copy(results)[valid_index, -c(11:12)]
+      return_list$invalid <- data.table::copy(results)[invalid_index, c(7, 11:13)]
+
+
+
+
+      return(return_list)
       }
 
     # results <- lapply(word_list, function(t){
@@ -1194,7 +1239,11 @@ chemical_equal_batch <- function(word_list = NULL,
 #'   available
 #'
 #' @return A named list of data.frames of chemicals and related values matching
-#'   the query parameters
+#'   the query parameters. The data.frames under the 'valid' entry contain
+#'   chemical information for successful requests while the data.frames under
+#'   the 'invalid' entry contain data.frames with chemical name suggestions
+#'   based on the input search values.
+#' @author Paul Kruse, Kristin Issacs
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemicals that contain substrings
@@ -1204,7 +1253,7 @@ chemical_equal_batch <- function(word_list = NULL,
 chemical_contains_batch <- function(word_list = NULL,
                                     API_key = NULL,
                                     rate_limit = 0L,
-                                    verbose = verbose,
+                                    verbose = FALSE,
                                     top = NULL){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ctx_key()) {
@@ -1214,6 +1263,7 @@ chemical_contains_batch <- function(word_list = NULL,
       }
     }
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -1231,6 +1281,8 @@ chemical_contains_batch <- function(word_list = NULL,
       }
     }
   }
+
+  return_list <- list()
 
   if (!is.null(word_list)){
     if (!is.character(word_list) & !all(sapply(word_list, is.character))){
@@ -1254,11 +1306,28 @@ chemical_contains_batch <- function(word_list = NULL,
     }
     )
     names(results) <- word_list
-    return(results)
-  } else {
-    stop('Please input a list of chemical names!')
+    index_200 <- which(unlist(lapply(results, check_search_dtxsid)))
+
+    if (length(index_200) < length(word_list)){
+      return_list$invalid <- results[-index_200]
+      if (length(index_200) > 0){
+        return_list$valid <- results[index_200]
+      }
+    } else {
+      return_list$valid <- results
+    }
+    return(return_list)
   }
+
+  stop('Please input a list of chemical names!')
+
 }
+
+check_search_dtxsid <- function(list){
+  # Check if chemical search returned chemical information or suggestions
+  return('dtxsid' %in% names(list))
+}
+
 
 #' Get msready by mass and error offset
 #'

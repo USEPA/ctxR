@@ -27,7 +27,10 @@ available}
 }
 \value{
 A named list of data.frames of chemicals and related values matching
-the query parameters
+the query parameters. The data.frames under the 'valid' entry contain
+chemical information for successful requests while the data.frames under
+the 'invalid' entry contain data.frames with chemical name suggestions
+based on the input search values.
 }
 \description{
 Chemical starts with batch search
@@ -38,4 +41,7 @@ Chemical starts with batch search
 bpa_substrings <- chemical_starts_with_batch(word_list = c('DTXSID702018',
                                                            'DTXCID3018'))
 \dontshow{\}) # examplesIf}
+}
+\author{
+Paul Kruse, Kristin Issacs
 }
