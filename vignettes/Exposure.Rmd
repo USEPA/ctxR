@@ -7,7 +7,7 @@ output:
     toc: yes
     toc_depth: 6
 vignette: >
-  %\VignetteIndexEntry{Exposure}
+  %\VignetteIndexEntry{4. Exposure}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
