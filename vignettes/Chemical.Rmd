@@ -116,6 +116,17 @@ res_dt <- get_chemical_details(DTXSID = 'DTXSID7020182')
 res_dt <- get_chemical_details(DTXCID = 'DTXCID30182')
 ```
 
+##### By Batch Search
+
+```{r ctxR batch data chemical, message=FALSE, eval=FALSE}
+vector_dtxsid<- c("DTXSID7020182", "DTXSID9020112", "DTXSID8021430")
+res_dtxsid <- get_chemical_details_batch(DTXSID = vector_dtxsid)
+
+vector_dtxcid <- c("DTXCID30182", "DTXCID801430", "DTXCID90112")
+res_dtxcid <- get_chemical_details_batch(DTXCID = vector_dtxcid)
+```
+
+
 ### Chemical Property Resource
 
 `get_chemical_by_property_range()` retrieves data for chemicals that have a specified property within the input range.
@@ -296,7 +307,7 @@ colnames(ccl4)
 head(ccl4, 1)
 ```
 
-### Access Physico-chemical Property Data for Chemical Lists
+### Batch Search Physico-chemical Property Data by DTXSID for Chemical Lists
 
 Next, physico-chemical properties for all chemicals in each list can be retrieved. The function `get_chem_info()` will be used to batch search for a list of DTXSIDs.
 
