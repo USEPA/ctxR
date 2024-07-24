@@ -32,8 +32,9 @@ data for each input DTXSID.
 Retrieve product data for exposure purposes batch
 }
 \examples{
-has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull exposure functional use data for multiple chemicals
 dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 dtxsid_product_data <- get_exposure_product_data_batch(DTXSID = dtxsid)
+\dontshow{\}) # examplesIf}
 }
