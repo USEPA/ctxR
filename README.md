@@ -4,6 +4,10 @@
 # ctxR
 
 <!-- badges: start -->
+
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/ctxR)](https://cran.r-project.org/package=ctxR)
+[![Monthly
+Downloads](https://cranlogs.r-pkg.org/badges/last-month/ctxR?color=7BAFD4)](https://cranlogs.r-pkg.org/badges/last-month/ctxR?color=7BAFD4)
 <!-- badges: end -->
 
 The goal of ctxR is to provide R users a set of functions to access the
