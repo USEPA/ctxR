@@ -7,7 +7,7 @@
 get_general_exposure_prediction(
   DTXSID = NULL,
   API_key = NULL,
-  Server = "https://api-ccte-stg.epa.gov/exposure",
+  Server = exposure_api_server,
   verbose = FALSE
 )
 }

@@ -7,7 +7,7 @@
 get_httk_data(
   DTXSID = NULL,
   API_key = NULL,
-  Server = "https://api-ccte-stg.epa.gov/exposure",
+  Server = exposure_api_server,
   verbose = FALSE
 )
 }
