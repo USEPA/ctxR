@@ -169,7 +169,7 @@ get_exposure_functional_use_probability_batch <- function(DTXSID = NULL,
 get_httk_data_batch <- function(DTXSID = NULL,
                                 API_key = NULL,
                                 rate_limit = 0L,
-                                Server = 'https://api-ccte-stg.epa.gov/exposure', #exposure_api_server,
+                                Server = exposure_api_server,
                                 verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ctx_key()) {
@@ -361,7 +361,7 @@ get_exposure_list_presence_tags_by_dtxsid_batch <- function(DTXSID = NULL,
 get_general_exposure_prediction_batch <- function(DTXSID = NULL,
                                                   API_key = NULL,
                                                   rate_limit = 0L,
-                                                  Server = 'https://api-ccte-stg.epa.gov/exposure', #exposure_api_server,
+                                                  Server = exposure_api_server,
                                                   verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ctx_key()) {
@@ -427,7 +427,7 @@ get_general_exposure_prediction_batch <- function(DTXSID = NULL,
 get_demographic_exposure_prediction_batch <- function(DTXSID = NULL,
                                                       API_key = NULL,
                                                       rate_limit = 0L,
-                                                      Server = 'https://api-ccte-stg.epa.gov/exposure', #exposure_api_server,
+                                                      Server = exposure_api_server,
                                                       verbose = FALSE){
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ctx_key()) {

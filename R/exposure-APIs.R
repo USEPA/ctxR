@@ -152,7 +152,7 @@ get_exposure_functional_use_category <- function(API_key = NULL,
 
 get_httk_data <- function(DTXSID = NULL,
                           API_key = NULL,
-                          Server = "https://api-ccte-stg.epa.gov/exposure", #Server = exposure_api_server,
+                          Server = exposure_api_server,
                           verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input an DTXSID!')
@@ -384,7 +384,7 @@ get_exposure_list_presence_tags_by_dtxsid <- function(DTXSID = NULL,
 
 get_general_exposure_prediction <- function(DTXSID = NULL,
                                             API_key = NULL,
-                                            Server = 'https://api-ccte-stg.epa.gov/exposure', #exposure_api_server,
+                                            Server = exposure_api_server,
                                             verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input an DTXSID!')
@@ -442,7 +442,7 @@ get_general_exposure_prediction <- function(DTXSID = NULL,
 
 get_demographic_exposure_prediction <- function(DTXSID = NULL,
                                                 API_key = NULL,
-                                                Server = 'https://api-ccte-stg.epa.gov/exposure', #exposure_api_server,
+                                                Server = exposure_api_server,
                                                 verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input an DTXSID!')
