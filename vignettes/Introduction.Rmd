@@ -118,9 +118,9 @@ Because each of these workflow steps requires manual interaction with the search
 
 Moreover, the manual stages of this kind of workflow are also non-transparent and not easily reproducible. Utilizing APIs for data exploration and retrieval can alleviate these concerns. 
 
-# Introduction to CTX APIs
+# Introduction to the CTX APIs
 
-Recently, the [US EPA's Center for Computational Toxicology and Exposure](https://www.epa.gov/aboutepa/about-center-computational-toxicology-and-exposure-ccte) (CCTE) developed a set of Application Programming Interfaces (APIs) that allows programmatic access to the CCD, bypassing the manual steps of the web-based batch search workflow. APIs effectively automate the process of accessing and downloading the data that populates the CCD. 
+Recently, the [US EPA's Center for Computational Toxicology and Exposure (CCTE)](https://www.epa.gov/aboutepa/about-center-computational-toxicology-and-exposure-ccte) developed a set of Application Programming Interfaces (APIs) that allows programmatic access to the CCD, bypassing the manual steps of the web-based batch search workflow. APIs effectively automate the process of accessing and downloading the data that populates the CCD. 
 
 The [Computational Toxicology and Exposure (CTX) APIs](https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis) are publicly available at no cost to the user. However, in order to use the CTX APIs, users must have a individual API key. The API key uniquely identifies the user to the CCD servers and verifies that you have permission to access the database. Getting an API key is free, but requires contacting the API support team at [ccte_api@epa.gov](mailto:ccte_api@epa.gov).
 
