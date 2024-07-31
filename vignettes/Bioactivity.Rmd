@@ -2,7 +2,9 @@
 title: "ctxR: Bioactivity API"
 author: US EPA's Center for Computational Toxicology and Exposure ccte@epa.gov
 output:
-  rmdformats::readthedown
+  rmarkdown::html_vignette:
+    fig_width: 7
+    fig_height: 6
 params:
   my_css: css/rmdformats.css
 vignette: >
@@ -49,10 +51,7 @@ registerS3method(
   "knit_print", "data.table", knit_print.data.table,
   envir = asNamespace("knitr")
 )
-# helper function for printing
-printFormattedTable <- function(res_dt, widen = c()) {
-  DT::datatable(res_dt, style = 'bootstrap', class = 'table-bordered table-condensed', rownames = FALSE, options = list(scrollX = TRUE, autoWidth = TRUE, dom = 't', columnDefs = list(list(width = '1250px', targets = widen))))
-}
+
 ```
 
 <a href="https://cran.r-project.org/web/packages/ctxR/index.html"><img src="Pictures/ctxR_hex.png" width="200" align="right" style="float: right; margin-left: 10px; margin-bottom: 20px;"/></a>
@@ -71,7 +70,7 @@ This flexible analysis pipeline is capable of efficiently processing and storing
 
 <center>
 
-![<font style="font-size:15px"><i>Figure 1: Conceptual overview of the ToxCast Pipeline functionality</i></font>](Pictures/Fig1_tcpl_overview.png)
+![<font style="font-size:15px"><i>Figure 1: Conceptual overview of the ToxCast Pipeline functionality</i></font>](Pictures/Fig1_tcpl_overview.png){#id .class width=100% height=100%}
 
 </center>
 
@@ -100,11 +99,9 @@ assay <- get_annotation_by_aeid(AEID = "891")
 ```
 
 ```{r, echo=FALSE}
-htmlTable::htmlTable(assay,
-        align = 'l',
-        align.header = 'l',
-        rnames = FALSE  ,
-        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em')
+knitr::kable(head(assay))%>% 
+ kableExtra::kable_styling("striped") %>% 
+ kableExtra::scroll_box(width = "100%")
 ```
 
 `get_annotation_by_aeid_batch()` retrieves annotation for a list (or vector) of assay endpoint ids (aeids).
@@ -115,12 +112,10 @@ assays <- get_annotation_by_aeid_batch(AEID = c(759,700,891))
 assays <- data.table::rbindlist(assays)
 ```
 
-```{r, message=FALSE, eval=FALSE}
-htmlTable::htmlTable(assays),
-        align = 'l',
-        align.header = 'l',
-        rnames = FALSE  ,
-        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em')
+```{r, echo=FALSE}
+knitr::kable(head(assays))%>% 
+ kableExtra::kable_styling("striped") %>% 
+ kableExtra::scroll_box(width = "100%", height="400px")
 ```
 
 ## Get all assay annotations
@@ -143,26 +138,16 @@ There are several resources for retrieving bioactivity data associated with a va
 summary <- get_bioactivity_summary(AEID = "891")
 ```
 
-```{r, message=FALSE, echo=FALSE}
-htmlTable::htmlTable(summary,
-        align = 'l',
-        align.header = 'l',
-        rnames = FALSE  ,
-        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em ')
-``` 
-
-`get_bioactivity_summary_batch()` retrieves a summary for a list (or vector) of assay endpoint ids (aeids).
-
-```{r ctxR summary by aeid batch, message=FALSE}
-summary <- get_bioactivity_summary_batch(AEID = c(759,700,891))
+```{r, echo=FALSE}
+knitr::kable(head(summary))%>% 
+ kableExtra::kable_styling("striped") %>% 
+ kableExtra::scroll_box(width = "100%")
 ```
 
-```{r, echo=FALSE}
-htmlTable::htmlTable(summary,
-        align = 'l',
-        align.header = 'l',
-        rnames = FALSE  ,
-        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em')
+`get_bioactivity_summary_batch()` retrieves a summary for a list (or vector) of assay endpoint ids (aeids). Output is the same as previous get_bioactivity_summary().
+
+```{r ctxR summary by aeid batch, message=FALSE, results= FALSE}
+summary <- get_bioactivity_summary_batch(AEID = c(759,700,891))
 ```
 
 ## Get data
@@ -175,11 +160,9 @@ spid_data <- get_bioactivity_details(SPID = 'TP0000904H05')
 ```
 
 ```{r, echo=FALSE}
-htmlTable::htmlTable(spid_data,
-        align = 'l',
-        align.header = 'l',
-        rnames = FALSE  ,
-        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em')
+knitr::kable(head(spid_data))%>% 
+ kableExtra::kable_styling("striped") %>% 
+ kableExtra::scroll_box(width = "100%", height="400px")
 ```
 
 ```{r ctxR data by m4id, message=FALSE, results = FALSE}
@@ -188,11 +171,9 @@ m4id_data <- get_bioactivity_details(m4id = 739695)
 ```
 
 ```{r, echo=FALSE}
-htmlTable::htmlTable(m4id_data,
-        align = 'l',
-        align.header = 'l',
-        rnames = FALSE  ,
-        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em')
+knitr::kable(head(m4id_data))%>% 
+ kableExtra::kable_styling("striped") %>% 
+ kableExtra::scroll_box(width = "100%", height="400px")
 ```
 
 ```{r ctxR data by dtxsid, message=FALSE, results = FALSE}
@@ -201,11 +182,9 @@ dtxsid_data <- get_bioactivity_details(DTXSID = "DTXSID30944145")
 ```
 
 ```{r, echo=FALSE}
-htmlTable::htmlTable(dtxsid_data,
-        align = 'l',
-        align.header = 'l',
-        rnames = FALSE  ,
-        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em')
+knitr::kable(head(dtxsid_data))%>% 
+ kableExtra::kable_styling("striped") %>% 
+ kableExtra::scroll_box(width = "100%", height="400px")
 ```
 
 ```{r ctxR data by aeid, message=FALSE, results = FALSE}
@@ -214,11 +193,9 @@ aeid_data <- get_bioactivity_details(AEID = 704)
 ```
 
 ```{r, echo=FALSE}
-htmlTable::htmlTable(head(aeid_data),
-        align = 'l',
-        align.header = 'l',
-        rnames = FALSE  ,
-        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em')
+knitr::kable(head(aeid_data))%>% 
+ kableExtra::kable_styling("striped") %>% 
+ kableExtra::scroll_box(width = "100%",  height="400px")
 ```
 
 Similar to the other `_batch` functions, `get_bioactivity_details_batch()` retrieves data for a list (or vector) of assay endpoint ids (aeid), sample ids (spid), Level 4 IDs (m4id), or chemical DTXSIDs.

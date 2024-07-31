@@ -2,7 +2,7 @@
 title: "ctxR: Utilities for Interacting with the CTX APIs in R"
 author: US EPA's Center for Computational Toxicology and Exposure ccte@epa.gov
 output:
-  rmdformats::readthedown
+  rmdformats::readthedown:
 params:
   my_css: css/rmdformats.css
 vignette: >

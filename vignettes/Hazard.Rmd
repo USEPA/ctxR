@@ -2,7 +2,9 @@
 title: "ctxR: Hazard API"
 author: US EPA's Center for Computational Toxicology and Exposure ccte@epa.gov
 output:
-  rmdformats::readthedown
+  rmarkdown::html_vignette:
+    fig_width: 7
+    fig_height: 6
 params:
   my_css: css/rmdformats.css
 vignette: >
@@ -161,21 +163,21 @@ Using the standard CompTox Chemicals Dashboard approach to access genotoxicity h
 
 <center>
 
-![<font style="font-size:15px"><i>Figure 1: CCD Navigation to Hazard Data>Genotoxicity Plot</i></font>](./Pictures/BPA_Hazard_data_-_Genotoxicity.png)
+![<font style="font-size:15px"><i>Figure 1: CCD Navigation to Hazard Data>Genotoxicity Plot</i></font>](./Pictures/BPA_Hazard_data_-_Genotoxicity.png){#id .class width=110% height=110%}
 </center>
 
 Figure 2 shows the genotoxicity section of the hazard tab for Bisphenol A. This page provides a summary of available genotoxicity data as well as individual reports and samples of such data.
 
 <center>
 
-![<font style="font-size:15px"><i>Figure 2: CCD Hazard Data>Genotoxicity for Bisphenol A</i></font>](./Pictures/CCD_BPA_genotoxicity.png)
+![<font style="font-size:15px"><i>Figure 2: CCD Hazard Data>Genotoxicity for Bisphenol A</i></font>](./Pictures/CCD_BPA_genotoxicity.png){#id .class width=110% height=110%}
 </center>
 
 The CTX APIs streamline the process of retrieving this information in a programmatic fashion. Figure 3 shows the particular set of genotoxicity resources available in the `Hazard` endpoints of the CTX APIs. There are both summary and detail resources, reflecting the information one can find on the CompTox Chemicals Dashboard Genotoxicity page for a given chemical.
 
 <center>
 
-![<font style="font-size:15px"><i>Figure 3: CTX Hazard APIs for Genotoxicity Endpoints </i></font>](./Pictures/Hazard_-_genotoxicity_resource.png)
+![<font style="font-size:15px"><i>Figure 3: CTX Hazard APIs for Genotoxicity Endpoints </i></font>](./Pictures/Hazard_-_genotoxicity_resource.png){#id .class width=110% height=110%}
 </center>
 
 ## Review Genotoxicity Data for Chemical Lists

@@ -2,7 +2,9 @@
 title: "ctxR: Exposure API"
 author: US EPA's Center for Computational Toxicology and Exposure ccte@epa.gov
 output:
-  rmdformats::readthedown
+  rmarkdown::html_vignette:
+    fig_width: 7
+    fig_height: 6
 params:
   my_css: css/rmdformats.css
 vignette: >
@@ -87,13 +89,10 @@ exp_fun_use <- get_exposure_functional_use(DTXSID = 'DTXSID7020182')
 ```
 
 ```{r, echo=FALSE}
-htmlTable::htmlTable(head(exp_fun_use),
-        align = 'l',
-        align.header = 'l',
-        rnames = FALSE  ,
-        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em ')
+knitr::kable(head(exp_fun_use))  %>%
+ kableExtra::kable_styling("striped") %>% 
+ kableExtra::scroll_box(width = "100%")
 ```
-
 
 ## Exposure Functional Use Probability
 
@@ -104,11 +103,7 @@ exp_fun_use_prob <- get_exposure_functional_use_probability(DTXSID = 'DTXSID7020
 ```
 
 ```{r, echo=FALSE}
-htmlTable::htmlTable(head(exp_fun_use_prob),
-        align = 'l',
-        align.header = 'l',
-        rnames = FALSE  ,
-        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em ')
+knitr::kable(head(exp_fun_use_prob))
 ```
 
 ## Exposure Functional Use Categories
@@ -120,11 +115,7 @@ exp_fun_use_cat <- get_exposure_functional_use_category()
 ```
 
 ```{r, echo=FALSE}
-htmlTable::htmlTable(head(exp_fun_use_cat),
-        align = 'l',
-        align.header = 'l',
-        rnames = FALSE  ,
-        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em ')
+knitr::kable(head(exp_fun_use_cat))
 ```
 
 # Product Data Resource
@@ -139,12 +130,10 @@ There are a few resources for retrieving product use data associated with chemic
 exp_prod_dat <- get_exposure_product_data(DTXSID = 'DTXSID7020182')
 ```
 
-```{r, echo=FALSE, eval=TRUE}
-htmlTable::htmlTable(head(exp_prod_dat),
-        align = 'l',
-        align.header = 'l',
-        rnames = FALSE  ,
-        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em ')
+```{r, echo=FALSE}
+knitr::kable(head(exp_prod_dat))%>%
+ kableExtra::kable_styling("striped") %>% 
+ kableExtra::scroll_box(width = "100%")
 ```
 
 ## Exposure Product Use Category Data
@@ -155,12 +144,8 @@ htmlTable::htmlTable(head(exp_prod_dat),
 exp_prod_data_puc <- get_exposure_product_data_puc()
 ```
 
-```{r, echo=FALSE, eval=TRUE}
-htmlTable::htmlTable(head(exp_prod_data_puc),
-        align = 'l',
-        align.header = 'l',
-        rnames = FALSE  ,
-        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em ')
+```{r, echo=FALSE}
+knitr::kable(head(exp_prod_data_puc))
 ```
 
 # List Presence Resource
@@ -175,12 +160,8 @@ There are a few resources for retrieving list data for specific chemicals (by DT
 exp_list_tags <- get_exposure_list_presence_tags()
 ```
 
-```{r, echo=FALSE, eval=TRUE}
-htmlTable::htmlTable(head(exp_list_tags),
-        align = 'l',
-        align.header = 'l',
-        rnames = FALSE  ,
-        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em ')
+```{r, echo=FALSE}
+knitr::kable(head(exp_list_tags))
 ```
 
 ## List Presence Tag Data
@@ -191,12 +172,10 @@ htmlTable::htmlTable(head(exp_list_tags),
 exp_list_tags_dat <- get_exposure_list_presence_tags_by_dtxsid(DTXSID = 'DTXSID7020182')
 ```
 
-```{r, echo=FALSE, eval=TRUE}
-htmlTable::htmlTable(head(exp_list_tags_dat),
-        align = 'l',
-        align.header = 'l',
-        rnames = FALSE  ,
-        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em ')
+```{r, echo=FALSE}
+knitr::kable(head(exp_list_tags_dat))%>% 
+ kableExtra::kable_styling("striped") %>% 
+ kableExtra::scroll_box(width = "100%")
 ```
 
 ## Batch Search
