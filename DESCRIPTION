@@ -50,6 +50,7 @@ Suggests:
     gridExtra,
     htmlTable,
     httptest,
+    kableExtra,
     knitr,
     prettydoc,
     rmarkdown,
