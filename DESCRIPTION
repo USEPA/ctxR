@@ -54,7 +54,7 @@ Suggests:
     rmarkdown,
     testthat (>= 3.0.0),
     XML
-URL: https://github.com/USEPA/ctxR
+URL: https://github.com/USEPA/ctxR, https://usepa.github.io/ctxR/
 BugReports: https://github.com/USEPA/ctxR/issues
 VignetteBuilder: knitr
 Config/testthat/edition: 3
