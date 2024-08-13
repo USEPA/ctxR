@@ -81,9 +81,7 @@ get_bioactivity_details <- function(DTXSID = NULL,
                       data.table::data.table()
                     }
     )
-    if (is.null(res)){
-      return()
-    }
+
     if (!is.data.frame(res) & (length(res) != 0)){
       for (i in 1:length(res)){
         if (is.null(res[[i]])) res[[i]] <- NA # set any NULLs to NA
