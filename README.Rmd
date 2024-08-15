@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# ctxR: Utilities for Interacting with the CTX APIs <a href="https://cran.r-project.org/web/packages/ctxR/index.html"><img src="vignettes/Pictures/ctxR_hex_link.png" width="200" align="right" /></a>
+# ctxR: Utilities for Interacting with the CTX APIs 
 
 <!-- badges: start -->
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/ctxR)](https://cran.r-project.org/package=ctxR)
@@ -26,6 +26,7 @@ knitr::opts_chunk$set(
 
 ## Welcome to the GitHub repository for the ctxR package
 
+<a href="https://cran.r-project.org/web/packages/ctxR/index.html"><img src="vignettes/Pictures/ctxR_hex.png" width="200" align="right" /></a>
 
 ctxR was developed to streamline the process of accessing the information available through the [Computational Toxicology and Exposure (CTX) APIs](https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis) without requiring prior knowledge of how to use APIs. Chemical, hazard, bioactivity, and exposure data in available from the CTX APIs. Most data is also available on the [CompTox Chemical Dashboard (CCD)](https://comptox.epa.gov/dashboard/) or within other [Computational Toxicology and Exposure Online Resources](https://www.epa.gov/comptox-tools).
 

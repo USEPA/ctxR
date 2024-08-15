@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ctxR: Utilities for Interacting with the CTX APIs <a href="https://cran.r-project.org/web/packages/ctxR/index.html"><img src="vignettes/Pictures/ctxR_hex_link.png" width="200" align="right" /></a>
+# ctxR: Utilities for Interacting with the CTX APIs
 
 <!-- badges: start -->
 
@@ -14,6 +14,8 @@ Downloads](https://cranlogs.r-pkg.org/badges/last-month/ctxR?color=7BAFD4)](http
 <!-- badges: end -->
 
 ## Welcome to the GitHub repository for the ctxR package
+
+<a href="https://cran.r-project.org/web/packages/ctxR/index.html"><img src="vignettes/Pictures/ctxR_hex.png" width="200" align="right" /></a>
 
 ctxR was developed to streamline the process of accessing the
 information available through the [Computational Toxicology and Exposure
