@@ -41,9 +41,9 @@ start_vignette("5")
 ```
 
 ```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
-if (!library(ctxR, logical.return = TRUE)){
+#if (!library(ctxR, logical.return = TRUE)){
   devtools::load_all()
-}
+#}
 old_options <- options("width")
 ```
 
