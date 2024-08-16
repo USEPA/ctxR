@@ -11,7 +11,7 @@
 #'  data for each input DTXSID.
 #' @export
 #'
-#' @examples has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull exposure functional use data for multiple chemicals
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 #' dtxsid_func_use <- get_exposure_functional_use_batch(DTXSID = dtxsid)
@@ -79,7 +79,7 @@ get_exposure_functional_use_batch <- function(DTXSID = NULL,
 #' categories that have probability of 0
 #' @export
 #'
-#' @examples has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull exposure functional use probability data for multiple chemicals
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 #' dtxsid_func_use_prob <- get_exposure_functional_use_batch(DTXSID = dtxsid)
@@ -151,6 +151,68 @@ get_exposure_functional_use_probability_batch <- function(DTXSID = NULL,
   }
 }
 
+#' Retrieve httk data via batch search
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A named list of httk data corresponding to the input chemicals
+#' @export
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Retrieve information for BPA and Caffeine
+#' dtxsids <- c('DTXSID7020182', 'DTXSID0020232')
+#' httk_data <- get_httk_data_batch(DTXSID = dtxsids)
+
+get_httk_data_batch <- function(DTXSID = NULL,
+                                API_key = NULL,
+                                rate_limit = 0L,
+                                Server = exposure_api_server,
+                                verbose = FALSE){
+  if (is.null(API_key) || !is.character(API_key)){
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
+      if (verbose) {
+        message('Using stored API key!')
+      }
+    }
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+    results <- lapply(DTXSID, function(t){
+      Sys.sleep(rate_limit)
+      attempt <- tryCatch(
+        {
+          get_httk_data(DTXSID = t,
+                        API_key = API_key,
+                        verbose = verbose,
+                        Server = Server)
+        },
+        error = function(cond){
+          message(t)
+          message(cond$message)
+          return(NA)
+        }
+      )
+      return(attempt)
+    }
+    )
+    names(results) <- DTXSID
+    return(results)
+  } else {
+    stop('Please input a list of DTXSIDs!')
+  }
+}
+
 #' Retrieve product data for exposure purposes batch
 #'
 #' @param DTXSID Chemical identifier DTXSID
@@ -164,7 +226,7 @@ get_exposure_functional_use_probability_batch <- function(DTXSID = NULL,
 #'  data for each input DTXSID.
 #' @export
 #'
-#' @examples has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull exposure functional use data for multiple chemicals
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 #' dtxsid_product_data <- get_exposure_product_data_batch(DTXSID = dtxsid)
@@ -227,7 +289,7 @@ get_exposure_product_data_batch <- function(DTXSID = NULL,
 #' tags use data for each input DTXSID.
 #' @export
 #'
-#' @examples has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull exposure functional use data for multiple chemicals
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 #' exp_list_tags <- get_exposure_list_presence_tags_by_dtxsid_batch(DTXSID = dtxsid)
@@ -278,3 +340,133 @@ get_exposure_list_presence_tags_by_dtxsid_batch <- function(DTXSID = NULL,
   }
 }
 
+#' Retrieve general exposure predictions for chemicals via batch
+#'
+#' @param DTXSID Chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be
+#' given.
+#'
+#' @return A named list of data.frames, each containing general exposure
+#' prediction data for each input DTXSID.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Pull general exposure prediction data for multiple chemicals
+#' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
+#' exp_pred <- get_general_exposure_prediction_batch(DTXSID = dtxsid)
+
+get_general_exposure_prediction_batch <- function(DTXSID = NULL,
+                                                  API_key = NULL,
+                                                  rate_limit = 0L,
+                                                  Server = exposure_api_server,
+                                                  verbose = FALSE){
+  if (is.null(API_key) || !is.character(API_key)){
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
+      if (verbose) {
+        message('Using stored API key!')
+      }
+    }
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+    results <- lapply(DTXSID, function(t){
+      Sys.sleep(rate_limit)
+      attempt <- tryCatch(
+        {
+          get_general_exposure_prediction(DTXSID = t,
+                                          API_key = API_key,
+                                          verbose = verbose,
+                                          Server = Server)
+        },
+        error = function(cond){
+          message(t)
+          message(cond$message)
+          return(NA)
+        }
+      )
+      return(attempt)
+    }
+    )
+    names(results) <- DTXSID
+    return(results)
+  } else {
+    stop('Please input a list of DTXSIDs!')
+  }
+}
+
+
+#' Retrieve demographic exposure predictions for chemicals via batch
+#'
+#' @param DTXSID Chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be
+#' given.
+#'
+#' @return A named list of data.frames, each containing demographic exposure
+#' prediction data for each input DTXSID.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Pull demographic exposure prediction data for multiple chemicals
+#' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
+#' exp_demo <- get_demographic_exposure_prediction_batch(DTXSID = dtxsid)
+
+get_demographic_exposure_prediction_batch <- function(DTXSID = NULL,
+                                                      API_key = NULL,
+                                                      rate_limit = 0L,
+                                                      Server = exposure_api_server,
+                                                      verbose = FALSE){
+  if (is.null(API_key) || !is.character(API_key)){
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
+      if (verbose) {
+        message('Using stored API key!')
+      }
+    }
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+    results <- lapply(DTXSID, function(t){
+      Sys.sleep(rate_limit)
+      attempt <- tryCatch(
+        {
+          get_demographic_exposure_prediction(DTXSID = t,
+                                          API_key = API_key,
+                                          verbose = verbose,
+                                          Server = Server)
+        },
+        error = function(cond){
+          message(t)
+          message(cond$message)
+          return(NA)
+        }
+      )
+      return(attempt)
+    }
+    )
+    names(results) <- DTXSID
+    return(results)
+  } else {
+    stop('Please input a list of DTXSIDs!')
+  }
+}

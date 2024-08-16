@@ -137,6 +137,54 @@ get_exposure_functional_use_category <- function(API_key = NULL,
   return()
 }
 
+#' Get httk data
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A data.table of httk data for the given input chemical.
+#' @export
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Pull httk data for BPA
+#' bpa_httk <- get_httk_data(DTXSID = 'DTXSID7020182')
+
+get_httk_data <- function(DTXSID = NULL,
+                          API_key = NULL,
+                          Server = exposure_api_server,
+                          verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input an DTXSID!')
+  else if (is.null(API_key)){
+    if (has_ctx_key()){
+      API_key <- ctx_key()
+      if (verbose) {
+        message('Using stored API key!')
+      }
+    }
+  }
+
+  response <- httr::GET(url = paste0(Server, '/httk/search/by-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  # if(response$status_code == 401){
+  #   stop('Please input an API_key!')
+  # }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
+
 #' Retrieve product data for exposure purposes
 #'
 #' @param DTXSID The chemical identifier DTXSID
@@ -319,6 +367,121 @@ get_exposure_list_presence_tags_by_dtxsid <- function(DTXSID = NULL,
   return()
 }
 
+#' Get general exposure prediction data
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A data.table of general exposure prediction data or NULL if data is
+#' missing.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Pull general exposure prediction data for BPA
+#' bpa <- get_general_exposure_prediction(DTXSID = 'DTXSID7020182')
+
+get_general_exposure_prediction <- function(DTXSID = NULL,
+                                            API_key = NULL,
+                                            Server = exposure_api_server,
+                                            verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input an DTXSID!')
+  else if (is.null(API_key)){
+    if (has_ctx_key()){
+      API_key <- ctx_key()
+      if (verbose) {
+        message('Using stored API key!')
+      }
+    }
+  }
+
+  response <- httr::GET(url = paste0(Server, '/seem/general/search/by-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
+  if(response$status_code == 200){
+    content <- httr::content(response, as = 'text', encoding = 'UTF-8')
+    if (nchar(content) > 0){
+      parsed_data <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+      non_null_data <- null_to_na(parsed_data)
+      return(data.table::as.data.table(non_null_data, rm.na = FALSE))
+    }
+    if (verbose) {
+      print('The request was successful but returned no data')
+    }
+    return()
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
+#' Get demographic exposure prediction data
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A data.table of demographic exposure prediction data.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Pull general exposure prediction data for BPA
+#' bpa <- get_demographic_exposure_prediction(DTXSID = 'DTXSID7020182')
+
+
+get_demographic_exposure_prediction <- function(DTXSID = NULL,
+                                                API_key = NULL,
+                                                Server = exposure_api_server,
+                                                verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input an DTXSID!')
+  else if (is.null(API_key)){
+    if (has_ctx_key()){
+      API_key <- ctx_key()
+      if (verbose) {
+        message('Using stored API key!')
+      }
+    }
+  }
+
+  response <- httr::GET(url = paste0(Server, '/seem/demographic/search/by-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
+null_to_na <- function(data_list){
+  lapply(data_list, function(t){
+    if (is.null(t)){
+      return(NA_character_)
+    }
+    return(t)
+  })
+}
 
 #' Exposure API Endpoint status
 #'

@@ -1,0 +1,14 @@
+[
+    {
+        "dtxsid": "DTXSID7020182",
+        "productionVolume": 2780000,
+        "units": "kg/day",
+        "stockholmConvention": 0,
+        "probabilityDietary": 1.0000,
+        "probabilityResidential": 1.0000,
+        "probabilityPesticde": 0.0000,
+        "probabilityIndustrial": 0.0000,
+        "dataVersion": null,
+        "importDate": "2024-06-13T22:07:19.484632Z"
+    }
+]

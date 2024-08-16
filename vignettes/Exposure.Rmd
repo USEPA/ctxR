@@ -26,9 +26,9 @@ start_vignette("5")
 ```
 
 ```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
-if (!library(ctxR, logical.return = TRUE)){
+#if (!library(ctxR, logical.return = TRUE)){
   devtools::load_all()
-}
+#}
 old_options <- options("width")
 ```
 
@@ -118,7 +118,16 @@ exp_fun_use_cat <- get_exposure_functional_use_category()
 knitr::kable(head(exp_fun_use_cat))
 ```
 
+### `httk` data
+
+There is a single resource that returns `httk` model data when available
+
+```{r}
+bpa_httk <- get_httk_data(DTXSID = 'DTXSID7020182')
+head(bpa_httk)
+```
 # Product Data Resource
+
 
 There are a few resources for retrieving product use data associated with chemical identifiers (DTXSID) or general use.
 
@@ -178,9 +187,33 @@ knitr::kable(head(exp_list_tags_dat))%>%
  kableExtra::scroll_box(width = "100%")
 ```
 
+
+### Exposure predictions
+
+There are two functions that provide access to exposure prediction data. The first provides general information while the second provides information broken down by different demographic groups.
+
+#### General exposure predictions
+
+`get_general_exposure_prediction()` returns general exposure information for a given chemical.
+
+```{r}
+bpa_general_exposure <- get_general_exposure_prediction(DTXSID = 'DTXSID7020182')
+head(bpa_general_exposure)
+```
+#### Demographic exposure predictions
+
+`get_demographic_exposure_prediction()` returns exposure prediction information split across different demographics for a given chemical.
+
+```{r}
+bpa_demographic_exposure <- get_demographic_exposure_prediction(DTXSID = 'DTXSID7020182')
+bpa_demographic_exposure
+```
+
+
 ## Batch Search
 
-There are batch search versions for several endpoints that gather data specific to a chemical. Namely, `get_exposure_functional_use_batch()`, `get_exposure_functional_use_probability()`, `get_exposure_product_data_batch()`, and `get_exposure_list_presence_tags_by_dtxsid_batch()`. The function `get_exposure_functional_use_probability()` returns a data.table with each row corresponding to a unique chemical and each column representing a functional use category associated to at least one input chemical. The other three batch functions return a named list of data.frames, the names corresponding to the unique chemicals input and the data.frames corresponding to the information to each individual chemical.
+
+There are batch search versions for several endpoints that gather data specific to a chemical. Namely, `get_exposure_functional_use_batch()`, `get_exposure_functional_use_probability()`, `get_exposure_product_data_batch()`, `get_exposure_list_presence_tags_by_dtxsid_batch()`, `get_general_exposure_prediction_batch()`, and `get_demographic_exposure_prediction_batch()`. The function `get_exposure_functional_use_probability()` returns a data.table with each row corresponding to a unique chemical and each column representing a functional use category associated to at least one input chemical. The other batch functions return a named list of data.frames or data.tables, the names corresponding to the unique chemicals input and the data.frames or data.tables corresponding to the information to each individual chemical.
 
 ## Functional use probability batch
 
