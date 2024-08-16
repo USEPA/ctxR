@@ -723,7 +723,7 @@ chemical_starts_with <- function(word = NULL,
   if (response$status == 400) {
     parsed_response <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
     if ('suggestions' %in% names(parsed_response)){
-      frame <- data.frame(Chemical = word)
+      frame <- data.frame(Chemical = urltools::url_decode(word))
       frame$Suggestion <- list(parsed_response$suggestions)
       return(frame)
     }
@@ -786,7 +786,7 @@ chemical_equal <- function(word = NULL,
   } else if (response$status == 400) {
     parsed_response <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
     if ('suggestions' %in% names(parsed_response)){
-      frame <- data.frame(Chemical = word)
+      frame <- data.frame(Chemical = urltools::url_decode(word))
       frame$Suggestion <- list(parsed_response$suggestions)
       return(frame)
     }
@@ -867,7 +867,7 @@ chemical_contains <- function(word = NULL,
   } else if (response$status == 400) {
     parsed_response <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
     if ('suggestions' %in% names(parsed_response)){
-      frame <- data.frame(Chemical = word)
+      frame <- data.frame(Chemical = urltools::url_decode(word))
       frame$Suggestion <- list(parsed_response$suggestions)
       return(frame)
     }
