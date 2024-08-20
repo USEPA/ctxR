@@ -76,7 +76,12 @@ get_bioactivity_details <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+    res <- tryCatch({jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))},
+                    error = function(cond){
+                      data.table::data.table()
+                    }
+    )
+
     if (!is.data.frame(res) & (length(res) != 0)){
       for (i in 1:length(res)){
         if (is.null(res[[i]])) res[[i]] <- NA # set any NULLs to NA
@@ -86,8 +91,21 @@ get_bioactivity_details <- function(DTXSID = NULL,
       }
       res <- tibble::as_tibble_row(res)
     }
+
     param_cols <- c('mc3Param', 'mc4Param', 'mc5Param', 'mc6Param')
     col_index <- which(param_cols %in% names(res))
+    if (length(col_index) > 0){
+      columns <- which(names(res) %in% param_cols[col_index])
+      # Handle case in which potentially nested columns are NA
+      # If the column is NA, it will be a logical. Otherwise, the column will be
+      # a different class.
+      non_na <- sapply(columns, function(t){
+        return(!is.logical((res[[t]])))
+      })
+      non_na <- which(non_na)
+      # Only unnest columns that are not NA
+      col_index <- intersect(col_index, non_na)
+    }
     if (length(col_index) > 0){
      res <- tidyr::unnest_wider(data = res, col = param_cols[col_index])
     }

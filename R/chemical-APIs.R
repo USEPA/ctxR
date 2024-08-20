@@ -676,6 +676,7 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
 #'
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
+#' @author Paul Kruse, Kristin Issacs
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemicals that start with a fragment DTXSID
@@ -719,7 +720,14 @@ chemical_starts_with <- function(word = NULL,
                         )
   )
 
-  if(response$status_code %in% c(200, 400)){
+  if (response$status == 400) {
+    parsed_response <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
+    if ('suggestions' %in% names(parsed_response)){
+      frame <- data.frame(Chemical = urltools::url_decode(word))
+      frame$Suggestion <- list(parsed_response$suggestions)
+      return(frame)
+    }
+  } else if (response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     if (verbose) {
@@ -744,6 +752,7 @@ chemical_starts_with <- function(word = NULL,
 #'
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
+#' @author Paul Kruse, Kristin Issacs
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemicals with matching DTXSID
@@ -774,8 +783,14 @@ chemical_equal <- function(word = NULL,
   )
   if(response$status_code == 401){
     stop('Please input an API_key!')
-  }
-  if(response$status_code == 200){
+  } else if (response$status == 400) {
+    parsed_response <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
+    if ('suggestions' %in% names(parsed_response)){
+      frame <- data.frame(Chemical = urltools::url_decode(word))
+      frame$Suggestion <- list(parsed_response$suggestions)
+      return(frame)
+    }
+  } else if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     if (verbose) {
@@ -804,6 +819,7 @@ chemical_equal <- function(word = NULL,
 #'
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
+#' @author Paul Kruse, Kristin Issacs
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemicals that contain substring
@@ -848,8 +864,14 @@ chemical_contains <- function(word = NULL,
   )
   if(response$status_code == 401){
     stop('Please input an API_key!')
-  }
-  if(response$status_code == 200){
+  } else if (response$status == 400) {
+    parsed_response <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
+    if ('suggestions' %in% names(parsed_response)){
+      frame <- data.frame(Chemical = urltools::url_decode(word))
+      frame$Suggestion <- list(parsed_response$suggestions)
+      return(frame)
+    }
+  } else if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     if (verbose) {
