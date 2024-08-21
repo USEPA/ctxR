@@ -1,4 +1,5 @@
 url: https://usepa.github.io/ctxR/
 template:
   bootstrap: 5
-
+development:
+  mode: auto
