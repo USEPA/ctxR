@@ -27,3 +27,4 @@ related data for each input DTXSID.
 \description{
 Get cancer hazard batch
 }
+\keyword{internal}

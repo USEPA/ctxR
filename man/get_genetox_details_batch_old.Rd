@@ -27,3 +27,4 @@ DTXSID.
 \description{
 Get genetox details batch
 }
+\keyword{internal}

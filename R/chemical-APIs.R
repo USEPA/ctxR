@@ -115,6 +115,7 @@ get_chemical_details <- function(DTXSID = NULL,
 #'
 #' @return An empty data.table with columns matching the expected format of the
 #'   get_chemical_details API call.
+#' @keywords internal
 
 
 create_data.table_chemical_details <- function(index = -1){
@@ -888,6 +889,7 @@ chemical_contains <- function(word = NULL,
 #'
 #' @param word A character string
 #' @return A character string that is ready for use in http request
+#' @keywords internal
 
 
 prepare_word <- function(word){

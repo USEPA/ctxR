@@ -27,3 +27,4 @@ hazard data for each input chemical.
 \description{
 Get hazard data by DTXSID batch
 }
+\keyword{internal}

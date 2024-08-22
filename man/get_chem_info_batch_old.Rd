@@ -33,3 +33,4 @@ chemicals with DTXSID matching the input parameter.
 \description{
 Retrieve chemical information in batch search
 }
+\keyword{internal}

@@ -26,3 +26,4 @@ A named list of data.frames containing chemical human hazard data.
 \description{
 Get human hazard data by DTXSID batch
 }
+\keyword{internal}

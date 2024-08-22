@@ -725,6 +725,7 @@ get_chemical_by_property_range_batch <- function(start_list = NULL,
 #'
 #' @return A named list of data.frames containing chemical information for the
 #'   chemicals with DTXSID matching the input parameter.
+#' @keywords internal
 
 
 get_chem_info_batch_old <- function(DTXSID = NULL,
@@ -902,6 +903,7 @@ get_chem_info_batch <- function(DTXSID = NULL,
 #'
 #' @return A named list of data.frames containing chemical fate information for
 #'   the chemicals with DTXSID matching the input parameter.
+#' @keywords internal
 
 
 get_fate_by_dtxsid_batch_old <- function(DTXSID = NULL,

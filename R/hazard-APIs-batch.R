@@ -7,6 +7,7 @@
 #'
 #' @return A named list of data.frames containing chemical (human and eco)
 #'   hazard data for each input chemical.
+#' @keywords internal
 
 
 get_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
@@ -176,6 +177,7 @@ create_hazard_data.table <- function(){
 #' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A named list of data.frames containing chemical human hazard data.
+#' @keywords internal
 
 
 get_human_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
@@ -309,6 +311,7 @@ get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
 #' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @return A named list of data.frames containing chemical ecotox hazard data.
+#' @keywords internal
 
 
 get_ecotox_hazard_by_dtxsid_batch_old <- function(DTXSID = NULL,
@@ -443,6 +446,7 @@ get_ecotox_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
 #'
 #' @return A named list of data.frames containing skin and eye hazard data for
 #'   each input DTXSID.
+#' @keywords internal
 
 
 get_skin_eye_hazard_batch_old <- function(DTXSID = NULL,
@@ -589,6 +593,7 @@ get_skin_eye_hazard_batch <- function(DTXSID = NULL,
 #'
 #' @return A named list of data.frames, each containing cancer hazard and
 #'   related data for each input DTXSID.
+#' @keywords internal
 
 
 get_cancer_hazard_batch_old <- function(DTXSID = NULL,
@@ -730,6 +735,7 @@ get_cancer_hazard_batch <- function(DTXSID = NULL,
 #'
 #' @return A named list of data.frames of genetox summary data for each input
 #'   DTXSID.
+#' @keywords internal
 
 
 get_genetox_summary_batch_old <- function(DTXSID = NULL,
@@ -874,6 +880,7 @@ get_genetox_summary_batch <- function(DTXSID = NULL,
 #'
 #' @return A named list of data.frames of genetox detail data for each input
 #'   DTXSID.
+#' @keywords internal
 
 
 get_genetox_details_batch_old <- function(DTXSID = NULL,

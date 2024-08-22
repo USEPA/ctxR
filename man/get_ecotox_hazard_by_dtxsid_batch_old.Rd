@@ -26,3 +26,4 @@ A named list of data.frames containing chemical ecotox hazard data.
 \description{
 Get ecotox hazard data by DTXSID batch
 }
+\keyword{internal}

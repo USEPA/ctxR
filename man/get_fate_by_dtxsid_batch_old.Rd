@@ -27,3 +27,4 @@ the chemicals with DTXSID matching the input parameter.
 \description{
 Retrieve chemical fate data in batch search
 }
+\keyword{internal}

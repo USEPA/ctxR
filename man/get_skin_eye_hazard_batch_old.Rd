@@ -27,3 +27,4 @@ each input DTXSID.
 \description{
 Get skin and eye hazard batch
 }
+\keyword{internal}
