@@ -98,6 +98,7 @@ chemical_details_by_dtxsid <- get_chemical_details(DTXSID = 'DTXSID7020182')
 chemical_details_by_dtxcid <- get_chemical_details(DTXCID = 'DTXCID30182')
 ```
 
+
 ### By Batch Search
 
 ```{r ctxR batch data chemical, message=FALSE, eval=FALSE}
@@ -107,6 +108,16 @@ chemical_details_by_batch_dtxsid <- get_chemical_details_batch(DTXSID = vector_d
 vector_dtxcid <- c("DTXCID30182", "DTXCID801430", "DTXCID90112")
 chemical_details_by_batch_dtxcid <- get_chemical_details_batch(DTXCID = vector_dtxcid)
 ```
+
+# Pubchem Link to GHS classification
+
+`check_existence_by_dtxsid()` checks if the supplied DTXSID is valid and returns a URL for additional information on the chemical in the case of a valid DTXSID.
+
+```{r ctxr dtxsid check, message=FALSE, eval=FALSE}
+dtxsid_check_true <- check_existence_by_dtxsid(DTXSID = 'DTXSID7020182')
+dtxsid_check_false <- check_existence_by_dtxsid(DTXSID = 'DTXSID7020182f')
+```
+
 
 # Chemical Property Resource
 
