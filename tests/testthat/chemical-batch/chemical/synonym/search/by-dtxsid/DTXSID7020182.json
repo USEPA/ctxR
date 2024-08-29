@@ -1,4 +1,10 @@
 {
+    "valid": [
+        "4,4’-Propane-2,2-diyldiphenol",
+        "80-05-7",
+        "Bisphenol A",
+        "Phenol, 4,4'-(1-methylethylidene)bis-"
+    ],
     "good": [
         "2,2-Bis(4-hydroxyphenyl)propane",
         "2,2-Bis(4'-hydroxyphenyl) propane",
@@ -42,7 +48,6 @@
         "Rikabanol",
         "β,β'-Bis(p-hydroxyphenyl)propane"
     ],
-    "dtxsid": "DTXSID7020182",
     "deletedCasrn": [
         "137885-53-1",
         "1429425-26-2",
@@ -259,11 +264,6 @@
     ],
     "beilstein": null,
     "alternateCasrn": null,
-    "pcCode": null,
-    "valid": [
-        "4,4’-Propane-2,2-diyldiphenol",
-        "80-05-7",
-        "Bisphenol A",
-        "Phenol, 4,4'-(1-methylethylidene)bis-"
-    ]
+    "dtxsid": "DTXSID7020182",
+    "pcCode": null
 }
