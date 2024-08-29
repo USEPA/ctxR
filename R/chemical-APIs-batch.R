@@ -268,6 +268,109 @@ generate_dtxsid_string <- function(items){
   return(dtxsid_string)
 }
 
+#' Check existence by DTXSID batch
+#'
+#' @param DTXSID The chemical identifier DTXSIDs
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request.
+#' @param Server The root address of the API endpoint
+#' @param verbose A logical indicating whether some "progress report" should be
+#' given.
+#'
+#' @return A data.table of information detailing valid and invalid DTXSIDs.
+#' @export
+#'
+#' @examplesIf FALSE
+#' dtxsids <- c('DTXSID7020182F', 'DTXSID7020182', 'DTXSID0020232F')
+#' existence <- check_existence_by_dtxsid_batch(DTXSID = dtxsids)
+check_existence_by_dtxsid_batch <- function(DTXSID = NULL,
+                                            API_key = NULL,
+                                            rate_limit = 0L,
+                                            Server = chemical_api_server,
+                                            verbose = FALSE){
+  if (is.null(API_key) || !is.character(API_key)){
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
+      if (verbose) {
+        message('Using stored API key!')
+      }
+    }
+  }
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+
+
+
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+
+    DTXSID <- unique(DTXSID)
+    num_DTXSID <- length(DTXSID)
+    indices <- generate_ranges(num_DTXSID)
+
+    dt <- data.table::data.table(dtxsid = character(),
+                                 isSafetyData = logical(),
+                                 safetyUrl = character())
+
+    #names(dt) <- names
+
+    for (i in seq_along(indices)){
+      if (verbose) {
+        print(paste('The current index is i =', i, 'out of', length(indices)))
+      }
+
+      response <- httr::POST(url = paste0(Server, '/ghslink/to-dtxsid/'),
+                             httr::add_headers(.headers = c(
+                               'Accept' = 'application/json',
+                               'Content-Type' = 'application/json',
+                               'x-api-key' = API_key
+                             )),
+                             body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
+
+      if (response$status_code == 200){
+        if (length(response$content) > 0){
+          res_content <- jsonlite::fromJSON(httr::content(response,
+                                                          as = 'text',
+                                                          encoding = "UTF-8"))
+          if (length(res_content$safetyUrl) > 0){
+
+
+          null_indices <- which(sapply(res_content$safetyUrl, is.null))
+          if (length(null_indices) > 0){
+            res_content$safetyUrl[null_indices] <- NA_character_
+          }
+          dt <- suppressWarnings(data.table::rbindlist(list(dt,
+                                                            data.table::rbindlist(list(res_content))),
+                                                       fill = TRUE))
+
+          }
+        }
+      }
+      Sys.sleep(rate_limit)
+    }
+
+    # Fix for bug in endpoint. DTXSIDs that are not valid do not have information
+    # returned. To overcome this, the single search on the missing DTXSIDs is
+    # exectued and combined with the valid responses.
+    missing <- setdiff(DTXSID, dt$dtxsid)
+    if (length(missing) > 0){
+      missing_info <- data.table::rbindlist(lapply(missing, check_existence_by_dtxsid, API_key = API_key))
+      final <- data.table::rbindlist(list(dt, missing_info))
+      return(final[match(DTXSID, final$dtxsid),])
+    }
+
+
+
+  } else {
+    stop('Please input a list of DTXSIDs!')
+  }
+  return(dt)
+}
+
 get_smiles_batch <- function(names = NULL,
                              API_key = NULL,
                              rate_limit = 0L,
@@ -1189,13 +1292,13 @@ chemical_equal_batch <- function(word_list = NULL,
       valid_index <- which(unlist(lapply(results$searchMsgs, is.null)))
       invalid_index <- setdiff(seq_along(results$searchMsgs), valid_index)
 
-      print('Valid')
-      print(valid_index)
-
-      print('Invalid')
-      print(setdiff(seq_along(results$suggestions), valid_index))
-
-      print(names(results))
+      # print('Valid')
+      # print(valid_index)
+      #
+      # print('Invalid')
+      # print(setdiff(seq_along(results$suggestions), valid_index))
+      #
+      # print(names(results))
 
       return_list$valid <- data.table::copy(results)[valid_index, -c(11:12)]
       return_list$invalid <- data.table::copy(results)[invalid_index, c(7, 11:13)]
