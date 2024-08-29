@@ -238,24 +238,24 @@ get_chemical_details_batch_2 <- function(DTXSID = NULL,
   return(dt)
 }
 
-generate_ranges <- function(end){
+generate_ranges <- function(end, limit = 200){
   if (!is.numeric(end) || end < 1) return(list())
 
   int_seq <- c(1:(as.integer(end)))
 
-  indices = list(ceiling(length(int_seq)/200))
+  indices = list(ceiling(length(int_seq)/limit))
 
-  if (length(int_seq) > 200){
-    for (i in 1:(ceiling(length(int_seq)/200) - 1)){
-      start <- 200*(i-1) + 1
-      end <- 200*i
+  if (length(int_seq) > limit){
+    for (i in 1:(ceiling(length(int_seq)/limit) - 1)){
+      start <- limit*(i-1) + 1
+      end <- limit*i
       indices[[i]] <- c(start:end)
       #print(200*(i-1) + 1)
       #print(200*i)
       #print(c((200*(i-1) + 1):(200*i)))
     }
     j <- length(indices)
-    indices[[j+1]] <- c((200*j + 1):length(int_seq))
+    indices[[j+1]] <- c((limit*j + 1):length(int_seq))
     return(indices)
   }
   indices[[1]] <- int_seq
@@ -1170,59 +1170,69 @@ chemical_equal_batch <- function(word_list = NULL,
       stop('Please input a character list for word_list!')
     }
 
-    results <- data.frame()
+
     word_list <- unique(word_list)
-    response <- httr::POST(url = paste0(chemical_api_server, '/search/equal/'),
-                           httr::add_headers(.headers = c(
-                             'accept' = 'application/json',
-                             'content-type' = 'application/json',
-                             'x-api-key' = API_key
+    num_words <- length(word_list)
+    indices <- generate_ranges(num_words, limit = 100)
+    if (verbose) {
+      print(indices)
+    }
+
+    dt <- data.table::data.table(casrn = character(),
+                                 dtxsid = character(),
+                                 dtxcid = character(),
+                                 preferredName = character(),
+                                 hasStructureImage = integer(),
+                                 smiles = character(),
+                                 isMarkush = logical(),
+                                 searchName = character(),
+                                 searchValue = character(),
+                                 rank = integer(),
+                                 searchMsgs = character(),
+                                 suggestions = character(),
+                                 isDuplicate = logical())
+
+    for (i in seq_along(indices)){
+      response <- httr::POST(url = paste0(chemical_api_server, '/search/equal/'),
+                             httr::add_headers(.headers = c(
+                               'accept' = 'application/json',
+                               'content-type' = 'application/json',
+                               'x-api-key' = API_key
                              )),
-                             body = c(word_list)
-                           )
+                             body = c(word_list[indices[[i]]])#c(word_list[indices[i]]
+      )
 
-    if (response$status_code == 200){
-      results <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
-      results <- data.table::as.data.table(results)
+      if (response$status_code == 200){
+        dt <- suppressWarnings(data.table::rbindlist(list(dt,
+                                                          data.table::data.table(jsonlite::fromJSON(httr::content(response,
+                                                                                                                  as = 'text',
+                                                                                                                  encoding = "UTF-8")))),
+                                                     fill = TRUE))
+      }
+
+      Sys.sleep(rate_limit)
+    }
+
+    if (dim(dt)[[1]] > 0){
 
 
-      valid_index <- which(unlist(lapply(results$searchMsgs, is.null)))
-      invalid_index <- setdiff(seq_along(results$searchMsgs), valid_index)
+      valid_index <- which(unlist(lapply(dt$searchMsgs, function(t) {is.null(t) || is.na(t)})))
+      invalid_index <- setdiff(seq_along(dt$searchMsgs), valid_index)
 
-      print('Valid')
-      print(valid_index)
 
-      print('Invalid')
-      print(setdiff(seq_along(results$suggestions), valid_index))
-
-      print(names(results))
-
-      return_list$valid <- data.table::copy(results)[valid_index, -c(11:12)]
-      return_list$invalid <- data.table::copy(results)[invalid_index, c(7, 11:13)]
+      return_list$valid <- data.table::copy(dt)[valid_index, -c(11:12)]
+      return_list$invalid <- data.table::copy(dt)[invalid_index, c(7, 11:13)]
 
 
 
 
       return(return_list)
-      }
+    }
 
-    # results <- lapply(word_list, function(t){
-    #   Sys.sleep(rate_limit)
-    #   attempt <- tryCatch(
-    #     {
-    #       chemical_equal(word = t, API_key = API_key, verbose = verbose)
-    #     },
-    #     error = function(cond){
-    #       message(t)
-    #       message(cond$message)
-    #       return(NA)
-    #     }
-    #   )
-    #   return(attempt)
-    # }
-    # )
-    # names(results) <- word_list
-    return(results)
+
+
+    return(list(valid = dt[, -c(11:12)],
+                invalid = dt[, c(7, 11:13)]))
   } else {
     stop('Please input a list of chemical names!')
   }
