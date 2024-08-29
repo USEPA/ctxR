@@ -2,6 +2,7 @@
 
 S3method(print,ctx_credentials)
 export(check_existence_by_dtxsid)
+export(check_existence_by_dtxsid_batch)
 export(chemical_contains)
 export(chemical_contains_batch)
 export(chemical_equal)
