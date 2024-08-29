@@ -59,9 +59,11 @@ registerS3method(
 )
 ```
 
-<a href="https://cran.r-project.org/web/packages/ctxR/index.html"><img src="Pictures/ctxR_hex.png" width="200" align="right" style="float: right; margin-left: 10px; margin-bottom: 10px;"/></a>
+
 
 ## Introduction
+
+<a href="https://cran.r-project.org/web/packages/ctxR/index.html"><img src="Pictures/ctxR_hex.png" width="200" align="right" style="float: right; margin-left: 10px; margin-bottom: 10px;"/></a>
 
 In this vignette, [CTX Chemical API](https://api-ccte.epa.gov/docs/chemical.html) will be explored. 
 
@@ -111,11 +113,22 @@ chemical_details_by_batch_dtxcid <- get_chemical_details_batch(DTXCID = vector_d
 
 # Pubchem Link to GHS classification
 
+## GHS classification 
+
 `check_existence_by_dtxsid()` checks if the supplied DTXSID is valid and returns a URL for additional information on the chemical in the case of a valid DTXSID.
+
+### By DTXSID
 
 ```{r ctxr dtxsid check, message=FALSE, eval=FALSE}
 dtxsid_check_true <- check_existence_by_dtxsid(DTXSID = 'DTXSID7020182')
 dtxsid_check_false <- check_existence_by_dtxsid(DTXSID = 'DTXSID7020182f')
+```
+
+### By Batch Search
+
+```{r ctxr dtxsid check batch, message=FALSE, eval=FALSE}
+vector_dtxsid_and_non_dtxsid <- c('DTXSID7020182F', 'DTXSID7020182', 'DTXSID0020232F')
+dtxsid_checks <- check_existence_by_dtxsid_batch(DTXSID = vector_dtxsid_and_non_dtxsid)
 ```
 
 
