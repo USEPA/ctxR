@@ -54,6 +54,7 @@ Suggests:
     knitr,
     prettydoc,
     rmarkdown,
+    rmdformats,
     testthat (>= 3.0.0),
     XML
 URL: https://github.com/USEPA/ctxR, https://usepa.github.io/ctxR/
