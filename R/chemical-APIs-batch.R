@@ -1292,14 +1292,6 @@ chemical_equal_batch <- function(word_list = NULL,
       valid_index <- which(unlist(lapply(results$searchMsgs, is.null)))
       invalid_index <- setdiff(seq_along(results$searchMsgs), valid_index)
 
-      # print('Valid')
-      # print(valid_index)
-      #
-      # print('Invalid')
-      # print(setdiff(seq_along(results$suggestions), valid_index))
-      #
-      # print(names(results))
-
       return_list$valid <- data.table::copy(results)[valid_index, -c(11:12)]
       return_list$invalid <- data.table::copy(results)[invalid_index, c(7, 11:13)]
 
