@@ -238,24 +238,24 @@ get_chemical_details_batch_2 <- function(DTXSID = NULL,
   return(dt)
 }
 
-generate_ranges <- function(end){
+generate_ranges <- function(end, limit = 200){
   if (!is.numeric(end) || end < 1) return(list())
 
   int_seq <- c(1:(as.integer(end)))
 
-  indices = list(ceiling(length(int_seq)/200))
+  indices = list(ceiling(length(int_seq)/limit))
 
-  if (length(int_seq) > 200){
-    for (i in 1:(ceiling(length(int_seq)/200) - 1)){
-      start <- 200*(i-1) + 1
-      end <- 200*i
+  if (length(int_seq) > limit){
+    for (i in 1:(ceiling(length(int_seq)/limit) - 1)){
+      start <- limit*(i-1) + 1
+      end <- limit*i
       indices[[i]] <- c(start:end)
       #print(200*(i-1) + 1)
       #print(200*i)
       #print(c((200*(i-1) + 1):(200*i)))
     }
     j <- length(indices)
-    indices[[j+1]] <- c((200*j + 1):length(int_seq))
+    indices[[j+1]] <- c((limit*j + 1):length(int_seq))
     return(indices)
   }
   indices[[1]] <- int_seq
@@ -815,80 +815,6 @@ get_chemical_by_property_range_batch <- function(start_list = NULL,
   return(results)
 }
 
-#' Retrieve chemical information in batch search
-#'
-#' @param DTXSID A vector of chemical identifier DTXSIDs
-#' @param type A vector of type used in get_chem_info(). This specifies whether
-#'   to only grab predicted or experimental results. If not specified, it will
-#'   grab all details. The allowable input values are "", predicted", or
-#'   "experimental".
-#' @param API_key The user-specific API key.
-#' @param rate_limit Number of seconds to wait between each request
-#' @param verbose A logical indicating if some “progress report” should be given.
-#'
-#' @return A named list of data.frames containing chemical information for the
-#'   chemicals with DTXSID matching the input parameter.
-
-
-get_chem_info_batch_old <- function(DTXSID = NULL,
-                                    type = '',
-                                    API_key = NULL,
-                                    rate_limit = 0L,
-                                    verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
-  }
-  if (!is.numeric(rate_limit) | (rate_limit < 0)){
-    warning('Setting rate limit to 0 seconds between requests!')
-    rate_limit <- 0L
-  }
-  if (!is.null(DTXSID)){
-    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
-      stop('Please input a character list for DTXSID!')
-    }
-    DTXSID <- unique(DTXSID)
-    if (length(type) > 1){
-      if(length(type) < length(DTXSID)){
-        warning('Length of `type` must equal length of `DTXSID`!')
-        type <- c(type, rep('', (length(DTXSID) - length(type))))
-      } else if (length(type) > length(DTXSID)){
-        warning('Truncating `type` to match length of `DTXSID`!',
-                immediate. = TRUE)
-        type <- type[1:(length(DTXSID))]
-      }
-    }
-
-    results <- purrr::map2(.x = DTXSID, .y = type, function(d, t){
-      Sys.sleep(rate_limit)
-      attempt <- tryCatch(
-        {
-          get_chem_info(DTXSID = d,
-                        type = t,
-                        API_key = API_key,
-                        verbose = verbose)
-        },
-        error = function(cond){
-          message('There was an error!')
-          message(paste('DTXSID:', d))
-          message(paste('type:', t))
-          message(cond$message)
-          return(NA)
-        }
-      )
-      return(attempt)
-    }
-    )
-    names(results) <- DTXSID
-    return(results)
-  } else {
-    stop('Please input a list of DTXSIDs!')
-  }
-}
 
 #' Retrieve chemical information in batch search
 #'
@@ -996,59 +922,6 @@ get_chem_info_batch <- function(DTXSID = NULL,
 }
 
 
-#' Retrieve chemical fate data in batch search
-#'
-#' @param DTXSID A vector of chemicals identifier DTXSIDs
-#' @param API_key The user-specific API key
-#' @param rate_limit Number of seconds to wait between each request
-#' @param verbose A logical indicating if some “progress report” should be given.
-#'
-#' @return A named list of data.frames containing chemical fate information for
-#'   the chemicals with DTXSID matching the input parameter.
-
-
-get_fate_by_dtxsid_batch_old <- function(DTXSID = NULL,
-                                         API_key = NULL,
-                                         rate_limit = 0L,
-                                         verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
-  }
-  if (!is.numeric(rate_limit) | (rate_limit < 0)){
-    warning('Setting rate limit to 0 seconds between requests!')
-    rate_limit <- 0L
-  }
-  if (!is.null(DTXSID)){
-    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
-      stop('Please input a character list for DTXSID!')
-    }
-    DTXSID <- unique(DTXSID)
-    results <- lapply(DTXSID, function(t){
-      Sys.sleep(rate_limit)
-      attempt <- tryCatch(
-        {
-          get_fate_by_dtxsid(DTXSID = t, API_key = API_key, verbose = verbose)
-        },
-        error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
-        }
-      )
-      return(attempt)
-    }
-    )
-    names(results) <- DTXSID
-    return(results)
-  } else {
-    stop('Please input a list of DTXSIDs!')
-  }
-}
 
 #' Retrieve chemical fate data in batch search
 #'
@@ -1273,51 +1146,69 @@ chemical_equal_batch <- function(word_list = NULL,
       stop('Please input a character list for word_list!')
     }
 
-    results <- data.frame()
+
     word_list <- unique(word_list)
-    response <- httr::POST(url = paste0(chemical_api_server, '/search/equal/'),
-                           httr::add_headers(.headers = c(
-                             'accept' = 'application/json',
-                             'content-type' = 'application/json',
-                             'x-api-key' = API_key
+    num_words <- length(word_list)
+    indices <- generate_ranges(num_words, limit = 100)
+    if (verbose) {
+      print(indices)
+    }
+
+    dt <- data.table::data.table(casrn = character(),
+                                 dtxsid = character(),
+                                 dtxcid = character(),
+                                 preferredName = character(),
+                                 hasStructureImage = integer(),
+                                 smiles = character(),
+                                 isMarkush = logical(),
+                                 searchName = character(),
+                                 searchValue = character(),
+                                 rank = integer(),
+                                 searchMsgs = character(),
+                                 suggestions = character(),
+                                 isDuplicate = logical())
+
+    for (i in seq_along(indices)){
+      response <- httr::POST(url = paste0(chemical_api_server, '/search/equal/'),
+                             httr::add_headers(.headers = c(
+                               'accept' = 'application/json',
+                               'content-type' = 'application/json',
+                               'x-api-key' = API_key
                              )),
-                             body = c(word_list)
-                           )
+                             body = c(word_list[indices[[i]]])#c(word_list[indices[i]]
+      )
 
-    if (response$status_code == 200){
-      results <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
-      results <- data.table::as.data.table(results)
-
-
-      valid_index <- which(unlist(lapply(results$searchMsgs, is.null)))
-      invalid_index <- setdiff(seq_along(results$searchMsgs), valid_index)
-
-      return_list$valid <- data.table::copy(results)[valid_index, -c(11:12)]
-      return_list$invalid <- data.table::copy(results)[invalid_index, c(7, 11:13)]
-
-
-
-
-      return(return_list)
+      if (response$status_code == 200){
+        dt <- suppressWarnings(data.table::rbindlist(list(dt,
+                                                          data.table::data.table(jsonlite::fromJSON(httr::content(response,
+                                                                                                                  as = 'text',
+                                                                                                                  encoding = "UTF-8")))),
+                                                     fill = TRUE))
       }
 
-    # results <- lapply(word_list, function(t){
-    #   Sys.sleep(rate_limit)
-    #   attempt <- tryCatch(
-    #     {
-    #       chemical_equal(word = t, API_key = API_key, verbose = verbose)
-    #     },
-    #     error = function(cond){
-    #       message(t)
-    #       message(cond$message)
-    #       return(NA)
-    #     }
-    #   )
-    #   return(attempt)
-    # }
-    # )
-    # names(results) <- word_list
-    return(results)
+      Sys.sleep(rate_limit)
+    }
+
+    if (dim(dt)[[1]] > 0){
+
+
+      valid_index <- which(unlist(lapply(dt$searchMsgs, function(t) {is.null(t) || is.na(t)})))
+      invalid_index <- setdiff(seq_along(dt$searchMsgs), valid_index)
+
+
+      return_list$valid <- data.table::copy(dt)[valid_index, -c(11:12)]
+      return_list$invalid <- data.table::copy(dt)[invalid_index, c(7, 11:13)]
+
+
+
+      
+      return(return_list)
+    }
+
+
+
+    return(list(valid = dt[, -c(11:12)],
+                invalid = dt[, c(7, 11:13)]))
   } else {
     stop('Please input a list of chemical names!')
   }
