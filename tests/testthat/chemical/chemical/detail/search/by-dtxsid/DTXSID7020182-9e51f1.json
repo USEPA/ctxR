@@ -1,5 +1,6 @@
 {
     "id": "337693",
+    "cpdataCount": 292,
     "inchikey": "IISBACLAFKSPIT-UHFFFAOYSA-N",
     "wikipediaArticle": "Bisphenol A",
     "dtxsid": "DTXSID7020182",
@@ -12,7 +13,6 @@
     "molFormula": "C15H16O2",
     "monoisotopicMass": 228.115029755,
     "percentAssays": 23.0,
-    "cpdataCount": 292,
     "pubchemCount": 212,
     "pubmedCount": 3850.0,
     "sourcesCount": 146,

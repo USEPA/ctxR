@@ -280,6 +280,68 @@ create_data.table_chemical_details <- function(index = -1){
   return(data)
 }
 
+#' Check existence by DTXSID
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating whether some "progress report" should be
+#' given.
+#'
+#' @return A data.table with information on whether the input DTXSID is valid,
+#' and where to find more information on the chemical when the DTXSID is valid.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # DTXSID for bpa
+#' bpa <- check_existence_by_dtxsid('DTXSID7020182')
+#' # False DTXSID
+#' false_res <- check_existence_by_Dtxsid('DTXSID7020182f')
+
+check_existence_by_dtxsid <- function(DTXSID = NULL,
+                                      API_key = NULL,
+                                      Server = chemical_api_server,
+                                      verbose = FALSE){
+  if (is.null(DTXSID) | !is.character(DTXSID)){
+    stop('Please input a DTXSID!')
+  }
+
+  if (is.null(API_key)){
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
+      message('Using stored API key!')
+    }
+  }
+
+  response <- httr::GET(url = paste0(Server, '/ghslink/to-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
+  if(response$status_code == 200){
+    res_content <- jsonlite::fromJSON(httr::content(response,
+                                                    as = 'text',
+                                                    encoding = "UTF-8"))
+    if (is.null(res_content$safetyUrl)){
+      res_content$safetyUrl <- NA_character_
+    }
+    res <- data.table::rbindlist(list(res_content))
+    return(res)
+  } else {
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+
+
+}
+
 get_chemical_details_by_listname <- function(listname = NULL,
                                              API_key = NULL,
                                              Server = chemical_api_server,

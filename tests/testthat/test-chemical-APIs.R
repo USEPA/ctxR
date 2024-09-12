@@ -34,6 +34,7 @@ with_mock_dir("chemical",{
 
 test_that("catch missing DTXSID/DTXCID", {
   expect_error(get_chemical_details(), 'Please input a DTXSID or DTXCID!')
+  expect_error(check_existence_by_dtxsid(), 'Please input a DTXSID!')
   expect_error(get_chem_info(), 'Please input a DTXSID!')
   expect_error(get_fate_by_dtxsid(), 'Please input a DTXSID!')
   expect_error(get_msready_by_dtxcid(), 'Please input a non-null value for DTXCID!')
@@ -111,6 +112,8 @@ test_that('Return data type', {
   expect_type(get_chemical_details(DTXSID = 'DTXSID7020182', API_key = ctx_key()), 'list')
   expect_type(get_chemical_details(DTXCID = 'DTXCID30182'), 'list')
   expect_type(get_chemical_details(DTXSID = '', API_key = ctx_key()), 'NULL')
+  expect_type(check_existence_by_dtxsid(DTXSID = 'DTXSID7020182', API_key = ctx_key()), 'list')
+  expect_type(check_existence_by_dtxsid(DTXSID = '', API_key = ctx_key()), 'NULL')
   #expect_type(get_chemical_details(DTXSID = 'DTXSID7020182', API_key = ''), 'NULL')
   #expect_type(get_chemical_by_property_range(start = 99.8, end = 100.2, property = 'boiling point', API_key = ctx_key()), 'list')
   #expect_type(get_chemical_by_property_range(start = 99.8, end = 100.2, property = 'nonsense', API_key = ctx_key()), 'NULL')

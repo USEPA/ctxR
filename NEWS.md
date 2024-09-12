@@ -12,6 +12,10 @@ information from 400 errors (@kisaacs1, #11).
 
 ## New features
 
+* Added `check_existence_by_dtxsid()`, `check_existence_by_dtxsid_batch()` 
+functions. Updated the `Chemical.Rmd` vignette to include examples of how to use
+these functions (#27).
+
 * Added `get_httk_data()`, `get_httk_data_batch()`, 
 `get_general_exposure_prediction()`, `get_general_exposure_prediction_batch()`,
 `get_demographic_exposure_prediction()`, 
