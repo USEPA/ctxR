@@ -1147,7 +1147,36 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
 
 }
 
+#' Get all list types
+#'
+#' @param API_key The user-specific API key.
+#' @param Server The root address for the API endpoint.
+#'
+#' @return A character list of types of lists.
+#' @export
+#'
+#' @examplesIf FALSE
+#' get_all_list_types()
+get_all_list_types <- function(API_key = NULL,
+                               Server = chemical_api_server){
 
+  if (is.null(API_key)){
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
+      if (verbose) {
+        message('Using stored API key!')
+      }
+    }
+  }
+
+  response <- httr::GET(url = paste0(chemical_api_server, "/list/type"),
+                        httr::add_headers(.headers = c('Accept' = 'application/json',
+                                                       'Content' = 'application/json',
+                                                       'x-api-key' = API_key)))
+  return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8')))
+
+
+}
 
 #' Get chemical lists by type
 #'
@@ -1420,6 +1449,21 @@ get_chemicals_in_list <- function(list_name = NULL,
 }
 
 
+#' Get chemicals in a list specified by starting characters
+#'
+#' @param list_name The name of the list to search
+#' @param word The starting characters to match chemicals in the given list
+#' @param API_key The user-specific api key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A list of DTXSIDs matching the list and search word criteria
+#' @export
+#'
+#' @examplesIf FALSE
+#' bis_biosolids_2021 <- get_chemicals_in_list_start(list_name = 'BIOSOLIDS2021',
+#'                                                   word = 'Bi')
+
 get_chemicals_in_list_start <- function(list_name = NULL,
                                         word = NULL,
                                         API_key = NULL,
@@ -1439,7 +1483,9 @@ get_chemicals_in_list_start <- function(list_name = NULL,
   }
 
 
-  response <- httr::GET(url = paste0(Server, '/list/chemicals/search/start-with/', list_name,'/', word),
+  response <- httr::GET(url = paste0(Server, '/list/chemicals/search/start-with/',
+                                     prepare_word(list_name),'/',
+                                     prepare_word(word)),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -1459,6 +1505,117 @@ get_chemicals_in_list_start <- function(list_name = NULL,
   return()
 }
 
+#' Get chemicals in a list specified by exact characters
+#'
+#' @param list_name The name of the list to search
+#' @param word The exact characters to match chemicals in the given list
+#' @param API_key The user-specific api key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A list of DTXSIDs matching the list and search word criteria
+#' @export
+#'
+#' @examplesIf FALSE
+#' bis_biosolids_2021 <- get_chemicals_in_list_exact(list_name = 'BIOSOLIDS2021',
+#'                                                   word = 'Bisphenol A')
+
+get_chemicals_in_list_exact <- function(list_name = NULL,
+                                        word = NULL,
+                                        API_key = NULL,
+                                        Server = chemical_api_server,
+                                        verbose = FALSE){
+  if (is.null(list_name) | !is.character(list_name))
+    stop('Please input a character value for list_name!')
+  else if (is.null(word) | !is.character(word))
+    stop('Please input a character value for word!')
+  else if (is.null(API_key)){
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
+      if (verbose) {
+        message('Using stored API key!')
+      }
+    }
+  }
+
+
+  response <- httr::GET(url = paste0(Server, '/list/chemicals/search/equal/',
+                                     prepare_word(list_name),'/',
+                                     prepare_word(word)),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
+#' Get chemicals in a list specified by contained characters
+#'
+#' @param list_name The name of the list to search
+#' @param word The contained characters to match chemicals in the given list
+#' @param API_key The user-specific api key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A list of DTXSIDs matching the list and search word criteria
+#' @export
+#'
+#' @examplesIf FALSE
+#' bis_biosolids_2021 <- get_chemicals_in_list_contain(list_name = 'BIOSOLIDS2021',
+#'                                                     word = 'Bis')
+
+get_chemicals_in_list_contain <- function(list_name = NULL,
+                                          word = NULL,
+                                          API_key = NULL,
+                                          Server = chemical_api_server,
+                                          verbose = FALSE){
+  if (is.null(list_name) | !is.character(list_name))
+    stop('Please input a character value for list_name!')
+  else if (is.null(word) | !is.character(word))
+    stop('Please input a character value for word!')
+  else if (is.null(API_key)){
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
+      if (verbose) {
+        message('Using stored API key!')
+      }
+    }
+  }
+
+
+  response <- httr::GET(url = paste0(Server, '/list/chemicals/search/contain/',
+                                     prepare_word(list_name),'/',
+                                     prepare_word(word)),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 401){
+    stop('Please input an API_key!')
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
 
 
 
@@ -1663,6 +1820,7 @@ get_chemical_mol <- function(DTXSID = NULL,
 #'
 #' @param DTXSID Chemical identifier DTXSID
 #' @param DTXCID Chemical identifier DTXCID
+#' @param gsid DSSTox Generic Substance Identifier
 #' @param SMILES Chemical identifier SMILES
 #' @param format The image type, either "png" or "svg". If left blank, will
 #'   default to "png".
@@ -1688,14 +1846,15 @@ get_chemical_mol <- function(DTXSID = NULL,
 
 get_chemical_image <- function(DTXSID = NULL,
                                DTXCID = NULL,
+                               gsid = NULL,
                                SMILES = NULL,
                                format = "",
                                API_key = NULL,
                                Server = chemical_api_server,
                                verbose = FALSE){
-  if (is.null(DTXSID) & is.null(DTXCID) & is.null(SMILES))
-    stop('Please input a DTXSID, DTXCID, or SMILES!')
-  else if (length(which(!sapply(list(DTXSID, DTXCID, SMILES), is.null))) > 1)
+  if (is.null(DTXSID) & is.null(DTXCID) & is.null(gsid) & is.null(SMILES))
+    stop('Please input a DTXSID, DTXCID, gsid, or SMILES!')
+  else if (length(which(!sapply(list(DTXSID, DTXCID, gsid, SMILES), is.null))) > 1)
     stop('Please input only one DTXSID, DTXCID, or SMILES, and not multiple!')
   else if (is.null(API_key)){
     if (has_ctx_key()) {
@@ -1722,6 +1881,13 @@ get_chemical_image <- function(DTXSID = NULL,
     )
   } else if (!is.null(DTXCID)) {
     response <- httr::GET(url = paste0(Server, '/file/image/search/by-dtxcid/', DTXCID, '?', image_type),
+                          httr::add_headers(.headers = c(
+                            'Content-Type' =  'application/json',
+                            'x-api-key' = API_key)
+                          )
+    )
+  } else if (!is.null(gsid)) {
+    response <- httr::GET(url = paste0(Server, '/file/image/search/by-gsid/', gsid, '?', image_type),
                           httr::add_headers(.headers = c(
                             'Content-Type' =  'application/json',
                             'x-api-key' = API_key)
@@ -1788,7 +1954,26 @@ get_chemical_synonym <- function(DTXSID = NULL,
     stop('Please input an API_key!')
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+    parse_list <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+    parse_length <- length(parse_list)
+    if (parse_length){
+      parse_indices <- which(sapply(1:parse_length, function(t){is.null(parse_list[[t]])}))
+      if (length(parse_indices)){
+        parse_list[parse_indices] <- NA_character_
+      }
+      for (i in 1:parse_length){
+        if (length(parse_list[[i]]) > 1){
+          parse_list[[i]] <- list(parse_list[[i]])
+        }
+      }
+      }
+
+    parse_dt <- data.table::data.table(tibble::as_tibble_row(parse_list))
+    data.table::setcolorder(parse_dt, c('dtxsid', 'pcCode', 'valid', 'beilstein',
+                                        'alternateCasrn', 'good', 'other',
+                                        'deletedCasrn'))
+
+    return(parse_dt)
   } else {
     if (verbose) {
       print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
