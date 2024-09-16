@@ -1151,6 +1151,7 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
 #'
 #' @param API_key The user-specific API key.
 #' @param Server The root address for the API endpoint.
+#' @param verbose A logical indicating if some "progress report" should be given.
 #'
 #' @return A character list of types of lists.
 #' @export
@@ -1158,7 +1159,8 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
 #' @examplesIf FALSE
 #' get_all_list_types()
 get_all_list_types <- function(API_key = NULL,
-                               Server = chemical_api_server){
+                               Server = chemical_api_server,
+                               verbose = FALSE){
 
   if (is.null(API_key)){
     if (has_ctx_key()) {
