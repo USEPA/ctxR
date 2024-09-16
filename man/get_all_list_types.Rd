@@ -4,12 +4,18 @@
 \alias{get_all_list_types}
 \title{Get all list types}
 \usage{
-get_all_list_types(API_key = NULL, Server = chemical_api_server)
+get_all_list_types(
+  API_key = NULL,
+  Server = chemical_api_server,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{API_key}{The user-specific API key.}
 
 \item{Server}{The root address for the API endpoint.}
+
+\item{verbose}{A logical indicating if some "progress report" should be given.}
 }
 \value{
 A character list of types of lists.
