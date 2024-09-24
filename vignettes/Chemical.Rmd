@@ -205,6 +205,13 @@ msready_by_dtxcid <- get_msready_by_dtxcid(DTXCID = 'DTXCID30182')
 
 There are several lists of chemicals one can access. These can be filtered by the type, name, inclusion of a specific chemical, or name of list.
 
+## Get all list types
+
+```{r ctxR types of chemical lists, message=FALSE, eval=FALSE}
+get_all_list_types()
+```
+
+
 ## All lists by type
 
 ```{r ctxR all list types chemical, message=FALSE, eval=FALSE}
@@ -223,6 +230,30 @@ public_chemical_list_by_name <- get_public_chemical_list_by_name(listname = 'CCL
 
 ```{r ctxR lists containing chemical, message=FALSE, eval=FALSE}
 lists_containing_chemical <- get_lists_containing_chemical(DTXSID = 'DTXSID7020182')
+```
+
+## DTXSIDs for chemical list and starting value
+
+`get_chemicals_in_list_start()` retrieves a list of DTXSIDs for a given starting character string in a specified list of chemicals.
+
+```{r ctxR chemicals-in-list-start, message=FALSE, eval=FALSE}
+chemicals_in_ccl4_start <- get_chemicals_in_list_start(list_name = 'CCL4', word = 'Bi')
+```
+
+## DTXSIDs for chemical list and exact value
+
+`get_chemicals_in_list_exact()` retrieves a list of DTXSIDs matching exactly a given character string in a specified list of chemicals.
+
+```{r ctxR chemicals-in-list-exact, message=FALSE, eval=FALSE}
+chemicals_in_ccl4_exact <- get_chemicals_in_list_exact(list_name = 'BIOSOLIDS2021', word = 'Bisphenol A')
+```
+
+## DTXSIDs for chemical list and containing value
+
+`get_chemicals_in_list_contain()` retrieves a list of DTXSIDs that contain a given character string in a specified list of chemicals.
+
+```{r ctxR chemicals-in-list-contain, message=FALSE, eval=FALSE}
+chemicals_in_ccl4_contain <- get_chemicals_in_list_contain(list_name = 'CCL4', word = 'Bis')
 ```
 
 ## Chemicals in a specific list
@@ -255,13 +286,18 @@ chemical_mol_by_dtxsid <- get_chemical_mol(DTXSID = 'DTXSID7020182')
 chemical_mol_by_dtxcid <- get_chemical_mol(DTXCID = 'DTXCID30182')
 ```
 
-## Get structure image by DTXSID or DTXCID
+## Get structure image by DTXSID, DTXCID, or SMILES
 
-`get_chemical_image()` retrieves image file information for a chemical specified either by DTXSID or DTXCID.
+`get_chemical_image()` retrieves image file information for a chemical specified either by DTXSID or DTXCID. To visualize the returned array of image information, the user may use either the `png::writePNG()` or `countcolors::plotArrayAsImage()` functions, among many choices.
 
 ```{r ctxR image by dtxsid dtxcid chemical, message=FALSE, eval=FALSE}
 chemical_image_by_dtxsid <- get_chemical_image(DTXSID = 'DTXSID7020182')
 chemical_image_by_dtxcid <- get_chemical_image(DTXCID = 'DTXCID30182')
+chemical_image_by_smiles <- get_chemical_image(SMILES = 'CC(C)(C1=CC=C(O)C=C1)C1=CC=C(O)C=C1')
+
+countcolors::plotArrayAsImage(chemical_image_by_dtxsid)
+countcolors::plotArrayAsImage(chemical_image_by_dtxcid)
+countcolors::plotArrayAsImage(chemical_image_by_smiles)
 ```
 
 # Chemical Synonym Resource

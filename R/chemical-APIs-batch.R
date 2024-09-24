@@ -1201,7 +1201,7 @@ chemical_equal_batch <- function(word_list = NULL,
 
 
 
-      
+
       return(return_list)
     }
 
@@ -1772,6 +1772,222 @@ get_lists_containing_chemical_batch <- function(chemical_list = NULL,
   }
 }
 
+
+#' Get chemicals in a list specified by starting characters batch search
+#'
+#' @param list_names The names of the lists to search.
+#' @param words The search words, one for each list.
+#' @param API_key The user-specific API key.
+#' @param rate_limit Number of seconds to wait between each request.
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A named list of lists, with names corresponding to search terms and
+#' lists corresponding to DTXSIDs associated to the search terms
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Search `CCL4` for chemicals starting with 'Bis' and `BIOSOLIDS2021` for
+#' # chemicals starting with 'Tri'.
+#' bis_and_tri <- get_chemicals_in_list_start_batch(list_names = c('CCL4',
+#'                                                               'BIOSOLIDS2021'),
+#'                                                  words = c('Bis', 'Tri'))
+
+get_chemicals_in_list_start_batch <- function(list_names = NULL,
+                                              words = NULL,
+                                              API_key = NULL,
+                                              rate_limit = 0L,
+                                              verbose = FALSE){
+  if (is.null(API_key) || !is.character(API_key)){
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
+      if (verbose) {
+        message('Using stored API key!')
+      }
+    }
+  }
+  if(is.null(list_names) || is.null(words)){
+    stop('Please input a list for both `list_names` and `words`!')
+  } else if (length(list_names) != length(words)) {
+    stop('Mismatch in length of `list_names` and `words`!')
+  } else if (!all(sapply(c(list_names, words), is.character))) {
+    stop('Only character values allowed in `list_names` and `words`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+
+
+
+  results <- purrr::map2(.x = list_names, .y = words, function(d, t){
+    Sys.sleep(rate_limit)
+    attempt <- tryCatch(
+      {
+        get_chemicals_in_list_start(list_name = d,
+                                    word = t,
+                                    API_key = API_key,
+                                    verbose = verbose)
+      },
+      error = function(cond){
+        message('There was an error!')
+        message(paste('List name:', d))
+        message(paste('Word:', t))
+        message(cond$message)
+        return(NA)
+      }
+    )
+    return(attempt)
+  }
+  )
+  names(results) <- paste0('(List name, Word) = (', list_names, ', ', words, ')')
+  return(results)
+}
+
+#' Get chemicals in a list specified by exact characters batch search
+#'
+#' @param list_names The names of the lists to search.
+#' @param words The search words, one for each list.
+#' @param API_key The user-specific API key.
+#' @param rate_limit Number of seconds to wait between each request.
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A named list of lists, with names corresponding to search terms and
+#' lists corresponding to DTXSIDs associated to the search terms
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Search `CCL4` for chemicals exactly matching with 'Bisphenol A' and
+#' # `BIOSOLIDS2021` for chemicals exactly matching with 'Bisphenol A'.
+#' bisphenol_a <- get_chemicals_in_list_exact_batch(list_names = c('CCL4',
+#'                                                               'BIOSOLIDS2021'),
+#'                                                  words = rep('Bisphenol A', 2))
+
+get_chemicals_in_list_exact_batch <- function(list_names = NULL,
+                                              words = NULL,
+                                              API_key = NULL,
+                                              rate_limit = 0L,
+                                              verbose = FALSE){
+  if (is.null(API_key) || !is.character(API_key)){
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
+      if (verbose) {
+        message('Using stored API key!')
+      }
+    }
+  }
+  if(is.null(list_names) || is.null(words)){
+    stop('Please input a list for both `list_names` and `words`!')
+  } else if (length(list_names) != length(words)) {
+    stop('Mismatch in length of `list_names` and `words`!')
+  } else if (!all(sapply(c(list_names, words), is.character))) {
+    stop('Only character values allowed in `list_names` and `words`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+
+
+
+  results <- purrr::map2(.x = list_names, .y = words, function(d, t){
+    Sys.sleep(rate_limit)
+    attempt <- tryCatch(
+      {
+        get_chemicals_in_list_exact(list_name = d,
+                                    word = t,
+                                    API_key = API_key,
+                                    verbose = verbose)
+      },
+      error = function(cond){
+        message('There was an error!')
+        message(paste('List name:', d))
+        message(paste('Word:', t))
+        message(cond$message)
+        return(NA)
+      }
+    )
+    return(attempt)
+  }
+  )
+  names(results) <- paste0('(List name, Word) = (', list_names, ', ', words, ')')
+  return(results)
+}
+
+#' Get chemicals in a list specified by characters contained batch search
+#'
+#' @param list_names The names of the lists to search.
+#' @param words The search words, one for each list.
+#' @param API_key The user-specific API key.
+#' @param rate_limit Number of seconds to wait between each request.
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A named list of lists, with names corresponding to search terms and
+#' lists corresponding to DTXSIDs associated to the search terms
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Search `CCL4` for chemicals containing with 'Bis' and `BIOSOLIDS2021` for
+#' # chemicals containing with 'Zyle'.
+#' bis_and_zyle <- get_chemicals_in_list_contain_batch(list_names = c('CCL4',
+#'                                                               'BIOSOLIDS2021'),
+#'                                                  words = c('Bis', 'Zyle'))
+
+get_chemicals_in_list_contain_batch <- function(list_names = NULL,
+                                                words = NULL,
+                                                API_key = NULL,
+                                                rate_limit = 0L,
+                                                verbose = FALSE){
+  if (is.null(API_key) || !is.character(API_key)){
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
+      if (verbose) {
+        message('Using stored API key!')
+      }
+    }
+  }
+  if(is.null(list_names) || is.null(words)){
+    stop('Please input a list for both `list_names` and `words`!')
+  } else if (length(list_names) != length(words)) {
+    stop('Mismatch in length of `list_names` and `words`!')
+  } else if (!all(sapply(c(list_names, words), is.character))) {
+    stop('Only character values allowed in `list_names` and `words`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+
+
+
+  results <- purrr::map2(.x = list_names, .y = words, function(d, t){
+    Sys.sleep(rate_limit)
+    attempt <- tryCatch(
+      {
+        get_chemicals_in_list_contain(list_name = d,
+                                      word = t,
+                                      API_key = API_key,
+                                      verbose = verbose)
+      },
+      error = function(cond){
+        message('There was an error!')
+        message(paste('List name:', d))
+        message(paste('Word:', t))
+        message(cond$message)
+        return(NA)
+      }
+    )
+    return(attempt)
+  }
+  )
+  names(results) <- paste0('(List name, Word) = (', list_names, ', ', words, ')')
+  return(results)
+}
+
+
+
 #' Get chemicals in a given chemical list batch
 #'
 #' @param list_names A list of names of chemical lists.
@@ -2182,6 +2398,45 @@ get_chemical_synonym_batch <- function(DTXSID = NULL,
       stop('Please input a character list for DTXSID!')
     }
     DTXSID <- unique(DTXSID)
+    num_dtxsid <- length(DTXSID)
+    indices <- generate_ranges(num_dtxsid)
+    if (verbose) {
+      print(indices)
+    }
+
+    dt <- data.table::data.table(dtxsid = character(),
+                                 pcCode = character(),
+                                 valid = character(),
+                                 beilstein = character(),
+                                 alternateCasrn = character(),
+                                 good = character(),
+                                 other = character(),
+                                 deletedCasrn = character())
+
+    for (i in seq_along(indices)){
+      response <- httr::POST(url = paste0(chemical_api_server, '/synonym/search/by-dtxsid/'),
+                             httr::add_headers(.headers = c(
+                               'Accept' = 'application/json',
+                               'Content-Type' = 'application/json',
+                               'x-api-key' = API_key
+                             )),
+                             body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
+
+      if (response$status_code == 200){
+        dt <- suppressWarnings(data.table::rbindlist(list(dt,
+                                                          data.table::data.table(jsonlite::fromJSON(httr::content(response,
+                                                                                                                  as = 'text',
+                                                                                                                  encoding = "UTF-8")))),
+                                                     fill = TRUE))
+
+      }
+      Sys.sleep(rate_limit)
+    }
+
+    return(dt)
+
+
+
     results <- lapply(DTXSID, function(t){
       Sys.sleep(rate_limit)
       attempt <- tryCatch(

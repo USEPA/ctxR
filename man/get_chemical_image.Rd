@@ -7,6 +7,7 @@
 get_chemical_image(
   DTXSID = NULL,
   DTXCID = NULL,
+  gsid = NULL,
   SMILES = NULL,
   format = "",
   API_key = NULL,
@@ -18,6 +19,8 @@ get_chemical_image(
 \item{DTXSID}{Chemical identifier DTXSID}
 
 \item{DTXCID}{Chemical identifier DTXCID}
+
+\item{gsid}{DSSTox Generic Substance Identifier}
 
 \item{SMILES}{Chemical identifier SMILES}
 

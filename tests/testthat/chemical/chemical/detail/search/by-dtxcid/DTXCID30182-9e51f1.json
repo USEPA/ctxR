@@ -1,8 +1,5 @@
 {
     "id": "337693",
-    "inchikey": "IISBACLAFKSPIT-UHFFFAOYSA-N",
-    "wikipediaArticle": "Bisphenol A",
-    "cpdataCount": 292,
     "dtxsid": "DTXSID7020182",
     "dtxcid": "DTXCID30182",
     "casrn": "80-05-7",
@@ -17,6 +14,9 @@
     "pubmedCount": 3850.0,
     "sourcesCount": 146,
     "qcLevel": 1,
+    "cpdataCount": 292,
+    "inchikey": "IISBACLAFKSPIT-UHFFFAOYSA-N",
+    "wikipediaArticle": "Bisphenol A",
     "qcLevelDesc": "Level 1: Expert curated, highest confidence in accuracy and consistency of unique chemical identifiers",
     "isotope": 0,
     "multicomponent": 0,
