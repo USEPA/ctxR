@@ -24,6 +24,7 @@
 <url><loc>https://usepa.github.io/ctxR/dev/reference/ctxR_options.html</loc></url>
 <url><loc>https://usepa.github.io/ctxR/dev/reference/exposure_api_server.html</loc></url>
 <url><loc>https://usepa.github.io/ctxR/dev/reference/get_all_assays.html</loc></url>
+<url><loc>https://usepa.github.io/ctxR/dev/reference/get_all_list_types.html</loc></url>
 <url><loc>https://usepa.github.io/ctxR/dev/reference/get_all_public_chemical_lists.html</loc></url>
 <url><loc>https://usepa.github.io/ctxR/dev/reference/get_annotation_by_aeid.html</loc></url>
 <url><loc>https://usepa.github.io/ctxR/dev/reference/get_annotation_by_aeid_batch.html</loc></url>
@@ -53,6 +54,12 @@
 <url><loc>https://usepa.github.io/ctxR/dev/reference/get_chemical_synonym_batch.html</loc></url>
 <url><loc>https://usepa.github.io/ctxR/dev/reference/get_chemicals_in_list.html</loc></url>
 <url><loc>https://usepa.github.io/ctxR/dev/reference/get_chemicals_in_list_batch.html</loc></url>
+<url><loc>https://usepa.github.io/ctxR/dev/reference/get_chemicals_in_list_contain.html</loc></url>
+<url><loc>https://usepa.github.io/ctxR/dev/reference/get_chemicals_in_list_contain_batch.html</loc></url>
+<url><loc>https://usepa.github.io/ctxR/dev/reference/get_chemicals_in_list_exact.html</loc></url>
+<url><loc>https://usepa.github.io/ctxR/dev/reference/get_chemicals_in_list_exact_batch.html</loc></url>
+<url><loc>https://usepa.github.io/ctxR/dev/reference/get_chemicals_in_list_start.html</loc></url>
+<url><loc>https://usepa.github.io/ctxR/dev/reference/get_chemicals_in_list_start_batch.html</loc></url>
 <url><loc>https://usepa.github.io/ctxR/dev/reference/get_demographic_exposure_prediction.html</loc></url>
 <url><loc>https://usepa.github.io/ctxR/dev/reference/get_demographic_exposure_prediction_batch.html</loc></url>
 <url><loc>https://usepa.github.io/ctxR/dev/reference/get_ecotox_hazard_by_dtxsid.html</loc></url>
