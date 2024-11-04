@@ -73,7 +73,7 @@ get_bioactivity_details <- function(DTXSID = NULL,
   # }
 
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     res <- tryCatch({jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))},
@@ -156,7 +156,7 @@ get_bioactivity_summary <- function(AEID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     if (length(response$content) > 0){
@@ -219,7 +219,7 @@ get_all_assays <- function(API_key = NULL,
                          )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
@@ -271,7 +271,7 @@ get_annotation_by_aeid <- function(AEID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     if (length(response$content) > 0){
