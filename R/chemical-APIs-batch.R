@@ -32,14 +32,6 @@ get_chemical_details_batch <- function(DTXSID = NULL,
                                        API_key = NULL,
                                        rate_limit = 0L,
                                        verbose = FALSE){
-  if (!is.null(DTXSID)){
-    t <- get_chemical_details_batch_2(DTXSID = DTXSID,
-                                      Projection = Projection,
-                                      API_key = API_key,
-                                      rate_limit = rate_limit,
-                                      verbose = verbose)
-    return(t)
-  }
 
   if (is.null(API_key) || !is.character(API_key)){
     if (has_ctx_key()) {
@@ -49,6 +41,17 @@ get_chemical_details_batch <- function(DTXSID = NULL,
       }
     }
   }
+
+  if (!is.null(DTXSID)){
+    t <- get_chemical_details_batch_2(DTXSID = DTXSID,
+                                      Projection = Projection,
+                                      API_key = API_key,
+                                      rate_limit = rate_limit,
+                                      verbose = verbose)
+    return(t)
+  }
+
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -202,6 +205,11 @@ get_chemical_details_batch_2 <- function(DTXSID = NULL,
 
     # print(paste('The response code is', response$status_code, 'for index i =', i))
 
+
+    if (response$status_code == 401){
+      stop(httr::content(response)$detail)
+    }
+
     if (response$status_code == 200){
       #print(str(jsonlite::fromJSON(httr::content(response, as = 'text'))))
       dt <- suppressWarnings(data.table::rbindlist(list(dt,
@@ -331,6 +339,10 @@ check_existence_by_dtxsid_batch <- function(DTXSID = NULL,
                              )),
                              body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
 
+      if (response$status_code == 401){
+        stop(httr::content(response)$detail)
+      }
+
       if (response$status_code == 200){
         if (length(response$content) > 0){
           res_content <- jsonlite::fromJSON(httr::content(response,
@@ -358,8 +370,35 @@ check_existence_by_dtxsid_batch <- function(DTXSID = NULL,
     # exectued and combined with the valid responses.
     missing <- setdiff(DTXSID, dt$dtxsid)
     if (length(missing) > 0){
-      missing_info <- data.table::rbindlist(lapply(missing, check_existence_by_dtxsid, API_key = API_key))
-      final <- data.table::rbindlist(list(dt, missing_info))
+      missing_info <- lapply(missing, function(t){
+          Sys.sleep(rate_limit)
+          attempt <- tryCatch({
+            check_existence_by_dtxsid(DTXSID = t,
+                                      API_key = API_key,
+                                      verbose = verbose)
+          },
+          error = function(cond){
+            if (verbose){
+              message('There was an error!')
+              message(cond$message)
+            }
+            return(cond)
+          }
+          )
+          return(attempt)
+        })
+
+      error_index <- which(sapply(missing_info, function(t){
+        return('simpleError' %in% class(t))
+      }))
+      if (length(error_index) > 0){
+        message <- missing_info[[error_index[[1]]]]
+        stop(message$message)
+      }
+
+      missing_info <- data.table::rbindlist(missing_info)
+
+      final <- data.table::rbindlist(list(dt, missing_info), fill = TRUE)
       return(final[match(DTXSID, final$dtxsid),])
     }
 
@@ -800,17 +839,28 @@ get_chemical_by_property_range_batch <- function(start_list = NULL,
                                      verbose = verbose)
     },
     error = function(cond){
-      message('There was an error!')
-      message(paste('Start:', s))
-      message(paste('End:', e))
-      message(paste('Property:', p))
-      message(cond$message)
-      return(NA)
+      if (verbose){
+        message('There was an error!')
+        message(paste('Start:', s))
+        message(paste('End:', e))
+        message(paste('Property:', p))
+        message(cond$message)
       }
+      return(cond)
+    }
     )
     return(attempt)
   }
   )
+
+  error_index <- which(sapply(results, function(t) {
+    return('simpleError' %in% class(t))
+  }))
+  if (length(error_index) > 0){
+    error <- results[[error_index[[1]]]]
+    stop(error$message)
+  }
+
   names(results) <- paste0('(Start, End, Property) = (', start_list_, ', ', end_list_, ', ', property_list_, ')')
   return(results)
 }
@@ -888,6 +938,10 @@ get_chem_info_batch <- function(DTXSID = NULL,
 
       # print(paste('The response code is', response$status_code, 'for index i =', i))
 
+
+      if (response$status_code == 401){
+        stop(httr::content(response)$detail)
+      }
 
       if (response$status_code == 200){
         dt <- suppressWarnings(data.table::rbindlist(list(dt,
@@ -990,6 +1044,10 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
 
       # print(paste('The response code is', response$status_code, 'for index i =', i))
 
+      if (response$status_code == 401){
+        stop(httr::content(response)$detail)
+      }
+
 
       if (response$status_code == 200){
         dt <- suppressWarnings(data.table::rbindlist(list(dt,
@@ -1076,14 +1134,27 @@ chemical_starts_with_batch <- function(word_list = NULL,
                                top = top)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(t)
+            message(cond$message)
+          }
+
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
+
     names(results) <- word_list
 
     index_200 <- which(unlist(lapply(results, check_search_dtxsid)))
@@ -1177,6 +1248,10 @@ chemical_equal_batch <- function(word_list = NULL,
                              )),
                              body = c(word_list[indices[[i]]])#c(word_list[indices[i]]
       )
+
+      if (response$status_code == 401){
+        stop(httr::content(response)$detail)
+      }
 
       if (response$status_code == 200){
         dt <- suppressWarnings(data.table::rbindlist(list(dt,
@@ -1283,14 +1358,27 @@ chemical_contains_batch <- function(word_list = NULL,
                             top = top)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(t)
+            message(cond$message)
+          }
+
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
+
     names(results) <- word_list
     index_200 <- which(unlist(lapply(results, check_search_dtxsid)))
 
@@ -1385,6 +1473,10 @@ get_msready_by_mass_with_error_batch <- function(masses = NULL,
                            'x-api-key' = API_key)),
                          body = json_body)
 
+  if (response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+
   if (response$status_code == 200){
     return(httr::content(response))
   }
@@ -1449,16 +1541,27 @@ get_msready_by_mass_batch <- function(start_list = NULL,
                             verbose = verbose)
       },
       error = function(cond){
-        message('There was an error!')
-        message(paste('Start:', d))
-        message(paste('End:', t))
-        message(cond$message)
-        return(NA)
+        if (verbose){
+          message('There was an error!')
+          message(paste('Start:', d))
+          message(paste('End:', t))
+          message(cond$message)
+        }
+        return(cond)
       }
     )
     return(attempt)
   }
   )
+
+  error_index <- which(sapply(results, function(t) {
+    return('simpleError' %in% class(t))
+  }))
+  if (length(error_index) > 0){
+    error <- results[[error_index[[1]]]]
+    stop(error$message)
+  }
+
   names(results) <- paste0('(Start, End) = (', start_list_, ', ', end_list_, ')')
   return(results)
 }
@@ -1506,14 +1609,25 @@ get_msready_by_formula_batch <- function(formula_list = NULL,
           get_msready_by_formula(formula = t, API_key = API_key, verbose = verbose)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- formula_list
     return(results)
   } else {
@@ -1564,14 +1678,25 @@ get_msready_by_dtxcid_batch <- function(DTXCID = NULL,
           get_msready_by_dtxcid(DTXCID = t, API_key = API_key, verbose = verbose)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if(verbose){
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- DTXCID
     return(results)
   } else {
@@ -1596,8 +1721,8 @@ get_msready_by_dtxcid_batch <- function(DTXCID = NULL,
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemical lists by type
-#' federal_state <- get_chemical_lists_by_type_batch(type_list = c('Federal',
-#'                                                                 'State'))
+#' federal_state <- get_chemical_lists_by_type_batch(type_list = c('federal',
+#'                                                                 'state'))
 
 get_chemical_lists_by_type_batch <- function(type_list = NULL,
                                              Projection = '',
@@ -1631,14 +1756,25 @@ get_chemical_lists_by_type_batch <- function(type_list = NULL,
                                      verbose = verbose)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- type_list
     return(results)
   } else {
@@ -1698,14 +1834,25 @@ get_public_chemical_list_by_name_batch <- function(name_list = NULL,
                                            verbose = verbose)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- name_list
     return(results)
   } else {
@@ -1757,14 +1904,25 @@ get_lists_containing_chemical_batch <- function(chemical_list = NULL,
                                         verbose = verbose)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- chemical_list
     return(results)
   } else {
@@ -1830,16 +1988,27 @@ get_chemicals_in_list_start_batch <- function(list_names = NULL,
                                     verbose = verbose)
       },
       error = function(cond){
-        message('There was an error!')
-        message(paste('List name:', d))
-        message(paste('Word:', t))
-        message(cond$message)
-        return(NA)
+        if (verbose) {
+          message('There was an error!')
+          message(paste('List name:', d))
+          message(paste('Word:', t))
+          message(cond$message)
+        }
+        return(cond)
       }
     )
     return(attempt)
   }
   )
+
+  error_index <- which(sapply(results, function(t) {
+    return('simpleError' %in% class(t))
+  }))
+  if (length(error_index) > 0){
+    error <- results[[error_index[[1]]]]
+    stop(error$message)
+  }
+
   names(results) <- paste0('(List name, Word) = (', list_names, ', ', words, ')')
   return(results)
 }
@@ -1901,16 +2070,27 @@ get_chemicals_in_list_exact_batch <- function(list_names = NULL,
                                     verbose = verbose)
       },
       error = function(cond){
-        message('There was an error!')
-        message(paste('List name:', d))
-        message(paste('Word:', t))
-        message(cond$message)
-        return(NA)
+        if (verbose) {
+          message('There was an error!')
+          message(paste('List name:', d))
+          message(paste('Word:', t))
+          message(cond$message)
+        }
+        return(cond)
       }
     )
     return(attempt)
   }
   )
+
+  error_index <- which(sapply(results, function(t) {
+    return('simpleError' %in% class(t))
+  }))
+  if (length(error_index) > 0){
+    error <- results[[error_index[[1]]]]
+    stop(error$message)
+  }
+
   names(results) <- paste0('(List name, Word) = (', list_names, ', ', words, ')')
   return(results)
 }
@@ -1972,16 +2152,27 @@ get_chemicals_in_list_contain_batch <- function(list_names = NULL,
                                       verbose = verbose)
       },
       error = function(cond){
-        message('There was an error!')
-        message(paste('List name:', d))
-        message(paste('Word:', t))
-        message(cond$message)
-        return(NA)
+        if (verbose) {
+          message('There was an error!')
+          message(paste('List name:', d))
+          message(paste('Word:', t))
+          message(cond$message)
+        }
+        return(cond)
       }
     )
     return(attempt)
   }
   )
+
+  error_index <- which(sapply(results, function(t) {
+    return('simpleError' %in% class(t))
+  }))
+  if (length(error_index) > 0){
+    error <- results[[error_index[[1]]]]
+    stop(error$message)
+  }
+
   names(results) <- paste0('(List name, Word) = (', list_names, ', ', words, ')')
   return(results)
 }
@@ -2032,14 +2223,25 @@ get_chemicals_in_list_batch <- function(list_names = NULL,
                                 verbose = verbose)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- list_names
     return(results)
   } else {
@@ -2098,14 +2300,25 @@ get_chemical_mrv_batch <- function(DTXSID = NULL,
           get_chemical_mrv(DTXSID = t, API_key = API_key, verbose = verbose)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- DTXSID
     return(results)
   } else if (!is.null(DTXCID)){
@@ -2123,14 +2336,25 @@ get_chemical_mrv_batch <- function(DTXSID = NULL,
           get_chemical_mrv(DTXCID = t, API_key = API_key)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- DTXCID
     return(results)
   } else {
@@ -2189,14 +2413,25 @@ get_chemical_mol_batch <- function(DTXSID = NULL,
           get_chemical_mol(DTXSID = t, API_key = API_key, verbose = verbose)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- DTXSID
     return(results)
   } else if (!is.null(DTXCID)){
@@ -2214,14 +2449,25 @@ get_chemical_mol_batch <- function(DTXSID = NULL,
           get_chemical_mol(DTXCID = t, API_key = API_key, verbose = verbose)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- DTXCID
     return(results)
   } else {
@@ -2290,14 +2536,25 @@ get_chemical_image_batch <- function(DTXSID = NULL,
                              verbose = verbose)
         },
         error = function(cond){
-          message(d)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(d)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- DTXSID
     return(results)
   } else if (!is.null(DTXCID)){
@@ -2318,14 +2575,25 @@ get_chemical_image_batch <- function(DTXSID = NULL,
                              verbose = verbose)
         },
         error = function(cond){
-          message(d)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(d)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- DTXCID
     return(results)
   } else if (!is.null(SMILES)) {
@@ -2346,14 +2614,25 @@ get_chemical_image_batch <- function(DTXSID = NULL,
                              verbose = verbose)
         },
         error = function(cond){
-          message(d)
-          message(cond$message)
-          return(NA)
+          if (verbose) {
+            message(d)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- SMILES
     return(results)
   } else {
@@ -2421,6 +2700,10 @@ get_chemical_synonym_batch <- function(DTXSID = NULL,
                                'x-api-key' = API_key
                              )),
                              body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
+
+      if (response$status_code == 401){
+        stop(httr::content(response)$detail)
+      }
 
       if (response$status_code == 200){
         dt <- suppressWarnings(data.table::rbindlist(list(dt,
