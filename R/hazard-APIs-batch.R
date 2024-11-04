@@ -59,6 +59,9 @@ get_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
         print(paste('The response code is', response$status_code, 'for index i =', i))
       }
 
+      if (response$status_code == 401){
+        stop(httr::content(response)$detail)
+      }
 
       if (response$status_code == 200){
         dt <- suppressWarnings(data.table::rbindlist(list(dt,
@@ -183,6 +186,10 @@ get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
       }
 
 
+      if (response$status_code == 401){
+        stop(httr::content(response)$detail)
+      }
+
       if (response$status_code == 200){
         dt <- suppressWarnings(data.table::rbindlist(list(dt,
                                                           data.table::data.table(jsonlite::fromJSON(httr::content(response,
@@ -261,6 +268,10 @@ get_ecotox_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
         print(paste('The response code is', response$status_code, 'for index i =', i))
       }
 
+
+      if (response$status_code == 401){
+        stop(httr::content(response)$detail)
+      }
 
       if (response$status_code == 200){
         dt <- suppressWarnings(data.table::rbindlist(list(dt,
@@ -355,6 +366,10 @@ get_skin_eye_hazard_batch <- function(DTXSID = NULL,
       }
 
 
+      if (response$status_code == 401){
+        stop(httr::content(response)$detail)
+      }
+
       if (response$status_code == 200){
         dt <- suppressWarnings(data.table::rbindlist(list(dt,
                                                           data.table::data.table(jsonlite::fromJSON(httr::content(response,
@@ -438,6 +453,10 @@ get_cancer_hazard_batch <- function(DTXSID = NULL,
         print(paste('The response code is', response$status_code, 'for index i =', i))
       }
 
+
+      if (response$status_code == 401){
+        stop(httr::content(response)$detail)
+      }
 
       if (response$status_code == 200){
         dt <- suppressWarnings(data.table::rbindlist(list(dt,
@@ -526,6 +545,10 @@ get_genetox_summary_batch <- function(DTXSID = NULL,
         print(paste('The response code is', response$status_code, 'for index i =', i))
       }
 
+
+      if (response$status_code == 401){
+        stop(httr::content(response)$detail)
+      }
 
       if (response$status_code == 200){
         dt <- suppressWarnings(data.table::rbindlist(list(dt,
@@ -618,6 +641,10 @@ get_genetox_details_batch <- function(DTXSID = NULL,
         print(paste('The response code is', response$status_code, 'for index i =', i))
       }
 
+
+      if (response$status_code == 401){
+        stop(httr::content(response)$detail)
+      }
 
       if (response$status_code == 200){
         dt <- suppressWarnings(data.table::rbindlist(list(dt,
