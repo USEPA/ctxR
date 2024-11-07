@@ -3,6 +3,7 @@
         "id": 22089,
         "year": -1,
         "source": "Australia",
+        "endpoint": "Eye Irritation",
         "classification": "Eye damage - category 1",
         "guideline": "-",
         "reliability": "-",
@@ -11,13 +12,13 @@
         "species": "-",
         "studyType": "-",
         "strain": "-",
-        "dtxsid": "DTXSID7020182",
-        "endpoint": "Eye Irritation"
+        "dtxsid": "DTXSID7020182"
     },
     {
         "id": 22090,
         "year": -1,
         "source": "Australia",
+        "endpoint": "Skin Sensitization",
         "classification": "Skin sensitisation - category 1",
         "guideline": "-",
         "reliability": "-",
@@ -26,13 +27,13 @@
         "species": "-",
         "studyType": "-",
         "strain": "-",
-        "dtxsid": "DTXSID7020182",
-        "endpoint": "Skin Sensitization"
+        "dtxsid": "DTXSID7020182"
     },
     {
         "id": 23066,
         "year": -1,
         "source": "Canada",
+        "endpoint": "Eye Irritation",
         "classification": "Serious eye damage/eye irritation - Category 1",
         "guideline": "-",
         "reliability": "-",
@@ -41,13 +42,13 @@
         "species": "-",
         "studyType": "-",
         "strain": "-",
-        "dtxsid": "DTXSID7020182",
-        "endpoint": "Eye Irritation"
+        "dtxsid": "DTXSID7020182"
     },
     {
         "id": 23067,
         "year": -1,
         "source": "Canada",
+        "endpoint": "Skin Sensitization",
         "classification": "Skin sensitization - Category 1",
         "guideline": "-",
         "reliability": "-",
@@ -56,13 +57,13 @@
         "species": "-",
         "studyType": "-",
         "strain": "-",
-        "dtxsid": "DTXSID7020182",
-        "endpoint": "Skin Sensitization"
+        "dtxsid": "DTXSID7020182"
     },
     {
         "id": 2588,
         "year": -1,
         "source": "ECHA CLP",
+        "endpoint": "Eye Irritation",
         "classification": "Eye Dam. 1",
         "guideline": "-",
         "reliability": "-",
@@ -71,13 +72,13 @@
         "species": "-",
         "studyType": "-",
         "strain": "-",
-        "dtxsid": "DTXSID7020182",
-        "endpoint": "Eye Irritation"
+        "dtxsid": "DTXSID7020182"
     },
     {
         "id": 2589,
         "year": -1,
         "source": "ECHA CLP",
+        "endpoint": "Skin Sensitization",
         "classification": "Skin Sens. 1",
         "guideline": "-",
         "reliability": "-",
@@ -86,13 +87,13 @@
         "species": "-",
         "studyType": "-",
         "strain": "-",
-        "dtxsid": "DTXSID7020182",
-        "endpoint": "Skin Sensitization"
+        "dtxsid": "DTXSID7020182"
     },
     {
         "id": 78137,
         "year": 2002,
         "source": "ECHA eChemPortal",
+        "endpoint": "skin sensitisation: in vivo (non-LLNA)",
         "classification": "Not likely to be sensitizing",
         "guideline": " according to OECD Guideline 406 (Skin Sensitisation) according to OECD Guideline 429 (Skin Sensitisation: Local Lymph Node Assay) according to EPA OPPTS 870.2600 (Skin Sensitisation)",
         "reliability": "1 (reliable without restriction)",
@@ -101,13 +102,13 @@
         "species": "mouse",
         "studyType": "Skin sensitisation",
         "strain": "NMRI",
-        "dtxsid": "DTXSID7020182",
-        "endpoint": "skin sensitisation: in vivo (non-LLNA)"
+        "dtxsid": "DTXSID7020182"
     },
     {
         "id": 78138,
         "year": 2003,
         "source": "ECHA eChemPortal",
+        "endpoint": "skin sensitisation: in vivo (non-LLNA)",
         "classification": "Not likely to be sensitizing",
         "guideline": " according to OECD Guideline 406 (Skin Sensitisation) according to OECD Guideline 429 (Skin Sensitisation: Local Lymph Node Assay) according to EPA OPPTS 870.2600 (Skin Sensitisation)",
         "reliability": "1 (reliable without restriction)",
@@ -116,13 +117,13 @@
         "species": "mouse",
         "studyType": "Skin sensitisation",
         "strain": "NMRI",
-        "dtxsid": "DTXSID7020182",
-        "endpoint": "skin sensitisation: in vivo (non-LLNA)"
+        "dtxsid": "DTXSID7020182"
     },
     {
         "id": 31102,
         "year": -1,
         "source": "Japan",
+        "endpoint": "Eye Irritation",
         "classification": "Category 1",
         "guideline": "-",
         "reliability": "-",
@@ -131,13 +132,13 @@
         "species": "-",
         "studyType": "-",
         "strain": "-",
-        "dtxsid": "DTXSID7020182",
-        "endpoint": "Eye Irritation"
+        "dtxsid": "DTXSID7020182"
     },
     {
         "id": 31103,
         "year": -1,
         "source": "Japan",
+        "endpoint": "Skin Irritation",
         "classification": "Not classified",
         "guideline": "-",
         "reliability": "-",
@@ -146,13 +147,13 @@
         "species": "-",
         "studyType": "-",
         "strain": "-",
-        "dtxsid": "DTXSID7020182",
-        "endpoint": "Skin Irritation"
+        "dtxsid": "DTXSID7020182"
     },
     {
         "id": 31104,
         "year": -1,
         "source": "Japan",
+        "endpoint": "Skin Sensitization",
         "classification": "Category 1",
         "guideline": "-",
         "reliability": "-",
@@ -161,13 +162,13 @@
         "species": "-",
         "studyType": "-",
         "strain": "-",
-        "dtxsid": "DTXSID7020182",
-        "endpoint": "Skin Sensitization"
+        "dtxsid": "DTXSID7020182"
     },
     {
         "id": 39834,
         "year": -1,
         "source": "New Zealand",
+        "endpoint": "Eye Irritation",
         "classification": "Category 8.3A (Category 1)",
         "guideline": "-",
         "reliability": "-",
@@ -176,13 +177,13 @@
         "species": "-",
         "studyType": "-",
         "strain": "-",
-        "dtxsid": "DTXSID7020182",
-        "endpoint": "Eye Irritation"
+        "dtxsid": "DTXSID7020182"
     },
     {
         "id": 39835,
         "year": -1,
         "source": "New Zealand",
+        "endpoint": "Skin Sensitization",
         "classification": "Category 6.5B (Category 1)",
         "guideline": "-",
         "reliability": "-",
@@ -191,7 +192,6 @@
         "species": "-",
         "studyType": "-",
         "strain": "-",
-        "dtxsid": "DTXSID7020182",
-        "endpoint": "Skin Sensitization"
+        "dtxsid": "DTXSID7020182"
     }
 ]

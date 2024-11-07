@@ -34,7 +34,7 @@ get_hazard_by_dtxsid <- function(DTXSID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -82,7 +82,7 @@ get_human_hazard_by_dtxsid <- function(DTXSID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -130,7 +130,7 @@ get_ecotox_hazard_by_dtxsid <- function(DTXSID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -179,7 +179,7 @@ get_skin_eye_hazard <- function(DTXSID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -228,7 +228,7 @@ get_cancer_hazard <- function(DTXSID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -277,7 +277,7 @@ get_genetox_summary <- function(DTXSID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -326,7 +326,7 @@ get_genetox_details <- function(DTXSID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))

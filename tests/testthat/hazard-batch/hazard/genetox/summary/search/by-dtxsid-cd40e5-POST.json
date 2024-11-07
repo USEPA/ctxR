@@ -1,11 +1,11 @@
 [
     {
-        "id": 24479,
+        "id": 526325,
         "dtxsid": "DTXSID7020182",
         "reportsPositive": 0,
         "reportsNegative": 3,
         "reportsOther": 0,
-        "ames": "-",
+        "ames": null,
         "micronucleus": "negative"
     }
 ]

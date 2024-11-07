@@ -33,7 +33,7 @@ get_exposure_functional_use <- function(DTXSID = NULL,
                           )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -82,7 +82,7 @@ get_exposure_functional_use_probability <- function(DTXSID = NULL,
                           )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -125,7 +125,7 @@ get_exposure_functional_use_category <- function(API_key = NULL,
                           )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -171,9 +171,9 @@ get_httk_data <- function(DTXSID = NULL,
                           'x-api-key' = API_key)
                         )
   )
-  # if(response$status_code == 401){
-  #   stop('Please input an API_key!')
-  # }
+   if(response$status_code == 401){
+     stop(httr::content(response)$detail)
+   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
@@ -221,7 +221,7 @@ get_exposure_product_data <- function(DTXSID = NULL,
                           )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -264,7 +264,7 @@ get_exposure_product_data_puc <- function(API_key = NULL,
                           )
                         )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -308,7 +308,7 @@ get_exposure_list_presence_tags <- function(API_key = NULL,
                           )
                         )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -355,7 +355,7 @@ get_exposure_list_presence_tags_by_dtxsid <- function(DTXSID = NULL,
                           )
                         )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -404,7 +404,7 @@ get_general_exposure_prediction <- function(DTXSID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     content <- httr::content(response, as = 'text', encoding = 'UTF-8')
@@ -462,7 +462,7 @@ get_demographic_exposure_prediction <- function(DTXSID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))

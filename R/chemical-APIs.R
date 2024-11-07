@@ -85,7 +85,7 @@ get_chemical_details <- function(DTXSID = NULL,
   }
 
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     empty_table <- create_data.table_chemical_details(index = index)
@@ -321,7 +321,7 @@ check_existence_by_dtxsid <- function(DTXSID = NULL,
   )
 
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     res_content <- jsonlite::fromJSON(httr::content(response,
@@ -415,7 +415,7 @@ get_smiles <- function(name = NULL,
   )
 
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(httr::content(response, as = 'text', encoding = "UTF-8"))
@@ -463,7 +463,7 @@ get_inchikey <- function(name = NULL,
   )
 
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(httr::content(response, as = 'text', encoding = "UTF-8"))
@@ -511,7 +511,7 @@ get_inchi <- function(name = NULL,
   )
 
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(httr::content(response, as = 'text', encoding = "UTF-8"))
@@ -579,7 +579,7 @@ get_chemical_by_property_range <- function(start = NULL,
                         )
 
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -663,7 +663,7 @@ get_chem_info <- function(DTXSID = NULL,
 
 
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text',encoding = "UTF-8")))
@@ -712,7 +712,7 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
   )
 
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -783,6 +783,10 @@ chemical_starts_with <- function(word = NULL,
                         )
   )
 
+  if (response$status == 401){
+    stop(httr::content(response)$detail)
+  }
+
   if (response$status == 400) {
     parsed_response <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
     if ('suggestions' %in% names(parsed_response)){
@@ -845,7 +849,7 @@ chemical_equal <- function(word = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   } else if (response$status == 400) {
     parsed_response <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
     if ('suggestions' %in% names(parsed_response)){
@@ -926,7 +930,7 @@ chemical_contains <- function(word = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   } else if (response$status == 400) {
     parsed_response <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
     if ('suggestions' %in% names(parsed_response)){
@@ -1027,7 +1031,7 @@ get_msready_by_mass <- function(start = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -1080,7 +1084,7 @@ get_msready_by_formula <- function(formula = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -1133,7 +1137,7 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -1241,7 +1245,7 @@ get_chemical_lists_by_type <- function(type = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -1320,7 +1324,7 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(data.frame(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))))
@@ -1368,7 +1372,7 @@ get_lists_containing_chemical <- function(DTXSID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -1436,7 +1440,7 @@ get_chemicals_in_list <- function(list_name = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -1495,7 +1499,7 @@ get_chemicals_in_list_start <- function(list_name = NULL,
   )
 
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -1551,7 +1555,7 @@ get_chemicals_in_list_exact <- function(list_name = NULL,
   )
 
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -1607,7 +1611,7 @@ get_chemicals_in_list_contain <- function(list_name = NULL,
   )
 
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -1677,7 +1681,7 @@ get_all_public_chemical_lists <- function(Projection = '',
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -1741,7 +1745,7 @@ get_chemical_mrv <- function(DTXSID = NULL,
     )
   }
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(httr::content(response, encoding = "UTF-8"))
@@ -1804,7 +1808,7 @@ get_chemical_mol <- function(DTXSID = NULL,
     )
   }
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(httr::content(response, encoding = "UTF-8"))
@@ -1904,7 +1908,7 @@ get_chemical_image <- function(DTXSID = NULL,
     )
   }
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(httr::content(response, encoding = "UTF-8"))
@@ -1953,7 +1957,7 @@ get_chemical_synonym <- function(DTXSID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     parse_list <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))

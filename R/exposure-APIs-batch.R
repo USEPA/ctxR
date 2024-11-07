@@ -47,14 +47,25 @@ get_exposure_functional_use_batch <- function(DTXSID = NULL,
                                       verbose = verbose)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose) {
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- DTXSID
     return(results)
   } else {
@@ -114,14 +125,25 @@ get_exposure_functional_use_probability_batch <- function(DTXSID = NULL,
                                       verbose = verbose)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose) {
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- DTXSID
     na_index <- which(sapply(results, function(t) {length(t) == 0}))
 
@@ -198,14 +220,25 @@ get_httk_data_batch <- function(DTXSID = NULL,
                         Server = Server)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose) {
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- DTXSID
     return(results)
   } else {
@@ -261,14 +294,25 @@ get_exposure_product_data_batch <- function(DTXSID = NULL,
                                verbose = verbose)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose) {
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- DTXSID
     return(results)
   } else {
@@ -325,14 +369,25 @@ get_exposure_list_presence_tags_by_dtxsid_batch <- function(DTXSID = NULL,
                                                     verbose = verbose)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose) {
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- DTXSID
     return(results)
   } else {
@@ -390,14 +445,25 @@ get_general_exposure_prediction_batch <- function(DTXSID = NULL,
                                           Server = Server)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose) {
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- DTXSID
     return(results)
   } else {
@@ -456,14 +522,25 @@ get_demographic_exposure_prediction_batch <- function(DTXSID = NULL,
                                           Server = Server)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose) {
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- DTXSID
     return(results)
   } else {
