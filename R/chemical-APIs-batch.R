@@ -34,8 +34,8 @@ get_chemical_details_batch <- function(DTXSID = NULL,
                                        verbose = FALSE){
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.null(DTXSID)){
@@ -119,8 +119,8 @@ get_chemical_details_batch_2 <- function(DTXSID = NULL,
                                          Server = chemical_api_server,
                                          verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -290,8 +290,8 @@ check_existence_by_dtxsid_batch <- function(DTXSID = NULL,
                                             Server = chemical_api_server,
                                             verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -406,8 +406,8 @@ get_smiles_batch <- function(names = NULL,
                              Server = chemical_api_server,
                              verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -461,8 +461,8 @@ get_molecular_weight_batch <- function(names = NULL,
                                        Server = chemical_api_server,
                                        verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -516,8 +516,8 @@ get_mol_v3000_batch <- function(names = NULL,
                                 Server = chemical_api_server,
                                 verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -571,8 +571,8 @@ get_mol_v2000_batch <- function(names = NULL,
                                 Server = chemical_api_server,
                                 verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -626,8 +626,8 @@ get_InChI_batch <- function(names = NULL,
                              Server = chemical_api_server,
                             verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -681,8 +681,8 @@ get_canonical_smiles_batch <- function(names = NULL,
                                        Server = chemical_api_server,
                                        verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -758,8 +758,8 @@ get_chemical_by_property_range_batch <- function(start_list = NULL,
                                                  rate_limit = 0L,
                                                  verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (is.null(start_list) || is.null(end_list)){
@@ -861,8 +861,8 @@ get_chem_info_batch <- function(DTXSID = NULL,
                                 Server = chemical_api_server,
                                 verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -964,8 +964,8 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
                                      Server = chemical_api_server,
                                      verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -1056,8 +1056,8 @@ chemical_starts_with_batch <- function(word_list = NULL,
                                        verbose = FALSE,
                                        top = NULL){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -1157,8 +1157,8 @@ chemical_equal_batch <- function(word_list = NULL,
                                  rate_limit = 0L,
                                  verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -1273,8 +1273,8 @@ chemical_contains_batch <- function(word_list = NULL,
                                     verbose = FALSE,
                                     top = NULL){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -1378,8 +1378,8 @@ get_msready_by_mass_with_error_batch <- function(masses = NULL,
                                                  rate_limit = 0,
                                                  verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (is.null(masses) || is.null(error)){
@@ -1455,8 +1455,8 @@ get_msready_by_mass_batch <- function(start_list = NULL,
                                       rate_limit = 0L,
                                       verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if(is.null(start_list) || is.null(end_list)){
@@ -1531,8 +1531,8 @@ get_msready_by_formula_batch <- function(formula_list = NULL,
                                          rate_limit = 0L,
                                          verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -1597,8 +1597,8 @@ get_msready_by_dtxcid_batch <- function(DTXCID = NULL,
                                         rate_limit = 0L,
                                         verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -1669,8 +1669,8 @@ get_chemical_lists_by_type_batch <- function(type_list = NULL,
                                              rate_limit = 0L,
                                              verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -1744,8 +1744,8 @@ get_public_chemical_list_by_name_batch <- function(name_list = NULL,
                                                    rate_limit = 0L,
                                                    verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -1812,8 +1812,8 @@ get_lists_containing_chemical_batch <- function(chemical_list = NULL,
                                                 rate_limit = 0L,
                                                 verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -1886,8 +1886,8 @@ get_chemicals_in_list_start_batch <- function(list_names = NULL,
                                               rate_limit = 0L,
                                               verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if(is.null(list_names) || is.null(words)){
@@ -1965,8 +1965,8 @@ get_chemicals_in_list_exact_batch <- function(list_names = NULL,
                                               rate_limit = 0L,
                                               verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if(is.null(list_names) || is.null(words)){
@@ -2044,8 +2044,8 @@ get_chemicals_in_list_contain_batch <- function(list_names = NULL,
                                                 rate_limit = 0L,
                                                 verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if(is.null(list_names) || is.null(words)){
@@ -2119,8 +2119,8 @@ get_chemicals_in_list_batch <- function(list_names = NULL,
                                         rate_limit = 0L,
                                         verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -2192,8 +2192,8 @@ get_chemical_mrv_batch <- function(DTXSID = NULL,
                                    rate_limit = 0L,
                                    verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -2302,8 +2302,8 @@ get_chemical_mol_batch <- function(DTXSID = NULL,
                                    rate_limit = 0L,
                                    verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -2419,8 +2419,8 @@ get_chemical_image_batch <- function(DTXSID = NULL,
                                      rate_limit = 0L,
                                      verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -2570,8 +2570,8 @@ get_chemical_synonym_batch <- function(DTXSID = NULL,
                                        rate_limit = 0L,
                                        verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){

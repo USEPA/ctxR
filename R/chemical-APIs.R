@@ -31,8 +31,8 @@ get_chemical_details <- function(DTXSID = NULL,
     stop('Please input either a DTXSID or DTXCID, but not both!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   projection_entries <- c('chemicaldetailall',
@@ -303,8 +303,8 @@ check_existence_by_dtxsid <- function(DTXSID = NULL,
   }
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/ghslink/to-dtxsid/', DTXSID),
@@ -345,8 +345,8 @@ get_chemical_details_by_listname <- function(listname = NULL,
   }
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/detail/search/by-listname/', listname),
@@ -393,8 +393,8 @@ get_smiles <- function(name = NULL,
   }
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/opsin/to-smiles/', prepare_word(name)),
@@ -439,8 +439,8 @@ get_inchikey <- function(name = NULL,
   }
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/opsin/to-inchikey/', prepare_word(name)),
@@ -485,8 +485,8 @@ get_inchi <- function(name = NULL,
   }
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/opsin/to-inchi/', prepare_word(name)),
@@ -535,8 +535,8 @@ get_chemical_by_property_range <- function(start = NULL,
                                            Server = chemical_api_server,
                                            verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (is.null(start) || is.null(end) || !is.numeric(start) || !is.numeric(end)){
@@ -602,8 +602,8 @@ get_chem_info <- function(DTXSID = NULL,
     stop('Please input a DTXSID!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   types <- c("", "predicted", "experimental")
@@ -677,8 +677,8 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
     stop('Please input a DTXSID!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/fate/search/by-dtxsid/', DTXSID),
@@ -732,8 +732,8 @@ chemical_starts_with <- function(word = NULL,
   }
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.null(top)){
@@ -809,8 +809,8 @@ chemical_equal <- function(word = NULL,
   }
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   word <- prepare_word(word)
@@ -875,8 +875,8 @@ chemical_contains <- function(word = NULL,
   }
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.null(top)){
@@ -978,8 +978,8 @@ get_msready_by_mass <- function(start = NULL,
   }
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (start < 0 || end < 0){
@@ -1040,8 +1040,8 @@ get_msready_by_formula <- function(formula = NULL,
   }
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/msready/search/by-formula/', formula),
@@ -1091,8 +1091,8 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
   }
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/msready/search/by-dtxcid/', DTXCID),
@@ -1132,8 +1132,8 @@ get_all_list_types <- function(API_key = NULL,
                                verbose = FALSE){
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(chemical_api_server, "/list/type"),
@@ -1172,8 +1172,8 @@ get_chemical_lists_by_type <- function(type = NULL,
     stop('Please input a value for parameter type from the list `federal`, `international`, `state`, and `other`!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
 
@@ -1246,8 +1246,8 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
     stop('Please input list_name!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   projection_entries <- c('chemicallistall',
@@ -1313,8 +1313,8 @@ get_lists_containing_chemical <- function(DTXSID = NULL,
     stop('Please input a non-null value for DTXSID!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/list/search/by-dtxsid/', DTXSID),
@@ -1364,8 +1364,8 @@ get_chemicals_in_list <- function(list_name = NULL,
     stop('Please input a character value for list_name!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   new_response <- get_public_chemical_list_by_name(list_name = list_name,
@@ -1430,8 +1430,8 @@ get_chemicals_in_list_start <- function(list_name = NULL,
     stop('Please input a character value for word!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
 
@@ -1483,8 +1483,8 @@ get_chemicals_in_list_exact <- function(list_name = NULL,
     stop('Please input a character value for word!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
 
@@ -1536,8 +1536,8 @@ get_chemicals_in_list_contain <- function(list_name = NULL,
     stop('Please input a character value for word!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
 
@@ -1586,8 +1586,8 @@ get_all_public_chemical_lists <- function(Projection = '',
                                           Server = chemical_api_server,
                                           verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   projection_entries <- c('chemicallistall',
@@ -1658,8 +1658,8 @@ get_chemical_mrv <- function(DTXSID = NULL,
     stop('Please input either a DTXSID or DTXCID, but not both!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.null(DTXSID)){
@@ -1718,8 +1718,8 @@ get_chemical_mol <- function(DTXSID = NULL,
     stop('Please input either a DTXSID or DTXCID, but not both!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.null(DTXSID)){
@@ -1794,8 +1794,8 @@ get_chemical_image <- function(DTXSID = NULL,
     stop('Please input only one DTXSID, DTXCID, or SMILES, and not multiple!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (format == 'png'){
@@ -1870,8 +1870,8 @@ get_chemical_synonym <- function(DTXSID = NULL,
     stop('Please input a DTXSID!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
 

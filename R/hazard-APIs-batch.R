@@ -20,8 +20,8 @@ get_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                                        Server = hazard_api_server,
                                        verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -143,8 +143,8 @@ get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                                              Server = hazard_api_server,
                                              verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -223,8 +223,8 @@ get_ecotox_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                                               Server = hazard_api_server,
                                               verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -305,8 +305,8 @@ get_skin_eye_hazard_batch <- function(DTXSID = NULL,
                                       Server = hazard_api_server,
                                       verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -397,8 +397,8 @@ get_cancer_hazard_batch <- function(DTXSID = NULL,
                                     Server = hazard_api_server,
                                     verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -485,8 +485,8 @@ get_genetox_summary_batch <- function(DTXSID = NULL,
                                       Server = hazard_api_server,
                                       verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -575,8 +575,8 @@ get_genetox_details_batch <- function(DTXSID = NULL,
                                       Server = hazard_api_server,
                                       verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){

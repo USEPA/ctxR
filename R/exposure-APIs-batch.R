@@ -22,8 +22,8 @@ get_exposure_functional_use_batch <- function(DTXSID = NULL,
                                               Server = exposure_api_server,
                                               verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -97,8 +97,8 @@ get_exposure_functional_use_probability_batch <- function(DTXSID = NULL,
                                               Server = exposure_api_server,
                                               verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -188,8 +188,8 @@ get_httk_data_batch <- function(DTXSID = NULL,
                                 Server = exposure_api_server,
                                 verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -260,8 +260,8 @@ get_exposure_product_data_batch <- function(DTXSID = NULL,
                                             Server = exposure_api_server,
                                             verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -332,8 +332,8 @@ get_exposure_list_presence_tags_by_dtxsid_batch <- function(DTXSID = NULL,
                                                             Server = exposure_api_server,
                                                             verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -404,8 +404,8 @@ get_general_exposure_prediction_batch <- function(DTXSID = NULL,
                                                   Server = exposure_api_server,
                                                   verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
@@ -478,8 +478,8 @@ get_demographic_exposure_prediction_batch <- function(DTXSID = NULL,
                                                       Server = exposure_api_server,
                                                       verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
