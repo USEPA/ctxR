@@ -19,14 +19,11 @@ get_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                                        rate_limit = 0L,
                                        Server = hazard_api_server,
                                        verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key)){
+    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -145,14 +142,11 @@ get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                                              rate_limit = 0L,
                                              Server = hazard_api_server,
                                              verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key)){
+    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -228,14 +222,11 @@ get_ecotox_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                                               rate_limit = 0L,
                                               Server = hazard_api_server,
                                               verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key)){
+    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -313,14 +304,11 @@ get_skin_eye_hazard_batch <- function(DTXSID = NULL,
                                       rate_limit = 0L,
                                       Server = hazard_api_server,
                                       verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key)){
+    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -408,14 +396,11 @@ get_cancer_hazard_batch <- function(DTXSID = NULL,
                                     rate_limit = 0L,
                                     Server = hazard_api_server,
                                     verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key)){
+    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -499,14 +484,11 @@ get_genetox_summary_batch <- function(DTXSID = NULL,
                                       rate_limit = 0L,
                                       Server = hazard_api_server,
                                       verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key)){
+    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -592,14 +574,11 @@ get_genetox_details_batch <- function(DTXSID = NULL,
                                       rate_limit = 0L,
                                       Server = hazard_api_server,
                                       verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key)){
+    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L

@@ -29,13 +29,10 @@ get_bioactivity_details <- function(DTXSID = NULL,
   #else if (!is.null(DTXSID) & !is.null(AEID))
   else if (length(which(!sapply(list(DTXSID, AEID, SPID, m4id), is.null))) > 1)
     stop('Please input a value for only one of DTXSID, AEID, SPID, or m4id, but not multiple!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key)){
+    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   data_index <- which(!sapply(list(DTXSID, AEID, SPID, m4id), is.null))
@@ -140,13 +137,10 @@ get_bioactivity_summary <- function(AEID = NULL,
   #return()
   if (is.null(AEID))
     stop('Please input an AEID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()){
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key)){
+    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/data/summary/search/by-aeid/', AEID),
@@ -203,13 +197,9 @@ get_all_assays <- function(API_key = NULL,
                            Server = bioactivity_api_server,
                            verbose = FALSE){
 
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
   if (is.null(API_key)){
-    if (has_ctx_key()){
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <-  httr::GET(url = paste0(Server, '/assay/'),
@@ -255,13 +245,10 @@ get_annotation_by_aeid <- function(AEID = NULL,
                                    verbose = FALSE){
   if (is.null(AEID))
     stop('Please input an AEID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()){
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key)){
+    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/assay/search/by-aeid/', AEID),
