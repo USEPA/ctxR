@@ -21,6 +21,8 @@ jobs:
       group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    env:
+      CTX_API_KEY: ${{ secrets.CTX_API_KEY }}
     permissions:
       contents: write
     steps:
