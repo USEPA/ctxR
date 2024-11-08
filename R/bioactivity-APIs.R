@@ -31,8 +31,8 @@ get_bioactivity_details <- function(DTXSID = NULL,
     stop('Please input a value for only one of DTXSID, AEID, SPID, or m4id, but not multiple!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   data_index <- which(!sapply(list(DTXSID, AEID, SPID, m4id), is.null))
@@ -139,8 +139,8 @@ get_bioactivity_summary <- function(AEID = NULL,
     stop('Please input an AEID!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/data/summary/search/by-aeid/', AEID),
@@ -198,8 +198,8 @@ get_all_assays <- function(API_key = NULL,
                            verbose = FALSE){
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <-  httr::GET(url = paste0(Server, '/assay/'),
@@ -247,8 +247,8 @@ get_annotation_by_aeid <- function(AEID = NULL,
     stop('Please input an AEID!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key)){
-    stop('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/assay/search/by-aeid/', AEID),
