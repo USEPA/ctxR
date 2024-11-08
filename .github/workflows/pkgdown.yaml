@@ -31,14 +31,16 @@ jobs:
       - uses: r-lib/actions/setup-r@v2
         with:
           use-public-rspm: true
-        env:
-          CTX_API_KEY: ${{ secrets.CTX_API_KEY }}
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::pkgdown, local::.
           needs: website
 
+      - name: attach API key
+        env:
+          CTX_API_KEY: ${{ secrets.CTX_API_KEY }}
+        run: ctxR:::.getKeyIntoPkgEnv()
 
       - name: Build site
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
