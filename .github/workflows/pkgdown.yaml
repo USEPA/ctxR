@@ -37,11 +37,6 @@ jobs:
           extra-packages: any::pkgdown, local::.
           needs: website
 
-      - name: attach API key
-        env:
-          CTX_API_KEY: ${{ secrets.CTX_API_KEY }}
-        run: ctxR:::.getKeyIntoPkgEnv()
-
       - name: Build site
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
         shell: Rscript {0}
