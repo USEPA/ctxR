@@ -24,9 +24,6 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Set ctxR api key
-        env:
-          CTX_API_KEY: ${{ secrets.CTX_API_KEY }}
       - uses: actions/checkout@v4
 
       - uses: r-lib/actions/setup-pandoc@v2
@@ -39,6 +36,8 @@ jobs:
         with:
           extra-packages: any::pkgdown, local::.
           needs: website
+        env:
+          CTX_API_KEY: ${{ secrets.CTX_API_KEY }}
 
       - name: Build site
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
