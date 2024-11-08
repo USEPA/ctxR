@@ -38,7 +38,7 @@ jobs:
           needs: website
 
       - name: Set api key
-        run: ctxR::register_ctx_api_key(key = $secrets.CTX_API_KEY)
+        run: ctxR::register_ctx_api_key($secrets.CTX_API_KEY)
 
       - name: Build site
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
