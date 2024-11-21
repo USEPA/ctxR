@@ -22,7 +22,7 @@ test_that('Return data type', {
   #expect_type(get_bioactivity_details(DTXSID = 'DTXSID8031865', API_key = ctx_key()), 'list')
   expect_type(get_bioactivity_details(DTXSID = '', API_key = ctx_key()), 'NULL')
   #expect_type(get_bioactivity_details(DTXSID = 'DTXSID7020182', API_key = ''), 'NULL')
-  expect_type(get_bioactivity_details(AEID = 1), 'list')
+  expect_type(get_bioactivity_details(AEID = 1, API_key = ctx_key()), 'list')
   #expect_type(get_bioactivity_details(AEID = 42, API_key = ''), 'NULL')
 })
 })

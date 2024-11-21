@@ -236,3 +236,23 @@ has_ctx_key <- function () !is.na(ctx_key())
 
 
 
+#' Check API key
+#'
+#' @param API_key User input API key during function call.
+#' @param verbose A logical indicating if some “progress report” should be given.
+#'
+#' @return Either the API key (input during function call or loaded) or NULL
+#' (neither input during function call nor loaded).
+
+check_api_key <- function(API_key = NULL, verbose = FALSE){
+  if (is.null(API_key) || !is.character(API_key)){
+    if (has_ctx_key()) {
+      API_key <- ctx_key()
+      if (verbose) {
+        message('Using stored API key!')
+      }
+    }
+  }
+  return(API_key)
+}
+

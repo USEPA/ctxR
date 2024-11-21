@@ -17,13 +17,10 @@ get_exposure_functional_use <- function(DTXSID = NULL,
                                         verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input an DTXSID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()){
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/functional-use/search/by-dtxsid/', DTXSID),
@@ -66,13 +63,10 @@ get_exposure_functional_use_probability <- function(DTXSID = NULL,
                                                     verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input an DTXSID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()){
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/functional-use/probability/search/by-dtxsid/', DTXSID),
@@ -109,13 +103,9 @@ get_exposure_functional_use_probability <- function(DTXSID = NULL,
 get_exposure_functional_use_category <- function(API_key = NULL,
                                                  Server = exposure_api_server,
                                                  verbose = FALSE){
-   if (is.null(API_key)){
-    if (has_ctx_key()){
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/functional-use/category'),
@@ -156,13 +146,10 @@ get_httk_data <- function(DTXSID = NULL,
                           verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input an DTXSID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()){
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/httk/search/by-dtxsid/', DTXSID),
@@ -205,13 +192,10 @@ get_exposure_product_data <- function(DTXSID = NULL,
                                       verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input an DTXSID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()){
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/product-data/search/by-dtxsid/', DTXSID),
@@ -248,13 +232,9 @@ get_exposure_product_data <- function(DTXSID = NULL,
 get_exposure_product_data_puc <- function(API_key = NULL,
                                           Server = exposure_api_server,
                                           verbose = FALSE){
-  if (is.null(API_key)){
-    if (has_ctx_key()){
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/product-data/puc'),
@@ -292,13 +272,9 @@ get_exposure_product_data_puc <- function(API_key = NULL,
 get_exposure_list_presence_tags <- function(API_key = NULL,
                                             Server = exposure_api_server,
                                             verbose = FALSE){
-  if (is.null(API_key)){
-    if (has_ctx_key()){
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/list-presence/tags'),
@@ -339,13 +315,10 @@ get_exposure_list_presence_tags_by_dtxsid <- function(DTXSID = NULL,
                                                       verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input an DTXSID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()){
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/list-presence/search/by-dtxsid/', DTXSID),
@@ -388,13 +361,10 @@ get_general_exposure_prediction <- function(DTXSID = NULL,
                                             verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input an DTXSID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()){
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/seem/general/search/by-dtxsid/', DTXSID),
@@ -446,13 +416,10 @@ get_demographic_exposure_prediction <- function(DTXSID = NULL,
                                                 verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input an DTXSID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()){
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/seem/demographic/search/by-dtxsid/', DTXSID),

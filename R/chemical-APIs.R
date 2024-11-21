@@ -30,13 +30,9 @@ get_chemical_details <- function(DTXSID = NULL,
   else if (!is.null(DTXSID) & !is.null(DTXCID))
     stop('Please input either a DTXSID or DTXCID, but not both!')
 
-  if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose){
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   projection_entries <- c('chemicaldetailall',
@@ -306,11 +302,9 @@ check_existence_by_dtxsid <- function(DTXSID = NULL,
     stop('Please input a DTXSID!')
   }
 
-  if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      message('Using stored API key!')
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/ghslink/to-dtxsid/', DTXSID),
@@ -350,11 +344,9 @@ get_chemical_details_by_listname <- function(listname = NULL,
     stop('Please input a character string for listname!')
   }
 
-  if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      message('Using stored API key!')
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/detail/search/by-listname/', listname),
@@ -400,11 +392,9 @@ get_smiles <- function(name = NULL,
     stop('Please input a character string for name!')
   }
 
-  if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      message('Using stored API key!')
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/opsin/to-smiles/', prepare_word(name)),
@@ -448,11 +438,9 @@ get_inchikey <- function(name = NULL,
     stop('Please input a character string for name!')
   }
 
-  if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      message('Using stored API key!')
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/opsin/to-inchikey/', prepare_word(name)),
@@ -496,11 +484,9 @@ get_inchi <- function(name = NULL,
     stop('Please input a character string for name!')
   }
 
-  if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      message('Using stored API key!')
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/opsin/to-inchi/', prepare_word(name)),
@@ -548,11 +534,9 @@ get_chemical_by_property_range <- function(start = NULL,
                                            API_key = NULL,
                                            Server = chemical_api_server,
                                            verbose = FALSE){
-  if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      message('Using stored API key!')
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (is.null(start) || is.null(end) || !is.numeric(start) || !is.numeric(end)){
@@ -616,14 +600,10 @@ get_chem_info <- function(DTXSID = NULL,
                           verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if(verbose){
-        message('Using stored API key!')
-      }
 
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   types <- c("", "predicted", "experimental")
@@ -695,13 +675,10 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
                                verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/fate/search/by-dtxsid/', DTXSID),
@@ -752,13 +729,11 @@ chemical_starts_with <- function(word = NULL,
                            top = NULL){
   if (is.null(word) || !is.character(word)){
     stop('Please input a character value for word!')
-  } else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.null(top)){
@@ -831,13 +806,11 @@ chemical_equal <- function(word = NULL,
                            verbose = FALSE){
   if (is.null(word) || !is.character(word)){
     stop('Please input a character value for word!')
-  } else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   word <- prepare_word(word)
@@ -899,13 +872,11 @@ chemical_contains <- function(word = NULL,
                               top = NULL){
   if (is.null(word) || !is.character(word)){
     stop('Please input a character value for word!')
-  } else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.null(top)){
@@ -1004,13 +975,11 @@ get_msready_by_mass <- function(start = NULL,
                                 verbose = FALSE){
   if(is.null(start) || is.null(end) || !is.numeric(start) || !is.numeric(end)){
     stop('Please input a numeric value for both start and end!')
-  } else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (start < 0 || end < 0){
@@ -1068,13 +1037,11 @@ get_msready_by_formula <- function(formula = NULL,
     stop("Please input a non-null value for formula!")
   } else if (!is.character(formula)){
     stop("Please input a character string for the formula parameter!")
-  } else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/msready/search/by-formula/', formula),
@@ -1121,13 +1088,11 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
     stop("Please input a non-null value for DTXCID!")
   } else if (!is.character(DTXCID)){
     stop("Please input a character string for the DTXCID parameter!")
-  } else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/msready/search/by-dtxcid/', DTXCID),
@@ -1166,13 +1131,9 @@ get_all_list_types <- function(API_key = NULL,
                                Server = chemical_api_server,
                                verbose = FALSE){
 
-  if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(chemical_api_server, "/list/type"),
@@ -1209,13 +1170,10 @@ get_chemical_lists_by_type <- function(type = NULL,
                                        verbose = FALSE){
   if (is.null(type) | !is.character(type))
     stop('Please input a value for parameter type from the list `federal`, `international`, `state`, and `other`!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
 
@@ -1286,13 +1244,10 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
                                              verbose = FALSE){
   if (is.null(list_name))
     stop('Please input list_name!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   projection_entries <- c('chemicallistall',
@@ -1356,13 +1311,10 @@ get_lists_containing_chemical <- function(DTXSID = NULL,
                                           verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a non-null value for DTXSID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/list/search/by-dtxsid/', DTXSID),
@@ -1410,13 +1362,10 @@ get_chemicals_in_list <- function(list_name = NULL,
 
   if (is.null(list_name) | !is.character(list_name))
     stop('Please input a character value for list_name!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   new_response <- get_public_chemical_list_by_name(list_name = list_name,
@@ -1479,13 +1428,10 @@ get_chemicals_in_list_start <- function(list_name = NULL,
     stop('Please input a character value for list_name!')
   else if (is.null(word) | !is.character(word))
     stop('Please input a character value for word!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
 
@@ -1535,13 +1481,10 @@ get_chemicals_in_list_exact <- function(list_name = NULL,
     stop('Please input a character value for list_name!')
   else if (is.null(word) | !is.character(word))
     stop('Please input a character value for word!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
 
@@ -1591,13 +1534,10 @@ get_chemicals_in_list_contain <- function(list_name = NULL,
     stop('Please input a character value for list_name!')
   else if (is.null(word) | !is.character(word))
     stop('Please input a character value for word!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
 
@@ -1645,13 +1585,9 @@ get_all_public_chemical_lists <- function(Projection = '',
                                           API_key = NULL,
                                           Server = chemical_api_server,
                                           verbose = FALSE){
-  if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   projection_entries <- c('chemicallistall',
@@ -1720,13 +1656,10 @@ get_chemical_mrv <- function(DTXSID = NULL,
     stop('Please input a DTXSID or DTXCID!')
   else if (!is.null(DTXSID) & !is.null(DTXCID))
     stop('Please input either a DTXSID or DTXCID, but not both!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.null(DTXSID)){
@@ -1783,13 +1716,10 @@ get_chemical_mol <- function(DTXSID = NULL,
     stop('Please input a DTXSID or DTXCID!')
   else if (!is.null(DTXSID) & !is.null(DTXCID))
     stop('Please input either a DTXSID or DTXCID, but not both!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.null(DTXSID)){
@@ -1862,14 +1792,12 @@ get_chemical_image <- function(DTXSID = NULL,
     stop('Please input a DTXSID, DTXCID, gsid, or SMILES!')
   else if (length(which(!sapply(list(DTXSID, DTXCID, gsid, SMILES), is.null))) > 1)
     stop('Please input only one DTXSID, DTXCID, or SMILES, and not multiple!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (format == 'png'){
     image_type = "Image+Format=png"
   } else if (format == 'svg'){
@@ -1940,13 +1868,10 @@ get_chemical_synonym <- function(DTXSID = NULL,
                                  verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
 
