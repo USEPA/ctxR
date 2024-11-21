@@ -8,8 +8,8 @@
 <title>ctxR: Bioactivity API • ctxR</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="ctxR: Bioactivity API">
 <meta name="robots" content="noindex">
 </head>
@@ -687,7 +687,7 @@ a list (or vector) of assay endpoint ids (aeids).</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">assays</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_annotation_by_aeid_batch.html">get_annotation_by_aeid_batch</a></span><span class="op">(</span>AEID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">759</span>,<span class="fl">700</span>,<span class="fl">891</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co"># return is in list form by aeid, convert to table for output</span></span>
-<span><span class="va">assays</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/rbindlist.html" class="external-link">rbindlist</a></span><span class="op">(</span><span class="va">assays</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">assays</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/data.table/man/rbindlist.html" class="external-link">rbindlist</a></span><span class="op">(</span><span class="va">assays</span><span class="op">)</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
 <table class="table table table-striped" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
@@ -1259,9 +1259,6 @@ below:</p>
 <table class="table table table-striped" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-aeid
-</th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 m4id
 </th>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
@@ -1804,12 +1801,12 @@ flag
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 mc6MthdId
 </th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+aeid
+</th>
 </tr></thead>
 <tbody>
 <tr>
-<td style="text-align:right;">
-623
-</td>
 <td style="text-align:right;">
 1833668
 </td>
@@ -2356,11 +2353,11 @@ Multiple points above baseline, inactive
 <td style="text-align:left;">
 11, 13, 8
 </td>
+<td style="text-align:right;">
+623
+</td>
 </tr>
 <tr>
-<td style="text-align:right;">
-626
-</td>
 <td style="text-align:right;">
 1834094
 </td>
@@ -2908,11 +2905,11 @@ variability
 <td style="text-align:left;">
 13, 8, 9
 </td>
+<td style="text-align:right;">
+626
+</td>
 </tr>
 <tr>
-<td style="text-align:right;">
-645
-</td>
 <td style="text-align:right;">
 1836233
 </td>
@@ -3459,11 +3456,11 @@ indication of high baseline variability
 <td style="text-align:left;">
 13, 9
 </td>
+<td style="text-align:right;">
+645
+</td>
 </tr>
 <tr>
-<td style="text-align:right;">
-647
-</td>
 <td style="text-align:right;">
 1836494
 </td>
@@ -4010,11 +4007,11 @@ indication of high baseline variability
 <td style="text-align:left;">
 13, 9
 </td>
+<td style="text-align:right;">
+647
+</td>
 </tr>
 <tr>
-<td style="text-align:right;">
-679
-</td>
 <td style="text-align:right;">
 1839401
 </td>
@@ -4560,11 +4557,11 @@ Average number of replicates per conc is less than 2
 <td style="text-align:left;">
 13
 </td>
+<td style="text-align:right;">
+679
+</td>
 </tr>
 <tr>
-<td style="text-align:right;">
-704
-</td>
 <td style="text-align:right;">
 1842443
 </td>
@@ -5111,6 +5108,9 @@ of replicates per conc is less than 2
 <td style="text-align:left;">
 9, 13
 </td>
+<td style="text-align:right;">
+704
+</td>
 </tr>
 </tbody>
 </table>
@@ -5121,9 +5121,6 @@ of replicates per conc is less than 2
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
 <table class="table table table-striped" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-aeid
-</th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 m4id
 </th>
@@ -5652,11 +5649,11 @@ flag
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 mc6MthdId
 </th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+aeid
+</th>
 </tr></thead>
 <tbody><tr>
-<td style="text-align:right;">
-891
-</td>
 <td style="text-align:right;">
 739695
 </td>
@@ -6188,6 +6185,9 @@ Bmd &gt; ac50, indication of high baseline variability
 <td style="text-align:right;">
 9
 </td>
+<td style="text-align:right;">
+891
+</td>
 </tr></tbody>
 </table>
 </div>
@@ -6197,9 +6197,6 @@ Bmd &gt; ac50, indication of high baseline variability
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
 <table class="table table table-striped" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-aeid
-</th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 m4id
 </th>
@@ -6740,12 +6737,12 @@ flag
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 mc6MthdId
 </th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+aeid
+</th>
 </tr></thead>
 <tbody>
 <tr>
-<td style="text-align:right;">
-3094
-</td>
 <td style="text-align:right;">
 822141
 </td>
@@ -7296,11 +7293,11 @@ NULL
 <td style="text-align:left;">
 NULL
 </td>
+<td style="text-align:right;">
+3094
+</td>
 </tr>
 <tr>
-<td style="text-align:right;">
-3098
-</td>
 <td style="text-align:right;">
 822345
 </td>
@@ -7851,11 +7848,11 @@ NULL
 <td style="text-align:left;">
 NULL
 </td>
+<td style="text-align:right;">
+3098
+</td>
 </tr>
 <tr>
-<td style="text-align:right;">
-3095
-</td>
 <td style="text-align:right;">
 1150437
 </td>
@@ -8406,11 +8403,11 @@ Noisy data
 <td style="text-align:left;">
 10
 </td>
+<td style="text-align:right;">
+3095
+</td>
 </tr>
 <tr>
-<td style="text-align:right;">
-3096
-</td>
 <td style="text-align:right;">
 1150505
 </td>
@@ -8961,6 +8958,9 @@ Noisy data
 <td style="text-align:left;">
 10
 </td>
+<td style="text-align:right;">
+3096
+</td>
 </tr>
 </tbody>
 </table>
@@ -8971,9 +8971,6 @@ Noisy data
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
 <table class="table table table-striped" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-aeid
-</th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 m4id
 </th>
@@ -9517,12 +9514,12 @@ flag
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 mc6MthdId
 </th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+aeid
+</th>
 </tr></thead>
 <tbody>
 <tr>
-<td style="text-align:right;">
-704
-</td>
 <td style="text-align:right;">
 1842410
 </td>
@@ -10069,11 +10066,11 @@ of replicates per conc is less than 2
 <td style="text-align:left;">
 8, 11, 13
 </td>
-</tr>
-<tr>
 <td style="text-align:right;">
 704
 </td>
+</tr>
+<tr>
 <td style="text-align:right;">
 1842408
 </td>
@@ -10620,11 +10617,11 @@ per conc is less than 2
 <td style="text-align:left;">
 8, 13
 </td>
-</tr>
-<tr>
 <td style="text-align:right;">
 704
 </td>
+</tr>
+<tr>
 <td style="text-align:right;">
 1842409
 </td>
@@ -11171,11 +11168,11 @@ of replicates per conc is less than 2
 <td style="text-align:left;">
 9, 13
 </td>
-</tr>
-<tr>
 <td style="text-align:right;">
 704
 </td>
+</tr>
+<tr>
 <td style="text-align:right;">
 1842411
 </td>
@@ -11721,11 +11718,11 @@ Average number of replicates per conc is less than 2
 <td style="text-align:left;">
 13
 </td>
-</tr>
-<tr>
 <td style="text-align:right;">
 704
 </td>
+</tr>
+<tr>
 <td style="text-align:right;">
 1842412
 </td>
@@ -12271,11 +12268,11 @@ Average number of replicates per conc is less than 2
 <td style="text-align:left;">
 13
 </td>
-</tr>
-<tr>
 <td style="text-align:right;">
 704
 </td>
+</tr>
+<tr>
 <td style="text-align:right;">
 1842413
 </td>
@@ -12854,6 +12851,9 @@ NULL
 </td>
 <td style="text-align:left;">
 NULL
+</td>
+<td style="text-align:right;">
+704
 </td>
 </tr>
 </tbody>
