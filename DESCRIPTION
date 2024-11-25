@@ -19,11 +19,11 @@ Authors@R: c(
     	        )
 Description: Access chemical, hazard, bioactivity, and exposure data from the 
    Computational Toxicology and Exposure ('CTX') APIs 
-   <https://api-ccte.epa.gov/docs/>. 'ctxR' was developed to streamline the 
-   process of accessing the information available through the 'CTX' APIs 
-   without requiring prior knowledge of how to use APIs. Most data is also 
-   available on the CompTox Chemical Dashboard ('CCD') 
-   <https://comptox.epa.gov/dashboard/> and other resources found at the 
+   <https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis>. 
+   'ctxR' was developed to streamline the process of accessing the information 
+   available through the 'CTX' APIs without requiring prior knowledge of how to 
+   use APIs. Most data is also available on the CompTox Chemical Dashboard 
+   ('CCD') <https://comptox.epa.gov/dashboard/> and other resources found at the 
    EPA Computational Toxicology and Exposure Online Resources 
    <https://www.epa.gov/comptox-tools>. 
 License: GPL (>= 3)
