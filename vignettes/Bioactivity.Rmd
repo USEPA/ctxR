@@ -54,7 +54,7 @@ registerS3method(
 
 ```
 
-<a href="https://cran.r-project.org/web/packages/ctxR/index.html"><img src="Pictures/ctxR_hex.png" width="200" align="right" style="float: right; margin-left: 10px; margin-bottom: 20px;"/></a>
+<a href="https://CRAN.R-project.org/package=ctxR"><img src="Pictures/ctxR_hex.png" width="200" align="right" style="float: right; margin-left: 10px; margin-bottom: 20px;"/></a>
 
 # Introduction
 
