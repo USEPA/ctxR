@@ -12,3 +12,4 @@
 ^vignettes/articles$
 ^CRAN-SUBMISSION$
 
+^revdep$
