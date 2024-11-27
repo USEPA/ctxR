@@ -32,8 +32,7 @@ is also available on the [CompTox Chemical Dashboard
 Resources](https://www.epa.gov/comptox-tools).
 
 If you are interested in contributing or want to report a bug, please
-submit a issue or start a discussion. See
-[CONTRIBUTING](CONTRIBUTING.md) for more information.
+submit a issue or start a discussion.
 
 To install the current development version, run the following command:
 
