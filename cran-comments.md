@@ -19,7 +19,7 @@ Status: OK
 ## win devel check results
 
 * 1 NOTE - CRAN incoming feasibility.
-  Indicated possible invalid URL. This URL works correctly.
+  Indicated possible invalid URL. This URL works correctly and is stored in data retrieved from an API request, so we cannot alter it.
 
 
 ## local R CMD check results
