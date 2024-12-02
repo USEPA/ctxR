@@ -1,4 +1,4 @@
-# ctxR (development version)
+# ctxR 1.1.0
 
 
 ## Minor improvements and fixes
