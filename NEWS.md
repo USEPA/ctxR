@@ -3,6 +3,8 @@
 
 ## Minor improvements and fixes
 
+* Fixed broken link to `CONTRIBUTING.md` in README (@c1au6i0, #37)
+
 * Updated `get_chemical_synonym()`, `get_chemical_synonym_batch()` to handle returned data more efficiently (#30).
 
 * Updated documentation of internal helper functions `create_data.table_chemical_details()`, `prepare_word()` (#24).
