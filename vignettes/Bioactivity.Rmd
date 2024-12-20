@@ -60,7 +60,7 @@ registerS3method(
 
 In this vignette, [CTX Bioactivity API](https://api-ccte.epa.gov/docs/bioactivity.html) will be explored. 
 
-Data provided by the API's Bioactivity endpoints are sourced from ToxCast's invitrodb. 
+Data provided by the API's Bioactivity endpoints are sourced from ToxCast's [invitrodb](https://doi.org/10.23645/epacomptox.6062623.v13). 
 
 US EPA's Toxicity Forecaster (ToxCast) program makes *in vitro* medium- and high-throughput screening assay data publicly available for prioritization and hazard characterization of thousands of chemicals.
 
@@ -80,7 +80,7 @@ The Bioactivity API endpoints are organized into two different resources, "Assay
 
 "Data" resource endpoints are split into summary data (by 'aeid') and bioactivity data by 'm4id' (i.e. both 'aeid' and 'spid'). The summary endpoint returns the number of active hits and total multi- and single-concentration chemicals tested for specific 'aeids'. The other endpoints return chemical information, level 3 concentration-response values, level 4 fit parameters, level 5 hit parameters, and level 6 flags for individual chemicals tested for given 'AEIDs', 'm4ids', 'SPIDs', or 'DTXSIDs'.
 
-Several ctxR functions can be used to access the CTX Bioactivity API data, as described in the following sections. Tables output in each example have been filtered to only display the first few rows of data. Regular ToxCast users may find it easier to use the [tcpl R Package](https://CRAN.R-project.org/package=tcpl), which is integrated ctxR's bioactivity functions to access API data in a more 'invitrodb'-like format. See the [tcpl's Data Retrieval via API](https://CRAN.R-project.org/package=tcpl) vignette for more guidance on data retrieval and plotting capabilities with tcpl.
+Several ctxR functions can be used to access the CTX Bioactivity API data, as described in the following sections. Tables output in each example have been filtered to only display the first few rows of data. Regular ToxCast users may find it easier to use the [tcpl R Package](https://CRAN.R-project.org/package=tcpl), which has integrated ctxR's bioactivity functions to access API data in a more 'invitrodb'-like format. See the [tcpl's Data Retrieval via API](https://CRAN.R-project.org/package=tcpl) vignette for more guidance on data retrieval and plotting capabilities with tcpl.
 
 ::: {.noticebox data-latex=""}
 **NOTE:** Please see the introductory vignette for an overview of the *ctxR* package and initial set up instruction with API key storage.
