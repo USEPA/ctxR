@@ -71,10 +71,10 @@ The foundation of toxicology, toxicokinetics, and exposure is embedded in the ph
 
 With cheminformatics as the backbone for research efforts, sources of available data through the CTX Chemical API include:
 
--  Chemical structures, nomenclature, synonyms, IDs, list associations, physicochemical property, environmental fate and transport data from the Distributed Structure-Searchable Toxicity  ([DSSTox](https://www.epa.gov/comptox-tools/distributed-structure-searchable-toxicity-dsstox-database)) database. For early references, see [(Richard, A. et al. 2002)](https://doi.org/10.1016/S0027-5107(01)00289-5), [(Richard, A. et al. 2006)](https://files.toxplanet.com/cpdb/pdfs/structure_tox_on_web.pdf), and [(Richard, A. et al 2008)](https://doi.org/10.1080/15376510701857452).
+-  Chemical structures, nomenclature, synonyms, IDs, list associations, physicochemical property, environmental fate and transport data from the Distributed Structure-Searchable Toxicity  ([DSSTox](https://www.epa.gov/comptox-tools/distributed-structure-searchable-toxicity-dsstox-database)) database. DSSTox substance identifiers (DTXSIDs) support linking chemical information to a specific chemical across a variety of EPA chemical resources. For early references, see [(Richard, A. et al. 2002)](https://doi.org/10.1016/S0027-5107(01)00289-5), [(Richard, A. et al. 2006)](https://files.toxplanet.com/cpdb/pdfs/structure_tox_on_web.pdf), and [(Richard, A. et al 2008)](https://doi.org/10.1080/15376510701857452).
 - Predictions from Toxicity Estimation Software Tool  ([TEST](https://www.epa.gov/comptox-tools/toxicity-estimation-software-tool-test)) suite of QSAR models. For early references, see [(Martin, T. et al. 2001)](https://pubs.acs.org/doi/10.1021/tx0155045), [(Martin, T. et al. 2007)](https://doi.org/10.1080/15376510701857353), and [(Young, D. et al. 2008)]( https://doi.org/10.1002/qsar.200810084).  
 
-More information on Chemicals and Chemistry Data can be found here: <https://www.epa.gov/comptox-tools/downloadable-computational-toxicology-data#SCD>.
+More information on Chemicals and Chemistry Data can be found here: <https://www.epa.gov/comptox-tools/downloadable-computational-toxicology-data#SCD>.  
 
 ::: {.noticebox data-latex=""}
 **NOTE:** Please see the introductory vignette for an overview of the *ctxR* package and initial set up instruction with API key storage.
@@ -180,7 +180,7 @@ search_contains <- chemical_contains(word = 'DTXSID702018')
 
 ## Subset for MS-Ready Structures
 
-MS-Ready data can be retrieved using a variety of input information. Examples for each are provided below:
+MS-Ready [(McEachran, A. et al. 2018)](https://doi.org/10.1186/s13321-018-0299-2) data can be retrieved using a variety of input information. Examples for each are provided below:
 
 ### By Mass Range
 
@@ -203,7 +203,7 @@ msready_by_dtxcid <- get_msready_by_dtxcid(DTXCID = 'DTXCID30182')
 
 # List Resource
 
-There are several lists of chemicals one can access. These can be filtered by the type, name, inclusion of a specific chemical, or name of list.
+There are several lists of chemicals one can access using the [(CCD list search)](https://comptox.epa.gov/dashboard/chemical-lists). These can be filtered by the type, name, inclusion of a specific chemical, or name of list.
 
 ## Get all list types
 
@@ -266,7 +266,7 @@ chemicals_in_list <- get_chemicals_in_list(list_name = 'CCL4')
 
 # Chemical File Resource
 
-There a mrv, mol, and image files that can be accessed using either the DTXSID or DTXCID. Examples are provided below:
+There are mrv, mol, and image files that can be accessed using either the DTXSID or DTXCID. Examples are provided below:
 
 ## Get mrv by DTXSID or DTXCID
 
@@ -314,7 +314,7 @@ The fourth Drinking Water Contaminant Candidate List (CCL4) is a set of chemical
 
 These lists can be found in the CCD at [CCL4](https://comptox.epa.gov/dashboard/chemical-lists/CCL4) with additional information at [CCL4 information](https://www.epa.gov/ccl/contaminant-candidate-list-4-ccl-4-0) and [NATADB](https://comptox.epa.gov/dashboard/chemical-lists/NATADB) with additional information at [NATA information](https://www.epa.gov/national-air-toxics-assessment). The quotes from the previous paragraph were excerpted from list detail descriptions found using the CCD links.
 
-In this example use case, physico-chemical Properties data will be compared between a water contaminant priority and an air toxics list. 
+In this example use case, physico-chemical Properties data will be compared between a water contaminant priority and an air toxics list. Note, the following code chunks use the `data.table` object, which is an extension of the `data.frame` object and has slightly different syntax. For more information, please refer to [data.table](https://CRAN.R-project.org/package=data.table)
 
 ## Obtain Lists of Chemicals
 
@@ -385,20 +385,20 @@ ccl4_phys_chem[propertyId == 'melting-point', .(Mean = mean(value)),
 
 These results tell us about some of the reported physico-chemical properties of the data sets.
 
-The mean "boiling-point" is 251.1072 degrees Celsius for CCL4, with mean values of 250.5943 and 251.4001 for experimental and predicted, respectively. The mean "melting-point" is 33.93924 degrees Celsius for CCL4, with mean values of 23.18876 and 47.98422 for experimental and predicted, respectively.
+The mean "boiling-point" is 252.6593 degrees Celsius for CCL4, with mean values of 250.5943 and 253.8196 for experimental and predicted, respectively. The mean "melting-point" is 34.91613 degrees Celsius for CCL4, with mean values of 23.18876 and 49.99417 for experimental and predicted, respectively.
 
-To explore **all** the values of the physico-chemical properties and calculate their means, we can do the following procedure. First we look at all the physico-chemical properties individually, then group them by each property ("boiling-point", "melting-point", etc...), and then additionally group those by property type ("experimental" vs "predicted"). In the grouping, we look at the columns `value`, `unit`, `propertyID` and `propType`. We also demonstrate how take the mean of the values for each grouping.
+To explore **all** the values of the physico-chemical properties and calculate their means, we can do the following procedure. First we look at all the physico-chemical properties individually, then group them by each property ("boiling-point", "melting-point", etc...), and then additionally group those by property type ("experimental" vs "predicted"). In the grouping, we look at the columns `value`, `unit`, `propertyID` and `propType`. We also demonstrate how take the mean of the values for each grouping, using the chemical identifier 'DTXSID1037567' for this example, the 25th chemical in CCL4.
 
 ```{r fig.align='center',class.source="scroll-300",message=FALSE}
-head(ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], ])
-ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(propType, value, unit),
+head(ccl4_phys_chem[dtxsid == ccl4$dtxsid[[25]], ])
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[25]], .(propType, value, unit),
                by = .(propertyId)]
-ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(value, unit), 
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[25]], .(value, unit), 
                by = .(propertyId, propType)]
 
-ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(Mean_value = sapply(.SD, mean)),
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[25]], .(Mean_value = sapply(.SD, mean)),
                by = .(propertyId, unit), .SDcols = c("value")]
-ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(Mean_value = sapply(.SD, mean)), 
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[25]], .(Mean_value = sapply(.SD, mean)), 
                by = .(propertyId, unit, propType), 
                .SDcols = c("value")][order(propertyId)]
 ```
