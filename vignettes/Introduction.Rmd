@@ -54,6 +54,10 @@ registerS3method(
 
 <a href="https://CRAN.R-project.org/package=ctxR"><img src="Pictures/ctxR_hex.png" width="200" align="right" style="float: right; margin-left: 10px; margin-bottom: 10px;"/></a>
 
+# Computational Toxicology and Exposure data
+
+In this document, users will be introduced to different methods to access computational toxicology and exposure data. The two main methods described are through the CompTox Chemicals Dashboard and the CTX APIs, via the R package *ctxR*. References to papers and additional information on resources can be found within the exposition of this document. For more detailed information on specific areas of data, please refer to the other vignettes included within *ctxR*. 
+
 # Introduction to the CCD
 
 Accessing chemical data is a vital step in many workflows related to chemical, biological, and environmental modeling. While there are many resources available from which one can pull data, the [CompTox Chemicals Dashboard](https://comptox.epa.gov/dashboard/) (CCD), built and maintained by the United States Environmental Protection Agency, is particularly well-designed and suitable for these purposes. Originally introduced in [The CompTox Chemistry Dashboard: a community data resource for environmental chemistry](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0247-6), the CCD contains information on over 1.2 million chemicals as of May 2024 and has been cited 612 times according to CrossRef. To learn more about the CCD, please visit the page [About CCD](https://www.epa.gov/comptox-tools/comptox-chemicals-dashboard-about).
@@ -96,7 +100,7 @@ The web interface for batch search only allows input of 10,000 identifiers at a 
 
 ## Challenges of web-based dashboard search
 
-Practicing researchers may follow a workflow that looks something like this:
+Practicing researchers may follow a workflow where many chemicals are being evaluated that looks something like this:
 
 1.	Start with a dataset that includes your chemical identifiers of interest. These may include chemical names, Chemical Abstract Service Registry Numbers (CASRNs), Distributed Searchable Structure-Toxicity Database (DSSTox) identifiers, or InChIKeys.
 2.	Export the chemical identifiers to a spreadsheet. Often, this is done by importing the data into an environment such as R or Python, in order to do some data wrangling (e.g., to select only the unique substance identfiers; to clean up improperly-formatted CASRNs; etc.). Then, the identifiers are saved in a spreadsheet (an Excel, .csv, or .txt file), one chemical identifier per row.
@@ -136,7 +140,7 @@ On the left side of each domain's web interface page, there will be several diff
 
 ## Authentication
 
-`Authentication`, found in upper left tab on each web interface page, is required to use the APIs. To authenticate themselves in the API web interface, the user must input their unique API key.
+`Authentication`, found in upper left tab on each web interface page, is required to use the APIs. To authenticate themselves in the API web interface, the user must input their unique API key. To request an API key, please contact the API support team at [ccte_api@epa.gov](mailto:ccte_api@epa.gov).
 
 <center>
 
@@ -240,7 +244,7 @@ ctx_key()
 
 # Quick Start Examples
 
-As some quick start examples, we demonstrate the ease* of retrieving the information across endpoints for Bisphenol A using *ctxR*. *This is in contrast to the approach using the CCD or API web interface. 
+As some quick start examples, we demonstrate the relative ease (compared to using the CCD or API web interface) of retrieving the information across endpoints for Bisphenol A using *ctxR*. 
 
 Tables output in each example have been filtered to only display the first few rows of data. For additional examples and more comprehensive documentation on each endpoint, consider reviewing the other ctxR vignettes for the data domain of interest. 
 
