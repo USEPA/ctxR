@@ -28,11 +28,11 @@ Package website: [release](https://usepa.github.io/ctxR/) | [dev](https://usepa.
 
 ## Welcome to the GitHub repository for the ctxR package
 
-<a href="https://cran.r-project.org/web/packages/ctxR/index.html"><img src="vignettes/Pictures/ctxR_hex.png" width="200" align="right" /></a>
+<a href="https://CRAN.R-project.org/package=ctxR"><img src="vignettes/Pictures/ctxR_hex.png" width="200" align="right" /></a>
 
 ctxR was developed to streamline the process of accessing the information available through the [Computational Toxicology and Exposure (CTX) APIs](https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis) without requiring prior knowledge of how to use APIs. Chemical, hazard, bioactivity, and exposure data in available from the CTX APIs. Most data is also available on the [CompTox Chemical Dashboard (CCD)](https://comptox.epa.gov/dashboard/) or within other [Computational Toxicology and Exposure Online Resources](https://www.epa.gov/comptox-tools).
 
-If you are interested in contributing or want to report a bug, please submit a issue or start a discussion. See [CONTRIBUTING](CONTRIBUTING.md) for more information.
+If you are interested in contributing or want to report a bug, please submit a issue or start a discussion. See [CONTRIBUTING](https://github.com/USEPA/ctxR/blob/dev/CONTRIBUTING.md) for more information.
 
 To install the current development version, run the following command: 
 

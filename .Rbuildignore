@@ -11,4 +11,5 @@
 ^\.github$
 ^vignettes/articles$
 ^CRAN-SUBMISSION$
-
+CONTRIBUTING.md
+^revdep$

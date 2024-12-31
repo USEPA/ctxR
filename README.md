@@ -18,7 +18,7 @@ Downloads](https://cranlogs.r-pkg.org/badges/last-month/ctxR?color=7BAFD4)](http
 
 ## Welcome to the GitHub repository for the ctxR package
 
-<a href="https://cran.r-project.org/web/packages/ctxR/index.html"><img src="vignettes/Pictures/ctxR_hex.png" width="200" align="right" /></a>
+<a href="https://CRAN.R-project.org/package=ctxR"><img src="vignettes/Pictures/ctxR_hex.png" width="200" align="right" /></a>
 
 ctxR was developed to streamline the process of accessing the
 information available through the [Computational Toxicology and Exposure
@@ -32,8 +32,7 @@ is also available on the [CompTox Chemical Dashboard
 Resources](https://www.epa.gov/comptox-tools).
 
 If you are interested in contributing or want to report a bug, please
-submit a issue or start a discussion. See
-[CONTRIBUTING](CONTRIBUTING.md) for more information.
+submit a issue or start a discussion.
 
 To install the current development version, run the following command:
 
