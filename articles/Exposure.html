@@ -243,8 +243,6 @@ code {
   border-radius: 10px;
 }
 </style>
-<pre><code><span><span class="co">#&gt; Error in get(paste0(generic, ".", class), envir = get_method_env()) : </span></span>
-<span><span class="co">#&gt;   object 'type_sum.accel' not found</span></span></code></pre>
 <p><a href="https://CRAN.R-project.org/package=ctxR" class="external-link"><img src="Pictures%2FctxR_hex.png" width="200" align="right" style="float: right; margin-left: 10px; margin-bottom: 10px;"></a></p>
 <div class="section level3">
 <h3 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
@@ -345,7 +343,7 @@ data.</p>
 </h3>
 <p><code><a href="../reference/get_exposure_functional_use.html">get_exposure_functional_use()</a></code> retrieves FCs and
 associated metadata for a specific chemical (by DTXSID).</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">exp_fun_use</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_exposure_functional_use.html">get_exposure_functional_use</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span><span class="op">)</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table table-striped" style="margin-left: auto; margin-right: auto;">
@@ -543,7 +541,7 @@ Monomers
 probability of functional use within different FCs for a given chemical
 (by DTXSID). Each value represents the probability of the chemical being
 classified as having this function, as predicted by the QSUR models.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">exp_fun_use_prob</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_exposure_functional_use_probability.html">get_exposure_functional_use_probability</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
@@ -584,7 +582,7 @@ classified as having this function, as predicted by the QSUR models.</p>
 <p><code>get_exposure_functional_use_categories()</code> retrieves
 definitions of all the available FCs. This is not specific to a
 chemical, but rather a list of all FCs.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">exp_fun_use_cat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_exposure_functional_use_category.html">get_exposure_functional_use_category</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
@@ -665,7 +663,7 @@ with chemical identifiers (DTXSID) or general use.</p>
 <p><code><a href="../reference/get_exposure_product_data.html">get_exposure_product_data()</a></code> retrieves the product data
 (PUCs and related data) for products that use the specified chemical (by
 DTXSID).</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">exp_prod_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_exposure_product_data.html">get_exposure_product_data</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span><span class="op">)</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table table-striped" style="margin-left: auto; margin-right: auto;">
@@ -1072,7 +1070,7 @@ reported
 <p><code><a href="../reference/get_exposure_product_data_puc.html">get_exposure_product_data_puc()</a></code> retrieves the
 definitions of all the PUCs. This is not specific to a chemical, but
 rather a list of all PUCs.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">exp_prod_data_puc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_exposure_product_data_puc.html">get_exposure_product_data_puc</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
@@ -1156,7 +1154,7 @@ products</td>
 </h2>
 <p>There is a single resource that returns <code>httk</code> model data
 when available</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bpa_httk</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_httk_data.html">get_httk_data</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">bpa_httk</span><span class="op">)</span></span>
 <span><span class="co">#&gt;       id        dtxsid    parameter measuredText measured predictedText</span></span>
@@ -1195,7 +1193,7 @@ of the the list presence keywords. Note that some List Presence Keywords
 align with PUCs, but the keywords are assigned to documents that refer
 to product category as a whole, while PUCs are assigned to documents
 referring to specific products (e.g., ingredient list).</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">exp_list_tags</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_exposure_list_presence_tags.html">get_exposure_list_presence_tags</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
@@ -1263,7 +1261,7 @@ children</td>
 </h3>
 <p><code><a href="../reference/get_exposure_list_presence_tags_by_dtxsid.html">get_exposure_list_presence_tags_by_dtxsid()</a></code> retrieves
 LPKs and associated data for a specific chemical (by DTXSID).</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">exp_list_tags_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_exposure_list_presence_tags_by_dtxsid.html">get_exposure_list_presence_tags_by_dtxsid</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span><span class="op">)</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table table-striped" style="margin-left: auto; margin-right: auto;">
@@ -1523,7 +1521,7 @@ predictions from other models</p>
 </h5>
 <p><code><a href="../reference/get_general_exposure_prediction.html">get_general_exposure_prediction()</a></code> returns general
 exposure information for a given chemical.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bpa_general_exposure</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_general_exposure_prediction.html">get_general_exposure_prediction</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">bpa_general_exposure</span><span class="op">)</span></span>
 <span><span class="co">#&gt;           dtxsid productionVolume  units stockholmConvention probabilityDietary</span></span>
@@ -1537,7 +1535,7 @@ exposure information for a given chemical.</p>
 <p><code><a href="../reference/get_demographic_exposure_prediction.html">get_demographic_exposure_prediction()</a></code> returns exposure
 prediction information split across different demographics for a given
 chemical.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bpa_demographic_exposure</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_demographic_exposure_prediction.html">get_demographic_exposure_prediction</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span><span class="op">)</span></span>
 <span><span class="va">bpa_demographic_exposure</span></span>
 <span><span class="co">#&gt;        id        dtxsid        demographic       predictor       median</span></span>
@@ -1647,7 +1645,7 @@ information to each individual chemical.</p>
 </h3>
 <p>We demonstrate how the individual results differ from the batch
 results when retrieving functional use probabilities.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bpa_prob</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_exposure_functional_use_probability.html">get_exposure_functional_use_probability</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span><span class="op">)</span></span>
 <span><span class="va">caf_prob</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_exposure_functional_use_probability.html">get_exposure_functional_use_probability</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID0020232'</span><span class="op">)</span></span>
 <span></span>
