@@ -1,3 +1,9 @@
+## Resubmission
+
+* Fixed an address for URL that had moved.
+
+* Compressed image to reduce package size.
+
 ## Test environments
 
 * macOS 13.3.1, Apple clang version 14.0.0 (clang-1400.0.29.202), GNU Fortran (GCC) 12.2.0, macOS Ventura 13.3.1
@@ -18,9 +24,8 @@ Status: OK
 
 ## win devel check results
 
-* 1 NOTE - CRAN incoming feasibility.
-  Indicated possible invalid URL. This URL works correctly and is stored in data retrieved from an API request, so we cannot alter it.
 
+0 errors | 0 warnings | 0 notes
 
 ## local R CMD check results
 
