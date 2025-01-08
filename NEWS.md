@@ -3,6 +3,8 @@
 
 ## Minor improvements and fixes
 
+* Updated moved URLs per CRAN request (#40).
+
 * Updated exposition, corrected typos, and added references to the vignettes (#37).
 
 * Fixed broken link to `CONTRIBUTING.md` in README (@c1au6i0, #37)
