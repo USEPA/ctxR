@@ -1,7 +1,7 @@
 Type: Package
 Package: ctxR
 Title: Utilities for Interacting with the 'CTX' APIs
-Version: 1.1.0
+Version: 1.1.0.9000
 Authors@R: c(
             person("Paul", "Kruse", email = "kruse.paul@epa.gov", 
               role = c("aut", "cre"), 
