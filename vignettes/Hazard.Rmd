@@ -1,29 +1,18 @@
 ---
-title: "Hazard API"
-author: "Center for Computational Toxicology and Exposure"
+title: "ctxR: Hazard API"
+author: US EPA's Center for Computational Toxicology and Exposure ccte@epa.gov
 output:
-   prettydoc::html_pretty:
-    theme: architect
-    toc: yes
-    toc_depth: 5
+  rmarkdown::html_vignette:
+    fig_width: 7
+    fig_height: 6
+params:
+  my_css: css/rmdformats.css
 vignette: >
-  %\VignetteIndexEntry{Hazard}
+  %\VignetteIndexEntry{5. Hazard}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-```{css, echo=FALSE}
-.scroll-300 {
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-.noticebox {
-  padding: 1em;
-  background: lightgray;
-  color: blue;
-  border: 2px solid black;
-  border-radius: 10px;
-}
+```{css, code = readLines(params$my_css), hide=TRUE, echo = FALSE}
 ```
 
 ```{r, include = FALSE}
@@ -64,84 +53,81 @@ registerS3method(
 )
 ```
 
+<a href="https://CRAN.R-project.org/package=ctxR"><img src="Pictures/ctxR_hex.png" width="200" align="right" style="float: right; margin-left: 10px; margin-bottom: 10px;"/></a>
+
 ## Introduction
 
 In this vignette, [CTX Hazard API](https://api-ccte.epa.gov/docs/hazard.html) will be explored. 
-
-::: {.noticebox data-latex=""}
-
-**NOTE:** Please see the introductory vignette for an overview of the *ctxR* package and initial set up instruction with API key storage.
-
-:::
 
 Data for the Hazard API come from the Toxicity Value Database [(ToxValDB)](https://cfpub.epa.gov/si/si_public_record_Report.cfm?dirEntryId=344315&Lab=NCCT). ToxValDB includes data on thousands of chemicals from tens of thousands of records, with an emphasis on quantitative estimates of relevant points-of-departure from in vivo toxicology studies, such as no- and low-observable adverse effect levels, screening levels, reference doses, tolerable daily intake, etc. 
 
 The Aggregated Computational Toxicology Resource [(ACToR)](https://www.epa.gov/comptox-tools/downloadable-computational-toxicology-data#actor) is currently being integrated into ToxValDB. ACToR, as described in [Judson et al (2008)](https://doi.org/10.1016/j.taap.2007.12.037), was designed to serve as a central location for information on chemical structure ***in vitro*** bioassays, and ***in vivo*** toxicology assays used in various [Computational Toxicology](https://www.epa.gov/comptox-tools) efforts at US EPA.
 
-More information on ToxValDB can be found at <https://www.epa.gov/comptox-tools/downloadable-computational-toxicology-data#AT>. Additional resources under "ToxVal" subtopic: [New Approach Methods training](https://www.epa.gov/chemical-research/new-approach-methods-nams-training).
+More information on ToxValDB can be found at <https://www.epa.gov/comptox-tools/downloadable-computational-toxicology-data#AT>. Additional resources are available under the "ToxVal" subtopic: [New Approach Methods training](https://www.epa.gov/chemical-research/new-approach-methods-nams-training).
 
-## Functions
+::: {.noticebox data-latex=""}
+**NOTE:** Please see the introductory vignette for an overview of the *ctxR* package and initial set up instruction with API key storage.
+:::
 
-Several ctxR functions are used to access the CTX Hazard API data.
+Several ctxR functions can be used to access the CTX Hazard API data, as described in the following sections.Tables output in each example have been filtered to only display the first few rows of data. 
 
-### Hazard Resource
+# Hazard Resource
 
-#### Get Hazard Data by DTXSID
+## Get Hazard Data by DTXSID
 
 `get_hazard_by_dtxsid()` retrieves all hazard data, both human and EcoTox data.
 
 ```{r ctxR all hazard, message=FALSE, eval=FALSE}
-res_dt <- get_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
+hazard_by_dtxsid <- get_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
 ```
 
-#### Get Human Hazard Data by DTXSID
+## Get Human Hazard Data by DTXSID
 
 `get_human_hazard_by_dtxsid()` retrieves only human hazard data.
 
 ```{r ctxR human hazard, message=FALSE, eval=FALSE}
-res_dt <- get_human_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
+human_hazard_by_dtxsid <- get_human_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
 ```
 
-#### Get EcoTox Hazard Data by DTXSID
+## Get EcoTox Hazard Data by DTXSID
 
 `get_ecotox_hazard_by_dtxsid()` retrieves only ecological toxicity hazard data.
 
 ```{r ctxR ecotox hazard, message=FALSE, eval=FALSE}
-res_dt <- get_ecotox_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
+ecotox_hazard_by_dtxsid <- get_ecotox_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
 ```
 
-### Skin Eye Resource
+# Skin Eye Resource
 
 `get_skin_eye_hazard()` retrieves hazard data specific to skin and eye hazard.
 
 ```{r ctxR skin and eye hazard, message=FALSE, eval=FALSE}
-res_dt <- get_skin_eye_hazard(DTXSID = 'DTXSID7020182')
+skin_eye_hazard <- get_skin_eye_hazard(DTXSID = 'DTXSID7020182')
 ```
 
-### Cancer Resource
+# Cancer Resource
 
 `get_cancer_hazard()` retrieves cancer hazard data. 
 
 ```{r ctxR cancer hazard, message=FALSE, eval=FALSE}
-res_dt <- get_cancer_hazard(DTXSID = 'DTXSID7020182')
+cancer_hazard <- get_cancer_hazard(DTXSID = 'DTXSID7020182')
 ```
 
-### Genetox Resource
+# Genetox Resource
 
 `get_genetox_summary()` retrieves summary level data for genotoxicity data associated to a chemical.
 
 ```{r ctxR genetox summary hazard, message=FALSE, eval=FALSE}
-res_dt <- get_genetox_summary(DTXSID = 'DTXSID7020182')
+genetox_summary <- get_genetox_summary(DTXSID = 'DTXSID7020182')
 ```
 
 `get_genetox_detail()` retrieves more detailed genetox data for a chemical than is provided on the summary level.
 
 ```{r ctxR genetox detail hazard, message=FALSE, eval=FALSE}
-res_dt <- get_genetox_details(DTXSID = 'DTXSID7020182')
+genetox_details <- get_genetox_details(DTXSID = 'DTXSID7020182')
 ```
 
-
-## Example Use Case: Comparing Hazard Data Across Chemical Lists
+# Example Use Case: Comparing Hazard Data Across Chemical Lists
 
 The fourth Drinking Water Contaminant Candidate List (CCL4) is a set of chemicals that "...are not subject to any proposed or promulgated national primary drinking water regulations, but are known or anticipated to occur in public water systems...." Moreover, this list "...was announced on November 17, 2016. The CCL 4 includes 97 chemicals or chemical groups and 12 microbial contaminants...." The National-Scale Air Toxics Assessments (NATA) is "... EPA's ongoing comprehensive evaluation of air toxics in the United States... a state-of-the-science screening tool for State/Local/Tribal agencies to prioritize pollutants, emission sources and locations of interest for further study in order to gain a better understanding of risks... use general information about sources to develop estimates of risks which are more likely to overestimate impacts than underestimate them...."  
 
@@ -149,9 +135,9 @@ These lists can be found in the CCD at [CCL4](https://comptox.epa.gov/dashboard/
 
 In this example use case, hazard data will be compared between a water contaminant priority and an air toxics list. 
 
-### Obtain Lists of Chemicals
+## Obtain Lists of Chemicals
 
-First, confirm the chemical list to query.
+First, confirm the chemical list to query. We use functions that wrap some of the Chemical domain endpoints to retrieve information about the list of chemicals.
 
 ```{r}
 options(width = 100)
@@ -171,30 +157,30 @@ natadb <- get_chemicals_in_list('NATADB')
 natadb <- data.table::as.data.table(natadb)
 ```
 
-### Review Genotoxicity Data for a Single Chemical
+## Review Genotoxicity Data for a Single Chemical
 
-Using the standard CompTox Chemicals Dashboard approach to access genotoxicity hazard data, one would navigate to the individual chemical page as shown below. 
+Using the standard CompTox Chemicals Dashboard approach to access genotoxicity hazard data, one would navigate to the individual chemical page for [DTXSID7020182](https://comptox.epa.gov/dashboard/chemical/genotoxicity/DTXSID7020182) as shown below. 
 
 <center>
 
-![<font style="font-size:15px"><i>Figure 1: CCD Navigation to Hazard Data>Genotoxicity Plot</i></font>](./Pictures/BPA_Hazard_data_-_Genotoxicity.png)
+![<font style="font-size:15px"><i>Figure 1: CCD Navigation to Hazard Data>Genotoxicity Plot</i></font>](./Pictures/BPA_Hazard_data_-_Genotoxicity.png){#id .class width=110% height=110%}
 </center>
 
 Figure 2 shows the genotoxicity section of the hazard tab for Bisphenol A. This page provides a summary of available genotoxicity data as well as individual reports and samples of such data.
 
 <center>
 
-![<font style="font-size:15px"><i>Figure 2: CCD Hazard Data>Genotoxicity for Bisphenol A</i></font>](./Pictures/CCD_BPA_genotoxicity.png)
+![<font style="font-size:15px"><i>Figure 2: CCD Hazard Data>Genotoxicity for Bisphenol A</i></font>](./Pictures/CCD_BPA_genotoxicity.png){#id .class width=110% height=110%}
 </center>
 
 The CTX APIs streamline the process of retrieving this information in a programmatic fashion. Figure 3 shows the particular set of genotoxicity resources available in the `Hazard` endpoints of the CTX APIs. There are both summary and detail resources, reflecting the information one can find on the CompTox Chemicals Dashboard Genotoxicity page for a given chemical.
 
 <center>
 
-![<font style="font-size:15px"><i>Figure 3: CTX Hazard APIs for Genotoxicity Endpoints </i></font>](./Pictures/Hazard_-_genotoxicity_resource.png)
+![<font style="font-size:15px"><i>Figure 3: CTX Hazard APIs for Genotoxicity Endpoints </i></font>](./Pictures/Hazard_-_genotoxicity_resource.png){#id .class width=110% height=110%}
 </center>
 
-### Review Genotoxicity Data for Chemical Lists
+## Review Genotoxicity Data for Chemical Lists
 
 The function `get_genetox_summary()` is used to access summary genotoxicity information per chemical. To query a list of chemicals, rather than searching individually for each chemical, the batch search version of the function, `get_genetox_summary_batch()`, can be used to access these details.
 
@@ -212,7 +198,7 @@ colnames(ccl4_genotox)
 head(ccl4_genotox)
 ```
 
-The information returned is of the first variety highlighted in the Figure 2, that is, summary data on the available genotoxicity data for each chemical. Observe genotoxicity data was returned for 71 chemicals from the CCL4 chemical list and 153 from the NATA chemical list. Chemicals missing genotoxicity information are noted. 
+The information returned is of the first variety highlighted in the Figure 2, that is, summary data on the available genotoxicity data for each chemical. Observe genotoxicity data was returned for 71 chemicals from the CCL4 chemical list and 153 from the NATA chemical list. Chemicals missing genotoxicity data for each list are noted below. 
 
 ```{r fig.align='center',class.source="scroll-300",message=FALSE}
 ccl4[!(dtxsid %in% ccl4_genotox$dtxsid), 
@@ -294,7 +280,7 @@ ccl4_genetox_details[dtxsid == 'DTXSID0020153' & assayResult == 'positive',
 
 There were five assays that produced a negative result, 22 that produced a positive result, and one that produced an equivocal result. Of the 22 positive assays, "bacterial reverse mutation assay" and "Ames" were the most numerous, with three each.
 
-### Review Hazard Data for Chemical Lists
+## Review Hazard Data for Chemical Lists
 
 Hazard data associated with the chemicals in each chemical list can be retrieved. For each chemical, there are potentially hundreds of rows of hazard data, so the returned results will be much larger than in most other API endpoints. We model how one would structure such a query of the chemicals in CCL4 and NATADB, and leave it to the reader to explore the data in a similar fashion to the previous examples.
 
@@ -311,7 +297,7 @@ colnames(ccl4_hazard)
 head(ccl4_hazard)
 ```
 
-## Conclusion
+# Conclusion
 
 In this vignette, a variety of functions that access different types of data found in the `Hazard` endpoints of the CTX APIs were explored. While this exploration was not exhaustive, it provides a basic introduction to how one may access data and work with it. Additional endpoints and corresponding functions exist and we encourage the user to explore these while keeping in mind the examples contained in this vignette.
 

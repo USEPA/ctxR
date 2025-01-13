@@ -161,7 +161,7 @@
         "label": "WATER|EPA: Chemical Contaminants - Navigation Panel to Chemical Candidate Lists",
         "visibility": "PUBLIC",
         "longDescription": "The Safe Drinking Water Act (SDWA), as amended in 1996, requires the United States Environmental Protection Agency (EPA) to publish every five years a list of drinking water contaminants, known as the Contaminant Candidate List (CCL), that at the time of publication:<br/>\r\n•\tare not subject to any proposed or promulgated National Primary Drinking Water Regulation,<br/> \r\n•\tare known or anticipated to occur in public water systems (PWSs), and <br/>\r\n•\tmay require regulation under the SDWA. <br/><br/> \r\n\r\nThe CCLs provided in the CompTox dashboard are versioned iteratively and this description navigates between the various versions of the lists. The list of substances displayed below represents the latest iteration of the list (CCL 5 - November 2022) and only display the chemical contaminants. The CCL 5 PFAS list is listed separately. For the versioned lists please use the hyperlinked lists below.<br/><br/> \r\n\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/CCL5' target='_blank'>CCL5 - November 2022<\/a> This list <br/><br/>\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/CCL4' target='_blank'>CCL4 - November 2016<\/a> <br/><br/>\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/CCL3' target='_blank'>CCL3 - October 2009<\/a> <br/><br/>\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/CCL2' target='_blank'>CCL2 - February 2005<\/a><br/><br/>\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/CCL1' target='_blank'>CCL1 - March 1998<\/a><br/><br/>",
-        "chemicalCount": 92,
+        "chemicalCount": 93,
         "createdAt": "2022-10-21T18:35:26Z",
         "updatedAt": "2022-10-26T20:04:17Z",
         "listName": "CCL",
@@ -336,14 +336,14 @@
         "shortDescription": "Chemicals contained in the EPA's Chemical and Products Database: Version 1 (original release February 14th 2017)\r\n\r\n"
     },
     {
-        "id": 1103,
+        "id": 2132,
         "type": "federal",
         "label": "Clean Water Act (CWA) Section 311(b)(2)(A) list",
         "visibility": "PUBLIC",
-        "longDescription": "The Clean Water Act (CWA) Section 311(b)(2)(A) requires EPA to compile a list of hazardous substances which, when discharged to navigable waters or adjoining shorelines, present an imminent and substantial danger to the public health or welfare. This includes danger to fish, shellfish, wildlife, and beaches. CWA 311-HS: includes 40 CFR parts 116 and 117 Part 116-Designation of Hazardous Substances Part 117-Determination of Reportable Quantities of Hazardous Substances",
-        "chemicalCount": 391,
-        "createdAt": "2021-04-06T12:25:53Z",
-        "updatedAt": "2021-04-06T12:33:43Z",
+        "longDescription": "The Clean Water Act (CWA) Section 311(b)(2)(A) requires EPA to compile a list of hazardous substances which, when discharged to navigable waters or adjoining shorelines, present an imminent and substantial danger to the public health or welfare. This includes danger to fish, shellfish, wildlife, and beaches. CWA 311-HS: includes 40 CFR parts 116 and 117 Part 116-Designation of Hazardous Substances Part 117-Determination of Reportable Quantities of Hazardous Substances (Last updated 8/18/2024)",
+        "chemicalCount": 380,
+        "createdAt": "2024-08-18T00:58:31Z",
+        "updatedAt": "2024-08-18T01:06:59Z",
         "listName": "CWA311HS",
         "shortDescription": "Clean Water Act (CWA) Section 311(b)(2)(A) list of hazardous substances"
     },
@@ -508,10 +508,10 @@
         "type": "federal",
         "label": "WATER|EPA: Drinking Water Standard and Health Advisories Table",
         "visibility": "PUBLIC",
-        "longDescription": "The EPA's Drinking Water Standard and Health Advisories Table summarizes EPA's drinking water regulations and health advisories, as well as reference dose (RFD) and cancer risk values, for drinking water contaminants. The list given is published with Maximum Contaminant Levels (MCLs) and Maximum Contaminant Level Goals (MCLGs).",
-        "chemicalCount": 212,
+        "longDescription": "The EPA's Drinking Water Standard and Health Advisories Table summarizes EPA's drinking water regulations and health advisories, as well as reference dose (RFD) and cancer risk values, for drinking water contaminants. The list given is published with Maximum Contaminant Levels (MCLs) and Maximum Contaminant Level Goals (MCLGs). Updated (8/18/2024) with PFAS chemicals: Perfluorooctanoic acid (PFOA), Perfluorooctanesulfonic acid (PFOS), Hexafluoropropylene Oxide (HFPO) Dimer Acid and its Ammonium Salt, Perfluorobutanesulfonic acid and its Potassium Salt (PFBS)",
+        "chemicalCount": 216,
         "createdAt": "2018-05-04T22:34:47Z",
-        "updatedAt": "2019-10-21T13:23:27Z",
+        "updatedAt": "2024-08-18T01:19:38Z",
         "listName": "EPADWS",
         "shortDescription": "The EPA's Drinking Water Standard and Health Advisories Table summarizes EPA's drinking water regulations and health advisories, as well as reference dose (RFD) and cancer risk values, for drinking water contaminants."
     },
@@ -2986,6 +2986,18 @@
         "updatedAt": "2019-11-16T18:36:25Z",
         "listName": "ELSIE",
         "shortDescription": "ELSIE:  Extractables and Leachables Safety Information Exchange"
+    },
+    {
+        "id": 1606,
+        "type": "other",
+        "label": "EXTRACTABLES: Extractables & Leachables Safety Information Exchange (ELSIE)",
+        "visibility": "PUBLIC",
+        "longDescription": "The Extractables and Leachables Safety Information Exchange (ELSIE: https://www.elsiedata.org/) was established by scientists in pharmaceuticals companies to advance the concept of sharing pre-competitive safety information on extractables and leachables, among industry. The vision was that such a collaborative effort would reduce duplicative safety studies across companies, streamline development projects, and allow industry and other stakeholders to share experiences and information to help advance the practice and science of extractables, leachables and materials evaluation. (Updated June 23rd 2024)",
+        "chemicalCount": 502,
+        "createdAt": "2022-08-19T15:54:22Z",
+        "updatedAt": "2024-06-23T21:53:48Z",
+        "listName": "ELSIEV2",
+        "shortDescription": "ELSIE: Extractables and Leachables Safety Information Exchange"
     },
     {
         "id": 455,
@@ -5794,6 +5806,30 @@
         "updatedAt": "2024-03-03T21:36:19Z",
         "listName": "WIKIPEDIA",
         "shortDescription": "Wikipedia includes data for thousands of chemicals. ChemBoxes and DrugBoxes includes data such as CAS Registry Numbers, SMILES and InChIs."
+    },
+    {
+        "id": 235,
+        "type": "other",
+        "label": "LIST: Wikipedia Chemicals",
+        "visibility": "PUBLIC",
+        "longDescription": "Wikipedia includes data for thousands of chemicals. ChemBoxes and DrugBoxes includes data such as CAS Registry Numbers, SMILES and InChIs. This list is an assembly from various Wikipedia pages and is a list under ongoing curation and expansion (last updated 12/11/2023).",
+        "chemicalCount": 21678,
+        "createdAt": "2016-06-17T13:01:58Z",
+        "updatedAt": "2024-02-23T14:44:00Z",
+        "listName": "WIKIPEDIA_OLD02032023",
+        "shortDescription": "Wikipedia includes data for thousands of chemicals. ChemBoxes and DrugBoxes includes data such as CAS Registry Numbers, SMILES and InChIs. "
+    },
+    {
+        "id": 2000,
+        "type": "other",
+        "label": "LIST: Wikipedia Chemicals",
+        "visibility": "PUBLIC",
+        "longDescription": "Wikipedia includes data for thousands of chemicals. ChemBoxes and DrugBoxes includes data such as CAS Registry Numbers, SMILES and InChIs. This list is an assembly from various Wikipedia pages and is a list under ongoing curation and expansion (last updated 03/23/2024).",
+        "chemicalCount": 21628,
+        "createdAt": "2024-02-23T14:44:52Z",
+        "updatedAt": "2024-03-03T21:27:15Z",
+        "listName": "WIKIPEDIA_OLD0223_2024",
+        "shortDescription": "Wikipedia includes data for thousands of chemicals. ChemBoxes and DrugBoxes includes data such as CAS Registry Numbers, SMILES and InChIs. "
     },
     {
         "id": 1036,

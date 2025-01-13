@@ -39,7 +39,7 @@
         "PUBLIC",
         "Chemical Candidate Lists are versioned iteratively and this panel navigates between the various versions.",
         "The Safe Drinking Water Act (SDWA), as amended in 1996, requires the United States Environmental Protection Agency (EPA) to publish every five years a list of drinking water contaminants, known as the Contaminant Candidate List (CCL), that at the time of publication:<br/>\r\n•\tare not subject to any proposed or promulgated National Primary Drinking Water Regulation,<br/> \r\n•\tare known or anticipated to occur in public water systems (PWSs), and <br/>\r\n•\tmay require regulation under the SDWA. <br/><br/> \r\n\r\nThe CCLs provided in the CompTox dashboard are versioned iteratively and this description navigates between the various versions of the lists. The list of substances displayed below represents the latest iteration of the list (CCL 5 - November 2022) and only display the chemical contaminants. The CCL 5 PFAS list is listed separately. For the versioned lists please use the hyperlinked lists below.<br/><br/> \r\n\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/CCL5' target='_blank'>CCL5 - November 2022<\/a> This list <br/><br/>\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/CCL4' target='_blank'>CCL4 - November 2016<\/a> <br/><br/>\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/CCL3' target='_blank'>CCL3 - October 2009<\/a> <br/><br/>\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/CCL2' target='_blank'>CCL2 - February 2005<\/a><br/><br/>\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/CCL1' target='_blank'>CCL1 - March 1998<\/a><br/><br/>",
-        92,
+        93,
         "2022-10-21T18:35:26.000+00:00",
         "2022-10-26T20:04:17.000+00:00"
     ],
@@ -957,6 +957,17 @@
         "2019-11-16T18:36:25.000+00:00"
     ],
     [
+        "ELSIEV2",
+        "EXTRACTABLES: Extractables & Leachables Safety Information Exchange (ELSIE)",
+        "other",
+        "PUBLIC",
+        "ELSIE: Extractables and Leachables Safety Information Exchange",
+        "The Extractables and Leachables Safety Information Exchange (ELSIE: https://www.elsiedata.org/) was established by scientists in pharmaceuticals companies to advance the concept of sharing pre-competitive safety information on extractables and leachables, among industry. The vision was that such a collaborative effort would reduce duplicative safety studies across companies, streamline development projects, and allow industry and other stakeholders to share experiences and information to help advance the practice and science of extractables, leachables and materials evaluation. (Updated June 23rd 2024)",
+        502,
+        "2022-08-19T15:54:22.000+00:00",
+        "2024-06-23T21:53:48.000+00:00"
+    ],
+    [
         "EPACONS",
         "EPA: Consumer Products Suspect Screening Result",
         "other",
@@ -1747,6 +1758,28 @@
         20438,
         "2024-03-03T21:28:26.000+00:00",
         "2024-03-03T21:36:19.000+00:00"
+    ],
+    [
+        "WIKIPEDIA_OLD02032023",
+        "LIST: Wikipedia Chemicals",
+        "other",
+        "PUBLIC",
+        "Wikipedia includes data for thousands of chemicals. ChemBoxes and DrugBoxes includes data such as CAS Registry Numbers, SMILES and InChIs. ",
+        "Wikipedia includes data for thousands of chemicals. ChemBoxes and DrugBoxes includes data such as CAS Registry Numbers, SMILES and InChIs. This list is an assembly from various Wikipedia pages and is a list under ongoing curation and expansion (last updated 12/11/2023).",
+        21678,
+        "2016-06-17T13:01:58.000+00:00",
+        "2024-02-23T14:44:00.000+00:00"
+    ],
+    [
+        "WIKIPEDIA_OLD0223_2024",
+        "LIST: Wikipedia Chemicals",
+        "other",
+        "PUBLIC",
+        "Wikipedia includes data for thousands of chemicals. ChemBoxes and DrugBoxes includes data such as CAS Registry Numbers, SMILES and InChIs. ",
+        "Wikipedia includes data for thousands of chemicals. ChemBoxes and DrugBoxes includes data such as CAS Registry Numbers, SMILES and InChIs. This list is an assembly from various Wikipedia pages and is a list under ongoing curation and expansion (last updated 03/23/2024).",
+        21628,
+        "2024-02-23T14:44:52.000+00:00",
+        "2024-03-03T21:27:15.000+00:00"
     ],
     [
         "CALCSCP",

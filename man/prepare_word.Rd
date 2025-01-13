@@ -15,3 +15,4 @@ A character string that is ready for use in http request
 \description{
 Prepare url helper function
 }
+\keyword{internal}

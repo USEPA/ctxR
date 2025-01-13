@@ -17,13 +17,10 @@ get_hazard_by_dtxsid <- function(DTXSID = NULL,
                                  verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
 
@@ -34,7 +31,7 @@ get_hazard_by_dtxsid <- function(DTXSID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -66,13 +63,10 @@ get_human_hazard_by_dtxsid <- function(DTXSID = NULL,
                                        verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/human/search/by-dtxsid/', DTXSID),
@@ -82,7 +76,7 @@ get_human_hazard_by_dtxsid <- function(DTXSID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -114,13 +108,10 @@ get_ecotox_hazard_by_dtxsid <- function(DTXSID = NULL,
                                         verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/eco/search/by-dtxsid/', DTXSID),
@@ -130,7 +121,7 @@ get_ecotox_hazard_by_dtxsid <- function(DTXSID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -163,13 +154,10 @@ get_skin_eye_hazard <- function(DTXSID = NULL,
                                 verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/skin-eye/search/by-dtxsid/', DTXSID),
@@ -179,7 +167,7 @@ get_skin_eye_hazard <- function(DTXSID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -211,13 +199,10 @@ get_cancer_hazard <- function(DTXSID = NULL,
                               verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
 
@@ -228,7 +213,7 @@ get_cancer_hazard <- function(DTXSID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -260,13 +245,10 @@ get_genetox_summary <- function(DTXSID = NULL,
                                 verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
 
@@ -277,7 +259,7 @@ get_genetox_summary <- function(DTXSID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -309,15 +291,11 @@ get_genetox_details <- function(DTXSID = NULL,
                                 verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
-  }
 
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
 
   response <- httr::GET(url = paste0(Server, '/genetox/details/search/by-dtxsid/', DTXSID),
                         httr::add_headers(.headers = c(
@@ -326,7 +304,7 @@ get_genetox_details <- function(DTXSID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))

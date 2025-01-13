@@ -5,4 +5,11 @@
 ^doc$
 ^Meta$
 ^cran-comments\.md$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
+^vignettes/articles$
 ^CRAN-SUBMISSION$
+CONTRIBUTING.md
+^revdep$

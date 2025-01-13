@@ -29,13 +29,10 @@ get_bioactivity_details <- function(DTXSID = NULL,
   #else if (!is.null(DTXSID) & !is.null(AEID))
   else if (length(which(!sapply(list(DTXSID, AEID, SPID, m4id), is.null))) > 1)
     stop('Please input a value for only one of DTXSID, AEID, SPID, or m4id, but not multiple!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   data_index <- which(!sapply(list(DTXSID, AEID, SPID, m4id), is.null))
@@ -73,10 +70,15 @@ get_bioactivity_details <- function(DTXSID = NULL,
   # }
 
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
-    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+    res <- tryCatch({jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))},
+                    error = function(cond){
+                      data.table::data.table()
+                    }
+    )
+
     if (!is.data.frame(res) & (length(res) != 0)){
       for (i in 1:length(res)){
         if (is.null(res[[i]])) res[[i]] <- NA # set any NULLs to NA
@@ -86,8 +88,21 @@ get_bioactivity_details <- function(DTXSID = NULL,
       }
       res <- tibble::as_tibble_row(res)
     }
+
     param_cols <- c('mc3Param', 'mc4Param', 'mc5Param', 'mc6Param')
     col_index <- which(param_cols %in% names(res))
+    if (length(col_index) > 0){
+      columns <- which(names(res) %in% param_cols[col_index])
+      # Handle case in which potentially nested columns are NA
+      # If the column is NA, it will be a logical. Otherwise, the column will be
+      # a different class.
+      non_na <- sapply(columns, function(t){
+        return(!is.logical((res[[t]])))
+      })
+      non_na <- which(non_na)
+      # Only unnest columns that are not NA
+      col_index <- intersect(col_index, non_na)
+    }
     if (length(col_index) > 0){
      res <- tidyr::unnest_wider(data = res, col = param_cols[col_index])
     }
@@ -122,13 +137,10 @@ get_bioactivity_summary <- function(AEID = NULL,
   #return()
   if (is.null(AEID))
     stop('Please input an AEID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()){
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/data/summary/search/by-aeid/', AEID),
@@ -138,7 +150,7 @@ get_bioactivity_summary <- function(AEID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     if (length(response$content) > 0){
@@ -185,13 +197,9 @@ get_all_assays <- function(API_key = NULL,
                            Server = bioactivity_api_server,
                            verbose = FALSE){
 
-  if (is.null(API_key)){
-    if (has_ctx_key()){
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <-  httr::GET(url = paste0(Server, '/assay/'),
@@ -201,7 +209,7 @@ get_all_assays <- function(API_key = NULL,
                          )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
@@ -237,13 +245,10 @@ get_annotation_by_aeid <- function(AEID = NULL,
                                    verbose = FALSE){
   if (is.null(AEID))
     stop('Please input an AEID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()){
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/assay/search/by-aeid/', AEID),
@@ -253,7 +258,7 @@ get_annotation_by_aeid <- function(AEID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     if (length(response$content) > 0){

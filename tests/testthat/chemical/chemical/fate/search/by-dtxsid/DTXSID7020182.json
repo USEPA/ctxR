@@ -5,12 +5,12 @@
         "valueType": "predicted",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": "cm3/molecule*sec",
         "endpointName": "Atmos. Hydroxylation Rate",
         "resultValue": 1.63978E-11,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "OPERA"
+        "modelSource": "OPERA",
+        "unit": "cm3/molecule*sec"
     },
     {
         "id": 290900,
@@ -18,12 +18,12 @@
         "valueType": "predicted",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": 43.6523,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "OPERA"
+        "modelSource": "OPERA",
+        "unit": null
     },
     {
         "id": 367787,
@@ -31,12 +31,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": null,
         "maxValue": 100.0,
         "minValue": 0.0,
-        "modelSource": "ECOTOX: aquatic"
+        "modelSource": "ECOTOX: aquatic",
+        "unit": null
     },
     {
         "id": 382690,
@@ -44,12 +44,12 @@
         "valueType": "predicted",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": "days",
         "endpointName": "Biodeg. Half-Life",
         "resultValue": 15.145,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "OPERA"
+        "modelSource": "OPERA",
+        "unit": "days"
     },
     {
         "id": 444479,
@@ -57,12 +57,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": null,
         "maxValue": 300.0,
         "minValue": 200.0,
-        "modelSource": "ECOTOX: aquatic"
+        "modelSource": "ECOTOX: aquatic",
+        "unit": null
     },
     {
         "id": 448602,
@@ -70,12 +70,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": 22.0,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "ECOTOX: aquatic"
+        "modelSource": "ECOTOX: aquatic",
+        "unit": null
     },
     {
         "id": 601682,
@@ -83,12 +83,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": null,
         "maxValue": 150.0,
         "minValue": 100.0,
-        "modelSource": "ECOTOX: aquatic"
+        "modelSource": "ECOTOX: aquatic",
+        "unit": null
     },
     {
         "id": 671529,
@@ -96,12 +96,12 @@
         "valueType": "predicted",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": "L/kg",
         "endpointName": "Soil Adsorp. Coeff. (Koc)",
         "resultValue": 1436.23,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "OPERA"
+        "modelSource": "OPERA",
+        "unit": "L/kg"
     },
     {
         "id": 849524,
@@ -109,12 +109,12 @@
         "valueType": "predicted",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": 72.03,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "EPISUITE"
+        "modelSource": "EPISUITE",
+        "unit": null
     },
     {
         "id": 952588,
@@ -122,12 +122,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": null,
         "maxValue": 200.0,
         "minValue": 150.0,
-        "modelSource": "ECOTOX: aquatic"
+        "modelSource": "ECOTOX: aquatic",
+        "unit": null
     },
     {
         "id": 1009913,
@@ -135,12 +135,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": 2.2,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "ECOTOX: aquatic"
+        "modelSource": "ECOTOX: aquatic",
+        "unit": null
     },
     {
         "id": 1070883,
@@ -148,12 +148,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": 10.8,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "ECOTOX: aquatic"
+        "modelSource": "ECOTOX: aquatic",
+        "unit": null
     },
     {
         "id": 1116028,
@@ -161,12 +161,12 @@
         "valueType": "predicted",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": "days",
         "endpointName": "Fish Biotrans. Half-Life (Km)",
         "resultValue": 1.85933,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "OPERA"
+        "modelSource": "OPERA",
+        "unit": "days"
     },
     {
         "id": 1121234,
@@ -174,12 +174,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": null,
         "maxValue": 100.0,
         "minValue": 50.0,
-        "modelSource": "ECOTOX: aquatic"
+        "modelSource": "ECOTOX: aquatic",
+        "unit": null
     },
     {
         "id": 1331052,
@@ -187,12 +187,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": 250.0,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "ECOTOX: aquatic"
+        "modelSource": "ECOTOX: aquatic",
+        "unit": null
     },
     {
         "id": 1341216,
@@ -200,12 +200,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": null,
         "maxValue": 400.0,
         "minValue": 300.0,
-        "modelSource": "ECOTOX: aquatic"
+        "modelSource": "ECOTOX: aquatic",
+        "unit": null
     },
     {
         "id": 1930431,
@@ -213,12 +213,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": null,
         "maxValue": 250.0,
         "minValue": 200.0,
-        "modelSource": "ECOTOX: aquatic"
+        "modelSource": "ECOTOX: aquatic",
+        "unit": null
     },
     {
         "id": 1997015,
@@ -226,12 +226,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": 43.6516,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "PhysPropNCCT"
+        "modelSource": "PhysPropNCCT",
+        "unit": null
     },
     {
         "id": 2147922,
@@ -239,12 +239,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": 1.7,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "ECOTOX: aquatic"
+        "modelSource": "ECOTOX: aquatic",
+        "unit": null
     },
     {
         "id": 2190086,
@@ -252,12 +252,12 @@
         "valueType": "predicted",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": 117.22,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "TEST"
+        "modelSource": "TEST",
+        "unit": null
     },
     {
         "id": 2228394,
@@ -265,12 +265,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": 150.0,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "ECOTOX: aquatic"
+        "modelSource": "ECOTOX: aquatic",
+        "unit": null
     },
     {
         "id": 2264316,
@@ -278,12 +278,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": null,
         "maxValue": 300.0,
         "minValue": 250.0,
-        "modelSource": "ECOTOX: aquatic"
+        "modelSource": "ECOTOX: aquatic",
+        "unit": null
     },
     {
         "id": 2352142,
@@ -291,12 +291,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": 38.4,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "ECOTOX: aquatic"
+        "modelSource": "ECOTOX: aquatic",
+        "unit": null
     },
     {
         "id": 2432379,
@@ -304,12 +304,12 @@
         "valueType": "predicted",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": 172.7,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "EPISUITE"
+        "modelSource": "EPISUITE",
+        "unit": null
     },
     {
         "id": 2433897,
@@ -317,12 +317,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": "days",
         "endpointName": "Fish Biotrans. Half-Life (Km)",
         "resultValue": 1.86209,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "PhysPropNCCT"
+        "modelSource": "PhysPropNCCT",
+        "unit": "days"
     },
     {
         "id": 2470101,
@@ -330,12 +330,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": 100.0,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "ECOTOX: aquatic"
+        "modelSource": "ECOTOX: aquatic",
+        "unit": null
     },
     {
         "id": 2474731,
@@ -343,12 +343,12 @@
         "valueType": "predicted",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": "L/kg",
         "endpointName": "Soil Adsorp. Coeff. (Koc)",
         "resultValue": 1244.51,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "EPISUITE"
+        "modelSource": "EPISUITE",
+        "unit": "L/kg"
     },
     {
         "id": 3840174,
@@ -356,12 +356,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": 8.7,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "ECOTOX: aquatic"
+        "modelSource": "ECOTOX: aquatic",
+        "unit": null
     },
     {
         "id": 3880965,
@@ -369,12 +369,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": null,
         "maxValue": 500.0,
         "minValue": 400.0,
-        "modelSource": "ECOTOX: aquatic"
+        "modelSource": "ECOTOX: aquatic",
+        "unit": null
     },
     {
         "id": 4067725,
@@ -382,12 +382,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": 25.0,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "ECOTOX: aquatic"
+        "modelSource": "ECOTOX: aquatic",
+        "unit": null
     },
     {
         "id": 4304846,
@@ -395,12 +395,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": 3.6,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "ECOTOX: aquatic"
+        "modelSource": "ECOTOX: aquatic",
+        "unit": null
     },
     {
         "id": 4327120,
@@ -408,12 +408,12 @@
         "valueType": "experimental",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioconcentration Factor",
         "resultValue": null,
         "maxValue": 200.0,
         "minValue": 100.0,
-        "modelSource": "ECOTOX: aquatic"
+        "modelSource": "ECOTOX: aquatic",
+        "unit": null
     },
     {
         "id": 4428700,
@@ -421,11 +421,11 @@
         "valueType": "predicted",
         "dtxsid": "DTXSID7020182",
         "dtxcid": "DTXCID30182",
-        "unit": null,
         "endpointName": "Bioaccumulation Factor",
         "resultValue": 172.8,
         "maxValue": null,
         "minValue": null,
-        "modelSource": "EPISUITE"
+        "modelSource": "EPISUITE",
+        "unit": null
     }
 ]

@@ -30,13 +30,9 @@ get_chemical_details <- function(DTXSID = NULL,
   else if (!is.null(DTXSID) & !is.null(DTXCID))
     stop('Please input either a DTXSID or DTXCID, but not both!')
 
-  if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose){
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   projection_entries <- c('chemicaldetailall',
@@ -85,7 +81,7 @@ get_chemical_details <- function(DTXSID = NULL,
   }
 
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     empty_table <- create_data.table_chemical_details(index = index)
@@ -115,6 +111,7 @@ get_chemical_details <- function(DTXSID = NULL,
 #'
 #' @return An empty data.table with columns matching the expected format of the
 #'   get_chemical_details API call.
+#' @keywords internal
 
 
 create_data.table_chemical_details <- function(index = -1){
@@ -279,6 +276,66 @@ create_data.table_chemical_details <- function(index = -1){
   return(data)
 }
 
+#' Check existence by DTXSID
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating whether some "progress report" should be
+#' given.
+#'
+#' @return A data.table with information on whether the input DTXSID is valid,
+#' and where to find more information on the chemical when the DTXSID is valid.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # DTXSID for bpa
+#' bpa <- check_existence_by_dtxsid('DTXSID7020182')
+#' # False DTXSID
+#' false_res <- check_existence_by_Dtxsid('DTXSID7020182f')
+
+check_existence_by_dtxsid <- function(DTXSID = NULL,
+                                      API_key = NULL,
+                                      Server = chemical_api_server,
+                                      verbose = FALSE){
+  if (is.null(DTXSID) | !is.character(DTXSID)){
+    stop('Please input a DTXSID!')
+  }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/ghslink/to-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    res_content <- jsonlite::fromJSON(httr::content(response,
+                                                    as = 'text',
+                                                    encoding = "UTF-8"))
+    if (is.null(res_content$safetyUrl)){
+      res_content$safetyUrl <- NA_character_
+    }
+    res <- data.table::rbindlist(list(res_content))
+    return(res)
+  } else {
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+
+
+}
+
 get_chemical_details_by_listname <- function(listname = NULL,
                                              API_key = NULL,
                                              Server = chemical_api_server,
@@ -287,11 +344,9 @@ get_chemical_details_by_listname <- function(listname = NULL,
     stop('Please input a character string for listname!')
   }
 
-  if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      message('Using stored API key!')
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/detail/search/by-listname/', listname),
@@ -337,11 +392,9 @@ get_smiles <- function(name = NULL,
     stop('Please input a character string for name!')
   }
 
-  if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      message('Using stored API key!')
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/opsin/to-smiles/', prepare_word(name)),
@@ -352,7 +405,7 @@ get_smiles <- function(name = NULL,
   )
 
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(httr::content(response, as = 'text', encoding = "UTF-8"))
@@ -385,11 +438,9 @@ get_inchikey <- function(name = NULL,
     stop('Please input a character string for name!')
   }
 
-  if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      message('Using stored API key!')
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/opsin/to-inchikey/', prepare_word(name)),
@@ -400,7 +451,7 @@ get_inchikey <- function(name = NULL,
   )
 
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(httr::content(response, as = 'text', encoding = "UTF-8"))
@@ -433,11 +484,9 @@ get_inchi <- function(name = NULL,
     stop('Please input a character string for name!')
   }
 
-  if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      message('Using stored API key!')
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/opsin/to-inchi/', prepare_word(name)),
@@ -448,7 +497,7 @@ get_inchi <- function(name = NULL,
   )
 
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(httr::content(response, as = 'text', encoding = "UTF-8"))
@@ -485,11 +534,9 @@ get_chemical_by_property_range <- function(start = NULL,
                                            API_key = NULL,
                                            Server = chemical_api_server,
                                            verbose = FALSE){
-  if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      message('Using stored API key!')
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (is.null(start) || is.null(end) || !is.numeric(start) || !is.numeric(end)){
@@ -516,7 +563,7 @@ get_chemical_by_property_range <- function(start = NULL,
                         )
 
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -553,14 +600,10 @@ get_chem_info <- function(DTXSID = NULL,
                           verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if(verbose){
-        message('Using stored API key!')
-      }
 
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   types <- c("", "predicted", "experimental")
@@ -600,7 +643,7 @@ get_chem_info <- function(DTXSID = NULL,
 
 
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text',encoding = "UTF-8")))
@@ -632,13 +675,10 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
                                verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/fate/search/by-dtxsid/', DTXSID),
@@ -649,7 +689,7 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
   )
 
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -676,6 +716,7 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
 #'
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
+#' @author Paul Kruse, Kristin Issacs
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemicals that start with a fragment DTXSID
@@ -688,13 +729,11 @@ chemical_starts_with <- function(word = NULL,
                            top = NULL){
   if (is.null(word) || !is.character(word)){
     stop('Please input a character value for word!')
-  } else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.null(top)){
@@ -719,7 +758,18 @@ chemical_starts_with <- function(word = NULL,
                         )
   )
 
-  if(response$status_code %in% c(200, 400)){
+  if (response$status == 401){
+    stop(httr::content(response)$detail)
+  }
+
+  if (response$status == 400) {
+    parsed_response <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
+    if ('suggestions' %in% names(parsed_response)){
+      frame <- data.frame(Chemical = urltools::url_decode(word))
+      frame$Suggestion <- list(parsed_response$suggestions)
+      return(frame)
+    }
+  } else if (response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     if (verbose) {
@@ -744,6 +794,7 @@ chemical_starts_with <- function(word = NULL,
 #'
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
+#' @author Paul Kruse, Kristin Issacs
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemicals with matching DTXSID
@@ -755,13 +806,11 @@ chemical_equal <- function(word = NULL,
                            verbose = FALSE){
   if (is.null(word) || !is.character(word)){
     stop('Please input a character value for word!')
-  } else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   word <- prepare_word(word)
@@ -773,9 +822,15 @@ chemical_equal <- function(word = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
-  }
-  if(response$status_code == 200){
+    stop(httr::content(response)$detail)
+  } else if (response$status == 400) {
+    parsed_response <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
+    if ('suggestions' %in% names(parsed_response)){
+      frame <- data.frame(Chemical = urltools::url_decode(word))
+      frame$Suggestion <- list(parsed_response$suggestions)
+      return(frame)
+    }
+  } else if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     if (verbose) {
@@ -804,6 +859,7 @@ chemical_equal <- function(word = NULL,
 #'
 #' @return A data.frame of chemicals and related values matching the query
 #'   parameters
+#' @author Paul Kruse, Kristin Issacs
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemicals that contain substring
@@ -816,13 +872,11 @@ chemical_contains <- function(word = NULL,
                               top = NULL){
   if (is.null(word) || !is.character(word)){
     stop('Please input a character value for word!')
-  } else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.null(top)){
@@ -847,9 +901,15 @@ chemical_contains <- function(word = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
-  }
-  if(response$status_code == 200){
+    stop(httr::content(response)$detail)
+  } else if (response$status == 400) {
+    parsed_response <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
+    if ('suggestions' %in% names(parsed_response)){
+      frame <- data.frame(Chemical = urltools::url_decode(word))
+      frame$Suggestion <- list(parsed_response$suggestions)
+      return(frame)
+    }
+  } else if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     if (verbose) {
@@ -866,6 +926,7 @@ chemical_contains <- function(word = NULL,
 #'
 #' @param word A character string
 #' @return A character string that is ready for use in http request
+#' @keywords internal
 
 
 prepare_word <- function(word){
@@ -914,13 +975,11 @@ get_msready_by_mass <- function(start = NULL,
                                 verbose = FALSE){
   if(is.null(start) || is.null(end) || !is.numeric(start) || !is.numeric(end)){
     stop('Please input a numeric value for both start and end!')
-  } else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (start < 0 || end < 0){
@@ -941,7 +1000,7 @@ get_msready_by_mass <- function(start = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -978,13 +1037,11 @@ get_msready_by_formula <- function(formula = NULL,
     stop("Please input a non-null value for formula!")
   } else if (!is.character(formula)){
     stop("Please input a character string for the formula parameter!")
-  } else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/msready/search/by-formula/', formula),
@@ -994,7 +1051,7 @@ get_msready_by_formula <- function(formula = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -1031,13 +1088,11 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
     stop("Please input a non-null value for DTXCID!")
   } else if (!is.character(DTXCID)){
     stop("Please input a character string for the DTXCID parameter!")
-  } else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/msready/search/by-dtxcid/', DTXCID),
@@ -1047,7 +1102,7 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -1061,7 +1116,34 @@ get_msready_by_dtxcid <- function(DTXCID = NULL,
 
 }
 
+#' Get all list types
+#'
+#' @param API_key The user-specific API key.
+#' @param Server The root address for the API endpoint.
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A character list of types of lists.
+#' @export
+#'
+#' @examplesIf FALSE
+#' get_all_list_types()
+get_all_list_types <- function(API_key = NULL,
+                               Server = chemical_api_server,
+                               verbose = FALSE){
 
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(chemical_api_server, "/list/type"),
+                        httr::add_headers(.headers = c('Accept' = 'application/json',
+                                                       'Content' = 'application/json',
+                                                       'x-api-key' = API_key)))
+  return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8')))
+
+
+}
 
 #' Get chemical lists by type
 #'
@@ -1088,13 +1170,10 @@ get_chemical_lists_by_type <- function(type = NULL,
                                        verbose = FALSE){
   if (is.null(type) | !is.character(type))
     stop('Please input a value for parameter type from the list `federal`, `international`, `state`, and `other`!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
 
@@ -1124,7 +1203,7 @@ get_chemical_lists_by_type <- function(type = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -1165,13 +1244,10 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
                                              verbose = FALSE){
   if (is.null(list_name))
     stop('Please input list_name!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   projection_entries <- c('chemicallistall',
@@ -1203,7 +1279,7 @@ get_public_chemical_list_by_name <- function(list_name = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(data.frame(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))))
@@ -1235,13 +1311,10 @@ get_lists_containing_chemical <- function(DTXSID = NULL,
                                           verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a non-null value for DTXSID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   response <- httr::GET(url = paste0(Server, '/list/search/by-dtxsid/', DTXSID),
@@ -1251,7 +1324,7 @@ get_lists_containing_chemical <- function(DTXSID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -1289,13 +1362,10 @@ get_chemicals_in_list <- function(list_name = NULL,
 
   if (is.null(list_name) | !is.character(list_name))
     stop('Please input a character value for list_name!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   new_response <- get_public_chemical_list_by_name(list_name = list_name,
@@ -1319,7 +1389,7 @@ get_chemicals_in_list <- function(list_name = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -1333,6 +1403,21 @@ get_chemicals_in_list <- function(list_name = NULL,
 
 }
 
+
+#' Get chemicals in a list specified by starting characters
+#'
+#' @param list_name The name of the list to search
+#' @param word The starting characters to match chemicals in the given list
+#' @param API_key The user-specific api key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A list of DTXSIDs matching the list and search word criteria
+#' @export
+#'
+#' @examplesIf FALSE
+#' bis_biosolids_2021 <- get_chemicals_in_list_start(list_name = 'BIOSOLIDS2021',
+#'                                                   word = 'Bi')
 
 get_chemicals_in_list_start <- function(list_name = NULL,
                                         word = NULL,
@@ -1343,17 +1428,16 @@ get_chemicals_in_list_start <- function(list_name = NULL,
     stop('Please input a character value for list_name!')
   else if (is.null(word) | !is.character(word))
     stop('Please input a character value for word!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
 
-  response <- httr::GET(url = paste0(Server, '/list/chemicals/search/start-with/', list_name,'/', word),
+  response <- httr::GET(url = paste0(Server, '/list/chemicals/search/start-with/',
+                                     prepare_word(list_name),'/',
+                                     prepare_word(word)),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -1361,7 +1445,7 @@ get_chemicals_in_list_start <- function(list_name = NULL,
   )
 
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -1373,6 +1457,111 @@ get_chemicals_in_list_start <- function(list_name = NULL,
   return()
 }
 
+#' Get chemicals in a list specified by exact characters
+#'
+#' @param list_name The name of the list to search
+#' @param word The exact characters to match chemicals in the given list
+#' @param API_key The user-specific api key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A list of DTXSIDs matching the list and search word criteria
+#' @export
+#'
+#' @examplesIf FALSE
+#' bis_biosolids_2021 <- get_chemicals_in_list_exact(list_name = 'BIOSOLIDS2021',
+#'                                                   word = 'Bisphenol A')
+
+get_chemicals_in_list_exact <- function(list_name = NULL,
+                                        word = NULL,
+                                        API_key = NULL,
+                                        Server = chemical_api_server,
+                                        verbose = FALSE){
+  if (is.null(list_name) | !is.character(list_name))
+    stop('Please input a character value for list_name!')
+  else if (is.null(word) | !is.character(word))
+    stop('Please input a character value for word!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+
+  response <- httr::GET(url = paste0(Server, '/list/chemicals/search/equal/',
+                                     prepare_word(list_name),'/',
+                                     prepare_word(word)),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
+#' Get chemicals in a list specified by contained characters
+#'
+#' @param list_name The name of the list to search
+#' @param word The contained characters to match chemicals in the given list
+#' @param API_key The user-specific api key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A list of DTXSIDs matching the list and search word criteria
+#' @export
+#'
+#' @examplesIf FALSE
+#' bis_biosolids_2021 <- get_chemicals_in_list_contain(list_name = 'BIOSOLIDS2021',
+#'                                                     word = 'Bis')
+
+get_chemicals_in_list_contain <- function(list_name = NULL,
+                                          word = NULL,
+                                          API_key = NULL,
+                                          Server = chemical_api_server,
+                                          verbose = FALSE){
+  if (is.null(list_name) | !is.character(list_name))
+    stop('Please input a character value for list_name!')
+  else if (is.null(word) | !is.character(word))
+    stop('Please input a character value for word!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+
+  response <- httr::GET(url = paste0(Server, '/list/chemicals/search/contain/',
+                                     prepare_word(list_name),'/',
+                                     prepare_word(word)),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
 
 
 
@@ -1396,13 +1585,9 @@ get_all_public_chemical_lists <- function(Projection = '',
                                           API_key = NULL,
                                           Server = chemical_api_server,
                                           verbose = FALSE){
-  if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   projection_entries <- c('chemicallistall',
@@ -1432,7 +1617,7 @@ get_all_public_chemical_lists <- function(Projection = '',
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
@@ -1471,13 +1656,10 @@ get_chemical_mrv <- function(DTXSID = NULL,
     stop('Please input a DTXSID or DTXCID!')
   else if (!is.null(DTXSID) & !is.null(DTXCID))
     stop('Please input either a DTXSID or DTXCID, but not both!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.null(DTXSID)){
@@ -1496,7 +1678,7 @@ get_chemical_mrv <- function(DTXSID = NULL,
     )
   }
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(httr::content(response, encoding = "UTF-8"))
@@ -1534,13 +1716,10 @@ get_chemical_mol <- function(DTXSID = NULL,
     stop('Please input a DTXSID or DTXCID!')
   else if (!is.null(DTXSID) & !is.null(DTXCID))
     stop('Please input either a DTXSID or DTXCID, but not both!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (!is.null(DTXSID)){
@@ -1559,7 +1738,7 @@ get_chemical_mol <- function(DTXSID = NULL,
     )
   }
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(httr::content(response, encoding = "UTF-8"))
@@ -1577,6 +1756,7 @@ get_chemical_mol <- function(DTXSID = NULL,
 #'
 #' @param DTXSID Chemical identifier DTXSID
 #' @param DTXCID Chemical identifier DTXCID
+#' @param gsid DSSTox Generic Substance Identifier
 #' @param SMILES Chemical identifier SMILES
 #' @param format The image type, either "png" or "svg". If left blank, will
 #'   default to "png".
@@ -1602,23 +1782,22 @@ get_chemical_mol <- function(DTXSID = NULL,
 
 get_chemical_image <- function(DTXSID = NULL,
                                DTXCID = NULL,
+                               gsid = NULL,
                                SMILES = NULL,
                                format = "",
                                API_key = NULL,
                                Server = chemical_api_server,
                                verbose = FALSE){
-  if (is.null(DTXSID) & is.null(DTXCID) & is.null(SMILES))
-    stop('Please input a DTXSID, DTXCID, or SMILES!')
-  else if (length(which(!sapply(list(DTXSID, DTXCID, SMILES), is.null))) > 1)
+  if (is.null(DTXSID) & is.null(DTXCID) & is.null(gsid) & is.null(SMILES))
+    stop('Please input a DTXSID, DTXCID, gsid, or SMILES!')
+  else if (length(which(!sapply(list(DTXSID, DTXCID, gsid, SMILES), is.null))) > 1)
     stop('Please input only one DTXSID, DTXCID, or SMILES, and not multiple!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (format == 'png'){
     image_type = "Image+Format=png"
   } else if (format == 'svg'){
@@ -1641,6 +1820,13 @@ get_chemical_image <- function(DTXSID = NULL,
                             'x-api-key' = API_key)
                           )
     )
+  } else if (!is.null(gsid)) {
+    response <- httr::GET(url = paste0(Server, '/file/image/search/by-gsid/', gsid, '?', image_type),
+                          httr::add_headers(.headers = c(
+                            'Content-Type' =  'application/json',
+                            'x-api-key' = API_key)
+                          )
+    )
   } else {
     response <- httr::GET(url = paste0(Server, '/file/image/generate?smiles=', prepare_word(SMILES), '&', image_type),
                           httr::add_headers(.headers = c(
@@ -1650,7 +1836,7 @@ get_chemical_image <- function(DTXSID = NULL,
     )
   }
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
     return(httr::content(response, encoding = "UTF-8"))
@@ -1682,13 +1868,10 @@ get_chemical_synonym <- function(DTXSID = NULL,
                                  verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
-  else if (is.null(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
 
@@ -1699,10 +1882,29 @@ get_chemical_synonym <- function(DTXSID = NULL,
                         )
   )
   if(response$status_code == 401){
-    stop('Please input an API_key!')
+    stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+    parse_list <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+    parse_length <- length(parse_list)
+    if (parse_length){
+      parse_indices <- which(sapply(1:parse_length, function(t){is.null(parse_list[[t]])}))
+      if (length(parse_indices)){
+        parse_list[parse_indices] <- NA_character_
+      }
+      for (i in 1:parse_length){
+        if (length(parse_list[[i]]) > 1){
+          parse_list[[i]] <- list(parse_list[[i]])
+        }
+      }
+      }
+
+    parse_dt <- data.table::data.table(tibble::as_tibble_row(parse_list))
+    data.table::setcolorder(parse_dt, c('dtxsid', 'pcCode', 'valid', 'beilstein',
+                                        'alternateCasrn', 'good', 'other',
+                                        'deletedCasrn'))
+
+    return(parse_dt)
   } else {
     if (verbose) {
       print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))

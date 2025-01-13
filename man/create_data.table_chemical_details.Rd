@@ -16,3 +16,4 @@ get_chemical_details API call.
 \description{
 Create chemical details data.table helper function
 }
+\keyword{internal}

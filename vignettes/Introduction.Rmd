@@ -1,16 +1,18 @@
 ---
-title: "Getting started with ctxR: <br> Introduction Vignette </br>"
-author: "Center for Computational Toxicology and Exposure"
+title: "ctxR: Utilities for Interacting with the CTX APIs in R"
+author: US EPA's Center for Computational Toxicology and Exposure ccte@epa.gov
 output:
-   prettydoc::html_pretty:
-    theme: architect
-    toc: yes
-    toc_depth: 5
+  rmdformats::readthedown:
+params:
+  my_css: css/rmdformats.css
 vignette: >
-  %\VignetteIndexEntry{"Getting started with ctxR: Introduction Vignette"}
+  %\VignetteIndexEntry{1. Getting started with ctxR: Introduction Vignette}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+```{css, code = readLines(params$my_css), hide=TRUE, echo = FALSE}
+```
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -21,7 +23,6 @@ knitr::opts_chunk$set(
 library(httptest)
 start_vignette("1")
 ```
-
 
 ```{r setup, echo=FALSE}
 if (!library(ctxR, logical.return = TRUE)){
@@ -51,8 +52,13 @@ registerS3method(
 )
 ```
 
+<a href="https://CRAN.R-project.org/package=ctxR"><img src="Pictures/ctxR_hex.png" width="200" align="right" style="float: right; margin-left: 10px; margin-bottom: 10px;"/></a>
 
-## Introduction to the CompTox Chemicals Dashboard (CCD)
+# Computational Toxicology and Exposure data
+
+In this document, users will be introduced to different methods to access computational toxicology and exposure data. The two main methods described are through the CompTox Chemicals Dashboard and the CTX APIs, via the R package *ctxR*. References to papers and additional information on resources can be found within the exposition of this document. For more detailed information on specific areas of data, please refer to the other vignettes included within *ctxR*. 
+
+# Introduction to the CCD
 
 Accessing chemical data is a vital step in many workflows related to chemical, biological, and environmental modeling. While there are many resources available from which one can pull data, the [CompTox Chemicals Dashboard](https://comptox.epa.gov/dashboard/) (CCD), built and maintained by the United States Environmental Protection Agency, is particularly well-designed and suitable for these purposes. Originally introduced in [The CompTox Chemistry Dashboard: a community data resource for environmental chemistry](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0247-6), the CCD contains information on over 1.2 million chemicals as of May 2024 and has been cited 612 times according to CrossRef. To learn more about the CCD, please visit the page [About CCD](https://www.epa.gov/comptox-tools/comptox-chemicals-dashboard-about).
 
@@ -60,7 +66,7 @@ The CCD includes chemical information from many different domains, including phy
 
 The CCD can be queried for one chemical at a time or using batch search.
 
-### Searching one chemical at a time (single-substance search)
+## Searching one chemical at a time (single-substance search)
 
 In single-substance search, the user enters a full or partial chemical identifier (name, CASRN, InChiKey, or DSSTox ID) into a search box on the CCD homepage. Autocomplete can provide a list of possible matches. Figure 1 shows an example: the CCD landing page for the chemical [Bisphenol A](https://comptox.epa.gov/dashboard/chemical/invitrodb/DTXSID7020182). This page is generated for Bisphenol A and links to but does not represent other chemicals. Each chemical in the CCD has its own page similar to this, with varying levels of accessible based on the information that is available.
 
@@ -72,7 +78,7 @@ In single-substance search, the user enters a full or partial chemical identifie
 
 The different domains of data available for this chemical are shown by the tabs on the left side of the page: for example, "Physchem Prop." (physico-chemical properties), "Env. Fate/Transport" (environmental fate and transport data), and "Hazard Data" (*in vivo* hazard and toxicity data), among others. 
 
-### Batch search
+## Batch search
 
 In [batch search](https://comptox.epa.gov/dashboard/batch-search), the user enters a list of search inputs, separated by new lines, into a search box. The user selects the type(s) of inputs by selecting one or more checkboxes – include chemical identifiers, monoisotopic masses, or molecular formulas. Then, the user selects “Display All Chemicals” to display the list of substances matching the batch-search inputs, or “Choose Export Options” to choose options for exporting the batch-search results as a spreadsheet. The exported spreadsheet may include data from most of the domains available on an individual substance’s CCD page.
 
@@ -92,9 +98,9 @@ The user can download the selected information in various formats, such as Excel
 
 The web interface for batch search only allows input of 10,000 identifiers at a time. If a user wants to retrieve information for more than 10,000 chemicals, identifiers will need to be separated into multiple batches and searched separately.
 
-### Challenges of web-based dashboard search
+## Challenges of web-based dashboard search
 
-Practicing researchers may follow a workflow that looks something like this:
+Practicing researchers may follow a workflow where many chemicals are being evaluated that looks something like this:
 
 1.	Start with a dataset that includes your chemical identifiers of interest. These may include chemical names, Chemical Abstract Service Registry Numbers (CASRNs), Distributed Searchable Structure-Toxicity Database (DSSTox) identifiers, or InChIKeys.
 2.	Export the chemical identifiers to a spreadsheet. Often, this is done by importing the data into an environment such as R or Python, in order to do some data wrangling (e.g., to select only the unique substance identfiers; to clean up improperly-formatted CASRNs; etc.). Then, the identifiers are saved in a spreadsheet (an Excel, .csv, or .txt file), one chemical identifier per row.
@@ -116,11 +122,11 @@ Because each of these workflow steps requires manual interaction with the search
 
 Moreover, the manual stages of this kind of workflow are also non-transparent and not easily reproducible. Utilizing APIs for data exploration and retrieval can alleviate these concerns. 
 
-## Application Programming Interfaces (APIs) for Automated Batch Search of the CCD
+# Introduction to the CTX APIs
 
-Recently, the [Center for Computational Toxicology and Exposure](https://www.epa.gov/aboutepa/about-center-computational-toxicology-and-exposure-ccte) (CCTE) developed a set of Application Programming Interfaces (APIs) that allows programmatic access to the CCD, bypassing the manual steps of the web-based batch search workflow. APIs effectively automate the process of accessing and downloading the data that populates the CCD. 
+Recently, the [US EPA's Center for Computational Toxicology and Exposure (CCTE)](https://www.epa.gov/aboutepa/about-center-computational-toxicology-and-exposure-ccte) developed a set of Application Programming Interfaces (APIs) that allows programmatic access to the CCD, bypassing the manual steps of the web-based batch search workflow. APIs effectively automate the process of accessing and downloading the data that populates the CCD. 
 
-The [CTX APIs](https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis) are publicly available at no cost to the user. However, in order to use the CTX APIs, users must have a individual API key. The API key uniquely identifies the user to the CCD servers and verifies that you have permission to access the database. Getting an API key is free, but requires contacting the API support team at [ccte_api@epa.gov](mailto:ccte_api@epa.gov).
+The [Computational Toxicology and Exposure (CTX) APIs](https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis) are publicly available at no cost to the user. However, in order to use the CTX APIs, users must have a individual API key. The API key uniquely identifies the user to the CCD servers and verifies that you have permission to access the database. Getting an API key is free, but requires contacting the API support team at [ccte_api@epa.gov](mailto:ccte_api@epa.gov).
 
 The APIs are organized into sets of "endpoints" by data domains: `Chemical`, `Hazard`, and `Bioactivity`. An endpoint provides access to a specific set of information and data, e.g. physical-chemical properties for a chemical that the user specifies. A view from the [Chemical API](https://api-ccte.epa.gov/docs/chemical.html) web interface is pictured below.
 
@@ -132,9 +138,9 @@ The APIs are organized into sets of "endpoints" by data domains: `Chemical`, `Ha
 
 On the left side of each domain's web interface page, there will be several different tabs listed depending on information requests available within the domain. In Figure 4, the `Chemical Details Resource` endpoint provides basic chemical information; the `Chemical Property Resource` endpoint provides more comprehensive physico-chemical property information; the `Chemical Fate Resource` endpoint provides chemical fate and transport information; and so on. 
 
-### Authentication
+## Authentication
 
-`Authentication`, found in upper left tab on each web interface page, is required to use the APIs. To authenticate themselves in the API web interface, the user must input their unique API key.
+`Authentication`, found in upper left tab on each web interface page, is required to use the APIs. To authenticate themselves in the API web interface, the user must input their unique API key. To request an API key, please contact the API support team at [ccte_api@epa.gov](mailto:ccte_api@epa.gov).
 
 <center>
 
@@ -142,7 +148,7 @@ On the left side of each domain's web interface page, there will be several diff
 
 </center>
 
-### Request Construction
+## Request Construction
 
 APIs effectively automate the process of accessing and downloading the data that populates the CCD. APIs do this via requests using the Hypertext Transfer Protocol (HTTP) that enables communication between clients (e.g. your computer) and servers (e.g. the CCD).
 
@@ -178,13 +184,13 @@ Pictured below is an example of returned Details for Bisphenol A with the `chemi
 
 </center>
 
-## Introduction to ctxR
+# Introduction to ctxR
 
 Formatting an http request is not necessarily intuitive nor worth the time for someone not already familiar with the process, so these endpoints may provide a resource that for many would require a significant investment in time and energy to learn how to use. However, there is a solution to this in the form of the R package *ctxR*.
 
 *ctxR* was developed to streamline the process of accessing the information available through the CTX APIs without requiring prior knowledge of how to use APIs. 
 
-### Package Settings
+## Package Settings
 
 Users can run `library(ctxR)` to install from CRAN or install the development version of ctxR like so:
 
@@ -196,9 +202,9 @@ if (!library(devtools, logical.return = TRUE)){
 devtools::install_github("USEPA/ctxR")
 ```
 
-### API Key Storage
+## API Key Storage
 
-As previously described, a user must have an API key to use in order to access the CTX APIs. This can be obtained from the admins of the CTX APIs by emailing [CTX API Admins](mailto:ccte_api@epa.gov). In the example code, the API key will be stored as the variable `my_key`.
+As previously described, a user must have an API key to use in order to access the CTX APIs. A *FREE* API key can be obtained by emailing the [CTX API Admins](mailto:ccte_api@epa.gov). In the example code, the API key will be stored as the variable `my_key`.
 
 ```{r, echo = FALSE}
 my_key <- ctx_key()
@@ -236,113 +242,148 @@ Finally, to access the key, use the `ctx_key()` function.
 ctx_key()
 ```
 
-### Quick Start Examples
+# Quick Start Examples
 
-As some quick start examples, we demonstrate the ease* of retrieving the information across endpoints for Bisphenol A using *ctxR*. *This is in contrast to the approach using the CCD or API web interface. 
+As some quick start examples, we demonstrate the relative ease (compared to using the CCD or API web interface) of retrieving the information across endpoints for Bisphenol A using *ctxR*. 
 
-For additional examples and more comprehensive documentation on each endpoint, consider reviewing the other ctxR vignettes for the data domain of interest. 
+Tables output in each example have been filtered to only display the first few rows of data. For additional examples and more comprehensive documentation on each endpoint, consider reviewing the other ctxR vignettes for the data domain of interest. 
 
-#### Chemical API
+## Chemical API
 
 In this section, several ctxR functions are used to access different types of information from the [CTX Chemical API](https://api-ccte.epa.gov/docs/chemical.html#/).
 
-##### Chemical Details Resource
+### Chemical Details Resource
 
-The function `get_chemical_details()` takes in either the DTXSID or DTXCID of a chemical and the user-specific API key. Relevant chemical details for Bisphenol A, which has DTXSID "DTXSID7020182", are obtained in a data.table. output below:
+The function `get_chemical_details()` takes in either the DTXSID or DTXCID of a chemical and the user-specific API key. Relevant chemical details for Bisphenol A, which has DTXSID "DTXSID7020182", are obtained in a data.table. 
 
 ```{r, bpa-chem-details}
-bpa_details <- get_chemical_details(DTXSID = 'DTXSID7020182',
-                                    API_key = my_key)
-bpa_details <- data.table::as.data.table(bpa_details)
-head(bpa_details)
+bpa_details <- get_chemical_details(DTXSID = 'DTXSID7020182')
 ```
 
-##### Chemical Property Resource
+```{r, echo=FALSE}
+htmlTable::htmlTable(head(bpa_details),
+        align = 'l',
+        align.header = 'l',
+        rnames = FALSE  ,
+        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em ')
+```
+
+### Chemical Property Resource
 
 The function `get_chem_info()` returns phys-chem properties for the selected chemical, and can be filtered to 'experimental' or 'predicted' if desired.
 
-Here all phys-chem properties are returned for Bisphenol A:
+Here all phys-chem properties are returned for Bisphenol A. 
 
 ```{r, bpa-chem-info}
-bpa_info <- get_chem_info(DTXSID = "DTXSID7020182",
-                          API_key = my_key)
-bpa_info <- data.table::as.data.table(bpa_info)
+bpa_info <- get_chem_info(DTXSID = "DTXSID7020182")
+```
 
-head(bpa_info)
+```{r, echo=FALSE}
+htmlTable::htmlTable(head(bpa_info),
+        align = 'l',
+        align.header = 'l',
+        rnames = FALSE  ,
+        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em ')
 ```
 
 Request can be filtered to return experimental results only.
 
 ```{r, bpa-experimental}
-bpa_info_experimental <- get_chem_info(DTXSID = "DTXSID7020182",
-                                       type = 'experimental',
-                                       API_key = my_key)
-bpa_info_experimental <- data.table::as.data.table(bpa_info_experimental)
-
-head(bpa_info_experimental)
+bpa_info_experimental <- get_chem_info(DTXSID = "DTXSID7020182", type = 'experimental')
+```
+```{r, echo=FALSE}
+htmlTable::htmlTable(head(bpa_info_experimental),
+        align = 'l',
+        align.header = 'l',
+        rnames = FALSE  ,
+        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em ')
 ```
 
-#### Hazard API
+## Hazard API
 
 In this section, several ctxR functions are used to access different types of information from the [CTX Hazard API](https://api-ccte.epa.gov/docs/hazard.html#/).
 
-##### Hazard Resource
+### Hazard Resource
 
 The function `get_hazard_by_dtxsid()` retrieves hazard data (all human or ecological toxicity data) for a given chemical based on input DTXSID. `get_human_hazard_by_dtxsid()` and `get_ecotox_hazard_by_dtxsid()` can filter returned hazard results for the given chemical to human or ecological toxicity data, respectively.
 
 Here all hazard data is returned for Bisphenol A:
 
 ```{r, hazard}
-bpa_hazard <- get_hazard_by_dtxsid(DTXSID = 'DTXSID7020182',
-                                   API_key = my_key)
-bpa_hazard <- data.table::as.data.table(bpa_hazard)
-head(bpa_hazard)
+bpa_hazard <- get_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
+```
+
+```{r, echo=FALSE}
+htmlTable::htmlTable(head(bpa_hazard_info),
+        align = 'l',
+        align.header = 'l',
+        rnames = FALSE  ,
+        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em ')
 ```
 
 Request can be refined to return results for human hazard,
 
 ```{r, human-hazard}
-bpa_human_hazard <- get_human_hazard_by_dtxsid(DTXSID = 'DTXSID7020182',
-                                               API_key = my_key)
-bpa_human_hazard <- data.table::as.data.table(bpa_human_hazard)
-head(bpa_human_hazard)
+bpa_human_hazard <- get_human_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
+```
+
+```{r, echo=FALSE}
+htmlTable::htmlTable(head(bpa_human_hazard),
+        align = 'l',
+        align.header = 'l',
+        rnames = FALSE  ,
+        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em ')
 ```
 
 or EcoTox results.
 
 ```{r, ecotox-hazard}
-bpa_eco_hazard <- get_ecotox_hazard_by_dtxsid(DTXSID = 'DTXSID7020182',
-                                              API_key = my_key)
-bpa_eco_hazard <- data.table::as.data.table(bpa_eco_hazard)
-head(bpa_eco_hazard)
+bpa_eco_hazard <- get_ecotox_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
 ```
 
-#### Bioactivity API
+```{r, echo=FALSE}
+htmlTable::htmlTable(head(bpa_eco_hazard),
+        align = 'l',
+        align.header = 'l',
+        rnames = FALSE  ,
+        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em ')
+```
+
+## Bioactivity API
 
 In this section, several ctxR functions are used to access different types of information from the [CTX Bioactivity API](https://api-ccte.epa.gov/docs/bioactivity.html#/).
 
-##### Bioactivity Resource
+### Bioactivity Resource
 
 The function `get_bioactivity_details()` retrieves all bioactivity data for a given chemical based on input DTXSID. 
 
 ```{r, bioactivity-dtxsid}
-bpa_bioactivity <- get_bioactivity_details(DTXSID = 'DTXSID7020182',
-                                           API_key = my_key)
+bpa_bioactivity <- get_bioactivity_details(DTXSID = 'DTXSID7020182')
+```
 
-bpa_bioactivity <- data.table::as.data.table(bpa_bioactivity)
-head(bpa_bioactivity)
+```{r, echo=FALSE}
+htmlTable::htmlTable(head(bpa_bioactivity),
+        align = 'l',
+        align.header = 'l',
+        rnames = FALSE  ,
+        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em ')
 ```
 
 The function `get_bioactivity_details()` can also be used to retrieve all bioactivity data for a given endpoint, based on input AEID (assay endpoint identifier).
 
 ```{r, bioactivity-aeid}
-assay_id_search <- get_bioactivity_details(AEID = 42,
-                                           API_key = my_key)
-assay_id_search <- data.table::as.data.table(assay_id_search)
-head(assay_id_search)
+assay_id_search <- get_bioactivity_details(AEID = 42)
 ```
 
-## Conclusion
+```{r, echo=FALSE}
+htmlTable::htmlTable(head(assay_id_search),
+        align = 'l',
+        align.header = 'l',
+        rnames = FALSE  ,
+        css.cell =  ' padding-bottom: 5px;  vertical-align:top; padding-right: 10px;min-width: 5em ')
+```
+
+# Conclusion
 
 The *ctxR* package provides a streamlined approach to accessing data from the CCD for users with little or no prior experience using APIs. 
 

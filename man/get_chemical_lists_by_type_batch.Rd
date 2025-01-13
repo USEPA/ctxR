@@ -37,7 +37,7 @@ Get chemical lists by type batch search
 \examples{
 \dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Pull chemical lists by type
-federal_state <- get_chemical_lists_by_type_batch(type_list = c('Federal',
-                                                                'State'))
+federal_state <- get_chemical_lists_by_type_batch(type_list = c('federal',
+                                                                'state'))
 \dontshow{\}) # examplesIf}
 }

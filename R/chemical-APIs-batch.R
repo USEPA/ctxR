@@ -32,6 +32,12 @@ get_chemical_details_batch <- function(DTXSID = NULL,
                                        API_key = NULL,
                                        rate_limit = 0L,
                                        verbose = FALSE){
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
   if (!is.null(DTXSID)){
     t <- get_chemical_details_batch_2(DTXSID = DTXSID,
                                       Projection = Projection,
@@ -41,14 +47,7 @@ get_chemical_details_batch <- function(DTXSID = NULL,
     return(t)
   }
 
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
-  }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -119,14 +118,11 @@ get_chemical_details_batch_2 <- function(DTXSID = NULL,
                                          rate_limit = 0L,
                                          Server = chemical_api_server,
                                          verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -202,6 +198,11 @@ get_chemical_details_batch_2 <- function(DTXSID = NULL,
 
     # print(paste('The response code is', response$status_code, 'for index i =', i))
 
+
+    if (response$status_code == 401){
+      stop(httr::content(response)$detail)
+    }
+
     if (response$status_code == 200){
       #print(str(jsonlite::fromJSON(httr::content(response, as = 'text'))))
       dt <- suppressWarnings(data.table::rbindlist(list(dt,
@@ -238,24 +239,24 @@ get_chemical_details_batch_2 <- function(DTXSID = NULL,
   return(dt)
 }
 
-generate_ranges <- function(end){
+generate_ranges <- function(end, limit = 200){
   if (!is.numeric(end) || end < 1) return(list())
 
   int_seq <- c(1:(as.integer(end)))
 
-  indices = list(ceiling(length(int_seq)/200))
+  indices = list(ceiling(length(int_seq)/limit))
 
-  if (length(int_seq) > 200){
-    for (i in 1:(ceiling(length(int_seq)/200) - 1)){
-      start <- 200*(i-1) + 1
-      end <- 200*i
+  if (length(int_seq) > limit){
+    for (i in 1:(ceiling(length(int_seq)/limit) - 1)){
+      start <- limit*(i-1) + 1
+      end <- limit*i
       indices[[i]] <- c(start:end)
       #print(200*(i-1) + 1)
       #print(200*i)
       #print(c((200*(i-1) + 1):(200*i)))
     }
     j <- length(indices)
-    indices[[j+1]] <- c((200*j + 1):length(int_seq))
+    indices[[j+1]] <- c((limit*j + 1):length(int_seq))
     return(indices)
   }
   indices[[1]] <- int_seq
@@ -268,19 +269,147 @@ generate_dtxsid_string <- function(items){
   return(dtxsid_string)
 }
 
+#' Check existence by DTXSID batch
+#'
+#' @param DTXSID The chemical identifier DTXSIDs
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request.
+#' @param Server The root address of the API endpoint
+#' @param verbose A logical indicating whether some "progress report" should be
+#' given.
+#'
+#' @return A data.table of information detailing valid and invalid DTXSIDs.
+#' @export
+#'
+#' @examplesIf FALSE
+#' dtxsids <- c('DTXSID7020182F', 'DTXSID7020182', 'DTXSID0020232F')
+#' existence <- check_existence_by_dtxsid_batch(DTXSID = dtxsids)
+check_existence_by_dtxsid_batch <- function(DTXSID = NULL,
+                                            API_key = NULL,
+                                            rate_limit = 0L,
+                                            Server = chemical_api_server,
+                                            verbose = FALSE){
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+
+
+
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+
+    DTXSID <- unique(DTXSID)
+    num_DTXSID <- length(DTXSID)
+    indices <- generate_ranges(num_DTXSID)
+
+    dt <- data.table::data.table(dtxsid = character(),
+                                 isSafetyData = logical(),
+                                 safetyUrl = character())
+
+    #names(dt) <- names
+
+    for (i in seq_along(indices)){
+      if (verbose) {
+        print(paste('The current index is i =', i, 'out of', length(indices)))
+      }
+
+      response <- httr::POST(url = paste0(Server, '/ghslink/to-dtxsid/'),
+                             httr::add_headers(.headers = c(
+                               'Accept' = 'application/json',
+                               'Content-Type' = 'application/json',
+                               'x-api-key' = API_key
+                             )),
+                             body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
+
+      if (response$status_code == 401){
+        stop(httr::content(response)$detail)
+      }
+
+      if (response$status_code == 200){
+        if (length(response$content) > 0){
+          res_content <- jsonlite::fromJSON(httr::content(response,
+                                                          as = 'text',
+                                                          encoding = "UTF-8"))
+          if (length(res_content$safetyUrl) > 0){
+
+
+          null_indices <- which(sapply(res_content$safetyUrl, is.null))
+          if (length(null_indices) > 0){
+            res_content$safetyUrl[null_indices] <- NA_character_
+          }
+          dt <- suppressWarnings(data.table::rbindlist(list(dt,
+                                                            data.table::rbindlist(list(res_content))),
+                                                       fill = TRUE))
+
+          }
+        }
+      }
+      Sys.sleep(rate_limit)
+    }
+
+    # Fix for bug in endpoint. DTXSIDs that are not valid do not have information
+    # returned. To overcome this, the single search on the missing DTXSIDs is
+    # exectued and combined with the valid responses.
+    missing <- setdiff(DTXSID, dt$dtxsid)
+    if (length(missing) > 0){
+      missing_info <- lapply(missing, function(t){
+          Sys.sleep(rate_limit)
+          attempt <- tryCatch({
+            check_existence_by_dtxsid(DTXSID = t,
+                                      API_key = API_key,
+                                      verbose = verbose)
+          },
+          error = function(cond){
+            if (verbose){
+              message('There was an error!')
+              message(cond$message)
+            }
+            return(cond)
+          }
+          )
+          return(attempt)
+        })
+
+      error_index <- which(sapply(missing_info, function(t){
+        return('simpleError' %in% class(t))
+      }))
+      if (length(error_index) > 0){
+        message <- missing_info[[error_index[[1]]]]
+        stop(message$message)
+      }
+
+      missing_info <- data.table::rbindlist(missing_info)
+
+      final <- data.table::rbindlist(list(dt, missing_info), fill = TRUE)
+      return(final[match(DTXSID, final$dtxsid),])
+    }
+
+
+
+  } else {
+    stop('Please input a list of DTXSIDs!')
+  }
+  return(dt)
+}
+
 get_smiles_batch <- function(names = NULL,
                              API_key = NULL,
                              rate_limit = 0L,
                              Server = chemical_api_server,
                              verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -331,14 +460,11 @@ get_molecular_weight_batch <- function(names = NULL,
                                        rate_limit = 0L,
                                        Server = chemical_api_server,
                                        verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -389,14 +515,11 @@ get_mol_v3000_batch <- function(names = NULL,
                                 rate_limit = 0L,
                                 Server = chemical_api_server,
                                 verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -447,14 +570,11 @@ get_mol_v2000_batch <- function(names = NULL,
                                 rate_limit = 0L,
                                 Server = chemical_api_server,
                                 verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -505,14 +625,11 @@ get_InChI_batch <- function(names = NULL,
                              rate_limit = 0L,
                              Server = chemical_api_server,
                             verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -563,14 +680,11 @@ get_canonical_smiles_batch <- function(names = NULL,
                                        rate_limit = 0L,
                                        Server = chemical_api_server,
                                        verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -643,13 +757,9 @@ get_chemical_by_property_range_batch <- function(start_list = NULL,
                                                  API_key = NULL,
                                                  rate_limit = 0L,
                                                  verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (is.null(start_list) || is.null(end_list)){
@@ -697,95 +807,32 @@ get_chemical_by_property_range_batch <- function(start_list = NULL,
                                      verbose = verbose)
     },
     error = function(cond){
-      message('There was an error!')
-      message(paste('Start:', s))
-      message(paste('End:', e))
-      message(paste('Property:', p))
-      message(cond$message)
-      return(NA)
+      if (verbose){
+        message('There was an error!')
+        message(paste('Start:', s))
+        message(paste('End:', e))
+        message(paste('Property:', p))
+        message(cond$message)
       }
+      return(cond)
+    }
     )
     return(attempt)
   }
   )
+
+  error_index <- which(sapply(results, function(t) {
+    return('simpleError' %in% class(t))
+  }))
+  if (length(error_index) > 0){
+    error <- results[[error_index[[1]]]]
+    stop(error$message)
+  }
+
   names(results) <- paste0('(Start, End, Property) = (', start_list_, ', ', end_list_, ', ', property_list_, ')')
   return(results)
 }
 
-#' Retrieve chemical information in batch search
-#'
-#' @param DTXSID A vector of chemical identifier DTXSIDs
-#' @param type A vector of type used in get_chem_info(). This specifies whether
-#'   to only grab predicted or experimental results. If not specified, it will
-#'   grab all details. The allowable input values are "", predicted", or
-#'   "experimental".
-#' @param API_key The user-specific API key.
-#' @param rate_limit Number of seconds to wait between each request
-#' @param verbose A logical indicating if some “progress report” should be given.
-#'
-#' @return A named list of data.frames containing chemical information for the
-#'   chemicals with DTXSID matching the input parameter.
-
-
-get_chem_info_batch_old <- function(DTXSID = NULL,
-                                    type = '',
-                                    API_key = NULL,
-                                    rate_limit = 0L,
-                                    verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
-  }
-  if (!is.numeric(rate_limit) | (rate_limit < 0)){
-    warning('Setting rate limit to 0 seconds between requests!')
-    rate_limit <- 0L
-  }
-  if (!is.null(DTXSID)){
-    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
-      stop('Please input a character list for DTXSID!')
-    }
-    DTXSID <- unique(DTXSID)
-    if (length(type) > 1){
-      if(length(type) < length(DTXSID)){
-        warning('Length of `type` must equal length of `DTXSID`!')
-        type <- c(type, rep('', (length(DTXSID) - length(type))))
-      } else if (length(type) > length(DTXSID)){
-        warning('Truncating `type` to match length of `DTXSID`!',
-                immediate. = TRUE)
-        type <- type[1:(length(DTXSID))]
-      }
-    }
-
-    results <- purrr::map2(.x = DTXSID, .y = type, function(d, t){
-      Sys.sleep(rate_limit)
-      attempt <- tryCatch(
-        {
-          get_chem_info(DTXSID = d,
-                        type = t,
-                        API_key = API_key,
-                        verbose = verbose)
-        },
-        error = function(cond){
-          message('There was an error!')
-          message(paste('DTXSID:', d))
-          message(paste('type:', t))
-          message(cond$message)
-          return(NA)
-        }
-      )
-      return(attempt)
-    }
-    )
-    names(results) <- DTXSID
-    return(results)
-  } else {
-    stop('Please input a list of DTXSIDs!')
-  }
-}
 
 #' Retrieve chemical information in batch search
 #'
@@ -813,14 +860,11 @@ get_chem_info_batch <- function(DTXSID = NULL,
                                 rate_limit = 0L,
                                 Server = chemical_api_server,
                                 verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -860,6 +904,10 @@ get_chem_info_batch <- function(DTXSID = NULL,
       # print(paste('The response code is', response$status_code, 'for index i =', i))
 
 
+      if (response$status_code == 401){
+        stop(httr::content(response)$detail)
+      }
+
       if (response$status_code == 200){
         dt <- suppressWarnings(data.table::rbindlist(list(dt,
                                                           data.table::data.table(jsonlite::fromJSON(httr::content(response,
@@ -893,59 +941,6 @@ get_chem_info_batch <- function(DTXSID = NULL,
 }
 
 
-#' Retrieve chemical fate data in batch search
-#'
-#' @param DTXSID A vector of chemicals identifier DTXSIDs
-#' @param API_key The user-specific API key
-#' @param rate_limit Number of seconds to wait between each request
-#' @param verbose A logical indicating if some “progress report” should be given.
-#'
-#' @return A named list of data.frames containing chemical fate information for
-#'   the chemicals with DTXSID matching the input parameter.
-
-
-get_fate_by_dtxsid_batch_old <- function(DTXSID = NULL,
-                                         API_key = NULL,
-                                         rate_limit = 0L,
-                                         verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
-  }
-  if (!is.numeric(rate_limit) | (rate_limit < 0)){
-    warning('Setting rate limit to 0 seconds between requests!')
-    rate_limit <- 0L
-  }
-  if (!is.null(DTXSID)){
-    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
-      stop('Please input a character list for DTXSID!')
-    }
-    DTXSID <- unique(DTXSID)
-    results <- lapply(DTXSID, function(t){
-      Sys.sleep(rate_limit)
-      attempt <- tryCatch(
-        {
-          get_fate_by_dtxsid(DTXSID = t, API_key = API_key, verbose = verbose)
-        },
-        error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
-        }
-      )
-      return(attempt)
-    }
-    )
-    names(results) <- DTXSID
-    return(results)
-  } else {
-    stop('Please input a list of DTXSIDs!')
-  }
-}
 
 #' Retrieve chemical fate data in batch search
 #'
@@ -968,14 +963,11 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
                                      rate_limit = 0L,
                                      Server = chemical_api_server,
                                      verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -1014,6 +1006,10 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
 
       # print(paste('The response code is', response$status_code, 'for index i =', i))
 
+      if (response$status_code == 401){
+        stop(httr::content(response)$detail)
+      }
+
 
       if (response$status_code == 200){
         dt <- suppressWarnings(data.table::rbindlist(list(dt,
@@ -1043,7 +1039,11 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
 #'   available
 #'
 #' @return A named list of data.frames of chemicals and related values matching
-#'   the query parameters
+#'   the query parameters. The data.frames under the 'valid' entry contain
+#'   chemical information for successful requests while the data.frames under
+#'   the 'invalid' entry contain data.frames with chemical name suggestions
+#'   based on the input search values.
+#' @author Paul Kruse, Kristin Issacs
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemicals that start with given substrings
@@ -1055,14 +1055,11 @@ chemical_starts_with_batch <- function(word_list = NULL,
                                        rate_limit = 0L,
                                        verbose = FALSE,
                                        top = NULL){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -1081,6 +1078,8 @@ chemical_starts_with_batch <- function(word_list = NULL,
     }
   }
 
+  return_list <- list()
+
   if (!is.null(word_list)){
     if (!is.character(word_list) & !all(sapply(word_list, is.character))){
       stop('Please input a character list for word_list!')
@@ -1094,16 +1093,41 @@ chemical_starts_with_batch <- function(word_list = NULL,
                                top = top)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(t)
+            message(cond$message)
+          }
+
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
+
     names(results) <- word_list
-    return(results)
+
+    index_200 <- which(unlist(lapply(results, check_search_dtxsid)))
+
+    if (length(index_200) < length(word_list)){
+      return_list$invalid <- results[-index_200]
+      if (length(index_200) > 0){
+        return_list$valid <- results[index_200]
+      }
+    } else {
+      return_list$valid <- results
+    }
+    return(return_list)
+
   } else {
     stop('Please input a list of chemical names!')
   }
@@ -1117,8 +1141,12 @@ chemical_starts_with_batch <- function(word_list = NULL,
 #' @param rate_limit Number of seconds to wait between each request
 #' @param verbose A logical indicating if some “progress report” should be given.
 #'
-#' @return A named list of data.frames of chemicals and related values matching
-#'   the query parameters
+#' @return A named list of data.tables of chemicals and related values matching
+#' the query parameters. The list contains two entries, 'valid' and 'invalid';
+#' 'valid', contains a data.table of the results of the the searched chemical
+#' that were found in the databases; 'invalid' contains a data.table with
+#' 'suggestions' for each searched valued that did not return a chemical.
+#' @author Paul Kruse, Kristin Issacs
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemicals that match input strings
@@ -1128,56 +1156,90 @@ chemical_equal_batch <- function(word_list = NULL,
                                  API_key = NULL,
                                  rate_limit = 0L,
                                  verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
   }
+
+  return_list <- list()
+
   if (!is.null(word_list)){
     if (!is.character(word_list) & !all(sapply(word_list, is.character))){
       stop('Please input a character list for word_list!')
     }
 
-    results <- data.frame()
-    word_list <- unique(word_list)
-    response <- httr::POST(url = paste0(chemical_api_server, '/search/equal/'),
-                           httr::add_headers(.headers = c(
-                             'accept' = 'application/json',
-                             'content-type' = 'application/json',
-                             'x-api-key' = API_key
-                             )),
-                             body = c(word_list)
-                           )
 
-    if (response$status_code == 200){
-      results <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
-      return(results)
+    word_list <- unique(word_list)
+    num_words <- length(word_list)
+    indices <- generate_ranges(num_words, limit = 100)
+    if (verbose) {
+      print(indices)
+    }
+
+    dt <- data.table::data.table(casrn = character(),
+                                 dtxsid = character(),
+                                 dtxcid = character(),
+                                 preferredName = character(),
+                                 hasStructureImage = integer(),
+                                 smiles = character(),
+                                 isMarkush = logical(),
+                                 searchName = character(),
+                                 searchValue = character(),
+                                 rank = integer(),
+                                 searchMsgs = character(),
+                                 suggestions = character(),
+                                 isDuplicate = logical())
+
+    for (i in seq_along(indices)){
+      response <- httr::POST(url = paste0(chemical_api_server, '/search/equal/'),
+                             httr::add_headers(.headers = c(
+                               'accept' = 'application/json',
+                               'content-type' = 'application/json',
+                               'x-api-key' = API_key
+                             )),
+                             body = c(word_list[indices[[i]]])#c(word_list[indices[i]]
+      )
+
+      if (response$status_code == 401){
+        stop(httr::content(response)$detail)
       }
 
-    # results <- lapply(word_list, function(t){
-    #   Sys.sleep(rate_limit)
-    #   attempt <- tryCatch(
-    #     {
-    #       chemical_equal(word = t, API_key = API_key, verbose = verbose)
-    #     },
-    #     error = function(cond){
-    #       message(t)
-    #       message(cond$message)
-    #       return(NA)
-    #     }
-    #   )
-    #   return(attempt)
-    # }
-    # )
-    # names(results) <- word_list
-    return(results)
+      if (response$status_code == 200){
+        dt <- suppressWarnings(data.table::rbindlist(list(dt,
+                                                          data.table::data.table(jsonlite::fromJSON(httr::content(response,
+                                                                                                                  as = 'text',
+                                                                                                                  encoding = "UTF-8")))),
+                                                     fill = TRUE))
+      }
+
+      Sys.sleep(rate_limit)
+    }
+
+    if (dim(dt)[[1]] > 0){
+
+
+      valid_index <- which(unlist(lapply(dt$searchMsgs, function(t) {is.null(t) || is.na(t)})))
+      invalid_index <- setdiff(seq_along(dt$searchMsgs), valid_index)
+
+
+      return_list$valid <- data.table::copy(dt)[valid_index, -c(11:12)]
+      return_list$invalid <- data.table::copy(dt)[invalid_index, c(7, 11:13)]
+
+
+
+
+      return(return_list)
+    }
+
+
+
+    return(list(valid = dt[, -c(11:12)],
+                invalid = dt[, c(7, 11:13)]))
   } else {
     stop('Please input a list of chemical names!')
   }
@@ -1194,7 +1256,11 @@ chemical_equal_batch <- function(word_list = NULL,
 #'   available
 #'
 #' @return A named list of data.frames of chemicals and related values matching
-#'   the query parameters
+#'   the query parameters. The data.frames under the 'valid' entry contain
+#'   chemical information for successful requests while the data.frames under
+#'   the 'invalid' entry contain data.frames with chemical name suggestions
+#'   based on the input search values.
+#' @author Paul Kruse, Kristin Issacs
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemicals that contain substrings
@@ -1204,16 +1270,13 @@ chemical_equal_batch <- function(word_list = NULL,
 chemical_contains_batch <- function(word_list = NULL,
                                     API_key = NULL,
                                     rate_limit = 0L,
-                                    verbose = verbose,
+                                    verbose = FALSE,
                                     top = NULL){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -1232,6 +1295,8 @@ chemical_contains_batch <- function(word_list = NULL,
     }
   }
 
+  return_list <- list()
+
   if (!is.null(word_list)){
     if (!is.character(word_list) & !all(sapply(word_list, is.character))){
       stop('Please input a character list for word_list!')
@@ -1245,20 +1310,50 @@ chemical_contains_batch <- function(word_list = NULL,
                             top = top)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(t)
+            message(cond$message)
+          }
+
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
+
     names(results) <- word_list
-    return(results)
-  } else {
-    stop('Please input a list of chemical names!')
+    index_200 <- which(unlist(lapply(results, check_search_dtxsid)))
+
+    if (length(index_200) < length(word_list)){
+      return_list$invalid <- results[-index_200]
+      if (length(index_200) > 0){
+        return_list$valid <- results[index_200]
+      }
+    } else {
+      return_list$valid <- results
+    }
+    return(return_list)
   }
+
+  stop('Please input a list of chemical names!')
+
 }
+
+check_search_dtxsid <- function(list){
+  # Check if chemical search returned chemical information or suggestions
+  return('dtxsid' %in% names(list))
+}
+
 
 #' Get msready by mass and error offset
 #'
@@ -1282,13 +1377,9 @@ get_msready_by_mass_with_error_batch <- function(masses = NULL,
                                                  API_key = NULL,
                                                  rate_limit = 0,
                                                  verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
   if (is.null(masses) || is.null(error)){
@@ -1330,6 +1421,10 @@ get_msready_by_mass_with_error_batch <- function(masses = NULL,
                            'x-api-key' = API_key)),
                          body = json_body)
 
+  if (response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+
   if (response$status_code == 200){
     return(httr::content(response))
   }
@@ -1359,14 +1454,11 @@ get_msready_by_mass_batch <- function(start_list = NULL,
                                       API_key = NULL,
                                       rate_limit = 0L,
                                       verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if(is.null(start_list) || is.null(end_list)){
     stop('Please input a list for both `start_list` and `end_list`!')
   } else if (length(start_list) != length(end_list)) {
@@ -1394,16 +1486,27 @@ get_msready_by_mass_batch <- function(start_list = NULL,
                             verbose = verbose)
       },
       error = function(cond){
-        message('There was an error!')
-        message(paste('Start:', d))
-        message(paste('End:', t))
-        message(cond$message)
-        return(NA)
+        if (verbose){
+          message('There was an error!')
+          message(paste('Start:', d))
+          message(paste('End:', t))
+          message(cond$message)
+        }
+        return(cond)
       }
     )
     return(attempt)
   }
   )
+
+  error_index <- which(sapply(results, function(t) {
+    return('simpleError' %in% class(t))
+  }))
+  if (length(error_index) > 0){
+    error <- results[[error_index[[1]]]]
+    stop(error$message)
+  }
+
   names(results) <- paste0('(Start, End) = (', start_list_, ', ', end_list_, ')')
   return(results)
 }
@@ -1427,14 +1530,11 @@ get_msready_by_formula_batch <- function(formula_list = NULL,
                                          API_key = NULL,
                                          rate_limit = 0L,
                                          verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -1451,14 +1551,25 @@ get_msready_by_formula_batch <- function(formula_list = NULL,
           get_msready_by_formula(formula = t, API_key = API_key, verbose = verbose)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- formula_list
     return(results)
   } else {
@@ -1485,14 +1596,11 @@ get_msready_by_dtxcid_batch <- function(DTXCID = NULL,
                                         API_key = NULL,
                                         rate_limit = 0L,
                                         verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -1509,14 +1617,25 @@ get_msready_by_dtxcid_batch <- function(DTXCID = NULL,
           get_msready_by_dtxcid(DTXCID = t, API_key = API_key, verbose = verbose)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if(verbose){
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- DTXCID
     return(results)
   } else {
@@ -1541,22 +1660,19 @@ get_msready_by_dtxcid_batch <- function(DTXCID = NULL,
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemical lists by type
-#' federal_state <- get_chemical_lists_by_type_batch(type_list = c('Federal',
-#'                                                                 'State'))
+#' federal_state <- get_chemical_lists_by_type_batch(type_list = c('federal',
+#'                                                                 'state'))
 
 get_chemical_lists_by_type_batch <- function(type_list = NULL,
                                              Projection = '',
                                              API_key = NULL,
                                              rate_limit = 0L,
                                              verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -1576,14 +1692,25 @@ get_chemical_lists_by_type_batch <- function(type_list = NULL,
                                      verbose = verbose)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- type_list
     return(results)
   } else {
@@ -1616,14 +1743,11 @@ get_public_chemical_list_by_name_batch <- function(name_list = NULL,
                                                    API_key = NULL,
                                                    rate_limit = 0L,
                                                    verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -1643,14 +1767,25 @@ get_public_chemical_list_by_name_batch <- function(name_list = NULL,
                                            verbose = verbose)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- name_list
     return(results)
   } else {
@@ -1676,14 +1811,11 @@ get_lists_containing_chemical_batch <- function(chemical_list = NULL,
                                                 API_key = NULL,
                                                 rate_limit = 0L,
                                                 verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -1702,20 +1834,271 @@ get_lists_containing_chemical_batch <- function(chemical_list = NULL,
                                         verbose = verbose)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- chemical_list
     return(results)
   } else {
     stop('Please input a list of DTXSIDs!')
   }
 }
+
+
+#' Get chemicals in a list specified by starting characters batch search
+#'
+#' @param list_names The names of the lists to search.
+#' @param words The search words, one for each list.
+#' @param API_key The user-specific API key.
+#' @param rate_limit Number of seconds to wait between each request.
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A named list of lists, with names corresponding to search terms and
+#' lists corresponding to DTXSIDs associated to the search terms
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Search `CCL4` for chemicals starting with 'Bis' and `BIOSOLIDS2021` for
+#' # chemicals starting with 'Tri'.
+#' bis_and_tri <- get_chemicals_in_list_start_batch(list_names = c('CCL4',
+#'                                                               'BIOSOLIDS2021'),
+#'                                                  words = c('Bis', 'Tri'))
+
+get_chemicals_in_list_start_batch <- function(list_names = NULL,
+                                              words = NULL,
+                                              API_key = NULL,
+                                              rate_limit = 0L,
+                                              verbose = FALSE){
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if(is.null(list_names) || is.null(words)){
+    stop('Please input a list for both `list_names` and `words`!')
+  } else if (length(list_names) != length(words)) {
+    stop('Mismatch in length of `list_names` and `words`!')
+  } else if (!all(sapply(c(list_names, words), is.character))) {
+    stop('Only character values allowed in `list_names` and `words`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+
+
+
+  results <- purrr::map2(.x = list_names, .y = words, function(d, t){
+    Sys.sleep(rate_limit)
+    attempt <- tryCatch(
+      {
+        get_chemicals_in_list_start(list_name = d,
+                                    word = t,
+                                    API_key = API_key,
+                                    verbose = verbose)
+      },
+      error = function(cond){
+        if (verbose) {
+          message('There was an error!')
+          message(paste('List name:', d))
+          message(paste('Word:', t))
+          message(cond$message)
+        }
+        return(cond)
+      }
+    )
+    return(attempt)
+  }
+  )
+
+  error_index <- which(sapply(results, function(t) {
+    return('simpleError' %in% class(t))
+  }))
+  if (length(error_index) > 0){
+    error <- results[[error_index[[1]]]]
+    stop(error$message)
+  }
+
+  names(results) <- paste0('(List name, Word) = (', list_names, ', ', words, ')')
+  return(results)
+}
+
+#' Get chemicals in a list specified by exact characters batch search
+#'
+#' @param list_names The names of the lists to search.
+#' @param words The search words, one for each list.
+#' @param API_key The user-specific API key.
+#' @param rate_limit Number of seconds to wait between each request.
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A named list of lists, with names corresponding to search terms and
+#' lists corresponding to DTXSIDs associated to the search terms
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Search `CCL4` for chemicals exactly matching with 'Bisphenol A' and
+#' # `BIOSOLIDS2021` for chemicals exactly matching with 'Bisphenol A'.
+#' bisphenol_a <- get_chemicals_in_list_exact_batch(list_names = c('CCL4',
+#'                                                               'BIOSOLIDS2021'),
+#'                                                  words = rep('Bisphenol A', 2))
+
+get_chemicals_in_list_exact_batch <- function(list_names = NULL,
+                                              words = NULL,
+                                              API_key = NULL,
+                                              rate_limit = 0L,
+                                              verbose = FALSE){
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if(is.null(list_names) || is.null(words)){
+    stop('Please input a list for both `list_names` and `words`!')
+  } else if (length(list_names) != length(words)) {
+    stop('Mismatch in length of `list_names` and `words`!')
+  } else if (!all(sapply(c(list_names, words), is.character))) {
+    stop('Only character values allowed in `list_names` and `words`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+
+
+
+  results <- purrr::map2(.x = list_names, .y = words, function(d, t){
+    Sys.sleep(rate_limit)
+    attempt <- tryCatch(
+      {
+        get_chemicals_in_list_exact(list_name = d,
+                                    word = t,
+                                    API_key = API_key,
+                                    verbose = verbose)
+      },
+      error = function(cond){
+        if (verbose) {
+          message('There was an error!')
+          message(paste('List name:', d))
+          message(paste('Word:', t))
+          message(cond$message)
+        }
+        return(cond)
+      }
+    )
+    return(attempt)
+  }
+  )
+
+  error_index <- which(sapply(results, function(t) {
+    return('simpleError' %in% class(t))
+  }))
+  if (length(error_index) > 0){
+    error <- results[[error_index[[1]]]]
+    stop(error$message)
+  }
+
+  names(results) <- paste0('(List name, Word) = (', list_names, ', ', words, ')')
+  return(results)
+}
+
+#' Get chemicals in a list specified by characters contained batch search
+#'
+#' @param list_names The names of the lists to search.
+#' @param words The search words, one for each list.
+#' @param API_key The user-specific API key.
+#' @param rate_limit Number of seconds to wait between each request.
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A named list of lists, with names corresponding to search terms and
+#' lists corresponding to DTXSIDs associated to the search terms
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Search `CCL4` for chemicals containing with 'Bis' and `BIOSOLIDS2021` for
+#' # chemicals containing with 'Zyle'.
+#' bis_and_zyle <- get_chemicals_in_list_contain_batch(list_names = c('CCL4',
+#'                                                               'BIOSOLIDS2021'),
+#'                                                  words = c('Bis', 'Zyle'))
+
+get_chemicals_in_list_contain_batch <- function(list_names = NULL,
+                                                words = NULL,
+                                                API_key = NULL,
+                                                rate_limit = 0L,
+                                                verbose = FALSE){
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if(is.null(list_names) || is.null(words)){
+    stop('Please input a list for both `list_names` and `words`!')
+  } else if (length(list_names) != length(words)) {
+    stop('Mismatch in length of `list_names` and `words`!')
+  } else if (!all(sapply(c(list_names, words), is.character))) {
+    stop('Only character values allowed in `list_names` and `words`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+
+
+
+  results <- purrr::map2(.x = list_names, .y = words, function(d, t){
+    Sys.sleep(rate_limit)
+    attempt <- tryCatch(
+      {
+        get_chemicals_in_list_contain(list_name = d,
+                                      word = t,
+                                      API_key = API_key,
+                                      verbose = verbose)
+      },
+      error = function(cond){
+        if (verbose) {
+          message('There was an error!')
+          message(paste('List name:', d))
+          message(paste('Word:', t))
+          message(cond$message)
+        }
+        return(cond)
+      }
+    )
+    return(attempt)
+  }
+  )
+
+  error_index <- which(sapply(results, function(t) {
+    return('simpleError' %in% class(t))
+  }))
+  if (length(error_index) > 0){
+    error <- results[[error_index[[1]]]]
+    stop(error$message)
+  }
+
+  names(results) <- paste0('(List name, Word) = (', list_names, ', ', words, ')')
+  return(results)
+}
+
+
 
 #' Get chemicals in a given chemical list batch
 #'
@@ -1735,14 +2118,11 @@ get_chemicals_in_list_batch <- function(list_names = NULL,
                                         API_key = NULL,
                                         rate_limit = 0L,
                                         verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -1761,14 +2141,25 @@ get_chemicals_in_list_batch <- function(list_names = NULL,
                                 verbose = verbose)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- list_names
     return(results)
   } else {
@@ -1800,14 +2191,11 @@ get_chemical_mrv_batch <- function(DTXSID = NULL,
                                    API_key = NULL,
                                    rate_limit = 0L,
                                    verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -1827,14 +2215,25 @@ get_chemical_mrv_batch <- function(DTXSID = NULL,
           get_chemical_mrv(DTXSID = t, API_key = API_key, verbose = verbose)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- DTXSID
     return(results)
   } else if (!is.null(DTXCID)){
@@ -1852,14 +2251,25 @@ get_chemical_mrv_batch <- function(DTXSID = NULL,
           get_chemical_mrv(DTXCID = t, API_key = API_key)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- DTXCID
     return(results)
   } else {
@@ -1891,14 +2301,11 @@ get_chemical_mol_batch <- function(DTXSID = NULL,
                                    API_key = NULL,
                                    rate_limit = 0L,
                                    verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -1918,14 +2325,25 @@ get_chemical_mol_batch <- function(DTXSID = NULL,
           get_chemical_mol(DTXSID = t, API_key = API_key, verbose = verbose)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- DTXSID
     return(results)
   } else if (!is.null(DTXCID)){
@@ -1943,14 +2361,25 @@ get_chemical_mol_batch <- function(DTXSID = NULL,
           get_chemical_mol(DTXCID = t, API_key = API_key, verbose = verbose)
         },
         error = function(cond){
-          message(t)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- DTXCID
     return(results)
   } else {
@@ -1989,14 +2418,11 @@ get_chemical_image_batch <- function(DTXSID = NULL,
                                      API_key = NULL,
                                      rate_limit = 0L,
                                      verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -2019,14 +2445,25 @@ get_chemical_image_batch <- function(DTXSID = NULL,
                              verbose = verbose)
         },
         error = function(cond){
-          message(d)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(d)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- DTXSID
     return(results)
   } else if (!is.null(DTXCID)){
@@ -2047,14 +2484,25 @@ get_chemical_image_batch <- function(DTXSID = NULL,
                              verbose = verbose)
         },
         error = function(cond){
-          message(d)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(d)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- DTXCID
     return(results)
   } else if (!is.null(SMILES)) {
@@ -2075,14 +2523,25 @@ get_chemical_image_batch <- function(DTXSID = NULL,
                              verbose = verbose)
         },
         error = function(cond){
-          message(d)
-          message(cond$message)
-          return(NA)
+          if (verbose) {
+            message(d)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- SMILES
     return(results)
   } else {
@@ -2110,14 +2569,11 @@ get_chemical_synonym_batch <- function(DTXSID = NULL,
                                        API_key = NULL,
                                        rate_limit = 0L,
                                        verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -2127,6 +2583,49 @@ get_chemical_synonym_batch <- function(DTXSID = NULL,
       stop('Please input a character list for DTXSID!')
     }
     DTXSID <- unique(DTXSID)
+    num_dtxsid <- length(DTXSID)
+    indices <- generate_ranges(num_dtxsid)
+    if (verbose) {
+      print(indices)
+    }
+
+    dt <- data.table::data.table(dtxsid = character(),
+                                 pcCode = character(),
+                                 valid = character(),
+                                 beilstein = character(),
+                                 alternateCasrn = character(),
+                                 good = character(),
+                                 other = character(),
+                                 deletedCasrn = character())
+
+    for (i in seq_along(indices)){
+      response <- httr::POST(url = paste0(chemical_api_server, '/synonym/search/by-dtxsid/'),
+                             httr::add_headers(.headers = c(
+                               'Accept' = 'application/json',
+                               'Content-Type' = 'application/json',
+                               'x-api-key' = API_key
+                             )),
+                             body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
+
+      if (response$status_code == 401){
+        stop(httr::content(response)$detail)
+      }
+
+      if (response$status_code == 200){
+        dt <- suppressWarnings(data.table::rbindlist(list(dt,
+                                                          data.table::data.table(jsonlite::fromJSON(httr::content(response,
+                                                                                                                  as = 'text',
+                                                                                                                  encoding = "UTF-8")))),
+                                                     fill = TRUE))
+
+      }
+      Sys.sleep(rate_limit)
+    }
+
+    return(dt)
+
+
+
     results <- lapply(DTXSID, function(t){
       Sys.sleep(rate_limit)
       attempt <- tryCatch(

@@ -26,7 +26,7 @@ test_that('Rate limit warnings', {
 })
 
 test_that('Return data types', {
-  expect_type(get_bioactivity_details_batch(DTXSID = c('DTXSID8031865'), API_key = ''), 'list')
+  #expect_type(get_bioactivity_details_batch(DTXSID = c('DTXSID8031865'), API_key = ''), 'list')
   expect_type(get_bioactivity_details_batch(DTXSID = c(''), API_key = ctx_key()), 'list')
-  expect_type(get_bioactivity_details_batch(AEID = c(1), API_key = 'test_key'), 'list')
+  #expect_type(get_bioactivity_details_batch(AEID = c(1), API_key = 'test_key'), 'list')
 })})

@@ -1,34 +1,18 @@
 ---
-title: "Chemical API"
-author: "Center for Computational Toxicology and Exposure"
+title: "ctxR: Chemical API"
+author: US EPA's Center for Computational Toxicology and Exposure ccte@epa.gov
 output:
-   prettydoc::html_pretty:
-    theme: architect
-    toc: yes
-    toc_depth: 6
+  rmarkdown::html_vignette:
+    fig_width: 7
+    fig_height: 6
+params:
+  my_css: css/rmdformats.css
 vignette: >
-  %\VignetteIndexEntry{Chemical}
+  %\VignetteIndexEntry{2. Chemical}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-```{css, echo=FALSE}
-.scroll-200 {
-  max-height: 200px;
-  overflow-y: auto;
-}
-
-.scroll-300 {
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-.noticebox {
-  padding: 1em;
-  background: lightgray;
-  color: blue;
-  border: 2px solid black;
-  border-radius: 10px;
-}
+```{css, code = readLines(params$my_css), hide=TRUE, echo = FALSE}
 ```
 
 ```{r, include = FALSE}
@@ -75,53 +59,85 @@ registerS3method(
 )
 ```
 
+
+
 ## Introduction
 
+<a href="https://CRAN.R-project.org/package=ctxR"><img src="Pictures/ctxR_hex.png" width="200" align="right" style="float: right; margin-left: 10px; margin-bottom: 10px;"/></a>
+
 In this vignette, [CTX Chemical API](https://api-ccte.epa.gov/docs/chemical.html) will be explored. 
-
-::: {.noticebox data-latex=""}
-
-**NOTE:** Please see the introductory vignette for an overview of the *ctxR* package and initial set up instruction with API key storage.
-
-:::
 
 The foundation of toxicology, toxicokinetics, and exposure is embedded in the physics and chemistry of chemical-biological interactions. The accurate characterization of chemical structure linked to commonly used identifiers, such as names and Chemical Abstracts Service Registry Numbers (CASRNs), is essential to support both predictive modeling of the data as well as dissemination and application of the data for chemical safety decisions. 
 
 With cheminformatics as the backbone for research efforts, sources of available data through the CTX Chemical API include:
 
--  Chemical structures, nomenclature, synonyms, IDs, list associations, physicochemical property, environmental fate and transport data from the Distributed Structure-Searchable Toxicity  ([DSSTox](https://www.epa.gov/comptox-tools/distributed-structure-searchable-toxicity-dsstox-database)) database. For early references, see [(Richard, A. et al. 2002)](https://doi.org/10.1016/S0027-5107(01)00289-5), [(Richard, A. et al. 2006)](https://files.toxplanet.com/cpdb/pdfs/structure_tox_on_web.pdf), and [(Richard, A. et al 2008)](https://doi.org/10.1080/15376510701857452).
+-  Chemical structures, nomenclature, synonyms, IDs, list associations, physicochemical property, environmental fate and transport data from the Distributed Structure-Searchable Toxicity  ([DSSTox](https://www.epa.gov/comptox-tools/distributed-structure-searchable-toxicity-dsstox-database)) database. DSSTox substance identifiers (DTXSIDs) support linking chemical information to a specific chemical across a variety of EPA chemical resources. For early references, see [(Richard, A. et al. 2002)](https://doi.org/10.1016/S0027-5107(01)00289-5), [(Richard, A. et al. 2006)](https://files.toxplanet.com/cpdb/pdfs/structure_tox_on_web.pdf), and [(Richard, A. et al 2008)](https://doi.org/10.1080/15376510701857452).
 - Predictions from Toxicity Estimation Software Tool  ([TEST](https://www.epa.gov/comptox-tools/toxicity-estimation-software-tool-test)) suite of QSAR models. For early references, see [(Martin, T. et al. 2001)](https://pubs.acs.org/doi/10.1021/tx0155045), [(Martin, T. et al. 2007)](https://doi.org/10.1080/15376510701857353), and [(Young, D. et al. 2008)]( https://doi.org/10.1002/qsar.200810084).  
 
-More information on Chemicals and Chemistry Data can be found here: <https://www.epa.gov/comptox-tools/downloadable-computational-toxicology-data#SCD>.
+More information on Chemicals and Chemistry Data can be found here: <https://www.epa.gov/comptox-tools/downloadable-computational-toxicology-data#SCD>.  
 
-## Functions
+::: {.noticebox data-latex=""}
+**NOTE:** Please see the introductory vignette for an overview of the *ctxR* package and initial set up instruction with API key storage.
+:::
 
-Several ctxR functions are used to access the CTX Chemical API data.
+Several ctxR functions can be used to access the CTX Chemical API data, as described in the following sections.Tables output in each example have been filtered to only display the first few rows of data. 
 
-### Chemical Details Resource
+# Chemical Details Resource
 
-#### Get chemical data
+## Get chemical data
 
 `get_chemical_details()` retrieves chemical detail data either using the chemical identifier DTXSID or DTXCID. Alternate parameter "projection" determines the type of data returned. Examples for each are provided below:
 
-##### By DTXSID
+### By DTXSID
 
 ```{r ctxR dtxsid data chemical, message=FALSE, eval=FALSE}
-res_dt <- get_chemical_details(DTXSID = 'DTXSID7020182')
+chemical_details_by_dtxsid <- get_chemical_details(DTXSID = 'DTXSID7020182')
 ```
 
-##### By DTXCID
+### By DTXCID
 
 ```{r ctxR dtxcid data chemical, message=FALSE, eval=FALSE}
-res_dt <- get_chemical_details(DTXCID = 'DTXCID30182')
+chemical_details_by_dtxcid <- get_chemical_details(DTXCID = 'DTXCID30182')
 ```
 
-### Chemical Property Resource
+
+### By Batch Search
+
+```{r ctxR batch data chemical, message=FALSE, eval=FALSE}
+vector_dtxsid<- c("DTXSID7020182", "DTXSID9020112", "DTXSID8021430")
+chemical_details_by_batch_dtxsid <- get_chemical_details_batch(DTXSID = vector_dtxsid)
+
+vector_dtxcid <- c("DTXCID30182", "DTXCID801430", "DTXCID90112")
+chemical_details_by_batch_dtxcid <- get_chemical_details_batch(DTXCID = vector_dtxcid)
+```
+
+# Pubchem Link to GHS classification
+
+## GHS classification 
+
+`check_existence_by_dtxsid()` checks if the supplied DTXSID is valid and returns a URL for additional information on the chemical in the case of a valid DTXSID.
+
+### By DTXSID
+
+```{r ctxr dtxsid check, message=FALSE, eval=FALSE}
+dtxsid_check_true <- check_existence_by_dtxsid(DTXSID = 'DTXSID7020182')
+dtxsid_check_false <- check_existence_by_dtxsid(DTXSID = 'DTXSID7020182f')
+```
+
+### By Batch Search
+
+```{r ctxr dtxsid check batch, message=FALSE, eval=FALSE}
+vector_dtxsid_and_non_dtxsid <- c('DTXSID7020182F', 'DTXSID7020182', 'DTXSID0020232F')
+dtxsid_checks <- check_existence_by_dtxsid_batch(DTXSID = vector_dtxsid_and_non_dtxsid)
+```
+
+
+# Chemical Property Resource
 
 `get_chemical_by_property_range()` retrieves data for chemicals that have a specified property within the input range.
 
 ```{r ctxR property range chemical, message=FALSE, eval=FALSE}
-res_dt <- get_chemical_by_property_range(start = 1.311, 
+chemical_by_property_range <- get_chemical_by_property_range(start = 1.311, 
                                          end = 1.313, 
                                          property = 'Density')
 ```
@@ -129,143 +145,178 @@ res_dt <- get_chemical_by_property_range(start = 1.311,
 `get_chem_info()` retrieves specific chemical information for an input chemical. This includes both experimental and predicted values by default, but providing "experimental" or "predicted" to the type parameter will return the specific associated information.
 
 ```{r ctxR info chemical, message=FALSE, eval=FALSE}
-res_dt <- get_chem_info(DTXSID = 'DTXSID7020182')
+chemical_info <- get_chem_info(DTXSID = 'DTXSID7020182')
 ```
 
-### Chemical Fate Resource
+# Chemical Fate Resource
 
 `get_fate_by_dtxsid()` retrieves chemical fate data.
 
 ```{r ctxR fate data chemical, message=FALSE, eval=FALSE}
-res_dt <- get_fate_by_dtxsid(DTXSID = 'DTXSID7020182')
+fate_by_dtxsid <- get_fate_by_dtxsid(DTXSID = 'DTXSID7020182')
 ```
 
-### Chemical Search Resource
+# Chemical Search Resource
 
 Chemicals can be searched using string values. Examples for each are provided by the following:
 
-#### By starting value
+## By starting value
 
 ```{r ctxR starting value chemical, message=FALSE, eval=FALSE}
-res_dt <- chemical_starts_with(word = 'DTXSID70201')
+search_starts_with <- chemical_starts_with(word = 'DTXSID70201')
 ```
 
-#### By exact value
+## By exact value
 
 ```{r ctxR exact value chemical, message=FALSE, eval=FALSE}
-res_dt <- chemical_equal(word = 'DTXSID7020182')
+search_exact <- chemical_equal(word = 'DTXSID7020182')
 ```
 
-#### By substring value
+## By substring value
 
 ```{r ctxR substring value chemical, message=FALSE, eval=FALSE}
-res_dt <- chemical_contains(word = 'DTXSID702018')
+search_contains <- chemical_contains(word = 'DTXSID702018')
 ```
 
-#### Subset for MS-Ready Structures
+## Subset for MS-Ready Structures
 
-MS-Ready data can be retrieved using a variety of input information. Examples for each are provided below:
+MS-Ready [(McEachran, A. et al. 2018)](https://doi.org/10.1186/s13321-018-0299-2) data can be retrieved using a variety of input information. Examples for each are provided below:
 
-##### Mass Range
+### By Mass Range
 
 ```{r ctxR mass range ms ready chemical, message=FALSE, eval=FALSE}
-res_dt <- get_msready_by_mass(start = 200.9, 
+msready_by_mass <- get_msready_by_mass(start = 200.9, 
                               end = 200.95)
 ```
 
-##### Chemical Formula
+### By Chemical Formula
 
 ```{r ctxR chemical formula ms ready chemical, message=FALSE, eval=FALSE}
-res_dt <- get_msready_by_formula(formula = 'C16H24N2O5S')
+msready_by_formula <- get_msready_by_formula(formula = 'C16H24N2O5S')
 ```
 
-##### DTXCID
+### By DTXCID
 
 ```{r ctxR dtxcid ms ready chemical, message=FALSE, eval=FALSE}
-res_dt <- get_msready_by_dtxcid(DTXCID = 'DTXCID30182')
+msready_by_dtxcid <- get_msready_by_dtxcid(DTXCID = 'DTXCID30182')
 ```
 
-### List Resource
+# List Resource
 
-There are several lists of chemicals one can access. These can be filtered by the type, name, inclusion of a specific chemical, or name of list.
+There are several lists of chemicals one can access using the [(CCD list search)](https://comptox.epa.gov/dashboard/chemical-lists). These can be filtered by the type, name, inclusion of a specific chemical, or name of list.
 
-#### All lists by type
+## Get all list types
+
+```{r ctxR types of chemical lists, message=FALSE, eval=FALSE}
+get_all_list_types()
+```
+
+
+## All lists by type
 
 ```{r ctxR all list types chemical, message=FALSE, eval=FALSE}
-res_dt <- get_chemical_lists_by_type(type =  'federal')
+chemical_lists_by_type <- get_chemical_lists_by_type(type =  'federal')
 ```
 
-#### List by name
+## List by name
 
 ```{r ctxR list by name chemical, message=FALSE, eval=FALSE}
-res_dt <- get_public_chemical_list_by_name(listname = 'CCL4')
+public_chemical_list_by_name <- get_public_chemical_list_by_name(listname = 'CCL4')
 ```
 
-#### Lists containing a specific chemical
+## Lists containing a specific chemical
 
 `get_lists_containing_chemical()` retrieves a list of names of chemical lists, each of which contains the specified chemical.
 
 ```{r ctxR lists containing chemical, message=FALSE, eval=FALSE}
-res_dt <- get_lists_containing_chemical(DTXSID = 'DTXSID7020182')
+lists_containing_chemical <- get_lists_containing_chemical(DTXSID = 'DTXSID7020182')
 ```
 
-#### Chemicals in a specific list
+## DTXSIDs for chemical list and starting value
+
+`get_chemicals_in_list_start()` retrieves a list of DTXSIDs for a given starting character string in a specified list of chemicals.
+
+```{r ctxR chemicals-in-list-start, message=FALSE, eval=FALSE}
+chemicals_in_ccl4_start <- get_chemicals_in_list_start(list_name = 'CCL4', word = 'Bi')
+```
+
+## DTXSIDs for chemical list and exact value
+
+`get_chemicals_in_list_exact()` retrieves a list of DTXSIDs matching exactly a given character string in a specified list of chemicals.
+
+```{r ctxR chemicals-in-list-exact, message=FALSE, eval=FALSE}
+chemicals_in_ccl4_exact <- get_chemicals_in_list_exact(list_name = 'BIOSOLIDS2021', word = 'Bisphenol A')
+```
+
+## DTXSIDs for chemical list and containing value
+
+`get_chemicals_in_list_contain()` retrieves a list of DTXSIDs that contain a given character string in a specified list of chemicals.
+
+```{r ctxR chemicals-in-list-contain, message=FALSE, eval=FALSE}
+chemicals_in_ccl4_contain <- get_chemicals_in_list_contain(list_name = 'CCL4', word = 'Bis')
+```
+
+## Chemicals in a specific list
 
 `get_chemicals_in_list()` retrieves the specific chemical information for each chemical contained in the specified list.
 
 ```{r ctxR chemical in list chemical, message=FALSE, eval=FALSE}
-res_dt <- get_chemicals_in_list(list_name = 'CCL4')
+chemicals_in_list <- get_chemicals_in_list(list_name = 'CCL4')
 ```
 
-### Chemical File Resource
+# Chemical File Resource
 
-There a mrv, mol, and image files that can be accessed using either the DTXSID or DTXCID. Examples are provided below:
+There are mrv, mol, and image files that can be accessed using either the DTXSID or DTXCID. Examples are provided below:
 
-#### Get mrv by DTXSID or DTXCID
+## Get mrv by DTXSID or DTXCID
 
 `get_chemical_mrv()` retrieves mrv file information for a chemical specified either by DTXSID or DTXCID.
 
 ```{r ctxR mrv by dtxsid dtxcid chemical, message=FALSE, eval=FALSE}
-res_dt <- get_chemical_mrv(DTXSID = 'DTXSID7020182')
-res_dt <- get_chemical_mrv(DTXCID = 'DTXCID30182')
+chemical_mrv_by_dtxsid <- get_chemical_mrv(DTXSID = 'DTXSID7020182')
+chemical_mrv_by_dtxcid <- get_chemical_mrv(DTXCID = 'DTXCID30182')
 ```
 
-#### Get mol by DTXSID or DTXCID
+## Get mol by DTXSID or DTXCID
 
 `get_chemical_mol()` retrieves mol file information for a chemical specified either by DTXSID or DTXCID.
 
 ```{r ctxR mol by dtxsid dtxcid chemical, message=FALSE, eval=FALSE}
-res_dt <- get_chemical_mol(DTXSID = 'DTXSID7020182')
-res_dt <- get_chemical_mol(DTXCID = 'DTXCID30182')
+chemical_mol_by_dtxsid <- get_chemical_mol(DTXSID = 'DTXSID7020182')
+chemical_mol_by_dtxcid <- get_chemical_mol(DTXCID = 'DTXCID30182')
 ```
 
-#### Get structure image by DTXSID or DTXCID
+## Get structure image by DTXSID, DTXCID, or SMILES
 
-`get_chemical_image()` retrieves image file information for a chemical specified either by DTXSID or DTXCID.
+`get_chemical_image()` retrieves image file information for a chemical specified either by DTXSID or DTXCID. To visualize the returned array of image information, the user may use either the `png::writePNG()` or `countcolors::plotArrayAsImage()` functions, among many choices.
 
 ```{r ctxR image by dtxsid dtxcid chemical, message=FALSE, eval=FALSE}
-res_dt <- get_chemical_image(DTXSID = 'DTXSID7020182')
-res_dt <- get_chemical_image(DTXCID = 'DTXCID30182')
+chemical_image_by_dtxsid <- get_chemical_image(DTXSID = 'DTXSID7020182')
+chemical_image_by_dtxcid <- get_chemical_image(DTXCID = 'DTXCID30182')
+chemical_image_by_smiles <- get_chemical_image(SMILES = 'CC(C)(C1=CC=C(O)C=C1)C1=CC=C(O)C=C1')
+
+countcolors::plotArrayAsImage(chemical_image_by_dtxsid)
+countcolors::plotArrayAsImage(chemical_image_by_dtxcid)
+countcolors::plotArrayAsImage(chemical_image_by_smiles)
 ```
 
-### Chemical Synonym Resource
+# Chemical Synonym Resource
 
 `get_chemical_synonym()` retrieves synonyms for the specified chemical.
 
 ```{r ctxR synonym by dtxsid chemical, message=FALSE, eval=FALSE}
-res_dt <- get_chemical_synonym(DTXSID = 'DTXSID7020182')
+chemical_synonym <- get_chemical_synonym(DTXSID = 'DTXSID7020182')
 ```
 
-
-## Example Use Case: Comparing Physico-chemical Properties Across Chemical Lists
+# Example Use Case: Comparing Physico-chemical Properties Across Chemical Lists
  
 The fourth Drinking Water Contaminant Candidate List (CCL4) is a set of chemicals that "...are not subject to any proposed or promulgated national primary drinking water regulations, but are known or anticipated to occur in public water systems...." Moreover, this list "...was announced on November 17, 2016. The CCL 4 includes 97 chemicals or chemical groups and 12 microbial contaminants...." The National-Scale Air Toxics Assessments (NATA) is "... EPA's ongoing comprehensive evaluation of air toxics in the United States... a state-of-the-science screening tool for State/Local/Tribal agencies to prioritize pollutants, emission sources and locations of interest for further study in order to gain a better understanding of risks... use general information about sources to develop estimates of risks which are more likely to overestimate impacts than underestimate them...."  
 
 These lists can be found in the CCD at [CCL4](https://comptox.epa.gov/dashboard/chemical-lists/CCL4) with additional information at [CCL4 information](https://www.epa.gov/ccl/contaminant-candidate-list-4-ccl-4-0) and [NATADB](https://comptox.epa.gov/dashboard/chemical-lists/NATADB) with additional information at [NATA information](https://www.epa.gov/national-air-toxics-assessment). The quotes from the previous paragraph were excerpted from list detail descriptions found using the CCD links.
 
-In this example use case, physico-chemical Properties data will be compared between a water contaminant priority and an air toxics list. 
+In this example use case, physico-chemical Properties data will be compared between a water contaminant priority and an air toxics list. Note, the following code chunks use the `data.table` object, which is an extension of the `data.frame` object and has slightly different syntax. For more information, please refer to [data.table](https://CRAN.R-project.org/package=data.table)
 
-### Obtain Lists of Chemicals
+## Obtain Lists of Chemicals
 
 First, confirm the chemical list to query. 
 
@@ -296,7 +347,7 @@ colnames(ccl4)
 head(ccl4, 1)
 ```
 
-### Access Physico-chemical Property Data for Chemical Lists
+## Batch Search Physico-chemical Property Data by DTXSID for Chemical Lists
 
 Next, physico-chemical properties for all chemicals in each list can be retrieved. The function `get_chem_info()` will be used to batch search for a list of DTXSIDs.
 
@@ -334,29 +385,29 @@ ccl4_phys_chem[propertyId == 'melting-point', .(Mean = mean(value)),
 
 These results tell us about some of the reported physico-chemical properties of the data sets.
 
-The mean "boiling-point" is 251.1072 degrees Celsius for CCL4, with mean values of 250.5943 and 251.4001 for experimental and predicted, respectively. The mean "melting-point" is 33.93924 degrees Celsius for CCL4, with mean values of 23.18876 and 47.98422 for experimental and predicted, respectively.
+The mean "boiling-point" is 252.6593 degrees Celsius for CCL4, with mean values of 250.5943 and 253.8196 for experimental and predicted, respectively. The mean "melting-point" is 34.91613 degrees Celsius for CCL4, with mean values of 23.18876 and 49.99417 for experimental and predicted, respectively.
 
-To explore **all** the values of the physico-chemical properties and calculate their means, we can do the following procedure. First we look at all the physico-chemical properties individually, then group them by each property ("boiling-point", "melting-point", etc...), and then additionally group those by property type ("experimental" vs "predicted"). In the grouping, we look at the columns `value`, `unit`, `propertyID` and `propType`. We also demonstrate how take the mean of the values for each grouping.
+To explore **all** the values of the physico-chemical properties and calculate their means, we can do the following procedure. First we look at all the physico-chemical properties individually, then group them by each property ("boiling-point", "melting-point", etc...), and then additionally group those by property type ("experimental" vs "predicted"). In the grouping, we look at the columns `value`, `unit`, `propertyID` and `propType`. We also demonstrate how take the mean of the values for each grouping, using the chemical identifier 'DTXSID1037567' for this example, the 25th chemical in CCL4.
 
 ```{r fig.align='center',class.source="scroll-300",message=FALSE}
-head(ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], ])
-ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(propType, value, unit),
+head(ccl4_phys_chem[dtxsid == ccl4$dtxsid[[25]], ])
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[25]], .(propType, value, unit),
                by = .(propertyId)]
-ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(value, unit), 
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[25]], .(value, unit), 
                by = .(propertyId, propType)]
 
-ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(Mean_value = sapply(.SD, mean)),
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[25]], .(Mean_value = sapply(.SD, mean)),
                by = .(propertyId, unit), .SDcols = c("value")]
-ccl4_phys_chem[dtxsid == ccl4$dtxsid[[1]], .(Mean_value = sapply(.SD, mean)), 
+ccl4_phys_chem[dtxsid == ccl4$dtxsid[[25]], .(Mean_value = sapply(.SD, mean)), 
                by = .(propertyId, unit, propType), 
                .SDcols = c("value")][order(propertyId)]
 ```
 
-### Review Physico-Chemical Properties Across Chemical Lists
+## Review Physico-Chemical Properties Across Chemical Lists
 
 We consider exploring the differences in mean predicted and experimental values for a variety of physico-chemical properties in an effort to understand better the CCL4 and NATADB lists. In particular, we examine "vapor-pressure", "henrys-law", and "boiling-point" and plot the means by chemical for these using boxplots. We then compare the values by grouping by both data set and `propType` value.
 
-#### Vapor Pressure
+### Vapor Pressure
 
 Begin by grouping pulled data by DTXSID, and also by DTXSID and property type.
 
@@ -438,7 +489,7 @@ gridExtra::grid.arrange(vapor_box, vapor, ncol=2)
 
 In the box plots above, a general trend indicates that that the NATADB chemical list has a higher mean vapor pressure than the CCL4 chemical list.
 
-#### Henry's Law constant
+### Henry's Law constant
 
 Henry's Law constant can be explored in a similar fashion. Begin by grouping data by DTXSID, and also by DTXSID and property type.
 
@@ -500,7 +551,7 @@ gridExtra::grid.arrange(hlc_box, hlc, ncol=2)
 
 Again, in both grouping by `propType` and aggregating all results together by chemical list, NATADB chemicals generally higher mean Henry's Law Constant value than CCL4 chemicals.
 
-#### Boling Point
+### Boling Point
 
 Boiling Point data be explored. Begin by grouping data by DTXSID, and also by DTXSID and property type.
 
@@ -562,7 +613,7 @@ To summarize the observations, across the various physico-chemical properties fo
 - The trend of lower predicted means compared to experimental means is more clearly demonstrated for "henrys-law" values in both data sets. 
 - In the case of "boiling-point", the predicted values are greater than the experimental values, though this is much more pronounced in CCL4 while the set of means for NATADB are again fairly close. 
 
-## Conclusion
+# Conclusion
 
 In this vignette, a variety of functions that access different types of data found in the `Chemical` endpoints of the CTX APIs were explored. While this exploration was not exhaustive, it provides a basic introduction to how one may access data and work with it. Additional endpoints and corresponding functions exist and we encourage the user to explore these while keeping in mind the examples contained in this vignette.
 

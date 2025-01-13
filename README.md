@@ -1,36 +1,43 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ctxR
+# ctxR: Utilities for Interacting with the CTX APIs
+
+Package website: [release](https://usepa.github.io/ctxR/) \|
+[dev](https://usepa.github.io/ctxR/dev/)
 
 <!-- badges: start -->
+
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/ctxR)](https://cran.r-project.org/package=ctxR)
+[![Active](http://img.shields.io/badge/Status-Active-green.svg)](https://cran.r-project.org/package=ctxR)
+[![Monthly
+Downloads](https://cranlogs.r-pkg.org/badges/last-month/ctxR?color=7BAFD4)](https://cranlogs.r-pkg.org/badges/last-month/ctxR?color=7BAFD4)
+[![DOI](https://zenodo.org/badge/doi/10.32614/CRAN.package.ctxR.svg)](http://dx.doi.org/10.32614/CRAN.package.ctxR)
+
 <!-- badges: end -->
 
-The goal of ctxR is to provide R users a set of functions to access the
-[CTX
+## Welcome to the GitHub repository for the ctxR package
+
+<a href="https://CRAN.R-project.org/package=ctxR"><img src="vignettes/Pictures/ctxR_hex.png" width="200" align="right" /></a>
+
+ctxR was developed to streamline the process of accessing the
+information available through the [Computational Toxicology and Exposure
+(CTX)
 APIs](https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis)
-without requiring extensive experience interacting directly with APIs.
+without requiring prior knowledge of how to use APIs. Chemical, hazard,
+bioactivity, and exposure data in available from the CTX APIs. Most data
+is also available on the [CompTox Chemical Dashboard
+(CCD)](https://comptox.epa.gov/dashboard/) or within other
+[Computational Toxicology and Exposure Online
+Resources](https://www.epa.gov/comptox-tools).
 
-## Installation
+If you are interested in contributing or want to report a bug, please
+submit a issue or start a discussion.
 
-You can install the development version of ctxR like so:
+To install the current development version, run the following command:
 
-``` r
-if (!library(devtools, logical.return = TRUE)){
-  install.packages(devtools)
-  library(devtools)
-}
+    devtools::install_github("USEPA/ctxR")
 
-devtools::install_gitub("USEPA/ctxR")
-```
-
-You can install from CRAN using the following:
-
-``` r
-install.packages('ctxR')
-```
-
-Disclaimer: You won’t need a API key to install the ctxR package, but
-will need to supply an API key to use ctxR. Please visit [CTX
-APIs](https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis)
-to request an API key.
+Disclaimer: Users don’t need a API key to install ctxR, but will need to
+supply an API key to use ctxR and access data. A *FREE* API key can be
+obtained by emailing the [CTX API Admins](mailto:ccte_api@epa.gov).

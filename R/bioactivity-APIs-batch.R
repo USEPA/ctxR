@@ -27,14 +27,11 @@ get_bioactivity_details_batch <- function(DTXSID = NULL,
                                           Server = NULL,
                                           rate_limit = 0L,
                                           verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -62,14 +59,25 @@ get_bioactivity_details_batch <- function(DTXSID = NULL,
                                   verbose = verbose)
         },
         error = function(cond){
-          message(d)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(d)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- DTXSID
     return(results)
   } else if (!is.null(AEID)){
@@ -87,14 +95,25 @@ get_bioactivity_details_batch <- function(DTXSID = NULL,
                                   verbose = verbose)
         },
         error = function(cond){
-          message(a)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(a)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- AEID
     return(results)
   } else if (!is.null(SPID)){
@@ -112,14 +131,25 @@ get_bioactivity_details_batch <- function(DTXSID = NULL,
                                   verbose = verbose)
         },
         error = function(cond){
-          message(a)
-          message(cond$message)
-          return(NA)
+          if (verbose) {
+            message(a)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- SPID
     return(results)
   } else if (!is.null(m4id)){
@@ -137,14 +167,25 @@ get_bioactivity_details_batch <- function(DTXSID = NULL,
                                   verbose = verbose)
         },
         error = function(cond){
-          message(a)
-          message(cond$message)
-          return(NA)
+          if (verbose){
+            message(a)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- m4id
     return(results)
   } else {
@@ -174,14 +215,11 @@ get_bioactivity_summary_batch <- function(AEID = NULL,
                                           Server = NULL,
                                           rate_limit = 0L,
                                           verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -205,14 +243,25 @@ get_bioactivity_summary_batch <- function(AEID = NULL,
                                   verbose = verbose)
         },
         error = function(cond){
-          message(a)
-          message(cond$message)
-          return(NA)
+          if (verbose) {
+            message(a)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- AEID
     return(results)
   } else {
@@ -241,14 +290,11 @@ get_annotation_by_aeid_batch <- function(AEID = NULL,
                                          Server = NULL,
                                          rate_limit = 0L,
                                          verbose = FALSE){
-  if (is.null(API_key) || !is.character(API_key)){
-    if (has_ctx_key()) {
-      API_key <- ctx_key()
-      if (verbose) {
-        message('Using stored API key!')
-      }
-    }
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
+
   if (!is.numeric(rate_limit) | (rate_limit < 0)){
     warning('Setting rate limit to 0 seconds between requests!')
     rate_limit <- 0L
@@ -272,14 +318,25 @@ get_annotation_by_aeid_batch <- function(AEID = NULL,
                                  verbose = verbose)
         },
         error = function(cond){
-          message(a)
-          message(cond$message)
-          return(NA)
+          if (verbose) {
+            message(a)
+            message(cond$message)
+          }
+          return(cond)
         }
       )
       return(attempt)
     }
     )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
     names(results) <- AEID
     return(results)
   } else {
