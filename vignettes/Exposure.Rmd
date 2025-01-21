@@ -60,7 +60,7 @@ registerS3method(
 
 In this vignette, the [CTX Exposure API](https://api-ccte.epa.gov/docs/exposure.html) will be explored. 
 
-Data provided by the Exposure API are broadly organized in four different areas, Functional Use Information, Product Data, List Presence Data, and Exposure estimates. Data from the Functional Use, Product Data, and List Presence resources (aside from the Functional Use Probability endpoint) are developed from publicly available documents and are also accessible using the Chemical Exposure Knowledgebase ([ChempExpo](https://comptox.epa.gov/chemexpo/)) interactive web application developed by the United States Environmental Protection Agency. The underlying database for the Functional Use, Product Data, and List Presence endpoints of the Exposure API and ChemExpo is the Chemicals and Products Database (CPDat). CPDat provides reported information on how chemicals are used in commerce and (where possible) at what quantities they occur in consumer and industrial products; see [(Dionisio et al. 2018)](https://www.nature.com/articles/sdata2018125) for more information on CPDat. The data provided by the Functional Use Probability endpoint are predictions from EPA's Quantitative Structure Use Relationship (QSUR) models [(Phillips et al. 2017)](https://pubs.rsc.org/en/content/articlelanding/2017/gc/c6gc02744j). Exposure data is represented by predictions from the [`httk`](https://CRAN.R-project.org/package=httk) R package, introduced in [(Pearce, R. et al. 2017)](https://doi.org/10.18637%2Fjss.v079.i04) and several exposure models including the SEEM models. Information on the SEEM2 model can be found at [(Wambaugh, J. et al. 2014)](http://dx.doi.org/10.1021/es503583j) and on the SEEM3 model can be found at [(Ring, C. et al. 2018)](http://dx.doi.org/10.1021/acs.est.8b04056)
+Data provided by the Exposure API are broadly organized in five different areas, Functional Use Information, Product Data, List Presence Data, and HTTK data, and Exposure estimates. Data from the Functional Use, Product Data, and List Presence resources (aside from the Functional Use Probability endpoint) are developed from publicly available documents and are also accessible using the Chemical Exposure Knowledgebase ([ChempExpo](https://comptox.epa.gov/chemexpo/)) interactive web application developed by the United States Environmental Protection Agency. The underlying database for the Functional Use, Product Data, and List Presence endpoints of the Exposure API and ChemExpo is the Chemicals and Products Database (CPDat). CPDat provides reported information on how chemicals are used in commerce and (where possible) at what quantities they occur in consumer and industrial products; see [(Dionisio et al. 2018)](https://www.nature.com/articles/sdata2018125) for more information on CPDat. The data provided by the Functional Use Probability endpoint are predictions from EPA's Quantitative Structure Use Relationship (QSUR) models [(Phillips et al. 2017)](https://pubs.rsc.org/en/content/articlelanding/2017/gc/c6gc02744j). HTTK data is represented by predictions from the [`httk`](https://CRAN.R-project.org/package=httk) R package, introduced in [(Pearce, R. et al. 2017)](https://doi.org/10.18637%2Fjss.v079.i04). This data is particularly relevant for examining in vitro to in vivo extrapolation (IVIVE). There several exposure models including the SEEM models. Information on the SEEM2 model can be found at [(Wambaugh, J. et al. 2014)](http://dx.doi.org/10.1021/es503583j) and on the SEEM3 model can be found at [(Ring, C. et al. 2018)](http://dx.doi.org/10.1021/acs.est.8b04056)
 
 Product Data are organized by harmonized Product Use Categories (PUCs). The PUCs are assigned to products (which are associated with Composition Documents) and indicate the type of product associated to each data record. They are organized hierarchicially, with General Category containing Product Family, which in turn contains Product Type. The Exposure API also provide information on how the PUC was assigned. Do note that a natural language processing model is used to assign PUCs with the "classificationmethod" equal to "Automatic". As such, these assignments are less certain and may contain inaccuracies. More information on PUC categories can be found in [(Isaacs et al. 2020)](https://doi.org/10.1038/s41370-019-0187-5).
 
@@ -68,7 +68,7 @@ List Presence Data reflect the occurrence of chemicals on lists present in publi
 
 Both reported and predicted Function Use Information is available. Reported functional use information is organized by harmonized Function Categories (FCs) that describe the role a chemical serves in a product or industrial process. The harmonized technical function categories and definitions were developed by the Organisation for Economic Co-operation and Development (OECD) (with the exception of a few categories unique to consumer products which are noted as being developed by EPA). These categories have been augmented with additional categories needed to describe chemicals in personal care, pharmaceutical, or other commercial sectors. The reported function data form the basis for ORD's QSUR models [(Phillips et al. 2016)](https://pubs.rsc.org/en/content/articlelanding/2017/GC/C6GC02744J). These models provide the structure-based predictions of chemical function available in the Functional Use Probability endpoint. Note that these models were developed prior to the OECD function categories, so their function categories are not yet aligned with the harmonized categories used in the reported data. Updated models for the harmonized categories are under development.
 
-The R package `httk` provides users with a variety of tools to incorporate toxickinetics and in vitro-in vivo extrapolation into bioinformatics and comes with pre-made models that can be used with specific chemical data. The SEEM models were developed to provide predictions for potential human exposure to chemicals with little or no exposure data. For SEEM2, Bayesian methods were used to infer ranges of exposure consistent with data from the National Health and Nutrition Examination Survey. Predictions for different demographic groups were made. For SEEM3, chemical exposures through four different pathways were predicted and in turn weighting of different models through these exposure pathways was conducted to produce consensus predictions.
+The R package `httk` provides users with a variety of tools to incorporate toxickinetics and IVIVE into bioinformatics and comes with pre-made models that can be used with specific chemical data. The SEEM models were developed to provide predictions for potential human exposure to chemicals with little or no exposure data. For SEEM2, Bayesian methods were used to infer ranges of exposure consistent with data from the National Health and Nutrition Examination Survey. Predictions for different demographic groups were made. For SEEM3, chemical exposures through four different pathways were predicted and in turn weighting of different models through these exposure pathways was conducted to produce consensus predictions.
 
 Information for ChemExpo is sourced from: Sakshi Handa, Katherine A. Phillips, Kenta Baron-Furuyama, and Kristin K. Isaacs. 2023. “ChemExpo Knowledgebase User Guide”. https://comptox.epa.gov/chemexpo/static/user_guide/index.html.
 
@@ -107,6 +107,29 @@ exp_fun_use_prob <- get_exposure_functional_use_probability(DTXSID = 'DTXSID7020
 ```{r, echo=FALSE}
 knitr::kable(head(exp_fun_use_prob))
 ```
+
+### Functional Use Probability Batch
+
+We demonstrate how the individual results differ from the batch results when retrieving functional use probabilities via `get_exposure_functional_use_probability_batch()`.
+
+```{r}
+bpa_prob <- get_exposure_functional_use_probability(DTXSID = 'DTXSID7020182')
+caf_prob <- get_exposure_functional_use_probability(DTXSID = 'DTXSID0020232')
+
+bpa_caf_prob <- get_exposure_functional_use_probability_batch(DTXSID = c('DTXSID7020182', 'DTXSID0020232'))
+```
+
+```{r, echo=FALSE}
+bpa_prob
+```
+```{r, echo=FALSE}
+caf_prob
+```
+```{r, echo=FALSE}
+bpa_caf_prob
+```
+
+Observe that Caffeine only has probabilities assigned to four functional use categories while Bisphenol A has probabilities assigned to twelve categories. For single chemical search, functional use categories denote the row. However, when using the batch search function, all reported categories are included as columns, with rows corresponding to each chemical. If a chemical does not have a probability associated to a functional use, the corresponding entry is given by an NA.
 
 ## Functional Use Categories
 
@@ -151,9 +174,13 @@ exp_prod_data_puc <- get_exposure_product_data_puc()
 knitr::kable(head(exp_prod_data_puc))
 ```
 
-# `httk` data
+# `httk` Data Resource
 
-There is a single resource that returns `httk` model data when available
+Predictions from the `httk` R package are available.
+
+## `httk` Data
+
+There is a single resource that returns `httk` model data when available. 
 
 ```{r}
 bpa_httk <- get_httk_data(DTXSID = 'DTXSID7020182')
@@ -192,11 +219,11 @@ knitr::kable(head(exp_list_tags_dat))%>%
 ```
 
 
-### Exposure Predictions
+# Exposure Predictions
 
-There are two functions that provide access to exposure prediction data. The first provides general information on exposure pathways while the second provides exposure predictions from a variety of exposure models. The general information corresponds to SEEM3 predictions of exposure pathways, while the exposure predictions feature SEEM2 predictions broken down by demographic groups, general consensus predictions from SEEM3, and in some cases additional exposure predictions from other models
+There are two endpoints that provide access to exposure prediction data. The first provides general information on exposure pathways while the second provides exposure predictions from a variety of exposure models. The general information from the first endpoint corresponds to SEEM3 consensus predictions of exposure pathways. The exposure predictions from the second endpoint feature SEEM2 predictions broken down by demographic groups, general consensus exposure rate predictions from SEEM3, and in some cases additional exposure predictions from other models
 
-#### General Exposure Predictions
+## General Exposure Predictions
 
 `get_general_exposure_prediction()` returns general exposure information for a given chemical.
 
@@ -204,7 +231,7 @@ There are two functions that provide access to exposure prediction data. The fir
 bpa_general_exposure <- get_general_exposure_prediction(DTXSID = 'DTXSID7020182')
 head(bpa_general_exposure)
 ```
-#### Demographic Exposure Predictions
+## Demographic Exposure Predictions
 
 `get_demographic_exposure_prediction()` returns exposure prediction information split across different demographics for a given chemical.
 
@@ -217,30 +244,8 @@ bpa_demographic_exposure
 ## Batch Search
 
 
-There are batch search versions for several endpoints that gather data specific to a chemical. Namely, `get_exposure_functional_use_batch()`, `get_exposure_functional_use_probability()`, `get_exposure_product_data_batch()`, `get_exposure_list_presence_tags_by_dtxsid_batch()`, `get_general_exposure_prediction_batch()`, and `get_demographic_exposure_prediction_batch()`. The function `get_exposure_functional_use_probability()` returns a data.table with each row corresponding to a unique chemical and each column representing a functional use category associated to at least one input chemical. The other batch functions return a named list of data.frames or data.tables, the names corresponding to the unique chemicals input and the data.frames or data.tables corresponding to the information to each individual chemical.
+There are batch search versions for several endpoints that gather data specific to a chemical. Namely, `get_exposure_functional_use_batch()`, `get_exposure_functional_use_probability()`, `get_exposure_product_data_batch()`, `get_exposure_list_presence_tags_by_dtxsid_batch()`, `get_general_exposure_prediction_batch()`, and `get_demographic_exposure_prediction_batch()`. The function `get_exposure_functional_use_probability()` returns a data.table with each row corresponding to a unique chemical and each column representing a functional use category associated to at least one input chemical. The other batch functions return a named list of data.frames or data.tables, the names corresponding to the unique chemicals input and the data.frames or data.tables corresponding to the information for each individual chemical.
 
-## Functional Use Probability Batch
-
-We demonstrate how the individual results differ from the batch results when retrieving functional use probabilities.
-
-```{r}
-bpa_prob <- get_exposure_functional_use_probability(DTXSID = 'DTXSID7020182')
-caf_prob <- get_exposure_functional_use_probability(DTXSID = 'DTXSID0020232')
-
-bpa_caf_prob <- get_exposure_functional_use_probability_batch(DTXSID = c('DTXSID7020182', 'DTXSID0020232'))
-```
-
-```{r, echo=FALSE}
-bpa_prob
-```
-```{r, echo=FALSE}
-caf_prob
-```
-```{r, echo=FALSE}
-bpa_caf_prob
-```
-
-Observe that Caffeine only has probabilities assigned to four functional use categories while Bisphenol A has probabilities assigned to twelve categories. For single chemical search, functional use categories denote the row. However, when using the batch search function, all reported categories are included as columns, with rows corresponding to each chemical. If a chemical does not have a probability associated to a functional use, the corresponding entry is given by an NA.
 
 # Conclusion
 
