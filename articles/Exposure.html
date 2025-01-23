@@ -66,7 +66,7 @@ for Computational Toxicology and Exposure <a href="mailto:ccte@epa.gov" class="e
 </h4>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/USEPA/ctxR/blob/v1.1.0/vignettes/Exposure.Rmd" class="external-link"><code>vignettes/Exposure.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/USEPA/ctxR/blob/dev/vignettes/Exposure.Rmd" class="external-link"><code>vignettes/Exposure.Rmd</code></a></small>
       <div class="d-none name"><code>Exposure.Rmd</code></div>
     </div>
 
@@ -249,12 +249,14 @@ code {
 </h3>
 <p>In this vignette, the <a href="https://api-ccte.epa.gov/docs/exposure.html" class="external-link">CTX Exposure API</a>
 will be explored.</p>
-<p>Data provided by the Exposure API are broadly organized in four
-different areas, Functional Use Information, Product Data, List Presence
-Data, and Exposure estimates. Data from the Functional Use, Product
-Data, and List Presence resources (aside from the Functional Use
-Probability endpoint) are developed from publicly available documents
-and are also accessible using the Chemical Exposure Knowledgebase (<a href="https://comptox.epa.gov/chemexpo/" class="external-link">ChempExpo</a>) interactive web
+<p>Data provided by the Exposure API are broadly organized in five
+different areas: Functional Use, Product Data, List Presence, High
+Throughput Toxicokinetic (HTTK) parameters, and Exposure estimates.</p>
+<ul>
+<li><p>Data from the Functional Use, Product Data, and List Presence
+resources (aside from the Functional Use Probability endpoint) are
+developed from publicly available documents and are also accessible
+using the Chemical Exposure Knowledgebase (<a href="https://comptox.epa.gov/chemexpo/" class="external-link">ChempExpo</a>) interactive web
 application developed by the United States Environmental Protection
 Agency. The underlying database for the Functional Use, Product Data,
 and List Presence endpoints of the Exposure API and ChemExpo is the
@@ -262,27 +264,32 @@ Chemicals and Products Database (CPDat). CPDat provides reported
 information on how chemicals are used in commerce and (where possible)
 at what quantities they occur in consumer and industrial products; see
 <a href="https://www.nature.com/articles/sdata2018125" class="external-link">(Dionisio et
-al. 2018)</a> for more information on CPDat. The data provided by the
-Functional Use Probability endpoint are predictions from EPA’s
-Quantitative Structure Use Relationship (QSUR) models <a href="https://pubs.rsc.org/en/content/articlelanding/2017/gc/c6gc02744j" class="external-link">(Phillips
-et al. 2017)</a>. Exposure data is represented by predictions from the
-<a href="https://CRAN.R-project.org/package=httk" class="external-link"><code>httk</code></a>
-R package, introduced in <a href="https://doi.org/10.18637%2Fjss.v079.i04" class="external-link">(Pearce, R. et
-al. 2017)</a> and several exposure models including the SEEM models.
-Information on the SEEM2 model can be found at <a href="http://dx.doi.org/10.1021/es503583j" class="external-link">(Wambaugh, J. et
+al. 2018)</a> for more information on CPDat.</p></li>
+<li><p>The data provided by the Functional Use Probability endpoint are
+predictions from EPA’s Quantitative Structure Use Relationship (QSUR)
+models <a href="https://pubs.rsc.org/en/content/articlelanding/2017/gc/c6gc02744j" class="external-link">(Phillips
+et al. 2017)</a>.</p></li>
+<li><p>HTTK data are represented by predictions from the <a href="https://CRAN.R-project.org/package=httk" class="external-link"><code>httk</code></a> R
+package, introduced in <a href="https://doi.org/10.18637%2Fjss.v079.i04" class="external-link">(Pearce, R. et
+al. 2017)</a>. These data are particularly relevant for examining <em>in
+vitro</em> to <em>in vitro</em> extrapolation (IVIVE).</p></li>
+<li><p>Exposure estimates are provided via several exposure models,
+including the SEEM models. Information on the SEEM2 model can be found
+at <a href="http://dx.doi.org/10.1021/es503583j" class="external-link">(Wambaugh, J. et
 al. 2014)</a> and on the SEEM3 model can be found at <a href="http://dx.doi.org/10.1021/acs.est.8b04056" class="external-link">(Ring, C. et
-al. 2018)</a></p>
+al. 2018)</a></p></li>
+</ul>
 <p>Product Data are organized by harmonized Product Use Categories
 (PUCs). The PUCs are assigned to products (which are associated with
 Composition Documents) and indicate the type of product associated to
-each data record. They are organized hierarchicially, with General
+each data record. They are organized hierarchically, with General
 Category containing Product Family, which in turn contains Product Type.
 The Exposure API also provide information on how the PUC was assigned.
 Do note that a natural language processing model is used to assign PUCs
 with the “classificationmethod” equal to “Automatic”. As such, these
 assignments are less certain and may contain inaccuracies. More
 information on PUC categories can be found in <a href="https://doi.org/10.1038/s41370-019-0187-5" class="external-link">(Isaacs et
-al. 2020)</a>.</p>
+al. 2020)</a>. The associated endpoints are organized within the <a href="#product-data-resource">Product Data Resource</a>.</p>
 <p>List Presence Data reflect the occurrence of chemicals on lists
 present in publicly available documents (sourced from a variety of
 federal and state agencies and trade associations). These lists are
@@ -292,7 +299,7 @@ used. LPKs are an updated version of the cassettes provided in the
 Chemical and Product Categories (CPCat) database; see <a href="https://doi.org/10.1016/j.toxrep.2014.12.009" class="external-link">(Dionisio et
 al. 2015)</a>. For the most up to date information on the current LPKs
 and to see how the CPCat cassettes were updated, see <a href="https://www.nature.com/articles/s41370-022-00451-8" class="external-link">(Koval et
-al. 2022)</a>.</p>
+al. 2022)</a>. The associated endpoints are organized within the <a href="#list-presence-resource">List Presence Resource</a>.</p>
 <p>Both reported and predicted Function Use Information is available.
 Reported functional use information is organized by harmonized Function
 Categories (FCs) that describe the role a chemical serves in a product
@@ -309,18 +316,22 @@ of chemical function available in the Functional Use Probability
 endpoint. Note that these models were developed prior to the OECD
 function categories, so their function categories are not yet aligned
 with the harmonized categories used in the reported data. Updated models
-for the harmonized categories are under development.</p>
+for the harmonized categories are under development. The associated
+endpoints are organized within the <a href="#functional-use-resource">Functional Use Resource</a>.</p>
 <p>The R package <code>httk</code> provides users with a variety of
-tools to incorporate toxickinetics and in vitro-in vivo extrapolation
-into bioinformatics and comes with pre-made models that can be used with
-specific chemical data. The SEEM models were developed to provide
-predictions for potential human exposure to chemicals with little or no
-exposure data. For SEEM2, Bayesian methods were used to infer ranges of
-exposure consistent with data from the National Health and Nutrition
-Examination Survey. Predictions for different demographic groups were
-made. For SEEM3, chemical exposures through four different pathways were
-predicted and in turn weighting of different models through these
-exposure pathways was conducted to produce consensus predictions.</p>
+tools to incorporate toxicokinetics and IVIVE into bioinformatics and
+comes with pre-made models that can be used with specific chemical data.
+The <code>httk</code> endpoint is found within the <a href="#httk-data-resource"><code>httk</code> Data Resource</a>.</p>
+<p>The SEEM models were developed to provide predictions for potential
+human exposure to chemicals with little or no exposure data. For SEEM2,
+Bayesian methods were used to infer ranges of exposure consistent with
+data from the National Health and Nutrition Examination Survey.
+Predictions for different demographic groups were made. For SEEM3,
+chemical exposures through four different pathways were predicted and in
+turn weighting of different models through these exposure pathways was
+conducted to produce consensus predictions. The exposure prediction
+endpoints are organized within <a href="#exposure-predictions">Exposure
+Predictions</a>.</p>
 <p>Information for ChemExpo is sourced from: Sakshi Handa, Katherine A.
 Phillips, Kenta Baron-Furuyama, and Kristin K. Isaacs. 2023. “ChemExpo
 Knowledgebase User Guide”. <a href="https://comptox.epa.gov/chemexpo/static/user_guide/index.html" class="external-link uri">https://comptox.epa.gov/chemexpo/static/user_guide/index.html</a>.</p>
@@ -575,6 +586,49 @@ classified as having this function, as predicted by the QSUR models.</p>
 </tr>
 </tbody>
 </table>
+<div class="section level4">
+<h4 id="functional-use-probability-batch">Functional Use Probability Batch<a class="anchor" aria-label="anchor" href="#functional-use-probability-batch"></a>
+</h4>
+<p>We demonstrate how the individual results differ from the batch
+results when retrieving functional use probabilities via
+<code><a href="../reference/get_exposure_functional_use_probability_batch.html">get_exposure_functional_use_probability_batch()</a></code>.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">bpa_prob</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_exposure_functional_use_probability.html">get_exposure_functional_use_probability</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span><span class="op">)</span></span>
+<span><span class="va">caf_prob</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_exposure_functional_use_probability.html">get_exposure_functional_use_probability</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID0020232'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">bpa_caf_prob</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_exposure_functional_use_probability_batch.html">get_exposure_functional_use_probability_batch</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'DTXSID7020182'</span>, <span class="st">'DTXSID0020232'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">#&gt;    harmonizedFunctionalUse probability</span></span>
+<span><span class="co">#&gt; 1            antimicrobial      0.3722</span></span>
+<span><span class="co">#&gt; 2              antioxidant      0.8941</span></span>
+<span><span class="co">#&gt; 3                 catalyst      0.2031</span></span>
+<span><span class="co">#&gt; 4                 colorant      0.1560</span></span>
+<span><span class="co">#&gt; 5              crosslinker      0.7743</span></span>
+<span><span class="co">#&gt; 6          flame_retardant      0.2208</span></span>
+<span><span class="co">#&gt; 7                flavorant      0.0314</span></span>
+<span><span class="co">#&gt; 8                fragrance      0.2071</span></span>
+<span><span class="co">#&gt; 9          heat_stabilizer      0.5119</span></span>
+<span><span class="co">#&gt; 10        skin_conditioner      0.1168</span></span>
+<span><span class="co">#&gt; 11         skin_protectant      0.3306</span></span>
+<span><span class="co">#&gt; 12             uv_absorber      0.8046</span></span></code></pre>
+<pre><code><span><span class="co">#&gt;   harmonizedFunctionalUse probability</span></span>
+<span><span class="co">#&gt; 1           antimicrobial      0.4808</span></span>
+<span><span class="co">#&gt; 2                  buffer      0.6370</span></span>
+<span><span class="co">#&gt; 3                colorant      0.3962</span></span>
+<span><span class="co">#&gt; 4        skin_conditioner      0.9821</span></span></code></pre>
+<pre><code><span><span class="co">#&gt;           DTXSID antimicrobial antioxidant catalyst colorant crosslinker</span></span>
+<span><span class="co">#&gt;           &lt;char&gt;         &lt;num&gt;       &lt;num&gt;    &lt;num&gt;    &lt;num&gt;       &lt;num&gt;</span></span>
+<span><span class="co">#&gt; 1: DTXSID7020182        0.3722      0.8941   0.2031   0.1560      0.7743</span></span>
+<span><span class="co">#&gt; 2: DTXSID0020232        0.4808          NA       NA   0.3962          NA</span></span>
+<span><span class="co">#&gt; 8 variable(s) not shown: [flame_retardant &lt;num&gt;, flavorant &lt;num&gt;, fragrance &lt;num&gt;, heat_stabilizer &lt;num&gt;, skin_conditioner &lt;num&gt;, skin_protectant &lt;num&gt;, uv_absorber &lt;num&gt;, buffer &lt;num&gt;]</span></span></code></pre>
+<p>Observe that Caffeine only has probabilities assigned to four
+functional use categories while Bisphenol A has probabilities assigned
+to twelve categories. For single chemical search, functional use
+categories denote the row. However, when using the batch search
+function, all reported categories are included as columns, with rows
+corresponding to each chemical. If a chemical does not have a
+probability associated to a functional use, the corresponding entry is
+given by an NA.</p>
+</div>
 </div>
 <div class="section level3">
 <h3 id="functional-use-categories">Functional Use Categories<a class="anchor" aria-label="anchor" href="#functional-use-categories"></a>
@@ -582,7 +636,7 @@ classified as having this function, as predicted by the QSUR models.</p>
 <p><code>get_exposure_functional_use_categories()</code> retrieves
 definitions of all the available FCs. This is not specific to a
 chemical, but rather a list of all FCs.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">exp_fun_use_cat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_exposure_functional_use_category.html">get_exposure_functional_use_category</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
@@ -663,7 +717,7 @@ with chemical identifiers (DTXSID) or general use.</p>
 <p><code><a href="../reference/get_exposure_product_data.html">get_exposure_product_data()</a></code> retrieves the product data
 (PUCs and related data) for products that use the specified chemical (by
 DTXSID).</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">exp_prod_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_exposure_product_data.html">get_exposure_product_data</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span><span class="op">)</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table table-striped" style="margin-left: auto; margin-right: auto;">
@@ -1070,7 +1124,7 @@ reported
 <p><code><a href="../reference/get_exposure_product_data_puc.html">get_exposure_product_data_puc()</a></code> retrieves the
 definitions of all the PUCs. This is not specific to a chemical, but
 rather a list of all PUCs.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">exp_prod_data_puc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_exposure_product_data_puc.html">get_exposure_product_data_puc</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
@@ -1149,12 +1203,17 @@ products</td>
 </div>
 </div>
 <div class="section level2">
-<h2 id="httk-data">
-<code>httk</code> data<a class="anchor" aria-label="anchor" href="#httk-data"></a>
+<h2 id="httk-data-resource">
+<code>httk</code> Data Resource<a class="anchor" aria-label="anchor" href="#httk-data-resource"></a>
 </h2>
+<p>Predictions from the <code>httk</code> R package are available.</p>
+<div class="section level3">
+<h3 id="httk-data">
+<code>httk</code> Data<a class="anchor" aria-label="anchor" href="#httk-data"></a>
+</h3>
 <p>There is a single resource that returns <code>httk</code> model data
-when available</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+when available.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bpa_httk</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_httk_data.html">get_httk_data</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">bpa_httk</span><span class="op">)</span></span>
 <span><span class="co">#&gt;       id        dtxsid    parameter measuredText measured predictedText</span></span>
@@ -1179,6 +1238,7 @@ when available</p>
 <span><span class="co">#&gt; 5               Rat          NA 2024-06-13T16:53:14.622350Z</span></span>
 <span><span class="co">#&gt; 6               Rat          NA 2024-06-13T16:53:14.622350Z</span></span></code></pre></div>
 </div>
+</div>
 <div class="section level2">
 <h2 id="list-presence-resource">List Presence Resource<a class="anchor" aria-label="anchor" href="#list-presence-resource"></a>
 </h2>
@@ -1193,7 +1253,7 @@ of the the list presence keywords. Note that some List Presence Keywords
 align with PUCs, but the keywords are assigned to documents that refer
 to product category as a whole, while PUCs are assigned to documents
 referring to specific products (e.g., ingredient list).</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">exp_list_tags</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_exposure_list_presence_tags.html">get_exposure_list_presence_tags</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
@@ -1261,7 +1321,7 @@ children</td>
 </h3>
 <p><code><a href="../reference/get_exposure_list_presence_tags_by_dtxsid.html">get_exposure_list_presence_tags_by_dtxsid()</a></code> retrieves
 LPKs and associated data for a specific chemical (by DTXSID).</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">exp_list_tags_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_exposure_list_presence_tags_by_dtxsid.html">get_exposure_list_presence_tags_by_dtxsid</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span><span class="op">)</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table table-striped" style="margin-left: auto; margin-right: auto;">
@@ -1505,23 +1565,26 @@ Europe; Food contact items
 </tbody>
 </table>
 </div>
-<div class="section level4">
-<h4 id="exposure-predictions">Exposure Predictions<a class="anchor" aria-label="anchor" href="#exposure-predictions"></a>
-</h4>
-<p>There are two functions that provide access to exposure prediction
+</div>
+</div>
+<div class="section level2">
+<h2 id="exposure-predictions">Exposure Predictions<a class="anchor" aria-label="anchor" href="#exposure-predictions"></a>
+</h2>
+<p>There are two endpoints that provide access to exposure prediction
 data. The first provides general information on exposure pathways while
 the second provides exposure predictions from a variety of exposure
-models. The general information corresponds to SEEM3 predictions of
-exposure pathways, while the exposure predictions feature SEEM2
-predictions broken down by demographic groups, general consensus
-predictions from SEEM3, and in some cases additional exposure
-predictions from other models</p>
-<div class="section level5">
-<h5 id="general-exposure-predictions">General Exposure Predictions<a class="anchor" aria-label="anchor" href="#general-exposure-predictions"></a>
-</h5>
+models. The general information from the first endpoint corresponds to
+SEEM3 consensus predictions of exposure pathways. The exposure
+predictions from the second endpoint feature SEEM2 predictions broken
+down by demographic groups, general consensus exposure rate predictions
+from SEEM3, and in some cases additional exposure predictions from other
+models</p>
+<div class="section level3">
+<h3 id="general-exposure-predictions">General Exposure Predictions<a class="anchor" aria-label="anchor" href="#general-exposure-predictions"></a>
+</h3>
 <p><code><a href="../reference/get_general_exposure_prediction.html">get_general_exposure_prediction()</a></code> returns general
 exposure information for a given chemical.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bpa_general_exposure</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_general_exposure_prediction.html">get_general_exposure_prediction</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">bpa_general_exposure</span><span class="op">)</span></span>
 <span><span class="co">#&gt;           dtxsid productionVolume  units stockholmConvention probabilityDietary</span></span>
@@ -1529,13 +1592,13 @@ exposure information for a given chemical.</p>
 <span><span class="co">#&gt; 1: DTXSID7020182          2780000 kg/day                   0                  1</span></span>
 <span><span class="co">#&gt; 5 variable(s) not shown: [probabilityResidential &lt;num&gt;, probabilityPesticde &lt;num&gt;, probabilityIndustrial &lt;num&gt;, dataVersion &lt;lgcl&gt;, importDate &lt;char&gt;]</span></span></code></pre></div>
 </div>
-<div class="section level5">
-<h5 id="demographic-exposure-predictions">Demographic Exposure Predictions<a class="anchor" aria-label="anchor" href="#demographic-exposure-predictions"></a>
-</h5>
+<div class="section level3">
+<h3 id="demographic-exposure-predictions">Demographic Exposure Predictions<a class="anchor" aria-label="anchor" href="#demographic-exposure-predictions"></a>
+</h3>
 <p><code><a href="../reference/get_demographic_exposure_prediction.html">get_demographic_exposure_prediction()</a></code> returns exposure
 prediction information split across different demographics for a given
 chemical.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bpa_demographic_exposure</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_demographic_exposure_prediction.html">get_demographic_exposure_prediction</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span><span class="op">)</span></span>
 <span><span class="va">bpa_demographic_exposure</span></span>
 <span><span class="co">#&gt;        id        dtxsid        demographic       predictor       median</span></span>
@@ -1619,8 +1682,6 @@ chemical.</p>
 <span><span class="co">#&gt; 18 2024-06-13T19:25:16.277317Z</span></span>
 <span><span class="co">#&gt; 19 2024-06-13T19:25:16.277317Z</span></span></code></pre></div>
 </div>
-</div>
-</div>
 <div class="section level3">
 <h3 id="batch-search">Batch Search<a class="anchor" aria-label="anchor" href="#batch-search"></a>
 </h3>
@@ -1638,49 +1699,7 @@ column representing a functional use category associated to at least one
 input chemical. The other batch functions return a named list of
 data.frames or data.tables, the names corresponding to the unique
 chemicals input and the data.frames or data.tables corresponding to the
-information to each individual chemical.</p>
-</div>
-<div class="section level3">
-<h3 id="functional-use-probability-batch">Functional Use Probability Batch<a class="anchor" aria-label="anchor" href="#functional-use-probability-batch"></a>
-</h3>
-<p>We demonstrate how the individual results differ from the batch
-results when retrieving functional use probabilities.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">bpa_prob</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_exposure_functional_use_probability.html">get_exposure_functional_use_probability</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span><span class="op">)</span></span>
-<span><span class="va">caf_prob</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_exposure_functional_use_probability.html">get_exposure_functional_use_probability</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID0020232'</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">bpa_caf_prob</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_exposure_functional_use_probability_batch.html">get_exposure_functional_use_probability_batch</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'DTXSID7020182'</span>, <span class="st">'DTXSID0020232'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">#&gt;    harmonizedFunctionalUse probability</span></span>
-<span><span class="co">#&gt; 1            antimicrobial      0.3722</span></span>
-<span><span class="co">#&gt; 2              antioxidant      0.8941</span></span>
-<span><span class="co">#&gt; 3                 catalyst      0.2031</span></span>
-<span><span class="co">#&gt; 4                 colorant      0.1560</span></span>
-<span><span class="co">#&gt; 5              crosslinker      0.7743</span></span>
-<span><span class="co">#&gt; 6          flame_retardant      0.2208</span></span>
-<span><span class="co">#&gt; 7                flavorant      0.0314</span></span>
-<span><span class="co">#&gt; 8                fragrance      0.2071</span></span>
-<span><span class="co">#&gt; 9          heat_stabilizer      0.5119</span></span>
-<span><span class="co">#&gt; 10        skin_conditioner      0.1168</span></span>
-<span><span class="co">#&gt; 11         skin_protectant      0.3306</span></span>
-<span><span class="co">#&gt; 12             uv_absorber      0.8046</span></span></code></pre>
-<pre><code><span><span class="co">#&gt;   harmonizedFunctionalUse probability</span></span>
-<span><span class="co">#&gt; 1           antimicrobial      0.4808</span></span>
-<span><span class="co">#&gt; 2                  buffer      0.6370</span></span>
-<span><span class="co">#&gt; 3                colorant      0.3962</span></span>
-<span><span class="co">#&gt; 4        skin_conditioner      0.9821</span></span></code></pre>
-<pre><code><span><span class="co">#&gt;           DTXSID antimicrobial antioxidant catalyst colorant crosslinker</span></span>
-<span><span class="co">#&gt;           &lt;char&gt;         &lt;num&gt;       &lt;num&gt;    &lt;num&gt;    &lt;num&gt;       &lt;num&gt;</span></span>
-<span><span class="co">#&gt; 1: DTXSID7020182        0.3722      0.8941   0.2031   0.1560      0.7743</span></span>
-<span><span class="co">#&gt; 2: DTXSID0020232        0.4808          NA       NA   0.3962          NA</span></span>
-<span><span class="co">#&gt; 8 variable(s) not shown: [flame_retardant &lt;num&gt;, flavorant &lt;num&gt;, fragrance &lt;num&gt;, heat_stabilizer &lt;num&gt;, skin_conditioner &lt;num&gt;, skin_protectant &lt;num&gt;, uv_absorber &lt;num&gt;, buffer &lt;num&gt;]</span></span></code></pre>
-<p>Observe that Caffeine only has probabilities assigned to four
-functional use categories while Bisphenol A has probabilities assigned
-to twelve categories. For single chemical search, functional use
-categories denote the row. However, when using the batch search
-function, all reported categories are included as columns, with rows
-corresponding to each chemical. If a chemical does not have a
-probability associated to a functional use, the corresponding entry is
-given by an NA.</p>
+information for each individual chemical.</p>
 </div>
 </div>
 <div class="section level2">
