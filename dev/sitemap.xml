@@ -1,10 +1,11 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://usepa.github.io/ctxR/dev/CONTRIBUTING.html</loc></url>
 <url><loc>https://usepa.github.io/ctxR/dev/LICENSE.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/dev/articles/Bioactivity.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/dev/articles/Chemical.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/dev/articles/Exposure.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/dev/articles/Hazard.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/dev/articles/Introduction.html</loc></url>
+<url><loc>https://usepa.github.io/ctxR/dev/articles/ctxR_01_Introduction.html</loc></url>
+<url><loc>https://usepa.github.io/ctxR/dev/articles/ctxR_02_Chemical.html</loc></url>
+<url><loc>https://usepa.github.io/ctxR/dev/articles/ctxR_03_Bioactivity.html</loc></url>
+<url><loc>https://usepa.github.io/ctxR/dev/articles/ctxR_04_Exposure.html</loc></url>
+<url><loc>https://usepa.github.io/ctxR/dev/articles/ctxR_05_Hazard.html</loc></url>
 <url><loc>https://usepa.github.io/ctxR/dev/articles/index.html</loc></url>
 <url><loc>https://usepa.github.io/ctxR/dev/authors.html</loc></url>
 <url><loc>https://usepa.github.io/ctxR/dev/index.html</loc></url>

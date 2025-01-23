@@ -11,8 +11,8 @@
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Utilities for Interacting with the CTX APIs">
-<meta name="description" content="Access chemical, hazard, bioactivity, and exposure data from the Computational Toxicology and Exposure (CTX) APIs &lt;https://api-ccte.epa.gov/docs/&gt;. ctxR was developed to streamline the process of accessing the information available through the CTX APIs without requiring prior knowledge of how to use APIs. Most data is also available on the CompTox Chemical Dashboard (CCD) &lt;https://comptox.epa.gov/dashboard/&gt; and other resources found at the EPA Computational Toxicology and Exposure Online Resources &lt;https://www.epa.gov/comptox-tools&gt;.">
-<meta property="og:description" content="Access chemical, hazard, bioactivity, and exposure data from the Computational Toxicology and Exposure (CTX) APIs &lt;https://api-ccte.epa.gov/docs/&gt;. ctxR was developed to streamline the process of accessing the information available through the CTX APIs without requiring prior knowledge of how to use APIs. Most data is also available on the CompTox Chemical Dashboard (CCD) &lt;https://comptox.epa.gov/dashboard/&gt; and other resources found at the EPA Computational Toxicology and Exposure Online Resources &lt;https://www.epa.gov/comptox-tools&gt;.">
+<meta name="description" content="Access chemical, hazard, bioactivity, and exposure data from the Computational Toxicology and Exposure (CTX) APIs &lt;https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis&gt;. ctxR was developed to streamline the process of accessing the information available through the CTX APIs without requiring prior knowledge of how to use APIs. Most data is also available on the CompTox Chemical Dashboard (CCD) &lt;https://comptox.epa.gov/dashboard/&gt; and other resources found at the EPA Computational Toxicology and Exposure Online Resources &lt;https://www.epa.gov/comptox-tools&gt;.">
+<meta property="og:description" content="Access chemical, hazard, bioactivity, and exposure data from the Computational Toxicology and Exposure (CTX) APIs &lt;https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis&gt;. ctxR was developed to streamline the process of accessing the information available through the CTX APIs without requiring prior knowledge of how to use APIs. Most data is also available on the CompTox Chemical Dashboard (CCD) &lt;https://comptox.epa.gov/dashboard/&gt; and other resources found at the EPA Computational Toxicology and Exposure Online Resources &lt;https://www.epa.gov/comptox-tools&gt;.">
 <meta name="robots" content="noindex">
 </head>
 <body>
@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="index.html">ctxR</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.0.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,11 +36,11 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="articles/Bioactivity.html">ctxR: Bioactivity API</a></li>
-    <li><a class="dropdown-item" href="articles/Chemical.html">ctxR: Chemical API</a></li>
-    <li><a class="dropdown-item" href="articles/Exposure.html">ctxR: Exposure API</a></li>
-    <li><a class="dropdown-item" href="articles/Hazard.html">ctxR: Hazard API</a></li>
-    <li><a class="dropdown-item" href="articles/Introduction.html">ctxR: Utilities for Interacting with the CTX APIs in R</a></li>
+<li><a class="dropdown-item" href="articles/ctxR_01_Introduction.html">ctxR: Utilities for Interacting with the CTX APIs in R</a></li>
+    <li><a class="dropdown-item" href="articles/ctxR_02_Chemical.html">ctxR: Chemical API</a></li>
+    <li><a class="dropdown-item" href="articles/ctxR_03_Bioactivity.html">ctxR: Bioactivity API</a></li>
+    <li><a class="dropdown-item" href="articles/ctxR_04_Exposure.html">ctxR: Exposure API</a></li>
+    <li><a class="dropdown-item" href="articles/ctxR_05_Hazard.html">ctxR: Hazard API</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
@@ -67,9 +67,9 @@
 <div class="section level2">
 <h2 id="welcome-to-the-github-repository-for-the-ctxr-package">Welcome to the GitHub repository for the ctxR package<a class="anchor" aria-label="anchor" href="#welcome-to-the-github-repository-for-the-ctxr-package"></a>
 </h2>
-<p><a href="https://cran.r-project.org/web/packages/ctxR/index.html" class="external-link"><img src="articles/Pictures/ctxR_hex.png" width="200" align="right"></a></p>
+<p><a href="https://CRAN.R-project.org/package=ctxR" class="external-link"><img src="articles/Pictures/ctxR_hex.png" width="200" align="right"></a></p>
 <p>ctxR was developed to streamline the process of accessing the information available through the <a href="https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis" class="external-link">Computational Toxicology and Exposure (CTX) APIs</a> without requiring prior knowledge of how to use APIs. Chemical, hazard, bioactivity, and exposure data in available from the CTX APIs. Most data is also available on the <a href="https://comptox.epa.gov/dashboard/" class="external-link">CompTox Chemical Dashboard (CCD)</a> or within other <a href="https://www.epa.gov/comptox-tools" class="external-link">Computational Toxicology and Exposure Online Resources</a>.</p>
-<p>If you are interested in contributing or want to report a bug, please submit a issue or start a discussion. See <a href="CONTRIBUTING.html">CONTRIBUTING</a> for more information.</p>
+<p>If you are interested in contributing or want to report a bug, please submit a issue or start a discussion.</p>
 <p>To install the current development version, run the following command:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"USEPA/ctxR"</span>)</span></code></pre></div>
 <p>Disclaimer: Users don’t need a API key to install ctxR, but will need to supply an API key to use ctxR and access data. A <em>FREE</em> API key can be obtained by emailing the <a href="mailto:ccte_api@epa.gov">CTX API Admins</a>.</p>
@@ -92,6 +92,12 @@
 </ul>
 </div>
 
+<div class="community">
+<h2 data-toc-skip>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
+</ul>
+</div>
 
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>

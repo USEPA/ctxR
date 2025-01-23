@@ -2,12 +2,12 @@ pandoc: 3.1.11
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
-  Bioactivity: Bioactivity.html
-  Chemical: Chemical.html
-  Exposure: Exposure.html
-  Hazard: Hazard.html
-  Introduction: Introduction.html
-last_built: 2024-11-21T15:23Z
+  ctxR_01_Introduction: ctxR_01_Introduction.html
+  ctxR_02_Chemical: ctxR_02_Chemical.html
+  ctxR_03_Bioactivity: ctxR_03_Bioactivity.html
+  ctxR_04_Exposure: ctxR_04_Exposure.html
+  ctxR_05_Hazard: ctxR_05_Hazard.html
+last_built: 2025-01-23T14:23Z
 urls:
   reference: https://usepa.github.io/ctxR/reference
   article: https://usepa.github.io/ctxR/articles
