@@ -134,6 +134,419 @@ get_ecotox_hazard_by_dtxsid <- function(DTXSID = NULL,
 
 }
 
+get_toxref_observations_by_study_type <- function(type = NULL,
+                                                  API_key = NULL,
+                                                  Server = hazard_api_server,
+                                                  verbose = FALSE){
+  if (is.null(type))
+    stop('Please input a Study Type!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/toxref/observations/search/by-study-type/', type),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+
+}
+
+
+get_toxref_observations_by_study_id <- function(id = NULL,
+                                                API_key = NULL,
+                                                Server = hazard_api_server,
+                                                verbose = FALSE){
+  if (is.null(id))
+    stop('Please input a Study ID!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/toxref/observations/search/by-study-id/', id),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+
+}
+
+
+get_toxref_observations_by_dtxsid <- function(DTXSID = NULL,
+                                                API_key = NULL,
+                                                Server = hazard_api_server,
+                                                verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input a DTXSID!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/toxref/observations/search/by-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+
+}
+
+
+get_toxref_effects_by_study_type <- function(type = NULL,
+                                             Projection = 'ToxRefEffectsSummary',
+                                             API_key = NULL,
+                                             Server = hazard_api_server,
+                                             verbose = FALSE){
+  if (is.null(type))
+    stop('Please input a Study Type!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  projection_entries <- c('ToxRefEffectsSummary',
+                          'ToxRefEffectsAll',
+                          '')
+  index <- -1
+  if (!is.character(Projection)){
+    warning('Setting `Projection` to empty string!')
+    Projection <- ''
+  } else {
+    index <- which(projection_entries %in% Projection)
+    if (length(index) != 1){
+      warning('Setting `Projection` to empty string!')
+      Projection <- ''
+      index <- -1
+    }
+  }
+
+  projection_url <- ifelse(index %in% c(-1,3), '', paste0('?projection=', projection_entries[index]))
+
+
+  response <- httr::GET(url = paste0(Server, '/toxref/effects/search/by-study-type/', type, projection_url),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+
+}
+
+
+get_toxref_effects_by_study_id <- function(id = NULL,
+                                           Projection = 'ToxRefEffectsSummary',
+                                           API_key = NULL,
+                                           Server = hazard_api_server,
+                                           verbose = FALSE){
+  if (is.null(id))
+    stop('Please input a Study ID!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  projection_entries <- c('ToxRefEffectsSummary',
+                          'ToxRefEffectsAll',
+                          '')
+  index <- -1
+  if (!is.character(Projection)){
+    warning('Setting `Projection` to empty string!')
+    Projection <- ''
+  } else {
+    index <- which(projection_entries %in% Projection)
+    if (length(index) != 1){
+      warning('Setting `Projection` to empty string!')
+      Projection <- ''
+      index <- -1
+    }
+  }
+
+  projection_url <- ifelse(index %in% c(-1,3), '', paste0('?projection=', projection_entries[index]))
+
+
+  response <- httr::GET(url = paste0(Server, '/toxref/effects/search/by-study-id/', id, projection_url),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+
+}
+
+
+get_toxref_effects_by_dtxsid <- function(DTXSID = NULL,
+                                         Projection = 'ToxRefEffectsSummary',
+                                         API_key = NULL,
+                                         Server = hazard_api_server,
+                                         verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input a DTXSID!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  projection_entries <- c('ToxRefEffectsSummary',
+                          'ToxRefEffectsAll',
+                          '')
+  index <- -1
+  if (!is.character(Projection)){
+    warning('Setting `Projection` to empty string!')
+    Projection <- ''
+  } else {
+    index <- which(projection_entries %in% Projection)
+    if (length(index) != 1){
+      warning('Setting `Projection` to empty string!')
+      Projection <- ''
+      index <- -1
+    }
+  }
+
+  projection_url <- ifelse(index %in% c(-1,3), '', paste0('?projection=', projection_entries[index]))
+
+  response <- httr::GET(url = paste0(Server, '/toxref/effects/search/by-dtxsid/', DTXSID, projection_url),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+
+}
+
+get_toxref_data_by_study_type <- function(type = NULL,
+                                          Projection = 'ToxRefDataSummary',
+                                          API_key = NULL,
+                                          Server = hazard_api_server,
+                                          verbose = FALSE){
+  if (is.null(type))
+    stop('Please input a Study Type!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  projection_entries <- c('ToxRefDataSummary',
+                          'ToxRefDataAll',
+                          '')
+  index <- -1
+  if (!is.character(Projection)){
+    warning('Setting `Projection` to empty string!')
+    Projection <- ''
+  } else {
+    index <- which(projection_entries %in% Projection)
+    if (length(index) != 1){
+      warning('Setting `Projection` to empty string!')
+      Projection <- ''
+      index <- -1
+    }
+  }
+
+  projection_url <- ifelse(index %in% c(-1,3), '', paste0('?projection=', projection_entries[index]))
+
+
+  response <- httr::GET(url = paste0(Server, '/toxref/data/search/by-study-type/', type, projection_url),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+
+}
+
+
+get_toxref_data_by_study_id <- function(id = NULL,
+                                        Projection = 'ToxRefDataSummary',
+                                        API_key = NULL,
+                                        Server = hazard_api_server,
+                                        verbose = FALSE){
+  if (is.null(id))
+    stop('Please input a Study ID!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  projection_entries <- c('ToxRefDataSummary',
+                          'ToxRefDataAll',
+                          '')
+  index <- -1
+  if (!is.character(Projection)){
+    warning('Setting `Projection` to empty string!')
+    Projection <- ''
+  } else {
+    index <- which(projection_entries %in% Projection)
+    if (length(index) != 1){
+      warning('Setting `Projection` to empty string!')
+      Projection <- ''
+      index <- -1
+    }
+  }
+
+  projection_url <- ifelse(index %in% c(-1,3), '', paste0('?projection=', projection_entries[index]))
+
+
+  response <- httr::GET(url = paste0(Server, '/toxref/data/search/by-study-id/', id, projection_url),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+
+}
+
+
+get_toxref_data_by_dtxsid <- function(DTXSID = NULL,
+                                      Projection = 'ToxRefDataSummary',
+                                      API_key = NULL,
+                                      Server = hazard_api_server,
+                                      verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input a DTXSID!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  projection_entries <- c('ToxRefDataSummary',
+                          'ToxRefDataAll',
+                          '')
+  index <- -1
+  if (!is.character(Projection)){
+    warning('Setting `Projection` to empty string!')
+    Projection <- ''
+  } else {
+    index <- which(projection_entries %in% Projection)
+    if (length(index) != 1){
+      warning('Setting `Projection` to empty string!')
+      Projection <- ''
+      index <- -1
+    }
+  }
+
+  projection_url <- ifelse(index %in% c(-1,3), '', paste0('?projection=', projection_entries[index]))
+
+  response <- httr::GET(url = paste0(Server, '/toxref/data/search/by-dtxsid/', DTXSID, projection_url),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+
+}
+
 
 #' Get skin and eye hazard
 #'
