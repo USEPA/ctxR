@@ -97,6 +97,87 @@ human_hazard_by_dtxsid <- get_human_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
 ecotox_hazard_by_dtxsid <- get_ecotox_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
 ```
 
+# Tox Ref Observation Resource
+
+## Get Tox Ref Observations by Study Type
+
+`get_toxref_observations_by_study_type()` retrieves Tox Ref Observation data by study type.
+
+```{r ctxR Tox Ref Obs Study Type, message=FALSE, eval=FALSE}
+tox_ref_observation_by_study_type <- get_toxref_observations_by_study_type(type = 'DEV')
+```
+
+
+## Get Tox Ref Observations by Study ID
+
+`get_toxref_observations_by_study_id()` retrieves Tox Ref Observation data by study id.
+
+```{r ctxR Tox Ref Obs Study ID, message=FALSE, eval=FALSE}
+tox_ref_observation_by_study_id <- get_toxref_observations_by_study_id(id = 63)
+```
+
+## Get Tox Ref Observations by DTXSID
+
+`get_toxref_observations_by_study_type()` retrieves Tox Ref Observation data by DTXSID.
+
+```{r ctxR Tox Ref Obs DTXSID, message=FALSE, eval=FALSE}
+tox_ref_observation_by_dtxsid <- get_toxref_observations_by_dtxsid(DTXSID = 'DTXSID7020182')
+```
+
+# Tox Ref Effects Resource
+
+## Get Tox Ref Effects by Study Type
+
+`get_toxref_effects_by_study_type()` retrieves Tox Ref Effect data by study type. Alternate parameter "projection" determines the type of data returned. Examples for each are provided below:
+
+```{r ctxR Tox Ref Effects Study Type, message=FALSE, eval=FALSE}
+tox_ref_effects_by_study_type <- get_toxref_effects_by_study_type(type = 'DEV')
+```
+
+
+## Get Tox Ref Effects by Study ID
+
+`get_toxref_effects_by_study_id()` retrieves Tox Ref Effect data by study id. Alternate parameter "projection" determines the type of data returned. Examples for each are provided below:
+
+```{r ctxR Tox Ref Effects Study ID, message=FALSE, eval=FALSE}
+tox_ref_effects_by_study_id <- get_toxref_effects_by_study_id(id = 63)
+```
+
+## Get Tox Ref Effects by DTXSID
+
+`get_toxref_effects_by_study_type()` retrieves Tox Ref Effect data by DTXSID. Alternate parameter "projection" determines the type of data returned. Examples for each are provided below:
+
+```{r ctxR Tox Ref Effects DTXSID, message=FALSE, eval=FALSE}
+tox_ref_effects_by_dtxsid <- get_toxref_effects_by_dtxsid(DTXSID = 'DTXSID7020182')
+```
+
+# Tox Ref Data Resource
+
+## Get Tox Ref Data by Study Type
+
+`get_toxref_data_by_study_type()` retrieves Tox Ref Data by study type. Alternate parameter "projection" determines the type of data returned. Examples for each are provided below:
+
+```{r ctxR Tox Ref Data Study Type, message=FALSE, eval=FALSE}
+tox_ref_data_by_study_type <- get_toxref_data_by_study_type(type = 'DEV')
+```
+
+
+## Get Tox Ref Data by Study ID
+
+`get_toxref_data_by_study_id()` retrieves Tox Ref Data by study id. Alternate parameter "projection" determines the type of data returned. Examples for each are provided below:
+
+```{r ctxR Tox Ref Data Study ID, message=FALSE, eval=FALSE}
+tox_ref_data_by_study_id <- get_toxref_data_by_study_id(id = 63)
+```
+
+## Get Tox Ref Data by DTXSID
+
+`get_toxref_data_by_study_type()` retrieves Tox Ref Data by DTXSID. Alternate parameter "projection" determines the type of data returned. Examples for each are provided below:
+
+```{r ctxR Tox Ref Data DTXSID, message=FALSE, eval=FALSE}
+tox_ref_data_by_dtxsid <- get_toxref_data_by_dtxsid(DTXSID = 'DTXSID7020182')
+```
+
 # Skin Eye Resource
 
 `get_skin_eye_hazard()` retrieves hazard data specific to skin and eye hazard.
