@@ -7,7 +7,7 @@
 #' @param Projection The format and chemical detail data returned. Allowed
 #'   values are 'chemicaldetailall', 'chemicaldetailstandard',
 #'   chemicalidentifier', 'chemicalstructure', 'ntatoolkit',
-#'   ccdchemicaldetails'. If left empty or there is a
+#'   ccdchemicaldetails', 'compact'. If left empty or there is a
 #'   mismatch, the default format will be 'chemicaldetailstandard'.
 #' @param API_key The user-specific API key
 #' @param rate_limit Number of seconds to wait between each request
@@ -137,7 +137,8 @@ get_chemical_details_batch_2 <- function(DTXSID = NULL,
                             'chemicalidentifier',
                             'chemicalstructure',
                             'ntatoolkit',
-                            'ccdchemicaldetails')
+                            'ccdchemicaldetails',
+                            'compact')
     index <- 2
     if (!is.character(Projection)){
       warning('Setting `Projection` to `chemicaldetailstandard`')

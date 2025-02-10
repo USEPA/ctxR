@@ -21,7 +21,7 @@ get_chemical_details_batch(
 \item{Projection}{The format and chemical detail data returned. Allowed
 values are 'chemicaldetailall', 'chemicaldetailstandard',
 chemicalidentifier', 'chemicalstructure', 'ntatoolkit',
-ccdchemicaldetails'. If left empty or there is a
+ccdchemicaldetails', 'compact'. If left empty or there is a
 mismatch, the default format will be 'chemicaldetailstandard'.}
 
 \item{API_key}{The user-specific API key}
