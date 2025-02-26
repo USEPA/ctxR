@@ -450,6 +450,159 @@ null_to_na <- function(data_list){
   })
 }
 
+get_aggregate_records_by_dtxsid <- function(DTXSID = NULL,
+                                            API_key = NULL,
+                                            Server = exposure_api_server,
+                                            verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input an DTXSID!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/mmdb/aggregate/by-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
+get_aggregate_records_by_medium <- function(Medium = NULL,
+                                            API_key = NULL,
+                                            Server = exposure_api_server,
+                                            verbose = FALSE){
+  if (is.null(Medium))
+    stop('Please input a Medium!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/mmdb/aggregate/by-medium/', Medium),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
+
+get_single_sample_records_by_dtxsid <- function(DTXSID = NULL,
+                                                API_key = NULL,
+                                                Server = exposure_api_server,
+                                                verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input an DTXSID!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/mmdb/single-sample/by-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
+get_single_sample_records_by_medium <- function(Medium = NULL,
+                                                API_key = NULL,
+                                                Server = exposure_api_server,
+                                                verbose = FALSE){
+  if (is.null(Medium))
+    stop('Please input a Medium!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/mmdb/single-sample/by-medium/', Medium),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
+get_medium_categories <- function(API_key = NULL,
+                                  Server = exposure_api_server,
+                                  verbose = FALSE){
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/mmdb/mediums'),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
 #' Exposure API Endpoint status
 #'
 #' @return Status of Exposure API Endpoints
