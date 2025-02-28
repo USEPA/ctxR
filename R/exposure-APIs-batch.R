@@ -526,3 +526,224 @@ get_demographic_exposure_prediction_batch <- function(DTXSID = NULL,
     stop('Please input a list of DTXSIDs!')
   }
 }
+
+
+get_aggregate_records_by_dtxsid_batch <- function(DTXSID = NULL,
+                                                  API_key = NULL,
+                                                  rate_limit = 0L,
+                                                  Server = exposure_api_server,
+                                                  verbose = FALSE){
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+    results <- lapply(DTXSID, function(t){
+      Sys.sleep(rate_limit)
+      attempt <- tryCatch(
+        {
+          get_aggregate_records_by_dtxsid(DTXSID = t,
+                                          API_key = API_key,
+                                          verbose = verbose,
+                                          Server = Server)
+        },
+        error = function(cond){
+          if (verbose) {
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
+        }
+      )
+      return(attempt)
+    }
+    )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
+    names(results) <- DTXSID
+    return(results)
+  } else {
+    stop('Please input a list of DTXSIDs!')
+  }
+}
+
+get_aggregate_records_by_medium_batch <- function(Medium = NULL,
+                                                  API_key = NULL,
+                                                  rate_limit = 0L,
+                                                  Server = exposure_api_server,
+                                                  verbose = FALSE){
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(Medium)){
+    if (!is.character(Medium) & !all(sapply(Medium, is.character))){
+      stop('Please input a character list for Medium!')
+    }
+    Medium <- unique(Medium)
+    results <- lapply(Medium, function(t){
+      Sys.sleep(rate_limit)
+      attempt <- tryCatch(
+        {
+          get_aggregate_records_by_medium(Medium = t,
+                                          API_key = API_key,
+                                          verbose = verbose,
+                                          Server = Server)
+        },
+        error = function(cond){
+          if (verbose) {
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
+        }
+      )
+      return(attempt)
+    }
+    )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
+    names(results) <- Medium
+    return(results)
+  } else {
+    stop('Please input a list of Media!')
+  }
+}
+
+get_single_sample_records_by_dtxsid_batch <- function(DTXSID = NULL,
+                                                      API_key = NULL,
+                                                      rate_limit = 0L,
+                                                      Server = exposure_api_server,
+                                                      verbose = FALSE){
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+    results <- lapply(DTXSID, function(t){
+      Sys.sleep(rate_limit)
+      attempt <- tryCatch(
+        {
+          get_single_sample_records_by_dtxsid(DTXSID = t,
+                                              API_key = API_key,
+                                              verbose = verbose,
+                                              Server = Server)
+        },
+        error = function(cond){
+          if (verbose) {
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
+        }
+      )
+      return(attempt)
+    }
+    )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
+    names(results) <- DTXSID
+    return(results)
+  } else {
+    stop('Please input a list of DTXSIDs!')
+  }
+}
+
+get_single_sample_records_by_medium_batch <- function(Medium = NULL,
+                                                      API_key = NULL,
+                                                      rate_limit = 0L,
+                                                      Server = exposure_api_server,
+                                                      verbose = FALSE){
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(Medium)){
+    if (!is.character(Medium) & !all(sapply(Medium, is.character))){
+      stop('Please input a character list for Medium!')
+    }
+    Medium <- unique(Medium)
+    results <- lapply(Medium, function(t){
+      Sys.sleep(rate_limit)
+      attempt <- tryCatch(
+        {
+          get_single_sample_records_by_medium(Medium = t,
+                                              API_key = API_key,
+                                              verbose = verbose,
+                                              Server = Server)
+        },
+        error = function(cond){
+          if (verbose) {
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
+        }
+      )
+      return(attempt)
+    }
+    )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
+    names(results) <- Medium
+    return(results)
+  } else {
+    stop('Please input a list of Media!')
+  }
+}
