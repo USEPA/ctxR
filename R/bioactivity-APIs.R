@@ -289,6 +289,39 @@ get_annotation_by_aeid <- function(AEID = NULL,
 
 }
 
+get_chemicals_by_assay <- function(AEID = NULL,
+                                   API_key = NULL,
+                                   Server = bioactivity_api_server,
+                                   verbose = FALSE){
+  if (is.null(AEID))
+    stop('Please input an AEID!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/assay/chemicals/search/by-aeid/', AEID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(httr::content(response, as = 'text', encoding = "UTF-8"))
+  } else {
+    if (verbose){
+      print('The request was successful but there is no information to return...')
+    }
+  }
+  return()
+}
+
+
+
 #' Bioactivity API Endpoint status
 #'
 #' @return Status of Bioactivity API Endpoints
