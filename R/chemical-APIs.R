@@ -1914,6 +1914,71 @@ get_chemical_synonym <- function(DTXSID = NULL,
   return()
 }
 
+get_chemical_property_model_by_dtxsid <- function(DTXSID = NULL,
+                                                  API_key = NULL,
+                                                  Server = chemical_api_server,
+                                                  verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input a non-null value for DTXSID!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/property/model/reports/search/by-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+
+}
+
+get_chemical_property_model_file_by_model_id <- function(Model_Id = NULL,
+                                                  API_key = NULL,
+                                                  Server = chemical_api_server,
+                                                  verbose = FALSE){
+  if (is.null(Model_Id))
+    stop('Please input a non-null value for Model_Id!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/property/model/image/search/', Model_Id),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+
+}
+
+
 #' Chemical API Endpoint status
 #'
 #' @return Status of Chemical API Endpoints
