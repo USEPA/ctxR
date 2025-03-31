@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ctxR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -686,7 +686,7 @@ a list (or vector) of assay endpoint ids (aeids).</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">assays</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_annotation_by_aeid_batch.html">get_annotation_by_aeid_batch</a></span><span class="op">(</span>AEID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">759</span>,<span class="fl">700</span>,<span class="fl">891</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co"># return is in list form by aeid, convert to table for output</span></span>
-<span><span class="va">assays</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/data.table/man/rbindlist.html" class="external-link">rbindlist</a></span><span class="op">(</span><span class="va">assays</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">assays</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/rbindlist.html" class="external-link">rbindlist</a></span><span class="op">(</span><span class="va">assays</span><span class="op">)</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
 <table class="table table table-striped" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
@@ -12884,7 +12884,7 @@ API data in a more familiar, ‘invitrodb’-like format.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Paul Kruse, Caroline Ring.</p>
+  <p>Developed by Paul Kruse, Caroline Ring, Jason Brown.</p>
 </div>
 
 <div class="pkgdown-footer-right">

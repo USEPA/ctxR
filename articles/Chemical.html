@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ctxR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -595,10 +595,10 @@ slightly different syntax. For more information, please refer to <a href="https:
 <p>Next, retrieve the list of chemicals associated with each list.</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ccl4</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_chemicals_in_list.html">get_chemicals_in_list</a></span><span class="op">(</span><span class="st">'ccl4'</span><span class="op">)</span></span>
-<span><span class="va">ccl4</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/data.table/man/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">ccl4</span><span class="op">)</span></span>
+<span><span class="va">ccl4</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">ccl4</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">natadb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_chemicals_in_list.html">get_chemicals_in_list</a></span><span class="op">(</span><span class="st">'NATADB'</span><span class="op">)</span></span>
-<span><span class="va">natadb</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/data.table/man/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">natadb</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">natadb</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">natadb</span><span class="op">)</span></span></code></pre></div>
 <p>We examine the dimensions of the data, the column names, and display
 a single row for illustrative purposes.</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
@@ -687,15 +687,30 @@ values for each grouping, using the chemical identifier ‘DTXSID1037567’
 for this example, the 25th chemical in CCL4.</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">ccl4_phys_chem</span><span class="op">[</span><span class="va">dtxsid</span> <span class="op">==</span> <span class="va">ccl4</span><span class="op">$</span><span class="va">dtxsid</span><span class="op">[[</span><span class="fl">25</span><span class="op">]</span><span class="op">]</span>, <span class="op">]</span><span class="op">)</span></span>
-<span><span class="co">#&gt;             name       value       id   source               description  propType        unit</span></span>
-<span><span class="co">#&gt;           &lt;char&gt;       &lt;num&gt;    &lt;int&gt;   &lt;char&gt;                    &lt;char&gt;    &lt;char&gt;      &lt;char&gt;</span></span>
-<span><span class="co">#&gt; 1: Boiling Point 4.85890e+02 58771702 EPISUITE &lt;a href='https://www.epa. predicted          °C</span></span>
-<span><span class="co">#&gt; 2: Boiling Point 3.14450e+02 56038082    OPERA OPERA is a free and open  predicted          °C</span></span>
-<span><span class="co">#&gt; 3: Boiling Point 4.04135e+02 55985095     TEST The &lt;a href='https://www. predicted          °C</span></span>
-<span><span class="co">#&gt; 4:       Density 1.24300e+00 48458607 ACD/Labs ACD/Labs physicochemical  predicted      g/cm^3</span></span>
-<span><span class="co">#&gt; 5:       Density 1.32900e+00 55296157     TEST The &lt;a href='https://www. predicted      g/cm^3</span></span>
-<span><span class="co">#&gt; 6:   Henry's Law 4.33964e-10 45640026    OPERA OPERA is a free and open  predicted atm-m3/mole</span></span>
-<span><span class="co">#&gt; 3 variable(s) not shown: [propertyId &lt;char&gt;, dtxsid &lt;char&gt;, dtxcid &lt;char&gt;]</span></span>
+<span><span class="co">#&gt;             name       value       id   source</span></span>
+<span><span class="co">#&gt;           &lt;char&gt;       &lt;num&gt;    &lt;int&gt;   &lt;char&gt;</span></span>
+<span><span class="co">#&gt; 1: Boiling Point 4.85890e+02 58771702 EPISUITE</span></span>
+<span><span class="co">#&gt; 2: Boiling Point 3.14450e+02 56038082    OPERA</span></span>
+<span><span class="co">#&gt; 3: Boiling Point 4.04135e+02 55985095     TEST</span></span>
+<span><span class="co">#&gt; 4:       Density 1.24300e+00 48458607 ACD/Labs</span></span>
+<span><span class="co">#&gt; 5:       Density 1.32900e+00 55296157     TEST</span></span>
+<span><span class="co">#&gt; 6:   Henry's Law 4.33964e-10 45640026    OPERA</span></span>
+<span><span class="co">#&gt;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          description</span></span>
+<span><span class="co">#&gt;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               &lt;char&gt;</span></span>
+<span><span class="co">#&gt; 1:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   &lt;a href='https://www.epa.gov/tsca-screening-tools/epi-suitetm-estimation-program-interface' target='_blank'&gt;EPISUITE Estimation Programs Interface Suite™&lt;/a&gt; is a Windows®-based suite of physical/chemical property and environmental fate estimation programs developed by EPA’s and Syracuse Research Corp.</span></span>
+<span><span class="co">#&gt; 2: OPERA is a free and open source/open data suite of QSAR Models providing predictions and additional information including applicability domain and accuracy assessment, as described in the publication &lt;a href='http://dx.doi.org/10.1186/s13321-018-0263-1'target='_blank'&gt;OPERA models for predicting physicochemical properties and environmental fate endpoints&lt;/a&gt;. All models were built on curated data and standardized chemical structures as described in the publication &lt;a href='http://dx.doi.org/10.1080/1062936X.2016.1253611'target='_blank'&gt;An automated curation procedure for addressing chemical errors and inconsistencies in public datasets used in QSAR modelling&lt;/a&gt;. All OPERA properties are predicted under ambient conditions of 760mm of Hg at 25 degrees Celsius.</span></span>
+<span><span class="co">#&gt; 3:                                                                                                                                                                                                                                                                                                                                                                                                                                                           The &lt;a href='https://www.epa.gov/chemical-research/toxicity-estimation-software-tool-test' target='_blank'&gt;Toxicity Estimation Software Tool (TEST)&lt;/a&gt; is an EPA software application developed to allow users to easily estimate the toxicity of chemicals using Quantitative Structure Activity Relationships (QSARs) methodologies.</span></span>
+<span><span class="co">#&gt; 4:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ACD/Labs physicochemical properties are predicted by the &lt;a href='http://www.acdlabs.com/products/percepta/' target='_blank'&gt;ACD/Labs Percepta Platform&lt;/a&gt;. </span></span>
+<span><span class="co">#&gt; 5:                                                                                                                                                                                                                                                                                                                                                                                                                                                           The &lt;a href='https://www.epa.gov/chemical-research/toxicity-estimation-software-tool-test' target='_blank'&gt;Toxicity Estimation Software Tool (TEST)&lt;/a&gt; is an EPA software application developed to allow users to easily estimate the toxicity of chemicals using Quantitative Structure Activity Relationships (QSARs) methodologies.</span></span>
+<span><span class="co">#&gt; 6: OPERA is a free and open source/open data suite of QSAR Models providing predictions and additional information including applicability domain and accuracy assessment, as described in the publication &lt;a href='http://dx.doi.org/10.1186/s13321-018-0263-1'target='_blank'&gt;OPERA models for predicting physicochemical properties and environmental fate endpoints&lt;/a&gt;. All models were built on curated data and standardized chemical structures as described in the publication &lt;a href='http://dx.doi.org/10.1080/1062936X.2016.1253611'target='_blank'&gt;An automated curation procedure for addressing chemical errors and inconsistencies in public datasets used in QSAR modelling&lt;/a&gt;. All OPERA properties are predicted under ambient conditions of 760mm of Hg at 25 degrees Celsius.</span></span>
+<span><span class="co">#&gt;     propType        unit    propertyId        dtxsid        dtxcid</span></span>
+<span><span class="co">#&gt;       &lt;char&gt;      &lt;char&gt;        &lt;char&gt;        &lt;char&gt;        &lt;char&gt;</span></span>
+<span><span class="co">#&gt; 1: predicted          °C boiling-point DTXSID1037567 DTXCID9017567</span></span>
+<span><span class="co">#&gt; 2: predicted          °C boiling-point DTXSID1037567 DTXCID9017567</span></span>
+<span><span class="co">#&gt; 3: predicted          °C boiling-point DTXSID1037567 DTXCID9017567</span></span>
+<span><span class="co">#&gt; 4: predicted      g/cm^3       density DTXSID1037567 DTXCID9017567</span></span>
+<span><span class="co">#&gt; 5: predicted      g/cm^3       density DTXSID1037567 DTXCID9017567</span></span>
+<span><span class="co">#&gt; 6: predicted atm-m3/mole    henrys-law DTXSID1037567 DTXCID9017567</span></span>
 <span><span class="va">ccl4_phys_chem</span><span class="op">[</span><span class="va">dtxsid</span> <span class="op">==</span> <span class="va">ccl4</span><span class="op">$</span><span class="va">dtxsid</span><span class="op">[[</span><span class="fl">25</span><span class="op">]</span><span class="op">]</span>, <span class="fu">.</span><span class="op">(</span><span class="va">propType</span>, <span class="va">value</span>, <span class="va">unit</span><span class="op">)</span>,</span>
 <span>               by <span class="op">=</span> <span class="fu">.</span><span class="op">(</span><span class="va">propertyId</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="co">#&gt;               propertyId  propType       value        unit</span></span>
@@ -860,170 +875,19 @@ magnitude, log transform the data. This data from both chemical lists
 can also be plotted individually and by property type.</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ccl4_vapor_all</span><span class="op">[</span>, <span class="va">log_transform_mean_vapor_pressure</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">mean_vapor_pressure</span><span class="op">)</span><span class="op">]</span></span>
-<span><span class="co">#&gt;             dtxsid mean_vapor_pressure log_transform_mean_vapor_pressure</span></span>
-<span><span class="co">#&gt;             &lt;char&gt;               &lt;num&gt;                             &lt;num&gt;</span></span>
-<span><span class="co">#&gt;  1:  DTXSID0020153        1.436092e+00                         0.3619259</span></span>
-<span><span class="co">#&gt;  2:  DTXSID0020446        1.211530e-06                       -13.6236263</span></span>
-<span><span class="co">#&gt;  3:  DTXSID0020573        1.016181e-08                       -18.4046290</span></span>
-<span><span class="co">#&gt;  4:  DTXSID0020600        1.060439e+03                         6.9664387</span></span>
-<span><span class="co">#&gt;  5:  DTXSID0020814        1.713402e-08                       -17.8821999</span></span>
-<span><span class="co">#&gt;  6:  DTXSID0021541        3.623345e+03                         8.1951529</span></span>
-<span><span class="co">#&gt;  7:  DTXSID0021917        1.447043e+02                         4.9746920</span></span>
-<span><span class="co">#&gt;  8:  DTXSID0024052        2.579787e-07                       -15.1703889</span></span>
-<span><span class="co">#&gt;  9:  DTXSID1020437        2.153143e+02                         5.3720986</span></span>
-<span><span class="co">#&gt; 10:  DTXSID1021407        9.093477e-04                        -7.0027830</span></span>
-<span><span class="co">#&gt; 11:  DTXSID1021740        6.808950e+00                         1.9182379</span></span>
-<span><span class="co">#&gt; 12:  DTXSID1021798        5.779040e-02                        -2.8509326</span></span>
-<span><span class="co">#&gt; 13:  DTXSID1024174        5.616588e-06                       -12.0897863</span></span>
-<span><span class="co">#&gt; 14:  DTXSID1024338        7.125250e-08                       -16.4570359</span></span>
-<span><span class="co">#&gt; 15:  DTXSID1026164        2.444570e-01                        -1.4087159</span></span>
-<span><span class="co">#&gt; 16:  DTXSID1037484        4.124746e-07                       -14.7010911</span></span>
-<span><span class="co">#&gt; 17:  DTXSID1037486        4.206599e-07                       -14.6814412</span></span>
-<span><span class="co">#&gt; 18:  DTXSID1037567        4.633640e-08                       -16.8873380</span></span>
-<span><span class="co">#&gt; 19:  DTXSID2020684        3.733735e-03                        -5.5903463</span></span>
-<span><span class="co">#&gt; 20:  DTXSID2021028        1.127656e+00                         0.1201408</span></span>
-<span><span class="co">#&gt; 21:  DTXSID2021317        1.563302e+01                         2.7493857</span></span>
-<span><span class="co">#&gt; 22:  DTXSID2021731        2.360838e+02                         5.4641866</span></span>
-<span><span class="co">#&gt; 23:  DTXSID2022333        1.685188e+00                         0.5218768</span></span>
-<span><span class="co">#&gt; 24:  DTXSID2037506        8.393291e-06                       -11.6880778</span></span>
-<span><span class="co">#&gt; 25:  DTXSID2052156        3.878108e-09                       -19.3679185</span></span>
-<span><span class="co">#&gt; 26:  DTXSID3020203        1.876293e+03                         7.5370530</span></span>
-<span><span class="co">#&gt; 27:  DTXSID3020833        2.420272e+02                         5.4890503</span></span>
-<span><span class="co">#&gt; 28:  DTXSID3020964        2.336795e-01                        -1.4538048</span></span>
-<span><span class="co">#&gt; 29:  DTXSID3024366        5.501190e+01                         4.0075495</span></span>
-<span><span class="co">#&gt; 30:  DTXSID3024869        1.885188e-02                        -3.9711425</span></span>
-<span><span class="co">#&gt; 31:  DTXSID3031864        2.479965e-06                       -12.9072661</span></span>
-<span><span class="co">#&gt; 32:  DTXSID3032464        1.727766e-06                       -13.2686813</span></span>
-<span><span class="co">#&gt; 33:  DTXSID3042219        3.106110e+00                         1.1333711</span></span>
-<span><span class="co">#&gt; 34:  DTXSID3074313        1.481020e-11                       -24.9357050</span></span>
-<span><span class="co">#&gt; 35:  DTXSID4020533        4.036368e+01                         3.6979302</span></span>
-<span><span class="co">#&gt; 36:  DTXSID4021503        1.722775e+02                         5.1491065</span></span>
-<span><span class="co">#&gt; 37:  DTXSID4022361        3.226160e-06                       -12.6442179</span></span>
-<span><span class="co">#&gt; 38:  DTXSID4022367        1.643378e-08                       -17.9239267</span></span>
-<span><span class="co">#&gt; 39:  DTXSID4022448        1.773129e-05                       -10.9401797</span></span>
-<span><span class="co">#&gt; 40:  DTXSID4022991        1.440972e-10                       -22.6605333</span></span>
-<span><span class="co">#&gt; 41:  DTXSID4032611        5.263403e-04                        -7.5495627</span></span>
-<span><span class="co">#&gt; 42:  DTXSID4034948        3.744327e-08                       -17.1004389</span></span>
-<span><span class="co">#&gt; 43:  DTXSID5020023        2.545125e+02                         5.5393500</span></span>
-<span><span class="co">#&gt; 44:  DTXSID5020576        5.737673e-09                       -18.9762122</span></span>
-<span><span class="co">#&gt; 45:  DTXSID5020601        1.428200e+00                         0.3564147</span></span>
-<span><span class="co">#&gt; 46:  DTXSID5021207        4.463567e+02                         6.1011185</span></span>
-<span><span class="co">#&gt; 47:  DTXSID5024182        7.171160e+00                         1.9700674</span></span>
-<span><span class="co">#&gt; 48:  DTXSID5039224        7.963770e+02                         6.6800727</span></span>
-<span><span class="co">#&gt; 49: DTXSID50867064        1.522060e-03                        -6.4876906</span></span>
-<span><span class="co">#&gt; 50:  DTXSID6020301        6.007243e+03                         8.7007211</span></span>
-<span><span class="co">#&gt; 51:  DTXSID6020856        2.909907e-01                        -1.2344638</span></span>
-<span><span class="co">#&gt; 52:  DTXSID6021030        3.562765e-05                       -10.2423885</span></span>
-<span><span class="co">#&gt; 53:  DTXSID6021032        8.306000e-01                        -0.1856069</span></span>
-<span><span class="co">#&gt; 54:  DTXSID6022422        1.921524e-06                       -13.1623921</span></span>
-<span><span class="co">#&gt; 55:  DTXSID6024177        7.035691e-02                        -2.6541743</span></span>
-<span><span class="co">#&gt; 56:  DTXSID6037483        4.847560e-08                       -16.8422053</span></span>
-<span><span class="co">#&gt; 57:  DTXSID6037485        4.976030e-08                       -16.8160484</span></span>
-<span><span class="co">#&gt; 58:  DTXSID6037568        2.875770e-07                       -15.0617752</span></span>
-<span><span class="co">#&gt; 59:  DTXSID7020005        6.776980e-02                        -2.6916386</span></span>
-<span><span class="co">#&gt; 60:  DTXSID7020637        1.836866e+03                         7.5158163</span></span>
-<span><span class="co">#&gt; 61:  DTXSID7021029        3.323853e+00                         1.2011248</span></span>
-<span><span class="co">#&gt; 62:  DTXSID7024241        2.031631e-06                       -13.1066715</span></span>
-<span><span class="co">#&gt; 63:  DTXSID7047433        1.073489e-08                       -18.3497663</span></span>
-<span><span class="co">#&gt; 64:  DTXSID8020044        2.447645e+01                         3.1977114</span></span>
-<span><span class="co">#&gt; 65:  DTXSID8020090        5.073765e-01                        -0.6785019</span></span>
-<span><span class="co">#&gt; 66:  DTXSID8020597        2.037895e-01                        -1.5906676</span></span>
-<span><span class="co">#&gt; 67:  DTXSID8020832        1.520092e+03                         7.3265265</span></span>
-<span><span class="co">#&gt; 68:  DTXSID8021062        1.180510e-01                        -2.1366388</span></span>
-<span><span class="co">#&gt; 69:  DTXSID8022292        1.528695e-08                       -17.9962663</span></span>
-<span><span class="co">#&gt; 70:  DTXSID8022377        1.016181e-08                       -18.4046290</span></span>
-<span><span class="co">#&gt; 71:  DTXSID8023846        1.702425e-06                       -13.2834569</span></span>
-<span><span class="co">#&gt; 72:  DTXSID8023848        8.277807e-06                       -11.7019325</span></span>
-<span><span class="co">#&gt; 73:  DTXSID8025541        1.949228e-05                       -10.8454918</span></span>
-<span><span class="co">#&gt; 74:  DTXSID8031865        8.386721e-01                        -0.1759355</span></span>
-<span><span class="co">#&gt; 75:  DTXSID9020243        8.999120e-08                       -16.2235539</span></span>
-<span><span class="co">#&gt; 76:  DTXSID9021390        4.408660e+00                         1.4835708</span></span>
-<span><span class="co">#&gt; 77:  DTXSID9021427        3.637282e-01                        -1.0113483</span></span>
-<span><span class="co">#&gt; 78:  DTXSID9022366        1.506794e-09                       -20.3132814</span></span>
-<span><span class="co">#&gt; 79:  DTXSID9023380        1.149256e-08                       -18.2815660</span></span>
-<span><span class="co">#&gt; 80:  DTXSID9023914        3.131080e-04                        -8.0689624</span></span>
-<span><span class="co">#&gt; 81:  DTXSID9024142        2.739923e-09                       -19.7153359</span></span>
-<span><span class="co">#&gt; 82:  DTXSID9032113        2.981382e-08                       -17.3282936</span></span>
-<span><span class="co">#&gt; 83:  DTXSID9032329        7.041032e-07                       -14.1663408</span></span>
-<span><span class="co">#&gt;             dtxsid mean_vapor_pressure log_transform_mean_vapor_pressure</span></span>
 <span><span class="va">ccl4_vapor_grouped</span><span class="op">[</span>, <span class="va">log_transform_mean_vapor_pressure</span> <span class="op">:=</span> </span>
 <span>                     <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">mean_vapor_pressure</span><span class="op">)</span><span class="op">]</span></span>
-<span><span class="co">#&gt;             dtxsid     propType mean_vapor_pressure log_transform_mean_vapor_pressure</span></span>
-<span><span class="co">#&gt;             &lt;char&gt;       &lt;char&gt;               &lt;num&gt;                             &lt;num&gt;</span></span>
-<span><span class="co">#&gt;   1: DTXSID0020153 experimental        1.229990e+00                         0.2070060</span></span>
-<span><span class="co">#&gt;   2: DTXSID0020153    predicted        1.504793e+00                         0.4086556</span></span>
-<span><span class="co">#&gt;   3: DTXSID0020446 experimental        6.899220e-08                       -16.4892724</span></span>
-<span><span class="co">#&gt;   4: DTXSID0020446    predicted        1.592376e-06                       -13.3502831</span></span>
-<span><span class="co">#&gt;   5: DTXSID0020573    predicted        1.016181e-08                       -18.4046290</span></span>
-<span><span class="co">#&gt;  ---                                                                                 </span></span>
-<span><span class="co">#&gt; 136: DTXSID9024142    predicted        2.059810e-09                       -20.0006521</span></span>
-<span><span class="co">#&gt; 137: DTXSID9032113 experimental        1.279970e-08                       -18.1738441</span></span>
-<span><span class="co">#&gt; 138: DTXSID9032113    predicted        3.548520e-08                       -17.1541501</span></span>
-<span><span class="co">#&gt; 139: DTXSID9032329 experimental        8.000180e-07                       -14.0386316</span></span>
-<span><span class="co">#&gt; 140: DTXSID9032329    predicted        6.721317e-07                       -14.2128116</span></span>
 <span><span class="va">natadb_vapor_all</span><span class="op">[</span>, <span class="va">log_transform_mean_vapor_pressure</span> <span class="op">:=</span> </span>
 <span>                   <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">mean_vapor_pressure</span><span class="op">)</span><span class="op">]</span></span>
-<span><span class="co">#&gt;             dtxsid mean_vapor_pressure log_transform_mean_vapor_pressure</span></span>
-<span><span class="co">#&gt;             &lt;char&gt;               &lt;num&gt;                             &lt;num&gt;</span></span>
-<span><span class="co">#&gt;   1: DTXSID0020153        1.436092e+00                         0.3619259</span></span>
-<span><span class="co">#&gt;   2: DTXSID0020448        4.899910e+01                         3.8918019</span></span>
-<span><span class="co">#&gt;   3: DTXSID0020523        2.824828e-04                        -8.1718931</span></span>
-<span><span class="co">#&gt;   4: DTXSID0020529        7.603507e-04                        -7.1817307</span></span>
-<span><span class="co">#&gt;   5: DTXSID0020600        1.060439e+03                         6.9664387</span></span>
-<span><span class="co">#&gt;  ---                                                                    </span></span>
-<span><span class="co">#&gt; 141: DTXSID9020293        3.124725e-02                        -3.4658239</span></span>
-<span><span class="co">#&gt; 142: DTXSID9020299        1.177018e-06                       -13.6525264</span></span>
-<span><span class="co">#&gt; 143: DTXSID9020827        2.930390e-06                       -12.7403750</span></span>
-<span><span class="co">#&gt; 144: DTXSID9021138        3.619153e-03                        -5.6215152</span></span>
-<span><span class="co">#&gt; 145: DTXSID9041522        6.433997e-05                        -9.6513295</span></span>
 <span><span class="va">natadb_vapor_grouped</span><span class="op">[</span>, <span class="va">log_transform_mean_vapor_pressure</span> <span class="op">:=</span> </span>
-<span>                       <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">mean_vapor_pressure</span><span class="op">)</span><span class="op">]</span></span>
-<span><span class="co">#&gt;             dtxsid     propType mean_vapor_pressure log_transform_mean_vapor_pressure</span></span>
-<span><span class="co">#&gt;             &lt;char&gt;       &lt;char&gt;               &lt;num&gt;                             &lt;num&gt;</span></span>
-<span><span class="co">#&gt;   1: DTXSID0020153 experimental        1.229990e+00                         0.2070060</span></span>
-<span><span class="co">#&gt;   2: DTXSID0020153    predicted        1.504793e+00                         0.4086556</span></span>
-<span><span class="co">#&gt;   3: DTXSID0020448 experimental        5.329670e+01                         3.9758744</span></span>
-<span><span class="co">#&gt;   4: DTXSID0020448    predicted        4.756657e+01                         3.8621301</span></span>
-<span><span class="co">#&gt;   5: DTXSID0020523 experimental        3.900320e-04                        -7.8492818</span></span>
-<span><span class="co">#&gt;  ---                                                                                 </span></span>
-<span><span class="co">#&gt; 263: DTXSID9020299 experimental        2.199890e-06                       -13.0271032</span></span>
-<span><span class="co">#&gt; 264: DTXSID9020299    predicted        8.360607e-07                       -13.9945647</span></span>
-<span><span class="co">#&gt; 265: DTXSID9020827    predicted        2.930390e-06                       -12.7403750</span></span>
-<span><span class="co">#&gt; 266: DTXSID9021138    predicted        3.619153e-03                        -5.6215152</span></span>
-<span><span class="co">#&gt; 267: DTXSID9041522    predicted        6.433997e-05                        -9.6513295</span></span></code></pre></div>
+<span>                       <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">mean_vapor_pressure</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
 <p>Finally, compare both chemical lists simultaneously. To accomplish
 this, add a column to each data.table denoting to which chemical list
 the rows correspond and then combine the rows from both data sets
 together using the function <code><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind()</a></code>.</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ccl4_vapor_grouped</span><span class="op">[</span>, <span class="va">set</span> <span class="op">:=</span> <span class="st">'CCL4'</span><span class="op">]</span></span>
-<span><span class="co">#&gt;             dtxsid     propType mean_vapor_pressure log_transform_mean_vapor_pressure    set</span></span>
-<span><span class="co">#&gt;             &lt;char&gt;       &lt;char&gt;               &lt;num&gt;                             &lt;num&gt; &lt;char&gt;</span></span>
-<span><span class="co">#&gt;   1: DTXSID0020153 experimental        1.229990e+00                         0.2070060   CCL4</span></span>
-<span><span class="co">#&gt;   2: DTXSID0020153    predicted        1.504793e+00                         0.4086556   CCL4</span></span>
-<span><span class="co">#&gt;   3: DTXSID0020446 experimental        6.899220e-08                       -16.4892724   CCL4</span></span>
-<span><span class="co">#&gt;   4: DTXSID0020446    predicted        1.592376e-06                       -13.3502831   CCL4</span></span>
-<span><span class="co">#&gt;   5: DTXSID0020573    predicted        1.016181e-08                       -18.4046290   CCL4</span></span>
-<span><span class="co">#&gt;  ---                                                                                        </span></span>
-<span><span class="co">#&gt; 136: DTXSID9024142    predicted        2.059810e-09                       -20.0006521   CCL4</span></span>
-<span><span class="co">#&gt; 137: DTXSID9032113 experimental        1.279970e-08                       -18.1738441   CCL4</span></span>
-<span><span class="co">#&gt; 138: DTXSID9032113    predicted        3.548520e-08                       -17.1541501   CCL4</span></span>
-<span><span class="co">#&gt; 139: DTXSID9032329 experimental        8.000180e-07                       -14.0386316   CCL4</span></span>
-<span><span class="co">#&gt; 140: DTXSID9032329    predicted        6.721317e-07                       -14.2128116   CCL4</span></span>
 <span><span class="va">natadb_vapor_grouped</span><span class="op">[</span>, <span class="va">set</span> <span class="op">:=</span> <span class="st">'NATADB'</span><span class="op">]</span></span>
-<span><span class="co">#&gt;             dtxsid     propType mean_vapor_pressure log_transform_mean_vapor_pressure    set</span></span>
-<span><span class="co">#&gt;             &lt;char&gt;       &lt;char&gt;               &lt;num&gt;                             &lt;num&gt; &lt;char&gt;</span></span>
-<span><span class="co">#&gt;   1: DTXSID0020153 experimental        1.229990e+00                         0.2070060 NATADB</span></span>
-<span><span class="co">#&gt;   2: DTXSID0020153    predicted        1.504793e+00                         0.4086556 NATADB</span></span>
-<span><span class="co">#&gt;   3: DTXSID0020448 experimental        5.329670e+01                         3.9758744 NATADB</span></span>
-<span><span class="co">#&gt;   4: DTXSID0020448    predicted        4.756657e+01                         3.8621301 NATADB</span></span>
-<span><span class="co">#&gt;   5: DTXSID0020523 experimental        3.900320e-04                        -7.8492818 NATADB</span></span>
-<span><span class="co">#&gt;  ---                                                                                        </span></span>
-<span><span class="co">#&gt; 263: DTXSID9020299 experimental        2.199890e-06                       -13.0271032 NATADB</span></span>
-<span><span class="co">#&gt; 264: DTXSID9020299    predicted        8.360607e-07                       -13.9945647 NATADB</span></span>
-<span><span class="co">#&gt; 265: DTXSID9020827    predicted        2.930390e-06                       -12.7403750 NATADB</span></span>
-<span><span class="co">#&gt; 266: DTXSID9021138    predicted        3.619153e-03                        -5.6215152 NATADB</span></span>
-<span><span class="co">#&gt; 267: DTXSID9041522    predicted        6.433997e-05                        -9.6513295 NATADB</span></span>
 <span></span>
 <span><span class="va">all_vapor_grouped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">ccl4_vapor_grouped</span>, <span class="va">natadb_vapor_grouped</span><span class="op">)</span></span>
 <span></span>
@@ -1099,167 +963,17 @@ grouping data by DTXSID, and also by DTXSID and property type.</p>
 orders of magnitude.</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ccl4_hlc_all</span><span class="op">[</span>, <span class="va">log_transform_mean_hlc</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">mean_hlc</span><span class="op">)</span><span class="op">]</span></span>
-<span><span class="co">#&gt;             dtxsid     mean_hlc log_transform_mean_hlc</span></span>
-<span><span class="co">#&gt;             &lt;char&gt;        &lt;num&gt;                  &lt;num&gt;</span></span>
-<span><span class="co">#&gt;  1:  DTXSID0020153 2.918720e-03             -5.8366101</span></span>
-<span><span class="co">#&gt;  2:  DTXSID0020446 1.527830e-09            -20.2994174</span></span>
-<span><span class="co">#&gt;  3:  DTXSID0020573 3.748870e-06            -12.4940561</span></span>
-<span><span class="co">#&gt;  4:  DTXSID0020600 1.479610e-04             -8.8185618</span></span>
-<span><span class="co">#&gt;  5:  DTXSID0020814 2.049460e-07            -15.4005193</span></span>
-<span><span class="co">#&gt;  6:  DTXSID0021541 8.825620e-03             -4.7300964</span></span>
-<span><span class="co">#&gt;  7:  DTXSID0021917 4.922550e-01             -0.7087584</span></span>
-<span><span class="co">#&gt;  8:  DTXSID0024052 2.338400e-10            -22.1763840</span></span>
-<span><span class="co">#&gt;  9:  DTXSID1020437 5.639950e-03             -5.1778801</span></span>
-<span><span class="co">#&gt; 10:  DTXSID1021407 1.768600e-06            -13.2453223</span></span>
-<span><span class="co">#&gt; 11:  DTXSID1021740 8.824295e-06            -11.6380018</span></span>
-<span><span class="co">#&gt; 12:  DTXSID1021798 8.664450e-06            -11.6562821</span></span>
-<span><span class="co">#&gt; 13:  DTXSID1024174 2.964310e-07            -15.0314514</span></span>
-<span><span class="co">#&gt; 14:  DTXSID1024338 1.646800e-10            -22.5270169</span></span>
-<span><span class="co">#&gt; 15:  DTXSID1026164 1.977445e-06            -13.1337050</span></span>
-<span><span class="co">#&gt; 16:  DTXSID1037484 1.196270e-09            -20.5440575</span></span>
-<span><span class="co">#&gt; 17:  DTXSID1037486 1.185530e-09            -20.5530759</span></span>
-<span><span class="co">#&gt; 18:  DTXSID1037567 4.339640e-10            -21.5580595</span></span>
-<span><span class="co">#&gt; 19:  DTXSID2020684 3.194620e-06            -12.6540424</span></span>
-<span><span class="co">#&gt; 20:  DTXSID2021028 3.662790e-06            -12.5172854</span></span>
-<span><span class="co">#&gt; 21:  DTXSID2021317 2.493330e-03             -5.9941361</span></span>
-<span><span class="co">#&gt; 22:  DTXSID2021731 4.553975e-06            -12.2995101</span></span>
-<span><span class="co">#&gt; 23:  DTXSID2022333 8.026420e-03             -4.8250167</span></span>
-<span><span class="co">#&gt; 24:  DTXSID2037506 1.313660e-09            -20.4504487</span></span>
-<span><span class="co">#&gt; 25:  DTXSID2052156 3.785200e-10            -21.6947522</span></span>
-<span><span class="co">#&gt; 26:  DTXSID3020203 4.129470e-02             -3.1870211</span></span>
-<span><span class="co">#&gt; 27:  DTXSID3020833 5.902805e-04             -7.4349127</span></span>
-<span><span class="co">#&gt; 28:  DTXSID3020964 2.389895e-05            -10.6416760</span></span>
-<span><span class="co">#&gt; 29:  DTXSID3024366 1.485460e-04             -8.8146159</span></span>
-<span><span class="co">#&gt; 30:  DTXSID3024869 1.776260e-06            -13.2410005</span></span>
-<span><span class="co">#&gt; 31:  DTXSID3031864 1.803350e-11            -24.7387900</span></span>
-<span><span class="co">#&gt; 32:  DTXSID3032464 8.835860e-06            -11.6366921</span></span>
-<span><span class="co">#&gt; 33:  DTXSID3042219 1.047975e-02             -4.5583105</span></span>
-<span><span class="co">#&gt; 34:  DTXSID3074313 2.046920e-11            -24.6120998</span></span>
-<span><span class="co">#&gt; 35:  DTXSID4020533 4.847905e-06            -12.2369639</span></span>
-<span><span class="co">#&gt; 36:  DTXSID4021503 3.771570e-03             -5.5802639</span></span>
-<span><span class="co">#&gt; 37:  DTXSID4022361 2.458220e-08            -17.5212432</span></span>
-<span><span class="co">#&gt; 38:  DTXSID4022367 1.047830e-09            -20.6765445</span></span>
-<span><span class="co">#&gt; 39:  DTXSID4022448 9.004310e-09            -18.5255625</span></span>
-<span><span class="co">#&gt; 40:  DTXSID4022991 1.238900e-11            -25.1142121</span></span>
-<span><span class="co">#&gt; 41:  DTXSID4032611 1.477090e-05            -11.1228515</span></span>
-<span><span class="co">#&gt; 42:  DTXSID4034948 1.537700e-09            -20.2929780</span></span>
-<span><span class="co">#&gt; 43:  DTXSID5020023 1.214215e-04             -9.0162426</span></span>
-<span><span class="co">#&gt; 44:  DTXSID5020576 9.440170e-08            -16.1757068</span></span>
-<span><span class="co">#&gt; 45:  DTXSID5020601 3.864950e-09            -19.3713171</span></span>
-<span><span class="co">#&gt; 46:  DTXSID5021207 1.374810e-04             -8.8920248</span></span>
-<span><span class="co">#&gt; 47:  DTXSID5024182 3.307185e-07            -14.9219983</span></span>
-<span><span class="co">#&gt; 48:  DTXSID5039224 6.639505e-05             -9.6198881</span></span>
-<span><span class="co">#&gt; 49: DTXSID50867064 1.183860e-08            -18.2519005</span></span>
-<span><span class="co">#&gt; 50:  DTXSID6020301 4.061025e-02             -3.2037348</span></span>
-<span><span class="co">#&gt; 51:  DTXSID6020856 3.217130e-09            -19.5547762</span></span>
-<span><span class="co">#&gt; 52:  DTXSID6021030 9.187830e-07            -13.9002159</span></span>
-<span><span class="co">#&gt; 53:  DTXSID6021032 3.249700e-04             -8.0317777</span></span>
-<span><span class="co">#&gt; 54:  DTXSID6022422 1.067460e-07            -16.0528137</span></span>
-<span><span class="co">#&gt; 55:  DTXSID6024177 2.553800e-07            -15.1805132</span></span>
-<span><span class="co">#&gt; 56:  DTXSID6037483 5.542140e-10            -21.3134702</span></span>
-<span><span class="co">#&gt; 57:  DTXSID6037485 5.623550e-10            -21.2988878</span></span>
-<span><span class="co">#&gt; 58:  DTXSID6037568 8.289390e-09            -18.6082895</span></span>
-<span><span class="co">#&gt; 59:  DTXSID7020005 8.830950e-08            -16.2424181</span></span>
-<span><span class="co">#&gt; 60:  DTXSID7020637 3.432355e-07            -14.8848490</span></span>
-<span><span class="co">#&gt; 61:  DTXSID7021029 3.650960e-05            -10.2179353</span></span>
-<span><span class="co">#&gt; 62:  DTXSID7024241 3.283070e-06            -12.6267316</span></span>
-<span><span class="co">#&gt; 63:  DTXSID7047433 6.785440e-08            -16.5059016</span></span>
-<span><span class="co">#&gt; 64:  DTXSID8020044 4.999450e-06            -12.2061827</span></span>
-<span><span class="co">#&gt; 65:  DTXSID8020090 2.019270e-06            -13.1127745</span></span>
-<span><span class="co">#&gt; 66:  DTXSID8020597 5.999740e-08            -16.6289646</span></span>
-<span><span class="co">#&gt; 67:  DTXSID8020832 7.367270e-03             -4.9107081</span></span>
-<span><span class="co">#&gt; 68:  DTXSID8021062 1.159700e-05            -11.3647641</span></span>
-<span><span class="co">#&gt; 69:  DTXSID8022292 2.387120e-08            -17.5505931</span></span>
-<span><span class="co">#&gt; 70:  DTXSID8022377 3.748870e-06            -12.4940561</span></span>
-<span><span class="co">#&gt; 71:  DTXSID8023846 4.938440e-09            -19.1262163</span></span>
-<span><span class="co">#&gt; 72:  DTXSID8023848 9.954840e-09            -18.4252070</span></span>
-<span><span class="co">#&gt; 73:  DTXSID8025541 4.150640e-07            -14.6948331</span></span>
-<span><span class="co">#&gt; 74:  DTXSID8031865 1.916920e-10            -22.3751312</span></span>
-<span><span class="co">#&gt; 75:  DTXSID9021390 3.432295e-04             -7.9771112</span></span>
-<span><span class="co">#&gt; 76:  DTXSID9021427 5.556870e-07            -14.4030607</span></span>
-<span><span class="co">#&gt; 77:  DTXSID9022366 5.167830e-09            -19.0808130</span></span>
-<span><span class="co">#&gt; 78:  DTXSID9023380 4.156230e-09            -19.2986574</span></span>
-<span><span class="co">#&gt; 79:  DTXSID9023914 5.035540e-11            -23.7119153</span></span>
-<span><span class="co">#&gt; 80:  DTXSID9024142 2.692760e-06            -12.8249439</span></span>
-<span><span class="co">#&gt; 81:  DTXSID9032113 3.098320e-07            -14.9872356</span></span>
-<span><span class="co">#&gt; 82:  DTXSID9032329 1.566850e-06            -13.3664433</span></span>
-<span><span class="co">#&gt;             dtxsid     mean_hlc log_transform_mean_hlc</span></span>
 <span><span class="va">ccl4_hlc_grouped</span><span class="op">[</span>, <span class="va">log_transform_mean_hlc</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">mean_hlc</span><span class="op">)</span><span class="op">]</span></span>
-<span><span class="co">#&gt;             dtxsid     propType    mean_hlc log_transform_mean_hlc</span></span>
-<span><span class="co">#&gt;             &lt;char&gt;       &lt;char&gt;       &lt;num&gt;                  &lt;num&gt;</span></span>
-<span><span class="co">#&gt;   1: DTXSID0020153    predicted 2.91872e-03              -5.836610</span></span>
-<span><span class="co">#&gt;   2: DTXSID0020446    predicted 1.52783e-09             -20.299417</span></span>
-<span><span class="co">#&gt;   3: DTXSID0020573    predicted 3.74887e-06             -12.494056</span></span>
-<span><span class="co">#&gt;   4: DTXSID0020600 experimental 1.48000e-04              -8.818298</span></span>
-<span><span class="co">#&gt;   5: DTXSID0020600    predicted 1.47922e-04              -8.818825</span></span>
-<span><span class="co">#&gt;  ---                                                              </span></span>
-<span><span class="co">#&gt; 106: DTXSID9023914 experimental 5.03002e-11             -23.713012</span></span>
-<span><span class="co">#&gt; 107: DTXSID9023914    predicted 5.04106e-11             -23.710820</span></span>
-<span><span class="co">#&gt; 108: DTXSID9024142    predicted 2.69276e-06             -12.824944</span></span>
-<span><span class="co">#&gt; 109: DTXSID9032113    predicted 3.09832e-07             -14.987236</span></span>
-<span><span class="co">#&gt; 110: DTXSID9032329    predicted 1.56685e-06             -13.366443</span></span>
 <span></span>
 <span><span class="va">natadb_hlc_all</span><span class="op">[</span>, <span class="va">log_transform_mean_hlc</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">mean_hlc</span><span class="op">)</span><span class="op">]</span></span>
-<span><span class="co">#&gt;             dtxsid     mean_hlc log_transform_mean_hlc</span></span>
-<span><span class="co">#&gt;             &lt;char&gt;        &lt;num&gt;                  &lt;num&gt;</span></span>
-<span><span class="co">#&gt;   1: DTXSID0020153 2.918720e-03              -5.836610</span></span>
-<span><span class="co">#&gt;   2: DTXSID0020448 2.806465e-03              -5.875830</span></span>
-<span><span class="co">#&gt;   3: DTXSID0020523 8.611785e-08             -16.267549</span></span>
-<span><span class="co">#&gt;   4: DTXSID0020529 5.417975e-08             -16.730959</span></span>
-<span><span class="co">#&gt;   5: DTXSID0020600 1.479610e-04              -8.818562</span></span>
-<span><span class="co">#&gt;  ---                                                  </span></span>
-<span><span class="co">#&gt; 140: DTXSID9020293 2.943670e-06             -12.735853</span></span>
-<span><span class="co">#&gt; 141: DTXSID9020299 4.846860e-10             -21.447520</span></span>
-<span><span class="co">#&gt; 142: DTXSID9020827 2.040880e-07             -15.404715</span></span>
-<span><span class="co">#&gt; 143: DTXSID9021138 5.672420e-08             -16.685065</span></span>
-<span><span class="co">#&gt; 144: DTXSID9041522 8.981400e-06             -11.620355</span></span>
-<span><span class="va">natadb_hlc_grouped</span><span class="op">[</span>, <span class="va">log_transform_mean_hlc</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">mean_hlc</span><span class="op">)</span><span class="op">]</span></span>
-<span><span class="co">#&gt;             dtxsid     propType    mean_hlc log_transform_mean_hlc</span></span>
-<span><span class="co">#&gt;             &lt;char&gt;       &lt;char&gt;       &lt;num&gt;                  &lt;num&gt;</span></span>
-<span><span class="co">#&gt;   1: DTXSID0020153    predicted 2.91872e-03              -5.836610</span></span>
-<span><span class="co">#&gt;   2: DTXSID0020448 experimental 2.82000e-03              -5.871018</span></span>
-<span><span class="co">#&gt;   3: DTXSID0020448    predicted 2.79293e-03              -5.880664</span></span>
-<span><span class="co">#&gt;   4: DTXSID0020523 experimental 8.59999e-08             -16.268920</span></span>
-<span><span class="co">#&gt;   5: DTXSID0020523    predicted 8.62358e-08             -16.266180</span></span>
-<span><span class="co">#&gt;  ---                                                              </span></span>
-<span><span class="co">#&gt; 206: DTXSID9020299    predicted 4.84686e-10             -21.447520</span></span>
-<span><span class="co">#&gt; 207: DTXSID9020827 experimental 2.03000e-07             -15.410060</span></span>
-<span><span class="co">#&gt; 208: DTXSID9020827    predicted 2.05176e-07             -15.399398</span></span>
-<span><span class="co">#&gt; 209: DTXSID9021138    predicted 5.67242e-08             -16.685065</span></span>
-<span><span class="co">#&gt; 210: DTXSID9041522    predicted 8.98140e-06             -11.620355</span></span></code></pre></div>
+<span><span class="va">natadb_hlc_grouped</span><span class="op">[</span>, <span class="va">log_transform_mean_hlc</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">mean_hlc</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
 <p>Finally, compare both chemical lists simultaneously. To accomplish
 this, add a column to each data.table denoting to which chemical list
 the rows correspond and then combine the rows from both data sets
 together using the function <code><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind()</a></code>.</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ccl4_hlc_grouped</span><span class="op">[</span>, <span class="va">set</span> <span class="op">:=</span> <span class="st">'CCL4'</span><span class="op">]</span></span>
-<span><span class="co">#&gt;             dtxsid     propType    mean_hlc log_transform_mean_hlc    set</span></span>
-<span><span class="co">#&gt;             &lt;char&gt;       &lt;char&gt;       &lt;num&gt;                  &lt;num&gt; &lt;char&gt;</span></span>
-<span><span class="co">#&gt;   1: DTXSID0020153    predicted 2.91872e-03              -5.836610   CCL4</span></span>
-<span><span class="co">#&gt;   2: DTXSID0020446    predicted 1.52783e-09             -20.299417   CCL4</span></span>
-<span><span class="co">#&gt;   3: DTXSID0020573    predicted 3.74887e-06             -12.494056   CCL4</span></span>
-<span><span class="co">#&gt;   4: DTXSID0020600 experimental 1.48000e-04              -8.818298   CCL4</span></span>
-<span><span class="co">#&gt;   5: DTXSID0020600    predicted 1.47922e-04              -8.818825   CCL4</span></span>
-<span><span class="co">#&gt;  ---                                                                     </span></span>
-<span><span class="co">#&gt; 106: DTXSID9023914 experimental 5.03002e-11             -23.713012   CCL4</span></span>
-<span><span class="co">#&gt; 107: DTXSID9023914    predicted 5.04106e-11             -23.710820   CCL4</span></span>
-<span><span class="co">#&gt; 108: DTXSID9024142    predicted 2.69276e-06             -12.824944   CCL4</span></span>
-<span><span class="co">#&gt; 109: DTXSID9032113    predicted 3.09832e-07             -14.987236   CCL4</span></span>
-<span><span class="co">#&gt; 110: DTXSID9032329    predicted 1.56685e-06             -13.366443   CCL4</span></span>
 <span><span class="va">natadb_hlc_grouped</span><span class="op">[</span>, <span class="va">set</span> <span class="op">:=</span> <span class="st">'NATADB'</span><span class="op">]</span></span>
-<span><span class="co">#&gt;             dtxsid     propType    mean_hlc log_transform_mean_hlc    set</span></span>
-<span><span class="co">#&gt;             &lt;char&gt;       &lt;char&gt;       &lt;num&gt;                  &lt;num&gt; &lt;char&gt;</span></span>
-<span><span class="co">#&gt;   1: DTXSID0020153    predicted 2.91872e-03              -5.836610 NATADB</span></span>
-<span><span class="co">#&gt;   2: DTXSID0020448 experimental 2.82000e-03              -5.871018 NATADB</span></span>
-<span><span class="co">#&gt;   3: DTXSID0020448    predicted 2.79293e-03              -5.880664 NATADB</span></span>
-<span><span class="co">#&gt;   4: DTXSID0020523 experimental 8.59999e-08             -16.268920 NATADB</span></span>
-<span><span class="co">#&gt;   5: DTXSID0020523    predicted 8.62358e-08             -16.266180 NATADB</span></span>
-<span><span class="co">#&gt;  ---                                                                     </span></span>
-<span><span class="co">#&gt; 206: DTXSID9020299    predicted 4.84686e-10             -21.447520 NATADB</span></span>
-<span><span class="co">#&gt; 207: DTXSID9020827 experimental 2.03000e-07             -15.410060 NATADB</span></span>
-<span><span class="co">#&gt; 208: DTXSID9020827    predicted 2.05176e-07             -15.399398 NATADB</span></span>
-<span><span class="co">#&gt; 209: DTXSID9021138    predicted 5.67242e-08             -16.685065 NATADB</span></span>
-<span><span class="co">#&gt; 210: DTXSID9041522    predicted 8.98140e-06             -11.620355 NATADB</span></span>
 <span></span>
 <span><span class="va">all_hlc_grouped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">ccl4_hlc_grouped</span>, <span class="va">natadb_hlc_grouped</span><span class="op">)</span></span>
 <span></span>
@@ -1340,33 +1054,7 @@ the rows correspond and then combine the rows from both data sets
 together using the function <code><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind()</a></code>.</p>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ccl4_boiling_grouped</span><span class="op">[</span>, <span class="va">set</span> <span class="op">:=</span> <span class="st">'CCL4'</span><span class="op">]</span></span>
-<span><span class="co">#&gt;             dtxsid     propType mean_boiling_point    set</span></span>
-<span><span class="co">#&gt;             &lt;char&gt;       &lt;char&gt;              &lt;num&gt; &lt;char&gt;</span></span>
-<span><span class="co">#&gt;   1: DTXSID0020153 experimental           178.9778   CCL4</span></span>
-<span><span class="co">#&gt;   2: DTXSID0020153    predicted           180.1880   CCL4</span></span>
-<span><span class="co">#&gt;   3: DTXSID0020446 experimental           182.5000   CCL4</span></span>
-<span><span class="co">#&gt;   4: DTXSID0020446    predicted           340.0280   CCL4</span></span>
-<span><span class="co">#&gt;   5: DTXSID0020573    predicted           398.2052   CCL4</span></span>
-<span><span class="co">#&gt;  ---                                                     </span></span>
-<span><span class="co">#&gt; 139: DTXSID9024142    predicted           452.0113   CCL4</span></span>
-<span><span class="co">#&gt; 140: DTXSID9032113    predicted           384.5745   CCL4</span></span>
-<span><span class="co">#&gt; 141: DTXSID9032119 experimental           990.0000   CCL4</span></span>
-<span><span class="co">#&gt; 142: DTXSID9032119    predicted           482.9800   CCL4</span></span>
-<span><span class="co">#&gt; 143: DTXSID9032329    predicted           448.4297   CCL4</span></span>
 <span><span class="va">natadb_boiling_grouped</span><span class="op">[</span>, <span class="va">set</span> <span class="op">:=</span> <span class="st">'NATADB'</span><span class="op">]</span></span>
-<span><span class="co">#&gt;             dtxsid     propType mean_boiling_point    set</span></span>
-<span><span class="co">#&gt;             &lt;char&gt;       &lt;char&gt;              &lt;num&gt; &lt;char&gt;</span></span>
-<span><span class="co">#&gt;   1: DTXSID0020153 experimental          178.97780 NATADB</span></span>
-<span><span class="co">#&gt;   2: DTXSID0020153    predicted          180.18800 NATADB</span></span>
-<span><span class="co">#&gt;   3: DTXSID0020448 experimental           96.14168 NATADB</span></span>
-<span><span class="co">#&gt;   4: DTXSID0020448    predicted           97.64523 NATADB</span></span>
-<span><span class="co">#&gt;   5: DTXSID0020523 experimental          113.00000 NATADB</span></span>
-<span><span class="co">#&gt;  ---                                                     </span></span>
-<span><span class="co">#&gt; 291: DTXSID9021138    predicted          263.44175 NATADB</span></span>
-<span><span class="co">#&gt; 292: DTXSID9021261 experimental          685.00000 NATADB</span></span>
-<span><span class="co">#&gt; 293: DTXSID9021261    predicted          483.96000 NATADB</span></span>
-<span><span class="co">#&gt; 294: DTXSID9041522 experimental          340.00000 NATADB</span></span>
-<span><span class="co">#&gt; 295: DTXSID9041522    predicted          334.18150 NATADB</span></span>
 <span></span>
 <span><span class="va">all_boiling_grouped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">ccl4_boiling_grouped</span>, <span class="va">natadb_boiling_grouped</span><span class="op">)</span></span>
 <span></span>
@@ -1421,7 +1109,7 @@ in this vignette.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Paul Kruse, Caroline Ring.</p>
+  <p>Developed by Paul Kruse, Caroline Ring, Jason Brown.</p>
 </div>
 
 <div class="pkgdown-footer-right">
