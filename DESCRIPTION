@@ -4,7 +4,7 @@ Title: Utilities for Interacting with the 'CTX' APIs
 Version: 1.1.1
 Authors@R: c(
             person("Paul", "Kruse", email = "kruse.paul@epa.gov", 
-              role = c("aut", "cre"), 
+              role = c("aut"), 
               comment = c(ORCID = "0000-0001-5516-9717")),
     	      person("Caroline", "Ring", email = "ring.caroline@epa.gov", 
     	        role = c("aut"), 
@@ -14,7 +14,7 @@ Authors@R: c(
 	            comment = c(ORCID = "0000-0002-1390-6405")),
 	          person("Carter", "Thunes", role = "ctb", 
 	            email = "thunes.carter@epa.gov"),
-    	      person("Jason", "Brown", role = "ctb", 
+    	      person("Jason", "Brown", role = "cre", 
     	        email = "brown.jason@epa.gov")
     	        )
 Description: Access chemical, hazard, bioactivity, and exposure data from the 
