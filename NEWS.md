@@ -1,3 +1,9 @@
+# ctxR 1.1.1
+
+## Minor improvements and fixes
+
+* Updated roles in `DESCRIPTION` file (#48).
+
 # ctxR 1.1.0
 
 
