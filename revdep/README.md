@@ -10,7 +10,7 @@
 |collate  |English_United States.utf8               |
 |ctype    |English_United States.utf8               |
 |tz       |America/New_York                         |
-|date     |2025-03-31                               |
+|date     |2025-04-03                               |
 |rstudio  |2024.04.0+735 Chocolate Cosmos (desktop) |
 |pandoc   |NA                                       |
 
@@ -18,7 +18,7 @@
 
 |package    |old   |new    |Δ  |
 |:----------|:-----|:------|:--|
-|ctxR       |1.1.0 |1.1.0  |   |
+|ctxR       |1.1.1 |1.1.1  |   |
 |askpass    |NA    |1.2.1  |*  |
 |cli        |NA    |3.6.4  |*  |
 |cpp11      |NA    |0.5.2  |*  |
