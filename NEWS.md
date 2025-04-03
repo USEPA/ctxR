@@ -2,7 +2,7 @@
 
 ## Minor improvements and fixes
 
-* Updated roles in `DESCRIPTION` file and Roxygen version (#55).
+* Updated roles in `DESCRIPTION` file and Roxygen version (#57).
 
 # ctxR 1.1.1
 
