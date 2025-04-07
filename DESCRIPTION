@@ -1,7 +1,7 @@
 Type: Package
 Package: ctxR
 Title: Utilities for Interacting with the 'CTX' APIs
-Version: 1.1.1
+Version: 1.1.2
 Authors@R: c(
             person("Paul", "Kruse", email = "kruse.paul@epa.gov", 
               role = c("aut"), 
@@ -9,12 +9,12 @@ Authors@R: c(
     	      person("Caroline", "Ring", email = "ring.caroline@epa.gov", 
     	        role = c("aut"), 
     	        comment = c(ORCID = "0000-0002-0463-1251")),
-	          person("Madison", "Feshuk", role = "ctb", 
+	          person("Madison", "Feshuk", role = "cre", 
 	            email = "feshuk.madison@epa.gov", 
 	            comment = c(ORCID = "0000-0002-1390-6405")),
 	          person("Carter", "Thunes", role = "ctb", 
 	            email = "thunes.carter@epa.gov"),
-    	      person("Jason", "Brown", role = "cre", 
+    	      person("Jason", "Brown", role = "ctb", 
     	        email = "brown.jason@epa.gov")
     	        )
 Description: Access chemical, hazard, bioactivity, and exposure data from the 
@@ -41,7 +41,7 @@ Imports:
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Suggests: 
     countcolors,
     devtools,
