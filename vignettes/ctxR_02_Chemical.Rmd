@@ -158,7 +158,7 @@ fate_by_dtxsid <- get_fate_by_dtxsid(DTXSID = 'DTXSID7020182')
 
 # Chemical Search Resource
 
-Chemicals can be searched using string values. Examples for each are provided by the following:
+Chemicals can be searched using string values. These values can be a chemical name, dtxsid, dtxcid, casrn, or inchikey. Examples for each are provided by the following:
 
 ## By starting value
 

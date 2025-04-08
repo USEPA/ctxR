@@ -705,8 +705,8 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
 
 #' Chemical starts with
 #'
-#' @param word A character string of a chemical name or portion of a chemical
-#'   name
+#' @param word A character string of a chemical identifier or portion of a chemical
+#'   identifier. Identifiers can be a chemical name, dtxsid, dtxcid, casrn, or inchikey.
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
 #' @param verbose A logical indicating if some “progress report” should be
@@ -786,8 +786,8 @@ chemical_starts_with <- function(word = NULL,
 
 #' Chemical equal
 #'
-#' @param word A character string of a chemical name or portion of a chemical
-#'   name
+#' @param word A character string of a chemical identifier or portion of a chemical
+#'   identifier. Identifiers can be a chemical name, dtxsid, dtxcid, casrn, or inchikey.
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
 #' @param verbose A logical indicating if some “progress report” should be given.
@@ -849,8 +849,8 @@ chemical_equal <- function(word = NULL,
 
 #' Chemical contains
 #'
-#' @param word A character string of a chemical name or portion of a chemical
-#'   name
+#' @param word A character string of a chemical identifier or portion of a chemical
+#'   identifier. Identifiers can be a chemical name, dtxsid, dtxcid, casrn, or inchikey.
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
 #' @param verbose A logical indicating if some “progress report” should be given.
