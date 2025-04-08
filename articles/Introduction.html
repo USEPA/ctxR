@@ -5,52 +5,68 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>ctxR: Utilities for Interacting with the CTX APIs in R • ctxR</title>
+<meta name="description" content="ctxR">
+<title>Getting started with ctxR: <br> Introduction Vignette  • ctxR</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="ctxR: Utilities for Interacting with the CTX APIs in R">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Getting started with ctxR: &lt;br&gt; Introduction Vignette &lt;/br&gt;">
+<meta property="og:description" content="ctxR">
+<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+    
 
-
-    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
-
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light" data-bs-theme="light"><div class="container">
+    
     <a class="navbar-brand me-2" href="../index.html">ctxR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
 
-
+    
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
-<li class="active nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/Bioactivity.html">ctxR: Bioactivity API</a></li>
-    <li><a class="dropdown-item" href="../articles/Chemical.html">ctxR: Chemical API</a></li>
-    <li><a class="dropdown-item" href="../articles/Exposure.html">ctxR: Exposure API</a></li>
-    <li><a class="dropdown-item" href="../articles/Hazard.html">ctxR: Hazard API</a></li>
-    <li><a class="dropdown-item" href="../articles/Introduction.html">ctxR: Utilities for Interacting with the CTX APIs in R</a></li>
-  </ul>
+<li class="nav-item">
+  <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
-<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
+<li class="active nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/Bioactivity.html">Bioactivity API</a>
+    <a class="dropdown-item" href="../articles/Chemical.html">Chemical API</a>
+    <a class="dropdown-item" href="../articles/Exposure.html">Exposure API</a>
+    <a class="dropdown-item" href="../articles/Hazard.html">Hazard API</a>
+    <a class="dropdown-item" href="../articles/Introduction.html">Getting started with ctxR: &lt;br&gt; Introduction Vignette &lt;/br&gt;</a>
+  </div>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
       </ul>
-<ul class="navbar-nav">
-<li class="nav-item"><form class="form-inline" role="search">
- <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
-</form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/USEPA/ctxR/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/USEPA/ctxR/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
 </div>
 
-
+    
   </div>
 </nav><div class="container template-article">
 
@@ -59,204 +75,19 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-
-      <h1>ctxR: Utilities for Interacting with the CTX APIs in R</h1>
-                        <h4 data-toc-skip class="author">US EPA’s Center
-for Computational Toxicology and Exposure <a href="mailto:ccte@epa.gov" class="email">ccte@epa.gov</a>
-</h4>
+      <img src="" class="logo" alt=""><h1>Getting started with ctxR: <br> Introduction Vignette </h1>
+                        <h4 data-toc-skip class="author">Center for
+Computational Toxicology and Exposure</h4>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/USEPA/ctxR/blob/master/vignettes/Introduction.Rmd" class="external-link"><code>vignettes/Introduction.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/USEPA/ctxR/blob/HEAD/vignettes/Introduction.Rmd" class="external-link"><code>vignettes/Introduction.Rmd</code></a></small>
       <div class="d-none name"><code>Introduction.Rmd</code></div>
     </div>
 
     
     
-<style type="text/css">
-@media screen and (max-width: 1000px) {
-  .tablet-hide {
-    display: none;
-  }
-
-  #content {
-    margin-left: 0;
-    padding: 1em;
-  }
-
-  #content.shift {
-    position: relative;
-    min-width: 100%;
-    left: 300px;
-    top: 0;
-    height: 100%;
-    overflow: hidden;
-  }
-
-  #sidebar {
-    font-size: 120%;
-    left: -300px;
-    width: 300px;
-  }
-
-  #content.shift #sidebar {
-    font-size: 120%;
-    left: 0;
-    width: 300px; /* was  75% */
-  }
-  #nav-top {
-    display: inline-block;
-  }
-  #postamble {
-    left: -300px;
-  }
-  #postamble.shift {
-    font-size: 90%; /* was 110%*/
-    left: 0;
-    width: 100%; /* was 75%*/
-  }
-  #main .nav-pills {
-    margin-left: 0px;
-  }
-  #main .nav-pills li {
-    margin-left: 10px !important;
-  }
-  #main .nav-pills > li > a {
-    padding: 2px 8px !important;
-    margin-right: 0px !important;
-  }
-}
-
-#content {
-  max-width: 850px;
-}
-
-@media (min-width: 1450px) {
-  #content {
-    width: 1150px;
-    margin: 0 auto;
-  }
-
-  #sidebar {
-    position: fixed;
-    left: 50%;
-    width: 300px;
-    transform: translateX(-725px);
-  }
-}
-
-@media screen and (max-width: 768px) {
-  img {
-    max-width: 100%;
-    width: auto;
-  }
-}
-
-/* colors */
-
-:root {
-  --light-tone: #a6b5c6;
-  --pale-tone: #5a7b9c;
-  --strong-tone: #003366;
-  --brighter-tone: #303f9f;
-  --light-gray: #f6f6f6;
-}
-div.sourceCode::before {
-  content: "Code [" counter(counter-rchunks) "]: ";
-  display: inline;
-  position: absolute;
-  left: -5em;
-  font-size: 0.7em;
-  color: var(--brighter-tone);
-}
-#nav-top span.glyphicon {
-  color: var(--pale-tone);
-}
-#postamble {
-  background: var(--pale-tone);
-  border-top: solid 10px var(--pale-tone);
-}
-#postamble .date {
-  color: white;
-}
-.title {
-  text-align: center;
-  color: var(--strong-tone);
-}
-.subtitle {
-  color: var(--strong-tone);
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-legend {
-  color: var(--pale-tone);
-}
-#main :not(.leaflet-control) > a {
-  color: var(--pale-tone);
-  background-image: var(--pale-tone);
-}
-#sidebar h2 {
-  background-color: var(--pale-tone);
-}
-#main .nav-pills > li.active > a,
-#main .nav-pills > li.active > a:hover,
-#main .nav-pills > li.active > a:focus {
-  background-color: var(--pale-tone);
-}
-#sidebar #toc,
-#sidebar {
-  background-color: var(--light-gray);
-  color: black;
-}
-#sidebar #toc ul li a:hover {
-  background-color: var(--light-tone);
-  color: white;
-}
-# toc ul.nav li.active ul li.active a {
-  background-color: var(--light-tone);
-}
-code {
-  color: var(--strong-tone);
-}
-#sidebar a {
-  color: black;
-}
-
-.scroll-200 {
-  max-height: 200px;
-  overflow-y: auto;
-}
-
-.scroll-300 {
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-.noticebox {
-  padding: 1em;
-  background: lightgray;
-  color: blue;
-  border: 2px solid black;
-  border-radius: 10px;
-}
-</style>
-<p><a href="https://CRAN.R-project.org/package=ctxR" class="external-link"><img src="Pictures%2FctxR_hex.png" width="200" align="right" style="float: right; margin-left: 10px; margin-bottom: 10px;"></a></p>
 <div class="section level2">
-<h2 id="computational-toxicology-and-exposure-data">Computational Toxicology and Exposure data<a class="anchor" aria-label="anchor" href="#computational-toxicology-and-exposure-data"></a>
-</h2>
-<p>In this document, users will be introduced to different methods to
-access computational toxicology and exposure data. The two main methods
-described are through the CompTox Chemicals Dashboard and the CTX APIs,
-via the R package <em>ctxR</em>. References to papers and additional
-information on resources can be found within the exposition of this
-document. For more detailed information on specific areas of data,
-please refer to the other vignettes included within <em>ctxR</em>.</p>
-</div>
-<div class="section level2">
-<h2 id="introduction-to-the-ccd">Introduction to the CCD<a class="anchor" aria-label="anchor" href="#introduction-to-the-ccd"></a>
+<h2 id="introduction-to-the-comptox-chemicals-dashboard-ccd">Introduction to the CompTox Chemicals Dashboard (CCD)<a class="anchor" aria-label="anchor" href="#introduction-to-the-comptox-chemicals-dashboard-ccd"></a>
 </h2>
 <p>Accessing chemical data is a vital step in many workflows related to
 chemical, biological, and environmental modeling. While there are many
@@ -294,7 +125,7 @@ similar to this, with varying levels of accessible based on the
 information that is available.</p>
 <center>
 <div class="float">
-<img src="Pictures%2FCCD_BPA_page.png" alt="Figure 1: Bisphenol A CCD landing page"><div class="figcaption"><font style="font-size:15px"><i>Figure 1:
+<img src="Pictures/CCD_BPA_page.png" alt="Figure 1: Bisphenol A CCD landing page"><div class="figcaption"><font style="font-size:15px"><i>Figure 1:
 Bisphenol A CCD landing page</i></font></div>
 </div>
 </center>
@@ -319,7 +150,7 @@ spreadsheet may include data from most of the domains available on an
 individual substance’s CCD page.</p>
 <center>
 <div class="float">
-<img src="Pictures%2FCCD_Batch_Search.png" alt="Figure 2: CCD Batch Search"><div class="figcaption"><font style="font-size:15px"><i>Figure 2: CCD
+<img src="Pictures/CCD_Batch_Search.png" alt="Figure 2: CCD Batch Search"><div class="figcaption"><font style="font-size:15px"><i>Figure 2: CCD
 Batch Search</i></font></div>
 </div>
 </center>
@@ -328,7 +159,7 @@ such as Excel (.xlsx), comma-separated values (.csv), or different types
 of chemical table files (.e.g, MOL).</p>
 <center>
 <div class="float">
-<img src="Pictures%2FCCD_Batch_Search_customize_export_results.png" alt="Figure 3: CCD Batch Search Customized Export"><div class="figcaption"><font style="font-size:15px"><i>Figure 3: CCD
+<img src="Pictures/CCD_Batch_Search_customize_export_results.png" alt="Figure 3: CCD Batch Search Customized Export"><div class="figcaption"><font style="font-size:15px"><i>Figure 3: CCD
 Batch Search Customized Export</i></font></div>
 </div>
 </center>
@@ -340,8 +171,8 @@ multiple batches and searched separately.</p>
 <div class="section level3">
 <h3 id="challenges-of-web-based-dashboard-search">Challenges of web-based dashboard search<a class="anchor" aria-label="anchor" href="#challenges-of-web-based-dashboard-search"></a>
 </h3>
-<p>Practicing researchers may follow a workflow where many chemicals are
-being evaluated that looks something like this:</p>
+<p>Practicing researchers may follow a workflow that looks something
+like this:</p>
 <ol style="list-style-type: decimal">
 <li>Start with a dataset that includes your chemical identifiers of
 interest. These may include chemical names, Chemical Abstract Service
@@ -411,21 +242,21 @@ exploration and retrieval can alleviate these concerns.</p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="introduction-to-the-ctx-apis">Introduction to the CTX APIs<a class="anchor" aria-label="anchor" href="#introduction-to-the-ctx-apis"></a>
+<h2 id="application-programming-interfaces-apis-for-automated-batch-search-of-the-ccd">Application Programming Interfaces (APIs) for Automated Batch Search
+of the CCD<a class="anchor" aria-label="anchor" href="#application-programming-interfaces-apis-for-automated-batch-search-of-the-ccd"></a>
 </h2>
-<p>Recently, the <a href="https://www.epa.gov/aboutepa/about-center-computational-toxicology-and-exposure-ccte" class="external-link">US
-EPA’s Center for Computational Toxicology and Exposure (CCTE)</a>
-developed a set of Application Programming Interfaces (APIs) that allows
-programmatic access to the CCD, bypassing the manual steps of the
-web-based batch search workflow. APIs effectively automate the process
-of accessing and downloading the data that populates the CCD.</p>
-<p>The <a href="https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis" class="external-link">Computational
-Toxicology and Exposure (CTX) APIs</a> are publicly available at no cost
-to the user. However, in order to use the CTX APIs, users must have a
-individual API key. The API key uniquely identifies the user to the CCD
-servers and verifies that you have permission to access the database.
-Getting an API key is free, but requires contacting the API support team
-at <a href="mailto:ccte_api@epa.gov">ccte_api@epa.gov</a>.</p>
+<p>Recently, the <a href="https://www.epa.gov/aboutepa/about-center-computational-toxicology-and-exposure-ccte" class="external-link">Center
+for Computational Toxicology and Exposure</a> (CCTE) developed a set of
+Application Programming Interfaces (APIs) that allows programmatic
+access to the CCD, bypassing the manual steps of the web-based batch
+search workflow. APIs effectively automate the process of accessing and
+downloading the data that populates the CCD.</p>
+<p>The <a href="https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis" class="external-link">CTX
+APIs</a> are publicly available at no cost to the user. However, in
+order to use the CTX APIs, users must have a individual API key. The API
+key uniquely identifies the user to the CCD servers and verifies that
+you have permission to access the database. Getting an API key is free,
+but requires contacting the API support team at <a href="mailto:ccte_api@epa.gov">ccte_api@epa.gov</a>.</p>
 <p>The APIs are organized into sets of “endpoints” by data domains:
 <code>Chemical</code>, <code>Hazard</code>, and
 <code>Bioactivity</code>. An endpoint provides access to a specific set
@@ -434,7 +265,7 @@ chemical that the user specifies. A view from the <a href="https://api-ccte.epa.
 interface is pictured below.</p>
 <center>
 <div class="float">
-<img src="Pictures%2FCTX_Chemical_API_endpoints.png" alt="Figure 4: CTX API Chemical Endpoints"><div class="figcaption"><font style="font-size:15px"><i>Figure 4: CTX
+<img src="Pictures/CTX_Chemical_API_endpoints.png" alt="Figure 4: CTX API Chemical Endpoints"><div class="figcaption"><font style="font-size:15px"><i>Figure 4: CTX
 API Chemical Endpoints</i></font></div>
 </div>
 </center>
@@ -451,11 +282,10 @@ transport information; and so on.</p>
 </h3>
 <p><code>Authentication</code>, found in upper left tab on each web
 interface page, is required to use the APIs. To authenticate themselves
-in the API web interface, the user must input their unique API key. To
-request an API key, please contact the API support team at <a href="mailto:ccte_api@epa.gov">ccte_api@epa.gov</a>.</p>
+in the API web interface, the user must input their unique API key.</p>
 <center>
 <div class="float">
-<img src="Pictures%2FCTX_API_Key_authentication.png" alt="Figure 5: API Key Authentication"><div class="figcaption"><font style="font-size:15px"><i>Figure 5: API
+<img src="Pictures/CTX_API_Key_authentication.png" alt="Figure 5: API Key Authentication"><div class="figcaption"><font style="font-size:15px"><i>Figure 5: API
 Key Authentication</i></font></div>
 </div>
 </center>
@@ -479,7 +309,7 @@ order to use the API. Let’s consider constructing an API request to
 <code>Chemical Details Resource</code>.</p>
 <center>
 <div class="float">
-<img src="Pictures%2FGet_Data_by_DTXSID_TOP.png" alt="Figure 6: Get Details by DTXSID"><div class="figcaption"><font style="font-size:15px"><i>Figure 6: Get
+<img src="Pictures/Get_Data_by_DTXSID_TOP.png" alt="Figure 6: Get Details by DTXSID"><div class="figcaption"><font style="font-size:15px"><i>Figure 6: Get
 Details by DTXSID</i></font></div>
 </div>
 </center>
@@ -507,7 +337,7 @@ returned.</li>
 of fields with data types represented.</p>
 <center>
 <div class="float">
-<img src="Pictures%2FGet_Data_by_DTXSID_BOTTOM.png" alt="Figure 7: Get Details by DTXSID, Return Format"><div class="figcaption"><font style="font-size:15px"><i>Figure 7: Get
+<img src="Pictures/Get_Data_by_DTXSID_BOTTOM.png" alt="Figure 7: Get Details by DTXSID, Return Format"><div class="figcaption"><font style="font-size:15px"><i>Figure 7: Get
 Details by DTXSID, Return Format</i></font></div>
 </div>
 </center>
@@ -516,7 +346,7 @@ the <code>chemicaldetailstandard</code> value for
 <code>projection</code> selected.</p>
 <center>
 <div class="float">
-<img src="Pictures%2FBPA_chemicaldetailstandard.png" alt="Figure 8: Returned Details for Bisphenol A"><div class="figcaption"><font style="font-size:15px"><i>Figure 8:
+<img src="Pictures/BPA_chemicaldetailstandard.png" alt="Figure 8: Returned Details for Bisphenol A"><div class="figcaption"><font style="font-size:15px"><i>Figure 8:
 Returned Details for Bisphenol A</i></font></div>
 </div>
 </center>
@@ -550,9 +380,9 @@ install the development version of ctxR like so:</p>
 <h3 id="api-key-storage">API Key Storage<a class="anchor" aria-label="anchor" href="#api-key-storage"></a>
 </h3>
 <p>As previously described, a user must have an API key to use in order
-to access the CTX APIs. A <em>FREE</em> API key can be obtained by
-emailing the <a href="mailto:ccte_api@epa.gov">CTX API Admins</a>. In
-the example code, the API key will be stored as the variable
+to access the CTX APIs. This can be obtained from the admins of the CTX
+APIs by emailing <a href="mailto:ccte_api@epa.gov">CTX API Admins</a>.
+In the example code, the API key will be stored as the variable
 <code>my_key</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my_key</span> <span class="op">&lt;-</span> <span class="st">'YOUR_CTX_API_key'</span></span></code></pre></div>
@@ -581,56 +411,67 @@ function.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/register_ctx_api_key.html">ctx_key</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
-</div>
-<div class="section level2">
-<h2 id="quick-start-examples">Quick Start Examples<a class="anchor" aria-label="anchor" href="#quick-start-examples"></a>
-</h2>
-<p>As some quick start examples, we demonstrate the relative ease
-(compared to using the CCD or API web interface) of retrieving the
-information across endpoints for Bisphenol A using <em>ctxR</em>.</p>
-<p>Tables output in each example have been filtered to only display the
-first few rows of data. For additional examples and more comprehensive
-documentation on each endpoint, consider reviewing the other ctxR
-vignettes for the data domain of interest.</p>
 <div class="section level3">
-<h3 id="chemical-api">Chemical API<a class="anchor" aria-label="anchor" href="#chemical-api"></a>
+<h3 id="quick-start-examples">Quick Start Examples<a class="anchor" aria-label="anchor" href="#quick-start-examples"></a>
 </h3>
+<p>As some quick start examples, we demonstrate the ease* of retrieving
+the information across endpoints for Bisphenol A using <em>ctxR</em>.
+*This is in contrast to the approach using the CCD or API web
+interface.</p>
+<p>For additional examples and more comprehensive documentation on each
+endpoint, consider reviewing the other ctxR vignettes for the data
+domain of interest.</p>
+<div class="section level4">
+<h4 id="chemical-api">Chemical API<a class="anchor" aria-label="anchor" href="#chemical-api"></a>
+</h4>
 <p>In this section, several ctxR functions are used to access different
 types of information from the <a href="https://api-ccte.epa.gov/docs/chemical.html#/" class="external-link">CTX Chemical
 API</a>.</p>
-<div class="section level4">
-<h4 id="chemical-details-resource">Chemical Details Resource<a class="anchor" aria-label="anchor" href="#chemical-details-resource"></a>
-</h4>
+<div class="section level5">
+<h5 id="chemical-details-resource">Chemical Details Resource<a class="anchor" aria-label="anchor" href="#chemical-details-resource"></a>
+</h5>
 <p>The function <code><a href="../reference/get_chemical_details.html">get_chemical_details()</a></code> takes in either the
 DTXSID or DTXCID of a chemical and the user-specific API key. Relevant
 chemical details for Bisphenol A, which has DTXSID “DTXSID7020182”, are
-obtained in a data.table.</p>
+obtained in a data.table. output below:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">bpa_details</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_chemical_details.html">get_chemical_details</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">bpa_details</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_chemical_details.html">get_chemical_details</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span>,</span>
+<span>                                    API_key <span class="op">=</span> <span class="va">my_key</span><span class="op">)</span></span>
+<span><span class="va">bpa_details</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">bpa_details</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">bpa_details</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level4">
-<h4 id="chemical-property-resource">Chemical Property Resource<a class="anchor" aria-label="anchor" href="#chemical-property-resource"></a>
-</h4>
+<div class="section level5">
+<h5 id="chemical-property-resource">Chemical Property Resource<a class="anchor" aria-label="anchor" href="#chemical-property-resource"></a>
+</h5>
 <p>The function <code><a href="../reference/get_chem_info.html">get_chem_info()</a></code> returns phys-chem
 properties for the selected chemical, and can be filtered to
 ‘experimental’ or ‘predicted’ if desired.</p>
-<p>Here all phys-chem properties are returned for Bisphenol A.</p>
+<p>Here all phys-chem properties are returned for Bisphenol A:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">bpa_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_chem_info.html">get_chem_info</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">"DTXSID7020182"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">bpa_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_chem_info.html">get_chem_info</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">"DTXSID7020182"</span>,</span>
+<span>                          API_key <span class="op">=</span> <span class="va">my_key</span><span class="op">)</span></span>
+<span><span class="va">bpa_info</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">bpa_info</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">bpa_info</span><span class="op">)</span></span></code></pre></div>
 <p>Request can be filtered to return experimental results only.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">bpa_info_experimental</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_chem_info.html">get_chem_info</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">"DTXSID7020182"</span>, type <span class="op">=</span> <span class="st">'experimental'</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">bpa_info_experimental</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_chem_info.html">get_chem_info</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">"DTXSID7020182"</span>,</span>
+<span>                                       type <span class="op">=</span> <span class="st">'experimental'</span>,</span>
+<span>                                       API_key <span class="op">=</span> <span class="va">my_key</span><span class="op">)</span></span>
+<span><span class="va">bpa_info_experimental</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">bpa_info_experimental</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">bpa_info_experimental</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level3">
-<h3 id="hazard-api">Hazard API<a class="anchor" aria-label="anchor" href="#hazard-api"></a>
-</h3>
+<div class="section level4">
+<h4 id="hazard-api">Hazard API<a class="anchor" aria-label="anchor" href="#hazard-api"></a>
+</h4>
 <p>In this section, several ctxR functions are used to access different
 types of information from the <a href="https://api-ccte.epa.gov/docs/hazard.html#/" class="external-link">CTX Hazard
 API</a>.</p>
-<div class="section level4">
-<h4 id="hazard-resource">Hazard Resource<a class="anchor" aria-label="anchor" href="#hazard-resource"></a>
-</h4>
+<div class="section level5">
+<h5 id="hazard-resource">Hazard Resource<a class="anchor" aria-label="anchor" href="#hazard-resource"></a>
+</h5>
 <p>The function <code><a href="../reference/get_hazard_by_dtxsid.html">get_hazard_by_dtxsid()</a></code> retrieves hazard
 data (all human or ecological toxicity data) for a given chemical based
 on input DTXSID. <code><a href="../reference/get_human_hazard_by_dtxsid.html">get_human_hazard_by_dtxsid()</a></code> and
@@ -639,33 +480,50 @@ results for the given chemical to human or ecological toxicity data,
 respectively.</p>
 <p>Here all hazard data is returned for Bisphenol A:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">bpa_hazard</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_hazard_by_dtxsid.html">get_hazard_by_dtxsid</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">bpa_hazard</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_hazard_by_dtxsid.html">get_hazard_by_dtxsid</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span>,</span>
+<span>                                   API_key <span class="op">=</span> <span class="va">my_key</span><span class="op">)</span></span>
+<span><span class="va">bpa_hazard</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">bpa_hazard</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">bpa_hazard</span><span class="op">)</span></span></code></pre></div>
 <p>Request can be refined to return results for human hazard,</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">bpa_human_hazard</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_human_hazard_by_dtxsid.html">get_human_hazard_by_dtxsid</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">bpa_human_hazard</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_human_hazard_by_dtxsid.html">get_human_hazard_by_dtxsid</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span>,</span>
+<span>                                               API_key <span class="op">=</span> <span class="va">my_key</span><span class="op">)</span></span>
+<span><span class="va">bpa_human_hazard</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">bpa_human_hazard</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">bpa_human_hazard</span><span class="op">)</span></span></code></pre></div>
 <p>or EcoTox results.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">bpa_eco_hazard</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_ecotox_hazard_by_dtxsid.html">get_ecotox_hazard_by_dtxsid</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">bpa_eco_hazard</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_ecotox_hazard_by_dtxsid.html">get_ecotox_hazard_by_dtxsid</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span>,</span>
+<span>                                              API_key <span class="op">=</span> <span class="va">my_key</span><span class="op">)</span></span>
+<span><span class="va">bpa_eco_hazard</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">bpa_eco_hazard</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">bpa_eco_hazard</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level3">
-<h3 id="bioactivity-api">Bioactivity API<a class="anchor" aria-label="anchor" href="#bioactivity-api"></a>
-</h3>
+<div class="section level4">
+<h4 id="bioactivity-api">Bioactivity API<a class="anchor" aria-label="anchor" href="#bioactivity-api"></a>
+</h4>
 <p>In this section, several ctxR functions are used to access different
 types of information from the <a href="https://api-ccte.epa.gov/docs/bioactivity.html#/" class="external-link">CTX Bioactivity
 API</a>.</p>
-<div class="section level4">
-<h4 id="bioactivity-resource">Bioactivity Resource<a class="anchor" aria-label="anchor" href="#bioactivity-resource"></a>
-</h4>
+<div class="section level5">
+<h5 id="bioactivity-resource">Bioactivity Resource<a class="anchor" aria-label="anchor" href="#bioactivity-resource"></a>
+</h5>
 <p>The function <code><a href="../reference/get_bioactivity_details.html">get_bioactivity_details()</a></code> retrieves all
 bioactivity data for a given chemical based on input DTXSID.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">bpa_bioactivity</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_bioactivity_details.html">get_bioactivity_details</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">bpa_bioactivity</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_bioactivity_details.html">get_bioactivity_details</a></span><span class="op">(</span>DTXSID <span class="op">=</span> <span class="st">'DTXSID7020182'</span>,</span>
+<span>                                           API_key <span class="op">=</span> <span class="va">my_key</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">bpa_bioactivity</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">bpa_bioactivity</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">bpa_bioactivity</span><span class="op">)</span></span></code></pre></div>
 <p>The function <code><a href="../reference/get_bioactivity_details.html">get_bioactivity_details()</a></code> can also be used
 to retrieve all bioactivity data for a given endpoint, based on input
 AEID (assay endpoint identifier).</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">assay_id_search</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_bioactivity_details.html">get_bioactivity_details</a></span><span class="op">(</span>AEID <span class="op">=</span> <span class="fl">42</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">assay_id_search</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_bioactivity_details.html">get_bioactivity_details</a></span><span class="op">(</span>AEID <span class="op">=</span> <span class="fl">42</span>,</span>
+<span>                                           API_key <span class="op">=</span> <span class="va">my_key</span><span class="op">)</span></span>
+<span><span class="va">assay_id_search</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">assay_id_search</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">assay_id_search</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -679,26 +537,26 @@ using APIs.</p>
 endpoint, consider reviewing the other ctxR vignettes for the data
 domain of interest.</p>
 </div>
-  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
 </div>
 
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Paul Kruse, Caroline Ring, Madison Feshuk.</p>
+  <p>Developed by Paul Kruse, Caroline Ring.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
 </div>
 
     </footer>
 </div>
 
+  
 
-
-
+  
 
   </body>
 </html>

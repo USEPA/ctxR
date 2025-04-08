@@ -1,118 +1,324 @@
-<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
-<url><loc>https://usepa.github.io/ctxR/404.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/CONTRIBUTING.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/LICENSE.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/articles/Bioactivity.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/articles/Chemical.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/articles/Exposure.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/articles/Hazard.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/articles/Introduction.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/articles/index.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/authors.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/index.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/news/index.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/bioactivity_api_server.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/check_api_key.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/check_existence_by_dtxsid.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/check_existence_by_dtxsid_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/chemical_api_server.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/chemical_contains.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/chemical_contains_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/chemical_equal.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/chemical_equal_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/chemical_starts_with.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/chemical_starts_with_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/create_data.table_chemical_details.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/create_hazard_data.table.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/ctxR_options.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/exposure_api_server.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_all_assays.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_all_list_types.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_all_public_chemical_lists.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_annotation_by_aeid.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_annotation_by_aeid_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_bioactivity_details.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_bioactivity_details_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_bioactivity_endpoint_status.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_bioactivity_summary.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_bioactivity_summary_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_cancer_hazard.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_cancer_hazard_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chem_info.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chem_info_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemical_by_property_range.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemical_by_property_range_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemical_details.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemical_details_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemical_endpoint_status.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemical_image.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemical_image_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemical_lists_by_type.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemical_lists_by_type_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemical_mol.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemical_mol_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemical_mrv.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemical_mrv_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemical_synonym.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemical_synonym_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemicals_in_list.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemicals_in_list_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemicals_in_list_contain.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemicals_in_list_contain_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemicals_in_list_exact.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemicals_in_list_exact_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemicals_in_list_start.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_chemicals_in_list_start_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_demographic_exposure_prediction.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_demographic_exposure_prediction_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_ecotox_hazard_by_dtxsid.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_ecotox_hazard_by_dtxsid_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_exposure_endpoint_status.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_exposure_functional_use.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_exposure_functional_use_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_exposure_functional_use_category.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_exposure_functional_use_probability.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_exposure_functional_use_probability_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_exposure_list_presence_tags.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_exposure_list_presence_tags_by_dtxsid.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_exposure_list_presence_tags_by_dtxsid_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_exposure_product_data.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_exposure_product_data_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_exposure_product_data_puc.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_fate_by_dtxsid.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_fate_by_dtxsid_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_general_exposure_prediction.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_general_exposure_prediction_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_genetox_details.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_genetox_details_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_genetox_summary.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_genetox_summary_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_hazard_by_dtxsid.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_hazard_by_dtxsid_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_hazard_endpoint_status.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_httk_data.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_httk_data_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_human_hazard_by_dtxsid.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_human_hazard_by_dtxsid_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_inchi.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_inchikey.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_lists_containing_chemical.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_lists_containing_chemical_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_msready_by_dtxcid.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_msready_by_dtxcid_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_msready_by_formula.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_msready_by_formula_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_msready_by_mass.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_msready_by_mass_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_msready_by_mass_with_error_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_public_chemical_list_by_name.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_public_chemical_list_by_name_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_skin_eye_hazard.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_skin_eye_hazard_batch.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/get_smiles.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/hazard_api_server.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/index.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/prepare_word.html</loc></url>
-<url><loc>https://usepa.github.io/ctxR/reference/register_ctx_api_key.html</loc></url>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://usepa.github.io/ctxR/404.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/articles/Bioactivity.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/articles/Chemical.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/articles/Exposure.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/articles/Hazard.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/articles/Introduction enhanced.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/articles/Introduction.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/authors.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/index.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/news/index.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/bioactivity_api_server.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/chemical_api_server.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/chemical_contains.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/chemical_contains_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/chemical_equal.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/chemical_equal_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/chemical_starts_with.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/chemical_starts_with_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/create_data.table_chemical_details.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/ctxR_options.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/exposure_api_server.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_all_assays.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_all_public_chemical_lists.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_annotation_by_aeid.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_annotation_by_aeid_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_bioactivity_details.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_bioactivity_details_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_bioactivity_endpoint_status.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_bioactivity_summary.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_bioactivity_summary_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_cancer_hazard.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_cancer_hazard_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_cancer_hazard_batch_old.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_chemicals_in_list.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_chemicals_in_list_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_chemical_by_property_range.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_chemical_by_property_range_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_chemical_details.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_chemical_details_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_chemical_endpoint_status.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_chemical_image.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_chemical_image_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_chemical_lists_by_type.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_chemical_lists_by_type_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_chemical_mol.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_chemical_mol_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_chemical_mrv.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_chemical_mrv_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_chemical_synonym.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_chemical_synonym_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_chem_info.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_chem_info_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_chem_info_batch_old.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_ecotox_hazard_by_dtxsid.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_ecotox_hazard_by_dtxsid_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_ecotox_hazard_by_dtxsid_batch_old.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_exposure_endpoint_status.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_exposure_functional_use.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_exposure_functional_use_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_exposure_functional_use_category.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_exposure_functional_use_probability.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_exposure_functional_use_probability_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_exposure_list_presence_tags.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_exposure_list_presence_tags_by_dtxsid.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_exposure_list_presence_tags_by_dtxsid_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_exposure_product_data.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_exposure_product_data_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_exposure_product_data_puc.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_fate_by_dtxsid.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_fate_by_dtxsid_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_fate_by_dtxsid_batch_old.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_genetox_details.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_genetox_details_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_genetox_details_batch_old.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_genetox_summary.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_genetox_summary_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_genetox_summary_batch_old.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_hazard_by_dtxsid.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_hazard_by_dtxsid_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_hazard_by_dtxsid_batch_old.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_hazard_endpoint_status.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_human_hazard_by_dtxsid.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_human_hazard_by_dtxsid_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_human_hazard_by_dtxsid_batch_old.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_inchi.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_inchikey.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_lists_containing_chemical.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_lists_containing_chemical_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_msready_by_dtxcid.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_msready_by_dtxcid_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_msready_by_formula.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_msready_by_formula_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_msready_by_mass.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_msready_by_mass_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_msready_by_mass_with_error_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_public_chemical_list_by_name.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_public_chemical_list_by_name_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_skin_eye_hazard.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_skin_eye_hazard_batch.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_skin_eye_hazard_batch_old.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/get_smiles.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/hazard_api_server.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/prepare_word.html</loc>
+  </url>
+  <url>
+    <loc>https://usepa.github.io/ctxR/reference/register_ctx_api_key.html</loc>
+  </url>
 </urlset>
-
