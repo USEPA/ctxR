@@ -5,7 +5,7 @@
 #' @param Projection The format and chemical detail data returned. Allowed
 #'   values are 'chemicaldetailall', 'chemicaldetailstandard',
 #'   'chemicalidentifier', 'chemicalstructure', 'ntatoolkit',
-#'   'ccdchemicaldetails'. If left empty or there is a mismatch, the default
+#'   'ccdchemicaldetails', 'compact'. If left empty or there is a mismatch, the default
 #'   format will be 'chemicaldetailstandard'.
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
@@ -40,7 +40,8 @@ get_chemical_details <- function(DTXSID = NULL,
                           'chemicalidentifier',
                           'chemicalstructure',
                           'ntatoolkit',
-                          'ccdchemicaldetails')
+                          'ccdchemicaldetails',
+                          'compact')
   index <- 2
   if (!is.character(Projection)){
     warning('Setting `Projection` to `chemicaldetailstandard`')
@@ -115,7 +116,7 @@ get_chemical_details <- function(DTXSID = NULL,
 
 
 create_data.table_chemical_details <- function(index = -1){
-  if (index %in% 2:6 ){
+  if (index %in% 2:7 ){
     if (index == 2){
       data <- data.table::data.table(id = character(),
                                      cpdataCount = integer(),
@@ -191,7 +192,7 @@ create_data.table_chemical_details <- function(index = -1){
                                      expocatMedianPrediction = character(),
                                      expocat = character(),
                                      nhanes = character())
-    } else {
+    } else if (index == 6) {
       data <- data.table::data.table(id = character(),
                                      dtxsid = character(),
                                      dtxcid = character(),
@@ -229,6 +230,10 @@ create_data.table_chemical_details <- function(index = -1){
                                      inchikey = character(),
                                      wikipediaArticle = character(),
                                      cpdataCount = integer())
+    } else {
+      data <- data.table::data.table(dtxsid = character(),
+                                     casrn = character(),
+                                     preferredName = character())
     }
     return(data)
   }
