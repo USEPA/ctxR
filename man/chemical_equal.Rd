@@ -12,8 +12,8 @@ chemical_equal(
 )
 }
 \arguments{
-\item{word}{A character string of a chemical name or portion of a chemical
-name}
+\item{word}{A character string of a chemical identifier or portion of a chemical
+identifier. Identifiers can be a chemical name, dtxsid, dtxcid, casrn, or inchikey.}
 
 \item{API_key}{The user-specific API key}
 
