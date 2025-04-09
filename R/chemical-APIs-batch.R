@@ -1223,23 +1223,14 @@ chemical_equal_batch <- function(word_list = NULL,
     if (dim(dt)[[1]] > 0){
 
 
-      valid_index <- which(unlist(lapply(dt$searchMsgs, function(t) {is.null(t) || is.na(t)})))
-      invalid_index <- setdiff(seq_along(dt$searchMsgs), valid_index)
-
-
-      return_list$valid <- data.table::copy(dt)[valid_index, -c(11:12)]
-      return_list$invalid <- data.table::copy(dt)[invalid_index, c(7, 11:13)]
-
-
-
+      search_index <- which(unlist(lapply(dt$searchValue, function(t) {!is.null(t)})))
+      return_list <- data.table::copy(dt)[search_index, -c(11:12)]
 
       return(return_list)
     }
 
+    return(return_list)
 
-
-    return(list(valid = dt[, -c(11:12)],
-                invalid = dt[, c(7, 11:13)]))
   } else {
     stop('Please input a list of chemical names!')
   }
