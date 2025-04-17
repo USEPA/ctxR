@@ -853,28 +853,28 @@ property type.</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">ccl4_vapor_all</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     dtxsid          mean_vapor_pressure</span></span>
-<span><span class="co">#&gt;  Length:83          Min.   :   0.000   </span></span>
-<span><span class="co">#&gt;  Class :character   1st Qu.:   0.000   </span></span>
-<span><span class="co">#&gt;  Mode  :character   Median :   0.002   </span></span>
-<span><span class="co">#&gt;                     Mean   : 224.118   </span></span>
-<span><span class="co">#&gt;                     3rd Qu.:   3.866   </span></span>
-<span><span class="co">#&gt;                     Max.   :6007.242</span></span>
+<span><span class="co">#&gt;  Length:83          Min.   :   0.0000  </span></span>
+<span><span class="co">#&gt;  Class :character   1st Qu.:   0.0000  </span></span>
+<span><span class="co">#&gt;  Mode  :character   Median :   0.0015  </span></span>
+<span><span class="co">#&gt;                     Mean   : 224.1177  </span></span>
+<span><span class="co">#&gt;                     3rd Qu.:   3.8663  </span></span>
+<span><span class="co">#&gt;                     Max.   :6007.2425</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">ccl4_vapor_grouped</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     dtxsid            propType         mean_vapor_pressure</span></span>
-<span><span class="co">#&gt;  Length:140         Length:140         Min.   :   0.000   </span></span>
-<span><span class="co">#&gt;  Class :character   Class :character   1st Qu.:   0.000   </span></span>
-<span><span class="co">#&gt;  Mode  :character   Mode  :character   Median :   0.069   </span></span>
-<span><span class="co">#&gt;                                        Mean   : 265.007   </span></span>
-<span><span class="co">#&gt;                                        3rd Qu.:  10.125   </span></span>
-<span><span class="co">#&gt;                                        Max.   :7252.700</span></span>
+<span><span class="co">#&gt;  Length:140         Length:140         Min.   :   0.0000  </span></span>
+<span><span class="co">#&gt;  Class :character   Class :character   1st Qu.:   0.0000  </span></span>
+<span><span class="co">#&gt;  Mode  :character   Mode  :character   Median :   0.0685  </span></span>
+<span><span class="co">#&gt;                                        Mean   : 265.0074  </span></span>
+<span><span class="co">#&gt;                                        3rd Qu.:  10.1247  </span></span>
+<span><span class="co">#&gt;                                        Max.   :7252.7000</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">natadb_vapor_all</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     dtxsid          mean_vapor_pressure</span></span>
-<span><span class="co">#&gt;  Length:145         Min.   :   0.000   </span></span>
-<span><span class="co">#&gt;  Class :character   1st Qu.:   0.007   </span></span>
-<span><span class="co">#&gt;  Mode  :character   Median :   1.001   </span></span>
-<span><span class="co">#&gt;                     Mean   : 225.872   </span></span>
-<span><span class="co">#&gt;                     3rd Qu.:  89.931   </span></span>
-<span><span class="co">#&gt;                     Max.   :9298.713</span></span>
+<span><span class="co">#&gt;  Length:145         Min.   :   0.0000  </span></span>
+<span><span class="co">#&gt;  Class :character   1st Qu.:   0.0068  </span></span>
+<span><span class="co">#&gt;  Mode  :character   Median :   1.0010  </span></span>
+<span><span class="co">#&gt;                     Mean   : 225.8721  </span></span>
+<span><span class="co">#&gt;                     3rd Qu.:  89.9308  </span></span>
+<span><span class="co">#&gt;                     Max.   :9298.7133</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">natadb_vapor_grouped</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     dtxsid            propType         mean_vapor_pressure</span></span>
 <span><span class="co">#&gt;  Length:267         Length:267         Min.   :   0.000   </span></span>
@@ -942,36 +942,36 @@ grouping data by DTXSID, and also by DTXSID and property type.</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">ccl4_hlc_all</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     dtxsid             mean_hlc        </span></span>
-<span><span class="co">#&gt;  Length:82          Min.   :0.0000000  </span></span>
-<span><span class="co">#&gt;  Class :character   1st Qu.:0.0000000  </span></span>
-<span><span class="co">#&gt;  Mode  :character   Median :0.0000007  </span></span>
-<span><span class="co">#&gt;                     Mean   :0.0076308  </span></span>
-<span><span class="co">#&gt;                     3rd Qu.:0.0000216  </span></span>
-<span><span class="co">#&gt;                     Max.   :0.4922550</span></span>
+<span><span class="co">#&gt;  Length:82          Min.   :0.000e+00  </span></span>
+<span><span class="co">#&gt;  Class :character   1st Qu.:0.000e+00  </span></span>
+<span><span class="co">#&gt;  Mode  :character   Median :7.400e-07  </span></span>
+<span><span class="co">#&gt;                     Mean   :7.631e-03  </span></span>
+<span><span class="co">#&gt;                     3rd Qu.:2.162e-05  </span></span>
+<span><span class="co">#&gt;                     Max.   :4.923e-01</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">ccl4_hlc_grouped</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     dtxsid            propType            mean_hlc        </span></span>
-<span><span class="co">#&gt;  Length:110         Length:110         Min.   :0.0000000  </span></span>
-<span><span class="co">#&gt;  Class :character   Class :character   1st Qu.:0.0000000  </span></span>
-<span><span class="co">#&gt;  Mode  :character   Mode  :character   Median :0.0000020  </span></span>
-<span><span class="co">#&gt;                                        Mean   :0.0063874  </span></span>
-<span><span class="co">#&gt;                                        3rd Qu.:0.0001217  </span></span>
-<span><span class="co">#&gt;                                        Max.   :0.4922550</span></span>
+<span><span class="co">#&gt;  Length:110         Length:110         Min.   :0.000e+00  </span></span>
+<span><span class="co">#&gt;  Class :character   Class :character   1st Qu.:1.000e-08  </span></span>
+<span><span class="co">#&gt;  Mode  :character   Mode  :character   Median :2.020e-06  </span></span>
+<span><span class="co">#&gt;                                        Mean   :6.387e-03  </span></span>
+<span><span class="co">#&gt;                                        3rd Qu.:1.217e-04  </span></span>
+<span><span class="co">#&gt;                                        Max.   :4.923e-01</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">natadb_hlc_all</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     dtxsid             mean_hlc        </span></span>
-<span><span class="co">#&gt;  Length:144         Min.   :0.0000000  </span></span>
-<span><span class="co">#&gt;  Class :character   1st Qu.:0.0000002  </span></span>
-<span><span class="co">#&gt;  Mode  :character   Median :0.0000328  </span></span>
-<span><span class="co">#&gt;                     Mean   :0.0086311  </span></span>
-<span><span class="co">#&gt;                     3rd Qu.:0.0012426  </span></span>
-<span><span class="co">#&gt;                     Max.   :0.4922550</span></span>
+<span><span class="co">#&gt;  Length:144         Min.   :0.000e+00  </span></span>
+<span><span class="co">#&gt;  Class :character   1st Qu.:1.600e-07  </span></span>
+<span><span class="co">#&gt;  Mode  :character   Median :3.278e-05  </span></span>
+<span><span class="co">#&gt;                     Mean   :8.631e-03  </span></span>
+<span><span class="co">#&gt;                     3rd Qu.:1.243e-03  </span></span>
+<span><span class="co">#&gt;                     Max.   :4.923e-01</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">natadb_hlc_grouped</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     dtxsid            propType            mean_hlc        </span></span>
-<span><span class="co">#&gt;  Length:210         Length:210         Min.   :0.0000000  </span></span>
-<span><span class="co">#&gt;  Class :character   Class :character   1st Qu.:0.0000003  </span></span>
-<span><span class="co">#&gt;  Mode  :character   Mode  :character   Median :0.0001028  </span></span>
-<span><span class="co">#&gt;                                        Mean   :0.0073349  </span></span>
-<span><span class="co">#&gt;                                        3rd Qu.:0.0028132  </span></span>
-<span><span class="co">#&gt;                                        Max.   :0.4922550</span></span></code></pre></div>
+<span><span class="co">#&gt;  Length:210         Length:210         Min.   :0.000e+00  </span></span>
+<span><span class="co">#&gt;  Class :character   Class :character   1st Qu.:3.100e-07  </span></span>
+<span><span class="co">#&gt;  Mode  :character   Mode  :character   Median :1.028e-04  </span></span>
+<span><span class="co">#&gt;                                        Mean   :7.335e-03  </span></span>
+<span><span class="co">#&gt;                                        3rd Qu.:2.813e-03  </span></span>
+<span><span class="co">#&gt;                                        Max.   :4.923e-01</span></span></code></pre></div>
 <p>Again, log transform the data as it is positive and covers several
 orders of magnitude.</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
