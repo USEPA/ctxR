@@ -755,7 +755,6 @@ chemical_starts_with <- function(word = NULL,
   }
 
   word <- prepare_word(word)
-
   response <- httr::GET(url = paste0(Server, '/search/start-with/', word, ifelse(is.null(top), '', paste0("?top=", top))),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
@@ -768,12 +767,7 @@ chemical_starts_with <- function(word = NULL,
   }
 
   if (response$status == 400) {
-    parsed_response <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
-    if ('suggestions' %in% names(parsed_response)){
-      frame <- data.frame(Chemical = urltools::url_decode(word))
-      frame$Suggestion <- list(parsed_response$suggestions)
-      return(frame)
-    }
+    print(paste0('Found 0 results. Try adjusting the search parameters.'))
   } else if (response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
@@ -781,9 +775,8 @@ chemical_starts_with <- function(word = NULL,
       print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
     }
   }
+
   return()
-
-
 
 }
 
@@ -826,25 +819,21 @@ chemical_equal <- function(word = NULL,
                           'x-api-key' = API_key)
                         )
   )
-  if(response$status_code == 401){
+  if (response$status == 401){
     stop(httr::content(response)$detail)
-  } else if (response$status == 400) {
-    parsed_response <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
-    if ('suggestions' %in% names(parsed_response)){
-      frame <- data.frame(Chemical = urltools::url_decode(word))
-      frame$Suggestion <- list(parsed_response$suggestions)
-      return(frame)
-    }
-  } else if(response$status_code == 200){
+  }
+
+  if (response$status == 400) {
+    print(paste0('Found 0 results. Try adjusting the search parameters.'))
+  } else if (response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     if (verbose) {
       print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
     }
   }
+
   return()
-
-
 
 }
 
@@ -905,25 +894,21 @@ chemical_contains <- function(word = NULL,
                           'x-api-key' = API_key)
                         )
   )
-  if(response$status_code == 401){
+  if (response$status == 401){
     stop(httr::content(response)$detail)
-  } else if (response$status == 400) {
-    parsed_response <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
-    if ('suggestions' %in% names(parsed_response)){
-      frame <- data.frame(Chemical = urltools::url_decode(word))
-      frame$Suggestion <- list(parsed_response$suggestions)
-      return(frame)
-    }
-  } else if(response$status_code == 200){
+  }
+
+  if (response$status == 400) {
+    print(paste0('Found 0 results. Try adjusting the search parameters.'))
+  } else if (response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     if (verbose) {
       print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
     }
   }
+
   return()
-
-
 
 }
 
