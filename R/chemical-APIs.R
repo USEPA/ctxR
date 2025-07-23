@@ -5,7 +5,7 @@
 #' @param Projection The format and chemical detail data returned. Allowed
 #'   values are 'chemicaldetailall', 'chemicaldetailstandard',
 #'   'chemicalidentifier', 'chemicalstructure', 'ntatoolkit',
-#'   'ccdchemicaldetails'. If left empty or there is a mismatch, the default
+#'   'ccdchemicaldetails', 'compact'. If left empty or there is a mismatch, the default
 #'   format will be 'chemicaldetailstandard'.
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
@@ -40,7 +40,8 @@ get_chemical_details <- function(DTXSID = NULL,
                           'chemicalidentifier',
                           'chemicalstructure',
                           'ntatoolkit',
-                          'ccdchemicaldetails')
+                          'ccdchemicaldetails',
+                          'compact')
   index <- 2
   if (!is.character(Projection)){
     warning('Setting `Projection` to `chemicaldetailstandard`')
@@ -115,7 +116,7 @@ get_chemical_details <- function(DTXSID = NULL,
 
 
 create_data.table_chemical_details <- function(index = -1){
-  if (index %in% 2:6 ){
+  if (index %in% 2:7 ){
     if (index == 2){
       data <- data.table::data.table(id = character(),
                                      cpdataCount = integer(),
@@ -191,7 +192,7 @@ create_data.table_chemical_details <- function(index = -1){
                                      expocatMedianPrediction = character(),
                                      expocat = character(),
                                      nhanes = character())
-    } else {
+    } else if (index == 6) {
       data <- data.table::data.table(id = character(),
                                      dtxsid = character(),
                                      dtxcid = character(),
@@ -229,6 +230,10 @@ create_data.table_chemical_details <- function(index = -1){
                                      inchikey = character(),
                                      wikipediaArticle = character(),
                                      cpdataCount = integer())
+    } else {
+      data <- data.table::data.table(dtxsid = character(),
+                                     casrn = character(),
+                                     preferredName = character())
     }
     return(data)
   }
@@ -705,8 +710,8 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
 
 #' Chemical starts with
 #'
-#' @param word A character string of a chemical name or portion of a chemical
-#'   name
+#' @param word A character string of a chemical identifier or portion of a chemical
+#'   identifier. Identifiers can be a chemical name, dtxsid, dtxcid, casrn, or inchikey.
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
 #' @param verbose A logical indicating if some “progress report” should be
@@ -750,7 +755,6 @@ chemical_starts_with <- function(word = NULL,
   }
 
   word <- prepare_word(word)
-
   response <- httr::GET(url = paste0(Server, '/search/start-with/', word, ifelse(is.null(top), '', paste0("?top=", top))),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
@@ -763,12 +767,7 @@ chemical_starts_with <- function(word = NULL,
   }
 
   if (response$status == 400) {
-    parsed_response <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
-    if ('suggestions' %in% names(parsed_response)){
-      frame <- data.frame(Chemical = urltools::url_decode(word))
-      frame$Suggestion <- list(parsed_response$suggestions)
-      return(frame)
-    }
+    print(paste0('Found 0 results. Try adjusting the search parameters.'))
   } else if (response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
@@ -776,9 +775,8 @@ chemical_starts_with <- function(word = NULL,
       print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
     }
   }
+
   return()
-
-
 
 }
 
@@ -786,8 +784,8 @@ chemical_starts_with <- function(word = NULL,
 
 #' Chemical equal
 #'
-#' @param word A character string of a chemical name or portion of a chemical
-#'   name
+#' @param word A character string of a chemical identifier or portion of a chemical
+#'   identifier. Identifiers can be a chemical name, dtxsid, dtxcid, casrn, or inchikey.
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
 #' @param verbose A logical indicating if some “progress report” should be given.
@@ -821,25 +819,21 @@ chemical_equal <- function(word = NULL,
                           'x-api-key' = API_key)
                         )
   )
-  if(response$status_code == 401){
+  if (response$status == 401){
     stop(httr::content(response)$detail)
-  } else if (response$status == 400) {
-    parsed_response <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
-    if ('suggestions' %in% names(parsed_response)){
-      frame <- data.frame(Chemical = urltools::url_decode(word))
-      frame$Suggestion <- list(parsed_response$suggestions)
-      return(frame)
-    }
-  } else if(response$status_code == 200){
+  }
+
+  if (response$status == 400) {
+    print(paste0('Found 0 results. Try adjusting the search parameters.'))
+  } else if (response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     if (verbose) {
       print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
     }
   }
+
   return()
-
-
 
 }
 
@@ -849,8 +843,8 @@ chemical_equal <- function(word = NULL,
 
 #' Chemical contains
 #'
-#' @param word A character string of a chemical name or portion of a chemical
-#'   name
+#' @param word A character string of a chemical identifier or portion of a chemical
+#'   identifier. Identifiers can be a chemical name, dtxsid, dtxcid, casrn, or inchikey.
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
 #' @param verbose A logical indicating if some “progress report” should be given.
@@ -900,25 +894,21 @@ chemical_contains <- function(word = NULL,
                           'x-api-key' = API_key)
                         )
   )
-  if(response$status_code == 401){
+  if (response$status == 401){
     stop(httr::content(response)$detail)
-  } else if (response$status == 400) {
-    parsed_response <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
-    if ('suggestions' %in% names(parsed_response)){
-      frame <- data.frame(Chemical = urltools::url_decode(word))
-      frame$Suggestion <- list(parsed_response$suggestions)
-      return(frame)
-    }
-  } else if(response$status_code == 200){
+  }
+
+  if (response$status == 400) {
+    print(paste0('Found 0 results. Try adjusting the search parameters.'))
+  } else if (response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     if (verbose) {
       print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
     }
   }
+
   return()
-
-
 
 }
 
