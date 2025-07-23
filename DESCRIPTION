@@ -2,7 +2,6 @@ Type: Package
 Package: ctxR
 Title: Utilities for Interacting with the 'CTX' APIs
 Version: 1.1.2.9000
-
 Authors@R: c(
               person("Paul", "Kruse", role = c("aut"), comment = c(ORCID = "0000-0001-5516-9717")),
     	      person("Caroline", "Ring", email = "ring.caroline@epa.gov", role = c("aut"), comment = c(ORCID = "0000-0002-0463-1251")),
