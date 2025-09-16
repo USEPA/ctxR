@@ -158,24 +158,37 @@ fate_by_dtxsid <- get_fate_by_dtxsid(DTXSID = 'DTXSID7020182')
 
 # Chemical Search Resource
 
-Chemicals can be searched using string values. Examples for each are provided by the following:
+Chemicals can be searched using string values. These values can be a chemical name, DTXSID, DTXCID, CAS Registry Number (CASRN), or InChIKey. Examples for each are provided by the following:
 
 ## By starting value
+DTXSID must be complete
+DTXCID must be complete
+CAS Registry Number (CASRN) must be complete
+InChIKey must contain first 14 characters
 
 ```{r ctxR starting value chemical, message=FALSE, eval=FALSE}
-search_starts_with <- chemical_starts_with(word = 'DTXSID70201')
+search_starts_with_dtxsid <- chemical_starts_with(word = 'DTXSID7020182')
+search_starts_with_chem_name <- chemical_starts_with(word = 'Bisph')
+search_starts_with_casrn <- chemical_starts_with(word = '80-05-7')
+search_starts_with_inchikey <- chemical_starts_with(word = 'IISBACLAFKSPIT')
 ```
 
 ## By exact value
 
 ```{r ctxR exact value chemical, message=FALSE, eval=FALSE}
-search_exact <- chemical_equal(word = 'DTXSID7020182')
+search_exact_dtxsid <- chemical_equal(word = 'DTXSID7020182')
+search_exact_chem_name <- chemical_equal(word = 'Bisphenol A')
+search_exact_casrn <- chemical_equal(word = '80-05-7')
+search_exact_inchikey <- chemical_equal(word = 'IISBACLAFKSPIT-UHFFFAOYSA-N')
 ```
 
 ## By substring value
 
 ```{r ctxR substring value chemical, message=FALSE, eval=FALSE}
-search_contains <- chemical_contains(word = 'DTXSID702018')
+search_contains_dtxsid <- chemical_contains(word = 'DTXSID702018')
+search_contains_chem_name <- chemical_contains(word = 'Bisph')
+search_contains_casrn <- chemical_contains(word = '80-05-7')
+search_contains_inchikey <- chemical_contains(word = 'IISBACLAF')
 ```
 
 ## Subset for MS-Ready Structures
