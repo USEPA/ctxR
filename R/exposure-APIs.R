@@ -1,3 +1,8 @@
+
+
+
+
+
 #' Retrieve exposure related functional use data
 #'
 #' @param DTXSID Chemical identifier DTXSID
@@ -450,9 +455,22 @@ null_to_na <- function(data_list){
   })
 }
 
+#' Get aggregate records by DTXSID
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @returns A data.frame of aggregate record data by DTXSID.
+#' @export
+#'
+#' @examplesIf FALSE
+#' #Pull aggregate records for BPA by DTXSID
+#' bpa_agg_records <- get_aggregate_records_by_dtxsid(DTXSID = 'DTXSID7020182')
 get_aggregate_records_by_dtxsid <- function(DTXSID = NULL,
                                             API_key = NULL,
-                                            Server = exposure_api_server,
+                                            Server = 'https://comptox.epa.gov/ctx-api/exposure',
                                             verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input an DTXSID!')
@@ -481,19 +499,40 @@ get_aggregate_records_by_dtxsid <- function(DTXSID = NULL,
   return()
 }
 
+#' Get aggregate records by medium
+#'
+#' @param Medium The mmdb medium of exposure.
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param pageNumber Parameter for how to return data records.
+#' @param verbose A logical indicating if some "progress report" should be
+#'   given.
+#'
+#' @returns A list of search parameters and data of aggregate record data by
+#'   medium.
+#' @export
+#'
+#' @examplesIf FALSE
+#' #Pull aggregate records for BPA by medium
+#' bpa_agg_records <- get_aggregate_records_by_medium(Medium = 'surface water')
 get_aggregate_records_by_medium <- function(Medium = NULL,
                                             API_key = NULL,
-                                            Server = exposure_api_server,
+                                            Server = 'https://comptox.epa.gov/ctx-api/exposure',
+                                            pageNumber = 1,
                                             verbose = FALSE){
   if (is.null(Medium))
     stop('Please input a Medium!')
+
+  if ((!is.integer(pageNumber) | pageNumber < 1) & verbose){
+    warning('Setting `pageNumber` to 1!')
+  }
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
   if (is.null(API_key) & verbose){
     warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
-  response <- httr::GET(url = paste0(Server, '/mmdb/aggregate/by-medium/', Medium),
+  response <- httr::GET(url = paste0(Server, '/mmdb/aggregate/by-medium?medium=', gsub(' ', '+', Medium), ifelse(pageNumber>1, paste0('&pageNumber=',pageNumber), '')),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -513,9 +552,24 @@ get_aggregate_records_by_medium <- function(Medium = NULL,
 }
 
 
+
+
+#' Get single sample records by DTXSID
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @returns A data.frame of single sample record data by DTXSID.
+#' @export
+#'
+#' @examplesIf FALSE
+#' #Pull single sample records for BPA by DTXSID
+#' bpa_sample_records <- get_single_sample_records_by_dtxsid(DTXSID = 'DTXSID7020182')
 get_single_sample_records_by_dtxsid <- function(DTXSID = NULL,
                                                 API_key = NULL,
-                                                Server = exposure_api_server,
+                                                Server = 'https://comptox.epa.gov/ctx-api/exposure',
                                                 verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input an DTXSID!')
@@ -544,19 +598,41 @@ get_single_sample_records_by_dtxsid <- function(DTXSID = NULL,
   return()
 }
 
+#' Get single sample records by medium
+#'
+#' @param Medium The mmdb medium of exposure.
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param pageNumber Parameter for how to return data records.
+#' @param verbose A logical indicating if some "progress report" should be
+#'   given.
+#'
+#' @returns A list of search parameters and data of single sample record data by
+#'   medium.
+#' @export
+#'
+#' @examplesIf FALSE
+#' #Pull single records for BPA by medium
+#' bpa_sample_records <- get_single_sample_records_by_medium(Medium = 'surface water')
+
 get_single_sample_records_by_medium <- function(Medium = NULL,
                                                 API_key = NULL,
-                                                Server = exposure_api_server,
+                                                Server = 'https://comptox.epa.gov/ctx-api/exposure',
+                                                pageNumber = 1,
                                                 verbose = FALSE){
   if (is.null(Medium))
     stop('Please input a Medium!')
+
+  if ((!is.integer(pageNumber) | pageNumber < 1) & verbose){
+    warning('Setting `pageNumber` to 1!')
+  }
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
   if (is.null(API_key) & verbose){
     warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
-  response <- httr::GET(url = paste0(Server, '/mmdb/single-sample/by-medium/', Medium),
+  response <- httr::GET(url = paste0(Server, '/mmdb/single-sample/by-medium?medium=', gsub(' ', '+', Medium), ifelse(pageNumber>1, paste0('&pageNumber=',pageNumber), '')),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -575,8 +651,24 @@ get_single_sample_records_by_medium <- function(Medium = NULL,
   return()
 }
 
+
+#' Retrieve MMDB medium categories
+#'
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be
+#'   given.
+#'
+#' @returns A data.frame of harmonized medium categories from MMDB and relevant
+#'   descriptions.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Retrieve medium categories and descriptions
+#' get_medium_categories()
+
 get_medium_categories <- function(API_key = NULL,
-                                  Server = exposure_api_server,
+                                  Server = 'https://comptox.epa.gov/ctx-api/exposure',
                                   verbose = FALSE){
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
