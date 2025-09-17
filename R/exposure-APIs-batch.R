@@ -528,10 +528,27 @@ get_demographic_exposure_prediction_batch <- function(DTXSID = NULL,
 }
 
 
+#' Get Aggregate Records by DTXSID via batch
+#'
+#' @param DTXSID Chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request
+#' @param Server The root address for the API endpoint
+#' @param verbose A logicial indicating if some "progress report" should be
+#'   given.
+#'
+#' @returns A list of data.frames containing aggregate records data for each
+#'   input DTXSID.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Retrieve aggregate records data for BPA and Caffeine
+#' get_aggregate_records_by_dtxsid_batch(DTXSID = c('DTXSID0020232',
+#'   'DTXSID7020182'))
 get_aggregate_records_by_dtxsid_batch <- function(DTXSID = NULL,
                                                   API_key = NULL,
                                                   rate_limit = 0L,
-                                                  Server = exposure_api_server,
+                                                  Server = 'https://comptox.epa.gov/ctx-api/exposure',
                                                   verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
   if (is.null(API_key) & verbose){
@@ -583,10 +600,26 @@ get_aggregate_records_by_dtxsid_batch <- function(DTXSID = NULL,
   }
 }
 
+#' Get Aggregate Records by medium via batch
+#'
+#' @param DTXSID Chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request
+#' @param Server The root address for the API endpoint
+#' @param verbose A logicial indicating if some "progress report" should be
+#'   given.
+#'
+#' @returns A list of data.frames containing aggregate records data for each
+#'   input medium.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Retrieve aggregate records data for 'surface water' and 'soil'
+#'   get_aggregate_records_by_medium_batch(Medium = c('surface water', 'soil'))
 get_aggregate_records_by_medium_batch <- function(Medium = NULL,
                                                   API_key = NULL,
                                                   rate_limit = 0L,
-                                                  Server = exposure_api_server,
+                                                  Server = 'https://comptox.epa.gov/ctx-api/exposure',
                                                   verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
   if (is.null(API_key) & verbose){
@@ -638,10 +671,27 @@ get_aggregate_records_by_medium_batch <- function(Medium = NULL,
   }
 }
 
+#' Get Single Sample Records by DTXSID via batch
+#'
+#' @param DTXSID Chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request
+#' @param Server The root address for the API endpoint
+#' @param verbose A logicial indicating if some "progress report" should be
+#'   given.
+#'
+#' @returns A list of data.frames containing single sample records data for each
+#'   input DTXSID.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Retrieve single sample records data for BPA and Caffeine
+#' get_single_sample_records_by_dtxsid_batch(DTXSID = c('DTXSID0020232',
+#'   'DTXSID7020182'))
 get_single_sample_records_by_dtxsid_batch <- function(DTXSID = NULL,
                                                       API_key = NULL,
                                                       rate_limit = 0L,
-                                                      Server = exposure_api_server,
+                                                      Server = 'https://comptox.epa.gov/ctx-api/exposure',
                                                       verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
   if (is.null(API_key) & verbose){
@@ -693,10 +743,26 @@ get_single_sample_records_by_dtxsid_batch <- function(DTXSID = NULL,
   }
 }
 
+#' Get Single Sample Records by medium via batch
+#'
+#' @param DTXSID Chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request
+#' @param Server The root address for the API endpoint
+#' @param verbose A logicial indicating if some "progress report" should be
+#'   given.
+#'
+#' @returns A list of data.frames containing single sample records data for each
+#'   input medium.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Retrieve single sample records data for 'surface water' and 'soil'
+#' get_single_sample_records_by_medium_batch(Medium = c('surface water', 'soil'))
 get_single_sample_records_by_medium_batch <- function(Medium = NULL,
                                                       API_key = NULL,
                                                       rate_limit = 0L,
-                                                      Server = exposure_api_server,
+                                                      Server = 'https://comptox.epa.gov/ctx-api/exposure',
                                                       verbose = FALSE){
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
   if (is.null(API_key) & verbose){
