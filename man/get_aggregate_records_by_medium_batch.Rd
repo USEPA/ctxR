@@ -13,6 +13,8 @@ get_aggregate_records_by_medium_batch(
 )
 }
 \arguments{
+\item{Medium}{The MMDB medium of exposure}
+
 \item{API_key}{The user-specific API key}
 
 \item{rate_limit}{Number of seconds to wait between each request}
@@ -21,8 +23,6 @@ get_aggregate_records_by_medium_batch(
 
 \item{verbose}{A logicial indicating if some "progress report" should be
 given.}
-
-\item{DTXSID}{Chemical identifier DTXSID}
 }
 \value{
 A list of data.frames containing aggregate records data for each
