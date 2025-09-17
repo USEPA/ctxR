@@ -802,7 +802,7 @@ get_aggregate_records_by_medium <- function(Medium = NULL,
     warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
-  response <- httr::GET(url = paste0(Server, '/mmdb/aggregate/by-medium?medium=', gsub(' ', '+', Medium), ifelse(pageNumber>1, paste0('&pageNumber=',pageNumber), '')),
+  response <- httr::GET(url = paste0(Server, '/mmdb/aggregate/by-medium?medium=', gsub(' ', '+', tolower(Medium)), ifelse(pageNumber>1, paste0('&pageNumber=',pageNumber), '')),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -902,7 +902,7 @@ get_single_sample_records_by_medium <- function(Medium = NULL,
     warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
-  response <- httr::GET(url = paste0(Server, '/mmdb/single-sample/by-medium?medium=', gsub(' ', '+', Medium), ifelse(pageNumber>1, paste0('&pageNumber=',pageNumber), '')),
+  response <- httr::GET(url = paste0(Server, '/mmdb/single-sample/by-medium?medium=', gsub(' ', '+', tolower(Medium)), ifelse(pageNumber>1, paste0('&pageNumber=',pageNumber), '')),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
