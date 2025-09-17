@@ -1,5 +1,275 @@
+#' Get Product Use Categories
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @returns A data.frame containing product use categories.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Get product use categories for Caffeine
+#' get_product_use_category('DTXSID0020232')
+get_product_use_category <- function(DTXSID = NULL,
+                                     API_key = NULL,
+                                     Server = 'https://comptox.epa.gov/ctx-api/exposure',
+                                     verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input an DTXSID!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/ccd/puc/search/by-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
+#' Get Production Volume
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @returns A data.frame containing production volume data.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Get production volume data for Caffeine
+#' get_production_volume('DTXSID0020232')
+get_production_volume <- function(DTXSID = NULL,
+                                  API_key = NULL,
+                                  Server = 'https://comptox.epa.gov/ctx-api/exposure',
+                                  verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input an DTXSID!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/ccd/production-volume/search/by-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
+#' Get Biomonitoring data
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Projection Optional parameter controlling return type.
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @returns A data.frame containing general use keywords.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Get biomonitoring data for Caffeine
+#' get_biomonitoring_data('DTXSID0020232')
+get_biomonitoring_data <- function(DTXSID = NULL,
+                                   API_key = NULL,
+                                   Projection = '',
+                                   Server = 'https://comptox.epa.gov/ctx-api/exposure',
+                                   verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input an DTXSID!')
+
+  if (!is.character(Projection)){
+    warning('Setting `Projection` to ""')
+    Projection <- ''
+  }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
 
 
+  response <- httr::GET(url = paste0(Server, '/ccd/monitoring-data/search/by-dtxsid/', DTXSID, ifelse(Projection == '', '', paste0('?projection=',gsub(' ', '+', Projection)))),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
+#' Get General Use Keywords
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @returns A data.frame containing general use keywords.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Get general use keywords for Caffeine
+#' get_general_use_keywords('DTXSID0020232')
+get_general_use_keywords <- function(DTXSID = NULL,
+                                     API_key = NULL,
+                                     Server = 'https://comptox.epa.gov/ctx-api/exposure',
+                                     verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input an DTXSID!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/ccd/keywords/search/by-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
+#' Get Reported Functional Use
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @returns A data.frame containing reported functional use data.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Get reported functional use data for Caffeine
+#' get_reported_functional_use('DTXSID0020232')
+get_reported_functional_use <- function(DTXSID = NULL,
+                                        API_key = NULL,
+                                        Server = 'https://comptox.epa.gov/ctx-api/exposure',
+                                        verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input an DTXSID!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/ccd/functional-use/search/by-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
+#' Get Chemical Weight Fractions
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @returns A data.frame containing chemical weight fraction data.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Get chemical weight fraction data for Caffeine
+#' get_chemical_weight_fraction('DTXSID0020232')
+get_chemical_weight_fraction <- function(DTXSID = NULL,
+                                         API_key = NULL,
+                                         Server = 'https://comptox.epa.gov/ctx-api/exposure',
+                                         verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input an DTXSID!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/ccd/chem-weight-fractions/search/by-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
 
 
 
