@@ -1901,7 +1901,7 @@
         "genCat": "Personal care",
         "prodfam": "topical skin treatment",
         "prodtype": "antifungal treatment",
-        "definition": "Ointments for fungal infections like ringworm, athlete’s foot, and tinea versicolor"
+        "definition": "Ointments for fungal infections like ringworm, athlete<U+2019>s foot, and tinea versicolor"
     },
     {
         "id": 304,
@@ -2797,7 +2797,7 @@
         "genCat": "Food and drug",
         "prodfam": "supplements",
         "prodtype": "",
-        "definition": "Products intended for human consumption to supplement health, available without a prescription; including vitamins, minerals, prebiotics, probiotics, and herbal products, excluding Cannabis-derived products."
+        "definition": "Products intended<U+00A0>for human consumption to supplement health, available without a prescription; including vitamins, minerals, prebiotics, probiotics, and herbal products, excluding Cannabis-derived products."
     },
     {
         "id": 368,
