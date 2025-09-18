@@ -12,7 +12,7 @@
     {
         "id": 30,
         "title": "Corrosion inhibitor",
-        "description": "Chemical substance used to prevent or retard corrosion on metallic materials. Used in many products packaged in metal containers (such as aerosol products). Used in lubricants and other metal treatment products to provide protection to the substrates or surfaces on which the lubricants are used. Also referred to as a corrosion<U+2011>inhibiting additive; rust preventative; anticorrosion agent; or antirust agent."
+        "description": "Chemical substance used to prevent or retard corrosion on metallic materials. Used in many products packaged in metal containers (such as aerosol products). Used in lubricants and other metal treatment products to provide protection to the substrates or surfaces on which the lubricants are used. Also referred to as a corrosion‑inhibiting additive; rust preventative; anticorrosion agent; or antirust agent."
     },
     {
         "id": 16,
@@ -362,7 +362,7 @@
     {
         "id": 19,
         "title": "Biocide",
-        "description": "Chemical substance that prevents, neutralizes, destroys, repels, or mitigates the effects of any pest or microorganism; including fungal cells; decreases the number of microorganisms present; Also referred to as a disinfectant; pesticide; insecticide, herbicide, rodenticide; antifungal agent; antimicrobial agent; horticultural spray oil; non<U+2011>agricultural pesticide; or plant protection active substance. Not embalming agent or preservative."
+        "description": "Chemical substance that prevents, neutralizes, destroys, repels, or mitigates the effects of any pest or microorganism; including fungal cells; decreases the number of microorganisms present; Also referred to as a disinfectant; pesticide; insecticide, herbicide, rodenticide; antifungal agent; antimicrobial agent; horticultural spray oil; non‑agricultural pesticide; or plant protection active substance. Not embalming agent or preservative."
     },
     {
         "id": 20,
@@ -372,7 +372,7 @@
     {
         "id": 21,
         "title": "Brightener",
-        "description": "Chemical substance used to brighten, whiten, or enhance the appearance of colour of fabric and paper, usually by absorbing light in the ultraviolet and violet region (340-370 nm) of the electromagnetic spectrum, and re-emitting light in the blue region (420-470 nm). Causes a <U+201C>whitening<U+201D> effect by increasing the overall amount of blue light reflected. Optically colourless on the substrate and does not absorb in the visible part of the spectrum. Also referred to as a brightening agent; fluorescent whitening agent; optical brightener; or whitener. See closely related: bleaching agent; photosensitive agent."
+        "description": "Chemical substance used to brighten, whiten, or enhance the appearance of colour of fabric and paper, usually by absorbing light in the ultraviolet and violet region (340-370 nm) of the electromagnetic spectrum, and re-emitting light in the blue region (420-470 nm). Causes a “whitening” effect by increasing the overall amount of blue light reflected. Optically colourless on the substrate and does not absorb in the visible part of the spectrum. Also referred to as a brightening agent; fluorescent whitening agent; optical brightener; or whitener. See closely related: bleaching agent; photosensitive agent."
     },
     {
         "id": 54,
@@ -387,7 +387,7 @@
     {
         "id": 56,
         "title": "Flocculating agent",
-        "description": "Chemical substance that facilitates flocculation of suspended solids in liquid by acting on the surface of particles to reduce repulsive forces and increase attractive forces on a molecular level. Flocculating agents are chemical additives, which, at relatively low levels compared to the weight of the solid phase, increase the degree of flocculation of a suspension. Principally used to aid in making solid<U+2013>liquid separations. Also referred to as a coagulant."
+        "description": "Chemical substance that facilitates flocculation of suspended solids in liquid by acting on the surface of particles to reduce repulsive forces and increase attractive forces on a molecular level. Flocculating agents are chemical additives, which, at relatively low levels compared to the weight of the solid phase, increase the degree of flocculation of a suspension. Principally used to aid in making solid–liquid separations. Also referred to as a coagulant."
     },
     {
         "id": 51,
@@ -572,12 +572,12 @@
     {
         "id": 92,
         "title": "Refrigerants",
-        "description": "Chemical substances used within machines such as air conditioning units, refrigerators, and walk-in freezers to cool indoor air and reduce temperatures. Not sealants for coating material <U+2013> see hardener."
+        "description": "Chemical substances used within machines such as air conditioning units, refrigerators, and walk-in freezers to cool indoor air and reduce temperatures. Not sealants for coating material – see hardener."
     },
     {
         "id": 93,
         "title": "Sealant (barrier)",
-        "description": "Chemical substances used to fill up a space (e.g. joints, gaps or cavities between two substrates) and prevent seepage of moisture or air, e.g., mastic sealant. Not sealants for coating material <U+2013> see hardener."
+        "description": "Chemical substances used to fill up a space (e.g. joints, gaps or cavities between two substrates) and prevent seepage of moisture or air, e.g., mastic sealant. Not sealants for coating material – see hardener."
     },
     {
         "id": 106,
@@ -607,7 +607,7 @@
     {
         "id": 96,
         "title": "Softener and conditioner",
-        "description": "Substance used for softening materials to improve feel, to facilitate finishing process, or to impart flexibility or workability; used in textile finishing to impart superior <U+201C>hand<U+201D> to the fabric and facilitate mechanical processing; has the capability of imparting softness and pliability to washable textile fabrics. E.g., fabric softener; fabric conditioner; conditioning agent; and moisturizer."
+        "description": "Substance used for softening materials to improve feel, to facilitate finishing process, or to impart flexibility or workability; used in textile finishing to impart superior “hand” to the fabric and facilitate mechanical processing; has the capability of imparting softness and pliability to washable textile fabrics. E.g., fabric softener; fabric conditioner; conditioning agent; and moisturizer."
     },
     {
         "id": 97,
