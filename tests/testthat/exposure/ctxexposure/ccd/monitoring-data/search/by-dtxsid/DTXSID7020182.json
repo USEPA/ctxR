@@ -1,0 +1,101 @@
+[
+    {
+        "id": 606,
+        "dtxsid": "DTXSID7020182",
+        "demographic": "Total",
+        "median": 0.000017293,
+        "upperBound": 0.000017903,
+        "lowerBound": 0.000016691,
+        "nhanesCohort": "15-16"
+    },
+    {
+        "id": 607,
+        "dtxsid": "DTXSID7020182",
+        "demographic": "Male",
+        "median": 0.000018757,
+        "upperBound": 0.000021005,
+        "lowerBound": 0.000016888,
+        "nhanesCohort": "15-16"
+    },
+    {
+        "id": 608,
+        "dtxsid": "DTXSID7020182",
+        "demographic": "Female",
+        "median": 0.000016025,
+        "upperBound": 0.000017202,
+        "lowerBound": 0.000014924,
+        "nhanesCohort": "15-16"
+    },
+    {
+        "id": 609,
+        "dtxsid": "DTXSID7020182",
+        "demographic": "3 - 5 years",
+        "median": 0.000063964,
+        "upperBound": 0.000079916,
+        "lowerBound": 0.000051602,
+        "nhanesCohort": "15-16"
+    },
+    {
+        "id": 610,
+        "dtxsid": "DTXSID7020182",
+        "demographic": "6 - 11 years",
+        "median": 0.000027678,
+        "upperBound": 0.000031685,
+        "lowerBound": 0.000024398,
+        "nhanesCohort": "15-16"
+    },
+    {
+        "id": 611,
+        "dtxsid": "DTXSID7020182",
+        "demographic": "12 - 19 years",
+        "median": 0.000016023,
+        "upperBound": 0.000017608,
+        "lowerBound": 0.000014722,
+        "nhanesCohort": "15-16"
+    },
+    {
+        "id": 612,
+        "dtxsid": "DTXSID7020182",
+        "demographic": "20 - 65 years",
+        "median": 0.000017804,
+        "upperBound": 0.00001933,
+        "lowerBound": 0.000016425,
+        "nhanesCohort": "15-16"
+    },
+    {
+        "id": 613,
+        "dtxsid": "DTXSID7020182",
+        "demographic": "66 years and older",
+        "median": 0.000011372,
+        "upperBound": 0.000014138,
+        "lowerBound": 0.0000091537,
+        "nhanesCohort": "15-16"
+    },
+    {
+        "id": 614,
+        "dtxsid": "DTXSID7020182",
+        "demographic": "ReproAgeFemale",
+        "median": 0.000016255,
+        "upperBound": 0.000017476,
+        "lowerBound": 0.000015102,
+        "nhanesCohort": "15-16"
+    },
+    {
+        "id": 615,
+        "dtxsid": "DTXSID7020182",
+        "demographic": "BMI <= 30",
+        "median": 0.000018236,
+        "upperBound": 0.000019059,
+        "lowerBound": 0.000017482,
+        "nhanesCohort": "15-16"
+    },
+    {
+        "id": 616,
+        "dtxsid": "DTXSID7020182",
+        "demographic": "BMI > 30",
+        "median": 0.000015582,
+        "upperBound": 0.00001661,
+        "lowerBound": 0.000014644,
+        "nhanesCohort": "15-16"
+    }
+]
