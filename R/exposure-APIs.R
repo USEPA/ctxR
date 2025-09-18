@@ -16,7 +16,7 @@ get_product_use_category <- function(DTXSID = NULL,
                                      Server = 'https://comptox.epa.gov/ctx-api/exposure',
                                      verbose = FALSE){
   if (is.null(DTXSID))
-    stop('Please input an DTXSID!')
+    stop('Please input a DTXSID!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
   if (is.null(API_key) & verbose){
@@ -60,7 +60,7 @@ get_production_volume <- function(DTXSID = NULL,
                                   Server = 'https://comptox.epa.gov/ctx-api/exposure',
                                   verbose = FALSE){
   if (is.null(DTXSID))
-    stop('Please input an DTXSID!')
+    stop('Please input a DTXSID!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
   if (is.null(API_key) & verbose){
@@ -106,7 +106,7 @@ get_biomonitoring_data <- function(DTXSID = NULL,
                                    Server = 'https://comptox.epa.gov/ctx-api/exposure',
                                    verbose = FALSE){
   if (is.null(DTXSID))
-    stop('Please input an DTXSID!')
+    stop('Please input a DTXSID!')
 
   if (!is.character(Projection)){
     warning('Setting `Projection` to ""')
@@ -157,7 +157,7 @@ get_general_use_keywords <- function(DTXSID = NULL,
                                      Server = 'https://comptox.epa.gov/ctx-api/exposure',
                                      verbose = FALSE){
   if (is.null(DTXSID))
-    stop('Please input an DTXSID!')
+    stop('Please input a DTXSID!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
   if (is.null(API_key) & verbose){
@@ -201,7 +201,7 @@ get_reported_functional_use <- function(DTXSID = NULL,
                                         Server = 'https://comptox.epa.gov/ctx-api/exposure',
                                         verbose = FALSE){
   if (is.null(DTXSID))
-    stop('Please input an DTXSID!')
+    stop('Please input a DTXSID!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
   if (is.null(API_key) & verbose){
@@ -245,7 +245,7 @@ get_chemical_weight_fraction <- function(DTXSID = NULL,
                                          Server = 'https://comptox.epa.gov/ctx-api/exposure',
                                          verbose = FALSE){
   if (is.null(DTXSID))
-    stop('Please input an DTXSID!')
+    stop('Please input a DTXSID!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
   if (is.null(API_key) & verbose){
@@ -743,7 +743,7 @@ get_aggregate_records_by_dtxsid <- function(DTXSID = NULL,
                                             Server = 'https://comptox.epa.gov/ctx-api/exposure',
                                             verbose = FALSE){
   if (is.null(DTXSID))
-    stop('Please input an DTXSID!')
+    stop('Please input a DTXSID!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
   if (is.null(API_key) & verbose){
@@ -842,7 +842,7 @@ get_single_sample_records_by_dtxsid <- function(DTXSID = NULL,
                                                 Server = 'https://comptox.epa.gov/ctx-api/exposure',
                                                 verbose = FALSE){
   if (is.null(DTXSID))
-    stop('Please input an DTXSID!')
+    stop('Please input a DTXSID!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
   if (is.null(API_key) & verbose){
