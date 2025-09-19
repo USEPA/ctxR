@@ -7,16 +7,16 @@
 `get_production_volume_batch()`, `get_biomonitoring_data()`, `get_biomonitoring_data_batch()`,
 `get_general_use_keywords()`, `get_general_use_keywords_batch()`, `get_reported_functional_use()`,
 `get_reported_functional_use_batch()`, `get_chemical_weight_fraction()`, and 
-`get_chemical_weight_fraction_batch()` (#67).
+`get_chemical_weight_fraction_batch()` (#71).
 
 * Added functions for Exposure domain MMDB endpoints `get_medium_categories()`,
 `get_single_sample_records_by_dtxsid()`, `get_single_sample_records_by_dtxsid_batch()`,
 `get_single_sample_records_by_medium()`, `get_single_sample_records_by_medium_batch()`,
 `get_aggregate_records_by_dtxsid()`, `get_aggregate_records_by_dtxsid_batch`(), 
-`get_aggregate_records_by_medium()`, `get_aggregate_records_by_medium_batch`() (#67).
+`get_aggregate_records_by_medium()`, `get_aggregate_records_by_medium_batch`() (#71).
 
 * Added examples to `ctxR_04_Exposure.Rmd` vignette for new CCD and MMDB endpoint 
-functions (#67).
+functions (#71).
 
 
 # ctxR 1.1.2
