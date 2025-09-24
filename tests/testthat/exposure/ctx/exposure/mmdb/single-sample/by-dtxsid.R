@@ -1,11 +1,11 @@
 structure(list(url = "https://comptox.epa.gov/ctx-api/exposure/mmdb/single-sample/by-dtxsid/", 
-    status_code = 404L, headers = structure(list(date = "Thu, 18 Sep 2025 18:19:31 GMT", 
+    status_code = 404L, headers = structure(list(date = "Wed, 24 Sep 2025 19:50:33 GMT", 
         server = "Apache", `strict-transport-security` = "max-age=63072000; includeSubDomains; preload“", 
         vary = "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
         `cache-control` = "max-age=0, must-revalidate, no-transform", 
         `content-type` = "application/json", `transfer-encoding` = "chunked"), class = c("insensitive", 
     "list")), all_headers = list(list(status = 404L, version = "HTTP/1.1", 
-        headers = structure(list(date = "Thu, 18 Sep 2025 18:19:31 GMT", 
+        headers = structure(list(date = "Wed, 24 Sep 2025 19:50:33 GMT", 
             server = "Apache", `strict-transport-security` = "max-age=63072000; includeSubDomains; preload“", 
             vary = "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
             `cache-control` = "max-age=0, must-revalidate, no-transform", 
@@ -14,8 +14,8 @@ structure(list(url = "https://comptox.epa.gov/ctx-api/exposure/mmdb/single-sampl
         flag = logical(0), path = logical(0), secure = logical(0), 
         expiration = structure(numeric(0), class = c("POSIXct", 
         "POSIXt")), name = logical(0), value = logical(0)), row.names = integer(0), class = "data.frame"), 
-    content = charToRaw("{\n  \"timestamp\" : \"2025-09-18T18:19:31.322+00:00\",\n  \"status\" : 404,\n  \"error\" : \"Not Found\",\n  \"path\" : \"/exposure/mmdb/single-sample/by-dtxsid/\"\n}"), 
-    date = structure(1758219571, class = c("POSIXct", "POSIXt"
-    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 5.2e-05, 
-    connect = 0, pretransfer = 0.00018, starttransfer = 0.061832, 
-    total = 0.061866)), class = "response")
+    content = charToRaw("{\n  \"timestamp\" : \"2025-09-24T19:50:33.954+00:00\",\n  \"status\" : 404,\n  \"error\" : \"Not Found\",\n  \"path\" : \"/exposure/mmdb/single-sample/by-dtxsid/\"\n}"), 
+    date = structure(1758743433, class = c("POSIXct", "POSIXt"
+    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 5.8e-05, 
+    connect = 0, pretransfer = 0.000188, starttransfer = 0.036849, 
+    total = 0.036885)), class = "response")
