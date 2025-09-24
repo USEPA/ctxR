@@ -1,1379 +1,1379 @@
 [
     {
-        "id": 16410,
+        "id": 518256,
+        "dtxsid": "DTXSID0020153",
         "reportsPositive": 26,
         "reportsNegative": 5,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID0020153"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 24393,
+        "id": 526239,
+        "dtxsid": "DTXSID0020448",
         "reportsPositive": 10,
         "reportsNegative": 6,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID0020448"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 21307,
+        "id": 523153,
+        "dtxsid": "DTXSID0020523",
         "reportsPositive": 0,
         "reportsNegative": 2,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID0020523"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 17542,
+        "id": 519388,
+        "dtxsid": "DTXSID0020529",
         "reportsPositive": 5,
         "reportsNegative": 4,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID0020529"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 23984,
+        "id": 525830,
+        "dtxsid": "DTXSID0020600",
         "reportsPositive": 20,
         "reportsNegative": 0,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID0020600"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 23979,
+        "id": 525825,
+        "dtxsid": "DTXSID0020868",
         "reportsPositive": 91,
         "reportsNegative": 8,
         "reportsOther": 2,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID0020868"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 23690,
+        "id": 525536,
+        "dtxsid": "DTXSID0021381",
         "reportsPositive": 5,
         "reportsNegative": 12,
         "reportsOther": 7,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID0021381"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 24426,
+        "id": 526272,
+        "dtxsid": "DTXSID0021383",
         "reportsPositive": 10,
         "reportsNegative": 10,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID0021383"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 23875,
+        "id": 525721,
+        "dtxsid": "DTXSID0021541",
         "reportsPositive": 33,
         "reportsNegative": 7,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID0021541"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 16386,
+        "id": 518232,
+        "dtxsid": "DTXSID0021834",
         "reportsPositive": 2,
         "reportsNegative": 5,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID0021834"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 17090,
+        "id": 518936,
+        "dtxsid": "DTXSID0021917",
         "reportsPositive": 0,
         "reportsNegative": 8,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID0021917"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 17494,
+        "id": 519340,
+        "dtxsid": "DTXSID0021965",
         "reportsPositive": 1,
         "reportsNegative": 5,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID0021965"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 23876,
+        "id": 525722,
+        "dtxsid": "DTXSID0024187",
         "reportsPositive": 9,
         "reportsNegative": 7,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID0024187"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 23997,
+        "id": 525843,
+        "dtxsid": "DTXSID0024260",
         "reportsPositive": 0,
         "reportsNegative": 4,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID0024260"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 21512,
+        "id": 523358,
+        "dtxsid": "DTXSID0039227",
         "reportsPositive": 27,
         "reportsNegative": 8,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID0039227"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 24432,
+        "id": 526278,
+        "dtxsid": "DTXSID0039229",
         "reportsPositive": 2,
         "reportsNegative": 8,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID0039229"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 25506,
+        "id": 527352,
+        "dtxsid": "DTXSID1020148",
         "reportsPositive": 13,
         "reportsNegative": 0,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID1020148"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 23972,
+        "id": 525818,
+        "dtxsid": "DTXSID1020302",
         "reportsPositive": 11,
         "reportsNegative": 8,
         "reportsOther": 2,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID1020302"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 23002,
+        "id": 524848,
+        "dtxsid": "DTXSID1020306",
         "reportsPositive": 8,
         "reportsNegative": 7,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID1020306"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 16816,
+        "id": 518662,
+        "dtxsid": "DTXSID1020431",
         "reportsPositive": 1,
         "reportsNegative": 5,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID1020431"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 23992,
+        "id": 525838,
+        "dtxsid": "DTXSID1020437",
         "reportsPositive": 0,
         "reportsNegative": 1,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID1020437"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 24454,
+        "id": 526300,
+        "dtxsid": "DTXSID1020512",
         "reportsPositive": 15,
         "reportsNegative": 1,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID1020512"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 21951,
+        "id": 523797,
+        "dtxsid": "DTXSID1020516",
         "reportsPositive": 13,
         "reportsNegative": 8,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID1020516"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 16834,
+        "id": 518680,
+        "dtxsid": "DTXSID1020566",
         "reportsPositive": 27,
         "reportsNegative": 6,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID1020566"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 23985,
+        "id": 525831,
+        "dtxsid": "DTXSID1021374",
         "reportsPositive": 12,
         "reportsNegative": 7,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID1021374"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 25142,
+        "id": 526988,
+        "dtxsid": "DTXSID1021798",
         "reportsPositive": 19,
         "reportsNegative": 4,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID1021798"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 25527,
+        "id": 527373,
+        "dtxsid": "DTXSID1021827",
         "reportsPositive": 3,
         "reportsNegative": 20,
         "reportsOther": 2,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID1021827"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 21666,
+        "id": 523512,
+        "dtxsid": "DTXSID1022057",
         "reportsPositive": 14,
         "reportsNegative": 5,
         "reportsOther": 3,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID1022057"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 22539,
+        "id": 524385,
+        "dtxsid": "DTXSID1023786",
         "reportsPositive": 1,
         "reportsNegative": 3,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID1023786"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 22722,
+        "id": 524568,
+        "dtxsid": "DTXSID1024045",
         "reportsPositive": 30,
         "reportsNegative": 2,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID1024045"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 24216,
+        "id": 526062,
+        "dtxsid": "DTXSID1024382",
         "reportsPositive": 0,
         "reportsNegative": 6,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID1024382"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 25380,
+        "id": 527226,
+        "dtxsid": "DTXSID1026164",
         "reportsPositive": 15,
         "reportsNegative": 16,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID1026164"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 24146,
+        "id": 525992,
+        "dtxsid": "DTXSID1049641",
         "reportsPositive": 1,
         "reportsNegative": 2,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID1049641"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 25209,
+        "id": 527055,
+        "dtxsid": "DTXSID2020137",
         "reportsPositive": 23,
         "reportsNegative": 1,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID2020137"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 18022,
+        "id": 519868,
+        "dtxsid": "DTXSID2020262",
         "reportsPositive": 5,
         "reportsNegative": 0,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID2020262"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 17558,
+        "id": 519404,
+        "dtxsid": "DTXSID2020507",
         "reportsPositive": 2,
         "reportsNegative": 14,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID2020507"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 17405,
+        "id": 519251,
+        "dtxsid": "DTXSID2020682",
         "reportsPositive": 1,
         "reportsNegative": 2,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID2020682"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 24177,
+        "id": 526023,
+        "dtxsid": "DTXSID2020688",
         "reportsPositive": 0,
         "reportsNegative": 7,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID2020688"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 24128,
+        "id": 525974,
+        "dtxsid": "DTXSID2020711",
         "reportsPositive": 0,
         "reportsNegative": 1,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID2020711"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 24499,
+        "id": 526345,
+        "dtxsid": "DTXSID2020844",
         "reportsPositive": 5,
         "reportsNegative": 4,
         "reportsOther": 12,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID2020844"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 24666,
+        "id": 526512,
+        "dtxsid": "DTXSID2021105",
         "reportsPositive": 0,
         "reportsNegative": 6,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID2021105"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 24405,
+        "id": 526251,
+        "dtxsid": "DTXSID2021157",
         "reportsPositive": 0,
         "reportsNegative": 8,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID2021157"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 24807,
+        "id": 526653,
+        "dtxsid": "DTXSID2021159",
         "reportsPositive": 0,
         "reportsNegative": 4,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID2021159"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 16408,
+        "id": 518254,
+        "dtxsid": "DTXSID2021284",
         "reportsPositive": 86,
         "reportsNegative": 52,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID2021284"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 25422,
+        "id": 527268,
+        "dtxsid": "DTXSID2021286",
         "reportsPositive": 38,
         "reportsNegative": 14,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID2021286"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 17785,
+        "id": 519631,
+        "dtxsid": "DTXSID2021319",
         "reportsPositive": 5,
         "reportsNegative": 8,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID2021319"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 18023,
+        "id": 519869,
+        "dtxsid": "DTXSID2021446",
         "reportsPositive": 0,
         "reportsNegative": 18,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID2021446"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 17667,
+        "id": 519513,
+        "dtxsid": "DTXSID2021658",
         "reportsPositive": 16,
         "reportsNegative": 9,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID2021658"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 22998,
+        "id": 524844,
+        "dtxsid": "DTXSID2021731",
         "reportsPositive": 3,
         "reportsNegative": 24,
         "reportsOther": 2,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID2021731"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 24752,
+        "id": 526598,
+        "dtxsid": "DTXSID2021781",
         "reportsPositive": 1,
         "reportsNegative": 5,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID2021781"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 17980,
+        "id": 519826,
+        "dtxsid": "DTXSID2021993",
         "reportsPositive": 0,
         "reportsNegative": 1,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID2021993"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 16843,
+        "id": 518689,
+        "dtxsid": "DTXSID3020203",
         "reportsPositive": 16,
         "reportsNegative": 6,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID3020203"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 17493,
+        "id": 519339,
+        "dtxsid": "DTXSID3020257",
         "reportsPositive": 25,
         "reportsNegative": 18,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID3020257"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 25424,
+        "id": 527270,
+        "dtxsid": "DTXSID3020413",
         "reportsPositive": 15,
         "reportsNegative": 3,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID3020413"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 16838,
+        "id": 518684,
+        "dtxsid": "DTXSID3020415",
         "reportsPositive": 46,
         "reportsNegative": 10,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID3020415"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 16407,
+        "id": 518253,
+        "dtxsid": "DTXSID3020596",
         "reportsPositive": 4,
         "reportsNegative": 16,
         "reportsOther": 2,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID3020596"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 24089,
+        "id": 525935,
+        "dtxsid": "DTXSID3020679",
         "reportsPositive": 1,
         "reportsNegative": 1,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID3020679"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 20154,
+        "id": 522000,
+        "dtxsid": "DTXSID3020702",
         "reportsPositive": 13,
         "reportsNegative": 3,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID3020702"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 18759,
+        "id": 520605,
+        "dtxsid": "DTXSID3020833",
         "reportsPositive": 2,
         "reportsNegative": 18,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID3020833"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 25535,
+        "id": 527381,
+        "dtxsid": "DTXSID3020964",
         "reportsPositive": 0,
         "reportsNegative": 7,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID3020964"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 16956,
+        "id": 518802,
+        "dtxsid": "DTXSID3021431",
         "reportsPositive": 12,
         "reportsNegative": 10,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID3021431"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 17159,
+        "id": 519005,
+        "dtxsid": "DTXSID3021932",
         "reportsPositive": 0,
         "reportsNegative": 15,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID3021932"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 17917,
+        "id": 519763,
+        "dtxsid": "DTXSID3022455",
         "reportsPositive": 0,
         "reportsNegative": 19,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID3022455"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 17549,
+        "id": 519395,
+        "dtxsid": "DTXSID3024366",
         "reportsPositive": 0,
         "reportsNegative": 4,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID3024366"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 17447,
+        "id": 519293,
+        "dtxsid": "DTXSID3025091",
         "reportsPositive": 14,
         "reportsNegative": 2,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID3025091"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 23688,
+        "id": 525534,
+        "dtxsid": "DTXSID3039242",
         "reportsPositive": 19,
         "reportsNegative": 7,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID3039242"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 25196,
+        "id": 527042,
+        "dtxsid": "DTXSID4020161",
         "reportsPositive": 1,
         "reportsNegative": 62,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID4020161"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 17001,
+        "id": 518847,
+        "dtxsid": "DTXSID4020298",
         "reportsPositive": 3,
         "reportsNegative": 12,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID4020298"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 25397,
+        "id": 527243,
+        "dtxsid": "DTXSID4020402",
         "reportsPositive": 15,
         "reportsNegative": 5,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID4020402"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 17684,
+        "id": 519530,
+        "dtxsid": "DTXSID4020533",
         "reportsPositive": 3,
         "reportsNegative": 10,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID4020533"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 18306,
+        "id": 520152,
+        "dtxsid": "DTXSID4020583",
         "reportsPositive": 2,
         "reportsNegative": 4,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID4020583"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 22235,
+        "id": 524081,
+        "dtxsid": "DTXSID4020874",
         "reportsPositive": 5,
         "reportsNegative": 14,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID4020874"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 24433,
+        "id": 526279,
+        "dtxsid": "DTXSID4020901",
         "reportsPositive": 1,
         "reportsNegative": 11,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID4020901"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 23223,
+        "id": 525069,
+        "dtxsid": "DTXSID4021006",
         "reportsPositive": 36,
         "reportsNegative": 1,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID4021006"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 22126,
+        "id": 523972,
+        "dtxsid": "DTXSID4021056",
         "reportsPositive": 16,
         "reportsNegative": 1,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID4021056"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 18680,
+        "id": 520526,
+        "dtxsid": "DTXSID4021395",
         "reportsPositive": 7,
         "reportsNegative": 7,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID4021395"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 24674,
+        "id": 526520,
+        "dtxsid": "DTXSID4024143",
         "reportsPositive": 0,
         "reportsNegative": 1,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID4024143"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 25406,
+        "id": 527252,
+        "dtxsid": "DTXSID4024359",
         "reportsPositive": 0,
         "reportsNegative": 1,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID4024359"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 16875,
+        "id": 518721,
+        "dtxsid": "DTXSID4039231",
         "reportsPositive": 7,
         "reportsNegative": 5,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID4039231"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 16872,
+        "id": 518718,
+        "dtxsid": "DTXSID5020023",
         "reportsPositive": 3,
         "reportsNegative": 5,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID5020023"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 24428,
+        "id": 526274,
+        "dtxsid": "DTXSID5020027",
         "reportsPositive": 7,
         "reportsNegative": 7,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID5020027"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 16881,
+        "id": 518727,
+        "dtxsid": "DTXSID5020029",
         "reportsPositive": 24,
         "reportsNegative": 11,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID5020029"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 25201,
+        "id": 527047,
+        "dtxsid": "DTXSID5020071",
         "reportsPositive": 23,
         "reportsNegative": 1,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID5020071"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 17763,
+        "id": 519609,
+        "dtxsid": "DTXSID5020316",
         "reportsPositive": 6,
         "reportsNegative": 15,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID5020316"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 22485,
+        "id": 524331,
+        "dtxsid": "DTXSID5020449",
         "reportsPositive": 20,
         "reportsNegative": 11,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID5020449"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 22225,
+        "id": 524071,
+        "dtxsid": "DTXSID5020491",
         "reportsPositive": 14,
         "reportsNegative": 5,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID5020491"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 25438,
+        "id": 527284,
+        "dtxsid": "DTXSID5020601",
         "reportsPositive": 13,
         "reportsNegative": 18,
         "reportsOther": 4,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID5020601"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 17379,
+        "id": 519225,
+        "dtxsid": "DTXSID5020607",
         "reportsPositive": 7,
         "reportsNegative": 83,
         "reportsOther": 3,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID5020607"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 16505,
+        "id": 518351,
+        "dtxsid": "DTXSID5020865",
         "reportsPositive": 17,
         "reportsNegative": 4,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID5020865"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 17005,
+        "id": 518851,
+        "dtxsid": "DTXSID5021124",
         "reportsPositive": 64,
         "reportsNegative": 6,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID5021124"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 24005,
+        "id": 525851,
+        "dtxsid": "DTXSID5021207",
         "reportsPositive": 22,
         "reportsNegative": 6,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID5021207"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 24425,
+        "id": 526271,
+        "dtxsid": "DTXSID5021380",
         "reportsPositive": 2,
         "reportsNegative": 7,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID5021380"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 24947,
+        "id": 526793,
+        "dtxsid": "DTXSID5021386",
         "reportsPositive": 2,
         "reportsNegative": 5,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID5021386"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 16959,
+        "id": 518805,
+        "dtxsid": "DTXSID5021889",
         "reportsPositive": 0,
         "reportsNegative": 16,
         "reportsOther": 2,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID5021889"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 24187,
+        "id": 526033,
+        "dtxsid": "DTXSID5024055",
         "reportsPositive": 26,
         "reportsNegative": 2,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID5024055"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 17448,
+        "id": 519294,
+        "dtxsid": "DTXSID5024059",
         "reportsPositive": 15,
         "reportsNegative": 2,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID5024059"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 23977,
+        "id": 525823,
+        "dtxsid": "DTXSID5039224",
         "reportsPositive": 65,
         "reportsNegative": 4,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID5039224"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 16821,
+        "id": 518667,
+        "dtxsid": "DTXSID6020145",
         "reportsPositive": 5,
         "reportsNegative": 2,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID6020145"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 16892,
+        "id": 518738,
+        "dtxsid": "DTXSID6020307",
         "reportsPositive": 2,
         "reportsNegative": 0,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID6020307"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 18643,
+        "id": 520489,
+        "dtxsid": "DTXSID6020353",
         "reportsPositive": 6,
         "reportsNegative": 17,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID6020353"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 25161,
+        "id": 527007,
+        "dtxsid": "DTXSID6020432",
         "reportsPositive": 9,
         "reportsNegative": 0,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID6020432"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 16876,
+        "id": 518722,
+        "dtxsid": "DTXSID6020438",
         "reportsPositive": 22,
         "reportsNegative": 7,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID6020438"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 23095,
+        "id": 524941,
+        "dtxsid": "DTXSID6020515",
         "reportsPositive": 1,
         "reportsNegative": 4,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID6020515"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 16833,
+        "id": 518679,
+        "dtxsid": "DTXSID6020569",
         "reportsPositive": 18,
         "reportsNegative": 5,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID6020569"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 24455,
+        "id": 526301,
+        "dtxsid": "DTXSID6020981",
         "reportsPositive": 8,
         "reportsNegative": 1,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID6020981"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 25530,
+        "id": 527376,
+        "dtxsid": "DTXSID6021828",
         "reportsPositive": 1,
         "reportsNegative": 5,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID6021828"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 16527,
+        "id": 518373,
+        "dtxsid": "DTXSID6022422",
         "reportsPositive": 9,
         "reportsNegative": 0,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID6022422"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 23982,
+        "id": 525828,
+        "dtxsid": "DTXSID6023947",
         "reportsPositive": 2,
         "reportsNegative": 12,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID6023947"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 21068,
+        "id": 522914,
+        "dtxsid": "DTXSID6023949",
         "reportsPositive": 1,
         "reportsNegative": 0,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID6023949"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 22236,
+        "id": 524082,
+        "dtxsid": "DTXSID7020005",
         "reportsPositive": 5,
         "reportsNegative": 11,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID7020005"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 23976,
+        "id": 525822,
+        "dtxsid": "DTXSID7020009",
         "reportsPositive": 6,
         "reportsNegative": 18,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID7020009"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 21966,
+        "id": 523812,
+        "dtxsid": "DTXSID7020267",
         "reportsPositive": 2,
         "reportsNegative": 1,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID7020267"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 21202,
+        "id": 523048,
+        "dtxsid": "DTXSID7020637",
         "reportsPositive": 35,
         "reportsNegative": 8,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID7020637"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 24904,
+        "id": 526750,
+        "dtxsid": "DTXSID7020683",
         "reportsPositive": 0,
         "reportsNegative": 1,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID7020683"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 23005,
+        "id": 524851,
+        "dtxsid": "DTXSID7020689",
         "reportsPositive": 1,
         "reportsNegative": 3,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID7020689"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 17604,
+        "id": 519450,
+        "dtxsid": "DTXSID7020710",
         "reportsPositive": 6,
         "reportsNegative": 0,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID7020710"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 17663,
+        "id": 519509,
+        "dtxsid": "DTXSID7020716",
         "reportsPositive": 9,
         "reportsNegative": 8,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID7020716"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 22486,
+        "id": 524332,
+        "dtxsid": "DTXSID7021029",
         "reportsPositive": 39,
         "reportsNegative": 3,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID7021029"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 21867,
+        "id": 523713,
+        "dtxsid": "DTXSID7021100",
         "reportsPositive": 4,
         "reportsNegative": 3,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID7021100"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 24909,
+        "id": 526755,
+        "dtxsid": "DTXSID7021106",
         "reportsPositive": 3,
         "reportsNegative": 7,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID7021106"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 24447,
+        "id": 526293,
+        "dtxsid": "DTXSID7021318",
         "reportsPositive": 7,
         "reportsNegative": 1,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID7021318"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 16999,
+        "id": 518845,
+        "dtxsid": "DTXSID7021360",
         "reportsPositive": 2,
         "reportsNegative": 10,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID7021360"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 24517,
+        "id": 526363,
+        "dtxsid": "DTXSID7021368",
         "reportsPositive": 4,
         "reportsNegative": 0,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID7021368"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 17315,
+        "id": 519161,
+        "dtxsid": "DTXSID7021948",
         "reportsPositive": 2,
         "reportsNegative": 3,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID7021948"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 16971,
+        "id": 518817,
+        "dtxsid": "DTXSID7024166",
         "reportsPositive": 1,
         "reportsNegative": 7,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID7024166"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 21637,
+        "id": 523483,
+        "dtxsid": "DTXSID7024370",
         "reportsPositive": 1,
         "reportsNegative": 7,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID7024370"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 16726,
+        "id": 518572,
+        "dtxsid": "DTXSID7024532",
         "reportsPositive": 7,
         "reportsNegative": 3,
         "reportsOther": 2,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID7024532"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 16523,
+        "id": 518369,
+        "dtxsid": "DTXSID7025180",
         "reportsPositive": 2,
         "reportsNegative": 6,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID7025180"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 22081,
+        "id": 523927,
+        "dtxsid": "DTXSID7026156",
         "reportsPositive": 8,
         "reportsNegative": 5,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID7026156"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 22481,
+        "id": 524327,
+        "dtxsid": "DTXSID8020090",
         "reportsPositive": 22,
         "reportsNegative": 14,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID8020090"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 21669,
+        "id": 523515,
+        "dtxsid": "DTXSID8020173",
         "reportsPositive": 3,
         "reportsNegative": 0,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID8020173"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 21863,
+        "id": 523709,
+        "dtxsid": "DTXSID8020250",
         "reportsPositive": 8,
         "reportsNegative": 4,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID8020250"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 16888,
+        "id": 518734,
+        "dtxsid": "DTXSID8020597",
         "reportsPositive": 0,
         "reportsNegative": 6,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID8020597"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 18561,
+        "id": 520407,
+        "dtxsid": "DTXSID8020599",
         "reportsPositive": 44,
         "reportsNegative": 1,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID8020599"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 24377,
+        "id": 526223,
+        "dtxsid": "DTXSID8020759",
         "reportsPositive": 1,
         "reportsNegative": 16,
         "reportsOther": 2,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID8020759"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 23871,
+        "id": 525717,
+        "dtxsid": "DTXSID8020832",
         "reportsPositive": 7,
         "reportsNegative": 0,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID8020832"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 25140,
+        "id": 526986,
+        "dtxsid": "DTXSID8020913",
         "reportsPositive": 0,
         "reportsNegative": 13,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID8020913"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 17280,
+        "id": 519126,
+        "dtxsid": "DTXSID8021195",
         "reportsPositive": 27,
         "reportsNegative": 1,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID8021195"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 21960,
+        "id": 523806,
+        "dtxsid": "DTXSID8021197",
         "reportsPositive": 25,
         "reportsNegative": 3,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID8021197"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 22166,
+        "id": 524012,
+        "dtxsid": "DTXSID8021432",
         "reportsPositive": 4,
         "reportsNegative": 1,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID8021432"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 23973,
+        "id": 525819,
+        "dtxsid": "DTXSID8021434",
         "reportsPositive": 21,
         "reportsNegative": 4,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID8021434"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 23993,
+        "id": 525839,
+        "dtxsid": "DTXSID8021438",
         "reportsPositive": 17,
         "reportsNegative": 17,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID8021438"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 24004,
+        "id": 525850,
+        "dtxsid": "DTXSID8024286",
         "reportsPositive": 12,
         "reportsNegative": 0,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID8024286"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 24054,
+        "id": 525900,
+        "dtxsid": "DTXSID8042476",
         "reportsPositive": 0,
         "reportsNegative": 4,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID8042476"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 17160,
+        "id": 519006,
+        "dtxsid": "DTXSID9020168",
         "reportsPositive": 8,
         "reportsNegative": 4,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "negative",
-        "dtxsid": "DTXSID9020168"
+        "ames": null,
+        "micronucleus": "negative"
     },
     {
-        "id": 18015,
+        "id": 519861,
+        "dtxsid": "DTXSID9020243",
         "reportsPositive": 27,
         "reportsNegative": 5,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID9020243"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 22605,
+        "id": 524451,
+        "dtxsid": "DTXSID9020247",
         "reportsPositive": 5,
         "reportsNegative": 3,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID9020247"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 21534,
+        "id": 523380,
+        "dtxsid": "DTXSID9020293",
         "reportsPositive": 2,
         "reportsNegative": 2,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID9020293"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 21322,
+        "id": 523168,
+        "dtxsid": "DTXSID9020299",
         "reportsPositive": 0,
         "reportsNegative": 1,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID9020299"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 23752,
+        "id": 525598,
+        "dtxsid": "DTXSID9020827",
         "reportsPositive": 1,
         "reportsNegative": 9,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID9020827"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 16820,
+        "id": 518666,
+        "dtxsid": "DTXSID9021138",
         "reportsPositive": 30,
         "reportsNegative": 19,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "positive",
-        "dtxsid": "DTXSID9021138"
+        "ames": null,
+        "micronucleus": "positive"
     },
     {
-        "id": 24289,
+        "id": 526135,
+        "dtxsid": "DTXSID9021261",
         "reportsPositive": 2,
         "reportsNegative": 2,
         "reportsOther": 0,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID9021261"
+        "ames": null,
+        "micronucleus": null
     },
     {
-        "id": 25211,
+        "id": 527057,
+        "dtxsid": "DTXSID9041522",
         "reportsPositive": 9,
         "reportsNegative": 2,
         "reportsOther": 1,
-        "ames": "-",
-        "micronucleus": "-",
-        "dtxsid": "DTXSID9041522"
+        "ames": null,
+        "micronucleus": null
     }
 ]
