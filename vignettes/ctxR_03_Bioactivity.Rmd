@@ -165,12 +165,12 @@ knitr::kable(head(spid_data))%>%
  kableExtra::scroll_box(width = "100%", height="400px")
 ```
 
-```{r ctxR data by m4id, message=FALSE, results = FALSE}
+```{r ctxR data by m4id, message=FALSE, include = FALSE, eval = FALSE, results = FALSE}
 # By m4id
 m4id_data <- get_bioactivity_details(m4id = 739695)
 ```
 
-```{r, echo=FALSE}
+```{r, include = FALSE, eval = FALSE, echo=FALSE}
 knitr::kable(head(m4id_data))%>% 
  kableExtra::kable_styling("striped") %>% 
  kableExtra::scroll_box(width = "100%", height="400px")

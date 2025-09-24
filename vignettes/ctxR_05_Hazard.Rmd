@@ -214,9 +214,9 @@ ccl4_genetox_details <- get_genetox_details_batch(DTXSID = ccl4$dtxsid)
 natadb_genetox_details <- get_genetox_details_batch(DTXSID = natadb$dtxsid)
 ```
 
-If inspecting the first chemical in each set of results, DTXSID0020153, notice that the information is identical in each case as this information is chemical specific and not chemical list specific.
+If inspecting the first chemical in each set of results, DTXSID0020153, notice that the information is identical in each case as this information is chemical specific and not chemical list specific, though ordered slightly differently.
 ```{r}
-identical(ccl4_genetox_details[dtxsid %in% 'DTXSID0020153', ], 
+all.equal(ccl4_genetox_details[dtxsid %in% 'DTXSID0020153', ], 
           natadb_genetox_details[dtxsid %in% 'DTXSID0020153', ])
 ```
 
@@ -248,7 +248,7 @@ natadb_genetox_details[assayCategory == 'ND', .N, by = .(assayType)]
 natadb_genetox_details[assayCategory == 'in vivo', .N, by = .(assayType)]
 ```
 
-Observe that there are 90 unique assays for CCl4 and 114 unique assays for NATADB. The different assay categories are "in vitro", "ND", and "in vivo", with 65 unique "in vitro" assays for CCl4 and 83 for NATADB, 3 unique "ND" assays for CCL4 and 3 for NATADB, and 22 unique "in vivo" assays for CCL4 and 28 for NATADB.
+Observe that there are 87 unique assays for CCl4 and 113 unique assays for NATADB. The different assay categories are "in vitro", "ND", and "in vivo", with 62 unique "in vitro" assays for CCl4 and 82 for NATADB, 2 unique "ND" assays for CCL4 and 2 for NATADB, and 23 unique "in vivo" assays for CCL4 and 29 for NATADB.
 
 One may be interested in looking at the number of chemicals for which an assay resulted in a positive or negative result. To assess this, group by `assayResult` and determine the number of unique `dtxsid` values associated with each `assayResult` value.
 
@@ -258,7 +258,7 @@ natadb_genetox_details[, .(DTXSIDs = length(unique(dtxsid))),
                        by = .(assayResult)]
 ```
 
-For CCL4, there are 64 unique chemicals that have a negative assay result, 53 that have a positive result, and 15 that have an equivocal result. For NATADB, there are 141 unique chemicals that have a negative assay result, 130 that have a positive result, and 48 that have an equivocal result. Observe that since there are 72 unique `dtxsid` values with assay results in CCL4 and 153 in NATADB, there are several chemicals that have multiple assay results.
+For CCL4, there are 63 unique chemicals that have a negative assay result, 53 that have a positive result, and 14 that have an equivocal result. For NATADB, there are 139 unique chemicals that have a negative assay result, 129 that have a positive result, and 47 that have an equivocal result. Observe that since there are 71 unique `dtxsid` values with assay results in CCL4 and 153 in NATADB, there are several chemicals that have multiple assay results.
 
 Next, determine the chemicals from each chemical list that are known to have genotoxic effects. For this, examine which chemicals produce at least one positive response in the `assayResult` column.
 
@@ -278,7 +278,7 @@ ccl4_genetox_details[dtxsid == 'DTXSID0020153' & assayResult == 'positive',
                      .(Number_of_assays = .N), by = .(assayType)][order(-Number_of_assays),]
 ```
 
-There were five assays that produced a negative result, 22 that produced a positive result, and one that produced an equivocal result. Of the 22 positive assays, "bacterial reverse mutation assay" and "Ames" were the most numerous, with three each.
+There were five assays that produced a negative result, 20 that produced a positive result, and one that produced an equivocal result. Of the 22 positive assays, "bacterial reverse mutation assay" and "Ames" are among those that are most numerous, with three each.
 
 ## Review Hazard Data for Chemical Lists
 
