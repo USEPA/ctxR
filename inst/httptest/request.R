@@ -7,5 +7,6 @@ function (request) {
     gsub_request("exposure/seem/demographic", "expo-demo", fixed = TRUE) |>
     gsub_request("exposure/seem/general", "expo-gen", fixed = TRUE) |>
     gsub_request("exposure/ccd", "ccd", fixed = TRUE) |>
+    gsub_request("probability/search", "prob-s") |>
     gsub_request("api-ccte-stg.epa.gov", "stg", fixed = TRUE)
   }
