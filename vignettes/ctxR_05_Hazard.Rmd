@@ -71,31 +71,6 @@ More information on ToxValDB can be found at <https://www.epa.gov/comptox-tools/
 
 Several ctxR functions can be used to access the CTX Hazard API data, as described in the following sections.Tables output in each example have been filtered to only display the first few rows of data. 
 
-# Hazard Resource
-
-## Get Hazard Data by DTXSID
-
-`get_hazard_by_dtxsid()` retrieves all hazard data, both human and EcoTox data.
-
-```{r ctxR all hazard, message=FALSE, eval=FALSE}
-hazard_by_dtxsid <- get_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
-```
-
-## Get Human Hazard Data by DTXSID
-
-`get_human_hazard_by_dtxsid()` retrieves only human hazard data.
-
-```{r ctxR human hazard, message=FALSE, eval=FALSE}
-human_hazard_by_dtxsid <- get_human_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
-```
-
-## Get EcoTox Hazard Data by DTXSID
-
-`get_ecotox_hazard_by_dtxsid()` retrieves only ecological toxicity hazard data.
-
-```{r ctxR ecotox hazard, message=FALSE, eval=FALSE}
-ecotox_hazard_by_dtxsid <- get_ecotox_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
-```
 
 # Skin Eye Resource
 
@@ -280,22 +255,6 @@ ccl4_genetox_details[dtxsid == 'DTXSID0020153' & assayResult == 'positive',
 
 There were five assays that produced a negative result, 20 that produced a positive result, and one that produced an equivocal result. Of the 22 positive assays, "bacterial reverse mutation assay" and "Ames" are among those that are most numerous, with three each.
 
-## Review Hazard Data for Chemical Lists
-
-Hazard data associated with the chemicals in each chemical list can be retrieved. For each chemical, there are potentially hundreds of rows of hazard data, so the returned results will be much larger than in most other API endpoints. We model how one would structure such a query of the chemicals in CCL4 and NATADB, and leave it to the reader to explore the data in a similar fashion to the previous examples.
-
-```{r, eval = FALSE}
-ccl4_hazard <- get_hazard_by_dtxsid_batch(DTXSID = ccl4$dtxsid)
-natadb_hazard <- get_hazard_by_dtxsid_batch(DTXSID = natadb$dtxsid)
-```
-
-Next, it may be helpful to examine the dimensions and column names of the output.
-```{r, eval = FALSE, fig.align='center',class.source="scroll-300",message=FALSE}
-dim(ccl4_hazard)
-dim(natadb_hazard)
-colnames(ccl4_hazard)
-head(ccl4_hazard)
-```
 
 # Conclusion
 
