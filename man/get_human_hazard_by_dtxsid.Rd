@@ -24,7 +24,9 @@ get_human_hazard_by_dtxsid(
 A data.frame containing chemical human hazard data
 }
 \description{
-Get human hazard data by DTXSID
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+The function was deprecated due to updates and restructing of the CTX APIs.
 }
 \examples{
 \dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
@@ -32,3 +34,4 @@ Get human hazard data by DTXSID
 bpa_human <- get_human_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
 \dontshow{\}) # examplesIf}
 }
+\keyword{internal}
