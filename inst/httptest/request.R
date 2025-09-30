@@ -9,5 +9,6 @@ function (request) {
     gsub_request("exposure/ccd", "ccd", fixed = TRUE) |>
     gsub_request("chemical/list/chemicals/search", "clcs", fixed = TRUE) |>
     gsub_request("chemical/list/search", "cls", fixed = TRUE) |>
+    gsub_request("property/experimental/search", "prop-exp-s", fixed = TRUE) |>
     gsub_request("api-ccte-stg.epa.gov", "stg", fixed = TRUE)
 }
