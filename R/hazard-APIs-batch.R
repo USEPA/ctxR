@@ -1,5 +1,10 @@
 #' Get hazard data by DTXSID batch
 #'
+#' @description
+#' `r lifecycle::badge("deprecated")`
+#'
+#' The function was deprecated due to updates and restructing of the CTX APIs.
+#'
 #' @param DTXSID A list of chemical identifier DTXSIDs
 #' @param API_key The user-specific API key
 #' @param rate_limit Number of seconds to wait between each request
@@ -9,6 +14,7 @@
 #' @return A data.table containing chemical (human and eco) hazard data for each
 #'   input chemical.
 #' @export
+#' @keywords internal
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull hazard data for multiple chemicals
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
@@ -19,6 +25,12 @@ get_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                                        rate_limit = 0L,
                                        Server = hazard_api_server,
                                        verbose = FALSE){
+
+  lifecycle::deprecate_warn("1.1.3",
+                            "get_hazard_by_dtxsid_batch()",
+                            always = TRUE)
+  return()
+
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
   if (is.null(API_key) & verbose){
     warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
@@ -124,6 +136,11 @@ create_hazard_data.table <- function(){
 
 #' Get human hazard data by DTXSID batch
 #'
+#' @description
+#' `r lifecycle::badge("deprecated")`
+#'
+#' The function was deprecated due to updates and restructing of the CTX APIs.
+#'
 #' @param DTXSID A list of chemical identifier DTXSIDs.
 #' @param API_key The user-specific API key.
 #' @param rate_limit Number of seconds to wait between each request
@@ -132,6 +149,7 @@ create_hazard_data.table <- function(){
 #'
 #' @return A data.table containing chemical human hazard data.
 #' @export
+#' @keywords internal
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull human hazard data for multiples chemicals
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
@@ -142,6 +160,11 @@ get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                                              rate_limit = 0L,
                                              Server = hazard_api_server,
                                              verbose = FALSE){
+  lifecycle::deprecate_warn("1.1.3",
+                            "get_human_hazard_by_dtxsid_batch()",
+                            always = TRUE)
+  return()
+
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
   if (is.null(API_key) & verbose){
     warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
@@ -204,6 +227,11 @@ get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
 
 #' Get ecotox hazard data by DTXSID batch
 #'
+#' @description
+#' `r lifecycle::badge("deprecated")`
+#'
+#' The function was deprecated due to updates and restructing of the CTX APIs.
+#'
 #' @param DTXSID A list of chemical identifier DTXSIDs.
 #' @param API_key The user-specific API key.
 #' @param rate_limit Number of seconds to wait between each request
@@ -212,6 +240,7 @@ get_human_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
 #'
 #' @return A data.table containing chemical ecotox hazard data.
 #' @export
+#' @keywords internal
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull ecotox hazard data for multiples chemicals
 #' dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
@@ -222,6 +251,12 @@ get_ecotox_hazard_by_dtxsid_batch <- function(DTXSID = NULL,
                                               rate_limit = 0L,
                                               Server = hazard_api_server,
                                               verbose = FALSE){
+  lifecycle::deprecate_warn("1.1.3",
+                            "get_ecotox_hazard_by_dtxsid_batch()",
+                            always = TRUE)
+  return()
+
+
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
   if (is.null(API_key) & verbose){
     warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
