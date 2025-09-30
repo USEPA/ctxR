@@ -1,12 +1,12 @@
 structure(list(url = "https://comptox.epa.gov/ctx-api/chemical/list/search/by-name/DTXSID7020182?projection=chemicallistwithdtxsids", 
-    status_code = 400L, headers = structure(list(date = "Wed, 24 Sep 2025 18:53:41 GMT", 
+    status_code = 400L, headers = structure(list(date = "Tue, 30 Sep 2025 14:32:18 GMT", 
         server = "Apache", `strict-transport-security` = "max-age=63072000; includeSubDomains; preload“", 
         vary = "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
         `cache-control` = "max-age=0, must-revalidate, no-transform", 
         `content-type` = "application/problem+json", nncoection = "close", 
         `transfer-encoding` = "chunked"), class = c("insensitive", 
     "list")), all_headers = list(list(status = 400L, version = "HTTP/1.1", 
-        headers = structure(list(date = "Wed, 24 Sep 2025 18:53:41 GMT", 
+        headers = structure(list(date = "Tue, 30 Sep 2025 14:32:18 GMT", 
             server = "Apache", `strict-transport-security` = "max-age=63072000; includeSubDomains; preload“", 
             vary = "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
             `cache-control` = "max-age=0, must-revalidate, no-transform", 
@@ -36,7 +36,7 @@ structure(list(url = "https://comptox.epa.gov/ctx-api/chemical/list/search/by-na
     0x65, 0x61, 0x72, 0x63, 0x68, 0x2f, 0x62, 0x79, 0x2d, 0x6e, 
     0x61, 0x6d, 0x65, 0x2f, 0x44, 0x54, 0x58, 0x53, 0x49, 0x44, 
     0x37, 0x30, 0x32, 0x30, 0x31, 0x38, 0x32, 0x22, 0x0a, 0x7d
-    )), date = structure(1758740021, class = c("POSIXct", "POSIXt"
-    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 5.2e-05, 
-    connect = 0, pretransfer = 0.000174, starttransfer = 0.048131, 
-    total = 0.048174)), class = "response")
+    )), date = structure(1759242738, class = c("POSIXct", "POSIXt"
+    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 4.2e-05, 
+    connect = 0, pretransfer = 0.000175, starttransfer = 0.053163, 
+    total = 0.053221)), class = "response")

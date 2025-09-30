@@ -1,12 +1,12 @@
 structure(list(url = "https://comptox.epa.gov/ctx-api/chemical/list/search/by-name/BIOSOLDIS2021?projection=chemicallistwithdtxsids", 
-    status_code = 400L, headers = structure(list(date = "Wed, 24 Sep 2025 18:54:14 GMT", 
+    status_code = 400L, headers = structure(list(date = "Tue, 30 Sep 2025 14:32:52 GMT", 
         server = "Apache", `strict-transport-security` = "max-age=63072000; includeSubDomains; preload“", 
         vary = "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
         `cache-control` = "max-age=0, must-revalidate, no-transform", 
         `content-type` = "application/problem+json", nncoection = "close", 
         `transfer-encoding` = "chunked"), class = c("insensitive", 
     "list")), all_headers = list(list(status = 400L, version = "HTTP/1.1", 
-        headers = structure(list(date = "Wed, 24 Sep 2025 18:54:14 GMT", 
+        headers = structure(list(date = "Tue, 30 Sep 2025 14:32:52 GMT", 
             server = "Apache", `strict-transport-security` = "max-age=63072000; includeSubDomains; preload“", 
             vary = "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
             `cache-control` = "max-age=0, must-revalidate, no-transform", 
@@ -36,7 +36,7 @@ structure(list(url = "https://comptox.epa.gov/ctx-api/chemical/list/search/by-na
     0x65, 0x61, 0x72, 0x63, 0x68, 0x2f, 0x62, 0x79, 0x2d, 0x6e, 
     0x61, 0x6d, 0x65, 0x2f, 0x42, 0x49, 0x4f, 0x53, 0x4f, 0x4c, 
     0x44, 0x49, 0x53, 0x32, 0x30, 0x32, 0x31, 0x22, 0x0a, 0x7d
-    )), date = structure(1758740054, class = c("POSIXct", "POSIXt"
-    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 5.7e-05, 
-    connect = 0, pretransfer = 0.00021, starttransfer = 0.053103, 
-    total = 0.053171)), class = "response")
+    )), date = structure(1759242772, class = c("POSIXct", "POSIXt"
+    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 5e-05, 
+    connect = 0, pretransfer = 0.000176, starttransfer = 0.050785, 
+    total = 0.050842)), class = "response")
