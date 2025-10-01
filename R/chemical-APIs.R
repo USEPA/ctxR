@@ -581,6 +581,20 @@ get_chemical_by_property_range <- function(start = NULL,
 }
 
 
+#' Get Summary information on chemical properties
+#'
+#' @param DTXSID The chemical identifier DTXSID.
+#' @param API_key The user-specific API key.
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A data.frame of summary data for chemical properties.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Get summary data for BPA
+#' bpa_props_summary <- get_chem_props_summary(DTXSID = 'DTXSID7020182')
+
 get_chem_props_summary <- function(DTXSID = NULL,
                                    API_key = NULL,
                                    Server = chemical_api_server,
@@ -615,6 +629,19 @@ get_chem_props_summary <- function(DTXSID = NULL,
   return()
 }
 
+#' Get predicted physical-chemical property data
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A data.frame of predicted physchem property data
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Get predicted physchem properties for BPA
+#' bpa_pred_props <- get_chem_props_pred(DTXSID = 'DTXSID7020182')
 get_chem_props_pred <- function(DTXSID = NULL,
                                 API_key = NULL,
                                 Server = chemical_api_server,
@@ -649,6 +676,19 @@ get_chem_props_pred <- function(DTXSID = NULL,
   return()
 }
 
+#' Get experimental physical-chemical property data
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A data.frame of experimental physchem property data
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Get experimental physchem properties for BPA
+#' bpa_exp_props <- get_chem_props_exp(DTXSID = 'DTXSID7020182')
 get_chem_props_exp <- function(DTXSID = NULL,
                                API_key = NULL,
                                Server = chemical_api_server,

@@ -834,6 +834,22 @@ get_chemical_by_property_range_batch <- function(start_list = NULL,
   return(results)
 }
 
+
+#' Get experimental physical-chemical property data via batch
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A data.table of experimental physchem property data
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Get experimental physchem properties for BPA and Caffeine
+#' chem_props_exp <- get_chem_props_exp(DTXSID = c('DTXSID7020182',
+#'                                                 'DTXSID0020232'))
 get_chem_props_exp_batch <- function(DTXSID = NULL,
                                      API_key = NULL,
                                      rate_limit = 0L,
@@ -924,7 +940,21 @@ get_chem_props_exp_batch <- function(DTXSID = NULL,
   }
 }
 
-
+#' Get predicted physical-chemical property data via batch
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A data.table of predicted physchem property data
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Get predicted physchem properties for BPA and Caffeine
+#' chem_props_pred <- get_chem_props_pred(DTXSID = c('DTXSID7020182',
+#'                                                   'DTXSID0020232'))
 get_chem_props_pred_batch <- function(DTXSID = NULL,
                                       API_key = NULL,
                                       rate_limit = 0L,
