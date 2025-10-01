@@ -71,6 +71,16 @@ More information on ToxValDB can be found at <https://www.epa.gov/comptox-tools/
 
 Several ctxR functions can be used to access the CTX Hazard API data, as described in the following sections.Tables output in each example have been filtered to only display the first few rows of data. 
 
+# Hazard Resource
+
+## Get Hazard Data by DTXSID
+
+`get_hazard_by_dtxsid()` retrieves all hazard data, both human and EcoTox data.
+
+```{r ctxR all hazard, message=FALSE, eval=FALSE}
+hazard_by_dtxsid <- get_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
+```
+
 
 # Skin Eye Resource
 
