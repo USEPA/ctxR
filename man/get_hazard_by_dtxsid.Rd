@@ -24,8 +24,6 @@ get_hazard_by_dtxsid(
 A data.frame containing chemical (human and eco) hazard data
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
-
 The function was deprecated due to updates and restructing of the CTX APIs.
 }
 \examples{
@@ -34,4 +32,3 @@ The function was deprecated due to updates and restructing of the CTX APIs.
 bpa <- get_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
 \dontshow{\}) # examplesIf}
 }
-\keyword{internal}
