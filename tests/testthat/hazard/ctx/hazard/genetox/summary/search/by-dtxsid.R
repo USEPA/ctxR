@@ -1,11 +1,11 @@
 structure(list(url = "https://comptox.epa.gov/ctx-api/hazard/genetox/summary/search/by-dtxsid/", 
-    status_code = 405L, headers = structure(list(date = "Wed, 24 Sep 2025 17:47:01 GMT", 
+    status_code = 405L, headers = structure(list(date = "Wed, 01 Oct 2025 14:48:03 GMT", 
         server = "Apache", `strict-transport-security` = "max-age=63072000; includeSubDomains; preload“", 
         vary = "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
         allow = "POST", `content-type` = "application/problem+json", 
         `transfer-encoding` = "chunked"), class = c("insensitive", 
     "list")), all_headers = list(list(status = 405L, version = "HTTP/1.1", 
-        headers = structure(list(date = "Wed, 24 Sep 2025 17:47:01 GMT", 
+        headers = structure(list(date = "Wed, 01 Oct 2025 14:48:03 GMT", 
             server = "Apache", `strict-transport-security` = "max-age=63072000; includeSubDomains; preload“", 
             vary = "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
             allow = "POST", `content-type` = "application/problem+json", 
@@ -33,7 +33,7 @@ structure(list(url = "https://comptox.epa.gov/ctx-api/hazard/genetox/summary/sea
     0x78, 0x2f, 0x73, 0x75, 0x6d, 0x6d, 0x61, 0x72, 0x79, 0x2f, 
     0x73, 0x65, 0x61, 0x72, 0x63, 0x68, 0x2f, 0x62, 0x79, 0x2d, 
     0x64, 0x74, 0x78, 0x73, 0x69, 0x64, 0x2f, 0x22, 0x0a, 0x7d
-    )), date = structure(1758736021, class = c("POSIXct", "POSIXt"
-    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 3.9e-05, 
-    connect = 0, pretransfer = 0.000183, starttransfer = 0.034234, 
-    total = 0.034283)), class = "response")
+    )), date = structure(1759330083, class = c("POSIXct", "POSIXt"
+    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 9e-05, 
+    connect = 0, pretransfer = 0.000364, starttransfer = 0.044609, 
+    total = 0.044711)), class = "response")

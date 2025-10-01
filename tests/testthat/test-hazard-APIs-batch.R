@@ -49,8 +49,8 @@ test_that('DTXSID errors', {
 })
 
 test_that('Rate limit warnings', {
-  # expect_warning(get_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), API_key = ctx_key(), rate_limit = '0'), 'Setting rate limit to 0 seconds between requests!')
-  # expect_warning(get_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), API_key = ctx_key(), rate_limit = -1), 'Setting rate limit to 0 seconds between requests!')
+  expect_warning(get_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), API_key = ctx_key(), rate_limit = '0'), 'Setting rate limit to 0 seconds between requests!')
+  expect_warning(get_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), API_key = ctx_key(), rate_limit = -1), 'Setting rate limit to 0 seconds between requests!')
   # expect_warning(get_human_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), API_key = ctx_key(), rate_limit = '0'), 'Setting rate limit to 0 seconds between requests!')
   # expect_warning(get_human_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), API_key = ctx_key(), rate_limit = -1), 'Setting rate limit to 0 seconds between requests!')
   # expect_warning(get_ecotox_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), API_key = ctx_key(), rate_limit = '0'), 'Setting rate limit to 0 seconds between requests!')
@@ -66,9 +66,9 @@ test_that('Rate limit warnings', {
 })
 
 test_that('Return data types', {
-  # expect_type(get_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), API_key = ctx_key()), 'list')
-  # expect_type(get_hazard_by_dtxsid_batch(DTXSID = c(''), API_key = ctx_key()), 'list')
-  # #expect_type(get_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), API_key = ''), 'list')
+  expect_type(get_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), API_key = ctx_key()), 'list')
+  expect_type(get_hazard_by_dtxsid_batch(DTXSID = c(''), API_key = ctx_key()), 'list')
+  expect_type(get_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), API_key = ''), 'list')
   # expect_type(get_human_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), API_key = ctx_key()), 'list')
   # expect_type(get_human_hazard_by_dtxsid_batch(DTXSID = c(''), API_key = ctx_key()), 'list')
   # #expect_type(get_human_hazard_by_dtxsid_batch(DTXSID = c('DTXSID7020182'), API_key = ''), 'list')

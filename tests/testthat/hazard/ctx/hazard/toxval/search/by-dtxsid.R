@@ -1,11 +1,11 @@
-structure(list(url = "https://comptox.epa.gov/ctx-api/hazard/genetox/details/search/by-dtxsid/", 
-    status_code = 405L, headers = structure(list(date = "Wed, 01 Oct 2025 14:48:03 GMT", 
+structure(list(url = "https://comptox.epa.gov/ctx-api/hazard/toxval/search/by-dtxsid/", 
+    status_code = 405L, headers = structure(list(date = "Wed, 01 Oct 2025 14:48:02 GMT", 
         server = "Apache", `strict-transport-security` = "max-age=63072000; includeSubDomains; preload“", 
         vary = "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
         allow = "POST", `content-type` = "application/problem+json", 
         `transfer-encoding` = "chunked"), class = c("insensitive", 
     "list")), all_headers = list(list(status = 405L, version = "HTTP/1.1", 
-        headers = structure(list(date = "Wed, 01 Oct 2025 14:48:03 GMT", 
+        headers = structure(list(date = "Wed, 01 Oct 2025 14:48:02 GMT", 
             server = "Apache", `strict-transport-security` = "max-age=63072000; includeSubDomains; preload“", 
             vary = "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
             allow = "POST", `content-type` = "application/problem+json", 
@@ -29,11 +29,10 @@ structure(list(url = "https://comptox.epa.gov/ctx-api/hazard/genetox/details/sea
     0x70, 0x6f, 0x72, 0x74, 0x65, 0x64, 0x2e, 0x22, 0x2c, 0x0a, 
     0x20, 0x20, 0x22, 0x69, 0x6e, 0x73, 0x74, 0x61, 0x6e, 0x63, 
     0x65, 0x22, 0x20, 0x3a, 0x20, 0x22, 0x2f, 0x68, 0x61, 0x7a, 
-    0x61, 0x72, 0x64, 0x2f, 0x67, 0x65, 0x6e, 0x65, 0x74, 0x6f, 
-    0x78, 0x2f, 0x64, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x73, 0x2f, 
-    0x73, 0x65, 0x61, 0x72, 0x63, 0x68, 0x2f, 0x62, 0x79, 0x2d, 
-    0x64, 0x74, 0x78, 0x73, 0x69, 0x64, 0x2f, 0x22, 0x0a, 0x7d
-    )), date = structure(1759330083, class = c("POSIXct", "POSIXt"
-    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 6.2e-05, 
-    connect = 0, pretransfer = 0.000255, starttransfer = 0.034618, 
-    total = 0.034671)), class = "response")
+    0x61, 0x72, 0x64, 0x2f, 0x74, 0x6f, 0x78, 0x76, 0x61, 0x6c, 
+    0x2f, 0x73, 0x65, 0x61, 0x72, 0x63, 0x68, 0x2f, 0x62, 0x79, 
+    0x2d, 0x64, 0x74, 0x78, 0x73, 0x69, 0x64, 0x2f, 0x22, 0x0a, 
+    0x7d)), date = structure(1759330082, class = c("POSIXct", 
+    "POSIXt"), tzone = "GMT"), times = c(redirect = 0, namelookup = 5.1e-05, 
+    connect = 0, pretransfer = 0.000201, starttransfer = 0.039075, 
+    total = 0.03913)), class = "response")
