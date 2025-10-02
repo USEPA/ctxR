@@ -54,9 +54,7 @@ registerS3method(
 
 <a href="https://CRAN.R-project.org/package=ctxR"><img src="Pictures/ctxR_hex.png" width="200" align="right" style="float: right; margin-left: 10px; margin-bottom: 10px;"/></a>
 
-# Computational Toxicology and Exposure data
-
-In this document, users will be introduced to different methods to access computational toxicology and exposure data. The two main methods described are through the CompTox Chemicals Dashboard and the CTX APIs, via the R package *ctxR*. References to papers and additional information on resources can be found within the exposition of this document. For more detailed information on specific areas of data, please refer to the other vignettes included within *ctxR*. 
+In this introduction vignette, users will be introduced to different methods to access computational toxicology and exposure data. The two main methods described are through the CompTox Chemicals Dashboard and the CTX APIs via the R package *ctxR*. References to papers and additional information on resources can be found within the exposition of this document. For more detailed information on specific areas of data, please refer to the other vignettes included within *ctxR*. 
 
 # Introduction to the CCD
 
