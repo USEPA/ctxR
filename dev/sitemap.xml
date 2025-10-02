@@ -39,6 +39,11 @@
 <url><loc>https://usepa.github.io/ctxR/dev/reference/get_cancer_hazard_batch.html</loc></url>
 <url><loc>https://usepa.github.io/ctxR/dev/reference/get_chem_info.html</loc></url>
 <url><loc>https://usepa.github.io/ctxR/dev/reference/get_chem_info_batch.html</loc></url>
+<url><loc>https://usepa.github.io/ctxR/dev/reference/get_chem_props_exp.html</loc></url>
+<url><loc>https://usepa.github.io/ctxR/dev/reference/get_chem_props_exp_batch.html</loc></url>
+<url><loc>https://usepa.github.io/ctxR/dev/reference/get_chem_props_pred.html</loc></url>
+<url><loc>https://usepa.github.io/ctxR/dev/reference/get_chem_props_pred_batch.html</loc></url>
+<url><loc>https://usepa.github.io/ctxR/dev/reference/get_chem_props_summary.html</loc></url>
 <url><loc>https://usepa.github.io/ctxR/dev/reference/get_chemical_by_property_range.html</loc></url>
 <url><loc>https://usepa.github.io/ctxR/dev/reference/get_chemical_by_property_range_batch.html</loc></url>
 <url><loc>https://usepa.github.io/ctxR/dev/reference/get_chemical_details.html</loc></url>
