@@ -1,0 +1,12 @@
+{
+    "id": 454,
+    "type": "federal",
+    "label": "EPA: National-Scale Air Toxics Assessment (NATA)",
+    "visibility": "PUBLIC",
+    "longDescription": "The National-Scale Air Toxics Assessment (NATA) is EPA's ongoing comprehensive evaluation of air toxics in the United States. EPA developed the NATA as a state-of-the-science screening tool for State/Local/Tribal Agencies to prioritize pollutants, emission sources and locations of interest for further study in order to gain a better understanding of risks.  NATA assessments do not incorporate refined information about emission sources but, rather, use general information about sources to develop estimates of risks which are more likely to overestimate impacts than underestimate them.\r\n\r\nNATA provides estimates of the risk of cancer and other serious health effects from breathing (inhaling) air toxics in order to inform both national and more localized efforts to identify and prioritize air toxics, emission source types and locations which are of greatest potential concern in terms of contributing to population risk.  This in turn helps air pollution experts focus limited analytical resources on areas and or populations where the potential for health risks are highest.  Assessments include estimates of cancer and non-cancer health effects based on chronic exposure from outdoor sources, including assessments of non-cancer health effects for Diesel Particulate Matter (PM). Assessments provide a snapshot of the outdoor air quality and the risks to human health that would result if air toxic emissions levels remained unchanged.",
+    "updatedAt": "2018-11-16T21:42:01Z",
+    "listName": "NATADB",
+    "chemicalCount": 163,
+    "createdAt": "2018-02-21T12:04:16Z",
+    "shortDescription": "The National-Scale Air Toxics Assessment (NATA) is EPA's ongoing comprehensive evaluation of air toxics in the United States."
+}
