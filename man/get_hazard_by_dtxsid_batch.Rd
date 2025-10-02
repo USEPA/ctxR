@@ -28,7 +28,7 @@ A data.table containing chemical (human and eco) hazard data for each
 input chemical.
 }
 \description{
-Get hazard data by DTXSID batch
+The function was deprecated due to updates and restructing of the CTX APIs.
 }
 \examples{
 \dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}

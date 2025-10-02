@@ -1,0 +1,120 @@
+[
+    {
+        "aeid": 891,
+        "assayName": "CEETOX_H295R",
+        "assayComponentName": "CEETOX_H295R_11DCORT",
+        "assayComponentEndpointName": "CEETOX_H295R_11DCORT",
+        "assayComponentEndpointDesc": "Data from the assay component CEETOX_H295R_11DCORT was analyzed into 1 assay endpoint. This assay endpoint, CEETOX_H295R_11DCORT, was analyzed with bidirectional fitting relative to DMSO as the negative control and baseline of activity. Using a type of inducible reporter, gain or loss-of-signal activity using HPLC-MS-MS was used to understand synthesis of 11-Deoxycortisol in H295R cell line at 48hr of chemical exposure. To generalize the intended target to other relatable targets, this assay endpoint is annotated to the steroid hormone intended target family, where the subfamily is glucocorticoids.",
+        "assayList": [
+            {
+                "name": "Steroidogenesis Bioactivity",
+                "description": "Assays related to steroidogenesis"
+            }
+        ],
+        "assayFunctionType": "detection of steroid hormone",
+        "normalizedDataType": "log2_fold_induction",
+        "burstAssay": 0,
+        "keyPositiveControl": "Prochloraz;Forskolin",
+        "signalDirection": "bidirectional",
+        "intendedTargetType": "molecular messenger",
+        "intendedTargetTypeSub": "11-Deoxycortisol",
+        "intendedTargetFamily": "steroid hormone",
+        "intendedTargetFamilySub": "glucocorticoids",
+        "cellViabilityAssay": 0,
+        "acid": 586,
+        "assayComponentDesc": "CEETOX_H295R_11DCORT is one of 23 assay component(s) measured or calculated from the CEETOX_H295R assay. It is designed to make measurements of hormone induction, a form of inducible reporter, as detected with absorbance signals by HPLC-MS-MS technology.",
+        "assayComponentTargetDesc": null,
+        "parameterReadoutType": "single",
+        "assayDesignType": "inducible reporter",
+        "assayDesignTypeSub": "hormone induction",
+        "biologicalProcessTarget": "regulation of steroid hormone biosynthetic process",
+        "detectionTechnologyType": "Spectrophotometry",
+        "detectionTechnologyTypeSub": "Absorbance",
+        "detectionTechnology": "HPLC-MS-MS",
+        "keyAssayReagentType": "inducer",
+        "keyAssayReagent": null,
+        "technologicalTargetType": "molecular messenger",
+        "technologicalTargetTypeSub": "11-Deoxycortisol",
+        "aid": 370,
+        "assayDesc": "CEETOX_H295R is a cell-based, multiplexed-readout assay that uses H295R, a human adrenal gland cell line, with measurements taken at 48 hours after chemical dosing in a 96-well plate.",
+        "timepointHr": 48.0,
+        "organismId": 9606,
+        "organism": "human",
+        "tissue": "adrenal gland",
+        "cellFormat": "cell line",
+        "cellFreeComponentSource": "",
+        "cellShortName": "H295R",
+        "cellGrowthMode": "adherent",
+        "assayFootprint": "microplate: 96-well plate",
+        "assayFormatType": "cell-based",
+        "assayFormatTypeSub": "cell-based format",
+        "contentReadoutType": "multiplexed",
+        "dilutionSolvent": "DMSO",
+        "dilutionSolventPercentMax": 0.1,
+        "asid": 8,
+        "assaySourceName": "CEETOX",
+        "assaySourceLongName": "Ceetox/OpAns",
+        "assaySourceDesc": "Ceetox, a part of Cyprotex, is a Contract Research Organization (CRO) that in coordination with OpAns, an analytical laboratory, provide ADME-tox services.",
+        "gene": [
+            {
+                "geneId": 145,
+                "geneName": "nuclear receptor subfamily 3, group C, member 1 (glucocorticoid receptor)",
+                "description": null,
+                "geneSymbol": "NR3C1",
+                "organismId": 1,
+                "trackStatus": "live",
+                "entrezGeneId": 2908,
+                "officialSymbol": "NR3C1",
+                "officialFullName": "nuclear receptor subfamily 3, group C, member 1 (glucocorticoid receptor)",
+                "uniprotAccessionNumber": "P04150"
+            },
+            {
+                "geneId": 202,
+                "geneName": "nuclear receptor subfamily 3, group C, member 2",
+                "description": null,
+                "geneSymbol": "NR3C2",
+                "organismId": 1,
+                "trackStatus": "live",
+                "entrezGeneId": 4306,
+                "officialSymbol": "NR3C2",
+                "officialFullName": "nuclear receptor subfamily 3, group C, member 2",
+                "uniprotAccessionNumber": "P08235"
+            }
+        ],
+        "citations": [
+            {
+                "doi": "10.1093/toxsci/kfw002",
+                "url": "https://pubmed.ncbi.nlm.nih.gov/26781511/",
+                "pmid": 26781511,
+                "title": "High-Throughput Screening of Chemical Effects on Steroidogenesis Using H295R Human Adrenocortical Carcinoma Cells",
+                "author": "Karmaus AL, Toole CM, Filer DL, Lewis KC, Martin MT",
+                "citation": "Karmaus AL, Toole CM, Filer DL, Lewis KC, Martin MT. High-Throughput Screening of Chemical Effects on Steroidogenesis Using H295R Human Adrenocortical Carcinoma Cells. Toxicol Sci. 2016 Apr;150(2):323-32. doi: 10.1093/toxsci/kfw002. Epub 2016 Jan 18. PMID: 26781511; PMCID: PMC4809454.",
+                "otherId": "0",
+                "citationId": 245,
+                "otherSource": ""
+            },
+            {
+                "doi": "10.1093/toxsci/kfx274",
+                "url": "https://pubmed.ncbi.nlm.nih.gov/29216406/",
+                "pmid": 29216406,
+                "title": "High-Throughput H295R Steroidogenesis Assay: Utility as an Alternative and a Statistical Approach to Characterize Effects on Steroidogenesis.",
+                "author": "Haggard DE, Karmaus AL, Martin MT, Judson RS, Setzer RW, Paul Friedman K",
+                "citation": "Haggard DE, Karmaus AL, Martin MT, Judson RS, Setzer RW, Paul Friedman K. High-Throughput H295R Steroidogenesis Assay: Utility as an Alternative and a Statistical Approach to Characterize Effects on Steroidogenesis. Toxicol Sci. 2018 Apr 1;162(2):509-534. doi: 10.1093/toxsci/kfx274. Erratum in: Toxicol Sci. 2018 Aug 1;164(2):646. PMID: 29216406.",
+                "otherId": "0",
+                "citationId": 260,
+                "otherSource": ""
+            },
+            {
+                "doi": "10.1016/j.yrtph.2019.104510",
+                "url": "https://pubmed.ncbi.nlm.nih.gov/31676319/",
+                "pmid": 31676319,
+                "title": "Development of a prioritization method for chemical-mediated effects on steroidogenesis using an integrated statistical analysis of high-throughput H295R data",
+                "author": "Haggard DE, Setzer RW, Judson RS, Paul Friedman K",
+                "citation": "Haggard DE, Setzer RW, Judson RS, Paul Friedman K. Development of a prioritization method for chemical-mediated effects on steroidogenesis using an integrated statistical analysis of high-throughput H295R data. Regul Toxicol Pharmacol. 2019 Dec;109:104510. doi: 10.1016/j.yrtph.2019.104510. Epub 2019 Oct 29. PMID: 31676319.",
+                "otherId": "0",
+                "citationId": 264,
+                "otherSource": ""
+            }
+        ]
+    }
+]
