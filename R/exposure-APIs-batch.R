@@ -1,3 +1,438 @@
+#' Get Product Use categories via batch
+#'
+#' @param DTXSID Chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between requests
+#' @param Server The root address for the API endpoint.
+#' @param verbose A logical indicating if some "progress report" should be
+#'   given.
+#'
+#' @returns A list of data.frames of product use categories data corresponding
+#' to the input DTXSIDs.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Retrieve product use categories for BPA and Caffeine
+#' get_product_use_categories_batch(DTXSID = c('DTXSID7020182',
+#'                                             'DTXSID0020232'))
+get_product_use_categories_batch <- function(DTXSID = NULL,
+                                             API_key = NULL,
+                                             rate_limit = 0L,
+                                             Server = 'https://comptox.epa.gov/ctx-api/exposure',
+                                             verbose = FALSE){
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+    results <- lapply(DTXSID, function(t){
+      Sys.sleep(rate_limit)
+      attempt <- tryCatch(
+        {
+          get_product_use_category(DTXSID = t,
+                                   API_key = API_key,
+                                   verbose = verbose,
+                                   Server = Server)
+        },
+        error = function(cond){
+          if (verbose) {
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
+        }
+      )
+      return(attempt)
+    }
+    )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
+    names(results) <- DTXSID
+    return(results)
+  } else {
+    stop('Please input a list of DTXSIDs!')
+  }
+}
+
+#' Get Production Volume data via batch
+#'
+#' @param DTXSID Chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between requests
+#' @param Server The root address for the API endpoint.
+#' @param verbose A logical indicating if some "progress report" should be
+#'   given.
+#'
+#' @returns A list of data.frames of production volume data corresponding to the
+#'   input DTXSIDs.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Retrieve production volume data for BPA and Caffeine
+#' get_production_volume_batch(DTXSID = c('DTXSID7020182', 'DTXSID0020232'))
+#'
+get_production_volume_batch <- function(DTXSID = NULL,
+                                        API_key = NULL,
+                                        rate_limit = 0L,
+                                        Server = 'https://comptox.epa.gov/ctx-api/exposure',
+                                        verbose = FALSE){
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+    results <- lapply(DTXSID, function(t){
+      Sys.sleep(rate_limit)
+      attempt <- tryCatch(
+        {
+          get_production_volume(DTXSID = t,
+                                API_key = API_key,
+                                verbose = verbose,
+                                Server = Server)
+        },
+        error = function(cond){
+          if (verbose) {
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
+        }
+      )
+      return(attempt)
+    }
+    )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
+    names(results) <- DTXSID
+    return(results)
+  } else {
+    stop('Please input a list of DTXSIDs!')
+  }
+}
+
+#' Get biomonitoring data via batch
+#'
+#' @param DTXSID Chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Projection Optional parameter controlling return type.
+#' @param rate_limit Number of seconds to wait between requests
+#' @param Server The root address for the API endpoint.
+#' @param verbose A logical indicating if some "progress report" should be
+#'   given.
+#'
+#' @returns A list of data.frames of biomonitoring data corresponding to the
+#'   input DTXSIDs.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Retrieve biomonitoring data for BPA and Caffeine
+#' get_biomonitoring_data_batch(DTXSID = c('DTXSID7020182', 'DTXSID0020232'))
+#'
+get_biomonitoring_data_batch <- function(DTXSID = NULL,
+                                         API_key = NULL,
+                                         Projection = '',
+                                         rate_limit = 0L,
+                                         Server = 'https://comptox.epa.gov/ctx-api/exposure',
+                                         verbose = FALSE){
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+    results <- lapply(DTXSID, function(t){
+      Sys.sleep(rate_limit)
+      attempt <- tryCatch(
+        {
+          get_biomonitoring_data(DTXSID = t,
+                                API_key = API_key,
+                                Projection = Projection,
+                                verbose = verbose,
+                                Server = Server)
+        },
+        error = function(cond){
+          if (verbose) {
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
+        }
+      )
+      return(attempt)
+    }
+    )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
+    names(results) <- DTXSID
+    return(results)
+  } else {
+    stop('Please input a list of DTXSIDs!')
+  }
+}
+
+#' Get general use keywords via batch
+#'
+#' @param DTXSID Chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between requests
+#' @param Server The root address for the API endpoint.
+#' @param verbose A logical indicating if some "progress report" should be
+#'   given.
+#'
+#' @returns A list of data.frames of general use keywords corresponding to the
+#'   input DTXSIDs.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Retrieve general use keywords for BPA and Caffeine
+#' get_general_use_keywords_batch(DTXSID = c('DTXSID7020182', 'DTXSID0020232'))
+#'
+get_general_use_keywords_batch <- function(DTXSID = NULL,
+                                           API_key = NULL,
+                                           rate_limit = 0L,
+                                           Server = 'https://comptox.epa.gov/ctx-api/exposure',
+                                           verbose = FALSE){
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+    results <- lapply(DTXSID, function(t){
+      Sys.sleep(rate_limit)
+      attempt <- tryCatch(
+        {
+          get_general_use_keywords(DTXSID = t,
+                                   API_key = API_key,
+                                   verbose = verbose,
+                                   Server = Server)
+        },
+        error = function(cond){
+          if (verbose) {
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
+        }
+      )
+      return(attempt)
+    }
+    )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
+    names(results) <- DTXSID
+    return(results)
+  } else {
+    stop('Please input a list of DTXSIDs!')
+  }
+}
+
+#' Get reported functional use via batch
+#'
+#' @param DTXSID Chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between requests
+#' @param Server The root address for the API endpoint.
+#' @param verbose A logical indicating if some "progress report" should be
+#'   given.
+#'
+#' @returns A list of data.frames of reported functional use corresponding to
+#' the input DTXSIDs.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Retrieve reported functional use for BPA and Caffeine
+#' get_reported_functional_use_batch(DTXSID = c('DTXSID7020182',
+#'                                              'DTXSID0020232'))
+get_reported_functional_use_batch <- function(DTXSID = NULL,
+                                              API_key = NULL,
+                                              rate_limit = 0L,
+                                              Server = 'https://comptox.epa.gov/ctx-api/exposure',
+                                              verbose = FALSE){
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+    results <- lapply(DTXSID, function(t){
+      Sys.sleep(rate_limit)
+      attempt <- tryCatch(
+        {
+          get_reported_functional_use(DTXSID = t,
+                                      API_key = API_key,
+                                      verbose = verbose,
+                                      Server = Server)
+        },
+        error = function(cond){
+          if (verbose) {
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
+        }
+      )
+      return(attempt)
+    }
+    )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
+    names(results) <- DTXSID
+    return(results)
+  } else {
+    stop('Please input a list of DTXSIDs!')
+  }
+}
+
+#' Get chemical weight fraction via batch
+#'
+#' @param DTXSID Chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between requests
+#' @param Server The root address for the API endpoint.
+#' @param verbose A logical indicating if some "progress report" should be
+#'   given.
+#'
+#' @returns A list of data.frames of hemical weight fraction data corresponding
+#' to the input DTXSIDs.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Retrieve chemical weight fraction data for BPA and Caffeine
+#' get_chemical_weight_fraction_batch(DTXSID = c('DTXSID7020182',
+#'                                               'DTXSID0020232'))
+get_chemical_weight_fraction_batch <- function(DTXSID = NULL,
+                                               API_key = NULL,
+                                               rate_limit = 0L,
+                                               Server = 'https://comptox.epa.gov/ctx-api/exposure',
+                                               verbose = FALSE){
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+    results <- lapply(DTXSID, function(t){
+      Sys.sleep(rate_limit)
+      attempt <- tryCatch(
+        {
+          get_chemical_weight_fraction(DTXSID = t,
+                                       API_key = API_key,
+                                       verbose = verbose,
+                                       Server = Server)
+        },
+        error = function(cond){
+          if (verbose) {
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
+        }
+      )
+      return(attempt)
+    }
+    )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
+    names(results) <- DTXSID
+    return(results)
+  } else {
+    stop('Please input a list of DTXSIDs!')
+  }
+}
+
 #' Retrieve exposure related functional use data batch
 #'
 #' @param DTXSID Chemical identifier DTXSID
@@ -524,5 +959,292 @@ get_demographic_exposure_prediction_batch <- function(DTXSID = NULL,
     return(results)
   } else {
     stop('Please input a list of DTXSIDs!')
+  }
+}
+
+
+#' Get Aggregate Records by DTXSID via batch
+#'
+#' @param DTXSID Chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request
+#' @param Server The root address for the API endpoint
+#' @param verbose A logicial indicating if some "progress report" should be
+#'   given.
+#'
+#' @returns A list of data.frames containing aggregate records data for each
+#'   input DTXSID.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Retrieve aggregate records data for BPA and Caffeine
+#' get_aggregate_records_by_dtxsid_batch(DTXSID = c('DTXSID0020232',
+#'   'DTXSID7020182'))
+get_aggregate_records_by_dtxsid_batch <- function(DTXSID = NULL,
+                                                  API_key = NULL,
+                                                  rate_limit = 0L,
+                                                  Server = 'https://comptox.epa.gov/ctx-api/exposure',
+                                                  verbose = FALSE){
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+    results <- lapply(DTXSID, function(t){
+      Sys.sleep(rate_limit)
+      attempt <- tryCatch(
+        {
+          get_aggregate_records_by_dtxsid(DTXSID = t,
+                                          API_key = API_key,
+                                          verbose = verbose,
+                                          Server = Server)
+        },
+        error = function(cond){
+          if (verbose) {
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
+        }
+      )
+      return(attempt)
+    }
+    )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
+    names(results) <- DTXSID
+    return(results)
+  } else {
+    stop('Please input a list of DTXSIDs!')
+  }
+}
+
+#' Get Aggregate Records by medium via batch
+#'
+#' @param Medium The MMDB medium of exposure
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request
+#' @param Server The root address for the API endpoint
+#' @param verbose A logicial indicating if some "progress report" should be
+#'   given.
+#'
+#' @returns A list of data.frames containing aggregate records data for each
+#'   input medium.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Retrieve aggregate records data for 'surface water' and 'soil'
+#'   get_aggregate_records_by_medium_batch(Medium = c('surface water', 'soil'))
+get_aggregate_records_by_medium_batch <- function(Medium = NULL,
+                                                  API_key = NULL,
+                                                  rate_limit = 0L,
+                                                  Server = 'https://comptox.epa.gov/ctx-api/exposure',
+                                                  verbose = FALSE){
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(Medium)){
+    if (!is.character(Medium) & !all(sapply(Medium, is.character))){
+      stop('Please input a character list for Medium!')
+    }
+    Medium <- unique(Medium)
+    results <- lapply(Medium, function(t){
+      Sys.sleep(rate_limit)
+      attempt <- tryCatch(
+        {
+          get_aggregate_records_by_medium(Medium = t,
+                                          API_key = API_key,
+                                          verbose = verbose,
+                                          Server = Server)
+        },
+        error = function(cond){
+          if (verbose) {
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
+        }
+      )
+      return(attempt)
+    }
+    )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
+    names(results) <- Medium
+    return(results)
+  } else {
+    stop('Please input a list of Media!')
+  }
+}
+
+#' Get Single Sample Records by DTXSID via batch
+#'
+#' @param DTXSID Chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request
+#' @param Server The root address for the API endpoint
+#' @param verbose A logicial indicating if some "progress report" should be
+#'   given.
+#'
+#' @returns A list of data.frames containing single sample records data for each
+#'   input DTXSID.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Retrieve single sample records data for BPA and Caffeine
+#' get_single_sample_records_by_dtxsid_batch(DTXSID = c('DTXSID0020232',
+#'   'DTXSID7020182'))
+get_single_sample_records_by_dtxsid_batch <- function(DTXSID = NULL,
+                                                      API_key = NULL,
+                                                      rate_limit = 0L,
+                                                      Server = 'https://comptox.epa.gov/ctx-api/exposure',
+                                                      verbose = FALSE){
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+    results <- lapply(DTXSID, function(t){
+      Sys.sleep(rate_limit)
+      attempt <- tryCatch(
+        {
+          get_single_sample_records_by_dtxsid(DTXSID = t,
+                                              API_key = API_key,
+                                              verbose = verbose,
+                                              Server = Server)
+        },
+        error = function(cond){
+          if (verbose) {
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
+        }
+      )
+      return(attempt)
+    }
+    )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
+    names(results) <- DTXSID
+    return(results)
+  } else {
+    stop('Please input a list of DTXSIDs!')
+  }
+}
+
+#' Get Single Sample Records by medium via batch
+#'
+#' @param Medium The MMDB medium of exposure
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request
+#' @param Server The root address for the API endpoint
+#' @param verbose A logicial indicating if some "progress report" should be
+#'   given.
+#'
+#' @returns A list of data.frames containing single sample records data for each
+#'   input medium.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Retrieve single sample records data for 'surface water' and 'soil'
+#' get_single_sample_records_by_medium_batch(Medium = c('surface water', 'soil'))
+get_single_sample_records_by_medium_batch <- function(Medium = NULL,
+                                                      API_key = NULL,
+                                                      rate_limit = 0L,
+                                                      Server = 'https://comptox.epa.gov/ctx-api/exposure',
+                                                      verbose = FALSE){
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(Medium)){
+    if (!is.character(Medium) & !all(sapply(Medium, is.character))){
+      stop('Please input a character list for Medium!')
+    }
+    Medium <- unique(Medium)
+    results <- lapply(Medium, function(t){
+      Sys.sleep(rate_limit)
+      attempt <- tryCatch(
+        {
+          get_single_sample_records_by_medium(Medium = t,
+                                              API_key = API_key,
+                                              verbose = verbose,
+                                              Server = Server)
+        },
+        error = function(cond){
+          if (verbose) {
+            message(t)
+            message(cond$message)
+          }
+          return(cond)
+        }
+      )
+      return(attempt)
+    }
+    )
+
+    error_index <- which(sapply(results, function(t) {
+      return('simpleError' %in% class(t))
+    }))
+    if (length(error_index) > 0){
+      error <- results[[error_index[[1]]]]
+      stop(error$message)
+    }
+
+    names(results) <- Medium
+    return(results)
+  } else {
+    stop('Please input a list of Media!')
   }
 }

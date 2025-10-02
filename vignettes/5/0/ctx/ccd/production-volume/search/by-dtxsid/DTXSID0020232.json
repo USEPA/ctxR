@@ -1,0 +1,26 @@
+[
+    {
+        "id": 425,
+        "dtxsid": "DTXSID0020232",
+        "name": "2019 NATIONALLY AGGREGATED PV",
+        "amount": "219,582"
+    },
+    {
+        "id": 426,
+        "dtxsid": "DTXSID0020232",
+        "name": "2018 NATIONALLY AGGREGATED PV",
+        "amount": "292,600"
+    },
+    {
+        "id": 427,
+        "dtxsid": "DTXSID0020232",
+        "name": "2017 NATIONALLY AGGREGATED PV",
+        "amount": "543,400"
+    },
+    {
+        "id": 428,
+        "dtxsid": "DTXSID0020232",
+        "name": "2016 NATIONALLY AGGREGATED PV",
+        "amount": "627,000"
+    }
+]
