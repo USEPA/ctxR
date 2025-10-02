@@ -1,0 +1,68 @@
+[
+    {
+        "id": 28665,
+        "dtxsid": "DTXSID7020182",
+        "category": "Hardener",
+        "definition": "hardener"
+    },
+    {
+        "id": 3071,
+        "dtxsid": "DTXSID7020182",
+        "category": "Antioxidant",
+        "definition": "antioxidants>phenolics"
+    },
+    {
+        "id": 4351,
+        "dtxsid": "DTXSID7020182",
+        "category": "Binder",
+        "definition": "binder"
+    },
+    {
+        "id": 5717,
+        "dtxsid": "DTXSID7020182",
+        "category": "Catalyst",
+        "definition": "catalyst"
+    },
+    {
+        "id": 9261,
+        "dtxsid": "DTXSID7020182",
+        "category": "Hardener",
+        "definition": "curing agent"
+    },
+    {
+        "id": 14100,
+        "dtxsid": "DTXSID7020182",
+        "category": "Flame retardant",
+        "definition": "fire retardant"
+    },
+    {
+        "id": 31944,
+        "dtxsid": "DTXSID7020182",
+        "category": "Monomers",
+        "definition": "monomer, bisphenol a-epichlorohydrin acrylate"
+    },
+    {
+        "id": 31947,
+        "dtxsid": "DTXSID7020182",
+        "category": "Monomers",
+        "definition": "monomer, epichlorohydrin bisphenol a resin"
+    },
+    {
+        "id": 31949,
+        "dtxsid": "DTXSID7020182",
+        "category": "Monomers",
+        "definition": "monomer, epichlorohydrin-bisphenol a resin"
+    },
+    {
+        "id": 31968,
+        "dtxsid": "DTXSID7020182",
+        "category": "Monomers",
+        "definition": "monomer, polycarbonate"
+    },
+    {
+        "id": 32323,
+        "dtxsid": "DTXSID7020182",
+        "category": "No specific technical function",
+        "definition": "not reported"
+    }
+]

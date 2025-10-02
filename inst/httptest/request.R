@@ -7,8 +7,9 @@ function (request) {
     gsub_request("exposure/seem/demographic", "expo-demo", fixed = TRUE) |>
     gsub_request("exposure/seem/general", "expo-gen", fixed = TRUE) |>
     gsub_request("exposure/ccd", "ccd", fixed = TRUE) |>
+    gsub_request("probability/search", "prob-s") |>
     gsub_request("chemical/list/chemicals/search", "clcs", fixed = TRUE) |>
     gsub_request("chemical/list/search", "cls", fixed = TRUE) |>
     gsub_request("property/experimental/search", "prop-exp-s", fixed = TRUE) |>
     gsub_request("api-ccte-stg.epa.gov", "stg", fixed = TRUE)
-}
+  }
