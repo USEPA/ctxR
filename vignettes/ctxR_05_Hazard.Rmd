@@ -57,7 +57,7 @@ registerS3method(
 
 ## Introduction
 
-In this vignette, [CTX Hazard API](https://api-ccte.epa.gov/docs/hazard.html) will be explored. 
+In this vignette, [CTX Hazard API](https://comptox.epa.gov/ctx-api/docs/hazard.html) will be explored. 
 
 Data for the Hazard API come from the Toxicity Value Database [(ToxValDB)](https://cfpub.epa.gov/si/si_public_record_Report.cfm?dirEntryId=344315&Lab=NCCT). ToxValDB includes data on thousands of chemicals from tens of thousands of records, with an emphasis on quantitative estimates of relevant points-of-departure from in vivo toxicology studies, such as no- and low-observable adverse effect levels, screening levels, reference doses, tolerable daily intake, etc. 
 

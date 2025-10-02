@@ -58,7 +58,7 @@ registerS3method(
 
 ## Introduction
 
-In this vignette, the [CTX Exposure API](https://api-ccte.epa.gov/docs/exposure.html) will be explored. 
+In this vignette, the [CTX Exposure API](https://comptox.epa.gov/ctx-api/docs/exposure.html) will be explored. 
 
 Data provided by the Exposure API are broadly organized in five different areas: Functional Use, Product Data, List Presence, High Throughput Toxicokinetic (HTTK) parameters, and Exposure estimates. 
 

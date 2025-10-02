@@ -58,7 +58,7 @@ registerS3method(
 
 # Introduction
 
-In this vignette, [CTX Bioactivity API](https://api-ccte.epa.gov/docs/bioactivity.html) will be explored. 
+In this vignette, [CTX Bioactivity API](https://comptox.epa.gov/ctx-api/docs/bioactivity.html) will be explored. 
 
 Data provided by the API's Bioactivity endpoints are sourced from ToxCast's [invitrodb](https://doi.org/10.23645/epacomptox.6062623.v13). 
 
