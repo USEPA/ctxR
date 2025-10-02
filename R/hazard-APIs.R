@@ -1,5 +1,8 @@
 #' Get hazard data by DTXSID
 #'
+#'
+#' The function was deprecated due to updates and restructing of the CTX APIs.
+#'
 #' @param DTXSID The chemical identifier DTXSID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
@@ -7,6 +10,7 @@
 #'
 #' @return A data.frame containing chemical (human and eco) hazard data
 #' @export
+#'
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull hazard data for BPA
 #' bpa <- get_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
@@ -15,6 +19,8 @@ get_hazard_by_dtxsid <- function(DTXSID = NULL,
                                  API_key = NULL,
                                  Server = hazard_api_server,
                                  verbose = FALSE){
+
+
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
 
@@ -24,7 +30,7 @@ get_hazard_by_dtxsid <- function(DTXSID = NULL,
   }
 
 
-  response <- httr::GET(url = paste0(Server, '/search/by-dtxsid/', DTXSID),
+  response <- httr::GET(url = paste0(Server, '/toxval/search/by-dtxsid/', DTXSID),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -44,7 +50,15 @@ get_hazard_by_dtxsid <- function(DTXSID = NULL,
 
 }
 
+
+
+
 #' Get human hazard data by DTXSID
+#'
+#' @description
+#' `r lifecycle::badge("deprecated")`
+#'
+#' The function was deprecated due to updates and restructing of the CTX APIs.
 #'
 #' @param DTXSID The chemical identifier DTXSID
 #' @param API_key The user-specific API key
@@ -53,6 +67,7 @@ get_hazard_by_dtxsid <- function(DTXSID = NULL,
 #'
 #' @return A data.frame containing chemical human hazard data
 #' @export
+#' @keywords internal
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull human hazard data for BPA
 #' bpa_human <- get_human_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
@@ -61,6 +76,12 @@ get_human_hazard_by_dtxsid <- function(DTXSID = NULL,
                                        API_key = NULL,
                                        Server = hazard_api_server,
                                        verbose = FALSE){
+  lifecycle::deprecate_warn("1.1.3",
+                            "get_human_hazard_by_dtxsid()",
+                            always = TRUE)
+  return()
+
+
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
 
@@ -91,6 +112,11 @@ get_human_hazard_by_dtxsid <- function(DTXSID = NULL,
 
 #' Get ecotox hazard data by DTXSID
 #'
+#' @description
+#' `r lifecycle::badge("deprecated")`
+#'
+#' The function was deprecated due to updates and restructing of the CTX APIs.
+#'
 #' @param DTXSID The chemical identifier DTXSID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
@@ -98,6 +124,7 @@ get_human_hazard_by_dtxsid <- function(DTXSID = NULL,
 #'
 #' @return A data.frame containing chemical (ecotox) hazard data
 #' @export
+#' @keywords internal
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull ecotox hazard data for BPA
 #' bpa_ecotox <- get_ecotox_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
@@ -106,6 +133,11 @@ get_ecotox_hazard_by_dtxsid <- function(DTXSID = NULL,
                                         API_key = NULL,
                                         Server = hazard_api_server,
                                         verbose = FALSE){
+  lifecycle::deprecate_warn("1.1.3",
+                            "get_ecotox_hazard_by_dtxsid()",
+                            always = TRUE)
+  return()
+
   if (is.null(DTXSID))
     stop('Please input a DTXSID!')
 

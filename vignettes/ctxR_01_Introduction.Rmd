@@ -274,11 +274,11 @@ The function `get_chem_info()` returns phys-chem properties for the selected che
 
 Here all phys-chem properties are returned for Bisphenol A. 
 
-```{r, bpa-chem-info}
+```{r, bpa-chem-info, eval=FALSE}
 bpa_info <- get_chem_info(DTXSID = "DTXSID7020182")
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, eval=FALSE}
 htmlTable::htmlTable(head(bpa_info),
         align = 'l',
         align.header = 'l',
@@ -288,10 +288,10 @@ htmlTable::htmlTable(head(bpa_info),
 
 Request can be filtered to return experimental results only.
 
-```{r, bpa-experimental}
+```{r, bpa-experimental, eval=FALSE}
 bpa_info_experimental <- get_chem_info(DTXSID = "DTXSID7020182", type = 'experimental')
 ```
-```{r, echo=FALSE}
+```{r, echo=FALSE, eval=FALSE}
 htmlTable::htmlTable(head(bpa_info_experimental),
         align = 'l',
         align.header = 'l',
@@ -309,11 +309,11 @@ The function `get_hazard_by_dtxsid()` retrieves hazard data (all human or ecolog
 
 Here all hazard data is returned for Bisphenol A:
 
-```{r, hazard}
+```{r, hazard, eval=FALSE}
 bpa_hazard <- get_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, eval=FALSE}
 htmlTable::htmlTable(head(bpa_hazard_info),
         align = 'l',
         align.header = 'l',
@@ -323,11 +323,11 @@ htmlTable::htmlTable(head(bpa_hazard_info),
 
 Request can be refined to return results for human hazard,
 
-```{r, human-hazard}
+```{r, human-hazard, eval=FALSE}
 bpa_human_hazard <- get_human_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, eval=FALSE}
 htmlTable::htmlTable(head(bpa_human_hazard),
         align = 'l',
         align.header = 'l',
@@ -337,11 +337,11 @@ htmlTable::htmlTable(head(bpa_human_hazard),
 
 or EcoTox results.
 
-```{r, ecotox-hazard}
+```{r, ecotox-hazard, eval=FALSE}
 bpa_eco_hazard <- get_ecotox_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, eval=FALSE}
 htmlTable::htmlTable(head(bpa_eco_hazard),
         align = 'l',
         align.header = 'l',

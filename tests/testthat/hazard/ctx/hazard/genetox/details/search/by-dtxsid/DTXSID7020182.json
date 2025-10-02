@@ -1,0 +1,35 @@
+[
+    {
+        "year": null,
+        "source": "NTP",
+        "dtxsid": "DTXSID7020182",
+        "species": "Not specified",
+        "assayCategory": "in vitro",
+        "assayResult": "negative",
+        "assayType": "Ames",
+        "metabolicActivation": null,
+        "strain": null
+    },
+    {
+        "year": null,
+        "source": "NTP",
+        "dtxsid": "DTXSID7020182",
+        "species": "Not specified",
+        "assayCategory": "in vivo",
+        "assayResult": "negative",
+        "assayType": "in vivo micronucleus (rat)",
+        "metabolicActivation": null,
+        "strain": null
+    },
+    {
+        "year": null,
+        "source": "NTP",
+        "dtxsid": "DTXSID7020182",
+        "species": "Not specified",
+        "assayCategory": "in vivo",
+        "assayResult": "negative",
+        "assayType": "in vivo comet (rat)",
+        "metabolicActivation": null,
+        "strain": null
+    }
+]

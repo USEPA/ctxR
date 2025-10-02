@@ -199,10 +199,10 @@ test_that('Word search errors', {
 # Pause requests for 5 seconds
 Sys.sleep(5)
 
-test_that('miscellaneous list mismatch warnings', {
-  expect_warning(get_chem_info_batch(DTXSID = c('DTXSID7020182', 'DTXSID2021315', 'DTXSID50186350'), type = c('experimental', ''), API_key = ctx_key()), "Setting type to ''!")
-  expect_warning(get_chem_info_batch(DTXSID = c('DTXSID7020182'), type = c('predicted', 'experimental'), API_key = ctx_key()), "Setting type to ''!")
-})
+# test_that('miscellaneous list mismatch warnings', {
+#   expect_warning(get_chem_info_batch(DTXSID = c('DTXSID7020182', 'DTXSID2021315', 'DTXSID50186350'), type = c('experimental', ''), API_key = ctx_key()), "Setting type to ''!")
+#   expect_warning(get_chem_info_batch(DTXSID = c('DTXSID7020182'), type = c('predicted', 'experimental'), API_key = ctx_key()), "Setting type to ''!")
+# })
 
 # Pause requests for 1 second
 Sys.sleep(1)

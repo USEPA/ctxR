@@ -29,7 +29,8 @@ Imports:
     stringr,
     tidyr,
     tibble,
-    urltools
+    urltools,
+    lifecycle
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

@@ -1,0 +1,28 @@
+bibentry(
+  bibtype  = "Article",
+  title    = "ctxR: Utilities for interacting with the CTX APIs",
+  author   = c(person(given = c("Paul", "M."),
+                      family = "Kruse"),
+               person(given = c("Caroline", "L."),
+                      family = "Ring"),
+               person(given = "Katie",
+                      family = c("Paul", "Friedman")),
+               person(given = "Madison",
+                      family = "Feshuk"),
+               person(given = "Jason",
+                      family = "Brown"),
+               person(given = "Carter",
+                      family = "Thunes"),
+               person(given = "Asif",
+                      family = "Rashid")),
+  journal  = "NAM Journal",
+  year     = "2025",
+  volume   = "1",
+  pages    = "100031",
+  doi      = "10.1016/j.namjnl.2025.100031",
+  textVersion =
+  paste("Kruse PM, Ring CL, Paul Friedman K, Feshuk M, Brown J, Thunes C, Rashid A (2025).",
+        "ctxR: Utilities for interacting with the CTX APIs.",
+        "NAM Journal, 1, 100031",
+        "doi:10.1016/j.namjnl.2025.100031")
+)
