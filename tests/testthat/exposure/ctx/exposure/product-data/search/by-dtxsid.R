@@ -1,11 +1,11 @@
 structure(list(url = "https://comptox.epa.gov/ctx-api/exposure/product-data/search/by-dtxsid/", 
-    status_code = 405L, headers = structure(list(date = "Wed, 24 Sep 2025 19:50:24 GMT", 
+    status_code = 405L, headers = structure(list(date = "Mon, 06 Oct 2025 16:54:58 GMT", 
         server = "Apache", `strict-transport-security` = "max-age=63072000; includeSubDomains; preload“", 
         vary = "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
         allow = "POST", `cache-control` = "max-age=0, must-revalidate, no-transform", 
         `content-type` = "application/json", `transfer-encoding` = "chunked"), class = c("insensitive", 
     "list")), all_headers = list(list(status = 405L, version = "HTTP/1.1", 
-        headers = structure(list(date = "Wed, 24 Sep 2025 19:50:24 GMT", 
+        headers = structure(list(date = "Mon, 06 Oct 2025 16:54:58 GMT", 
             server = "Apache", `strict-transport-security` = "max-age=63072000; includeSubDomains; preload“", 
             vary = "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
             allow = "POST", `cache-control` = "max-age=0, must-revalidate, no-transform", 
@@ -14,8 +14,8 @@ structure(list(url = "https://comptox.epa.gov/ctx-api/exposure/product-data/sear
         flag = logical(0), path = logical(0), secure = logical(0), 
         expiration = structure(numeric(0), class = c("POSIXct", 
         "POSIXt")), name = logical(0), value = logical(0)), row.names = integer(0), class = "data.frame"), 
-    content = charToRaw("{\n  \"timestamp\" : \"2025-09-24T19:50:24.367+00:00\",\n  \"status\" : 405,\n  \"error\" : \"Method Not Allowed\",\n  \"path\" : \"/exposure/product-data/search/by-dtxsid/\"\n}"), 
-    date = structure(1758743424, class = c("POSIXct", "POSIXt"
-    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 7.3e-05, 
-    connect = 0, pretransfer = 0.000262, starttransfer = 0.03893, 
-    total = 0.038969)), class = "response")
+    content = charToRaw("{\n  \"timestamp\" : \"2025-10-06T16:54:58.514+00:00\",\n  \"status\" : 405,\n  \"error\" : \"Method Not Allowed\",\n  \"path\" : \"/exposure/product-data/search/by-dtxsid/\"\n}"), 
+    date = structure(1759769698, class = c("POSIXct", "POSIXt"
+    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 4.1e-05, 
+    connect = 0, pretransfer = 0.000175, starttransfer = 0.033536, 
+    total = 0.033563)), class = "response")

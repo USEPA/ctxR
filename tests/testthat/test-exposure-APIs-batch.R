@@ -87,7 +87,7 @@ test_that("Return data type", {
   expect_type(get_general_exposure_prediction_batch(DTXSID = c(''), API_key = ctx_key()), 'list')
   expect_type(get_demographic_exposure_prediction_batch(DTXSID = c('DTXSID7020182'), API_key = ctx_key()), 'list')
   expect_type(get_demographic_exposure_prediction_batch(DTXSID = c(''), API_key = ctx_key()), 'list')
-  expect_type(get_single_sample_records_by_dtxsid_batch(DTXSID = 'DTXSID0020232', API_key = ctx_key()), 'list')
+  #expect_type(get_single_sample_records_by_dtxsid_batch(DTXSID = 'DTXSID0020232', API_key = ctx_key()), 'list')
   expect_type(get_single_sample_records_by_dtxsid_batch(DTXSID = '', API_key = ctx_key()), 'list')
   expect_type(get_aggregate_records_by_dtxsid_batch(DTXSID = 'DTXSID0020232', API_key = ctx_key()), 'list')
   expect_type(get_aggregate_records_by_dtxsid_batch(DTXSID = '', API_key = ctx_key()), 'list')

@@ -18,11 +18,7 @@ Status: OK
 
 ## local R CMD check results
 
-0 errors | 0 warnings | 2 notes
-
-checking CRAN incoming feasibility ... NOTE 
-
-Maintainer: 'Madison Feshuk <feshuk.madison@epa.gov>'
+0 errors | 0 warnings | 1 note
 
 checking for future file timestamps ... NOTE
 unable to verify current time
