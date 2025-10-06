@@ -66,7 +66,7 @@ The CCD can be queried for one chemical at a time or using batch search.
 
 ## Searching one chemical at a time (single-substance search)
 
-In single-substance search, the user enters a full or partial chemical identifier (name, CASRN, InChiKey, or DSSTox ID) into a search box on the CCD homepage. Autocomplete can provide a list of possible matches. Figure 1 shows an example: the CCD landing page for the chemical [Bisphenol A](https://comptox.epa.gov/dashboard/chemical/invitrodb/DTXSID7020182). This page is generated for Bisphenol A and links to but does not represent other chemicals. Each chemical in the CCD has its own page similar to this, with varying levels of accessible based on the information that is available.
+In single-substance search, the user enters a full or partial chemical identifier (name, CASRN, InChiKey, or DSSTox ID) into a search box on the CCD homepage. Autocomplete can provide a list of possible matches. Figure 1 shows an example: the CCD landing page for the chemical [Bisphenol A](https://comptox.epa.gov/dashboard/chemical/details/DTXSID7020182). This page is generated for Bisphenol A and links to but does not represent other chemicals. Each chemical in the CCD has its own page similar to this, with varying levels of accessible based on the information that is available.
 
 <center>
 
@@ -78,7 +78,7 @@ The different domains of data available for this chemical are shown by the tabs 
 
 ## Batch search
 
-In [batch search](https://comptox.epa.gov/dashboard/batch-search), the user enters a list of search inputs, separated by new lines, into a search box. The user selects the type(s) of inputs by selecting one or more checkboxes – include chemical identifiers, monoisotopic masses, or molecular formulas. Then, the user selects “Display All Chemicals” to display the list of substances matching the batch-search inputs, or “Choose Export Options” to choose options for exporting the batch-search results as a spreadsheet. The exported spreadsheet may include data from most of the domains available on an individual substance’s CCD page.
+In batch search, the user enters a list of search inputs, separated by new lines, into a search box. The user selects the type(s) of inputs by selecting one or more checkboxes – include chemical identifiers, monoisotopic masses, or molecular formulas. Then, the user selects “Display All Chemicals” to display the list of substances matching the batch-search inputs, or “Choose Export Options” to choose options for exporting the batch-search results as a spreadsheet. The exported spreadsheet may include data from most of the domains available on an individual substance’s CCD page.
 
 <center>
 
