@@ -27,7 +27,7 @@ A data.frame of summary data for chemical properties.
 Get Summary information on chemical properties
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # Get summary data for BPA
 bpa_props_summary <- get_chem_props_summary(DTXSID = 'DTXSID7020182')
 \dontshow{\}) # examplesIf}

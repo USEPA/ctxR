@@ -31,7 +31,7 @@ lists corresponding to DTXSIDs associated to the search terms
 Get chemicals in a list specified by characters contained batch search
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # Search `CCL4` for chemicals containing with 'Bis' and `BIOSOLIDS2021` for
 # chemicals containing with 'Zyle'.
 bis_and_zyle <- get_chemicals_in_list_contain_batch(list_names = c('CCL4',

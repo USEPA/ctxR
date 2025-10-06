@@ -27,7 +27,7 @@ A data.frame of predicted physchem property data
 Get predicted physical-chemical property data
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # Get predicted physchem properties for BPA
 bpa_pred_props <- get_chem_props_pred(DTXSID = 'DTXSID7020182')
 \dontshow{\}) # examplesIf}

@@ -28,7 +28,7 @@ missing.
 Get general exposure prediction data
 }
 \examples{
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 # Pull general exposure prediction data for BPA
 bpa <- get_general_exposure_prediction(DTXSID = 'DTXSID7020182')
 \dontshow{\}) # examplesIf}

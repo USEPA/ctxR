@@ -32,7 +32,7 @@ input DTXSIDs.
 Get Production Volume data via batch
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # Retrieve production volume data for BPA and Caffeine
 get_production_volume_batch(DTXSID = c('DTXSID7020182', 'DTXSID0020232'))
 \dontshow{\}) # examplesIf}

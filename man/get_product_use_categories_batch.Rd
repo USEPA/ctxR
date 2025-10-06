@@ -32,7 +32,7 @@ to the input DTXSIDs.
 Get Product Use categories via batch
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # Retrieve product use categories for BPA and Caffeine
 get_product_use_categories_batch(DTXSID = c('DTXSID7020182',
                                             'DTXSID0020232'))

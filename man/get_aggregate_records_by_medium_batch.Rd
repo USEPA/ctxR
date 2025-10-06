@@ -32,7 +32,7 @@ input medium.
 Get Aggregate Records by medium via batch
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # Retrieve aggregate records data for 'surface water' and 'soil'
   get_aggregate_records_by_medium_batch(Medium = c('surface water', 'soil'))
 \dontshow{\}) # examplesIf}

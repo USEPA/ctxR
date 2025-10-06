@@ -27,7 +27,7 @@ A data.frame containing reported functional use data.
 Get Reported Functional Use
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # Get reported functional use data for Caffeine
 get_reported_functional_use('DTXSID0020232')
 \dontshow{\}) # examplesIf}

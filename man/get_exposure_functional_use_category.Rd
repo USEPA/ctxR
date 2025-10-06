@@ -24,7 +24,7 @@ A data.frame of functional use categories.
 Retrieve functional use categories
 }
 \examples{
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 # Pull functional use category data for BPA
 functional_use_categories <- get_exposure_functional_use_category()
 \dontshow{\}) # examplesIf}

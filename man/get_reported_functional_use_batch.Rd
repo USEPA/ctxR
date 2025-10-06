@@ -32,7 +32,7 @@ the input DTXSIDs.
 Get reported functional use via batch
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # Retrieve reported functional use for BPA and Caffeine
 get_reported_functional_use_batch(DTXSID = c('DTXSID7020182',
                                              'DTXSID0020232'))

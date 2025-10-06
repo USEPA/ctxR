@@ -34,15 +34,15 @@ to the screen when web queries are placed. For both of those, see
 \code{\link[=register_ctx_api_key]{register_ctx_api_key()}}.
 }
 \examples{
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 # Set ctxR options
 set_ctxR_option('display_api_key' = FALSE)
 \dontshow{\}) # examplesIf}
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 # Check if there are options registered to 'ctxR'
 has_ctxR_options()
 \dontshow{\}) # examplesIf}
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 # Check if a specific option is registered for 'ctxR'
 has_ctxR_option('display_api_key')
 \dontshow{\}) # examplesIf}

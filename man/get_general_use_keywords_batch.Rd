@@ -32,7 +32,7 @@ input DTXSIDs.
 Get general use keywords via batch
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # Retrieve general use keywords for BPA and Caffeine
 get_general_use_keywords_batch(DTXSID = c('DTXSID7020182', 'DTXSID0020232'))
 \dontshow{\}) # examplesIf}

@@ -32,7 +32,7 @@ input DTXSID.
 Get Aggregate Records by DTXSID via batch
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # Retrieve aggregate records data for BPA and Caffeine
 get_aggregate_records_by_dtxsid_batch(DTXSID = c('DTXSID0020232',
   'DTXSID7020182'))

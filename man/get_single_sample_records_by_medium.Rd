@@ -32,7 +32,7 @@ medium.
 Get single sample records by medium
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 #Pull single records for BPA by medium
 bpa_sample_records <- get_single_sample_records_by_medium(Medium = 'surface water')
 \dontshow{\}) # examplesIf}

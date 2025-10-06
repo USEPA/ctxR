@@ -27,7 +27,7 @@ A data.frame containing general use keywords.
 Get General Use Keywords
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # Get general use keywords for Caffeine
 get_general_use_keywords('DTXSID0020232')
 \dontshow{\}) # examplesIf}

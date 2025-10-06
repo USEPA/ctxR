@@ -27,7 +27,7 @@ A data.frame of experimental physchem property data
 Get experimental physical-chemical property data
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # Get experimental physchem properties for BPA
 bpa_exp_props <- get_chem_props_exp(DTXSID = 'DTXSID7020182')
 \dontshow{\}) # examplesIf}

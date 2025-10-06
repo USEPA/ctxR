@@ -30,7 +30,7 @@ A data.table of experimental physchem property data
 Get experimental physical-chemical property data via batch
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # Get experimental physchem properties for BPA and Caffeine
 chem_props_exp <- get_chem_props_exp(DTXSID = c('DTXSID7020182',
                                                 'DTXSID0020232'))

@@ -27,7 +27,7 @@ A data.frame of document information and list presence tags
 Retrieve document data and list presence tags for a chemical
 }
 \examples{
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 # Pull list presence tags for BPA
 bpa <- get_exposure_list_presence_tags(DTXSID = 'DTXSID7020182')
 \dontshow{\}) # examplesIf}

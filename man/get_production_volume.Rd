@@ -27,7 +27,7 @@ A data.frame containing production volume data.
 Get Production Volume
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # Get production volume data for Caffeine
 get_production_volume('DTXSID0020232')
 \dontshow{\}) # examplesIf}
