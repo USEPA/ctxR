@@ -1,11 +1,11 @@
 structure(list(url = "https://comptox.epa.gov/ctx-api/exposure/ccd/production-volume/search/by-dtxsid/", 
-    status_code = 404L, headers = structure(list(date = "Wed, 24 Sep 2025 19:32:43 GMT", 
+    status_code = 404L, headers = structure(list(date = "Mon, 06 Oct 2025 16:54:39 GMT", 
         server = "Apache", `strict-transport-security` = "max-age=63072000; includeSubDomains; preload“", 
         vary = "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
         `cache-control` = "max-age=0, must-revalidate, no-transform", 
         `content-type` = "application/json", `transfer-encoding` = "chunked"), class = c("insensitive", 
     "list")), all_headers = list(list(status = 404L, version = "HTTP/1.1", 
-        headers = structure(list(date = "Wed, 24 Sep 2025 19:32:43 GMT", 
+        headers = structure(list(date = "Mon, 06 Oct 2025 16:54:39 GMT", 
             server = "Apache", `strict-transport-security` = "max-age=63072000; includeSubDomains; preload“", 
             vary = "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
             `cache-control` = "max-age=0, must-revalidate, no-transform", 
@@ -14,8 +14,8 @@ structure(list(url = "https://comptox.epa.gov/ctx-api/exposure/ccd/production-vo
         flag = logical(0), path = logical(0), secure = logical(0), 
         expiration = structure(numeric(0), class = c("POSIXct", 
         "POSIXt")), name = logical(0), value = logical(0)), row.names = integer(0), class = "data.frame"), 
-    content = charToRaw("{\n  \"timestamp\" : \"2025-09-24T19:32:43.185+00:00\",\n  \"status\" : 404,\n  \"error\" : \"Not Found\",\n  \"path\" : \"/exposure/ccd/production-volume/search/by-dtxsid/\"\n}"), 
-    date = structure(1758742363, class = c("POSIXct", "POSIXt"
-    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 3.6e-05, 
-    connect = 0, pretransfer = 0.000159, starttransfer = 0.040727, 
-    total = 0.040771)), class = "response")
+    content = charToRaw("{\n  \"timestamp\" : \"2025-10-06T16:54:39.679+00:00\",\n  \"status\" : 404,\n  \"error\" : \"Not Found\",\n  \"path\" : \"/exposure/ccd/production-volume/search/by-dtxsid/\"\n}"), 
+    date = structure(1759769679, class = c("POSIXct", "POSIXt"
+    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 7.5e-05, 
+    connect = 0, pretransfer = 0.000216, starttransfer = 0.035554, 
+    total = 0.03559)), class = "response")

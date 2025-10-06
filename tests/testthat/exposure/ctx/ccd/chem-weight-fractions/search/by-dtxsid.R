@@ -1,11 +1,11 @@
 structure(list(url = "https://comptox.epa.gov/ctx-api/exposure/ccd/chem-weight-fractions/search/by-dtxsid/", 
-    status_code = 404L, headers = structure(list(date = "Wed, 24 Sep 2025 19:50:40 GMT", 
+    status_code = 404L, headers = structure(list(date = "Mon, 06 Oct 2025 16:55:06 GMT", 
         server = "Apache", `strict-transport-security` = "max-age=63072000; includeSubDomains; preload“", 
         vary = "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
         `cache-control` = "max-age=0, must-revalidate, no-transform", 
         `content-type` = "application/json", `transfer-encoding` = "chunked"), class = c("insensitive", 
     "list")), all_headers = list(list(status = 404L, version = "HTTP/1.1", 
-        headers = structure(list(date = "Wed, 24 Sep 2025 19:50:40 GMT", 
+        headers = structure(list(date = "Mon, 06 Oct 2025 16:55:06 GMT", 
             server = "Apache", `strict-transport-security` = "max-age=63072000; includeSubDomains; preload“", 
             vary = "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
             `cache-control` = "max-age=0, must-revalidate, no-transform", 
@@ -14,8 +14,8 @@ structure(list(url = "https://comptox.epa.gov/ctx-api/exposure/ccd/chem-weight-f
         flag = logical(0), path = logical(0), secure = logical(0), 
         expiration = structure(numeric(0), class = c("POSIXct", 
         "POSIXt")), name = logical(0), value = logical(0)), row.names = integer(0), class = "data.frame"), 
-    content = charToRaw("{\n  \"timestamp\" : \"2025-09-24T19:50:40.773+00:00\",\n  \"status\" : 404,\n  \"error\" : \"Not Found\",\n  \"path\" : \"/exposure/ccd/chem-weight-fractions/search/by-dtxsid/\"\n}"), 
-    date = structure(1758743440, class = c("POSIXct", "POSIXt"
-    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 4.1e-05, 
-    connect = 0, pretransfer = 0.000195, starttransfer = 0.040201, 
-    total = 0.040245)), class = "response")
+    content = charToRaw("{\n  \"timestamp\" : \"2025-10-06T16:55:06.688+00:00\",\n  \"status\" : 404,\n  \"error\" : \"Not Found\",\n  \"path\" : \"/exposure/ccd/chem-weight-fractions/search/by-dtxsid/\"\n}"), 
+    date = structure(1759769706, class = c("POSIXct", "POSIXt"
+    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 4e-05, 
+    connect = 0, pretransfer = 0.000149, starttransfer = 0.033592, 
+    total = 0.033628)), class = "response")
