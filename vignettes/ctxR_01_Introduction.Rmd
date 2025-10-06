@@ -355,11 +355,11 @@ In this section, several ctxR functions are used to access different types of in
 
 The function `get_bioactivity_details()` retrieves all bioactivity data for a given chemical based on input DTXSID. 
 
-```{r, bioactivity-dtxsid}
+```{r, bioactivity-dtxsid, eval=FALSE}
 bpa_bioactivity <- get_bioactivity_details(DTXSID = 'DTXSID7020182')
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, eval=FALSE, include=FALSE}
 htmlTable::htmlTable(head(bpa_bioactivity),
         align = 'l',
         align.header = 'l',
@@ -369,11 +369,11 @@ htmlTable::htmlTable(head(bpa_bioactivity),
 
 The function `get_bioactivity_details()` can also be used to retrieve all bioactivity data for a given endpoint, based on input AEID (assay endpoint identifier).
 
-```{r, bioactivity-aeid}
+```{r, bioactivity-aeid, eval=FALSE}
 assay_id_search <- get_bioactivity_details(AEID = 42)
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, eval=FALSE, include=FALSE}
 htmlTable::htmlTable(head(assay_id_search),
         align = 'l',
         align.header = 'l',
