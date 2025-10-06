@@ -30,7 +30,7 @@ A data.frame containing general use keywords.
 Get Biomonitoring data
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # Get biomonitoring data for Caffeine
 get_biomonitoring_data('DTXSID0020232')
 \dontshow{\}) # examplesIf}

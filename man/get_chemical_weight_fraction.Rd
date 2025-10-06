@@ -27,7 +27,7 @@ A data.frame containing chemical weight fraction data.
 Get Chemical Weight Fractions
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # Get chemical weight fraction data for Caffeine
 get_chemical_weight_fraction('DTXSID0020232')
 \dontshow{\}) # examplesIf}

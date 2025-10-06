@@ -27,7 +27,7 @@ A data.frame of aggregate record data by DTXSID.
 Get aggregate records by DTXSID
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 #Pull aggregate records for BPA by DTXSID
 bpa_agg_records <- get_aggregate_records_by_dtxsid(DTXSID = 'DTXSID7020182')
 \dontshow{\}) # examplesIf}

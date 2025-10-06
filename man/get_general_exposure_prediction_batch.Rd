@@ -32,7 +32,7 @@ prediction data for each input DTXSID.
 Retrieve general exposure predictions for chemicals via batch
 }
 \examples{
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 # Pull general exposure prediction data for multiple chemicals
 dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 exp_pred <- get_general_exposure_prediction_batch(DTXSID = dtxsid)

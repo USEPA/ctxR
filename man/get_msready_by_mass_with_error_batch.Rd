@@ -31,7 +31,7 @@ mass value.
 Get msready by mass and error offset
 }
 \examples{
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 #Pull chemicals by msready mass and error offset
 msready_data <- get_msready_by_mass_with_error_batch(masses = c(226, 228),
                                                      error = 4)

@@ -35,7 +35,7 @@ input DTXSIDs.
 Get biomonitoring data via batch
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # Retrieve biomonitoring data for BPA and Caffeine
 get_biomonitoring_data_batch(DTXSID = c('DTXSID7020182', 'DTXSID0020232'))
 \dontshow{\}) # examplesIf}

@@ -1,0 +1,21 @@
+[
+    {
+        "dtxsid": null,
+        "dtxcid": null,
+        "casrn": null,
+        "smiles": null,
+        "preferredName": null,
+        "searchName": null,
+        "searchValue": "GVFDSR7",
+        "rank": null,
+        "hasStructureImage": null,
+        "isMarkush": null,
+        "searchMsgs": [
+            "Searched by Synonym: Found 0 results for 'GVFDSR7'."
+        ],
+        "suggestions": [
+            null
+        ],
+        "isDuplicate": false
+    }
+]

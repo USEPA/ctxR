@@ -14,7 +14,7 @@ endpoints.
 Hazard data.table helper function
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 hazard_dt <- create_hazard_data.table()
 \dontshow{\}) # examplesIf}
 }

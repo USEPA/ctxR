@@ -32,7 +32,7 @@ medium.
 Get aggregate records by medium
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 #Pull aggregate records for BPA by medium
 bpa_agg_records <- get_aggregate_records_by_medium(Medium = 'surface water')
 \dontshow{\}) # examplesIf}

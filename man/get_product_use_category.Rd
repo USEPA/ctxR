@@ -27,7 +27,7 @@ A data.frame containing product use categories.
 Get Product Use Categories
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # Get product use categories for Caffeine
 get_product_use_category('DTXSID0020232')
 \dontshow{\}) # examplesIf}

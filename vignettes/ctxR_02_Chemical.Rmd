@@ -65,7 +65,7 @@ registerS3method(
 
 <a href="https://CRAN.R-project.org/package=ctxR"><img src="Pictures/ctxR_hex.png" width="200" align="right" style="float: right; margin-left: 10px; margin-bottom: 10px;"/></a>
 
-In this vignette, [CTX Chemical API](https://api-ccte.epa.gov/docs/chemical.html) will be explored. 
+In this vignette, [CTX Chemical API](https://comptox.epa.gov/ctx-api/docs/chemical.html) will be explored. 
 
 The foundation of toxicology, toxicokinetics, and exposure is embedded in the physics and chemistry of chemical-biological interactions. The accurate characterization of chemical structure linked to commonly used identifiers, such as names and Chemical Abstracts Service Registry Numbers (CASRNs), is essential to support both predictive modeling of the data as well as dissemination and application of the data for chemical safety decisions. 
 

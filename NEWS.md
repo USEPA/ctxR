@@ -1,4 +1,8 @@
-# ctxR (development version)
+# ctxR 1.1.3
+
+## Major improvements and fixes
+
+* Update api host from cloud.gov to local server throughout package (#70)
 
 ## New Features
 
@@ -17,7 +21,6 @@
 
 * Added examples to `ctxR_04_Exposure.Rmd` vignette for new CCD and MMDB endpoint 
 functions (#71).
-
 
 # ctxR 1.1.2
 

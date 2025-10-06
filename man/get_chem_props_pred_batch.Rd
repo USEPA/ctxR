@@ -30,7 +30,7 @@ A data.table of predicted physchem property data
 Get predicted physical-chemical property data via batch
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # Get predicted physchem properties for BPA and Caffeine
 chem_props_pred <- get_chem_props_pred(DTXSID = c('DTXSID7020182',
                                                   'DTXSID0020232'))

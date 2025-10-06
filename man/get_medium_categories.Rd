@@ -26,7 +26,7 @@ descriptions.
 Retrieve MMDB medium categories
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # Retrieve medium categories and descriptions
 get_medium_categories()
 \dontshow{\}) # examplesIf}

@@ -32,7 +32,7 @@ to the input DTXSIDs.
 Get chemical weight fraction via batch
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # Retrieve chemical weight fraction data for BPA and Caffeine
 get_chemical_weight_fraction_batch(DTXSID = c('DTXSID7020182',
                                               'DTXSID0020232'))

@@ -29,7 +29,7 @@ and where to find more information on the chemical when the DTXSID is valid.
 Check existence by DTXSID
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # DTXSID for bpa
 bpa <- check_existence_by_dtxsid('DTXSID7020182')
 # False DTXSID

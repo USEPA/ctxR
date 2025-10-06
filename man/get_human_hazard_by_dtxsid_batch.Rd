@@ -32,7 +32,7 @@ A data.table containing chemical human hazard data.
 The function was deprecated due to updates and restructing of the CTX APIs.
 }
 \examples{
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 # Pull human hazard data for multiples chemicals
 dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 dtxsid_human_hazard <- get_human_hazard_by_dtxsid_batch(DTXSID = dtxsid)

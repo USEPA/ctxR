@@ -27,7 +27,7 @@ A data.frame of single sample record data by DTXSID.
 Get single sample records by DTXSID
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 #Pull single sample records for BPA by DTXSID
 bpa_sample_records <- get_single_sample_records_by_dtxsid(DTXSID = 'DTXSID7020182')
 \dontshow{\}) # examplesIf}
