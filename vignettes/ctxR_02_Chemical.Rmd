@@ -216,7 +216,7 @@ msready_by_dtxcid <- get_msready_by_dtxcid(DTXCID = 'DTXCID30182')
 
 # List Resource
 
-There are several lists of chemicals one can access using the [(CCD list search)](https://comptox.epa.gov/dashboard/chemical-lists). These can be filtered by the type, name, inclusion of a specific chemical, or name of list.
+There are several lists of chemicals one can access using the CCD list search. These can be filtered by the type, name, inclusion of a specific chemical, or name of list.
 
 ## Get all list types
 
