@@ -8,7 +8,7 @@ Authors@R: c(
 	      person(given = "Madison", family = "Feshuk", role = c("ctb","cre"), email = "feshuk.madison@epa.gov", comment = c(ORCID = "0000-0002-1390-6405")),
 	      person(given = "Brianna",family = "Dirks", role = "ctb", comment = c(ORCID = "0009-0003-3691-1543")),
 	      person(given = "Carter", family = "Thunes", role = "ctb"),
-    	      person(given = "Jason", family = "Brown", role = "ctb",  c(ORCID = "0009-0000-2294-641X")))
+    	      person(given = "Jason", family = "Brown", role = "ctb",  comment = c(ORCID = "0009-0000-2294-641X")))
 Description: Access chemical, hazard, bioactivity, and exposure data from the 
    Computational Toxicology and Exposure ('CTX') APIs 
    <https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis>. 

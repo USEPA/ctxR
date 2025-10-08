@@ -113,7 +113,9 @@ assays <- data.table::rbindlist(assays)
 ```
 
 ```{r, echo=FALSE}
-knitr::kable(head(assays))%>% 
+# invitrodb v4.2 data on Bioactivity API returns bad PubMed links so drop citations column
+assays$citations <-  NULL
+knitr::kable(head(assays))%>%
  kableExtra::kable_styling("striped") %>% 
  kableExtra::scroll_box(width = "100%", height="400px")
 ```
