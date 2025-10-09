@@ -24,7 +24,7 @@ A data.frame with all the list presence tags and associated data.
 Retrieve list presence tags
 }
 \examples{
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 # Pull list presence tags
 tags <- get_exposure_list_presence_tags()
 \dontshow{\}) # examplesIf}

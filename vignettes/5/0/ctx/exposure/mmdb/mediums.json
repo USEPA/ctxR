@@ -1,0 +1,130 @@
+[
+    {
+        "harmonizedMediumDesc": "Outdoor ambient air",
+        "harmonizedMedium": "ambient air"
+    },
+    {
+        "harmonizedMediumDesc": "Human breast milk",
+        "harmonizedMedium": "breast milk"
+    },
+    {
+        "harmonizedMediumDesc": "Treated or untreated drinking water supplies, tap water, bottled drinking water, cooking water",
+        "harmonizedMedium": "drinking water"
+    },
+    {
+        "harmonizedMediumDesc": "Processed food products, including dairy products, breads, cooked meats, processed (e.g., canned or frozen) fruit and vegetable products, infant formula",
+        "harmonizedMedium": "food product"
+    },
+    {
+        "harmonizedMediumDesc": "Water from groundwater sources (wells, aquifers)",
+        "harmonizedMedium": "groundwater"
+    },
+    {
+        "harmonizedMediumDesc": "Human whole blood, blood cells, serum, plasma, or other extractants, including fetal or umbilical samples",
+        "harmonizedMedium": "human blood (whole/serum/plasma)"
+    },
+    {
+        "harmonizedMediumDesc": "Human tissues or fluids other than blood or urine, including nails, hair, semen, adipose tissue, saliva, sputum, sweat, amniotic, fluid, bone, and others",
+        "harmonizedMedium": "human (other tissues or fluids)"
+    },
+    {
+        "harmonizedMediumDesc": "Residential or other indoor air samples",
+        "harmonizedMedium": "indoor air"
+    },
+    {
+        "harmonizedMediumDesc": "Residential or other indoor dust samples (from any location), including surface wipes",
+        "harmonizedMedium": "indoor dust"
+    },
+    {
+        "harmonizedMediumDesc": "Landfill leachate (water having passed through landfill solids)",
+        "harmonizedMedium": "landfill leachate"
+    },
+    {
+        "harmonizedMediumDesc": "Unprocessed meat products or samples from non-fish animals to be used as food",
+        "harmonizedMedium": "livestock/meat"
+    },
+    {
+        "harmonizedMediumDesc": "Other ecological species not categorized elsewhere, including algae and seaweeds",
+        "harmonizedMedium": "other-ecological"
+    },
+    {
+        "harmonizedMediumDesc": "Other environmental media, not classified elsewhere",
+        "harmonizedMedium": "other-environmental"
+    },
+    {
+        "harmonizedMediumDesc": "Silicone wristband or other personal passive sampler",
+        "harmonizedMedium": "other-personal"
+    },
+    {
+        "harmonizedMediumDesc": "Personal air sample or exhaled breath",
+        "harmonizedMedium": "personal air"
+    },
+    {
+        "harmonizedMediumDesc": "Snow, rainfall, or other atmospheric deposition",
+        "harmonizedMedium": "precipitation"
+    },
+    {
+        "harmonizedMediumDesc": "Non-food consumer products",
+        "harmonizedMedium": "product"
+    },
+    {
+        "harmonizedMediumDesc": "Unprocessed raw fruits, vegetables, grains, nuts, or seeds that have been grown for food",
+        "harmonizedMedium": "raw agricultural commodity"
+    },
+    {
+        "harmonizedMediumDesc": "Freshwater or marine sediments",
+        "harmonizedMedium": "sediment"
+    },
+    {
+        "harmonizedMediumDesc": "Wipes from human skin (any body surface)",
+        "harmonizedMedium": "skin wipes"
+    },
+    {
+        "harmonizedMediumDesc": "Sewage sludge",
+        "harmonizedMedium": "sludge"
+    },
+    {
+        "harmonizedMediumDesc": "Soil, sand, or outdoor settled dust",
+        "harmonizedMedium": "soil"
+    },
+    {
+        "harmonizedMediumDesc": "Lake, river, or marine surface water; includes rainwater",
+        "harmonizedMedium": "surface water"
+    },
+    {
+        "harmonizedMediumDesc": "Human urine",
+        "harmonizedMedium": "urine"
+    },
+    {
+        "harmonizedMediumDesc": "Terrestrial vegetation excluding non-processed fruits and vegetables",
+        "harmonizedMedium": "vegetation"
+    },
+    {
+        "harmonizedMediumDesc": "Inflow or outflow samples from municipal or industrial sites",
+        "harmonizedMedium": "wastewater (influent, effluent)"
+    },
+    {
+        "harmonizedMediumDesc": "Marine or freshwater invertebrates (e.g., crustaceans, mollusks etc.), any tissue",
+        "harmonizedMedium": "wildlife (aquatic invertebrate)"
+    },
+    {
+        "harmonizedMediumDesc": "Non-fish aquatic vertebrates or mammals, any tissue",
+        "harmonizedMedium": "wildlife (aquatic vertebrates/mammals)"
+    },
+    {
+        "harmonizedMediumDesc": "Avian species, any tissue (including eggs)",
+        "harmonizedMedium": "wildlife (birds)"
+    },
+    {
+        "harmonizedMediumDesc": "Fish species, any tissue",
+        "harmonizedMedium": "wildlife (fish)"
+    },
+    {
+        "harmonizedMediumDesc": "Terrestrial invertebrates, any tissue",
+        "harmonizedMedium": "wildlife (terrestrial invertebrates/worms)"
+    },
+    {
+        "harmonizedMediumDesc": "Terrestrial vertebrates, any tissue",
+        "harmonizedMedium": "wildlife (terrestrial vertebrates)"
+    }
+]

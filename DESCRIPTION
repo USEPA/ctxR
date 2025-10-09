@@ -1,22 +1,14 @@
 Type: Package
 Package: ctxR
 Title: Utilities for Interacting with the 'CTX' APIs
-Version: 1.1.2
+Version: 1.1.3
 Authors@R: c(
-            person("Paul", "Kruse", email = "kruse.paul@epa.gov", 
-              role = c("aut"), 
-              comment = c(ORCID = "0000-0001-5516-9717")),
-    	      person("Caroline", "Ring", email = "ring.caroline@epa.gov", 
-    	        role = c("aut"), 
-    	        comment = c(ORCID = "0000-0002-0463-1251")),
-	          person("Madison", "Feshuk", role = "cre", 
-	            email = "feshuk.madison@epa.gov", 
-	            comment = c(ORCID = "0000-0002-1390-6405")),
-	          person("Carter", "Thunes", role = "ctb", 
-	            email = "thunes.carter@epa.gov"),
-    	      person("Jason", "Brown", role = "ctb", 
-    	        email = "brown.jason@epa.gov")
-    	        )
+              person(given = "Paul", family = "Kruse", role = c("aut"), comment = c(ORCID = "0000-0001-5516-9717")),
+    	      person(given = "Caroline", family =  "Ring", email = "ring.caroline@epa.gov", role = c("aut"), comment = c(ORCID = "0000-0002-0463-1251")),
+	      person(given = "Madison", family = "Feshuk", role = c("ctb","cre"), email = "feshuk.madison@epa.gov", comment = c(ORCID = "0000-0002-1390-6405")),
+	      person(given = "Brianna",family = "Dirks", role = "ctb", comment = c(ORCID = "0009-0003-3691-1543")),
+	      person(given = "Carter", family = "Thunes", role = "ctb"),
+    	      person(given = "Jason", family = "Brown", role = "ctb",  comment = c(ORCID = "0009-0000-2294-641X")))
 Description: Access chemical, hazard, bioactivity, and exposure data from the 
    Computational Toxicology and Exposure ('CTX') APIs 
    <https://www.epa.gov/comptox-tools/computational-toxicology-and-exposure-apis>. 
@@ -37,11 +29,12 @@ Imports:
     stringr,
     tidyr,
     tibble,
-    urltools
+    urltools,
+    lifecycle
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Suggests: 
     countcolors,
     devtools,
@@ -62,4 +55,4 @@ BugReports: https://github.com/USEPA/ctxR/issues
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5)

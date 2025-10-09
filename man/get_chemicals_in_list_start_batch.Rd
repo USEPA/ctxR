@@ -31,7 +31,7 @@ lists corresponding to DTXSIDs associated to the search terms
 Get chemicals in a list specified by starting characters batch search
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 # Search `CCL4` for chemicals starting with 'Bis' and `BIOSOLIDS2021` for
 # chemicals starting with 'Tri'.
 bis_and_tri <- get_chemicals_in_list_start_batch(list_names = c('CCL4',

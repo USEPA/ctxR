@@ -13,8 +13,8 @@ chemical_contains(
 )
 }
 \arguments{
-\item{word}{A character string of a chemical name or portion of a chemical
-name}
+\item{word}{A character string of a chemical identifier or portion of a chemical
+identifier. Identifiers can be a chemical name, dtxsid, dtxcid, casrn, or inchikey.}
 
 \item{API_key}{The user-specific API key}
 
@@ -33,7 +33,7 @@ parameters
 Chemical contains
 }
 \examples{
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 # Pull chemicals that contain substring
 substring_chemicals <- chemical_contains(word = 'TXSID702018')
 \dontshow{\}) # examplesIf}

@@ -28,7 +28,7 @@ A string giving the associated inchi string.
 Get InChI
 }
 \examples{
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 bpa_inchi <- get_inchi(name = "Bisphenol A")
 \dontshow{\}) # examplesIf}
 }

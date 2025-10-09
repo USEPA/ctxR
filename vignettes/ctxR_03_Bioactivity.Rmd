@@ -1,0 +1,230 @@
+---
+title: "ctxR: Bioactivity API"
+author: US EPA's Center for Computational Toxicology and Exposure ccte@epa.gov
+output:
+  rmarkdown::html_vignette:
+    fig_width: 7
+    fig_height: 6
+params:
+  my_css: css/rmdformats.css
+vignette: >
+  %\VignetteIndexEntry{3. Bioactivity}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+```{css, code = readLines(params$my_css), hide=TRUE, echo = FALSE}
+```
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(httptest)
+start_vignette("4")
+```
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+if (!library(ctxR, logical.return = TRUE)){
+  devtools::load_all()
+}
+old_options <- options("width")
+```
+
+```{r setup-print, echo = FALSE}
+# Redefining the knit_print method to truncate character values to 25 characters
+# in each column and to truncate the columns in the print call to prevent 
+# wrapping tables with several columns.
+#library(ctxR)
+knit_print.data.table = function(x, ...) {
+  y <- data.table::copy(x)
+  y <- y[, lapply(.SD, function(t){
+    if (is.character(t)){
+      t <- strtrim(t, 25)
+    }
+    return(t)
+  })]
+  print(y, trunc.cols = TRUE)
+}
+
+registerS3method(
+  "knit_print", "data.table", knit_print.data.table,
+  envir = asNamespace("knitr")
+)
+
+```
+
+<a href="https://CRAN.R-project.org/package=ctxR"><img src="Pictures/ctxR_hex.png" width="200" align="right" style="float: right; margin-left: 10px; margin-bottom: 20px;"/></a>
+
+# Introduction
+
+In this vignette, [CTX Bioactivity API](https://comptox.epa.gov/ctx-api/docs/bioactivity.html) will be explored. 
+
+Data provided by the API's Bioactivity endpoints are sourced from ToxCast's [invitrodb](https://doi.org/10.23645/epacomptox.6062623.v13). 
+
+US EPA's Toxicity Forecaster (ToxCast) program makes *in vitro* medium- and high-throughput screening assay data publicly available for prioritization and hazard characterization of thousands of chemicals.
+
+The [ToxCast Data Analysis Pipeline (tcpl)](https://CRAN.R-project.org/package=tcpl) is an R package that manages, curve-fits, plots, and stores ToxCast data to populate its linked MySQL database, <font face="CMTT10"> invitrodb </font>. These assays comprise Tier 2-3 of the new Computational Toxicology Blueprint, and employ automated chemical screening technologies, to evaluate the effects of chemical exposure on living cells and biological macromolecules, such as proteins (Thomas et al., 2019). More information on the ToxCast program can be found at <https://www.epa.gov/comptox-tools/toxicity-forecasting-toxcast>.
+
+This flexible analysis pipeline is capable of efficiently processing and storing large volumes of data. The diverse data, received in heterogeneous formats from numerous vendors, are transformed to a standard computable format and loaded into the <font face="CMTT10"> invitrodb </font> database by vendor-specific R scripts. Once data is loaded into the database, ToxCast utilizes generalized processing functions provided in this package to process, normalize, model, qualify, and visualize the data.
+
+<center>
+
+![<font style="font-size:15px"><i>Figure 1: Conceptual overview of the ToxCast Pipeline functionality</i></font>](Pictures/Fig1_tcpl_overview.png){#id .class width=100% height=100%}
+
+</center>
+
+
+
+The Bioactivity API endpoints are organized into two different resources, "Assay" and "Data". "Assay" resource endpoints provide assay metadata for specific or all <font face="CMTT10"> invitrodb </font> 'aeids' (assay endpoint ids). These include annotations from <font face="CMTT10"> invitrodb</font>'s assay, assay_component, assay_component_endpoint, assay_list, assay_source, and gene tables, all returned in a by-aeid format.
+
+"Data" resource endpoints are split into summary data (by 'aeid') and bioactivity data by 'm4id' (i.e. both 'aeid' and 'spid'). The summary endpoint returns the number of active hits and total multi- and single-concentration chemicals tested for specific 'aeids'. The other endpoints return chemical information, level 3 concentration-response values, level 4 fit parameters, level 5 hit parameters, and level 6 flags for individual chemicals tested for given 'AEIDs', 'm4ids', 'SPIDs', or 'DTXSIDs'.
+
+Several ctxR functions can be used to access the CTX Bioactivity API data, as described in the following sections. Tables output in each example have been filtered to only display the first few rows of data. Regular ToxCast users may find it easier to use the [tcpl R Package](https://CRAN.R-project.org/package=tcpl), which has integrated ctxR's bioactivity functions to access API data in a more 'invitrodb'-like format. See the [tcpl's Data Retrieval via API](https://CRAN.R-project.org/package=tcpl) vignette for more guidance on data retrieval and plotting capabilities with tcpl.
+
+::: {.noticebox data-latex=""}
+**NOTE:** Please see the introductory vignette for an overview of the *ctxR* package and initial set up instruction with API key storage.
+:::
+
+# Bioactivity Assay Resource
+
+Specific assays may be searched as well as all available assays that have data using two different functions.
+
+## Get annotation by aeid
+
+`get_annotation_by_aeid()` retrieves annotation for a specific assay endpoint id (aeid).
+
+```{r ctxR annotation by aeid, message=FALSE}
+assay <- get_annotation_by_aeid(AEID = "891")
+```
+
+```{r, echo=FALSE}
+knitr::kable(head(assay))%>% 
+ kableExtra::kable_styling("striped") %>% 
+ kableExtra::scroll_box(width = "100%")
+```
+
+`get_annotation_by_aeid_batch()` retrieves annotation for a list (or vector) of assay endpoint ids (aeids).
+
+```{r ctxR annotation by aeid batch, message=FALSE}
+assays <- get_annotation_by_aeid_batch(AEID = c(759,700,891))
+# return is in list form by aeid, convert to table for output
+assays <- data.table::rbindlist(assays)
+```
+
+```{r, echo=FALSE}
+# invitrodb v4.2 data on Bioactivity API returns bad PubMed links so drop citations column
+assays$citations <-  NULL
+knitr::kable(head(assays))%>%
+ kableExtra::kable_styling("striped") %>% 
+ kableExtra::scroll_box(width = "100%", height="400px")
+```
+
+## Get all assay annotations
+
+`get_all_assays()` retrieves all annotations for all assays available. 
+
+```{r ctxR all assays, message=FALSE, eval=FALSE}
+all_assays <- get_all_assays()
+```
+
+# Bioactivity Data Resource
+
+There are several resources for retrieving bioactivity data associated with a variety of identifier types (e.g., DTXSID, aeid) that are available to the user. 
+
+## Get summary data
+
+`get_bioactivity_summary()` retrieves a summary of the number of active hits compared to the total number tested for both multiple and single concentration by aeid.
+
+```{r ctxR summary by aeid, message=FALSE}
+summary <- get_bioactivity_summary(AEID = "891")
+```
+
+```{r, echo=FALSE}
+knitr::kable(head(summary))%>% 
+ kableExtra::kable_styling("striped") %>% 
+ kableExtra::scroll_box(width = "100%")
+```
+
+`get_bioactivity_summary_batch()` retrieves a summary for a list (or vector) of assay endpoint ids (aeids). Output is the same as previous get_bioactivity_summary().
+
+```{r ctxR summary by aeid batch, message=FALSE, results= FALSE}
+summary <- get_bioactivity_summary_batch(AEID = c(759,700,891))
+```
+
+## Get data
+
+`get_bioactivity_details()` can retrieve all available multiple concentration data by assay endpoint id (aeid), sample id (spid), Level 4 ID (m4id), or chemical DTXSID. Returned is chemical information, level 3 concentration-response values, level 4 fit parameters, level 5 hit parameters, and level 6 flags for individual chemicals tested. An example for each request parameter is provided below:
+
+```{r ctxR data by spid, message=FALSE, results = FALSE}
+# By spid
+spid_data <- get_bioactivity_details(SPID = 'TP0000904H05')
+```
+
+```{r, echo=FALSE}
+knitr::kable(head(spid_data))%>% 
+ kableExtra::kable_styling("striped") %>% 
+ kableExtra::scroll_box(width = "100%", height="400px")
+```
+
+```{r ctxR data by m4id, message=FALSE, include = FALSE, eval = FALSE, results = FALSE}
+# By m4id
+m4id_data <- get_bioactivity_details(m4id = 739695)
+```
+
+```{r, include = FALSE, eval = FALSE, echo=FALSE}
+knitr::kable(head(m4id_data))%>% 
+ kableExtra::kable_styling("striped") %>% 
+ kableExtra::scroll_box(width = "100%", height="400px")
+```
+
+```{r ctxR data by dtxsid, message=FALSE, results = FALSE}
+# By DTXSID
+dtxsid_data <- get_bioactivity_details(DTXSID = "DTXSID30944145")
+```
+
+```{r, echo=FALSE}
+knitr::kable(head(dtxsid_data))%>% 
+ kableExtra::kable_styling("striped") %>% 
+ kableExtra::scroll_box(width = "100%", height="400px")
+```
+
+```{r ctxR data by aeid, message=FALSE, results = FALSE}
+# By aeid
+aeid_data <- get_bioactivity_details(AEID = 704)
+```
+
+```{r, echo=FALSE}
+knitr::kable(head(aeid_data))%>% 
+ kableExtra::kable_styling("striped") %>% 
+ kableExtra::scroll_box(width = "100%",  height="400px")
+```
+
+Similar to the other `_batch` functions, `get_bioactivity_details_batch()` retrieves data for a list (or vector) of assay endpoint ids (aeid), sample ids (spid), Level 4 IDs (m4id), or chemical DTXSIDs.
+
+```{r ctxR data by aeid batch, message=FALSE, eval=FALSE}
+aeid_data_batch <- get_bioactivity_details_batch(AEID = c(759,700,891))
+```
+
+# Conclusion
+
+In this vignette, a variety of functions that access different types of data found in the `Bioactivity` endpoints of the CTX APIs were listed. Users are encouraged to explore the data accessible through these endpoints to get a better understanding of what data is available. Additionally, experienced ToxCast users may find it easier to use the [tcpl R package](https://CRAN.R-project.org/package=tcpl), since it has been integrated ctxR's bioactivity functions and will retrieve API data in a more familiar, 'invitrodb'-like format.
+
+```{r breakdown, echo = FALSE, results = 'hide'}
+# This chunk will be hidden in the final product. It serves to undo defining the
+# custom print function to prevent unexpected behavior after this module during
+# the final knitting process
+
+knit_print.data.table = knitr::normal_print
+  
+registerS3method(
+  "knit_print", "data.table", knit_print.data.table,
+  envir = asNamespace("knitr")
+)
+
+options(old_options)
+```
+
+```{r, include=FALSE}
+end_vignette()
+```

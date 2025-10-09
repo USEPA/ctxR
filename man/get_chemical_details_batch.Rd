@@ -21,7 +21,7 @@ get_chemical_details_batch(
 \item{Projection}{The format and chemical detail data returned. Allowed
 values are 'chemicaldetailall', 'chemicaldetailstandard',
 chemicalidentifier', 'chemicalstructure', 'ntatoolkit',
-ccdchemicaldetails'. If left empty or there is a
+ccdchemicaldetails', 'compact'. If left empty or there is a
 mismatch, the default format will be 'chemicaldetailstandard'.}
 
 \item{API_key}{The user-specific API key}
@@ -40,7 +40,7 @@ matching the input parameter.
 Retrieve chemical details from DTXSID of DTXCID in batch search
 }
 \examples{
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 # Pull chemical details for multiple chemicals by dtxsid
 dtxsids <- c('DTXSID7020182', 'DTXSID2021315')
 dtxsid_details <- get_chemical_details_batch(DTXSID = dtxsid)

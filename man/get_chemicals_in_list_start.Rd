@@ -30,7 +30,7 @@ A list of DTXSIDs matching the list and search word criteria
 Get chemicals in a list specified by starting characters
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 bis_biosolids_2021 <- get_chemicals_in_list_start(list_name = 'BIOSOLIDS2021',
                                                   word = 'Bi')
 \dontshow{\}) # examplesIf}

@@ -24,7 +24,7 @@ A character list of types of lists.
 Get all list types
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 get_all_list_types()
 \dontshow{\}) # examplesIf}
 }

@@ -5,7 +5,7 @@
 #' @param Projection The format and chemical detail data returned. Allowed
 #'   values are 'chemicaldetailall', 'chemicaldetailstandard',
 #'   'chemicalidentifier', 'chemicalstructure', 'ntatoolkit',
-#'   'ccdchemicaldetails'. If left empty or there is a mismatch, the default
+#'   'ccdchemicaldetails', 'compact'. If left empty or there is a mismatch, the default
 #'   format will be 'chemicaldetailstandard'.
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
@@ -40,7 +40,8 @@ get_chemical_details <- function(DTXSID = NULL,
                           'chemicalidentifier',
                           'chemicalstructure',
                           'ntatoolkit',
-                          'ccdchemicaldetails')
+                          'ccdchemicaldetails',
+                          'compact')
   index <- 2
   if (!is.character(Projection)){
     warning('Setting `Projection` to `chemicaldetailstandard`')
@@ -115,7 +116,7 @@ get_chemical_details <- function(DTXSID = NULL,
 
 
 create_data.table_chemical_details <- function(index = -1){
-  if (index %in% 2:6 ){
+  if (index %in% 2:7 ){
     if (index == 2){
       data <- data.table::data.table(id = character(),
                                      cpdataCount = integer(),
@@ -191,7 +192,7 @@ create_data.table_chemical_details <- function(index = -1){
                                      expocatMedianPrediction = character(),
                                      expocat = character(),
                                      nhanes = character())
-    } else {
+    } else if (index == 6) {
       data <- data.table::data.table(id = character(),
                                      dtxsid = character(),
                                      dtxcid = character(),
@@ -229,6 +230,10 @@ create_data.table_chemical_details <- function(index = -1){
                                      inchikey = character(),
                                      wikipediaArticle = character(),
                                      cpdataCount = integer())
+    } else {
+      data <- data.table::data.table(dtxsid = character(),
+                                     casrn = character(),
+                                     preferredName = character())
     }
     return(data)
   }
@@ -576,6 +581,148 @@ get_chemical_by_property_range <- function(start = NULL,
 }
 
 
+#' Get Summary information on chemical properties
+#'
+#' @param DTXSID The chemical identifier DTXSID.
+#' @param API_key The user-specific API key.
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A data.frame of summary data for chemical properties.
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Get summary data for BPA
+#' bpa_props_summary <- get_chem_props_summary(DTXSID = 'DTXSID7020182')
+
+get_chem_props_summary <- function(DTXSID = NULL,
+                                   API_key = NULL,
+                                   Server = chemical_api_server,
+                                   verbose = FALSE){
+
+  if (is.null(DTXSID))
+    stop('Please input a DTXSID!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+
+  response <- httr::GET(url = paste0(Server, '/property/summary/search/by-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text',encoding = "UTF-8")))
+  } else {
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
+#' Get predicted physical-chemical property data
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A data.frame of predicted physchem property data
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Get predicted physchem properties for BPA
+#' bpa_pred_props <- get_chem_props_pred(DTXSID = 'DTXSID7020182')
+get_chem_props_pred <- function(DTXSID = NULL,
+                                API_key = NULL,
+                                Server = chemical_api_server,
+                                verbose = FALSE){
+
+  if (is.null(DTXSID))
+    stop('Please input a DTXSID!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+
+  response <- httr::GET(url = paste0(Server, '/property/predicted/search/by-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text',encoding = "UTF-8")))
+  } else {
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
+#' Get experimental physical-chemical property data
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A data.frame of experimental physchem property data
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Get experimental physchem properties for BPA
+#' bpa_exp_props <- get_chem_props_exp(DTXSID = 'DTXSID7020182')
+get_chem_props_exp <- function(DTXSID = NULL,
+                               API_key = NULL,
+                               Server = chemical_api_server,
+                               verbose = FALSE){
+
+  if (is.null(DTXSID))
+    stop('Please input a DTXSID!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+
+  response <- httr::GET(url = paste0(Server, '/property/experimental/search/by-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text',encoding = "UTF-8")))
+  } else {
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
 #' Retrieve chemical information
 #'
 #' @param DTXSID The chemical identifier DTXSID
@@ -589,6 +736,7 @@ get_chemical_by_property_range <- function(start = NULL,
 #' @return A data.frame containing chemical information for the chemical with
 #'   DTXSID matching the input parameter.
 #' @export
+#' @import data.table
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull chemical information for BPA
 #' bpa <- get_chem_info(DTXSID = 'DTXSID7020182')
@@ -617,20 +765,56 @@ get_chem_info <- function(DTXSID = NULL,
     type <- types[type]
   }
 
+  propType <- NULL
+
   if (type == '') {
-    response <- httr::GET(url = paste0(Server, '/property/search/by-dtxsid/', DTXSID),
-                          httr::add_headers(.headers = c(
-                            'Content-Type' =  'application/json',
-                            'x-api-key' = API_key)
-                          )
-    )
+    predicted <- get_chem_props_pred(DTXSID = DTXSID,
+                                API_key = API_key,
+                                Server = Server,
+                                verbose = verbose)
+
+    predicted <- data.table::as.data.table(predicted)
+    if (dim(predicted)[2] > 0){
+      predicted[, propType := 'predicted']
+    }
+
+    experimental <- get_chem_props_exp(DTXSID = DTXSID,
+                              API_key = API_key,
+                              Server = Server,
+                              verbose = verbose)
+    experimental <- data.table::as.data.table(experimental)
+    if (dim(experimental)[2] > 0){
+      experimental[, propType := 'experimental']
+    }
+
+    all_props <- rbindlist(list(predicted, experimental), fill = TRUE)
+    return(all_props)
+    # response <- httr::GET(url = paste0(Server, '/property/search/by-dtxsid/', DTXSID),
+    #                       httr::add_headers(.headers = c(
+    #                         'Content-Type' =  'application/json',
+    #                         'x-api-key' = API_key)
+    #                       )
+    # )
+  } else if (type == 'predicted') {
+    predicted <- get_chem_props_pred(DTXSID = DTXSID,
+                                     API_key = API_key,
+                                     Server = Server,
+                                     verbose = verbose)
+    return(data.table::as.data.table(predicted))
+    # response <- httr::GET(url = paste0(Server, '/property/search/by-dtxsid/', DTXSID,'?type=', type),
+    #                       httr::add_headers(.headers = c(
+    #                         'Content-Type' =  'application/json',
+    #                         'x-api-key' = API_key)
+    #                       )
+    # )
+  } else if (type == 'experimental'){
+    experimental <- get_chem_props_exp(DTXSID = DTXSID,
+                                       API_key = API_key,
+                                       Server = Server,
+                                       verbose = verbose)
+    return(data.table::as.data.table(experimental))
   } else {
-    response <- httr::GET(url = paste0(Server, '/property/search/by-dtxsid/', DTXSID,'?type=', type),
-                          httr::add_headers(.headers = c(
-                            'Content-Type' =  'application/json',
-                            'x-api-key' = API_key)
-                          )
-    )
+    return()
   }
 
 
@@ -642,16 +826,16 @@ get_chem_info <- function(DTXSID = NULL,
 #                        )
 
 
-  if(response$status_code == 401){
-    stop(httr::content(response)$detail)
-  }
-  if(response$status_code == 200){
-    return(jsonlite::fromJSON(httr::content(response, as = 'text',encoding = "UTF-8")))
-  } else {
-    if (verbose){
-      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
-    }
-  }
+  # if(response$status_code == 401){
+  #   stop(httr::content(response)$detail)
+  # }
+  # if(response$status_code == 200){
+  #   return(jsonlite::fromJSON(httr::content(response, as = 'text',encoding = "UTF-8")))
+  # } else {
+  #   if (verbose){
+  #     print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+  #   }
+  # }
  return()
 }
 
@@ -705,8 +889,8 @@ get_fate_by_dtxsid <- function(DTXSID = NULL,
 
 #' Chemical starts with
 #'
-#' @param word A character string of a chemical name or portion of a chemical
-#'   name
+#' @param word A character string of a chemical identifier or portion of a chemical
+#'   identifier. Identifiers can be a chemical name, dtxsid, dtxcid, casrn, or inchikey.
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
 #' @param verbose A logical indicating if some “progress report” should be
@@ -750,7 +934,6 @@ chemical_starts_with <- function(word = NULL,
   }
 
   word <- prepare_word(word)
-
   response <- httr::GET(url = paste0(Server, '/search/start-with/', word, ifelse(is.null(top), '', paste0("?top=", top))),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
@@ -763,12 +946,7 @@ chemical_starts_with <- function(word = NULL,
   }
 
   if (response$status == 400) {
-    parsed_response <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
-    if ('suggestions' %in% names(parsed_response)){
-      frame <- data.frame(Chemical = urltools::url_decode(word))
-      frame$Suggestion <- list(parsed_response$suggestions)
-      return(frame)
-    }
+    print(paste0('Found 0 results. Try adjusting the search parameters.'))
   } else if (response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
@@ -776,9 +954,8 @@ chemical_starts_with <- function(word = NULL,
       print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
     }
   }
+
   return()
-
-
 
 }
 
@@ -786,8 +963,8 @@ chemical_starts_with <- function(word = NULL,
 
 #' Chemical equal
 #'
-#' @param word A character string of a chemical name or portion of a chemical
-#'   name
+#' @param word A character string of a chemical identifier or portion of a chemical
+#'   identifier. Identifiers can be a chemical name, dtxsid, dtxcid, casrn, or inchikey.
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
 #' @param verbose A logical indicating if some “progress report” should be given.
@@ -821,25 +998,21 @@ chemical_equal <- function(word = NULL,
                           'x-api-key' = API_key)
                         )
   )
-  if(response$status_code == 401){
+  if (response$status == 401){
     stop(httr::content(response)$detail)
-  } else if (response$status == 400) {
-    parsed_response <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
-    if ('suggestions' %in% names(parsed_response)){
-      frame <- data.frame(Chemical = urltools::url_decode(word))
-      frame$Suggestion <- list(parsed_response$suggestions)
-      return(frame)
-    }
-  } else if(response$status_code == 200){
+  }
+
+  if (response$status == 400) {
+    print(paste0('Found 0 results. Try adjusting the search parameters.'))
+  } else if (response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     if (verbose) {
       print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
     }
   }
+
   return()
-
-
 
 }
 
@@ -849,8 +1022,8 @@ chemical_equal <- function(word = NULL,
 
 #' Chemical contains
 #'
-#' @param word A character string of a chemical name or portion of a chemical
-#'   name
+#' @param word A character string of a chemical identifier or portion of a chemical
+#'   identifier. Identifiers can be a chemical name, dtxsid, dtxcid, casrn, or inchikey.
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
 #' @param verbose A logical indicating if some “progress report” should be given.
@@ -900,25 +1073,21 @@ chemical_contains <- function(word = NULL,
                           'x-api-key' = API_key)
                         )
   )
-  if(response$status_code == 401){
+  if (response$status == 401){
     stop(httr::content(response)$detail)
-  } else if (response$status == 400) {
-    parsed_response <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = 'UTF-8'))
-    if ('suggestions' %in% names(parsed_response)){
-      frame <- data.frame(Chemical = urltools::url_decode(word))
-      frame$Suggestion <- list(parsed_response$suggestions)
-      return(frame)
-    }
-  } else if(response$status_code == 200){
+  }
+
+  if (response$status == 400) {
+    print(paste0('Found 0 results. Try adjusting the search parameters.'))
+  } else if (response$status_code == 200){
     return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
   } else {
     if (verbose) {
       print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
     }
   }
+
   return()
-
-
 
 }
 

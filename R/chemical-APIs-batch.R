@@ -7,7 +7,7 @@
 #' @param Projection The format and chemical detail data returned. Allowed
 #'   values are 'chemicaldetailall', 'chemicaldetailstandard',
 #'   chemicalidentifier', 'chemicalstructure', 'ntatoolkit',
-#'   ccdchemicaldetails'. If left empty or there is a
+#'   ccdchemicaldetails', 'compact'. If left empty or there is a
 #'   mismatch, the default format will be 'chemicaldetailstandard'.
 #' @param API_key The user-specific API key
 #' @param rate_limit Number of seconds to wait between each request
@@ -137,7 +137,8 @@ get_chemical_details_batch_2 <- function(DTXSID = NULL,
                             'chemicalidentifier',
                             'chemicalstructure',
                             'ntatoolkit',
-                            'ccdchemicaldetails')
+                            'ccdchemicaldetails',
+                            'compact')
     index <- 2
     if (!is.character(Projection)){
       warning('Setting `Projection` to `chemicaldetailstandard`')
@@ -834,6 +835,218 @@ get_chemical_by_property_range_batch <- function(start_list = NULL,
 }
 
 
+#' Get experimental physical-chemical property data via batch
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A data.table of experimental physchem property data
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Get experimental physchem properties for BPA and Caffeine
+#' chem_props_exp <- get_chem_props_exp(DTXSID = c('DTXSID7020182',
+#'                                                 'DTXSID0020232'))
+get_chem_props_exp_batch <- function(DTXSID = NULL,
+                                     API_key = NULL,
+                                     rate_limit = 0L,
+                                     Server = chemical_api_server,
+                                     verbose = FALSE){
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+
+    num_dtxsid <- length(DTXSID)
+    indices <- generate_ranges(num_dtxsid)
+
+    dt <- data.table::data.table(id = integer(),
+                                 dtxsid = character(),
+                                 dtxcid = character(),
+                                 smiles = character(),
+                                 canonQsarSmiles = character(),
+                                 genericSubstanceUpdatedAt = character(),
+                                 propName = character(),
+                                 propCategory = character(),
+                                 propDescription = character(),
+                                 modelName = character(),
+                                 modelId = integer(),
+                                 sourceName = character(),
+                                 sourceDescription = character(),
+                                 propValueExperimental = numeric(),
+                                 propValueExperimentalString = character(),
+                                 propValue = numeric(),
+                                 propUnit = character(),
+                                 propValueString = character(),
+                                 propValueError = character(),
+                                 adMethod = character(),
+                                 adValue = numeric(),
+                                 adConclusion = character(),
+                                 adReasoning = character(),
+                                 adMethodGlobal = character(),
+                                 adValueGlobal = numeric(),
+                                 adConclusionGlobal = character(),
+                                 adReasoningGlobal = character(),
+                                 hasQmrf = logical(),
+                                 qmrfUrl = character()
+    )
+
+    for (i in seq_along(indices)){
+
+      # print(paste('The current index is i =', i, 'out of', length(indices)))
+
+      response <- httr::POST(url = paste0(Server, '/property/predicted/search/by-dtxsid/'),
+                             httr::add_headers(.headers = c(
+                               'Accept' = 'application/json',
+                               'Content-Type' = 'application/json',
+                               'x-api-key' = API_key
+                             )),
+                             body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
+
+      # print(paste('The response code is', response$status_code, 'for index i =', i))
+
+
+      if (response$status_code == 401){
+        stop(httr::content(response)$detail)
+      }
+
+      if (response$status_code == 200){
+        dt <- suppressWarnings(data.table::rbindlist(list(dt,
+                                                          data.table::data.table(jsonlite::fromJSON(httr::content(response,
+                                                                                                                  as = 'text',
+                                                                                                                  encoding = "UTF-8")))),
+                                                     fill = TRUE))
+      }
+      Sys.sleep(rate_limit)
+    }
+
+    return(dt)
+  } else {
+    stop('Please input a character list for DTXSID!')
+  }
+}
+
+#' Get predicted physical-chemical property data via batch
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param rate_limit Number of seconds to wait between each request
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @return A data.table of predicted physchem property data
+#' @export
+#'
+#' @examplesIf FALSE
+#' # Get predicted physchem properties for BPA and Caffeine
+#' chem_props_pred <- get_chem_props_pred(DTXSID = c('DTXSID7020182',
+#'                                                   'DTXSID0020232'))
+get_chem_props_pred_batch <- function(DTXSID = NULL,
+                                      API_key = NULL,
+                                      rate_limit = 0L,
+                                      Server = chemical_api_server,
+                                      verbose = FALSE){
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+  if (!is.null(DTXSID)){
+    if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
+      stop('Please input a character list for DTXSID!')
+    }
+    DTXSID <- unique(DTXSID)
+
+    num_dtxsid <- length(DTXSID)
+    indices <- generate_ranges(num_dtxsid)
+
+    dt <- data.table::data.table(id = integer(),
+                                 smiles = character(),
+                                 dtxcid = character(),
+                                 dtxsid = character(),
+                                 sourceName = character(),
+                                 propValue = numeric(),
+                                 lscitation = character(),
+                                 propValueText = character(),
+                                 expDetailsPh = integer(),
+                                 directUrl = character(),
+                                 publicSourceUrl = character(),
+                                 propValueId = integer(),
+                                 briefCitation = character(),
+                                 propName = character(),
+                                 propUnit = character(),
+                                 propValueOriginal = character(),
+                                 expDetailsTemperatureC = integer(),
+                                 expDetailsPressureMmhg = integer(),
+                                 publicSourceName = character(),
+                                 publicSourceOriginalUrl = character(),
+                                 expDetailsSpeciesLatin = character(),
+                                 expDetailsResponseSite = character(),
+                                 expDetailsSpeciesCommon = character(),
+                                 sourceDescription = character(),
+                                 publicSourceDescription = character(),
+                                 expDetailsSpeciesSupercategory = character(),
+                                 publicSourceOriginalDescription = character(),
+                                 publicSourceOriginalName = character(),
+                                 lsDoi = character(),
+                                 lsName = character(),
+                                 dataset = character())
+
+    for (i in seq_along(indices)){
+
+      # print(paste('The current index is i =', i, 'out of', length(indices)))
+
+      response <- httr::POST(url = paste0(Server, '/property/experimental/search/by-dtxsid/'),
+                             httr::add_headers(.headers = c(
+                               'Accept' = 'application/json',
+                               'Content-Type' = 'application/json',
+                               'x-api-key' = API_key
+                             )),
+                             body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
+
+      # print(paste('The response code is', response$status_code, 'for index i =', i))
+
+
+      if (response$status_code == 401){
+        stop(httr::content(response)$detail)
+      }
+
+      if (response$status_code == 200){
+        dt <- suppressWarnings(data.table::rbindlist(list(dt,
+                                                          data.table::data.table(jsonlite::fromJSON(httr::content(response,
+                                                                                                                  as = 'text',
+                                                                                                                  encoding = "UTF-8")))),
+                                                     fill = TRUE))
+      }
+      Sys.sleep(rate_limit)
+    }
+
+    return(dt)
+  } else {
+    stop('Please input a character list for DTXSID!')
+  }
+}
+
+
 #' Retrieve chemical information in batch search
 #'
 #' @param DTXSID A vector of chemical identifier DTXSIDs
@@ -873,61 +1086,96 @@ get_chem_info_batch <- function(DTXSID = NULL,
     if (!is.character(DTXSID) & !all(sapply(DTXSID, is.character))){
       stop('Please input a character list for DTXSID!')
     }
+
+    dtxsid <- NULL
+    id <- NULL
+    propType <- NULL
+
     DTXSID <- unique(DTXSID)
 
-    num_dtxsid <- length(DTXSID)
-    indices <- generate_ranges(num_dtxsid)
 
-    dt <- data.table::data.table(name = character(),
-                                 value = numeric(),
-                                 id = integer(),
-                                 source = character(),
-                                 description = character(),
-                                 propType = character(),
-                                 unit = character(),
-                                 propertyId = character(),
-                                 dtxsid = character(),
-                                 dtxcid = character())
-
-    for (i in seq_along(indices)){
-
-      # print(paste('The current index is i =', i, 'out of', length(indices)))
-
-      response <- httr::POST(url = paste0(Server, '/property/search/by-dtxsid/'),
-                             httr::add_headers(.headers = c(
-                               'Accept' = 'application/json',
-                               'Content-Type' = 'application/json',
-                               'x-api-key' = API_key
-                             )),
-                             body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
-
-      # print(paste('The response code is', response$status_code, 'for index i =', i))
-
-
-      if (response$status_code == 401){
-        stop(httr::content(response)$detail)
-      }
-
-      if (response$status_code == 200){
-        dt <- suppressWarnings(data.table::rbindlist(list(dt,
-                                                          data.table::data.table(jsonlite::fromJSON(httr::content(response,
-                                                                                                                  as = 'text',
-                                                                                                                  encoding = "UTF-8")))),
-                                                     fill = TRUE))
-      }
-      Sys.sleep(rate_limit)
+    predicted <- get_chem_props_pred_batch(DTXSID = DTXSID,
+                                           API_key = API_key,
+                                           rate_limit = rate_limit,
+                                           Server = Server,
+                                           verbose = verbose)
+    predicted <- data.table::as.data.table(predicted)
+    if (dim(predicted)[2] > 0){
+      predicted[, propType := 'predicted']
     }
+
+    experimental <- get_chem_props_exp_batch(DTXSID = DTXSID,
+                                             API_key = API_key,
+                                             rate_limit = rate_limit,
+                                             Server = Server,
+                                             verbose = verbose)
+    experimental <- data.table::as.data.table(experimental)
+    if (dim(experimental)[2] > 0){
+      experimental[, propType := 'experimental']
+    }
+
+    dt <- rbindlist(list(predicted, experimental), fill = TRUE)[order(dtxsid, id)]
+
+
+
+    # num_dtxsid <- length(DTXSID)
+    # indices <- generate_ranges(num_dtxsid)
+    #
+    # dt <- data.table::data.table(name = character(),
+    #                              value = numeric(),
+    #                              id = integer(),
+    #                              source = character(),
+    #                              description = character(),
+    #                              propType = character(),
+    #                              unit = character(),
+    #                              propertyId = character(),
+    #                              dtxsid = character(),
+    #                              dtxcid = character())
+    #
+    # for (i in seq_along(indices)){
+    #
+    #   # print(paste('The current index is i =', i, 'out of', length(indices)))
+    #
+    #   response <- httr::POST(url = paste0(Server, '/property/search/by-dtxsid/'),
+    #                          httr::add_headers(.headers = c(
+    #                            'Accept' = 'application/json',
+    #                            'Content-Type' = 'application/json',
+    #                            'x-api-key' = API_key
+    #                          )),
+    #                          body = jsonlite::toJSON(DTXSID[indices[[i]]], auto_unbox = ifelse(length(DTXSID[indices[[i]]]) > 1, 'T', 'F')))
+    #
+    #   # print(paste('The response code is', response$status_code, 'for index i =', i))
+    #
+    #
+    #   if (response$status_code == 401){
+    #     stop(httr::content(response)$detail)
+    #   }
+    #
+    #   if (response$status_code == 200){
+    #     dt <- suppressWarnings(data.table::rbindlist(list(dt,
+    #                                                       data.table::data.table(jsonlite::fromJSON(httr::content(response,
+    #                                                                                                               as = 'text',
+    #                                                                                                               encoding = "UTF-8")))),
+    #                                                  fill = TRUE))
+    #   }
+    #   Sys.sleep(rate_limit)
+    # }
 
 
   if (!is.character(type)){
     return(dt)
   } else if (length(type) != 1){
+    if (verbose){
     warning("Setting type to ''!")
+    }
     return(dt)
   } else {
     type_index <- c('predicted', 'experimental')[which(c('predicted', 'experimental') %in% tolower(type))]
     if (length(type_index) == 0){
-      warning("Setting type to ''!")
+      if (verbose){
+        warning("Setting type to ''!")
+      }
+
       return(dt)
     }
     index_subset <- which(dt$propType %in% type_index)
@@ -1223,23 +1471,14 @@ chemical_equal_batch <- function(word_list = NULL,
     if (dim(dt)[[1]] > 0){
 
 
-      valid_index <- which(unlist(lapply(dt$searchMsgs, function(t) {is.null(t) || is.na(t)})))
-      invalid_index <- setdiff(seq_along(dt$searchMsgs), valid_index)
-
-
-      return_list$valid <- data.table::copy(dt)[valid_index, -c(11:12)]
-      return_list$invalid <- data.table::copy(dt)[invalid_index, c(7, 11:13)]
-
-
-
+      search_index <- which(unlist(lapply(dt$searchValue, function(t) {!is.null(t)})))
+      return_list <- data.table::copy(dt)[search_index, -c(11:12)]
 
       return(return_list)
     }
 
+    return(return_list)
 
-
-    return(list(valid = dt[, -c(11:12)],
-                invalid = dt[, c(7, 11:13)]))
   } else {
     stop('Please input a list of chemical names!')
   }

@@ -13,7 +13,7 @@ Status of Chemical API Endpoints
 Chemical API Endpoint status
 }
 \examples{
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 status <- get_chemical_endpoint_status()
 print(status)
 \dontshow{\}) # examplesIf}

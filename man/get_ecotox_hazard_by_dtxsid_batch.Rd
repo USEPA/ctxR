@@ -27,12 +27,15 @@ get_ecotox_hazard_by_dtxsid_batch(
 A data.table containing chemical ecotox hazard data.
 }
 \description{
-Get ecotox hazard data by DTXSID batch
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+The function was deprecated due to updates and restructing of the CTX APIs.
 }
 \examples{
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 # Pull ecotox hazard data for multiples chemicals
 dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 dtxsid_ecotox_hazard <- get_ecotox_hazard_by_dtxsid_batch(DTXSID = dtxsid)
 \dontshow{\}) # examplesIf}
 }
+\keyword{internal}
