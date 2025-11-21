@@ -1229,16 +1229,8 @@ get_fate_by_dtxsid_batch <- function(DTXSID = NULL,
     indices <- generate_ranges(num_dtxsid)
 
     dt <- data.table::data.table(id = integer(),
-                                 description = character(),
-                                 minValue = numeric(),
-                                 maxValue = numeric(),
-                                 valueType = character(),
-                                 unit = character(),
                                  dtxsid = character(),
-                                 dtxcid = character(),
-                                 endpointName = character(),
-                                 resultValue = numeric(),
-                                 modelSource = character())
+                                 dtxcid = character())
 
     for (i in seq_along(indices)){
 
