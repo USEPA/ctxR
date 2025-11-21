@@ -1,5 +1,9 @@
 # ctxR (development version)
 
+## Minor improvements and fixes
+
+* Removed columns no longer returned from API in `get_fate_by_dtxsid_batch()`.
+
 # ctxR 1.1.3
 
 ## Major improvements and fixes
