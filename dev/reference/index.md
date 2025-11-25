@@ -1,0 +1,256 @@
+# Package index
+
+## All functions
+
+- [`bioactivity_api_server`](https://usepa.github.io/ctxR/dev/reference/bioactivity_api_server.md)
+  : Bioactivity API Server url
+- [`check_api_key()`](https://usepa.github.io/ctxR/dev/reference/check_api_key.md)
+  : Check API key
+- [`check_existence_by_dtxsid()`](https://usepa.github.io/ctxR/dev/reference/check_existence_by_dtxsid.md)
+  : Check existence by DTXSID
+- [`check_existence_by_dtxsid_batch()`](https://usepa.github.io/ctxR/dev/reference/check_existence_by_dtxsid_batch.md)
+  : Check existence by DTXSID batch
+- [`chemical_api_server`](https://usepa.github.io/ctxR/dev/reference/chemical_api_server.md)
+  : Chemical API Server url
+- [`chemical_contains()`](https://usepa.github.io/ctxR/dev/reference/chemical_contains.md)
+  : Chemical contains
+- [`chemical_contains_batch()`](https://usepa.github.io/ctxR/dev/reference/chemical_contains_batch.md)
+  : Chemical contains batch search
+- [`chemical_equal()`](https://usepa.github.io/ctxR/dev/reference/chemical_equal.md)
+  : Chemical equal
+- [`chemical_equal_batch()`](https://usepa.github.io/ctxR/dev/reference/chemical_equal_batch.md)
+  : Chemical equal batch search
+- [`chemical_starts_with()`](https://usepa.github.io/ctxR/dev/reference/chemical_starts_with.md)
+  : Chemical starts with
+- [`chemical_starts_with_batch()`](https://usepa.github.io/ctxR/dev/reference/chemical_starts_with_batch.md)
+  : Chemical starts with batch search
+- [`set_ctxR_option()`](https://usepa.github.io/ctxR/dev/reference/ctxR_options.md)
+  [`has_ctxR_options()`](https://usepa.github.io/ctxR/dev/reference/ctxR_options.md)
+  [`has_ctxR_option()`](https://usepa.github.io/ctxR/dev/reference/ctxR_options.md)
+  : ctxR Options
+- [`exposure_api_server`](https://usepa.github.io/ctxR/dev/reference/exposure_api_server.md)
+  : Exposure API Server url
+- [`get_aggregate_records_by_dtxsid()`](https://usepa.github.io/ctxR/dev/reference/get_aggregate_records_by_dtxsid.md)
+  : Get aggregate records by DTXSID
+- [`get_aggregate_records_by_dtxsid_batch()`](https://usepa.github.io/ctxR/dev/reference/get_aggregate_records_by_dtxsid_batch.md)
+  : Get Aggregate Records by DTXSID via batch
+- [`get_aggregate_records_by_medium()`](https://usepa.github.io/ctxR/dev/reference/get_aggregate_records_by_medium.md)
+  : Get aggregate records by medium
+- [`get_aggregate_records_by_medium_batch()`](https://usepa.github.io/ctxR/dev/reference/get_aggregate_records_by_medium_batch.md)
+  : Get Aggregate Records by medium via batch
+- [`get_all_assays()`](https://usepa.github.io/ctxR/dev/reference/get_all_assays.md)
+  : Retrieve all assays
+- [`get_all_list_types()`](https://usepa.github.io/ctxR/dev/reference/get_all_list_types.md)
+  : Get all list types
+- [`get_all_public_chemical_lists()`](https://usepa.github.io/ctxR/dev/reference/get_all_public_chemical_lists.md)
+  : Get all public chemical lists
+- [`get_annotation_by_aeid()`](https://usepa.github.io/ctxR/dev/reference/get_annotation_by_aeid.md)
+  : Retrieve annotations for AEID
+- [`get_annotation_by_aeid_batch()`](https://usepa.github.io/ctxR/dev/reference/get_annotation_by_aeid_batch.md)
+  : Retrieve annotations for AEID batch
+- [`get_bioactivity_details()`](https://usepa.github.io/ctxR/dev/reference/get_bioactivity_details.md)
+  : Retrieve bioactivity data from DTXSID, AEID, SPID, or m4id
+- [`get_bioactivity_details_batch()`](https://usepa.github.io/ctxR/dev/reference/get_bioactivity_details_batch.md)
+  : Retrieve bioactivity data from DTXSID or AEID batch
+- [`get_bioactivity_endpoint_status()`](https://usepa.github.io/ctxR/dev/reference/get_bioactivity_endpoint_status.md)
+  : Bioactivity API Endpoint status
+- [`get_bioactivity_summary()`](https://usepa.github.io/ctxR/dev/reference/get_bioactivity_summary.md)
+  : Retrieve bioactivity summary for AEID
+- [`get_bioactivity_summary_batch()`](https://usepa.github.io/ctxR/dev/reference/get_bioactivity_summary_batch.md)
+  : Retrieve bioactivity summary data from AEID batch
+- [`get_biomonitoring_data()`](https://usepa.github.io/ctxR/dev/reference/get_biomonitoring_data.md)
+  : Get Biomonitoring data
+- [`get_biomonitoring_data_batch()`](https://usepa.github.io/ctxR/dev/reference/get_biomonitoring_data_batch.md)
+  : Get biomonitoring data via batch
+- [`get_cancer_hazard()`](https://usepa.github.io/ctxR/dev/reference/get_cancer_hazard.md)
+  : Get cancer hazard
+- [`get_cancer_hazard_batch()`](https://usepa.github.io/ctxR/dev/reference/get_cancer_hazard_batch.md)
+  : Get cancer hazard batch
+- [`get_chem_info()`](https://usepa.github.io/ctxR/dev/reference/get_chem_info.md)
+  : Retrieve chemical information
+- [`get_chem_info_batch()`](https://usepa.github.io/ctxR/dev/reference/get_chem_info_batch.md)
+  : Retrieve chemical information in batch search
+- [`get_chem_props_exp()`](https://usepa.github.io/ctxR/dev/reference/get_chem_props_exp.md)
+  : Get experimental physical-chemical property data
+- [`get_chem_props_exp_batch()`](https://usepa.github.io/ctxR/dev/reference/get_chem_props_exp_batch.md)
+  : Get experimental physical-chemical property data via batch
+- [`get_chem_props_pred()`](https://usepa.github.io/ctxR/dev/reference/get_chem_props_pred.md)
+  : Get predicted physical-chemical property data
+- [`get_chem_props_pred_batch()`](https://usepa.github.io/ctxR/dev/reference/get_chem_props_pred_batch.md)
+  : Get predicted physical-chemical property data via batch
+- [`get_chem_props_summary()`](https://usepa.github.io/ctxR/dev/reference/get_chem_props_summary.md)
+  : Get Summary information on chemical properties
+- [`get_chemical_by_property_range()`](https://usepa.github.io/ctxR/dev/reference/get_chemical_by_property_range.md)
+  : Get chemicals by property and its value range
+- [`get_chemical_by_property_range_batch()`](https://usepa.github.io/ctxR/dev/reference/get_chemical_by_property_range_batch.md)
+  : Retrieve chemicals by property and value range in batch search
+- [`get_chemical_details()`](https://usepa.github.io/ctxR/dev/reference/get_chemical_details.md)
+  : Retrieve chemical details from DTXSID of DTXCID
+- [`get_chemical_details_batch()`](https://usepa.github.io/ctxR/dev/reference/get_chemical_details_batch.md)
+  : Retrieve chemical details from DTXSID of DTXCID in batch search
+- [`get_chemical_endpoint_status()`](https://usepa.github.io/ctxR/dev/reference/get_chemical_endpoint_status.md)
+  : Chemical API Endpoint status
+- [`get_chemical_image()`](https://usepa.github.io/ctxR/dev/reference/get_chemical_image.md)
+  : Get image file by DTXSID or DTXCID
+- [`get_chemical_image_batch()`](https://usepa.github.io/ctxR/dev/reference/get_chemical_image_batch.md)
+  : Get image file by DTXSID or DTXCID batch
+- [`get_chemical_lists_by_type()`](https://usepa.github.io/ctxR/dev/reference/get_chemical_lists_by_type.md)
+  : Get chemical lists by type
+- [`get_chemical_lists_by_type_batch()`](https://usepa.github.io/ctxR/dev/reference/get_chemical_lists_by_type_batch.md)
+  : Get chemical lists by type batch search
+- [`get_chemical_mol()`](https://usepa.github.io/ctxR/dev/reference/get_chemical_mol.md)
+  : Get mol file by DTXSID or DTXCID
+- [`get_chemical_mol_batch()`](https://usepa.github.io/ctxR/dev/reference/get_chemical_mol_batch.md)
+  : Get mol file by DTXSID or DTXCID batch
+- [`get_chemical_mrv()`](https://usepa.github.io/ctxR/dev/reference/get_chemical_mrv.md)
+  : Get mrv file by DTXSID or DTXCID
+- [`get_chemical_mrv_batch()`](https://usepa.github.io/ctxR/dev/reference/get_chemical_mrv_batch.md)
+  : Ger mrv file by DTXSID or DTXCID batch
+- [`get_chemical_synonym()`](https://usepa.github.io/ctxR/dev/reference/get_chemical_synonym.md)
+  : Get chemical synonym
+- [`get_chemical_synonym_batch()`](https://usepa.github.io/ctxR/dev/reference/get_chemical_synonym_batch.md)
+  : Get chemical synonym batch
+- [`get_chemical_weight_fraction()`](https://usepa.github.io/ctxR/dev/reference/get_chemical_weight_fraction.md)
+  : Get Chemical Weight Fractions
+- [`get_chemical_weight_fraction_batch()`](https://usepa.github.io/ctxR/dev/reference/get_chemical_weight_fraction_batch.md)
+  : Get chemical weight fraction via batch
+- [`get_chemicals_in_list()`](https://usepa.github.io/ctxR/dev/reference/get_chemicals_in_list.md)
+  : Get chemicals in a given chemical list
+- [`get_chemicals_in_list_batch()`](https://usepa.github.io/ctxR/dev/reference/get_chemicals_in_list_batch.md)
+  : Get chemicals in a given chemical list batch
+- [`get_chemicals_in_list_contain()`](https://usepa.github.io/ctxR/dev/reference/get_chemicals_in_list_contain.md)
+  : Get chemicals in a list specified by contained characters
+- [`get_chemicals_in_list_contain_batch()`](https://usepa.github.io/ctxR/dev/reference/get_chemicals_in_list_contain_batch.md)
+  : Get chemicals in a list specified by characters contained batch
+  search
+- [`get_chemicals_in_list_exact()`](https://usepa.github.io/ctxR/dev/reference/get_chemicals_in_list_exact.md)
+  : Get chemicals in a list specified by exact characters
+- [`get_chemicals_in_list_exact_batch()`](https://usepa.github.io/ctxR/dev/reference/get_chemicals_in_list_exact_batch.md)
+  : Get chemicals in a list specified by exact characters batch search
+- [`get_chemicals_in_list_start()`](https://usepa.github.io/ctxR/dev/reference/get_chemicals_in_list_start.md)
+  : Get chemicals in a list specified by starting characters
+- [`get_chemicals_in_list_start_batch()`](https://usepa.github.io/ctxR/dev/reference/get_chemicals_in_list_start_batch.md)
+  : Get chemicals in a list specified by starting characters batch
+  search
+- [`get_demographic_exposure_prediction()`](https://usepa.github.io/ctxR/dev/reference/get_demographic_exposure_prediction.md)
+  : Get demographic exposure prediction data
+- [`get_demographic_exposure_prediction_batch()`](https://usepa.github.io/ctxR/dev/reference/get_demographic_exposure_prediction_batch.md)
+  : Retrieve demographic exposure predictions for chemicals via batch
+- [`get_exposure_endpoint_status()`](https://usepa.github.io/ctxR/dev/reference/get_exposure_endpoint_status.md)
+  : Exposure API Endpoint status
+- [`get_exposure_functional_use()`](https://usepa.github.io/ctxR/dev/reference/get_exposure_functional_use.md)
+  : Retrieve exposure related functional use data
+- [`get_exposure_functional_use_batch()`](https://usepa.github.io/ctxR/dev/reference/get_exposure_functional_use_batch.md)
+  : Retrieve exposure related functional use data batch
+- [`get_exposure_functional_use_category()`](https://usepa.github.io/ctxR/dev/reference/get_exposure_functional_use_category.md)
+  : Retrieve functional use categories
+- [`get_exposure_functional_use_probability()`](https://usepa.github.io/ctxR/dev/reference/get_exposure_functional_use_probability.md)
+  : Retrieve probability of exposure for functional use category
+- [`get_exposure_functional_use_probability_batch()`](https://usepa.github.io/ctxR/dev/reference/get_exposure_functional_use_probability_batch.md)
+  : Retrieve exposure functional use probability data batch
+- [`get_exposure_list_presence_tags()`](https://usepa.github.io/ctxR/dev/reference/get_exposure_list_presence_tags.md)
+  : Retrieve list presence tags
+- [`get_exposure_list_presence_tags_by_dtxsid()`](https://usepa.github.io/ctxR/dev/reference/get_exposure_list_presence_tags_by_dtxsid.md)
+  : Retrieve document data and list presence tags for a chemical
+- [`get_exposure_list_presence_tags_by_dtxsid_batch()`](https://usepa.github.io/ctxR/dev/reference/get_exposure_list_presence_tags_by_dtxsid_batch.md)
+  : Retrieve document data and list presence tags for chemicals batch
+- [`get_exposure_product_data()`](https://usepa.github.io/ctxR/dev/reference/get_exposure_product_data.md)
+  : Retrieve product data for exposure purposes
+- [`get_exposure_product_data_batch()`](https://usepa.github.io/ctxR/dev/reference/get_exposure_product_data_batch.md)
+  : Retrieve product data for exposure purposes batch
+- [`get_exposure_product_data_puc()`](https://usepa.github.io/ctxR/dev/reference/get_exposure_product_data_puc.md)
+  : Retrieve product use categories related to exposure
+- [`get_fate_by_dtxsid()`](https://usepa.github.io/ctxR/dev/reference/get_fate_by_dtxsid.md)
+  : Get fate by DTXSID
+- [`get_fate_by_dtxsid_batch()`](https://usepa.github.io/ctxR/dev/reference/get_fate_by_dtxsid_batch.md)
+  : Retrieve chemical fate data in batch search
+- [`get_general_exposure_prediction()`](https://usepa.github.io/ctxR/dev/reference/get_general_exposure_prediction.md)
+  : Get general exposure prediction data
+- [`get_general_exposure_prediction_batch()`](https://usepa.github.io/ctxR/dev/reference/get_general_exposure_prediction_batch.md)
+  : Retrieve general exposure predictions for chemicals via batch
+- [`get_general_use_keywords()`](https://usepa.github.io/ctxR/dev/reference/get_general_use_keywords.md)
+  : Get General Use Keywords
+- [`get_general_use_keywords_batch()`](https://usepa.github.io/ctxR/dev/reference/get_general_use_keywords_batch.md)
+  : Get general use keywords via batch
+- [`get_genetox_details()`](https://usepa.github.io/ctxR/dev/reference/get_genetox_details.md)
+  : Get genetox details
+- [`get_genetox_details_batch()`](https://usepa.github.io/ctxR/dev/reference/get_genetox_details_batch.md)
+  : Get genetox details batch
+- [`get_genetox_summary()`](https://usepa.github.io/ctxR/dev/reference/get_genetox_summary.md)
+  : Get genetox summary
+- [`get_genetox_summary_batch()`](https://usepa.github.io/ctxR/dev/reference/get_genetox_summary_batch.md)
+  : Get genetox summary batch
+- [`get_hazard_by_dtxsid()`](https://usepa.github.io/ctxR/dev/reference/get_hazard_by_dtxsid.md)
+  : Get hazard data by DTXSID
+- [`get_hazard_by_dtxsid_batch()`](https://usepa.github.io/ctxR/dev/reference/get_hazard_by_dtxsid_batch.md)
+  : Get hazard data by DTXSID batch
+- [`get_hazard_endpoint_status()`](https://usepa.github.io/ctxR/dev/reference/get_hazard_endpoint_status.md)
+  : Hazard API Endpoint status
+- [`get_httk_data()`](https://usepa.github.io/ctxR/dev/reference/get_httk_data.md)
+  : Get httk data
+- [`get_httk_data_batch()`](https://usepa.github.io/ctxR/dev/reference/get_httk_data_batch.md)
+  : Retrieve httk data via batch search
+- [`get_inchi()`](https://usepa.github.io/ctxR/dev/reference/get_inchi.md)
+  : Get InChI
+- [`get_inchikey()`](https://usepa.github.io/ctxR/dev/reference/get_inchikey.md)
+  : Get InChIKey
+- [`get_lists_containing_chemical()`](https://usepa.github.io/ctxR/dev/reference/get_lists_containing_chemical.md)
+  : Get chemical lists containing given chemical
+- [`get_lists_containing_chemical_batch()`](https://usepa.github.io/ctxR/dev/reference/get_lists_containing_chemical_batch.md)
+  : Get chemical lists containing given chemical batch
+- [`get_medium_categories()`](https://usepa.github.io/ctxR/dev/reference/get_medium_categories.md)
+  : Retrieve MMDB medium categories
+- [`get_msready_by_dtxcid()`](https://usepa.github.io/ctxR/dev/reference/get_msready_by_dtxcid.md)
+  : Get msready by DTXCID
+- [`get_msready_by_dtxcid_batch()`](https://usepa.github.io/ctxR/dev/reference/get_msready_by_dtxcid_batch.md)
+  : Get msready by DTXCID batch search
+- [`get_msready_by_formula()`](https://usepa.github.io/ctxR/dev/reference/get_msready_by_formula.md)
+  : Get msready by formula
+- [`get_msready_by_formula_batch()`](https://usepa.github.io/ctxR/dev/reference/get_msready_by_formula_batch.md)
+  : Get msready by formula batch search
+- [`get_msready_by_mass()`](https://usepa.github.io/ctxR/dev/reference/get_msready_by_mass.md)
+  : Get msready by mass
+- [`get_msready_by_mass_batch()`](https://usepa.github.io/ctxR/dev/reference/get_msready_by_mass_batch.md)
+  : Get ms ready by mass batch search
+- [`get_msready_by_mass_with_error_batch()`](https://usepa.github.io/ctxR/dev/reference/get_msready_by_mass_with_error_batch.md)
+  : Get msready by mass and error offset
+- [`get_product_use_categories_batch()`](https://usepa.github.io/ctxR/dev/reference/get_product_use_categories_batch.md)
+  : Get Product Use categories via batch
+- [`get_product_use_category()`](https://usepa.github.io/ctxR/dev/reference/get_product_use_category.md)
+  : Get Product Use Categories
+- [`get_production_volume()`](https://usepa.github.io/ctxR/dev/reference/get_production_volume.md)
+  : Get Production Volume
+- [`get_production_volume_batch()`](https://usepa.github.io/ctxR/dev/reference/get_production_volume_batch.md)
+  : Get Production Volume data via batch
+- [`get_public_chemical_list_by_name()`](https://usepa.github.io/ctxR/dev/reference/get_public_chemical_list_by_name.md)
+  : Get chemical list by name
+- [`get_public_chemical_list_by_name_batch()`](https://usepa.github.io/ctxR/dev/reference/get_public_chemical_list_by_name_batch.md)
+  : Get chemical list by name batch
+- [`get_reported_functional_use()`](https://usepa.github.io/ctxR/dev/reference/get_reported_functional_use.md)
+  : Get Reported Functional Use
+- [`get_reported_functional_use_batch()`](https://usepa.github.io/ctxR/dev/reference/get_reported_functional_use_batch.md)
+  : Get reported functional use via batch
+- [`get_single_sample_records_by_dtxsid()`](https://usepa.github.io/ctxR/dev/reference/get_single_sample_records_by_dtxsid.md)
+  : Get single sample records by DTXSID
+- [`get_single_sample_records_by_dtxsid_batch()`](https://usepa.github.io/ctxR/dev/reference/get_single_sample_records_by_dtxsid_batch.md)
+  : Get Single Sample Records by DTXSID via batch
+- [`get_single_sample_records_by_medium()`](https://usepa.github.io/ctxR/dev/reference/get_single_sample_records_by_medium.md)
+  : Get single sample records by medium
+- [`get_single_sample_records_by_medium_batch()`](https://usepa.github.io/ctxR/dev/reference/get_single_sample_records_by_medium_batch.md)
+  : Get Single Sample Records by medium via batch
+- [`get_skin_eye_hazard()`](https://usepa.github.io/ctxR/dev/reference/get_skin_eye_hazard.md)
+  : Get skin and eye hazard
+- [`get_skin_eye_hazard_batch()`](https://usepa.github.io/ctxR/dev/reference/get_skin_eye_hazard_batch.md)
+  : Get skin and eye hazard batch
+- [`get_smiles()`](https://usepa.github.io/ctxR/dev/reference/get_smiles.md)
+  : Get Smiles
+- [`hazard_api_server`](https://usepa.github.io/ctxR/dev/reference/hazard_api_server.md)
+  : Hazard API Server url
+- [`showing_key()`](https://usepa.github.io/ctxR/dev/reference/register_ctx_api_key.md)
+  [`ctxR_show_api_key()`](https://usepa.github.io/ctxR/dev/reference/register_ctx_api_key.md)
+  [`ctxR_hide_api_key()`](https://usepa.github.io/ctxR/dev/reference/register_ctx_api_key.md)
+  [`register_ctx_api_key()`](https://usepa.github.io/ctxR/dev/reference/register_ctx_api_key.md)
+  [`print(`*`<ctx_credentials>`*`)`](https://usepa.github.io/ctxR/dev/reference/register_ctx_api_key.md)
+  [`ctx_key()`](https://usepa.github.io/ctxR/dev/reference/register_ctx_api_key.md)
+  [`has_ctx_key()`](https://usepa.github.io/ctxR/dev/reference/register_ctx_api_key.md)
+  : Register CTX API Key for ctxR
