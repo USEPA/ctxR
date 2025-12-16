@@ -1,13 +1,13 @@
 structure(list(url = "https://comptox.epa.gov/ctx-api/chemical/file/mrv/search/by-dtxsid/", 
-    status_code = 404L, headers = structure(list(date = "Thu, 02 Oct 2025 22:11:25 GMT", 
+    status_code = 404L, headers = structure(list(date = "Tue, 16 Dec 2025 15:52:00 GMT", 
         server = "Apache", `strict-transport-security` = "max-age=63072000; includeSubDomains; preload“", 
-        vary = "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
+        `access-control-allow-origin` = "*", vary = "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
         `cache-control` = "max-age=0, must-revalidate, no-transform", 
         `content-type` = "application/problem+json", `transfer-encoding` = "chunked"), class = c("insensitive", 
     "list")), all_headers = list(list(status = 404L, version = "HTTP/1.1", 
-        headers = structure(list(date = "Thu, 02 Oct 2025 22:11:25 GMT", 
+        headers = structure(list(date = "Tue, 16 Dec 2025 15:52:00 GMT", 
             server = "Apache", `strict-transport-security` = "max-age=63072000; includeSubDomains; preload“", 
-            vary = "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
+            `access-control-allow-origin` = "*", vary = "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
             `cache-control` = "max-age=0, must-revalidate, no-transform", 
             `content-type` = "application/problem+json", `transfer-encoding` = "chunked"), class = c("insensitive", 
         "list")))), cookies = structure(list(domain = logical(0), 
@@ -34,7 +34,7 @@ structure(list(url = "https://comptox.epa.gov/ctx-api/chemical/file/mrv/search/b
     0x2f, 0x66, 0x69, 0x6c, 0x65, 0x2f, 0x6d, 0x72, 0x76, 0x2f, 
     0x73, 0x65, 0x61, 0x72, 0x63, 0x68, 0x2f, 0x62, 0x79, 0x2d, 
     0x64, 0x74, 0x78, 0x73, 0x69, 0x64, 0x2f, 0x22, 0x0a, 0x7d
-    )), date = structure(1759443085, class = c("POSIXct", "POSIXt"
-    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 2.9e-05, 
-    connect = 0.029969, pretransfer = 0.086911, starttransfer = 0.119717, 
-    total = 0.11975)), class = "response")
+    )), date = structure(1765900320, class = c("POSIXct", "POSIXt"
+    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 4.2e-05, 
+    connect = 0, pretransfer = 0.000169, starttransfer = 0.039109, 
+    total = 0.039158)), class = "response")
