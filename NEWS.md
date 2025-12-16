@@ -2,7 +2,9 @@
 
 ## Minor improvements and fixes
 
-* Removed columns no longer returned from API in `get_fate_by_dtxsid_batch()`.
+* Removed columns no longer returned from API in `get_fate_by_dtxsid_batch()` (#81)
+* Correct endpoints used in experimental and predicted property batch functions (#83)
+* Update columns returned from API in `get_chemical_synonym` and `get_chemical_synonym_batch` functions (#85)
 
 # ctxR 1.1.3
 

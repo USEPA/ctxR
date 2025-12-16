@@ -2070,8 +2070,8 @@ get_chemical_synonym <- function(DTXSID = NULL,
 
     parse_dt <- data.table::data.table(tibble::as_tibble_row(parse_list))
     data.table::setcolorder(parse_dt, c('dtxsid', 'pcCode', 'valid', 'beilstein',
-                                        'alternateCasrn', 'good', 'other',
-                                        'deletedCasrn'))
+                                        'alternate', 'good', 'other',
+                                        'deleted'))
 
     return(parse_dt)
   } else {
