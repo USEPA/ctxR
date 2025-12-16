@@ -2823,10 +2823,10 @@ get_chemical_synonym_batch <- function(DTXSID = NULL,
                                  pcCode = character(),
                                  valid = character(),
                                  beilstein = character(),
-                                 alternateCasrn = character(),
+                                 alternate = character(),
                                  good = character(),
                                  other = character(),
-                                 deletedCasrn = character())
+                                 deleted = character())
 
     for (i in seq_along(indices)){
       response <- httr::POST(url = paste0(chemical_api_server, '/synonym/search/by-dtxsid/'),

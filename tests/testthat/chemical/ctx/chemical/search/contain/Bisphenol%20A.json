@@ -8468,7 +8468,7 @@
         "smiles": null,
         "isMarkush": true,
         "searchName": "Expert Validated Synonym",
-        "searchValue": "Epoxide resins, bisphenol A-epichlorohydrin",
+        "searchValue": "Bisphenol A epoxy resins",
         "rank": 10
     },
     {
@@ -8528,7 +8528,7 @@
         "smiles": "CC(C)(C1=CC=C(OCC(O)CO)C=C1)C1=CC=C(OCC(O)CO)C=C1",
         "isMarkush": false,
         "searchName": "Expert Validated Synonym",
-        "searchValue": "Bisphenol A bis(2,3-dihydroxypropyl) ether",
+        "searchValue": "Bisphenol A bis(2,3- dihydroxypropyl) ether",
         "rank": 10
     },
     {
@@ -8540,7 +8540,7 @@
         "smiles": null,
         "isMarkush": true,
         "searchName": "Expert Validated Synonym",
-        "searchValue": "Bisphenol A-ethylene oxide polymer",
+        "searchValue": "Bisphenol A-ethylene oxide copolymer",
         "rank": 10
     },
     {
@@ -8612,7 +8612,7 @@
         "smiles": "CC(C)(C1=CC=C(OC2=CC3=C(C=C2)C(=O)OC3=O)C=C1)C1=CC=C(OC2=CC3=C(C=C2)C(=O)OC3=O)C=C1",
         "isMarkush": false,
         "searchName": "Expert Validated Synonym",
-        "searchValue": "Bisphenol A dianhydride",
+        "searchValue": "4,4'-Bisphenol A diphthalic anhydride",
         "rank": 10
     },
     {
@@ -8648,7 +8648,7 @@
         "smiles": "CC(C)(C1=CC=C(OCC(O)COC(=O)C=C)C=C1)C1=CC=C(OCC(O)COC(=O)C=C)C=C1",
         "isMarkush": false,
         "searchName": "Expert Validated Synonym",
-        "searchValue": "Bisphenol A bis(3-acrylato-2-hydroxypropyl) ether",
+        "searchValue": "Bisphenol A diether with glycidyl acrylate",
         "rank": 10
     },
     {
@@ -8852,7 +8852,7 @@
         "smiles": null,
         "isMarkush": true,
         "searchName": "Expert Validated Synonym",
-        "searchValue": "Tetrabromobisphenol A, 2,2-bis[4-(2,3-epoxypropyloxy)dibromophenyl]propane polymer",
+        "searchValue": "Tetrabromobisphenol A diglycidyl ether-FG 2000 copolymer",
         "rank": 10
     },
     {
@@ -8864,7 +8864,7 @@
         "smiles": null,
         "isMarkush": true,
         "searchName": "Synonym from Valid Source",
-        "searchValue": "Bisphenol A-(chloromethyl)oxirane copolymer",
+        "searchValue": "POLYMER, BISPHENOL A-EPICHLOROHYDRIN",
         "rank": 11
     },
     {
@@ -8876,7 +8876,7 @@
         "smiles": null,
         "isMarkush": true,
         "searchName": "Synonym from Valid Source",
-        "searchValue": "Bisphenol A-epichlorohydrin-hexahydrophthalic anhydride-Terathane 650 copolymer",
+        "searchValue": "Bisphenol A-epichlorohydrin-hexahydrophthalic anhydride-poly(tetramethylene glycol) copolymer",
         "rank": 11
     },
     {
@@ -8912,7 +8912,7 @@
         "smiles": null,
         "isMarkush": true,
         "searchName": "Synonym from Valid Source",
-        "searchValue": "POLYMER, EPICHLOROHYDRIN AND BISPHENOL-A",
+        "searchValue": "Diglycidyl bisphenol A homopolymer",
         "rank": 11
     },
     {
@@ -8936,7 +8936,7 @@
         "smiles": null,
         "isMarkush": true,
         "searchName": "Synonym from Valid Source",
-        "searchValue": "Adipic acid-bisphenol A-ethylene oxide adduct [1:2]-propoxylated bisphenol A-terephthalic acid-trimellitic anhydride copolymer",
+        "searchValue": "Bisphenol A bis(2-hydroxyethyl) ether-propoxylated bisphenol A-terephthalic acid-adipic acid-trimellitic anhydride copolymer",
         "rank": 11
     },
     {
@@ -9008,7 +9008,7 @@
         "smiles": "CC(C)(C1=CC(Br)=C(OCC2CO2)C(Br)=C1)C1=CC(Br)=C(OCC2CO2)C(Br)=C1",
         "isMarkush": false,
         "searchName": "Synonym",
-        "searchValue": "Tetrabromobisphenol A diglycidyl ether",
+        "searchValue": "2,2',6,6'-Tetrabromobisphenol A diglycidyl ether",
         "rank": 15
     },
     {
@@ -9212,7 +9212,7 @@
         "smiles": "CC(C)(C1=CC=C(O)C=C1)C1=CC(Cl)=C(O)C=C1",
         "isMarkush": false,
         "searchName": "Synonym",
-        "searchValue": "2-Chloro bisphenol A",
+        "searchValue": "3-chlorobisphenol A",
         "rank": 15
     },
     {
@@ -9272,7 +9272,7 @@
         "smiles": "CC(C)(C1=CC=C(OP(=O)(OC2=CC=CC=C2)OC2=CC=CC=C2)C=C1)C1=CC=C(OP(=O)(OC2=CC=CC=C2)OC2=CC=CC=C2)C=C1",
         "isMarkush": false,
         "searchName": "Synonym",
-        "searchValue": "Tetraphenyl bisphenol A bisphosphate",
+        "searchValue": "Bisphenol A tetraphenyl diphosphate",
         "rank": 15
     },
     {
@@ -9322,77 +9322,5 @@
         "searchName": "Synonym",
         "searchValue": "Bisphenol A (2,3-dihydroxypropyl) glycidyl ether",
         "rank": 15
-    },
-    {
-        "dtxsid": "DTXSID10963995",
-        "dtxcid": "DTXCID101391716",
-        "casrn": "4809-35-2",
-        "preferredName": "1,1'-{Propane-2,2-diylbis[(4,1-phenylene)oxy]}bis(3-chloropropan-2-ol)",
-        "hasStructureImage": 1,
-        "smiles": "CC(C)(C1=CC=C(OCC(O)CCl)C=C1)C1=CC=C(OCC(O)CCl)C=C1",
-        "isMarkush": false,
-        "searchName": "Integrated Source Name",
-        "searchValue": "BISPHENOL A BIS(3-CHLORO-2-HYDROXYPROPYL) ETHER",
-        "rank": 16
-    },
-    {
-        "dtxsid": "DTXSID301012639",
-        "dtxcid": null,
-        "casrn": "37312-33-7",
-        "preferredName": "Phenol, 4,4'-(1-methylethylidene)bis-, polymer with 2-(chloromethyl)oxirane and 1,3-diisocyanatomethylbenzene",
-        "hasStructureImage": 0,
-        "smiles": null,
-        "isMarkush": true,
-        "searchName": "Integrated Source Name",
-        "searchValue": "epichlorohydrin_ bisphenol a_ toluenediisocyanate polymer",
-        "rank": 16
-    },
-    {
-        "dtxsid": "DTXSID50960064",
-        "dtxcid": "DTXCID901387929",
-        "casrn": "39382-25-7",
-        "preferredName": "But-2-enedioic acid--3,3'-{propane-2,2-diylbis[(4,1-phenylene)oxy]}di(propan-1-ol) (1/1)",
-        "hasStructureImage": 1,
-        "smiles": "OC(=O)C=CC(O)=O.CC(C)(C1=CC=C(OCCCO)C=C1)C1=CC=C(OCCCO)C=C1",
-        "isMarkush": false,
-        "searchName": "Integrated Source Name",
-        "searchValue": "bisphenol a propylene oxide fumarate",
-        "rank": 16
-    },
-    {
-        "dtxsid": "DTXSID80863135",
-        "dtxcid": "DTXCID10811801",
-        "casrn": "3253-39-2",
-        "preferredName": "(Propane-2,2-diyl)di(4,1-phenylene) bis(2-methylprop-2-enoate)",
-        "hasStructureImage": 1,
-        "smiles": "CC(=C)C(=O)OC1=CC=C(C=C1)C(C)(C)C1=CC=C(OC(=O)C(C)=C)C=C1",
-        "isMarkush": false,
-        "searchName": "Integrated Source Name",
-        "searchValue": "bisphenol-a-dimethacrylate",
-        "rank": 16
-    },
-    {
-        "dtxsid": "DTXSID901012663",
-        "dtxcid": null,
-        "casrn": "40364-42-9",
-        "preferredName": "Phenol, 4,4'-(1-methylethylidene)bis-, polymer with 2-(chloromethyl)oxirane and 4,4'-methylenebis[benzenamine]",
-        "hasStructureImage": 0,
-        "smiles": null,
-        "isMarkush": true,
-        "searchName": "Integrated Source Name",
-        "searchValue": "4_4'-methylene dianiline_ diglycidyl ether of bisphenol apolymer",
-        "rank": 16
-    },
-    {
-        "dtxsid": "DTXSID90578849",
-        "dtxcid": "DTXCID10529616",
-        "casrn": "29651-54-5",
-        "preferredName": "4,4'-(Cyclododecane-1,1-diyl)diphenol",
-        "hasStructureImage": 1,
-        "smiles": "OC1=CC=C(C=C1)C1(CCCCCCCCCCC1)C1=CC=C(O)C=C1",
-        "isMarkush": false,
-        "searchName": "Integrated Source Name",
-        "searchValue": "cyclododecanone bisphenol a",
-        "rank": 16
     }
 ]
