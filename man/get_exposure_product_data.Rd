@@ -28,7 +28,7 @@ given chemical
 Retrieve product data for exposure purposes
 }
 \examples{
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 # Pull exposure product data for BPA
 bpa <- get_exposure_product_data(DTXSID = 'DTXSID7020182')
 \dontshow{\}) # examplesIf}

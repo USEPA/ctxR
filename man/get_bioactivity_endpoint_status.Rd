@@ -13,7 +13,7 @@ Status of Bioactivity API Endpoints
 Bioactivity API Endpoint status
 }
 \examples{
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 status <- get_bioactivity_endpoint_status()
 print(status)
 \dontshow{\}) # examplesIf}

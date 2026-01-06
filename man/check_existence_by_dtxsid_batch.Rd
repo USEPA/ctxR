@@ -31,7 +31,7 @@ A data.table of information detailing valid and invalid DTXSIDs.
 Check existence by DTXSID batch
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (FALSE) withAutoprint(\{ # examplesIf}
 dtxsids <- c('DTXSID7020182F', 'DTXSID7020182', 'DTXSID0020232F')
 existence <- check_existence_by_dtxsid_batch(DTXSID = dtxsids)
 \dontshow{\}) # examplesIf}

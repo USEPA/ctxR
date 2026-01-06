@@ -28,7 +28,7 @@ A string giving the associated InChIKey.
 Get InChIKey
 }
 \examples{
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 bpa_inchikey <- get_inchikey(name = "Bisphenol A")
 \dontshow{\}) # examplesIf}
 }

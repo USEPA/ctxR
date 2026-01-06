@@ -22,6 +22,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 library(httptest)
+library(data.table)
 start_vignette("5")
 ```
 
@@ -54,11 +55,14 @@ registerS3method(
 )
 ```
 
-<a href="https://CRAN.R-project.org/package=ctxR"><img src="Pictures/ctxR_hex.png" width="200" align="right" style="float: right; margin-left: 10px; margin-bottom: 10px;"/></a>
 
 ## Introduction
 
-In this vignette, the [CTX Exposure API](https://api-ccte.epa.gov/docs/exposure.html) will be explored. 
+
+In this vignette, the [CTX Exposure API](https://comptox.epa.gov/ctx-api/docs/exposure.html) will be explored. 
+
+<a href="https://CRAN.R-project.org/package=ctxR"><img src="Pictures/ctxR_hex.png" width="200" align="right" style="float: right; margin-left: 10px; margin-bottom: 10px;"/></a>
+
 
 Data provided by the Exposure API are broadly organized in five different areas: Functional Use, Product Data, List Presence, High Throughput Toxicokinetic (HTTK) parameters, and Exposure estimates. 
 
@@ -194,7 +198,7 @@ There is a single resource that returns `httk` model data when available.
 
 ```{r}
 bpa_httk <- get_httk_data(DTXSID = 'DTXSID7020182')
-head(bpa_httk)
+head(data.table(bpa_httk))
 ```
 
 
@@ -247,14 +251,113 @@ head(bpa_general_exposure)
 
 ```{r}
 bpa_demographic_exposure <- get_demographic_exposure_prediction(DTXSID = 'DTXSID7020182')
-bpa_demographic_exposure
+head(data.table(bpa_demographic_exposure))
 ```
 
+# Comptox Chemicals Dashboard (CCD)
+
+There are a variety of endpoints that provide access to data available from the CCD.
+
+## Product Data
+
+Retrieve the product use categories via `get_product_use_category()`.
+
+```{r}
+# Caffeine product use categories
+caffeine_product_use <- get_product_use_category('DTXSID0020232')
+head(data.table(caffeine_product_use))
+```
+
+Retrieve production volume data via `get_production_volume()`.
+
+```{r}
+# Caffeine production volume
+caffeine_prod_vol <- get_production_volume('DTXSID0020232')
+data.table(caffeine_prod_vol)
+```
+
+
+## Biomonitoring data
+
+Retrieve biomonitoring data via `get_biomonitoring_data()`.
+
+```{r}
+# BPA biomonitoring data
+bpa_biom <- get_biomonitoring_data('DTXSID7020182')
+head(data.table(bpa_biom))
+```
+
+## Chemical use and weight fractions
+
+Retrieve general use keywords via `get_general_use_keywords()`.
+
+```{r}
+# BPA general use keywords
+bpa_gen_use <- get_general_use_keywords('DTXSID7020182')
+head(data.table(bpa_gen_use))
+```
+
+Retrieve functional use via `get_reported_functional_use()`.
+
+```{r}
+# BPA reported functional use
+bpa_reported_use <- get_reported_functional_use('DTXSID7020182')
+head(data.table(bpa_reported_use))
+```
+
+Retrieve chemical weight fractions via `get_chemical_weight_fraction()`.
+
+```{r}
+# BPA chemical weight fractions
+bpa_weight_fractions <- get_chemical_weight_fraction('DTXSID7020182')
+head(data.table(bpa_weight_fractions))
+```
+
+# Multimedia Database (MMDB)
+
+There are several endpoints that provide access to data from the MMDB. 
+
+## Medium Categories
+
+First, one can retrieve the MMDB medium categories using `get_medium_categories()`.
+
+```{r}
+medium_categories <- get_medium_categories()
+head(medium_categories)
+```
+
+## Single Sample records
+
+Single sample records from MMDB can be retrieved either by DTXSID or by medium.
+
+```{r}
+# Data on methylphenanthrene
+methylphenanthrene <- get_single_sample_records_by_dtxsid(DTXSID = 'DTXSID001025673')
+head(data.table(methylphenanthrene))
+
+# Data from soil
+indoor_air <- get_single_sample_records_by_medium(Medium = 'indoor air')
+head(data.table(indoor_air$data))
+```
+
+## Aggregate Records
+
+Aggregate records from MMDB can also be retrieved either by DTXSID or by medium.
+
+```{r}
+# Data on caffeine
+caffeine_agg <- get_aggregate_records_by_dtxsid(DTXSID = 'DTXSID0020232')
+head(data.table(caffeine_agg))
+
+# Data from soil
+indoor_air_agg <- get_aggregate_records_by_medium(Medium = 'indoor air')
+head(data.table(indoor_air_agg$data))
+```
 
 ## Batch Search
 
 
-There are batch search versions for several endpoints that gather data specific to a chemical. Namely, `get_exposure_functional_use_batch()`, `get_exposure_functional_use_probability()`, `get_exposure_product_data_batch()`, `get_exposure_list_presence_tags_by_dtxsid_batch()`, `get_general_exposure_prediction_batch()`, and `get_demographic_exposure_prediction_batch()`. The function `get_exposure_functional_use_probability()` returns a data.table with each row corresponding to a unique chemical and each column representing a functional use category associated to at least one input chemical. The other batch functions return a named list of data.frames or data.tables, the names corresponding to the unique chemicals input and the data.frames or data.tables corresponding to the information for each individual chemical.
+There are batch search versions for several endpoints that gather data specific to a chemical. Namely, `get_exposure_functional_use_batch()`, `get_exposure_functional_use_probability()`, `get_exposure_product_data_batch()`, `get_exposure_list_presence_tags_by_dtxsid_batch()`, `get_general_exposure_prediction_batch()`, `get_demographic_exposure_prediction_batch()`, `get_product_use_categories_batch()`, `get_production_volume_batch()`, `get_biomonitoring_data_batch()`, `get_general_use_keywords_batch()`, `get_reported_functional_use_batch()`, `get_chemical_weight_fraction_batch()`,  `get_single_sample_records_by_dtxsid_batch()`, `get_single_sample_records_by_medium_batch()`, `get_aggregate_records_by_dtxsid_batch()`, and `get_aggregate_records_by_medium_batch()`. The function `get_exposure_functional_use_probability()` returns a data.table with each row corresponding to a unique chemical and each column representing a functional use category associated to at least one input chemical. The other batch functions return a named list of data.frames or data.tables (somtimes with additional meta data), the names corresponding to the unique chemicals input and the data.frames or data.tables corresponding to the information for each individual chemical.
 
 
 # Conclusion

@@ -57,7 +57,7 @@ registerS3method(
 
 ## Introduction
 
-In this vignette, [CTX Hazard API](https://api-ccte.epa.gov/docs/hazard.html) will be explored. 
+In this vignette, [CTX Hazard API](https://comptox.epa.gov/ctx-api/docs/hazard.html) will be explored. 
 
 Data for the Hazard API come from the Toxicity Value Database [(ToxValDB)](https://cfpub.epa.gov/si/si_public_record_Report.cfm?dirEntryId=344315&Lab=NCCT). ToxValDB includes data on thousands of chemicals from tens of thousands of records, with an emphasis on quantitative estimates of relevant points-of-departure from in vivo toxicology studies, such as no- and low-observable adverse effect levels, screening levels, reference doses, tolerable daily intake, etc. 
 
@@ -81,21 +81,6 @@ Several ctxR functions can be used to access the CTX Hazard API data, as describ
 hazard_by_dtxsid <- get_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
 ```
 
-## Get Human Hazard Data by DTXSID
-
-`get_human_hazard_by_dtxsid()` retrieves only human hazard data.
-
-```{r ctxR human hazard, message=FALSE, eval=FALSE}
-human_hazard_by_dtxsid <- get_human_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
-```
-
-## Get EcoTox Hazard Data by DTXSID
-
-`get_ecotox_hazard_by_dtxsid()` retrieves only ecological toxicity hazard data.
-
-```{r ctxR ecotox hazard, message=FALSE, eval=FALSE}
-ecotox_hazard_by_dtxsid <- get_ecotox_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
-```
 
 # Skin Eye Resource
 
@@ -131,7 +116,7 @@ genetox_details <- get_genetox_details(DTXSID = 'DTXSID7020182')
 
 The fourth Drinking Water Contaminant Candidate List (CCL4) is a set of chemicals that "...are not subject to any proposed or promulgated national primary drinking water regulations, but are known or anticipated to occur in public water systems...." Moreover, this list "...was announced on November 17, 2016. The CCL 4 includes 97 chemicals or chemical groups and 12 microbial contaminants...." The National-Scale Air Toxics Assessments (NATA) is "... EPA's ongoing comprehensive evaluation of air toxics in the United States... a state-of-the-science screening tool for State/Local/Tribal agencies to prioritize pollutants, emission sources and locations of interest for further study in order to gain a better understanding of risks... use general information about sources to develop estimates of risks which are more likely to overestimate impacts than underestimate them...."  
 
-These lists can be found in the CCD at [CCL4](https://comptox.epa.gov/dashboard/chemical-lists/CCL4) with additional information at [CCL4 information](https://www.epa.gov/ccl/contaminant-candidate-list-4-ccl-4-0) and [NATADB](https://comptox.epa.gov/dashboard/chemical-lists/NATADB) with additional information at [NATA information](https://www.epa.gov/national-air-toxics-assessment). The quotes from the previous paragraph were excerpted from list detail descriptions found using the CCD links.
+These lists can be found in the CCD with additional information at [CCL4 information](https://www.epa.gov/ccl/contaminant-candidate-list-4-ccl-4-0) and  [NATA information](https://www.epa.gov/national-air-toxics-assessment). The quotes from the previous paragraph were excerpted from list detail descriptions found on the CCD.
 
 In this example use case, hazard data will be compared between a water contaminant priority and an air toxics list. 
 
@@ -214,9 +199,9 @@ ccl4_genetox_details <- get_genetox_details_batch(DTXSID = ccl4$dtxsid)
 natadb_genetox_details <- get_genetox_details_batch(DTXSID = natadb$dtxsid)
 ```
 
-If inspecting the first chemical in each set of results, DTXSID0020153, notice that the information is identical in each case as this information is chemical specific and not chemical list specific.
+If inspecting the first chemical in each set of results, DTXSID0020153, notice that the information is identical in each case as this information is chemical specific and not chemical list specific, though ordered slightly differently.
 ```{r}
-identical(ccl4_genetox_details[dtxsid %in% 'DTXSID0020153', ], 
+all.equal(ccl4_genetox_details[dtxsid %in% 'DTXSID0020153', ], 
           natadb_genetox_details[dtxsid %in% 'DTXSID0020153', ])
 ```
 
@@ -248,7 +233,7 @@ natadb_genetox_details[assayCategory == 'ND', .N, by = .(assayType)]
 natadb_genetox_details[assayCategory == 'in vivo', .N, by = .(assayType)]
 ```
 
-Observe that there are 90 unique assays for CCl4 and 114 unique assays for NATADB. The different assay categories are "in vitro", "ND", and "in vivo", with 65 unique "in vitro" assays for CCl4 and 83 for NATADB, 3 unique "ND" assays for CCL4 and 3 for NATADB, and 22 unique "in vivo" assays for CCL4 and 28 for NATADB.
+Observe that there are 87 unique assays for CCl4 and 113 unique assays for NATADB. The different assay categories are "in vitro", "ND", and "in vivo", with 62 unique "in vitro" assays for CCl4 and 82 for NATADB, 2 unique "ND" assays for CCL4 and 2 for NATADB, and 23 unique "in vivo" assays for CCL4 and 29 for NATADB.
 
 One may be interested in looking at the number of chemicals for which an assay resulted in a positive or negative result. To assess this, group by `assayResult` and determine the number of unique `dtxsid` values associated with each `assayResult` value.
 
@@ -258,7 +243,7 @@ natadb_genetox_details[, .(DTXSIDs = length(unique(dtxsid))),
                        by = .(assayResult)]
 ```
 
-For CCL4, there are 64 unique chemicals that have a negative assay result, 53 that have a positive result, and 15 that have an equivocal result. For NATADB, there are 141 unique chemicals that have a negative assay result, 130 that have a positive result, and 48 that have an equivocal result. Observe that since there are 72 unique `dtxsid` values with assay results in CCL4 and 153 in NATADB, there are several chemicals that have multiple assay results.
+For CCL4, there are 63 unique chemicals that have a negative assay result, 53 that have a positive result, and 14 that have an equivocal result. For NATADB, there are 139 unique chemicals that have a negative assay result, 129 that have a positive result, and 47 that have an equivocal result. Observe that since there are 71 unique `dtxsid` values with assay results in CCL4 and 153 in NATADB, there are several chemicals that have multiple assay results.
 
 Next, determine the chemicals from each chemical list that are known to have genotoxic effects. For this, examine which chemicals produce at least one positive response in the `assayResult` column.
 
@@ -278,24 +263,8 @@ ccl4_genetox_details[dtxsid == 'DTXSID0020153' & assayResult == 'positive',
                      .(Number_of_assays = .N), by = .(assayType)][order(-Number_of_assays),]
 ```
 
-There were five assays that produced a negative result, 22 that produced a positive result, and one that produced an equivocal result. Of the 22 positive assays, "bacterial reverse mutation assay" and "Ames" were the most numerous, with three each.
+There were five assays that produced a negative result, 20 that produced a positive result, and one that produced an equivocal result. Of the 22 positive assays, "bacterial reverse mutation assay" and "Ames" are among those that are most numerous, with three each.
 
-## Review Hazard Data for Chemical Lists
-
-Hazard data associated with the chemicals in each chemical list can be retrieved. For each chemical, there are potentially hundreds of rows of hazard data, so the returned results will be much larger than in most other API endpoints. We model how one would structure such a query of the chemicals in CCL4 and NATADB, and leave it to the reader to explore the data in a similar fashion to the previous examples.
-
-```{r, eval = FALSE}
-ccl4_hazard <- get_hazard_by_dtxsid_batch(DTXSID = ccl4$dtxsid)
-natadb_hazard <- get_hazard_by_dtxsid_batch(DTXSID = natadb$dtxsid)
-```
-
-Next, it may be helpful to examine the dimensions and column names of the output.
-```{r, eval = FALSE, fig.align='center',class.source="scroll-300",message=FALSE}
-dim(ccl4_hazard)
-dim(natadb_hazard)
-colnames(ccl4_hazard)
-head(ccl4_hazard)
-```
 
 # Conclusion
 

@@ -33,7 +33,7 @@ categories that have probability of 0
 Retrieve exposure functional use probability data batch
 }
 \examples{
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 # Pull exposure functional use probability data for multiple chemicals
 dtxsid <- c('DTXSID7020182', 'DTXSID2021315')
 dtxsid_func_use_prob <- get_exposure_functional_use_batch(DTXSID = dtxsid)

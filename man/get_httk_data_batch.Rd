@@ -30,7 +30,7 @@ A named list of httk data corresponding to the input chemicals
 Retrieve httk data via batch search
 }
 \examples{
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 # Retrieve information for BPA and Caffeine
 dtxsids <- c('DTXSID7020182', 'DTXSID0020232')
 httk_data <- get_httk_data_batch(DTXSID = dtxsids)

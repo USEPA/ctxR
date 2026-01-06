@@ -27,7 +27,7 @@ A data.table of httk data for the given input chemical.
 Get httk data
 }
 \examples{
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 # Pull httk data for BPA
 bpa_httk <- get_httk_data(DTXSID = 'DTXSID7020182')
 \dontshow{\}) # examplesIf}

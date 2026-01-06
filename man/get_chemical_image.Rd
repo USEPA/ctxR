@@ -42,7 +42,7 @@ displaying this, one may use \code{png::writePNG()} or
 Get image file by DTXSID or DTXCID
 }
 \examples{
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 # Pull chemical image for BPA by dtxsid
 bpa_image_matrix <- get_chemical_image(DTXSID = 'DTXSID7020182')
 if (requireNamespace("countcolors", quietly = TRUE)){
