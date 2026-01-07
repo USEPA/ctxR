@@ -599,7 +599,24 @@ get_total_assay_count <- function(API_key = NULL,
   return()
 }
 
+#' Get list of chemical DTXSIDs for a given assay
+#'
+#' @param AEID The assay endpoint identifier AEID
+#' @param Projection The format and DTXSID data returned. Allowed values are
+#'   'dtxsidonly' and 'ccdassaydetails'. The default format
+#'   is 'dtxsidonly'.
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
+#'
+#' @returns A list of DTXSIDs or data.frame of assay information.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' dtxsid_list <- get_chemicals_by_assay(AEID = 3032)
 get_chemicals_by_assay <- function(AEID = NULL,
+                                   Projection = 'dtxsidonly',
                                    API_key = NULL,
                                    Server = bioactivity_api_server,
                                    verbose = FALSE){
@@ -611,7 +628,32 @@ get_chemicals_by_assay <- function(AEID = NULL,
     warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
-  response <- httr::GET(url = paste0(Server, '/assay/chemicals/search/by-aeid/', AEID),
+  projection_entries <- c('dtxsidonly',
+                          'ccdassaydetails')
+  index <- 1
+  if (!is.character(Projection)){
+    warning('Setting `Projection` to `dtxsidonly`')
+    Projection <- 'dtxsidonly'
+  } else {
+    Projection <- tolower(Projection)
+    index <- which(projection_entries %in% Projection)
+    if (length(index) == 0){
+      stop('Please input a correct value for `Projection`!')
+    } else if (length(index) > 1){
+      warning('Setting `Projection` to `dtxsidonly`')
+      Projection <- 'dtxsidonly'
+      index <- 1
+    } else {
+      if (length(Projection) > 1){
+        message(paste0('Using `Projection` = ', projection_entries[index], '!'))
+      }
+      Projection <- projection_entries[index]
+    }
+  }
+
+  projection_url <- paste0('?projection=', Projection)
+
+  response <- httr::GET(url = paste0(Server, '/assay/chemicals/search/by-aeid/', AEID, projection_url),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -621,7 +663,8 @@ get_chemicals_by_assay <- function(AEID = NULL,
     stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
-    return(httr::content(response, as = 'text', encoding = "UTF-8"))
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+    return(res)
   } else {
     if (verbose){
       print('The request was successful but there is no information to return...')
