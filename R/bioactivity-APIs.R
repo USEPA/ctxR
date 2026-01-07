@@ -267,6 +267,52 @@ get_single_concentration <- function(AEID = NULL,
   return()
 }
 
+#' Get assay summary data by gene symbol
+#'
+#' @param geneSymbol The gene symbol.
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @returns A data.frame of assay summary data for applicable assays for
+#' requested offical gene symbol.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Retrieve summary data for gene symbol TUBA1A
+#' summary_tuba1a <- get_assay_summary_by_gene(geneSymbol = 'TUBA1A')
+#' summary_tuba1a
+get_assay_summary_by_gene <- function(geneSymbol = NULL,
+                                      API_key = NULL,
+                                      Server = bioactivity_api_server,
+                                      verbose = FALSE){
+  if (is.null(geneSymbol))
+    stop('Please input an geneSymbol!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <-  httr::GET(url = paste0(Server, '/assay/search/by-gene/', geneSymbol),
+                         httr::add_headers(.headers = c(
+                           'Content-Type' =  'application/json',
+                           'x-api-key' = API_key)
+                         )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+    return(res)
+  } else {
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
 #' Retrieve all assays
 #'
 #' @param Projection The format and assay data returned. Allowed values are
