@@ -182,6 +182,91 @@ get_bioactivity_summary <- function(AEID = NULL,
 
 }
 
+#' Get single concentration data
+#'
+#' @param AEID The assay endpoint identifier AEID
+#' @param Projection The format and concentration data returned. Allowed values
+#'   are 'single-conc' and 'ccd-single-conc'. The default format is
+#'   'single-conc'.
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be
+#'   given.
+#'
+#' @returns A data.frame of single concentration screening data for requested
+#'   ToxCast assay component endpoint ID (AEID).
+#' @export
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Get single conc data for AEID 3032 in different projections
+#' aeid_3032 <- get_single_concentration(AEID = 3032)
+#' aeid_ccd_3032 <- get_single_concentration(AEID = 3032,
+#'                                           Projection = 'ccd-single-conc')
+get_single_concentration <- function(AEID = NULL,
+                                     Projection = 'single-conc',
+                                     API_key = NULL,
+                                     Server = bioactivity_api_server,
+                                     verbose = FALSE){
+  if (is.null(AEID))
+    stop('Please input an AEID!')
+
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  projection_entries <- c('single-conc',
+                          'ccd-single-conc')
+  index <- 1
+  if (!is.character(Projection)){
+    warning('Setting `Projection` to `single-conc`')
+    Projection <- 'single-conc'
+  } else {
+    Projection <- tolower(Projection)
+    index <- which(projection_entries %in% Projection)
+    if (length(index) == 0){
+      stop('Please input a correct value for `Projection`!')
+    } else if (length(index) > 1){
+      warning('Setting `Projection` to `single-conc`')
+      Projection <- 'single-conc'
+      index <- 1
+    } else {
+      if (length(Projection) > 1){
+        message(paste0('Using `Projection` = ', projection_entries[index], '!'))
+      }
+      Projection <- projection_entries[index]
+    }
+  }
+
+  projection_url <- paste0('?projection=', Projection)
+
+  response <-  httr::GET(url = paste0(Server, '/assay/single-conc/search/by-aeid/', AEID, projection_url),
+                         httr::add_headers(.headers = c(
+                           'Content-Type' =  'application/json',
+                           'x-api-key' = API_key)
+                         )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+    df_col_names <- names(res)[which(lapply(res, typeof) == 'list')]
+    if (length(df_col_names)) {
+      for (i in 1:length(df_col_names)){
+        res <- res |> tidyr::unnest(df_col_names[[i]], keep_empty = TRUE)
+      }
+     }
+
+    return(res)
+  } else {
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
 #' Retrieve all assays
 #'
 #' @param Projection The format and assay data returned. Allowed values are
