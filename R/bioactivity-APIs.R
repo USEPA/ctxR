@@ -313,6 +313,54 @@ get_assay_summary_by_gene <- function(geneSymbol = NULL,
   }
   return()
 }
+
+#' Get AEID by assay component endpoint name
+#'
+#' @param endpoint The assay component endpoint name.
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @returns An integer corresponding to the AEID of the given assay endpoint.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Retrieve AEID for end point 'APR_HepG2_MicrotubuleCSK_1hr'
+#' aeid <- get_aeid_by_endpoint(endpoint = 'APR_HepG2_MicrotubuleCSK_1hr')
+#' aeid
+get_aeid_by_endpoint <- function(endpoint = NULL,
+                                      API_key = NULL,
+                                      Server = bioactivity_api_server,
+                                      verbose = FALSE){
+  if (is.null(endpoint))
+    stop('Please input an endpoint!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <-  httr::GET(url = paste0(Server, '/assay/search/by-endpoint/?endpoint=', endpoint),
+                         httr::add_headers(.headers = c(
+                           'Content-Type' =  'application/json',
+                           'x-api-key' = API_key)
+                         )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+    return(res)
+  } else {
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
+
 #' Retrieve all assays
 #'
 #' @param Projection The format and assay data returned. Allowed values are
