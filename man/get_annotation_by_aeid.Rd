@@ -6,6 +6,7 @@
 \usage{
 get_annotation_by_aeid(
   AEID = NULL,
+  Projection = "assay-all",
   API_key = NULL,
   Server = bioactivity_api_server,
   verbose = FALSE
@@ -14,14 +15,20 @@ get_annotation_by_aeid(
 \arguments{
 \item{AEID}{The assay endpoint identifier AEID}
 
+\item{Projection}{The format and assay data returned. Allowed values are
+'ccd-assay-annotation', 'ccd-assay-gene', 'ccd-assay-citations',
+'ccd-assay-tcpl', 'ccd-assay-reagents', and 'assay-all'. The default format
+is 'assay-all'.}
+
 \item{API_key}{The user-specific API key}
 
 \item{Server}{The root address for the API endpoint}
 
-\item{verbose}{A logical indicating if some “progress report” should be given.}
+\item{verbose}{A logical indicating if some “progress report” should be
+given.}
 }
 \value{
-A data.frame containing the annotated assays corresponding to the
+A data.table containing the annotated assays corresponding to the
 input AEID parameter
 }
 \description{
