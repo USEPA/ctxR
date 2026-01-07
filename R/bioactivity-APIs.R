@@ -447,17 +447,23 @@ get_all_assays <- function(Projection = 'assay-all',
 #' Retrieve annotations for AEID
 #'
 #' @param AEID The assay endpoint identifier AEID
+#' @param Projection The format and assay data returned. Allowed values are
+#'   'ccd-assay-annotation', 'ccd-assay-gene', 'ccd-assay-citations',
+#'   'ccd-assay-tcpl', 'ccd-assay-reagents', and 'assay-all'. The default format
+#'   is 'assay-all'.
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
-#' @param verbose A logical indicating if some “progress report” should be given.
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
 #'
-#' @return A data.frame containing the annotated assays corresponding to the
+#' @return A data.table containing the annotated assays corresponding to the
 #'   input AEID parameter
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Retrieve annotation for an assay
 #' annotation <- get_annotation_by_aeid(AEID = 159)
 get_annotation_by_aeid <- function(AEID = NULL,
+                                   Projection = 'assay-all',
                                    API_key = NULL,
                                    Server = bioactivity_api_server,
                                    verbose = FALSE){
@@ -469,7 +475,36 @@ get_annotation_by_aeid <- function(AEID = NULL,
     warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
-  response <- httr::GET(url = paste0(Server, '/assay/search/by-aeid/', AEID),
+  projection_entries <- c('assay-all',
+                          'ccd-assay-annotation',
+                          'ccd-assay-gene',
+                          'ccd-assay-citations',
+                          'ccd-assay-tcpl',
+                          'ccd-assay-reagents')
+  index <- 1
+  if (!is.character(Projection)){
+    warning('Setting `Projection` to `assay-all`')
+    Projection <- 'assay-all'
+  } else {
+    Projection <- tolower(Projection)
+    index <- which(projection_entries %in% Projection)
+    if (length(index) == 0){
+      stop('Please input a correct value for `Projection`!')
+    } else if (length(index) > 1){
+      warning('Setting `Projection` to `assay-all`')
+      Projection <- 'assay-all'
+      index <- 1
+    } else {
+      if (length(Projection) > 1){
+        message(paste0('Using `Projection` = ', projection_entries[index], '!'))
+      }
+      Projection <- projection_entries[index]
+    }
+  }
+
+  projection_url <- ifelse(index == 1, '', paste0('?projection=', Projection))
+
+  response <- httr::GET(url = paste0(Server, '/assay/search/by-aeid/', AEID, projection_url),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -481,10 +516,25 @@ get_annotation_by_aeid <- function(AEID = NULL,
   if(response$status_code == 200){
     if (length(response$content) > 0){
       res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
-      for (i in 1:length(res)){
-        if (is.null(res[[i]])) res[[i]] <- NA # set any nulls to NA
-        if (length(res[[i]]) > 1) {
-          res[[i]] <- list(res[[i]]) # put lengths > 1 into a list to be just length 1, will unnest after
+      if (length(res) == 0){
+        return(res)
+      }
+
+      # Note which columns have lists of data.frames
+      df_col_names <- names(res)[which(lapply(res, typeof) == 'list')]
+
+      # for (i in 1:length(res)){
+      #   if (is.null(res[[i]])) res[[i]] <- NA # set any nulls to NA
+      #   if (length(res[[i]]) > 1) {
+      #     res[[i]] <- list(res[[i]]) # put lengths > 1 into a list to be just length 1, will unnest after
+      #   }
+      # }
+
+      # Fix nested data.frames
+      #df_col_names <- names(res)[which(lapply(res, typeof) == 'list')]
+      if (length(df_col_names) & index != 4) {
+        for (i in 1:length(df_col_names)){
+          res <- res |> tidyr::unnest(df_col_names[[i]], keep_empty = TRUE, names_sep = '_')
         }
       }
 
