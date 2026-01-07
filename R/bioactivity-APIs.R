@@ -557,6 +557,48 @@ get_annotation_by_aeid <- function(AEID = NULL,
 
 }
 
+#' Get total assay count
+#'
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
+#'
+#' @returns An integer indicating the total number of assays.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' assay_count <- get_total_assay_count()
+#' print(assay_count)
+get_total_assay_count <- function(API_key = NULL,
+                                  Server = bioactivity_api_server,
+                                  verbose = FALSE){
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/assay/count'),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(httr::content(response, as = 'text', encoding = "UTF-8"))
+  } else {
+    if (verbose){
+      print('The request was successful but there is no information to return...')
+    }
+  }
+  return()
+}
+
 get_chemicals_by_assay <- function(AEID = NULL,
                                    API_key = NULL,
                                    Server = bioactivity_api_server,
