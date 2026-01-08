@@ -118,6 +118,7 @@ get_bioactivity_details <- function(DTXSID = NULL,
 
 #' Retrieve bioactivity summary for AEID
 #'
+#' @param DTXSID The chemical identifier DTXSID
 #' @param AEID The assay endpoint indentifier AEID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
@@ -129,21 +130,36 @@ get_bioactivity_details <- function(DTXSID = NULL,
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull an assay bioactivity summary
 #' aeid_1386 <- get_bioactivity_summary(AEID = 1386)
-get_bioactivity_summary <- function(AEID = NULL,
+get_bioactivity_summary <- function(DTXSID = NULL,
+                                    AEID = NULL,
                                     API_key = NULL,
                                     Server = bioactivity_api_server,
                                     verbose = FALSE){
   #print("This is broken currently!")
   #return()
-  if (is.null(AEID))
-    stop('Please input an AEID!')
+
+  if (all(sapply(list(DTXSID, AEID), is.null)))
+    stop('Please input a DTXSID or AEID!')
+  #else if (!is.null(DTXSID) & !is.null(AEID))
+  else if (length(which(!sapply(list(DTXSID, AEID), is.null))) > 1)
+    stop('Please input a value for only one of DTXSID or AEID but not multiple!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
   if (is.null(API_key) & verbose){
     warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
-  response <- httr::GET(url = paste0(Server, '/data/summary/search/by-aeid/', AEID),
+  data_index <- which(!sapply(list(DTXSID, AEID), is.null))
+  data_endpoint <- paste0('by-', c('dtxsid', 'aeid')[data_index])
+  data_input <- unlist(list(DTXSID, AEID)[data_index])
+
+  if (verbose){
+    print(data_index)
+    print(data_endpoint)
+    print(data_input)
+  }
+
+  response <- httr::GET(url = paste0(Server, '/data/summary/search/', data_endpoint, '/', data_input),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
