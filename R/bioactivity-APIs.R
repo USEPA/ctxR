@@ -253,6 +253,62 @@ get_bioactivity_summary_by_tissue <- function(DTXSID = NULL,
 
 }
 
+#' Get administered equivalent dose (AED) data for a given chemical
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be
+#'   given.
+#'
+#' @returns A data.frame of AED data derived from ToxCast in virto bioactivity
+#'   data for given DTXSID.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Get data for DTXSID5021209
+#' aed <- get_aed_data(DTXSID = 'DTXSID5021209')
+#' aed
+get_aed_data <- function(DTXSID = NULL,
+                         API_key = NULL,
+                         Server = bioactivity_api_server,
+                         verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input an DTXSID!')
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <-  httr::GET(url = paste0(Server, '/data/aed/search/by-dtxsid/', DTXSID),
+                         httr::add_headers(.headers = c(
+                           'Content-Type' =  'application/json',
+                           'x-api-key' = API_key)
+                         )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+    df_col_names <- names(res)[which(lapply(res, typeof) == 'list')]
+
+    if (length(df_col_names)) {
+      res <- res |> tidyr::unnest(cols = df_col_names)
+      # for (i in 1:length(df_col_names)){
+      #   res <- res |> tidyr::unnest(df_col_names[[i]], keep_empty = TRUE)
+      # }
+    }
+
+    return(res)
+  } else {
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
 #' Get single concentration data
 #'
 #' @param AEID The assay endpoint identifier AEID
