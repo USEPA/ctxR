@@ -198,6 +198,61 @@ get_bioactivity_summary <- function(DTXSID = NULL,
 
 }
 
+#' Get summary data by DTXSID and assay tissue origin
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param Tissue The tissue of origin for the assay
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
+#'
+#' @returns A data.frame of summary data for the given chemical and tissue.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Get data for DTXSID7020192 and liver
+#' liver_bpa <- get_bioactivity_summary_by_tissue(DTXSID = 'DTXSID7020182',
+#'                                                Tissue = 'liver')
+#' liver_bpa
+#'
+get_bioactivity_summary_by_tissue <- function(DTXSID = NULL,
+                                              Tissue = NULL,
+                                              API_key = NULL,
+                                              Server = bioactivity_api_server,
+                                              verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input an DTXSID!')
+
+  if (is.null(Tissue))
+    stop('Please input a Tissue!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <-  httr::GET(url = paste0(Server, '/data/summary/search/by-tissue/?dtxsid=', DTXSID, '&tissue=', Tissue),
+                         httr::add_headers(.headers = c(
+                           'Content-Type' =  'application/json',
+                           'x-api-key' = API_key)
+                         )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+
+    return(res)
+  } else {
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+
+}
+
 #' Get single concentration data
 #'
 #' @param AEID The assay endpoint identifier AEID
