@@ -848,6 +848,70 @@ get_analytical_qc <- function(DTXSID = NULL,
 
 }
 
+#' Get ToxCast-mapped AOP data
+#'
+#' @param AEID The assay endpoint identifier AEID
+#' @param KeyEvent The Key Event number
+#' @param EntrezGeneId The Entrez Gene ID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be
+#'
+#' @returns a data.frame of ToxCast-mapped AOP data for the given input.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # By AEID, Key Event, and Entrez Gene ID
+#' aop_entrez <- get_aop_data(EntrezGeneId = 196)
+#' aop_entrez
+#' aop_ke <- get_aop_data(KeyEvent = 18)
+#' aop_ke
+#' aop_aeid <- get_aop_data(AEID = 63)
+#' aop_aeid
+get_aop_data <- function(AEID = NULL,
+                         KeyEvent = NULL,
+                         EntrezGeneId = NULL,
+                         API_key = NULL,
+                         Server = bioactivity_api_server,
+                         verbose = FALSE){
+
+  if (all(sapply(list(AEID, KeyEvent, EntrezGeneId), is.null)))
+    stop('Please input a AEID, KeyEvent, or EntrezGeneId!')
+
+  else if (length(which(!sapply(list(AEID, KeyEvent, EntrezGeneId), is.null))) > 1)
+    stop('Please input a value for only one of AEID, KeyEvent, or EntrezGeneId, but not multiple!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  data_index <- which(!sapply(list(AEID, KeyEvent, EntrezGeneId), is.null))
+  data_endpoint <- paste0('by-', c('toxcast-aeid', 'event-number', 'entrez-gene-id')[data_index])
+  data_input <- unlist(list(AEID, KeyEvent, EntrezGeneId)[data_index])
+
+  response <- httr::GET(url = paste0(Server, '/aop/search/', data_endpoint, '/', data_input),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' = 'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+
+    return(res)
+  } else {
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
 #' Bioactivity API Endpoint status
 #'
 #' @return Status of Bioactivity API Endpoints
