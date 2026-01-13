@@ -800,6 +800,109 @@ get_chemicals_by_assay <- function(AEID = NULL,
   return()
 }
 
+#' Get bioactivity model predictions by DTXSID
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
+#'
+#' @returns A data.frame of ToxCast model prediction data for given DTXSID.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Get predictions for DTXSID70201082
+#' bpa_predictions <- get_predictions_by_dtxsid(DTXSID = 'DTXSID7020182')
+#' bpa_predictions
+get_predictions_by_dtxsid <- function(DTXSID = NULL,
+                                     API_key = NULL,
+                                     Server = bioactivity_api_server,
+                                     verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input an DTXSID!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/models/search/by-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+    return(res)
+  } else {
+    if (verbose){
+      print('The request was successful but there is no information to return...')
+    }
+  }
+  return()
+}
+
+#' Get bioactivity model predictions by DTXSID and Model
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param Model The ToxCast model type. Model type options include: 'CERAPP
+#'   Potency Level (Consensus)', 'CERAPP Potency Level (From Literature)',
+#'   'COMPARA (Consensus)', and 'ToxCast Pathway Model (AUC)'.
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
+#'
+#' @returns A data.frame of ToxCast model predictions for the given DTXSID and
+#'   Model.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Get predictions for DTXSID70201082 and CERAPP models
+#' bpa_predictions <- get_predictions_by_dtxsid_and_model(DTXSID = 'DTXSID7020182',
+#'                                                        Model = 'CERAPP')
+#' bpa_predictions
+get_predictions_by_dtxsid_and_model <- function(DTXSID = NULL,
+                                                Model = NULL,
+                                                API_key = NULL,
+                                                Server = bioactivity_api_server,
+                                                verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input an DTXSID!')
+
+  if (is.null(Model))
+    stop('Please input an Model!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/models/search/?dtxsid=', DTXSID, '&model=', prepare_word(Model)),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+    return(res)
+  } else {
+    if (verbose){
+      print('The request was successful but there is no information to return...')
+    }
+  }
+  return()
+}
+
 #' Get analytical QC data for a chemical
 #'
 #' @param DTXSID The chemical identifier DTXSID
