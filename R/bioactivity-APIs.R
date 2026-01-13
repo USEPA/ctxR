@@ -951,6 +951,198 @@ get_analytical_qc <- function(DTXSID = NULL,
 
 }
 
+#' Retrieve assays by starting characters
+#'
+#' @param word A character string of an assay name
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
+#' @param top Limit the number of returned entries.
+#'
+#' @returns A data.frame of assay information for the given input.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Retrieve assays that start with the character string `ATG_S`
+#' atg_s_assays <- assay_starts_with(word = 'ATG_S')
+#' atg_s_assays
+assay_starts_with <- function(word = NULL,
+                              API_key = NULL,
+                              Server = bioactivity_api_server,
+                              verbose = FALSE,
+                              top = NULL){
+
+  if (is.null(word) || !is.character(word)){
+    stop('Please input a character value for word!')
+  }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if (!is.null(top)){
+    if (!is.numeric(top)) {
+      warning("Setting 'top' to NULL")
+      top <- NULL
+    } else {
+      top <- max(-1, as.integer(top))
+      if (top < 1){
+        warning("Setting 'top' to NULL")
+        top <- NULL
+      }
+    }
+  }
+
+  word <- prepare_word(word)
+  response <- httr::GET(url = paste0(Server, '/search/start-with/', word, ifelse(is.null(top), '', paste0("?top=", top))),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if (response$status == 401){
+    stop(httr::content(response)$detail)
+  }
+
+  if (response$status == 400) {
+    print(paste0('Found 0 results. Try adjusting the search parameters.'))
+  } else if (response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+
+  return()
+}
+
+#' Retrieve assays by exact match
+#'
+#' @param word A character string of an assay name
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
+#'
+#' @returns A data.frame of assay information for the given input.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Retrieve assays that match with the character string `ATG_STAT3_CIS`
+#' atg_stat3_cis_assay <- assay_equal(word = 'ATG_STAT3_CIS')
+#' atg_stat3_cis_assay
+assay_equal <- function(word = NULL,
+                        API_key = NULL,
+                        Server = bioactivity_api_server,
+                        verbose = FALSE){
+
+  if (is.null(word) || !is.character(word)){
+    stop('Please input a character value for word!')
+  }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  word <- prepare_word(word)
+
+  response <- httr::GET(url = paste0(Server, '/search/equal/', word),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if (response$status == 401){
+    stop(httr::content(response)$detail)
+  }
+
+  if (response$status == 400) {
+    print(paste0('Found 0 results. Try adjusting the search parameters.'))
+  } else if (response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+
+  return()
+
+}
+
+#' Retrieve assays by substring
+#'
+#' @param word A character string of an assay name
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
+#' @param top Limit the number of returned entries.
+#'
+#' @returns A data.frame of assay information for the given input.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Retrieve assays that contain with the character string `AT3_CIS`
+#' at3_cis_assays <- assay_contains(word = 'AT3_CIS')
+#' at3_cis_assays
+assay_contains <- function(word = NULL,
+                           API_key = NULL,
+                           Server = bioactivity_api_server,
+                           verbose = FALSE,
+                           top = NULL){
+
+  if (is.null(word) || !is.character(word)){
+    stop('Please input a character value for word!')
+  }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if (!is.null(top)){
+    if (!is.numeric(top)) {
+      warning("Setting 'top' to NULL")
+      top <- NULL
+    } else {
+      top <- max(-1, as.integer(top))
+      if (top < 0){
+        warning("Setting 'top' to NULL")
+        top <- NULL
+      }
+    }
+  }
+
+  word <- prepare_word(word)
+
+  response <- httr::GET(url = paste0(Server, '/search/contain/', word, ifelse(is.null(top), '', paste0("?top=", top))),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if (response$status == 401){
+    stop(httr::content(response)$detail)
+  }
+
+  if (response$status == 400) {
+    print(paste0('Found 0 results. Try adjusting the search parameters.'))
+  } else if (response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+
+  return()
+
+}
+
+
 #' Get ToxCast-mapped AOP data
 #'
 #' @param AEID The assay endpoint identifier AEID
@@ -958,7 +1150,7 @@ get_analytical_qc <- function(DTXSID = NULL,
 #' @param EntrezGeneId The Entrez Gene ID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
-#' @param verbose A logical indicating if some “progress report” should be
+#' @param verbose A logical indicating if some “progress report” should be given.
 #'
 #' @returns a data.frame of ToxCast-mapped AOP data for the given input.
 #' @export
