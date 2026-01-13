@@ -24,7 +24,7 @@ get_aop_data(
 
 \item{Server}{The root address for the API endpoint}
 
-\item{verbose}{A logical indicating if some “progress report” should be}
+\item{verbose}{A logical indicating if some “progress report” should be given.}
 }
 \value{
 a data.frame of ToxCast-mapped AOP data for the given input.
