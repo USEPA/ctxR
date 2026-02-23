@@ -265,6 +265,7 @@ ccl4[!(dtxsid %in% ccl4_genotox$dtxsid),
 #> 28:   DTXSID9032113 107534-96-3              Tebuconazole   C16H22ClN3O
 #> 29:   DTXSID9032329    741-58-2                 Bensulide  C14H24NO4PS3
 #>              dtxsid       casrn             preferredName    molFormula
+#>              <char>      <char>                    <char>        <char>
 natadb[!(dtxsid %in% natadb_genetox$dtxsid), 
        .(dtxsid, casrn, preferredName, molFormula)]
 #>             dtxsid        casrn             preferredName molFormula
@@ -622,6 +623,7 @@ ccl4_genetox_details[assayCategory == 'in vitro', .N, by = .(assayType)]
 #> 61: Aneuploidy, whole sex chr     1
 #> 62:          fluctuation test     1
 #>                     assayType     N
+#>                        <char> <int>
 ccl4_genetox_details[assayCategory == 'ND', .N, by = .(assayType)]
 #>     assayType     N
 #>        <char> <int>
@@ -654,6 +656,7 @@ ccl4_genetox_details[assayCategory == 'in vivo', .N, by = .(assayType)]
 #> 22:      DNA Covalent Binding    16
 #> 23: In Vivo Chromosome Aberra     1
 #>                     assayType     N
+#>                        <char> <int>
 
 natadb_genetox_details[, .N, by = .(assayCategory, assayType, assayResult)]
 #>      assayCategory                 assayType assayResult     N
@@ -761,6 +764,7 @@ natadb_genetox_details[assayCategory == 'in vitro', .N, by = .(assayType)]
 #> 81: mammalian cell gene mutat     1
 #> 82:     Mitotic recombination     1
 #>                     assayType     N
+#>                        <char> <int>
 natadb_genetox_details[assayCategory == 'ND', .N, by = .(assayType)]
 #>     assayType     N
 #>        <char> <int>
@@ -799,6 +803,7 @@ natadb_genetox_details[assayCategory == 'in vivo', .N, by = .(assayType)]
 #> 28:     mammalian comet assay     7
 #> 29: mammalian germ cell cytog     1
 #>                     assayType     N
+#>                        <char> <int>
 ```
 
 Observe that there are 87 unique assays for CCl4 and 113 unique assays

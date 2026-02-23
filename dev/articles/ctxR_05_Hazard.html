@@ -367,10 +367,10 @@ list of chemicals.</p>
 <p>Next, retrieve the list of chemicals associated with each list.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ccl4</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_chemicals_in_list.html">get_chemicals_in_list</a></span><span class="op">(</span><span class="st">'CCL4'</span><span class="op">)</span></span>
-<span><span class="va">ccl4</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">ccl4</span><span class="op">)</span></span>
+<span><span class="va">ccl4</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/data.table/man/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">ccl4</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">natadb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_chemicals_in_list.html">get_chemicals_in_list</a></span><span class="op">(</span><span class="st">'NATADB'</span><span class="op">)</span></span>
-<span><span class="va">natadb</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">natadb</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">natadb</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/data.table/man/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">natadb</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="review-genotoxicity-data-for-a-single-chemical">Review Genotoxicity Data for a Single Chemical<a class="anchor" aria-label="anchor" href="#review-genotoxicity-data-for-a-single-chemical"></a>
@@ -480,6 +480,7 @@ Chemicals missing genotoxicity data for each list are noted below.</p>
 <span><span class="co">#&gt; 28:   DTXSID9032113 107534-96-3              Tebuconazole   C16H22ClN3O</span></span>
 <span><span class="co">#&gt; 29:   DTXSID9032329    741-58-2                 Bensulide  C14H24NO4PS3</span></span>
 <span><span class="co">#&gt;              dtxsid       casrn             preferredName    molFormula</span></span>
+<span><span class="co">#&gt;              &lt;char&gt;      &lt;char&gt;                    &lt;char&gt;        &lt;char&gt;</span></span>
 <span><span class="va">natadb</span><span class="op">[</span><span class="op">!</span><span class="op">(</span><span class="va">dtxsid</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">natadb_genetox</span><span class="op">$</span><span class="va">dtxsid</span><span class="op">)</span>, </span>
 <span>       <span class="fu">.</span><span class="op">(</span><span class="va">dtxsid</span>, <span class="va">casrn</span>, <span class="va">preferredName</span>, <span class="va">molFormula</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="co">#&gt;             dtxsid        casrn             preferredName molFormula</span></span>
@@ -826,6 +827,7 @@ also examine the different numbers of <code>assayCategory</code> and
 <span><span class="co">#&gt; 61: Aneuploidy, whole sex chr     1</span></span>
 <span><span class="co">#&gt; 62:          fluctuation test     1</span></span>
 <span><span class="co">#&gt;                     assayType     N</span></span>
+<span><span class="co">#&gt;                        &lt;char&gt; &lt;int&gt;</span></span>
 <span><span class="va">ccl4_genetox_details</span><span class="op">[</span><span class="va">assayCategory</span> <span class="op">==</span> <span class="st">'ND'</span>, <span class="va">.N</span>, by <span class="op">=</span> <span class="fu">.</span><span class="op">(</span><span class="va">assayType</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="co">#&gt;     assayType     N</span></span>
 <span><span class="co">#&gt;        &lt;char&gt; &lt;int&gt;</span></span>
@@ -858,6 +860,7 @@ also examine the different numbers of <code>assayCategory</code> and
 <span><span class="co">#&gt; 22:      DNA Covalent Binding    16</span></span>
 <span><span class="co">#&gt; 23: In Vivo Chromosome Aberra     1</span></span>
 <span><span class="co">#&gt;                     assayType     N</span></span>
+<span><span class="co">#&gt;                        &lt;char&gt; &lt;int&gt;</span></span>
 <span></span>
 <span><span class="va">natadb_genetox_details</span><span class="op">[</span>, <span class="va">.N</span>, by <span class="op">=</span> <span class="fu">.</span><span class="op">(</span><span class="va">assayCategory</span>, <span class="va">assayType</span>, <span class="va">assayResult</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="co">#&gt;      assayCategory                 assayType assayResult     N</span></span>
@@ -965,6 +968,7 @@ also examine the different numbers of <code>assayCategory</code> and
 <span><span class="co">#&gt; 81: mammalian cell gene mutat     1</span></span>
 <span><span class="co">#&gt; 82:     Mitotic recombination     1</span></span>
 <span><span class="co">#&gt;                     assayType     N</span></span>
+<span><span class="co">#&gt;                        &lt;char&gt; &lt;int&gt;</span></span>
 <span><span class="va">natadb_genetox_details</span><span class="op">[</span><span class="va">assayCategory</span> <span class="op">==</span> <span class="st">'ND'</span>, <span class="va">.N</span>, by <span class="op">=</span> <span class="fu">.</span><span class="op">(</span><span class="va">assayType</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="co">#&gt;     assayType     N</span></span>
 <span><span class="co">#&gt;        &lt;char&gt; &lt;int&gt;</span></span>
@@ -1002,7 +1006,8 @@ also examine the different numbers of <code>assayCategory</code> and
 <span><span class="co">#&gt; 27:      DNA Covalent Binding     2</span></span>
 <span><span class="co">#&gt; 28:     mammalian comet assay     7</span></span>
 <span><span class="co">#&gt; 29: mammalian germ cell cytog     1</span></span>
-<span><span class="co">#&gt;                     assayType     N</span></span></code></pre></div>
+<span><span class="co">#&gt;                     assayType     N</span></span>
+<span><span class="co">#&gt;                        &lt;char&gt; &lt;int&gt;</span></span></code></pre></div>
 <p>Observe that there are 87 unique assays for CCl4 and 113 unique
 assays for NATADB. The different assay categories are “in vitro”, “ND”,
 and “in vivo”, with 62 unique “in vitro” assays for CCl4 and 82 for
