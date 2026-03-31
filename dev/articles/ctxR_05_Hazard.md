@@ -119,25 +119,25 @@ list of chemicals.
 options(width = 100)
 ccl4_information <- get_public_chemical_list_by_name('CCL4')
 print(ccl4_information, trunc.cols = TRUE)
-#>   visibility  id    type                                    label
-#> 1     PUBLIC 443 federal WATER|EPA: Chemical Contaminants - CCL 4
-#>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           longDescription
-#> 1 The Contaminant Candidate List (CCL) is a list of contaminants that, at the time of publication, are not subject to any proposed or promulgated national primary drinking water regulations, but are known or anticipated to occur in public water systems. Contaminants listed on the CCL may require future regulation under the Safe Drinking Water Act (SDWA). EPA announced the <a href='https://www.epa.gov/ccl/contaminant-candidate-list-4-ccl-4-0' target='_blank'>fourth Drinking Water Contaminant Candidate List (CCL 4)</a> on November 17, 2016. The CCL 4 includes 97 chemicals or chemical groups and 12 microbial contaminants. The group of cyanotoxins on CCL 4 includes, but is not limited to: anatoxin-a, cylindrospermopsin, microcystins, and saxitoxin. The CCL Chemical Candidate Lists are versioned iteratively and this description navigates between the various versions of the lists. The list of substances displayed below represents only the chemical CCL 4 contaminants. For the versioned lists, please use the hyperlinked lists below.<br/><br/>\r\n\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/CCL5' target='_blank'>CCL5 - November 2022</a> <br/><br/>\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/CCL4' target='_blank'>CCL4 - November 2016</a>\r\n This list<br/><br/>\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/CCL3' target='_blank'>CCL3 - October 2009</a> <br/><br/>\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/CCL2' target='_blank'>CCL2 - February 2005</a><br/><br/>\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/CCL1' target='_blank'>CCL1 - March 1998</a><br/><br/> 
-#>   listName chemicalCount            createdAt            updatedAt
-#> 1     CCL4           100 2017-12-28T17:58:36Z 2022-10-26T21:14:27Z
+#>    id listName                                    label    type
+#> 1 443     CCL4 WATER|EPA: Chemical Contaminants - CCL 4 federal
 #>                                                                                                                                              shortDescription
 #> 1 The Contaminant Candidate List (CCL) is a list of contaminants that are known or anticipated to occur in public water systems. Version 4 is known as CCL 4.
+#>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             longDescription
+#> 1 The Contaminant Candidate List (CCL) is a list of contaminants that, at the time of publication, are not subject to any proposed or promulgated national primary drinking water regulations, but are known or anticipated to occur in public water systems. Contaminants listed on the CCL may require future regulation under the Safe Drinking Water Act (SDWA). EPA announced the <a href='https://www.epa.gov/ccl/contaminant-candidate-list-4-ccl-4-0' target='_blank'>fourth Drinking Water Contaminant Candidate List (CCL 4)</a> on November 17, 2016. The CCL 4 includes 97 chemicals or chemical groups and 12 microbial contaminants. The group of cyanotoxins on CCL 4 includes, but is not limited to: anatoxin-a, cylindrospermopsin, microcystins, and saxitoxin. The CCL Chemical Candidate Lists are versioned iteratively and this description navigates between the various versions of the lists. The list of substances displayed below represents only the chemical CCL 4 contaminants. For the versioned lists, please use the hyperlinked lists below.<br/><br/> \r\n\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/CCL5' target='_blank'>CCL5 - November 2022</a> <br/><br/>\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/CCL4' target='_blank'>CCL4 - November 2016</a> \r\n This list<br/><br/>\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/CCL3' target='_blank'>CCL3 - October 2009</a> <br/><br/>\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/CCL2' target='_blank'>CCL2 - February 2005</a><br/><br/>\r\n<a href='https://comptox.epa.gov/dashboard/chemical_lists/CCL1' target='_blank'>CCL1 - March 1998</a><br/><br/> 
+#>   chemicalCount            updatedAt
+#> 1           100 2022-10-26T21:14:27Z
 
 natadb_information <- get_public_chemical_list_by_name('NATADB')
 print(natadb_information, trunc.cols = TRUE)
-#>   visibility  id    type                                            label
-#> 1     PUBLIC 454 federal EPA: National-Scale Air Toxics Assessment (NATA)
-#>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              longDescription
-#> 1 The National-Scale Air Toxics Assessment (NATA) is EPA's ongoing comprehensive evaluation of air toxics in the United States. EPA developed the NATA as a state-of-the-science screening tool for State/Local/Tribal Agencies to prioritize pollutants, emission sources and locations of interest for further study in order to gain a better understanding of risks.  NATA assessments do not incorporate refined information about emission sources but, rather, use general information about sources to develop estimates of risks which are more likely to overestimate impacts than underestimate them.\r\n\r\nNATA provides estimates of the risk of cancer and other serious health effects from breathing (inhaling) air toxics in order to inform both national and more localized efforts to identify and prioritize air toxics, emission source types and locations which are of greatest potential concern in terms of contributing to population risk.  This in turn helps air pollution experts focus limited analytical resources on areas and or populations where the potential for health risks are highest.  Assessments include estimates of cancer and non-cancer health effects based on chronic exposure from outdoor sources, including assessments of non-cancer health effects for Diesel Particulate Matter (PM). Assessments provide a snapshot of the outdoor air quality and the risks to human health that would result if air toxic emissions levels remained unchanged.
-#>   listName chemicalCount            createdAt            updatedAt
-#> 1   NATADB           163 2018-02-21T12:04:16Z 2018-11-16T21:42:01Z
+#>    id listName                                            label    type
+#> 1 454   NATADB EPA: National-Scale Air Toxics Assessment (NATA) federal
 #>                                                                                                                shortDescription
 #> 1 The National-Scale Air Toxics Assessment (NATA) is EPA's ongoing comprehensive evaluation of air toxics in the United States.
+#>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              longDescription
+#> 1 The National-Scale Air Toxics Assessment (NATA) is EPA's ongoing comprehensive evaluation of air toxics in the United States. EPA developed the NATA as a state-of-the-science screening tool for State/Local/Tribal Agencies to prioritize pollutants, emission sources and locations of interest for further study in order to gain a better understanding of risks.  NATA assessments do not incorporate refined information about emission sources but, rather, use general information about sources to develop estimates of risks which are more likely to overestimate impacts than underestimate them.\r\n\r\nNATA provides estimates of the risk of cancer and other serious health effects from breathing (inhaling) air toxics in order to inform both national and more localized efforts to identify and prioritize air toxics, emission source types and locations which are of greatest potential concern in terms of contributing to population risk.  This in turn helps air pollution experts focus limited analytical resources on areas and or populations where the potential for health risks are highest.  Assessments include estimates of cancer and non-cancer health effects based on chronic exposure from outdoor sources, including assessments of non-cancer health effects for Diesel Particulate Matter (PM). Assessments provide a snapshot of the outdoor air quality and the risks to human health that would result if air toxic emissions levels remained unchanged.
+#>   chemicalCount            updatedAt
+#> 1           163 2018-11-16T21:42:01Z
 ```
 
 Next, retrieve the list of chemicals associated with each list.
@@ -299,7 +299,7 @@ ordered slightly differently.
 ``` r
 all.equal(ccl4_genetox_details[dtxsid %in% 'DTXSID0020153', ], 
           natadb_genetox_details[dtxsid %in% 'DTXSID0020153', ])
-#> [1] "Column 'source': 18 string mismatches"
+#> [1] "Column 'source': 15 string mismatches"
 ```
 
 Assays present for chemicals in each chemical list can be explored.
@@ -309,90 +309,90 @@ each `assayCategory` value.
 
 ``` r
 ccl4_genetox_details[, unique(assayCategory)]
-#> [1] "in vivo"  "in vitro" "ND"
+#> [1] "in vitro" "in vivo"  "ND"
 natadb_genetox_details[, unique(assayCategory)]
 #> [1] "in vivo"  "in vitro" "ND"
 ccl4_genetox_details[, unique(assayType)]
-#>  [1] "Unscheduled DNA synthesis (UDS) in vitro, DNA effects"                                                                                 
-#>  [2] "Mitotic recombination or gene conversion"                                                                                              
-#>  [3] "In vivo carcinogenicity studies"                                                                                                       
-#>  [4] "Histidine reverse gene mutation, Ames assay"                                                                                           
-#>  [5] "micronucleus assay"                                                                                                                    
-#>  [6] "InVitroCA"                                                                                                                             
-#>  [7] "InVitroMN"                                                                                                                             
-#>  [8] "InVitroMLA"                                                                                                                            
-#>  [9] "Ames"                                                                                                                                  
-#> [10] "InVivoMN"                                                                                                                              
-#> [11] "Overall"                                                                                                                               
+#>  [1] "InVivoMN"                                                                                                                              
+#>  [2] "Forward and reverse gene mutation, host-mediated assay"                                                                                
+#>  [3] "Rec-assay, spot test, DNA effects (bacterial DNA repair)"                                                                              
+#>  [4] "Rec-assay, DNA effects (bacterial DNA repair)"                                                                                         
+#>  [5] "Unscheduled DNA synthesis (UDS) in vitro, DNA effects"                                                                                 
+#>  [6] "Mitotic recombination or gene conversion"                                                                                              
+#>  [7] "In vivo carcinogenicity studies"                                                                                                       
+#>  [8] "Histidine reverse gene mutation, Ames assay"                                                                                           
+#>  [9] "micronucleus assay"                                                                                                                    
+#> [10] "bacterial reverse mutation assay"                                                                                                      
+#> [11] "Micronucleus test, chromosome aberrations"                                                                                             
 #> [12] "Sister-chromatid exchange (SCE) in vitro"                                                                                              
-#> [13] "Micronucleus test, chromosome aberrations"                                                                                             
-#> [14] "Cell transformation, clonal assay"                                                                                                     
-#> [15] "Forward and reverse gene mutation, host-mediated assay"                                                                                
-#> [16] "Rec-assay, spot test, DNA effects (bacterial DNA repair)"                                                                              
-#> [17] "bacterial reverse mutation assay"                                                                                                      
-#> [18] "Rec-assay, DNA effects (bacterial DNA repair)"                                                                                         
+#> [13] "Overall"                                                                                                                               
+#> [14] "Ames"                                                                                                                                  
+#> [15] "InVitroMLA"                                                                                                                            
+#> [16] "Cell transformation, clonal assay"                                                                                                     
+#> [17] "InVitroMN"                                                                                                                             
+#> [18] "InVitroCA"                                                                                                                             
 #> [19] "mammalian cell gene mutation assay"                                                                                                    
 #> [20] "in vitro mammalian chromosome aberration test"                                                                                         
-#> [21] "in vivo micronucleus (mouse)"                                                                                                          
-#> [22] "DNA damage and repair assay, unscheduled DNA synthesis in mammalian cells in vitro"                                                    
-#> [23] "Sperm morphology"                                                                                                                      
-#> [24] "in vivo micronucleus (rat)"                                                                                                            
-#> [25] "Unscheduled DNA synthesis (UDS) in vivo; DNA effects"                                                                                  
-#> [26] "Sex-linked recessive lethal gene mutation"                                                                                             
-#> [27] "Dominant lethal test"                                                                                                                  
+#> [21] "Sperm morphology"                                                                                                                      
+#> [22] "in vivo micronucleus (mouse)"                                                                                                          
+#> [23] "in vivo micronucleus (rat)"                                                                                                            
+#> [24] "DNA damage and repair assay, unscheduled DNA synthesis in mammalian cells in vitro"                                                    
+#> [25] "Reverse gene mutation"                                                                                                                 
+#> [26] "InVivoCA"                                                                                                                              
+#> [27] "transgenic"                                                                                                                            
 #> [28] "Sister-chromatid exchange (SCE) in vivo"                                                                                               
 #> [29] "Forward gene mutation at the HPRT locus"                                                                                               
-#> [30] "Chromosome aberrations"                                                                                                                
-#> [31] "Reverse gene mutation"                                                                                                                 
-#> [32] "InVivoCA"                                                                                                                              
-#> [33] "InVivoUDS"                                                                                                                             
-#> [34] "transgenic"                                                                                                                            
-#> [35] "Heritable translocation test, chromosome aberrations"                                                                                  
-#> [36] "mammalian germ cell cytogenetic assay"                                                                                                 
-#> [37] "chromosome aberration assay"                                                                                                           
-#> [38] "unscheduled DNA synthesis"                                                                                                             
-#> [39] "DNA Binding"                                                                                                                           
-#> [40] "sister chromatid exchange assay in mammalian cells"                                                                                    
-#> [41] "rodent dominant lethal assay"                                                                                                          
-#> [42] "bacterial forward mutation assay"                                                                                                      
-#> [43] "Bacterial Mutagenesis"                                                                                                                 
+#> [30] "Unscheduled DNA synthesis (UDS) in vivo; DNA effects"                                                                                  
+#> [31] "Heritable translocation test, chromosome aberrations"                                                                                  
+#> [32] "Sex-linked recessive lethal gene mutation"                                                                                             
+#> [33] "Chromosome aberrations"                                                                                                                
+#> [34] "Dominant lethal test"                                                                                                                  
+#> [35] "InVivoUDS"                                                                                                                             
+#> [36] "chromosome aberration assay"                                                                                                           
+#> [37] "mammalian germ cell cytogenetic assay"                                                                                                 
+#> [38] "rodent dominant lethal assay"                                                                                                          
+#> [39] "sister chromatid exchange assay in mammalian cells"                                                                                    
+#> [40] "bacterial forward mutation assay"                                                                                                      
+#> [41] "DNA Binding"                                                                                                                           
+#> [42] "unscheduled DNA synthesis"                                                                                                             
+#> [43] "Cytogenetics Other"                                                                                                                    
 #> [44] "In Vitro Micronucleus"                                                                                                                 
-#> [45] "Cytogenetics Other"                                                                                                                    
+#> [45] "Bacterial Mutagenesis"                                                                                                                 
 #> [46] "bacterial gene mutation assay"                                                                                                         
 #> [47] "in vitro mammalian cell micronucleus test"                                                                                             
-#> [48] "Aneuploidy, chromosome aberrations"                                                                                                    
-#> [49] "Chromosome aberrations in vivo"                                                                                                        
+#> [48] "Chromosome aberrations in vivo"                                                                                                        
+#> [49] "Aneuploidy, chromosome aberrations"                                                                                                    
 #> [50] "Cell transformation, viral enhanced"                                                                                                   
 #> [51] "sister chromatid exchange assay"                                                                                                       
 #> [52] "InVivoDNADamage"                                                                                                                       
-#> [53] "Forward gene mutation"                                                                                                                 
-#> [54] "Chromosome aberrations in vitro"                                                                                                       
-#> [55] "Forward gene mutation at the HPRT or ouabain locus"                                                                                    
-#> [56] "Specific locus test, gene mutation"                                                                                                    
-#> [57] "Forward gene mutation at the thymidine kinase (TK) locus; chromosome aberrations"                                                      
-#> [58] "Spot test, gene mutation"                                                                                                              
+#> [53] "Specific locus test, gene mutation"                                                                                                    
+#> [54] "Forward gene mutation at the thymidine kinase (TK) locus; chromosome aberrations"                                                      
+#> [55] "Spot test, gene mutation"                                                                                                              
+#> [56] "Forward gene mutation"                                                                                                                 
+#> [57] "Chromosome aberrations in vitro"                                                                                                       
+#> [58] "Forward gene mutation at the HPRT or ouabain locus"                                                                                    
 #> [59] "In Vivo Non-mammalian Mutagenesis"                                                                                                     
 #> [60] "In Vivo Micronucleus"                                                                                                                  
 #> [61] "mouse spot test"                                                                                                                       
-#> [62] "Micronucleus and sister chromatid exchange"                                                                                            
+#> [62] "yeast cytogenetic assay"                                                                                                               
 #> [63] "transgenic rodent mutagenicity assay"                                                                                                  
-#> [64] "yeast cytogenetic assay"                                                                                                               
+#> [64] "Micronucleus and sister chromatid exchange"                                                                                            
 #> [65] "in vivo comet (rat)"                                                                                                                   
 #> [66] "in vivo comet (mouse)"                                                                                                                 
 #> [67] "in vitro mammalian cell transformation assay"                                                                                          
 #> [68] "Cell transformation"                                                                                                                   
 #> [69] "Tryptophan reverse gene mutation"                                                                                                      
 #> [70] "Gene mutation"                                                                                                                         
-#> [71] "Cell Transformation"                                                                                                                   
+#> [71] "DNA Covalent Binding"                                                                                                                  
 #> [72] "DNA Damage/Repair"                                                                                                                     
-#> [73] "In Vivo Mammalian Mutagenesis"                                                                                                         
-#> [74] "In Vitro Chromosome Aberration"                                                                                                        
-#> [75] "DNA Covalent Binding"                                                                                                                  
-#> [76] "Mutation"                                                                                                                              
+#> [73] "In Vitro Chromosome Aberration"                                                                                                        
+#> [74] "Mutation"                                                                                                                              
+#> [75] "In Vivo Mammalian Mutagenesis"                                                                                                         
+#> [76] "Cell Transformation"                                                                                                                   
 #> [77] "in vitro chromosomal aberration study in mammalian cells"                                                                              
 #> [78] "Mutation Other"                                                                                                                        
-#> [79] "In vitro mammalian chromosomal aberration test"                                                                                        
-#> [80] "In Vivo Chromosome Aberration"                                                                                                         
+#> [79] "In Vivo Chromosome Aberration"                                                                                                         
+#> [80] "In vitro mammalian chromosomal aberration test"                                                                                        
 #> [81] "Forward and reverse gene mutation, body fluid assay"                                                                                   
 #> [82] "Forward and reverse gene mutation, chromosome aberrations, mitotic recombination and gene conversion, DNA effects, host-mediated assay"
 #> [83] "Chromosomal aberration assay"                                                                                                          
@@ -401,67 +401,67 @@ ccl4_genetox_details[, unique(assayType)]
 #> [86] "Aneuploidy, whole sex chromosome loss, chromosome aberrations"                                                                         
 #> [87] "fluctuation test"
 natadb_genetox_details[, unique(assayType)]
-#>   [1] "In vivo carcinogenicity studies"                                                                                                            
-#>   [2] "Micronucleus test, chromosome aberrations"                                                                                                  
-#>   [3] "Rec-assay, spot test, DNA effects (bacterial DNA repair)"                                                                                   
+#>   [1] "micronucleus assay"                                                                                                                         
+#>   [2] "Sister-chromatid exchange (SCE) in vitro"                                                                                                   
+#>   [3] "Micronucleus test, chromosome aberrations"                                                                                                  
 #>   [4] "Rec-assay, DNA effects (bacterial DNA repair)"                                                                                              
-#>   [5] "bacterial reverse mutation assay"                                                                                                           
-#>   [6] "Unscheduled DNA synthesis (UDS) in vitro, DNA effects"                                                                                      
-#>   [7] "Mitotic recombination or gene conversion"                                                                                                   
-#>   [8] "micronucleus assay"                                                                                                                         
+#>   [5] "Unscheduled DNA synthesis (UDS) in vitro, DNA effects"                                                                                      
+#>   [6] "Mitotic recombination or gene conversion"                                                                                                   
+#>   [7] "In vivo carcinogenicity studies"                                                                                                            
+#>   [8] "Rec-assay, spot test, DNA effects (bacterial DNA repair)"                                                                                   
 #>   [9] "Histidine reverse gene mutation, Ames assay"                                                                                                
-#>  [10] "Sister-chromatid exchange (SCE) in vitro"                                                                                                   
-#>  [11] "Ames"                                                                                                                                       
-#>  [12] "InVitroMLA"                                                                                                                                 
-#>  [13] "InVitroMN"                                                                                                                                  
+#>  [10] "Forward and reverse gene mutation, host-mediated assay"                                                                                     
+#>  [11] "InVivoMN"                                                                                                                                   
+#>  [12] "bacterial reverse mutation assay"                                                                                                           
+#>  [13] "Cell transformation, clonal assay"                                                                                                          
 #>  [14] "InVitroCA"                                                                                                                                  
-#>  [15] "InVivoMN"                                                                                                                                   
-#>  [16] "Overall"                                                                                                                                    
-#>  [17] "Cell transformation, clonal assay"                                                                                                          
-#>  [18] "Forward and reverse gene mutation, host-mediated assay"                                                                                     
-#>  [19] "rodent dominant lethal assay"                                                                                                               
-#>  [20] "DNA damage and repair assay, unscheduled DNA synthesis in mammalian cells in vitro"                                                         
+#>  [15] "InVitroMN"                                                                                                                                  
+#>  [16] "InVitroMLA"                                                                                                                                 
+#>  [17] "Ames"                                                                                                                                       
+#>  [18] "Overall"                                                                                                                                    
+#>  [19] "DNA damage and repair assay, unscheduled DNA synthesis in mammalian cells in vitro"                                                         
+#>  [20] "rodent dominant lethal assay"                                                                                                               
 #>  [21] "InVivoUDS"                                                                                                                                  
-#>  [22] "Chromosome aberrations"                                                                                                                     
-#>  [23] "Sister-chromatid exchange (SCE) in vivo"                                                                                                    
-#>  [24] "transgenic"                                                                                                                                 
-#>  [25] "InVivoCA"                                                                                                                                   
-#>  [26] "Unscheduled DNA synthesis (UDS) in vivo; DNA effects"                                                                                       
-#>  [27] "Heritable translocation test, chromosome aberrations"                                                                                       
-#>  [28] "Sex-linked recessive lethal gene mutation"                                                                                                  
-#>  [29] "Reverse gene mutation"                                                                                                                      
-#>  [30] "Dominant lethal test"                                                                                                                       
-#>  [31] "Forward gene mutation at the HPRT locus"                                                                                                    
-#>  [32] "Cell transformation, viral enhanced"                                                                                                        
-#>  [33] "DNA Damage/Repair"                                                                                                                          
-#>  [34] "Bacterial Mutagenesis"                                                                                                                      
-#>  [35] "InVivoDNADamage"                                                                                                                            
-#>  [36] "in vitro mammalian chromosome aberration test"                                                                                              
-#>  [37] "Cytogenetics Other"                                                                                                                         
-#>  [38] "Mutation"                                                                                                                                   
-#>  [39] "In Vivo Non-mammalian Mutagenesis"                                                                                                          
-#>  [40] "In Vivo Micronucleus"                                                                                                                       
+#>  [22] "Reverse gene mutation"                                                                                                                      
+#>  [23] "Chromosome aberrations"                                                                                                                     
+#>  [24] "Sex-linked recessive lethal gene mutation"                                                                                                  
+#>  [25] "Heritable translocation test, chromosome aberrations"                                                                                       
+#>  [26] "Sister-chromatid exchange (SCE) in vivo"                                                                                                    
+#>  [27] "Unscheduled DNA synthesis (UDS) in vivo; DNA effects"                                                                                       
+#>  [28] "Forward gene mutation at the HPRT locus"                                                                                                    
+#>  [29] "InVivoCA"                                                                                                                                   
+#>  [30] "transgenic"                                                                                                                                 
+#>  [31] "Dominant lethal test"                                                                                                                       
+#>  [32] "Mutation"                                                                                                                                   
+#>  [33] "In Vivo Non-mammalian Mutagenesis"                                                                                                          
+#>  [34] "InVivoDNADamage"                                                                                                                            
+#>  [35] "in vitro mammalian chromosome aberration test"                                                                                              
+#>  [36] "In Vivo Chromosome Aberration"                                                                                                              
+#>  [37] "Bacterial Mutagenesis"                                                                                                                      
+#>  [38] "Cell transformation, viral enhanced"                                                                                                        
+#>  [39] "Cytogenetics Other"                                                                                                                         
+#>  [40] "DNA Damage/Repair"                                                                                                                          
 #>  [41] "In Vivo Mammalian Mutagenesis"                                                                                                              
-#>  [42] "In Vivo Chromosome Aberration"                                                                                                              
-#>  [43] "In Vitro Micronucleus"                                                                                                                      
-#>  [44] "In Vitro Chromosome Aberration"                                                                                                             
+#>  [42] "In Vivo Micronucleus"                                                                                                                       
+#>  [43] "In Vitro Chromosome Aberration"                                                                                                             
+#>  [44] "In Vitro Micronucleus"                                                                                                                      
 #>  [45] "mammalian cell gene mutation assay"                                                                                                         
-#>  [46] "in vivo micronucleus (mouse)"                                                                                                               
-#>  [47] "Sperm morphology"                                                                                                                           
+#>  [46] "Sperm morphology"                                                                                                                           
+#>  [47] "in vivo micronucleus (mouse)"                                                                                                               
 #>  [48] "Gene mutation"                                                                                                                              
 #>  [49] "Spot test, gene mutation"                                                                                                                   
 #>  [50] "Forward and reverse gene mutation, mitotic recombination and gene conversion, host-mediated assay"                                          
-#>  [51] "DNA Binding"                                                                                                                                
-#>  [52] "sister chromatid exchange assay in mammalian cells"                                                                                         
-#>  [53] "bacterial forward mutation assay"                                                                                                           
-#>  [54] "unscheduled DNA synthesis"                                                                                                                  
+#>  [51] "sister chromatid exchange assay in mammalian cells"                                                                                         
+#>  [52] "unscheduled DNA synthesis"                                                                                                                  
+#>  [53] "DNA Binding"                                                                                                                                
+#>  [54] "bacterial forward mutation assay"                                                                                                           
 #>  [55] "bacteriophage induction in E. coli, gene mutation, UDS in mammalian cells, sex-linked recessive lethal mutations in Drosophila"             
 #>  [56] "DNA damage, gene mutation, reverse mutation, gene conversion, DNA repair, chromosomal aberration, chromatid exchange, UDS"                  
 #>  [57] "Forward gene mutation at the thymidine kinase (TK) locus; chromosome aberrations"                                                           
 #>  [58] "chromosome aberration study in mammalian cells"                                                                                             
 #>  [59] "in vitro mammalian cell transformation assay"                                                                                               
-#>  [60] "Forward gene mutation at the HPRT or ouabain locus"                                                                                         
-#>  [61] "Cell transformation"                                                                                                                        
+#>  [60] "Cell transformation"                                                                                                                        
+#>  [61] "Forward gene mutation at the HPRT or ouabain locus"                                                                                         
 #>  [62] "Forward and reverse gene mutation, body fluid assay"                                                                                        
 #>  [63] "Drosophila SLRL assay"                                                                                                                      
 #>  [64] "chromosome aberration assay"                                                                                                                
@@ -472,26 +472,26 @@ natadb_genetox_details[, unique(assayType)]
 #>  [69] "Chromosome aberrations in vitro"                                                                                                            
 #>  [70] "in vivo comet (mouse)"                                                                                                                      
 #>  [71] "in vitro mammalian cell gene mutation tests using the thymidine kinase gene"                                                                
-#>  [72] "in vivo micronucleus (rat)"                                                                                                                 
-#>  [73] "in vivo comet (rat)"                                                                                                                        
-#>  [74] "mouse spot test"                                                                                                                            
-#>  [75] "Aneuploidy, whole sex chromosome loss, chromosome aberrations"                                                                              
+#>  [72] "in vivo comet (rat)"                                                                                                                        
+#>  [73] "in vivo micronucleus (rat)"                                                                                                                 
+#>  [74] "Aneuploidy, whole sex chromosome loss, chromosome aberrations"                                                                              
+#>  [75] "mouse spot test"                                                                                                                            
 #>  [76] "sister chromatid exchange assay"                                                                                                            
-#>  [77] "Mouse Lymphoma Forward Mutation Assay"                                                                                                      
-#>  [78] "mammalian erythrocyte micronucleus test"                                                                                                    
+#>  [77] "mammalian erythrocyte micronucleus test"                                                                                                    
+#>  [78] "Mouse Lymphoma Forward Mutation Assay"                                                                                                      
 #>  [79] "Tryptophan reverse gene mutation"                                                                                                           
 #>  [80] "bacterial gene mutation assay"                                                                                                              
-#>  [81] "Micronucleus test in vitro, chromosome aberrations"                                                                                         
-#>  [82] "yeast forward mutation and mitotic gene conversion assays in Schizosaccharomyces pombe (P1 strain) and Saccharomyces cerevisiae (D4 strain)"
+#>  [81] "yeast forward mutation and mitotic gene conversion assays in Schizosaccharomyces pombe (P1 strain) and Saccharomyces cerevisiae (D4 strain)"
+#>  [82] "Micronucleus test in vitro, chromosome aberrations"                                                                                         
 #>  [83] "heritable translocation assay"                                                                                                              
 #>  [84] "mitotic recombination assay with Saccharomyces cerevisiae"                                                                                  
 #>  [85] "Aneuploidy, chromosome aberrations"                                                                                                         
 #>  [86] "in vitro mammalian cell micronucleus test"                                                                                                  
 #>  [87] "cell transformation"                                                                                                                        
 #>  [88] "somatic mutation and recombination test in Drosophila"                                                                                      
-#>  [89] "transgenic rodent mutagenicity assay"                                                                                                       
-#>  [90] "Micronucleus and sister chromatid exchange"                                                                                                 
-#>  [91] "yeast cytogenetic assay"                                                                                                                    
+#>  [89] "yeast cytogenetic assay"                                                                                                                    
+#>  [90] "transgenic rodent mutagenicity assay"                                                                                                       
+#>  [91] "Micronucleus and sister chromatid exchange"                                                                                                 
 #>  [92] "in vitro mammalian cell gene mutation test using the Hprt and xprt genes"                                                                   
 #>  [93] "bone marrow chromosome aberration assay and mammalian germ cell cytogenetic assay"                                                          
 #>  [94] "bacterial mutation"                                                                                                                         
@@ -501,12 +501,12 @@ natadb_genetox_details[, unique(assayType)]
 #>  [98] "in vitro chromosome aberration study"                                                                                                       
 #>  [99] "Cell transformation, focus assay"                                                                                                           
 #> [100] "Forward and reverse gene mutation, mitotic recombination and gene conversion, DNA effects, host-mediated assay"                             
-#> [101] "DNA adduct formation"                                                                                                                       
-#> [102] "gene mutation assay in fungi"                                                                                                               
+#> [101] "gene mutation assay in fungi"                                                                                                               
+#> [102] "DNA adduct formation"                                                                                                                       
 #> [103] "DNA Covalent Binding"                                                                                                                       
 #> [104] "Cell Transformation"                                                                                                                        
-#> [105] "Aneuploidy, sex chromosome gain, chromosome aberrations"                                                                                    
-#> [106] "mammalian comet assay"                                                                                                                      
+#> [105] "mammalian comet assay"                                                                                                                      
+#> [106] "Aneuploidy, sex chromosome gain, chromosome aberrations"                                                                                    
 #> [107] "mammalian germ cell cytogenetic assay"                                                                                                      
 #> [108] "Forward and reverse gene mutation, chromosome aberrations, mitotic recombination and gene conversion, DNA effects, host-mediated assay"     
 #> [109] "E. coli K-12 DNA repair host-mediated assay"                                                                                                
@@ -526,8 +526,8 @@ ccl4_genetox_details[, .(Assays = length(unique(assayType))),
                      by = .(assayCategory)]
 #>    assayCategory Assays
 #>           <char>  <int>
-#> 1:       in vivo     23
-#> 2:      in vitro     62
+#> 1:      in vitro     62
+#> 2:       in vivo     23
 #> 3:            ND      2
 natadb_genetox_details[, .(Assays = length(unique(assayType))),
                        by = .(assayCategory)]
@@ -540,13 +540,13 @@ natadb_genetox_details[, .(Assays = length(unique(assayType))),
 ccl4_genetox_details[, .N, by = .(assayCategory, assayType, assayResult)]
 #>      assayCategory                 assayType assayResult     N
 #>             <char>                    <char>      <char> <int>
-#>   1:       in vivo Unscheduled DNA synthesis    positive     4
-#>   2:      in vitro Mitotic recombination or     positive    11
-#>   3:       in vivo In vivo carcinogenicity s    positive    22
-#>   4:      in vitro Histidine reverse gene mu    positive    10
-#>   5:       in vivo        micronucleus assay    negative    34
+#>   1:      in vitro                  InVivoMN    negative    10
+#>   2:      in vitro Forward and reverse gene     negative     4
+#>   3:      in vitro Rec-assay, spot test, DNA    positive     2
+#>   4:      in vitro Rec-assay, DNA effects (b    positive     9
+#>   5:       in vivo Unscheduled DNA synthesis    positive     4
 #>  ---                                                          
-#> 144:      in vitro Forward and reverse gene     negative     1
+#> 144:      in vitro     Mitotic recombination    positive     1
 #> 145:      in vitro in vitro mammalian cell t    positive     1
 #> 146:      in vitro Aneuploidy, sex chromosom    negative     1
 #> 147:      in vitro Aneuploidy, whole sex chr    positive     1
@@ -554,64 +554,64 @@ ccl4_genetox_details[, .N, by = .(assayCategory, assayType, assayResult)]
 ccl4_genetox_details[, .N, by = .(assayCategory)]
 #>    assayCategory     N
 #>           <char> <int>
-#> 1:       in vivo   211
-#> 2:      in vitro   728
+#> 1:      in vitro   728
+#> 2:       in vivo   211
 #> 3:            ND    15
 ccl4_genetox_details[assayCategory == 'in vitro', .N, by = .(assayType)]
 #>                     assayType     N
 #>                        <char> <int>
-#>  1: Mitotic recombination or     20
-#>  2: Histidine reverse gene mu    19
-#>  3:                 InVitroCA    31
-#>  4:                 InVitroMN     6
-#>  5:                InVitroMLA    24
-#>  6:                      Ames    82
-#>  7:                  InVivoMN    28
-#>  8: Sister-chromatid exchange    42
-#>  9: Micronucleus test, chromo     8
-#> 10: Cell transformation, clon     8
-#> 11: Forward and reverse gene      7
-#> 12: Rec-assay, spot test, DNA     2
-#> 13: bacterial reverse mutatio   108
-#> 14: Rec-assay, DNA effects (b    15
+#>  1:                  InVivoMN    28
+#>  2: Forward and reverse gene      7
+#>  3: Rec-assay, spot test, DNA     2
+#>  4: Rec-assay, DNA effects (b    15
+#>  5: Mitotic recombination or     20
+#>  6: Histidine reverse gene mu    19
+#>  7: bacterial reverse mutatio   108
+#>  8: Micronucleus test, chromo     8
+#>  9: Sister-chromatid exchange    42
+#> 10:                      Ames    82
+#> 11:                InVitroMLA    24
+#> 12: Cell transformation, clon     8
+#> 13:                 InVitroMN     6
+#> 14:                 InVitroCA    31
 #> 15: mammalian cell gene mutat    36
 #> 16: in vitro mammalian chromo    21
 #> 17: DNA damage and repair ass    15
-#> 18: Sex-linked recessive leth     9
+#> 18:     Reverse gene mutation     9
 #> 19: Sister-chromatid exchange    14
 #> 20: Forward gene mutation at      6
-#> 21:    Chromosome aberrations     2
-#> 22:     Reverse gene mutation     9
-#> 23: Heritable translocation t     5
+#> 21: Heritable translocation t     5
+#> 22: Sex-linked recessive leth     9
+#> 23:    Chromosome aberrations     2
 #> 24: chromosome aberration ass    14
 #> 25: sister chromatid exchange    10
 #> 26: bacterial forward mutatio     1
-#> 27:     Bacterial Mutagenesis    35
+#> 27:        Cytogenetics Other    31
 #> 28:     In Vitro Micronucleus     3
-#> 29:        Cytogenetics Other    31
+#> 29:     Bacterial Mutagenesis    35
 #> 30: bacterial gene mutation a     6
 #> 31: in vitro mammalian cell m     5
 #> 32: Aneuploidy, chromosome ab     5
 #> 33: Cell transformation, vira    12
 #> 34: sister chromatid exchange     3
-#> 35:     Forward gene mutation     5
-#> 36: Chromosome aberrations in     2
-#> 37: Forward gene mutation at      6
-#> 38: Specific locus test, gene     1
-#> 39: Forward gene mutation at      2
-#> 40:  Spot test, gene mutation     1
+#> 35: Specific locus test, gene     1
+#> 36: Forward gene mutation at      2
+#> 37:  Spot test, gene mutation     1
+#> 38:     Forward gene mutation     5
+#> 39: Chromosome aberrations in     2
+#> 40: Forward gene mutation at      6
 #> 41: In Vivo Non-mammalian Mut     7
 #> 42:           mouse spot test     2
-#> 43: transgenic rodent mutagen     1
-#> 44:   yeast cytogenetic assay     1
+#> 43:   yeast cytogenetic assay     1
+#> 44: transgenic rodent mutagen     1
 #> 45: in vitro mammalian cell t     2
 #> 46:       Cell transformation     5
 #> 47: Tryptophan reverse gene m     8
 #> 48:             Gene mutation     2
-#> 49:       Cell Transformation     2
-#> 50:         DNA Damage/Repair     9
-#> 51: In Vitro Chromosome Aberr    10
-#> 52:                  Mutation     4
+#> 49:         DNA Damage/Repair     9
+#> 50: In Vitro Chromosome Aberr    10
+#> 51:                  Mutation     4
+#> 52:       Cell Transformation     2
 #> 53: in vitro chromosomal aber     1
 #> 54:            Mutation Other     4
 #> 55: In vitro mammalian chromo     2
@@ -635,25 +635,25 @@ ccl4_genetox_details[assayCategory == 'in vivo', .N, by = .(assayType)]
 #>  1: Unscheduled DNA synthesis     9
 #>  2: In vivo carcinogenicity s    23
 #>  3:        micronucleus assay    45
-#>  4: in vivo micronucleus (mou    19
-#>  5:          Sperm morphology     9
+#>  4:          Sperm morphology     9
+#>  5: in vivo micronucleus (mou    19
 #>  6: in vivo micronucleus (rat     9
-#>  7: Unscheduled DNA synthesis     3
-#>  8:      Dominant lethal test     5
-#>  9:                  InVivoCA    14
+#>  7:                  InVivoCA    14
+#>  8: Unscheduled DNA synthesis     3
+#>  9:      Dominant lethal test     5
 #> 10:                 InVivoUDS    11
 #> 11: mammalian germ cell cytog     1
-#> 12: unscheduled DNA synthesis     6
+#> 12: rodent dominant lethal as    16
 #> 13:               DNA Binding     1
-#> 14: rodent dominant lethal as    16
+#> 14: unscheduled DNA synthesis     6
 #> 15: Chromosome aberrations in     2
 #> 16:           InVivoDNADamage     7
 #> 17:      In Vivo Micronucleus     1
 #> 18: Micronucleus and sister c     2
 #> 19:       in vivo comet (rat)     3
 #> 20:     in vivo comet (mouse)     1
-#> 21: In Vivo Mammalian Mutagen     7
-#> 22:      DNA Covalent Binding    16
+#> 21:      DNA Covalent Binding    16
+#> 22: In Vivo Mammalian Mutagen     7
 #> 23: In Vivo Chromosome Aberra     1
 #>                     assayType     N
 #>                        <char> <int>
@@ -661,17 +661,17 @@ ccl4_genetox_details[assayCategory == 'in vivo', .N, by = .(assayType)]
 natadb_genetox_details[, .N, by = .(assayCategory, assayType, assayResult)]
 #>      assayCategory                 assayType assayResult     N
 #>             <char>                    <char>      <char> <int>
-#>   1:       in vivo In vivo carcinogenicity s    positive    62
-#>   2:      in vitro Micronucleus test, chromo    negative     5
-#>   3:      in vitro Rec-assay, spot test, DNA    positive     4
+#>   1:       in vivo        micronucleus assay   equivocal     4
+#>   2:      in vitro Sister-chromatid exchange    positive    87
+#>   3:      in vitro Micronucleus test, chromo    negative     5
 #>   4:      in vitro Rec-assay, DNA effects (b    positive    28
-#>   5:      in vitro bacterial reverse mutatio    positive    77
+#>   5:       in vivo Unscheduled DNA synthesis    positive    14
 #>  ---                                                          
 #> 191:      in vitro Heritable translocation t    negative     2
 #> 192:       in vivo     mammalian comet assay   equivocal     1
 #> 193:      in vitro mammalian cell gene mutat    positive     1
-#> 194:      in vitro     Mitotic recombination    positive     1
-#> 195:      in vitro in vitro mammalian cell t    positive     1
+#> 194:      in vitro in vitro mammalian cell t    positive     1
+#> 195:      in vitro     Mitotic recombination    positive     1
 natadb_genetox_details[, .N, by = .(assayCategory)]
 #>    assayCategory     N
 #>           <char> <int>
@@ -681,36 +681,36 @@ natadb_genetox_details[, .N, by = .(assayCategory)]
 natadb_genetox_details[assayCategory == 'in vitro', .N, by = .(assayType)]
 #>                     assayType     N
 #>                        <char> <int>
-#>  1: Micronucleus test, chromo    33
-#>  2: Rec-assay, spot test, DNA     6
+#>  1: Sister-chromatid exchange    99
+#>  2: Micronucleus test, chromo    33
 #>  3: Rec-assay, DNA effects (b    34
-#>  4: bacterial reverse mutatio   303
-#>  5: Mitotic recombination or     62
+#>  4: Mitotic recombination or     62
+#>  5: Rec-assay, spot test, DNA     6
 #>  6: Histidine reverse gene mu    55
-#>  7: Sister-chromatid exchange    99
-#>  8:                      Ames   238
-#>  9:                InVitroMLA    85
-#> 10:                 InVitroMN    20
+#>  7: Forward and reverse gene     17
+#>  8:                  InVivoMN    89
+#>  9: bacterial reverse mutatio   303
+#> 10: Cell transformation, clon    14
 #> 11:                 InVitroCA    98
-#> 12:                  InVivoMN    89
-#> 13: Cell transformation, clon    14
-#> 14: Forward and reverse gene     17
+#> 12:                 InVitroMN    20
+#> 13:                InVitroMLA    85
+#> 14:                      Ames   238
 #> 15: DNA damage and repair ass    40
-#> 16:    Chromosome aberrations     3
-#> 17: Sister-chromatid exchange    31
-#> 18: Heritable translocation t    10
-#> 19: Sex-linked recessive leth    26
-#> 20:     Reverse gene mutation    30
+#> 16:     Reverse gene mutation    30
+#> 17:    Chromosome aberrations     3
+#> 18: Sex-linked recessive leth    26
+#> 19: Heritable translocation t    10
+#> 20: Sister-chromatid exchange    31
 #> 21: Forward gene mutation at     13
-#> 22: Cell transformation, vira    46
-#> 23:         DNA Damage/Repair    34
-#> 24:     Bacterial Mutagenesis    49
-#> 25: in vitro mammalian chromo    86
-#> 26:        Cytogenetics Other    48
-#> 27:                  Mutation     7
-#> 28: In Vivo Non-mammalian Mut     7
-#> 29:     In Vitro Micronucleus     7
-#> 30: In Vitro Chromosome Aberr     7
+#> 22:                  Mutation     7
+#> 23: In Vivo Non-mammalian Mut     7
+#> 24: in vitro mammalian chromo    86
+#> 25:     Bacterial Mutagenesis    49
+#> 26: Cell transformation, vira    46
+#> 27:        Cytogenetics Other    48
+#> 28:         DNA Damage/Repair    34
+#> 29: In Vitro Chromosome Aberr     7
+#> 30:     In Vitro Micronucleus     7
 #> 31: mammalian cell gene mutat   102
 #> 32:             Gene mutation     8
 #> 33:  Spot test, gene mutation     4
@@ -722,8 +722,8 @@ natadb_genetox_details[assayCategory == 'in vitro', .N, by = .(assayType)]
 #> 39: Forward gene mutation at      6
 #> 40: chromosome aberration stu     1
 #> 41: in vitro mammalian cell t     2
-#> 42: Forward gene mutation at     10
-#> 43:       Cell transformation    11
+#> 42:       Cell transformation    11
+#> 43: Forward gene mutation at     10
 #> 44: Forward and reverse gene      7
 #> 45:     Drosophila SLRL assay    20
 #> 46: chromosome aberration ass    27
@@ -732,21 +732,21 @@ natadb_genetox_details[assayCategory == 'in vitro', .N, by = .(assayType)]
 #> 49:     Forward gene mutation    18
 #> 50: Chromosome aberrations in     7
 #> 51: in vitro mammalian cell g     2
-#> 52:           mouse spot test     8
-#> 53: Aneuploidy, whole sex chr     4
+#> 52: Aneuploidy, whole sex chr     4
+#> 53:           mouse spot test     8
 #> 54: sister chromatid exchange     7
 #> 55: Mouse Lymphoma Forward Mu     1
 #> 56: Tryptophan reverse gene m    18
 #> 57: bacterial gene mutation a    10
-#> 58: Micronucleus test in vitr     2
-#> 59: yeast forward mutation an     2
+#> 58: yeast forward mutation an     2
+#> 59: Micronucleus test in vitr     2
 #> 60: mitotic recombination ass     6
 #> 61: Aneuploidy, chromosome ab     8
 #> 62: in vitro mammalian cell m    13
 #> 63:       cell transformation     2
 #> 64: somatic mutation and reco     3
-#> 65: transgenic rodent mutagen     2
-#> 66:   yeast cytogenetic assay     2
+#> 65:   yeast cytogenetic assay     2
+#> 66: transgenic rodent mutagen     2
 #> 67: in vitro mammalian cell g     2
 #> 68:        bacterial mutation     1
 #> 69: bacterial reverse mutatio     1
@@ -773,26 +773,26 @@ natadb_genetox_details[assayCategory == 'ND', .N, by = .(assayType)]
 natadb_genetox_details[assayCategory == 'in vivo', .N, by = .(assayType)]
 #>                     assayType     N
 #>                        <char> <int>
-#>  1: In vivo carcinogenicity s    66
+#>  1:        micronucleus assay   109
 #>  2: Unscheduled DNA synthesis    27
-#>  3:        micronucleus assay   109
+#>  3: In vivo carcinogenicity s    66
 #>  4: rodent dominant lethal as    33
 #>  5:                 InVivoUDS    33
-#>  6:                  InVivoCA    37
-#>  7: Unscheduled DNA synthesis     5
+#>  6: Unscheduled DNA synthesis     5
+#>  7:                  InVivoCA    37
 #>  8:      Dominant lethal test    14
 #>  9:           InVivoDNADamage    23
-#> 10:      In Vivo Micronucleus    13
+#> 10: In Vivo Chromosome Aberra     6
 #> 11: In Vivo Mammalian Mutagen     8
-#> 12: In Vivo Chromosome Aberra     6
-#> 13: in vivo micronucleus (mou    51
-#> 14:          Sperm morphology    25
-#> 15:               DNA Binding     1
-#> 16: unscheduled DNA synthesis    19
+#> 12:      In Vivo Micronucleus    13
+#> 13:          Sperm morphology    25
+#> 14: in vivo micronucleus (mou    51
+#> 15: unscheduled DNA synthesis    19
+#> 16:               DNA Binding     1
 #> 17: Chromosome aberrations in     9
 #> 18:     in vivo comet (mouse)     4
-#> 19: in vivo micronucleus (rat     9
-#> 20:       in vivo comet (rat)     3
+#> 19:       in vivo comet (rat)     3
+#> 20: in vivo micronucleus (rat     9
 #> 21: mammalian erythrocyte mic     2
 #> 22: heritable translocation a     2
 #> 23: Micronucleus and sister c     2
@@ -821,16 +821,16 @@ associated with each `assayResult` value.
 ccl4_genetox_details[, .(DTXSIDs = length(unique(dtxsid))), by = .(assayResult)]
 #>    assayResult DTXSIDs
 #>         <char>   <int>
-#> 1:    positive      53
-#> 2:    negative      63
+#> 1:    negative      63
+#> 2:    positive      53
 #> 3:   equivocal      14
 natadb_genetox_details[, .(DTXSIDs = length(unique(dtxsid))), 
                        by = .(assayResult)]
 #>    assayResult DTXSIDs
 #>         <char>   <int>
-#> 1:    positive     129
-#> 2:    negative     139
-#> 3:   equivocal      47
+#> 1:   equivocal      47
+#> 2:    positive     129
+#> 3:    negative     139
 ```
 
 For CCL4, there are 63 unique chemicals that have a negative assay
@@ -899,27 +899,27 @@ ccl4_genetox_details[dtxsid == 'DTXSID0020153', .(Number = .N),
                      by = .(assayResult)]
 #>    assayResult Number
 #>         <char>  <int>
-#> 1:    positive     20
-#> 2:    negative      5
+#> 1:    negative      5
+#> 2:    positive     20
 #> 3:   equivocal      1
 ccl4_genetox_details[dtxsid == 'DTXSID0020153' & assayResult == 'positive', 
                      .(Number_of_assays = .N), by = .(assayType)][order(-Number_of_assays),]
 #>                     assayType Number_of_assays
 #>                        <char>            <int>
-#>  1:                 InVitroCA                2
-#>  2:                InVitroMLA                2
-#>  3:                      Ames                2
-#>  4: Sister-chromatid exchange                2
-#>  5: bacterial reverse mutatio                2
-#>  6: Rec-assay, DNA effects (b                2
-#>  7: Unscheduled DNA synthesis                1
-#>  8: Mitotic recombination or                 1
-#>  9: In vivo carcinogenicity s                1
-#> 10: Histidine reverse gene mu                1
-#> 11:                 InVitroMN                1
+#>  1: Rec-assay, DNA effects (b                2
+#>  2: bacterial reverse mutatio                2
+#>  3: Sister-chromatid exchange                2
+#>  4:                      Ames                2
+#>  5:                InVitroMLA                2
+#>  6:                 InVitroCA                2
+#>  7: Rec-assay, spot test, DNA                1
+#>  8: Unscheduled DNA synthesis                1
+#>  9: Mitotic recombination or                 1
+#> 10: In vivo carcinogenicity s                1
+#> 11: Histidine reverse gene mu                1
 #> 12:                   Overall                1
 #> 13: Cell transformation, clon                1
-#> 14: Rec-assay, spot test, DNA                1
+#> 14:                 InVitroMN                1
 ```
 
 There were five assays that produced a negative result, 20 that produced
