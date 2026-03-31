@@ -1548,7 +1548,7 @@ get_chemicals_in_list <- function(list_name = NULL,
   }
 
   if ('dtxsids' %in% names(new_response)){
-    return(get_chemical_details_batch(DTXSID = strsplit(x = new_response$dtxsids, split = ',')[[1]]))
+    return(get_chemical_details_batch(DTXSID = new_response$dtxsids, API_key = API_key))
   }
 
   response <- httr::GET(url = paste0(Server, '/list/chemicals/search/by-listname/', list_name),

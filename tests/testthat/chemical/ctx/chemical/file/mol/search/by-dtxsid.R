@@ -1,11 +1,11 @@
 structure(list(url = "https://comptox.epa.gov/ctx-api/chemical/file/mol/search/by-dtxsid/", 
-    status_code = 404L, headers = structure(list(date = "Tue, 16 Dec 2025 15:52:01 GMT", 
+    status_code = 404L, headers = structure(list(date = "Fri, 27 Mar 2026 13:12:57 GMT", 
         server = "Apache", `strict-transport-security` = "max-age=63072000; includeSubDomains; preload“", 
         `access-control-allow-origin` = "*", vary = "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
         `cache-control` = "max-age=0, must-revalidate, no-transform", 
         `content-type` = "application/problem+json", `transfer-encoding` = "chunked"), class = c("insensitive", 
     "list")), all_headers = list(list(status = 404L, version = "HTTP/1.1", 
-        headers = structure(list(date = "Tue, 16 Dec 2025 15:52:01 GMT", 
+        headers = structure(list(date = "Fri, 27 Mar 2026 13:12:57 GMT", 
             server = "Apache", `strict-transport-security` = "max-age=63072000; includeSubDomains; preload“", 
             `access-control-allow-origin` = "*", vary = "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
             `cache-control` = "max-age=0, must-revalidate, no-transform", 
@@ -34,7 +34,7 @@ structure(list(url = "https://comptox.epa.gov/ctx-api/chemical/file/mol/search/b
     0x2f, 0x66, 0x69, 0x6c, 0x65, 0x2f, 0x6d, 0x6f, 0x6c, 0x2f, 
     0x73, 0x65, 0x61, 0x72, 0x63, 0x68, 0x2f, 0x62, 0x79, 0x2d, 
     0x64, 0x74, 0x78, 0x73, 0x69, 0x64, 0x2f, 0x22, 0x0a, 0x7d
-    )), date = structure(1765900321, class = c("POSIXct", "POSIXt"
-    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 4e-05, 
-    connect = 0, pretransfer = 0.000165, starttransfer = 0.0332, 
-    total = 0.033254)), class = "response")
+    )), date = structure(1774617177, class = c("POSIXct", "POSIXt"
+    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 0.000117, 
+    connect = 0, pretransfer = 0.00033, starttransfer = 0.042266, 
+    total = 0.042349)), class = "response")
