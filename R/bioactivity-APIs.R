@@ -1085,7 +1085,7 @@ assay_equal <- function(word = NULL,
 #' @export
 #'
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
-#' # Retrieve assays that contain with the character string `AT3_CIS`
+#' # Retrieve assays that contain the character string `AT3_CIS`
 #' at3_cis_assays <- assay_contains(word = 'AT3_CIS')
 #' at3_cis_assays
 assay_contains <- function(word = NULL,
