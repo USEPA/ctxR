@@ -31,7 +31,7 @@ Retrieve assays by substring
 }
 \examples{
 \dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
-# Retrieve assays that contain with the character string `AT3_CIS`
+# Retrieve assays that contain the character string `AT3_CIS`
 at3_cis_assays <- assay_contains(word = 'AT3_CIS')
 at3_cis_assays
 \dontshow{\}) # examplesIf}
