@@ -169,7 +169,7 @@ get_bioactivity_summary <- function(DTXSID = NULL,
     stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
-    if (length(response$content) > 0){
+    if (length(httr::content(response)) > 0){
       res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
       for (i in 1:length(res)){
         if (is.null(res[[i]])) res[[i]] <- NA # set any NULLs to NA
@@ -182,7 +182,7 @@ get_bioactivity_summary <- function(DTXSID = NULL,
 
       return(res_dt)
       return(res)
-    } else if (length(response$content) == 0){
+    } else if (length(httr::content(response)) == 0){
       return(data.table::data.table(aeid = NA_integer_,
                   activeMc = NA_integer_,
                   totalMc = NA_integer_,
