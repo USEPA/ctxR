@@ -845,6 +845,11 @@ get_bioactivity_summary_by_tissue_batch <- function(DTXSID = NULL,
     warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+
   DTXSID <- unique(DTXSID)
 
   results <- lapply(DTXSID, function(d){
@@ -974,12 +979,12 @@ get_predictions_by_dtxsid_batch <- function(DTXSID = NULL,
 #'                                                           'DTXSID0020232'),
 #'                                                Model = 'CERAPP')
 #' predictions
-get_predictions_by_dtxsid_batch <- function(DTXSID = NULL,
-                                            Model = NULL,
-                                            API_key = NULL,
-                                            Server = NULL,
-                                            rate_limit = 0L,
-                                            verbose = FALSE){
+get_predictions_by_dtxsid_and_model_batch <- function(DTXSID = NULL,
+                                                      Model = NULL,
+                                                      API_key = NULL,
+                                                      Server = NULL,
+                                                      rate_limit = 0L,
+                                                      verbose = FALSE){
   if (is.null(DTXSID))
     stop('Please input a list of DTXSIDs!')
 
