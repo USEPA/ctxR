@@ -467,7 +467,7 @@ get_aeid_by_endpoint <- function(endpoint = NULL,
     warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
-  response <-  httr::GET(url = paste0(Server, '/assay/search/by-endpoint/?endpoint=', endpoint),
+  response <-  httr::GET(url = paste0(Server, '/assay/search/by-endpoint/?endpoint=', prepare_word(endpoint)),
                          httr::add_headers(.headers = c(
                            'Content-Type' =  'application/json',
                            'x-api-key' = API_key)
@@ -477,8 +477,10 @@ get_aeid_by_endpoint <- function(endpoint = NULL,
     stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
+    if (length(httr::content(response)) > 0){
     res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
     return(res)
+    }
   } else {
     if (verbose){
       print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
