@@ -30,7 +30,7 @@ get_bioactivity_details_batch <- function(DTXSID = NULL,
 
   #if (is.null(DTXSID) & is.null(AEID))#
   if (all(sapply(list(DTXSID, AEID, SPID, m4id), is.null)))
-    stop('Please input a DTXSID, AEID, SPID, or m4id!')
+    stop('Please input a list of DTXSIDs, AEIDs, SPIDs, or m4ids!')
   #else if (!is.null(DTXSID) & !is.null(AEID))
   else if (length(which(!sapply(list(DTXSID, AEID, SPID, m4id), is.null))) > 1)
     stop('Please input a value for only one of DTXSID, AEID, SPID, or m4id, but not multiple!')
@@ -921,6 +921,11 @@ get_predictions_by_dtxsid_batch <- function(DTXSID = NULL,
     warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+
   DTXSID <- unique(DTXSID)
 
   results <- lapply(DTXSID, function(d){
@@ -1004,6 +1009,11 @@ get_predictions_by_dtxsid_and_model_batch <- function(DTXSID = NULL,
     warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
+  }
+
   DTXSID <- unique(DTXSID)
 
   results <- lapply(DTXSID, function(d){
@@ -1074,6 +1084,11 @@ get_analytical_qc_batch <- function(DTXSID = NULL,
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
   if (is.null(API_key) & verbose){
     warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if (!is.numeric(rate_limit) | (rate_limit < 0)){
+    warning('Setting rate limit to 0 seconds between requests!')
+    rate_limit <- 0L
   }
 
   DTXSID <- unique(DTXSID)
