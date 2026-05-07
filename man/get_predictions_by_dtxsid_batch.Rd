@@ -6,16 +6,6 @@
 \usage{
 get_predictions_by_dtxsid_batch(
   DTXSID = NULL,
-  Model = NULL,
-  API_key = NULL,
-  Server = NULL,
-  rate_limit = 0L,
-  verbose = FALSE
-)
-
-get_predictions_by_dtxsid_batch(
-  DTXSID = NULL,
-  Model = NULL,
   API_key = NULL,
   Server = NULL,
   rate_limit = 0L,
@@ -24,10 +14,6 @@ get_predictions_by_dtxsid_batch(
 }
 \arguments{
 \item{DTXSID}{The chemical identifier DTXSIDs}
-
-\item{Model}{The ToxCast model type. Model type options include: 'CERAPP
-Potency Level (Consensus)', 'CERAPP Potency Level (From Literature)',
-'COMPARA (Consensus)', and 'ToxCast Pathway Model (AUC)'.}
 
 \item{API_key}{The user-specific API key}
 
@@ -41,27 +27,15 @@ given.}
 \value{
 A named list of data.frames of ToxCast model prediction data
 for given DTXSIDs.
-
-A named list of data.frames of ToxCast model prediction data
-for given DTXSIDs and Model.
 }
 \description{
 Get bioactivity model predictions by DTXSID batch
-
-Get bioactivity model predictions by DTXSID and Model batch
 }
 \examples{
 \dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
 # Get predictions for DTXSID70201082 and DTXSID0020232
 predictions <- get_predictions_by_dtxsid_batch(DTXSID = c('DTXSID7020182',
                                                           'DTXSID0020232'))
-predictions
-\dontshow{\}) # examplesIf}
-\dontshow{if (has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')) withAutoprint(\{ # examplesIf}
-# Get predictions for DTXSID70201082 and DTXSID0020232 and Model CERAPP
-predictions <- get_predictions_by_dtxsid_batch(DTXSID = c('DTXSID7020182',
-                                                          'DTXSID0020232'),
-                                               Model = 'CERAPP')
 predictions
 \dontshow{\}) # examplesIf}
 }
