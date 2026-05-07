@@ -1,7 +1,9 @@
-{
-    "aeid": 891,
-    "activeMc": 178,
-    "totalMc": 576,
-    "activeSc": 233,
-    "totalSc": 2011
-}
+[
+    {
+        "aeid": 891,
+        "activeMc": 176,
+        "totalMc": 576,
+        "activeSc": 233,
+        "totalSc": 2011
+    }
+]
