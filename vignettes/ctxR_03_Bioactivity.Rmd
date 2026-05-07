@@ -109,7 +109,7 @@ knitr::kable(head(assay))%>%
 ```{r ctxR annotation by aeid batch, message=FALSE}
 assays <- get_annotation_by_aeid_batch(AEID = c(759,700,891))
 # return is in list form by aeid, convert to table for output
-assays <- data.table::rbindlist(assays)
+assays <- data.table::rbindlist(assays, fill=TRUE)
 ```
 
 ```{r, echo=FALSE}
