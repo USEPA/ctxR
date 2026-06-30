@@ -70,7 +70,7 @@ Data provided by the Exposure API are broadly organized in five different areas:
 
 * The data provided by the Functional Use Probability endpoint are predictions from EPA's Quantitative Structure Use Relationship (QSUR) models [(Phillips et al. 2017)](https://pubs.rsc.org/gc/article/19/4/1063/525082/High-throughput-screening-of-chemicals-as). 
 
-* HTTK data are represented by predictions from the [`httk`](https://CRAN.R-project.org/package=httk) R package, introduced in [(Pearce, R. et al. 2017)](https://doi.org/10.18637%2Fjss.v079.i04). These data are particularly relevant for examining *in vitro* to *in vitro* extrapolation (IVIVE). 
+* HTTK data are represented by predictions from the [`httk`](https://CRAN.R-project.org/package=httk) R package, introduced in [(Pearce, R. et al. 2017)](https://doi.org/10.18637%2Fjss.v079.i04). These data are particularly relevant for examining *in vitro* to *in vivo* extrapolation (IVIVE). 
 
 * Exposure estimates are provided via several exposure models, including the SEEM models. Information on the SEEM2 model can be found at [(Wambaugh, J. et al. 2014)](http://dx.doi.org/10.1021/es503583j) and on the SEEM3 model can be found at [(Ring, C. et al. 2018)](http://dx.doi.org/10.1021/acs.est.8b04056)
 
