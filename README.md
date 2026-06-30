@@ -44,14 +44,15 @@ To install the current development version, run the following command:
 
 Users don’t need a API key to install ctxR, but will need to supply an
 API key to use ctxR and access data. A *FREE* API key can be obtained by
-emailing the [CTX API Admins](mailto:ccte_api@epa.gov).
+emailing the [CTX API
+Admins](mailto:ccte_api@epa.gov?subject=CTX%20API%20Key%20Request&body=Please%20provide%20the%20following%20information%3A%0A%0AName%3A%0AEmail%3A%0AOrganization%20(optional)%3A%0AOrg%20Type%20(optional)%3A%20(Government%7CIndustry%7CUniversity%7CResearch%7CPrivate)%0AIntended%20Use%20(optional)%3A%0A).
 
 If you use [ctxR](https://cran.r-project.org/package=ctxR) in published
 research, please cite the following paper:
 
 Kruse, PM, Ring, CL, Paul Friedman, K, Feshuk, M, Brown, J, Thunes, C, &
 Rashid, A. (2025). ctxR: Utilities for interacting with the CTX APIs.
-**NAM Journal**, 100031. doi:
+NAM Journal, 100031. doi:
 [10.1016/j.namjnl.2025.100031](https://doi.org/10.1016/j.namjnl.2025.100031)
 
 ### Disclaimer
