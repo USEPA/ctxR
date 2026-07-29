@@ -63,6 +63,6 @@ contribute, these links should help get you started:
 [data.table](https://github.com/Rdatatable/data.table) repository*
 
 1: To make it easier to count the characters per line you can edit your
-$HOME/.vimrc($HOME/\_vimrc on Windows) to include “:set ruler” which
+$`HOME/.vimrc (`$HOME/\_vimrc on Windows) to include “:set ruler” which
 will display the line and position numbers in the bottom right corner of
 the terminal when editing the commit messages.

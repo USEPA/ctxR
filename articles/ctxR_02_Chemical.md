@@ -60,18 +60,21 @@ of data returned. Examples for each are provided below:
 #### By DTXSID
 
 ``` r
+
 chemical_details_by_dtxsid <- get_chemical_details(DTXSID = 'DTXSID7020182')
 ```
 
 #### By DTXCID
 
 ``` r
+
 chemical_details_by_dtxcid <- get_chemical_details(DTXCID = 'DTXCID30182')
 ```
 
 #### By Batch Search
 
 ``` r
+
 vector_dtxsid<- c("DTXSID7020182", "DTXSID9020112", "DTXSID8021430")
 chemical_details_by_batch_dtxsid <- get_chemical_details_batch(DTXSID = vector_dtxsid)
 
@@ -90,6 +93,7 @@ information on the chemical in the case of a valid DTXSID.
 #### By DTXSID
 
 ``` r
+
 dtxsid_check_true <- check_existence_by_dtxsid(DTXSID = 'DTXSID7020182')
 dtxsid_check_false <- check_existence_by_dtxsid(DTXSID = 'DTXSID7020182f')
 ```
@@ -97,6 +101,7 @@ dtxsid_check_false <- check_existence_by_dtxsid(DTXSID = 'DTXSID7020182f')
 #### By Batch Search
 
 ``` r
+
 vector_dtxsid_and_non_dtxsid <- c('DTXSID7020182F', 'DTXSID7020182', 'DTXSID0020232F')
 dtxsid_checks <- check_existence_by_dtxsid_batch(DTXSID = vector_dtxsid_and_non_dtxsid)
 ```
@@ -108,6 +113,7 @@ retrieves data for chemicals that have a specified property within the
 input range.
 
 ``` r
+
 chemical_by_property_range <- get_chemical_by_property_range(start = 1.311, 
                                          end = 1.313, 
                                          property = 'Density')
@@ -120,6 +126,7 @@ providing “experimental” or “predicted” to the type parameter will
 return the specific associated information.
 
 ``` r
+
 chemical_info <- get_chem_info(DTXSID = 'DTXSID7020182')
 ```
 
@@ -129,6 +136,7 @@ chemical_info <- get_chem_info(DTXSID = 'DTXSID7020182')
 retrieves chemical fate data.
 
 ``` r
+
 fate_by_dtxsid <- get_fate_by_dtxsid(DTXSID = 'DTXSID7020182')
 ```
 
@@ -144,6 +152,7 @@ DTXSID must be complete DTXCID must be complete CAS Registry Number
 (CASRN) must be complete InChIKey must contain first 14 characters
 
 ``` r
+
 search_starts_with_dtxsid <- chemical_starts_with(word = 'DTXSID7020182')
 search_starts_with_chem_name <- chemical_starts_with(word = 'Bisph')
 search_starts_with_casrn <- chemical_starts_with(word = '80-05-7')
@@ -153,6 +162,7 @@ search_starts_with_inchikey <- chemical_starts_with(word = 'IISBACLAFKSPIT')
 ### By exact value
 
 ``` r
+
 search_exact_dtxsid <- chemical_equal(word = 'DTXSID7020182')
 search_exact_chem_name <- chemical_equal(word = 'Bisphenol A')
 search_exact_casrn <- chemical_equal(word = '80-05-7')
@@ -162,6 +172,7 @@ search_exact_inchikey <- chemical_equal(word = 'IISBACLAFKSPIT-UHFFFAOYSA-N')
 ### By substring value
 
 ``` r
+
 search_contains_dtxsid <- chemical_contains(word = 'DTXSID702018')
 search_contains_chem_name <- chemical_contains(word = 'Bisph')
 search_contains_casrn <- chemical_contains(word = '80-05-7')
@@ -178,6 +189,7 @@ provided below:
 #### By Mass Range
 
 ``` r
+
 msready_by_mass <- get_msready_by_mass(start = 200.9, 
                               end = 200.95)
 ```
@@ -185,12 +197,14 @@ msready_by_mass <- get_msready_by_mass(start = 200.9,
 #### By Chemical Formula
 
 ``` r
+
 msready_by_formula <- get_msready_by_formula(formula = 'C16H24N2O5S')
 ```
 
 #### By DTXCID
 
 ``` r
+
 msready_by_dtxcid <- get_msready_by_dtxcid(DTXCID = 'DTXCID30182')
 ```
 
@@ -203,18 +217,21 @@ chemical, or name of list.
 ### Get all list types
 
 ``` r
+
 get_all_list_types()
 ```
 
 ### All lists by type
 
 ``` r
+
 chemical_lists_by_type <- get_chemical_lists_by_type(type =  'federal')
 ```
 
 ### List by name
 
 ``` r
+
 public_chemical_list_by_name <- get_public_chemical_list_by_name(listname = 'CCL4')
 ```
 
@@ -225,6 +242,7 @@ retrieves a list of names of chemical lists, each of which contains the
 specified chemical.
 
 ``` r
+
 lists_containing_chemical <- get_lists_containing_chemical(DTXSID = 'DTXSID7020182')
 ```
 
@@ -235,6 +253,7 @@ retrieves a list of DTXSIDs for a given starting character string in a
 specified list of chemicals.
 
 ``` r
+
 chemicals_in_ccl4_start <- get_chemicals_in_list_start(list_name = 'CCL4', word = 'Bi')
 ```
 
@@ -245,6 +264,7 @@ retrieves a list of DTXSIDs matching exactly a given character string in
 a specified list of chemicals.
 
 ``` r
+
 chemicals_in_ccl4_exact <- get_chemicals_in_list_exact(list_name = 'BIOSOLIDS2021', word = 'Bisphenol A')
 ```
 
@@ -255,6 +275,7 @@ retrieves a list of DTXSIDs that contain a given character string in a
 specified list of chemicals.
 
 ``` r
+
 chemicals_in_ccl4_contain <- get_chemicals_in_list_contain(list_name = 'CCL4', word = 'Bis')
 ```
 
@@ -265,6 +286,7 @@ retrieves the specific chemical information for each chemical contained
 in the specified list.
 
 ``` r
+
 chemicals_in_list <- get_chemicals_in_list(list_name = 'CCL4')
 ```
 
@@ -280,6 +302,7 @@ retrieves mrv file information for a chemical specified either by DTXSID
 or DTXCID.
 
 ``` r
+
 chemical_mrv_by_dtxsid <- get_chemical_mrv(DTXSID = 'DTXSID7020182')
 chemical_mrv_by_dtxcid <- get_chemical_mrv(DTXCID = 'DTXCID30182')
 ```
@@ -291,6 +314,7 @@ retrieves mol file information for a chemical specified either by DTXSID
 or DTXCID.
 
 ``` r
+
 chemical_mol_by_dtxsid <- get_chemical_mol(DTXSID = 'DTXSID7020182')
 chemical_mol_by_dtxcid <- get_chemical_mol(DTXCID = 'DTXCID30182')
 ```
@@ -306,6 +330,7 @@ the user may use either the
 functions, among many choices.
 
 ``` r
+
 chemical_image_by_dtxsid <- get_chemical_image(DTXSID = 'DTXSID7020182')
 chemical_image_by_dtxcid <- get_chemical_image(DTXCID = 'DTXCID30182')
 chemical_image_by_smiles <- get_chemical_image(SMILES = 'CC(C)(C1=CC=C(O)C=C1)C1=CC=C(O)C=C1')
@@ -321,6 +346,7 @@ countcolors::plotArrayAsImage(chemical_image_by_smiles)
 retrieves synonyms for the specified chemical.
 
 ``` r
+
 chemical_synonym <- get_chemical_synonym(DTXSID = 'DTXSID7020182')
 ```
 
