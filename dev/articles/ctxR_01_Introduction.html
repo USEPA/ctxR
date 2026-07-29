@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>ctxR: Utilities for Interacting with the CTX APIs in R • ctxR</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="ctxR: Utilities for Interacting with the CTX APIs in R">
 <meta name="robots" content="noindex">
@@ -261,7 +261,7 @@ chemical, biological, and environmental modeling. While there are many
 resources available from which one can pull data, the <a href="https://comptox.epa.gov/dashboard/" class="external-link">CompTox Chemicals
 Dashboard</a> (CCD), built and maintained by the United States
 Environmental Protection Agency, is particularly well-designed and
-suitable for these purposes. Originally introduced in <a href="https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0247-6" class="external-link">The
+suitable for these purposes. Originally introduced in <a href="https://link.springer.com/article/10.1186/s13321-017-0247-6" class="external-link">The
 CompTox Chemistry Dashboard: a community data resource for environmental
 chemistry</a>, the CCD contains information on over 1.2 million
 chemicals as of May 2024 and has been cited 612 times according to
@@ -422,7 +422,7 @@ to the user. However, in order to use the CTX APIs, users must have a
 individual API key. The API key uniquely identifies the user to the CCD
 servers and verifies that you have permission to access the database.
 Getting an API key is free, but requires contacting the API support team
-at <a href="mailto:ccte_api@epa.gov">ccte_api@epa.gov</a>.</p>
+at <a href="mailto:ccte_api@epa.gov?subject=CTX%20API%20Key%20Request&amp;body=Please%20provide%20the%20following%20information%3A%0A%0AName%3A%0AEmail%3A%0AOrganization%20(optional)%3A%0AOrg%20Type%20(optional)%3A%20(Government%7CIndustry%7CUniversity%7CResearch%7CPrivate)%0AIntended%20Use%20(optional)%3A%0A">ccte_api@epa.gov</a>.</p>
 <p>The APIs are organized into sets of “endpoints” by data domains:
 <code>Chemical</code>, <code>Hazard</code>, and
 <code>Bioactivity</code>. An endpoint provides access to a specific set
@@ -449,7 +449,7 @@ transport information; and so on.</p>
 <p><code>Authentication</code>, found in upper left tab on each web
 interface page, is required to use the APIs. To authenticate themselves
 in the API web interface, the user must input their unique API key. To
-request an API key, please contact the API support team at <a href="mailto:ccte_api@epa.gov">ccte_api@epa.gov</a>.</p>
+request an API key, please contact the API support team at <a href="mailto:ccte_api@epa.gov?subject=CTX%20API%20Key%20Request&amp;body=Please%20provide%20the%20following%20information%3A%0A%0AName%3A%0AEmail%3A%0AOrganization%20(optional)%3A%0AOrg%20Type%20(optional)%3A%20(Government%7CIndustry%7CUniversity%7CResearch%7CPrivate)%0AIntended%20Use%20(optional)%3A%0A">ccte_api@epa.gov</a>.</p>
 <center>
 <div class="float">
 <img src="Pictures/CTX_API_Key_authentication.png" alt="Figure 5: API Key Authentication"><div class="figcaption"><font style="font-size:15px"><i>Figure 5: API
@@ -548,9 +548,9 @@ install the development version of ctxR like so:</p>
 </h3>
 <p>As previously described, a user must have an API key to use in order
 to access the CTX APIs. A <em>FREE</em> API key can be obtained by
-emailing the <a href="mailto:ccte_api@epa.gov">CTX API Admins</a>. In
-the example code, the API key will be stored as the variable
-<code>my_key</code>.</p>
+emailing the <a href="mailto:ccte_api@epa.gov?subject=CTX%20API%20Key%20Request&amp;body=Please%20provide%20the%20following%20information%3A%0A%0AName%3A%0AEmail%3A%0AOrganization%20(optional)%3A%0AOrg%20Type%20(optional)%3A%20(Government%7CIndustry%7CUniversity%7CResearch%7CPrivate)%0AIntended%20Use%20(optional)%3A%0A">CTX
+API Admins</a>. In the example code, the API key will be stored as the
+variable <code>my_key</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my_key</span> <span class="op">&lt;-</span> <span class="st">'YOUR_CTX_API_key'</span></span></code></pre></div>
 <p>For general use of the package, the user may use the function
@@ -687,7 +687,7 @@ domain of interest.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

@@ -20,7 +20,7 @@ maintained by the United States Environmental Protection Agency, is
 particularly well-designed and suitable for these purposes. Originally
 introduced in [The CompTox Chemistry Dashboard: a community data
 resource for environmental
-chemistry](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0247-6),
+chemistry](https://link.springer.com/article/10.1186/s13321-017-0247-6),
 the CCD contains information on over 1.2 million chemicals as of May
 2024 and has been cited 612 times according to CrossRef. To learn more
 about the CCD, please visit the page [About
@@ -173,7 +173,8 @@ are publicly available at no cost to the user. However, in order to use
 the CTX APIs, users must have a individual API key. The API key uniquely
 identifies the user to the CCD servers and verifies that you have
 permission to access the database. Getting an API key is free, but
-requires contacting the API support team at <ccte_api@epa.gov>.
+requires contacting the API support team at
+[ccte_api@epa.gov](mailto:ccte_api@epa.gov?subject=CTX%20API%20Key%20Request&body=Please%20provide%20the%20following%20information%3A%0A%0AName%3A%0AEmail%3A%0AOrganization%20(optional)%3A%0AOrg%20Type%20(optional)%3A%20(Government%7CIndustry%7CUniversity%7CResearch%7CPrivate)%0AIntended%20Use%20(optional)%3A%0A).
 
 The APIs are organized into sets of “endpoints” by data domains:
 `Chemical`, `Hazard`, and `Bioactivity`. An endpoint provides access to
@@ -201,7 +202,8 @@ information; and so on.
 `Authentication`, found in upper left tab on each web interface page, is
 required to use the APIs. To authenticate themselves in the API web
 interface, the user must input their unique API key. To request an API
-key, please contact the API support team at <ccte_api@epa.gov>.
+key, please contact the API support team at
+[ccte_api@epa.gov](mailto:ccte_api@epa.gov?subject=CTX%20API%20Key%20Request&body=Please%20provide%20the%20following%20information%3A%0A%0AName%3A%0AEmail%3A%0AOrganization%20(optional)%3A%0AOrg%20Type%20(optional)%3A%20(Government%7CIndustry%7CUniversity%7CResearch%7CPrivate)%0AIntended%20Use%20(optional)%3A%0A).
 
 ![Figure 5: API Key
 Authentication](Pictures/CTX_API_Key_authentication.png)
@@ -280,6 +282,7 @@ Users can run [`library(ctxR)`](https://github.com/USEPA/ctxR) to
 install from CRAN or install the development version of ctxR like so:
 
 ``` r
+
 if (!library(devtools, logical.return = TRUE)){
   install.packages(devtools)
   library(devtools)}
@@ -291,10 +294,13 @@ devtools::install_github("USEPA/ctxR")
 
 As previously described, a user must have an API key to use in order to
 access the CTX APIs. A *FREE* API key can be obtained by emailing the
-[CTX API Admins](mailto:ccte_api@epa.gov). In the example code, the API
-key will be stored as the variable `my_key`.
+[CTX API
+Admins](mailto:ccte_api@epa.gov?subject=CTX%20API%20Key%20Request&body=Please%20provide%20the%20following%20information%3A%0A%0AName%3A%0AEmail%3A%0AOrganization%20(optional)%3A%0AOrg%20Type%20(optional)%3A%20(Government%7CIndustry%7CUniversity%7CResearch%7CPrivate)%0AIntended%20Use%20(optional)%3A%0A).
+In the example code, the API key will be stored as the variable
+`my_key`.
 
 ``` r
+
 my_key <- 'YOUR_CTX_API_key'
 ```
 
@@ -304,6 +310,7 @@ to store the API key in the current session or more permanently for
 access across sessions.
 
 ``` r
+
 # This stores the key in the current session
 register_ctx_api_key(key = '<YOUR API KEY>')
 
@@ -316,6 +323,7 @@ for protection. To change this, use the following functions as
 demonstrated.
 
 ``` r
+
 # To show the API key
 ctxR_show_api_key()
 getOption('ctxR')$display_api_key
@@ -330,6 +338,7 @@ Finally, to access the key, use the
 function.
 
 ``` r
+
 ctx_key()
 ```
 
@@ -359,6 +368,7 @@ API key. Relevant chemical details for Bisphenol A, which has DTXSID
 “DTXSID7020182”, are obtained in a data.table.
 
 ``` r
+
 bpa_details <- get_chemical_details(DTXSID = 'DTXSID7020182')
 ```
 
@@ -372,12 +382,14 @@ filtered to ‘experimental’ or ‘predicted’ if desired.
 Here all phys-chem properties are returned for Bisphenol A.
 
 ``` r
+
 bpa_info <- get_chem_info(DTXSID = "DTXSID7020182")
 ```
 
 Request can be filtered to return experimental results only.
 
 ``` r
+
 bpa_info_experimental <- get_chem_info(DTXSID = "DTXSID7020182", type = 'experimental')
 ```
 
@@ -402,18 +414,21 @@ ecological toxicity data, respectively.
 Here all hazard data is returned for Bisphenol A:
 
 ``` r
+
 bpa_hazard <- get_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
 ```
 
 Request can be refined to return results for human hazard,
 
 ``` r
+
 bpa_human_hazard <- get_human_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
 ```
 
 or EcoTox results.
 
 ``` r
+
 bpa_eco_hazard <- get_ecotox_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
 ```
 
@@ -431,6 +446,7 @@ retrieves all bioactivity data for a given chemical based on input
 DTXSID.
 
 ``` r
+
 bpa_bioactivity <- get_bioactivity_details(DTXSID = 'DTXSID7020182')
 ```
 
@@ -440,6 +456,7 @@ can also be used to retrieve all bioactivity data for a given endpoint,
 based on input AEID (assay endpoint identifier).
 
 ``` r
+
 assay_id_search <- get_bioactivity_details(AEID = 42)
 ```
 

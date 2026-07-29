@@ -45,6 +45,7 @@ been filtered to only display the first few rows of data.
 retrieves all hazard data, both human and EcoTox data.
 
 ``` r
+
 hazard_by_dtxsid <- get_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
 ```
 
@@ -54,6 +55,7 @@ hazard_by_dtxsid <- get_hazard_by_dtxsid(DTXSID = 'DTXSID7020182')
 retrieves hazard data specific to skin and eye hazard.
 
 ``` r
+
 skin_eye_hazard <- get_skin_eye_hazard(DTXSID = 'DTXSID7020182')
 ```
 
@@ -63,6 +65,7 @@ skin_eye_hazard <- get_skin_eye_hazard(DTXSID = 'DTXSID7020182')
 retrieves cancer hazard data.
 
 ``` r
+
 cancer_hazard <- get_cancer_hazard(DTXSID = 'DTXSID7020182')
 ```
 
@@ -73,6 +76,7 @@ retrieves summary level data for genotoxicity data associated to a
 chemical.
 
 ``` r
+
 genetox_summary <- get_genetox_summary(DTXSID = 'DTXSID7020182')
 ```
 
@@ -80,6 +84,7 @@ genetox_summary <- get_genetox_summary(DTXSID = 'DTXSID7020182')
 chemical than is provided on the summary level.
 
 ``` r
+
 genetox_details <- get_genetox_details(DTXSID = 'DTXSID7020182')
 ```
 
@@ -116,6 +121,7 @@ some of the Chemical domain endpoints to retrieve information about the
 list of chemicals.
 
 ``` r
+
 options(width = 100)
 ccl4_information <- get_public_chemical_list_by_name('CCL4')
 print(ccl4_information, trunc.cols = TRUE)
@@ -143,6 +149,7 @@ print(natadb_information, trunc.cols = TRUE)
 Next, retrieve the list of chemicals associated with each list.
 
 ``` r
+
 ccl4 <- get_chemicals_in_list('CCL4')
 ccl4 <- data.table::as.data.table(ccl4)
 
@@ -197,6 +204,7 @@ can be used to access these details.
 First, pull the data.
 
 ``` r
+
 ccl4_genotox <- get_genetox_summary_batch(DTXSID = ccl4$dtxsid)
 natadb_genetox <- get_genetox_summary_batch(DTXSID = natadb$dtxsid)
 ```
@@ -205,6 +213,7 @@ Next, it may be helpful to examine the dimensions and column names of
 the output.
 
 ``` r
+
 dim(ccl4_genotox)
 #> [1] 71 10
 dim(natadb_genetox)
@@ -231,6 +240,7 @@ from the CCL4 chemical list and 153 from the NATA chemical list.
 Chemicals missing genotoxicity data for each list are noted below.
 
 ``` r
+
 ccl4[!(dtxsid %in% ccl4_genotox$dtxsid), 
      .(dtxsid, casrn, preferredName, molFormula)]
 #>              dtxsid       casrn             preferredName    molFormula
@@ -287,6 +297,7 @@ returned using the function
 [`get_genetox_details_batch()`](https://usepa.github.io/ctxR/dev/reference/get_genetox_details_batch.md).
 
 ``` r
+
 ccl4_genetox_details <- get_genetox_details_batch(DTXSID = ccl4$dtxsid)
 natadb_genetox_details <- get_genetox_details_batch(DTXSID = natadb$dtxsid)
 ```
@@ -297,6 +308,7 @@ information is chemical specific and not chemical list specific, though
 ordered slightly differently.
 
 ``` r
+
 all.equal(ccl4_genetox_details[dtxsid %in% 'DTXSID0020153', ], 
           natadb_genetox_details[dtxsid %in% 'DTXSID0020153', ])
 #> [1] "Column 'source': 15 string mismatches"
@@ -308,6 +320,7 @@ then group by these values and determine the number of unique assays for
 each `assayCategory` value.
 
 ``` r
+
 ccl4_genetox_details[, unique(assayCategory)]
 #> [1] "in vitro" "in vivo"  "ND"
 natadb_genetox_details[, unique(assayCategory)]
@@ -522,6 +535,7 @@ count the number of assay results and grouping by `assayCategory`, and
 and `assayTypes` values used for both chemical lists.
 
 ``` r
+
 ccl4_genetox_details[, .(Assays = length(unique(assayType))), 
                      by = .(assayCategory)]
 #>    assayCategory Assays
@@ -818,6 +832,7 @@ by `assayResult` and determine the number of unique `dtxsid` values
 associated with each `assayResult` value.
 
 ``` r
+
 ccl4_genetox_details[, .(DTXSIDs = length(unique(dtxsid))), by = .(assayResult)]
 #>    assayResult DTXSIDs
 #>         <char>   <int>
@@ -846,6 +861,7 @@ have genotoxic effects. For this, examine which chemicals produce at
 least one positive response in the `assayResult` column.
 
 ``` r
+
 ccl4_genetox_details[, .(is_positive = any(assayResult == 'positive')), 
                      by = .(dtxsid)][is_positive == TRUE, dtxsid]
 #>  [1] "DTXSID0020153" "DTXSID0020573" "DTXSID0020600" "DTXSID0020814" "DTXSID0021464" "DTXSID0021541"
@@ -895,6 +911,7 @@ isolate which were positive and output a data.table with the number of
 each type.
 
 ``` r
+
 ccl4_genetox_details[dtxsid == 'DTXSID0020153', .(Number = .N), 
                      by = .(assayResult)]
 #>    assayResult Number

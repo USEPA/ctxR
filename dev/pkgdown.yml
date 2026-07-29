@@ -1,5 +1,5 @@
-pandoc: 3.1.11
-pkgdown: 2.2.0
+pandoc: 3.8.3
+pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
   ctxR_01_Introduction: ctxR_01_Introduction.html
@@ -7,7 +7,7 @@ articles:
   ctxR_03_Bioactivity: ctxR_03_Bioactivity.html
   ctxR_04_Exposure: ctxR_04_Exposure.html
   ctxR_05_Hazard: ctxR_05_Hazard.html
-last_built: 2026-03-31T17:13Z
+last_built: 2026-07-29T13:09Z
 urls:
   reference: https://usepa.github.io/ctxR/reference
   article: https://usepa.github.io/ctxR/articles
