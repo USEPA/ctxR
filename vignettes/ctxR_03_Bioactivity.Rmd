@@ -208,7 +208,7 @@ aeid_data_batch <- get_bioactivity_details_batch(AEID = c(759,700,891))
 
 # Conclusion
 
-In this vignette, a variety of functions that access different types of data found in the `Bioactivity` endpoints of the CTX APIs were listed. Users are encouraged to explore the data accessible through these endpoints to get a better understanding of what data is available. Additionally, experienced ToxCast users may find it easier to use the [tcpl R package](https://CRAN.R-project.org/package=tcpl), since it has been integrated ctxR's bioactivity functions and will retrieve API data in a more familiar, 'invitrodb'-like format.
+In this vignette, a variety of functions that access different types of data found in the `Bioactivity` endpoints of the CTX APIs were listed. Users are encouraged to explore the data accessible through these endpoints to get a better understanding of what data is available. Not all functions that wrap these endpoints have been listed here with examples, so the user may explore these either through the R package documentation or the CTX APIs `Bioactivity` endpoint documentation. Additionally, experienced ToxCast users may find it easier to use the [tcpl R package](https://CRAN.R-project.org/package=tcpl), since it has been integrated ctxR's bioactivity functions and will retrieve API data in a more familiar, 'invitrodb'-like format.
 
 ```{r breakdown, echo = FALSE, results = 'hide'}
 # This chunk will be hidden in the final product. It serves to undo defining the
