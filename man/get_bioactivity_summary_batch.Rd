@@ -5,6 +5,7 @@
 \title{Retrieve bioactivity summary data from AEID batch}
 \usage{
 get_bioactivity_summary_batch(
+  DTXSID = NULL,
   AEID = NULL,
   API_key = NULL,
   Server = NULL,
@@ -13,6 +14,8 @@ get_bioactivity_summary_batch(
 )
 }
 \arguments{
+\item{DTXSID}{A list of chemical identifier DTXSIDs}
+
 \item{AEID}{A list of AEID identifiers}
 
 \item{API_key}{The user-specific API key.}

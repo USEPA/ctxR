@@ -118,6 +118,7 @@ get_bioactivity_details <- function(DTXSID = NULL,
 
 #' Retrieve bioactivity summary for AEID
 #'
+#' @param DTXSID The chemical identifier DTXSID
 #' @param AEID The assay endpoint indentifier AEID
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
@@ -129,21 +130,36 @@ get_bioactivity_details <- function(DTXSID = NULL,
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Pull an assay bioactivity summary
 #' aeid_1386 <- get_bioactivity_summary(AEID = 1386)
-get_bioactivity_summary <- function(AEID = NULL,
+get_bioactivity_summary <- function(DTXSID = NULL,
+                                    AEID = NULL,
                                     API_key = NULL,
                                     Server = bioactivity_api_server,
                                     verbose = FALSE){
   #print("This is broken currently!")
   #return()
-  if (is.null(AEID))
-    stop('Please input an AEID!')
+
+  if (all(sapply(list(DTXSID, AEID), is.null)))
+    stop('Please input a DTXSID or AEID!')
+  #else if (!is.null(DTXSID) & !is.null(AEID))
+  else if (length(which(!sapply(list(DTXSID, AEID), is.null))) > 1)
+    stop('Please input a value for only one of DTXSID or AEID but not multiple!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
   if (is.null(API_key) & verbose){
     warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
-  response <- httr::GET(url = paste0(Server, '/data/summary/search/by-aeid/', AEID),
+  data_index <- which(!sapply(list(DTXSID, AEID), is.null))
+  data_endpoint <- paste0('by-', c('dtxsid', 'aeid')[data_index])
+  data_input <- unlist(list(DTXSID, AEID)[data_index])
+
+  if (verbose){
+    print(data_index)
+    print(data_endpoint)
+    print(data_input)
+  }
+
+  response <- httr::GET(url = paste0(Server, '/data/summary/search/', data_endpoint, '/', data_input),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -153,7 +169,7 @@ get_bioactivity_summary <- function(AEID = NULL,
     stop(httr::content(response)$detail)
   }
   if(response$status_code == 200){
-    if (length(response$content) > 0){
+    if (length(httr::content(response)) > 0){
       res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
       for (i in 1:length(res)){
         if (is.null(res[[i]])) res[[i]] <- NA # set any NULLs to NA
@@ -166,7 +182,7 @@ get_bioactivity_summary <- function(AEID = NULL,
 
       return(res_dt)
       return(res)
-    } else if (length(response$content) == 0){
+    } else if (length(httr::content(response)) == 0){
       return(data.table::data.table(aeid = NA_integer_,
                   activeMc = NA_integer_,
                   totalMc = NA_integer_,
@@ -182,27 +198,40 @@ get_bioactivity_summary <- function(AEID = NULL,
 
 }
 
-#' Retrieve all assays
+#' Get summary data by DTXSID and assay tissue origin
 #'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param Tissue The tissue of origin for the assay
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
 #' @param verbose A logical indicating if some “progress report” should be given.
 #'
-#' @return A data.frame containing all the assays and associated information
+#' @returns A data.frame of summary data for the given chemical and tissue.
 #' @export
+#'
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
-#' # Retrieve all assays
-#' assays <- get_all_assays()
-get_all_assays <- function(API_key = NULL,
-                           Server = bioactivity_api_server,
-                           verbose = FALSE){
+#' # Get data for DTXSID7020192 and liver
+#' liver_bpa <- get_bioactivity_summary_by_tissue(DTXSID = 'DTXSID7020182',
+#'                                                Tissue = 'liver')
+#' liver_bpa
+#'
+get_bioactivity_summary_by_tissue <- function(DTXSID = NULL,
+                                              Tissue = NULL,
+                                              API_key = NULL,
+                                              Server = bioactivity_api_server,
+                                              verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input an DTXSID!')
+
+  if (is.null(Tissue))
+    stop('Please input a Tissue!')
 
   API_key <- check_api_key(API_key = API_key, verbose = verbose)
   if (is.null(API_key) & verbose){
     warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
-  response <-  httr::GET(url = paste0(Server, '/assay/'),
+  response <-  httr::GET(url = paste0(Server, '/data/summary/search/by-tissue/?dtxsid=', DTXSID, '&tissue=', Tissue),
                          httr::add_headers(.headers = c(
                            'Content-Type' =  'application/json',
                            'x-api-key' = API_key)
@@ -213,10 +242,328 @@ get_all_assays <- function(API_key = NULL,
   }
   if(response$status_code == 200){
     res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
-    res[c('gene', 'assayList', 'citations')] <- lapply(res[c('gene', 'assayList', 'citations')],
-                                                       function(df) do.call('mapply', c(list, df,
-                                                                                        SIMPLIFY = FALSE,
-                                                                                        USE.NAMES = FALSE)))
+
+    return(res)
+  } else {
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+
+}
+
+#' Get administered equivalent dose (AED) data for a given chemical
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be
+#'   given.
+#'
+#' @returns A data.frame of AED data derived from ToxCast in virto bioactivity
+#'   data for given DTXSID.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Get data for DTXSID5021209
+#' aed <- get_aed_data(DTXSID = 'DTXSID5021209')
+#' aed
+get_aed_data <- function(DTXSID = NULL,
+                         API_key = NULL,
+                         Server = bioactivity_api_server,
+                         verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input an DTXSID!')
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <-  httr::GET(url = paste0(Server, '/data/aed/search/by-dtxsid/', DTXSID),
+                         httr::add_headers(.headers = c(
+                           'Content-Type' =  'application/json',
+                           'x-api-key' = API_key)
+                         )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+    df_col_names <- names(res)[which(lapply(res, typeof) == 'list')]
+
+    if (length(df_col_names)) {
+      res <- res |> tidyr::unnest(cols = df_col_names)
+      # for (i in 1:length(df_col_names)){
+      #   res <- res |> tidyr::unnest(df_col_names[[i]], keep_empty = TRUE)
+      # }
+    }
+
+    return(res)
+  } else {
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
+#' Get single concentration data
+#'
+#' @param AEID The assay endpoint identifier AEID
+#' @param Projection The format and concentration data returned. Allowed values
+#'   are 'single-conc' and 'ccd-single-conc'. The default format is
+#'   'single-conc'.
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be
+#'   given.
+#'
+#' @returns A data.frame of single concentration screening data for requested
+#'   ToxCast assay component endpoint ID (AEID).
+#' @export
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Get single conc data for AEID 3032 in different projections
+#' aeid_3032 <- get_single_concentration(AEID = 3032)
+#' aeid_ccd_3032 <- get_single_concentration(AEID = 3032,
+#'                                           Projection = 'ccd-single-conc')
+get_single_concentration <- function(AEID = NULL,
+                                     Projection = 'single-conc',
+                                     API_key = NULL,
+                                     Server = bioactivity_api_server,
+                                     verbose = FALSE){
+  if (is.null(AEID))
+    stop('Please input an AEID!')
+
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  projection_entries <- c('single-conc',
+                          'ccd-single-conc')
+  index <- 1
+  if (!is.character(Projection)){
+    warning('Setting `Projection` to `single-conc`')
+    Projection <- 'single-conc'
+  } else {
+    Projection <- tolower(Projection)
+    index <- which(projection_entries %in% Projection)
+    if (length(index) == 0){
+      stop('Please input a correct value for `Projection`!')
+    } else if (length(index) > 1){
+      warning('Setting `Projection` to `single-conc`')
+      Projection <- 'single-conc'
+      index <- 1
+    } else {
+      if (length(Projection) > 1){
+        message(paste0('Using `Projection` = ', projection_entries[index], '!'))
+      }
+      Projection <- projection_entries[index]
+    }
+  }
+
+  projection_url <- paste0('?projection=', Projection)
+
+  response <-  httr::GET(url = paste0(Server, '/assay/single-conc/search/by-aeid/', AEID, projection_url),
+                         httr::add_headers(.headers = c(
+                           'Content-Type' =  'application/json',
+                           'x-api-key' = API_key)
+                         )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+    df_col_names <- names(res)[which(lapply(res, typeof) == 'list')]
+    if (length(df_col_names)) {
+      for (i in 1:length(df_col_names)){
+        res <- res |> tidyr::unnest(df_col_names[[i]], keep_empty = TRUE)
+      }
+     }
+
+    return(res)
+  } else {
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
+#' Get assay summary data by gene symbol
+#'
+#' @param geneSymbol The gene symbol.
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @returns A data.frame of assay summary data for applicable assays for
+#' requested offical gene symbol.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Retrieve summary data for gene symbol TUBA1A
+#' summary_tuba1a <- get_assay_summary_by_gene(geneSymbol = 'TUBA1A')
+#' summary_tuba1a
+get_assay_summary_by_gene <- function(geneSymbol = NULL,
+                                      API_key = NULL,
+                                      Server = bioactivity_api_server,
+                                      verbose = FALSE){
+  if (is.null(geneSymbol))
+    stop('Please input an geneSymbol!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <-  httr::GET(url = paste0(Server, '/assay/search/by-gene/', geneSymbol),
+                         httr::add_headers(.headers = c(
+                           'Content-Type' =  'application/json',
+                           'x-api-key' = API_key)
+                         )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+    return(res)
+  } else {
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
+#' Get AEID by assay component endpoint name
+#'
+#' @param endpoint The assay component endpoint name.
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some "progress report" should be given.
+#'
+#' @returns An integer corresponding to the AEID of the given assay endpoint.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Retrieve AEID for end point 'APR_HepG2_MicrotubuleCSK_1hr'
+#' aeid <- get_aeid_by_endpoint(endpoint = 'APR_HepG2_MicrotubuleCSK_1hr')
+#' aeid
+get_aeid_by_endpoint <- function(endpoint = NULL,
+                                      API_key = NULL,
+                                      Server = bioactivity_api_server,
+                                      verbose = FALSE){
+  if (is.null(endpoint))
+    stop('Please input an endpoint!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <-  httr::GET(url = paste0(Server, '/assay/search/by-endpoint/?endpoint=', prepare_word(endpoint)),
+                         httr::add_headers(.headers = c(
+                           'Content-Type' =  'application/json',
+                           'x-api-key' = API_key)
+                         )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    if (length(httr::content(response)) > 0){
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+    return(res)
+    }
+  } else {
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
+}
+
+
+#' Retrieve all assays
+#'
+#' @param Projection The format and assay data returned. Allowed values are
+#'   'assay-all' and 'ccd-assay-list'. The default format is 'assay-all'.
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
+#'
+#' @return A data.frame containing all the assays and associated information
+#' @export
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Retrieve all assays
+#' assays <- get_all_assays()
+get_all_assays <- function(Projection = 'assay-all',
+                           API_key = NULL,
+                           Server = bioactivity_api_server,
+                           verbose = FALSE){
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  projection_entries <- c('assay-all',
+                          'ccd-assay-list')
+  index <- 1
+  if (!is.character(Projection)){
+    warning('Setting `Projection` to `assay-all`')
+    Projection <- 'assay-all'
+  } else {
+    Projection <- tolower(Projection)
+    index <- which(projection_entries %in% Projection)
+    if (length(index) == 0){
+      stop('Please input a correct value for `Projection`!')
+    } else if (length(index) > 1){
+      warning('Setting `Projection` to `assay-all`')
+      Projection <- 'assay-all'
+      index <- 1
+    } else {
+      if (length(Projection) > 1){
+        message(paste0('Using `Projection` = ', projection_entries[index], '!'))
+      }
+      Projection <- projection_entries[index]
+    }
+  }
+
+  projection_url <- paste0('?projection=', Projection)
+
+
+  response <-  httr::GET(url = paste0(Server, '/assay/', projection_url),
+                         httr::add_headers(.headers = c(
+                           'Content-Type' =  'application/json',
+                           'x-api-key' = API_key)
+                         )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+    #df_col_names <- intersect(c('gene', 'assayList', 'citations'), names(res))
+    df_col_names <- names(res)[which(lapply(res, typeof) == 'list')]
+    if (length(df_col_names)) {
+      for (i in 1:length(df_col_names)){
+        res <- res |> tidyr::unnest(df_col_names[[i]], keep_empty = TRUE, names_sep = '_')
+      }
+
+    #   res[df_col_names] <- lapply(res[df_col_names],
+    #                                                      function(df) do.call('mapply', c(list, df,
+    #                                                                                       SIMPLIFY = FALSE,
+    #                                                                                       USE.NAMES = FALSE)))
+    }
+
     return(res)
   } else {
     if (verbose){
@@ -229,17 +576,23 @@ get_all_assays <- function(API_key = NULL,
 #' Retrieve annotations for AEID
 #'
 #' @param AEID The assay endpoint identifier AEID
+#' @param Projection The format and assay data returned. Allowed values are
+#'   'ccd-assay-annotation', 'ccd-assay-gene', 'ccd-assay-citations',
+#'   'ccd-assay-tcpl', 'ccd-assay-reagents', and 'assay-all'. The default format
+#'   is 'assay-all'.
 #' @param API_key The user-specific API key
 #' @param Server The root address for the API endpoint
-#' @param verbose A logical indicating if some “progress report” should be given.
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
 #'
-#' @return A data.frame containing the annotated assays corresponding to the
+#' @return A data.table containing the annotated assays corresponding to the
 #'   input AEID parameter
 #' @export
 #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
 #' # Retrieve annotation for an assay
 #' annotation <- get_annotation_by_aeid(AEID = 159)
 get_annotation_by_aeid <- function(AEID = NULL,
+                                   Projection = 'assay-all',
                                    API_key = NULL,
                                    Server = bioactivity_api_server,
                                    verbose = FALSE){
@@ -251,7 +604,36 @@ get_annotation_by_aeid <- function(AEID = NULL,
     warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
   }
 
-  response <- httr::GET(url = paste0(Server, '/assay/search/by-aeid/', AEID),
+  projection_entries <- c('assay-all',
+                          'ccd-assay-annotation',
+                          'ccd-assay-gene',
+                          'ccd-assay-citations',
+                          'ccd-assay-tcpl',
+                          'ccd-assay-reagents')
+  index <- 1
+  if (!is.character(Projection)){
+    warning('Setting `Projection` to `assay-all`')
+    Projection <- 'assay-all'
+  } else {
+    Projection <- tolower(Projection)
+    index <- which(projection_entries %in% Projection)
+    if (length(index) == 0){
+      stop('Please input a correct value for `Projection`!')
+    } else if (length(index) > 1){
+      warning('Setting `Projection` to `assay-all`')
+      Projection <- 'assay-all'
+      index <- 1
+    } else {
+      if (length(Projection) > 1){
+        message(paste0('Using `Projection` = ', projection_entries[index], '!'))
+      }
+      Projection <- projection_entries[index]
+    }
+  }
+
+  projection_url <- ifelse(index == 1, '', paste0('?projection=', Projection))
+
+  response <- httr::GET(url = paste0(Server, '/assay/search/by-aeid/', AEID, projection_url),
                         httr::add_headers(.headers = c(
                           'Content-Type' =  'application/json',
                           'x-api-key' = API_key)
@@ -263,10 +645,25 @@ get_annotation_by_aeid <- function(AEID = NULL,
   if(response$status_code == 200){
     if (length(response$content) > 0){
       res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
-      for (i in 1:length(res)){
-        if (is.null(res[[i]])) res[[i]] <- NA # set any nulls to NA
-        if (length(res[[i]]) > 1) {
-          res[[i]] <- list(res[[i]]) # put lengths > 1 into a list to be just length 1, will unnest after
+      if (length(res) == 0){
+        return(res)
+      }
+
+      # Note which columns have lists of data.frames
+      df_col_names <- names(res)[which(lapply(res, typeof) == 'list')]
+
+      # for (i in 1:length(res)){
+      #   if (is.null(res[[i]])) res[[i]] <- NA # set any nulls to NA
+      #   if (length(res[[i]]) > 1) {
+      #     res[[i]] <- list(res[[i]]) # put lengths > 1 into a list to be just length 1, will unnest after
+      #   }
+      # }
+
+      # Fix nested data.frames
+      #df_col_names <- names(res)[which(lapply(res, typeof) == 'list')]
+      if (length(df_col_names) & index != 4) {
+        for (i in 1:length(df_col_names)){
+          res <- res |> tidyr::unnest(df_col_names[[i]], keep_empty = TRUE, names_sep = '_')
         }
       }
 
@@ -287,6 +684,529 @@ get_annotation_by_aeid <- function(AEID = NULL,
   return()
 
 
+}
+
+#' Get total assay count
+#'
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
+#'
+#' @returns An integer indicating the total number of assays.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' assay_count <- get_total_assay_count()
+#' print(assay_count)
+get_total_assay_count <- function(API_key = NULL,
+                                  Server = bioactivity_api_server,
+                                  verbose = FALSE){
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/assay/count'),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    return(httr::content(response, as = 'text', encoding = "UTF-8"))
+  } else {
+    if (verbose){
+      print('The request was successful but there is no information to return...')
+    }
+  }
+  return()
+}
+
+#' Get list of chemical DTXSIDs for a given assay
+#'
+#' @param AEID The assay endpoint identifier AEID
+#' @param Projection The format and DTXSID data returned. Allowed values are
+#'   'dtxsidonly' and 'ccdassaydetails'. The default format
+#'   is 'dtxsidonly'.
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
+#'
+#' @returns A list of DTXSIDs or data.frame of assay information.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' dtxsid_list <- get_chemicals_by_assay(AEID = 3032)
+get_chemicals_by_assay <- function(AEID = NULL,
+                                   Projection = 'dtxsidonly',
+                                   API_key = NULL,
+                                   Server = bioactivity_api_server,
+                                   verbose = FALSE){
+  if (is.null(AEID))
+    stop('Please input an AEID!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  projection_entries <- c('dtxsidonly',
+                          'ccdassaydetails')
+  index <- 1
+  if (!is.character(Projection)){
+    warning('Setting `Projection` to `dtxsidonly`')
+    Projection <- 'dtxsidonly'
+  } else {
+    Projection <- tolower(Projection)
+    index <- which(projection_entries %in% Projection)
+    if (length(index) == 0){
+      stop('Please input a correct value for `Projection`!')
+    } else if (length(index) > 1){
+      warning('Setting `Projection` to `dtxsidonly`')
+      Projection <- 'dtxsidonly'
+      index <- 1
+    } else {
+      if (length(Projection) > 1){
+        message(paste0('Using `Projection` = ', projection_entries[index], '!'))
+      }
+      Projection <- projection_entries[index]
+    }
+  }
+
+  projection_url <- paste0('?projection=', Projection)
+
+  response <- httr::GET(url = paste0(Server, '/assay/chemicals/search/by-aeid/', AEID, projection_url),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+    return(res)
+  } else {
+    if (verbose){
+      print('The request was successful but there is no information to return...')
+    }
+  }
+  return()
+}
+
+#' Get bioactivity model predictions by DTXSID
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
+#'
+#' @returns A data.frame of ToxCast model prediction data for given DTXSID.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Get predictions for DTXSID70201082
+#' bpa_predictions <- get_predictions_by_dtxsid(DTXSID = 'DTXSID7020182')
+#' bpa_predictions
+get_predictions_by_dtxsid <- function(DTXSID = NULL,
+                                     API_key = NULL,
+                                     Server = bioactivity_api_server,
+                                     verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input an DTXSID!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/models/search/by-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+    return(res)
+  } else {
+    if (verbose){
+      print('The request was successful but there is no information to return...')
+    }
+  }
+  return()
+}
+
+#' Get bioactivity model predictions by DTXSID and Model
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param Model The ToxCast model type. Model type options include: 'CERAPP
+#'   Potency Level (Consensus)', 'CERAPP Potency Level (From Literature)',
+#'   'COMPARA (Consensus)', and 'ToxCast Pathway Model (AUC)'.
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
+#'
+#' @returns A data.frame of ToxCast model predictions for the given DTXSID and
+#'   Model.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Get predictions for DTXSID70201082 and CERAPP models
+#' bpa_predictions <- get_predictions_by_dtxsid_and_model(DTXSID = 'DTXSID7020182',
+#'                                                        Model = 'CERAPP')
+#' bpa_predictions
+get_predictions_by_dtxsid_and_model <- function(DTXSID = NULL,
+                                                Model = NULL,
+                                                API_key = NULL,
+                                                Server = bioactivity_api_server,
+                                                verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input an DTXSID!')
+
+  if (is.null(Model))
+    stop('Please input an Model!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/models/search/?dtxsid=', DTXSID, '&model=', prepare_word(Model)),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+    return(res)
+  } else {
+    if (verbose){
+      print('The request was successful but there is no information to return...')
+    }
+  }
+  return()
+}
+
+#' Get analytical QC data for a chemical
+#'
+#' @param DTXSID The chemical identifier DTXSID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be
+#'   given.
+#'
+#' @returns A data.frame of analytical QC data for the requested DTXSID.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Get QC data for DTXSID7020182
+#' bpa_aq <- get_analytical_qc(DTXSID = 'DTXSID7020182')
+#' bpa_aq
+get_analytical_qc <- function(DTXSID = NULL,
+                              API_key = NULL,
+                              Server = bioactivity_api_server,
+                              verbose = FALSE){
+  if (is.null(DTXSID))
+    stop('Please input an DTXSID!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  response <- httr::GET(url = paste0(Server, '/analyticalqc/search/by-dtxsid/', DTXSID),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+    return(res)
+  } else {
+    if (verbose){
+      print('The request was successful but there is no information to return...')
+    }
+  }
+  return()
+
+}
+
+#' Retrieve assays by starting characters
+#'
+#' @param word A character string of an assay name
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
+#' @param top Limit the number of returned entries.
+#'
+#' @returns A data.frame of assay information for the given input.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Retrieve assays that start with the character string `ATG_S`
+#' atg_s_assays <- assay_starts_with(word = 'ATG_S')
+#' atg_s_assays
+assay_starts_with <- function(word = NULL,
+                              API_key = NULL,
+                              Server = bioactivity_api_server,
+                              verbose = FALSE,
+                              top = NULL){
+
+  if (is.null(word) || !is.character(word)){
+    stop('Please input a character value for word!')
+  }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if (!is.null(top)){
+    if (!is.numeric(top)) {
+      warning("Setting 'top' to NULL")
+      top <- NULL
+    } else {
+      top <- max(-1, as.integer(top))
+      if (top < 1){
+        warning("Setting 'top' to NULL")
+        top <- NULL
+      }
+    }
+  }
+
+  word <- prepare_word(word)
+  response <- httr::GET(url = paste0(Server, '/search/start-with/', word, ifelse(is.null(top), '', paste0("?top=", top))),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if (response$status == 401){
+    stop(httr::content(response)$detail)
+  }
+
+  if (response$status == 400) {
+    print(paste0('Found 0 results. Try adjusting the search parameters.'))
+  } else if (response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+
+  return()
+}
+
+#' Retrieve assays by exact match
+#'
+#' @param word A character string of an assay name
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
+#'
+#' @returns A data.frame of assay information for the given input.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Retrieve assays that match with the character string `ATG_STAT3_CIS`
+#' atg_stat3_cis_assay <- assay_equal(word = 'ATG_STAT3_CIS')
+#' atg_stat3_cis_assay
+assay_equal <- function(word = NULL,
+                        API_key = NULL,
+                        Server = bioactivity_api_server,
+                        verbose = FALSE){
+
+  if (is.null(word) || !is.character(word)){
+    stop('Please input a character value for word!')
+  }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  word <- prepare_word(word)
+
+  response <- httr::GET(url = paste0(Server, '/search/equal/', word),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if (response$status == 401){
+    stop(httr::content(response)$detail)
+  }
+
+  if (response$status == 400) {
+    print(paste0('Found 0 results. Try adjusting the search parameters.'))
+  } else if (response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+
+  return()
+
+}
+
+#' Retrieve assays by substring
+#'
+#' @param word A character string of an assay name
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
+#' @param top Limit the number of returned entries.
+#'
+#' @returns A data.frame of assay information for the given input.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # Retrieve assays that contain the character string `AT3_CIS`
+#' at3_cis_assays <- assay_contains(word = 'AT3_CIS')
+#' at3_cis_assays
+assay_contains <- function(word = NULL,
+                           API_key = NULL,
+                           Server = bioactivity_api_server,
+                           verbose = FALSE,
+                           top = NULL){
+
+  if (is.null(word) || !is.character(word)){
+    stop('Please input a character value for word!')
+  }
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  if (!is.null(top)){
+    if (!is.numeric(top)) {
+      warning("Setting 'top' to NULL")
+      top <- NULL
+    } else {
+      top <- max(-1, as.integer(top))
+      if (top < 0){
+        warning("Setting 'top' to NULL")
+        top <- NULL
+      }
+    }
+  }
+
+  word <- prepare_word(word)
+
+  response <- httr::GET(url = paste0(Server, '/search/contain/', word, ifelse(is.null(top), '', paste0("?top=", top))),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' =  'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+  if (response$status == 401){
+    stop(httr::content(response)$detail)
+  }
+
+  if (response$status == 400) {
+    print(paste0('Found 0 results. Try adjusting the search parameters.'))
+  } else if (response$status_code == 200){
+    return(jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8")))
+  } else {
+    if (verbose) {
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+
+  return()
+
+}
+
+
+#' Get ToxCast-mapped AOP data
+#'
+#' @param AEID The assay endpoint identifier AEID
+#' @param KeyEvent The Key Event number
+#' @param EntrezGeneId The Entrez Gene ID
+#' @param API_key The user-specific API key
+#' @param Server The root address for the API endpoint
+#' @param verbose A logical indicating if some “progress report” should be given.
+#'
+#' @returns a data.frame of ToxCast-mapped AOP data for the given input.
+#' @export
+#'
+#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+#' # By AEID, Key Event, and Entrez Gene ID
+#' aop_entrez <- get_aop_data(EntrezGeneId = 196)
+#' aop_entrez
+#' aop_ke <- get_aop_data(KeyEvent = 18)
+#' aop_ke
+#' aop_aeid <- get_aop_data(AEID = 63)
+#' aop_aeid
+get_aop_data <- function(AEID = NULL,
+                         KeyEvent = NULL,
+                         EntrezGeneId = NULL,
+                         API_key = NULL,
+                         Server = bioactivity_api_server,
+                         verbose = FALSE){
+
+  if (all(sapply(list(AEID, KeyEvent, EntrezGeneId), is.null)))
+    stop('Please input a AEID, KeyEvent, or EntrezGeneId!')
+
+  else if (length(which(!sapply(list(AEID, KeyEvent, EntrezGeneId), is.null))) > 1)
+    stop('Please input a value for only one of AEID, KeyEvent, or EntrezGeneId, but not multiple!')
+
+  API_key <- check_api_key(API_key = API_key, verbose = verbose)
+  if (is.null(API_key) & verbose){
+    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+  }
+
+  data_index <- which(!sapply(list(AEID, KeyEvent, EntrezGeneId), is.null))
+  data_endpoint <- paste0('by-', c('toxcast-aeid', 'event-number', 'entrez-gene-id')[data_index])
+  data_input <- unlist(list(AEID, KeyEvent, EntrezGeneId)[data_index])
+
+  response <- httr::GET(url = paste0(Server, '/aop/search/', data_endpoint, '/', data_input),
+                        httr::add_headers(.headers = c(
+                          'Content-Type' = 'application/json',
+                          'x-api-key' = API_key)
+                        )
+  )
+
+  if(response$status_code == 401){
+    stop(httr::content(response)$detail)
+  }
+  if(response$status_code == 200){
+    res <- jsonlite::fromJSON(httr::content(response, as = 'text', encoding = "UTF-8"))
+
+    return(res)
+  } else {
+    if (verbose){
+      print(paste0('The request was unsuccessful, returning an error of ', response$status_code, '!'))
+    }
+  }
+  return()
 }
 
 #' Bioactivity API Endpoint status
