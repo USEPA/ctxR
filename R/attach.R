@@ -11,7 +11,14 @@
   cite <- paste0(
     cli::col_green(cli::symbol$info),
     ' ',
-    'Please cite ', cli::col_blue('ctxR'), ' if you use it! Use `citation(\'ctxR\')` for details.'
+    'Please cite ', cli::col_blue('ctxR'), ' if you use it!\n\n',
+
+    "Kruse PM, Ring CL, Paul Friedman K, Feshuk M, Brown J, Thunes C, Rashid A (2025). ",
+    "ctxR: Utilities for interacting with the CTX APIs. ",
+    "NAM Journal, 1, 100031 ",
+    "doi:10.1016/j.namjnl.2025.100031", "\n\n",
+
+    'To retrieve these details, use `citation(\'ctxR\')`.'
   )
 
   rlang::inform(
