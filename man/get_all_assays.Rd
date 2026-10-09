@@ -5,17 +5,22 @@
 \title{Retrieve all assays}
 \usage{
 get_all_assays(
+  Projection = "assay-all",
   API_key = NULL,
   Server = bioactivity_api_server,
   verbose = FALSE
 )
 }
 \arguments{
+\item{Projection}{The format and assay data returned. Allowed values are
+'assay-all' and 'ccd-assay-list'. The default format is 'assay-all'.}
+
 \item{API_key}{The user-specific API key}
 
 \item{Server}{The root address for the API endpoint}
 
-\item{verbose}{A logical indicating if some “progress report” should be given.}
+\item{verbose}{A logical indicating if some “progress report” should be
+given.}
 }
 \value{
 A data.frame containing all the assays and associated information

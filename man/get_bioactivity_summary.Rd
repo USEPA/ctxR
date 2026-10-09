@@ -5,6 +5,7 @@
 \title{Retrieve bioactivity summary for AEID}
 \usage{
 get_bioactivity_summary(
+  DTXSID = NULL,
   AEID = NULL,
   API_key = NULL,
   Server = bioactivity_api_server,
@@ -12,6 +13,8 @@ get_bioactivity_summary(
 )
 }
 \arguments{
+\item{DTXSID}{The chemical identifier DTXSID}
+
 \item{AEID}{The assay endpoint indentifier AEID}
 
 \item{API_key}{The user-specific API key}
