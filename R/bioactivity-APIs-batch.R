@@ -800,91 +800,92 @@ get_bioactivity_summary_batch <- function(DTXSID = NULL,
   }
 }
 
-#' Get summary data by DTXSID and assay tissue origin batch
-#'
-#' @param DTXSID The chemical identifier DTXSIDs
-#' @param Tissue The tissue of origin for the assay
-#' @param API_key The user-specific API key
-#' @param Server The root address for the API endpoint
-#' @param rate_limit Number of seconds to wait between each request
-#' @param verbose A logical indicating if some “progress report” should be given.
-#'
-#' @returns A named list of data.frames of summary data for the given chemicals and tissue.
-#' @export
-#'
-#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
-#' # Get data for DTXSID7020182 and DTXSID7024241 and liver
-#' liver_summary <- get_bioactivity_summary_by_tissue(DTXSID = c('DTXSID7020182', 'DTXSID7024241'),
-#'                                                    Tissue = 'liver')
-#' liver_summary
-#'
-
-get_bioactivity_summary_by_tissue_batch <- function(DTXSID = NULL,
-                                                    Tissue = NULL,
-                                                    API_key = NULL,
-                                                    Server = NULL,
-                                                    rate_limit = 0L,
-                                                    verbose = FALSE){
-  if (is.null(DTXSID))
-    stop('Please input a list of DTXSIDs!')
-
-  if (is.null(Tissue))
-    stop('Please input a Tissue!')
-
-  if (length(Tissue) > 1){
-    stop('Please specify only one tissue per list of DTXSIDs!')
-  }
-
-
-  if (is.null(Server)){
-    Server = bioactivity_api_server
-  }
-
-  API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key) & verbose){
-    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
-  }
-
-  if (!is.numeric(rate_limit) | (rate_limit < 0)){
-    warning('Setting rate limit to 0 seconds between requests!')
-    rate_limit <- 0L
-  }
-
-  DTXSID <- unique(DTXSID)
-
-  results <- lapply(DTXSID, function(d){
-    Sys.sleep(rate_limit)
-    attempt <- tryCatch(
-      {
-        get_bioactivity_summary_by_tissue(DTXSID = d,
-                                          Tissue = Tissue,
-                                          API_key = API_key,
-                                          Server = Server,
-                                          verbose = verbose)
-      },
-      error = function(cond){
-        if (verbose) {
-          message(d)
-          message(cond$message)
-        }
-        return(cond)
-      }
-    )
-    return(attempt)
-  }
-  )
-
-  error_index <- which(sapply(results, function(t) {
-    return('simpleError' %in% class(t))
-  }))
-  if (length(error_index) > 0){
-    error <- results[[error_index[[1]]]]
-    stop(error$message)
-  }
-
-  names(results) <- paste0(DTXSID, '_', Tissue)
-  return(results)
-}
+# #' Get summary data by DTXSID and assay tissue origin batch
+# #'
+# #' @param DTXSID The chemical identifier DTXSIDs
+# #' @param Tissue The tissue of origin for the assay
+# #' @param API_key The user-specific API key
+# #' @param Server The root address for the API endpoint
+# #' @param rate_limit Number of seconds to wait between each request
+# #' @param verbose A logical indicating if some “progress report” should be given.
+# #'
+# #' @returns A named list of data.frames of summary data for the given chemicals and tissue.
+# #' @export
+# #'
+# #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+# #' # Get data for DTXSID7020182 and DTXSID7024241 and liver
+# #' liver_summary <- get_bioactivity_summary_by_tissue(DTXSID = c('DTXSID7020182', 'DTXSID7024241'),
+# #'                                                    Tissue = 'liver')
+# #' liver_summary
+# #'
+#
+# get_bioactivity_summary_by_tissue_batch <- function(DTXSID = NULL,
+#                                                     Tissue = NULL,
+#                                                     API_key = NULL,
+#                                                     Server = NULL,
+#                                                     rate_limit = 0L,
+#                                                     verbose = FALSE){
+#   if (is.null(DTXSID))
+#     stop('Please input a list of DTXSIDs!')
+#
+#   if (is.null(Tissue))
+#     stop('Please input a Tissue!')
+#
+#   if (length(Tissue) > 1){
+#     stop('Please specify only one tissue per list of DTXSIDs!')
+#   }
+#
+#
+#   if (is.null(Server)){
+#     Server = bioactivity_api_server
+#   }
+#
+#   API_key <- check_api_key(API_key = API_key, verbose = verbose)
+#   if (is.null(API_key) & verbose){
+#     warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+#   }
+#
+#   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+#     warning('Setting rate limit to 0 seconds between requests!')
+#     rate_limit <- 0L
+#   }
+#
+#   DTXSID <- unique(DTXSID)
+#
+#   results <- lapply(DTXSID, function(d){
+#     Sys.sleep(rate_limit)
+#     attempt <- tryCatch(
+#       {
+#         get_bioactivity_summary_by_tissue(DTXSID = d,
+#                                           Tissue = Tissue,
+#                                           API_key = API_key,
+#                                           Server = Server,
+#                                           verbose = verbose)
+#       },
+#       error = function(cond){
+#         if (verbose) {
+#           message(d)
+#           message(cond$message)
+#         }
+#         return(cond)
+#       }
+#     )
+#     return(attempt)
+#   }
+#   )
+#
+#   error_index <- which(sapply(results, function(t) {
+#     return('simpleError' %in% class(t))
+#   }))
+#   if (length(error_index) > 0){
+#     error <- results[[error_index[[1]]]]
+#     stop(error$message)
+#   }
+#
+#   names(results) <- paste0(DTXSID, '_', Tissue)
+#   return(results)
+# }
+#
 
 #' Get bioactivity model predictions by DTXSID batch
 #'
