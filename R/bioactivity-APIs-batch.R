@@ -1336,106 +1336,106 @@ assay_contains_batch <- function(word_list = NULL,
   return(results)
 }
 
-#' Get ToxCast-mapped AOP data batch
-#'
-#' @param AEID The assay endpoint identifier AEIDs
-#' @param KeyEvent The Key Event numbers
-#' @param EntrezGeneId The Entrez Gene IDs
-#' @param API_key The user-specific API key
-#' @param Server The root address for the API endpoint
-#' @param rate_limit Number of seconds to wait between each request
-#' @param verbose A logical indicating if some “progress report” should be given.
-#'
-#' @returns A named list of data.frames of ToxCast-mapped AOP data for the
-#' given input.
-#' @export
-#'
-#' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
-#' # By AEID, Key Event, and Entrez Gene ID
-#' aop_entrez <- get_aop_data_batch(EntrezGeneId = 196)
-#' aop_entrez
-#' aop_ke <- get_aop_data_batch(KeyEvent = 18)
-#' aop_ke
-#' aop_aeid <- get_aop_data_batch(AEID = 63)
-#' aop_aeid
-get_aop_data_batch <- function(AEID = NULL,
-                         KeyEvent = NULL,
-                         EntrezGeneId = NULL,
-                         API_key = NULL,
-                         Server = NULL,
-                         rate_limit = 0L,
-                         verbose = FALSE){
-
-  #if (is.null(AEID) & is.null(KeyEvent) & is.null(EntrezGeneId))#
-  if (all(sapply(list(AEID, KeyEvent, EntrezGeneId), is.null)))
-    stop('Please input a list of AEIDs, KeyEvents, or EntrezGeneIds!')
-  #else if (!is.null(AEID) & !is.null(KeyEvent) & !is.null(EntrezGeneId))
-  else if (length(which(!sapply(list(AEID, KeyEvent, EntrezGeneId), is.null))) > 1)
-    stop('Please input a value for only one of AEID,  KeyEvent, or EntrezGeneId but not multiple!')
-
-  API_key <- check_api_key(API_key = API_key, verbose = verbose)
-  if (is.null(API_key) & verbose){
-    warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
-  }
-
-  if (!is.numeric(rate_limit) | (rate_limit < 0)){
-    warning('Setting rate limit to 0 seconds between requests!')
-    rate_limit <- 0L
-  }
-
-  if (is.null(Server)){
-    Server <- bioactivity_api_server
-  }
-
-  data_index <- which(!sapply(list(AEID, KeyEvent, EntrezGeneId), is.null))
-
-  data_input <- unlist(list(AEID, KeyEvent, EntrezGeneId)[data_index])
-
-  data_input <- unique(data_input)
-
-  results <- lapply(data_input, function(d){
-    Sys.sleep(rate_limit)
-    attempt <- tryCatch(
-      {
-        if (data_index == 1){
-          get_aop_data(AEID = d,
-                       API_key = API_key,
-                       Server = Server,
-                       verbose = verbose)
-        } else if (data_index == 2) {
-          get_aop_data(KeyEvent = d,
-                       API_key = API_key,
-                       Server = Server,
-                       verbose = verbose)
-        } else {
-          get_aop_data(EntrezGeneId = d,
-                       API_key = API_key,
-                       Server = Server,
-                       verbose = verbose)
-        }
-
-      },
-      error = function(cond){
-        if (verbose) {
-          message(d)
-          message(cond$message)
-        }
-        return(cond)
-      }
-    )
-    return(attempt)
-  }
-  )
-
-  error_index <- which(sapply(results, function(t) {
-    return('simpleError' %in% class(t))
-  }))
-  if (length(error_index) > 0){
-    error <- results[[error_index[[1]]]]
-    stop(error$message)
-  }
-
-  names(results) <- data_input
-  return(results)
-
-  }
+# #' Get ToxCast-mapped AOP data batch
+# #'
+# #' @param AEID The assay endpoint identifier AEIDs
+# #' @param KeyEvent The Key Event numbers
+# #' @param EntrezGeneId The Entrez Gene IDs
+# #' @param API_key The user-specific API key
+# #' @param Server The root address for the API endpoint
+# #' @param rate_limit Number of seconds to wait between each request
+# #' @param verbose A logical indicating if some “progress report” should be given.
+# #'
+# #' @returns A named list of data.frames of ToxCast-mapped AOP data for the
+# #' given input.
+# #' @export
+# #'
+# #' @examplesIf has_ctx_key() & is.na(ctx_key() == 'FAKE_KEY')
+# #' # By AEID, Key Event, and Entrez Gene ID
+# #' aop_entrez <- get_aop_data_batch(EntrezGeneId = 196)
+# #' aop_entrez
+# #' aop_ke <- get_aop_data_batch(KeyEvent = 18)
+# #' aop_ke
+# #' aop_aeid <- get_aop_data_batch(AEID = 63)
+# #' aop_aeid
+# get_aop_data_batch <- function(AEID = NULL,
+#                          KeyEvent = NULL,
+#                          EntrezGeneId = NULL,
+#                          API_key = NULL,
+#                          Server = NULL,
+#                          rate_limit = 0L,
+#                          verbose = FALSE){
+#
+#   #if (is.null(AEID) & is.null(KeyEvent) & is.null(EntrezGeneId))#
+#   if (all(sapply(list(AEID, KeyEvent, EntrezGeneId), is.null)))
+#     stop('Please input a list of AEIDs, KeyEvents, or EntrezGeneIds!')
+#   #else if (!is.null(AEID) & !is.null(KeyEvent) & !is.null(EntrezGeneId))
+#   else if (length(which(!sapply(list(AEID, KeyEvent, EntrezGeneId), is.null))) > 1)
+#     stop('Please input a value for only one of AEID,  KeyEvent, or EntrezGeneId but not multiple!')
+#
+#   API_key <- check_api_key(API_key = API_key, verbose = verbose)
+#   if (is.null(API_key) & verbose){
+#     warning('Missing API key. Please supply during function call or save using `register_ctx_api_key()`!')
+#   }
+#
+#   if (!is.numeric(rate_limit) | (rate_limit < 0)){
+#     warning('Setting rate limit to 0 seconds between requests!')
+#     rate_limit <- 0L
+#   }
+#
+#   if (is.null(Server)){
+#     Server <- bioactivity_api_server
+#   }
+#
+#   data_index <- which(!sapply(list(AEID, KeyEvent, EntrezGeneId), is.null))
+#
+#   data_input <- unlist(list(AEID, KeyEvent, EntrezGeneId)[data_index])
+#
+#   data_input <- unique(data_input)
+#
+#   results <- lapply(data_input, function(d){
+#     Sys.sleep(rate_limit)
+#     attempt <- tryCatch(
+#       {
+#         if (data_index == 1){
+#           get_aop_data(AEID = d,
+#                        API_key = API_key,
+#                        Server = Server,
+#                        verbose = verbose)
+#         } else if (data_index == 2) {
+#           get_aop_data(KeyEvent = d,
+#                        API_key = API_key,
+#                        Server = Server,
+#                        verbose = verbose)
+#         } else {
+#           get_aop_data(EntrezGeneId = d,
+#                        API_key = API_key,
+#                        Server = Server,
+#                        verbose = verbose)
+#         }
+#
+#       },
+#       error = function(cond){
+#         if (verbose) {
+#           message(d)
+#           message(cond$message)
+#         }
+#         return(cond)
+#       }
+#     )
+#     return(attempt)
+#   }
+#   )
+#
+#   error_index <- which(sapply(results, function(t) {
+#     return('simpleError' %in% class(t))
+#   }))
+#   if (length(error_index) > 0){
+#     error <- results[[error_index[[1]]]]
+#     stop(error$message)
+#   }
+#
+#   names(results) <- data_input
+#   return(results)
+#
+#   }
