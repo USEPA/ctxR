@@ -1,6 +1,6 @@
 ---
 title: "ctxR: Exposure API"
-author: US EPA's Center for Computational Toxicology and Exposure ccte@epa.gov
+author: US EPA Office of Chemical Safety and Pollution Prevention
 output:
   rmarkdown::html_vignette:
     fig_width: 7
